@@ -4,7 +4,9 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{54437A5D-3B96-434A-B542-685E9C884721}" Name="Requirements_1" Selected="Yes" Type="{DABA1E0A-0922-4B05-B7F0-B0BD7A73FD33}" URL="видеопрокат.rqm"/>
+		<Model Expanded="Yes" ID="{54437A5D-3B96-434A-B542-685E9C884721}" Loaded="No" Name="Requirements_1" Type="{DABA1E0A-0922-4B05-B7F0-B0BD7A73FD33}" URL="видеопрокат.rqm"/>
+		<Model Expanded="Yes" ID="{54437A5D-3B96-434A-B542-685E9C884721}" Name="Requirements_1" Type="{DABA1E0A-0922-4B05-B7F0-B0BD7A73FD33}" URL="видеопрокат.rqm"/>
+		<Model ID="{54437A5D-3B96-434A-B542-685E9C884721}" Name="Requirements_1" Selected="Yes" Type="{DABA1E0A-0922-4B05-B7F0-B0BD7A73FD33}" URL="видеопрокат-1.rqm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
