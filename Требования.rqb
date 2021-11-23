@@ -1915,12 +1915,12 @@ Shadow=0</a:DisplayPreferences>
 <c:Requirements>
 <o:Requirement Id="o107">
 <a:ObjectID>BD3E470D-4CDF-40C2-BD4E-A8923E3F4D8E</a:ObjectID>
-<a:Requirement.Title>Если дата истекла, клиенту устанавливается задолженность</a:Requirement.Title>
+<a:Requirement.Title>Если дата истекла, клиенту устанавливается задолженность в 50% от стоимости диска</a:Requirement.Title>
 <a:Code>REQ_ 109</a:Code>
 <a:CreationDate>1632811869</a:CreationDate>
 <a:Creator>DELL</a:Creator>
-<a:ModificationDate>1632811972</a:ModificationDate>
-<a:Modifier>DELL</a:Modifier>
+<a:ModificationDate>1637635312</a:ModificationDate>
+<a:Modifier>Ilya</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
 <a:Risk>0</a:Risk>
