@@ -1555,7 +1555,7 @@ Shadow=0</a:DisplayPreferences>
 <a:CreationDate>1635227266</a:CreationDate>
 <a:ModificationDate>1635237270</a:ModificationDate>
 <a:DestinationTextOffset>(1612, 1650)</a:DestinationTextOffset>
-<a:Rect>((3001,17762), (14738,24293))</a:Rect>
+<a:Rect>((3001,17762), (14738,24292))</a:Rect>
 <a:ListOfPoints>((14701,17762),(14701,21594),(3001,21594))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -1578,7 +1578,7 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 <a:CreationDate>1635227355</a:CreationDate>
 <a:ModificationDate>1635237270</a:ModificationDate>
 <a:DestinationTextOffset>(-2625, -1277)</a:DestinationTextOffset>
-<a:Rect>((2101,15057), (13426,20307))</a:Rect>
+<a:Rect>((2101,15056), (13426,20307))</a:Rect>
 <a:ListOfPoints>((13426,16107),(6526,16107),(6526,20307))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -2177,13 +2177,13 @@ Shadow=0</a:DisplayPreferences>
 <o:ExtendedDependencySymbol Id="o24">
 <a:CreationDate>1636430842</a:CreationDate>
 <a:ModificationDate>1636440906</a:ModificationDate>
-<a:Rect>((49815,-13406), (51215,-4489))</a:Rect>
-<a:ListOfPoints>((50515,-13006),(50515,-4889))</a:ListOfPoints>
+<a:Rect>((49815,-13406), (51215,-4488))</a:Rect>
+<a:ListOfPoints>((50515,-13006),(50515,-4888))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>CENTER 0 Arial Unicode MS,8,N</a:FontList>
+<a:FontList>OBJXSTR 0 Arial Unicode MS,8,N</a:FontList>
 <c:SourceSymbol>
 <o:ActorSymbol Ref="o25"/>
 </c:SourceSymbol>
@@ -2197,13 +2197,13 @@ Shadow=0</a:DisplayPreferences>
 <o:ExtendedDependencySymbol Id="o28">
 <a:CreationDate>1636443661</a:CreationDate>
 <a:ModificationDate>1636443668</a:ModificationDate>
-<a:Rect>((43307,-1719), (45718,8579))</a:Rect>
-<a:ListOfPoints>((43707,8179),(45018,8179),(45018,-1319))</a:ListOfPoints>
+<a:Rect>((43355,-1718), (45890,8579))</a:Rect>
+<a:ListOfPoints>((43755,8179),(45190,8179),(45190,-1318))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>CENTER 0 Arial Unicode MS,8,N</a:FontList>
+<a:FontList>OBJXSTR 0 Arial Unicode MS,8,N</a:FontList>
 <a:AutomaticRoutingState>3</a:AutomaticRoutingState>
 <c:SourceSymbol>
 <o:UseCaseSymbol Ref="o29"/>
@@ -2218,13 +2218,13 @@ Shadow=0</a:DisplayPreferences>
 <o:ExtendedDependencySymbol Id="o31">
 <a:CreationDate>1636443662</a:CreationDate>
 <a:ModificationDate>1636443670</a:ModificationDate>
-<a:Rect>((54678,-2333), (57572,8717))</a:Rect>
-<a:ListOfPoints>((57172,8317),(55378,8317),(55378,-1933))</a:ListOfPoints>
+<a:Rect>((54526,-2332), (57572,8717))</a:Rect>
+<a:ListOfPoints>((57172,8317),(55226,8317),(55226,-1932))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>CENTER 0 Arial Unicode MS,8,N</a:FontList>
+<a:FontList>OBJXSTR 0 Arial Unicode MS,8,N</a:FontList>
 <a:AutomaticRoutingState>3</a:AutomaticRoutingState>
 <c:SourceSymbol>
 <o:UseCaseSymbol Ref="o32"/>
@@ -2239,13 +2239,13 @@ Shadow=0</a:DisplayPreferences>
 <o:ExtendedDependencySymbol Id="o34">
 <a:CreationDate>1636443663</a:CreationDate>
 <a:ModificationDate>1636443672</a:ModificationDate>
-<a:Rect>((51037,-2590), (52437,12515))</a:Rect>
-<a:ListOfPoints>((51737,12115),(51737,-2190))</a:ListOfPoints>
+<a:Rect>((51015,-2589), (52415,12515))</a:Rect>
+<a:ListOfPoints>((51715,12115),(51715,-2189))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>CENTER 0 Arial Unicode MS,8,N</a:FontList>
+<a:FontList>OBJXSTR 0 Arial Unicode MS,8,N</a:FontList>
 <c:SourceSymbol>
 <o:UseCaseSymbol Ref="o35"/>
 </c:SourceSymbol>
@@ -2259,13 +2259,13 @@ Shadow=0</a:DisplayPreferences>
 <o:ExtendedDependencySymbol Id="o37">
 <a:CreationDate>1636443664</a:CreationDate>
 <a:ModificationDate>1637667471</a:ModificationDate>
-<a:Rect>((50115,-2889), (62550,-1489))</a:Rect>
-<a:ListOfPoints>((62150,-2189),(50515,-2189))</a:ListOfPoints>
+<a:Rect>((50115,-2887), (62599,-1487))</a:Rect>
+<a:ListOfPoints>((62199,-2187),(50515,-2187))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>CENTER 0 Arial Unicode MS,8,N</a:FontList>
+<a:FontList>OBJXSTR 0 Arial Unicode MS,8,N</a:FontList>
 <c:SourceSymbol>
 <o:UseCaseSymbol Ref="o38"/>
 </c:SourceSymbol>
@@ -2279,13 +2279,13 @@ Shadow=0</a:DisplayPreferences>
 <o:ExtendedDependencySymbol Id="o40">
 <a:CreationDate>1636443665</a:CreationDate>
 <a:ModificationDate>1637667470</a:ModificationDate>
-<a:Rect>((33171,-2889), (41467,-1489))</a:Rect>
-<a:ListOfPoints>((33571,-2189),(41067,-2189))</a:ListOfPoints>
+<a:Rect>((33171,-2887), (41762,-1487))</a:Rect>
+<a:ListOfPoints>((33571,-2187),(41362,-2187))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>CENTER 0 Arial Unicode MS,8,N</a:FontList>
+<a:FontList>OBJXSTR 0 Arial Unicode MS,8,N</a:FontList>
 <c:SourceSymbol>
 <o:UseCaseSymbol Ref="o41"/>
 </c:SourceSymbol>
@@ -2299,8 +2299,8 @@ Shadow=0</a:DisplayPreferences>
 <o:UseCaseAssociationSymbol Id="o43">
 <a:CreationDate>1636443675</a:CreationDate>
 <a:ModificationDate>1637667470</a:ModificationDate>
-<a:Rect>((33171,-14005), (48514,-5126))</a:Rect>
-<a:ListOfPoints>((48114,-13605),(33571,-13605),(33571,-5526))</a:ListOfPoints>
+<a:Rect>((33171,-14005), (48514,-5125))</a:Rect>
+<a:ListOfPoints>((48114,-13605),(33571,-13605),(33571,-5525))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -2320,8 +2320,8 @@ Shadow=0</a:DisplayPreferences>
 <o:UseCaseAssociationSymbol Id="o45">
 <a:CreationDate>1636443677</a:CreationDate>
 <a:ModificationDate>1637667471</a:ModificationDate>
-<a:Rect>((52438,-14080), (68257,-4564))</a:Rect>
-<a:ListOfPoints>((52838,-13680),(67857,-13680),(67857,-4964))</a:ListOfPoints>
+<a:Rect>((52438,-14080), (68257,-4563))</a:Rect>
+<a:ListOfPoints>((52838,-13680),(67857,-13680),(67857,-4963))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -2362,8 +2362,8 @@ Shadow=0</a:DisplayPreferences>
 <o:UseCaseAssociationSymbol Id="o49">
 <a:CreationDate>1637667464</a:CreationDate>
 <a:ModificationDate>1637667464</a:ModificationDate>
-<a:Rect>((26729,-15658), (50554,8092))</a:Rect>
-<a:ListOfPoints>((50154,-15258),(27129,-15258),(27129,7692))</a:ListOfPoints>
+<a:Rect>((26680,-15658), (50554,8092))</a:Rect>
+<a:ListOfPoints>((50154,-15258),(27080,-15258),(27080,7692))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -2384,7 +2384,7 @@ Shadow=0</a:DisplayPreferences>
 <a:CreationDate>1637667487</a:CreationDate>
 <a:ModificationDate>1637667487</a:ModificationDate>
 <a:Rect>((50054,-22183), (84529,15217))</a:Rect>
-<a:ListOfPoints>((50454,-16458),(50454,-21783),(84129,-21783),(84129,14817),(57504,14817))</a:ListOfPoints>
+<a:ListOfPoints>((50454,-16458),(50454,-21783),(84129,-21783),(84129,14817),(57455,14817))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -2442,7 +2442,7 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 <o:UseCaseSymbol Id="o26">
 <a:CreationDate>1636430835</a:CreationDate>
 <a:ModificationDate>1636440906</a:ModificationDate>
-<a:Rect>((41067,-4889), (59963,510))</a:Rect>
+<a:Rect>((41362,-4888), (59668,511))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -2460,7 +2460,7 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 <o:UseCaseSymbol Id="o29">
 <a:CreationDate>1636440943</a:CreationDate>
 <a:ModificationDate>1636442013</a:ModificationDate>
-<a:Rect>((27014,5223), (43942,10622))</a:Rect>
+<a:Rect>((26965,5223), (43991,10622))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -2478,7 +2478,7 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 <o:UseCaseSymbol Id="o38">
 <a:CreationDate>1636440944</a:CreationDate>
 <a:ModificationDate>1637667471</a:ModificationDate>
-<a:Rect>((62150,-4964), (73566,435))</a:Rect>
+<a:Rect>((62199,-4963), (73517,436))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -2496,7 +2496,7 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 <o:UseCaseSymbol Id="o41">
 <a:CreationDate>1636441909</a:CreationDate>
 <a:ModificationDate>1637667470</a:ModificationDate>
-<a:Rect>((28504,-5526), (38638,-127))</a:Rect>
+<a:Rect>((28601,-5525), (38541,-126))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -2514,7 +2514,7 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 <o:UseCaseSymbol Id="o35">
 <a:CreationDate>1636443624</a:CreationDate>
 <a:ModificationDate>1636443672</a:ModificationDate>
-<a:Rect>((44456,12115), (57544,17514))</a:Rect>
+<a:Rect>((44505,12115), (57495,17514))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -7187,7 +7187,7 @@ DISPNAME 0 Arial Unicode MS,8,N</a:FontList>
 <a:Code>Отчет</a:Code>
 <a:CreationDate>1637668635</a:CreationDate>
 <a:Creator>Student</a:Creator>
-<a:ModificationDate>1637658074</a:ModificationDate>
+<a:ModificationDate>1637660943</a:ModificationDate>
 <a:Modifier>Student</a:Modifier>
 <a:Step>{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204 Microsoft Sans Serif;}{\f1\fnil\fcharset0 Microsoft Sans Serif;}}
 {\*\generator Msftedit 5.41.21.2512;}\viewkind4\uc1\pard\f0\fs20 1. \&#39;cf\&#39;ee\&#39;eb\&#39;fc\&#39;e7\&#39;ee\&#39;e2\&#39;e0\&#39;f2\&#39;e5\&#39;eb\&#39;fc \&#39;ed\&#39;e0\&#39;e6\&#39;e8\&#39;ec\&#39;e5\&#39;f2 \&#39;ed\&#39;e0 \&#39;e2\&#39;ea\&#39;eb\&#39;e0\&#39;e4\&#39;ea\&#39;f3 \&#39;ee\&#39;f2\&#39;f7\&#39;e5\&#39;f2\par
@@ -7195,8 +7195,8 @@ DISPNAME 0 Arial Unicode MS,8,N</a:FontList>
 }
 </a:Step>
 <a:Throws>{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204 Microsoft Sans Serif;}{\f1\fnil\fcharset0 Microsoft Sans Serif;}}
-{\*\generator Msftedit 5.41.21.2512;}\viewkind4\uc1\pard\f0\fs20 1. \&#39;cf\&#39;ee\&#39;eb\&#39;fc\&#39;e7\&#39;ee\&#39;e2\&#39;e0\&#39;f2\&#39;e5\&#39;eb\&#39;fc \&#39;ef\&#39;fb\&#39;f2\&#39;e0\&#39;e5\&#39;f2\&#39;f1\&#39;ff \&#39;ee\&#39;f2\&#39;ea\&#39;f0\&#39;fb\&#39;f2\&#39;fc \&#39;f1\&#39;ef\&#39;e8\&#39;f1\&#39;ee\&#39;ea \&#39;ee\&#39;f2\&#39;f7\&#39;e5\&#39;f2\&#39;ee\&#39;e2 \&#39;e1\&#39;e5\&#39;e7 \&#39;e4\&#39;ee\&#39;f1\&#39;f2\&#39;f3\&#39;ef\&#39;e0 , \&#39;ef\&#39;f0\&#39;ee\&#39;e3\&#39;f0\&#39;e0\&#39;ec\&#39;ec\&#39;e0 \&#39;ee\&#39;f8\&#39;e8\&#39;e1\&#39;ea\&#39;f3 \lang1033\f1 &quot;\lang1049\f0\&#39;d3 \&#39;e2\&#39;e0\&#39;f1 \&#39;ed\&#39;e5\&#39;f2 \&#39;ef\&#39;f0\&#39;e0\&#39;e2\lang1033\f1 &quot;\lang1049\f0 .\par
-2. \&#39;cf\&#39;ee\&#39;f2\&#39;e5\&#39;f0\&#39;ff\&#39;ed \&#39;f1\&#39;e2\&#39;ff\&#39;e7\&#39;fc \&#39;f1 \&#39;c1\&#39;c4 , \&#39;ef\&#39;f0\&#39;ee\&#39;e3\&#39;f0\&#39;e0\&#39;ec\&#39;ec\&#39;e0 \&#39;e2\&#39;fb\&#39;e4\&#39;e0\&#39;e5\&#39;f2 \&#39;ee\&#39;f8\&#39;e8\&#39;e1\&#39;ea\&#39;f3 &quot;\&#39;d1\&#39;e2\&#39;ff\&#39;e7\&#39;fc \&#39;f1 \&#39;c1\&#39;c4 \&#39;ef\&#39;ee\&#39;f2\&#39;e5\&#39;f0\&#39;ff\&#39;ed\&#39;ee&quot;.\lang1033\f1\par
+{\*\generator Msftedit 5.41.21.2512;}\viewkind4\uc1\pard\f0\fs20 1. \&#39;cf\&#39;ee\&#39;eb\&#39;fc\&#39;e7\&#39;ee\&#39;e2\&#39;e0\&#39;f2\&#39;e5\&#39;eb\&#39;fc \&#39;ef\&#39;fb\&#39;f2\&#39;e0\&#39;e5\&#39;f2\&#39;f1\&#39;ff \&#39;ee\&#39;f2\&#39;ea\&#39;f0\&#39;fb\&#39;f2\&#39;fc \&#39;f1\&#39;ef\&#39;e8\&#39;f1\&#39;ee\&#39;ea \&#39;ee\&#39;f2\&#39;f7\&#39;e5\&#39;f2\&#39;ee\&#39;e2 \&#39;e1\&#39;e5\&#39;e7\lang1033\f1  \lang1049\f0\&#39;ef\&#39;f0\&#39;e0\&#39;e2 \&#39;e4\&#39;ee\&#39;f1\&#39;f2\&#39;f3\&#39;ef\&#39;e0 , \&#39;ef\&#39;f0\&#39;ee\&#39;e3\&#39;f0\&#39;e0\&#39;ec\&#39;ec\&#39;e0 \&#39;e2\&#39;fb\&#39;e4\&#39;e0\&#39;e5\&#39;f2 \&#39;ee\&#39;f8\&#39;e8\&#39;e1\&#39;ea\&#39;f3 \lang1033\f1 &quot;\lang1049\f0\&#39;d3 \&#39;e2\&#39;e0\&#39;f1 \&#39;ed\&#39;e5\&#39;f2 \&#39;ef\&#39;f0\&#39;e0\&#39;e2\lang1033\f1 &quot;\lang1049\f0 .\par
+2. \&#39;cf\&#39;ee\&#39;f2\&#39;e5\&#39;f0\&#39;ff\&#39;ed\&#39;e0 \&#39;f1\&#39;e2\&#39;ff\&#39;e7\&#39;fc \&#39;f1 \&#39;c1\&#39;c4 , \&#39;ef\&#39;f0\&#39;ee\&#39;e3\&#39;f0\&#39;e0\&#39;ec\&#39;ec\&#39;e0 \&#39;e2\&#39;fb\&#39;e4\&#39;e0\&#39;e5\&#39;f2 \&#39;ee\&#39;f8\&#39;e8\&#39;e1\&#39;ea\&#39;f3 &quot;\&#39;d1\&#39;e2\&#39;ff\&#39;e7\&#39;fc \&#39;f1 \&#39;c1\&#39;c4 \&#39;ef\&#39;ee\&#39;f2\&#39;e5\&#39;f0\&#39;ff\&#39;ed\&#39;ee&quot;.\lang1033\f1\par
 \par
 }
 </a:Throws>
