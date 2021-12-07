@@ -9,9 +9,9 @@
 		<Model Expanded="Yes" ID="{0D39CC52-1884-48F2-94FD-540C2FB791B1}" Name="ArchitectureModel_Vadim" Type="{5215C79E-A9A1-4738-A627-36DA432EFE29}" URL="ArchitectureModel_Vadim.eam"/>
 		<Model Expanded="Yes" ID="{4B3D075F-F97D-40B7-AEF4-F32755A2B494}" Name="ArchitectureModel_Senya" Type="{5215C79E-A9A1-4738-A627-36DA432EFE29}" URL="ArchitectureModel_Senya.eam"/>
 		<Folder Expanded="Yes" Name="Object-Oriented Model">
-			<Model ID="{9CC01B2A-627E-4366-860A-E92F786E5509}" Loaded="No" Name="Buyvol_OOM_Main" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Классы_main.oom"/>
-			<Model ID="{9CC01B2A-627E-4366-860A-E92F786E5509}" Loaded="No" Name="Buyvol_OOM_Vadim" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Классы-vadim.oom"/>
-			<Model ID="{9CC01B2A-627E-4366-860A-E92F786E5509}" Loaded="No" Name="Buyvol_OOM_Senya" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Классы_senya.oom"/>
+			<Model ID="{9CC01B2A-627E-4366-860A-E92F786E5509}" Name="Buyvol_OOM_Main" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Object-Oriented Model/Классы_main.oom"/>
+			<Model ID="{9CC01B2A-627E-4366-860A-E92F786E5509}" Name="Buyvol_OOM_Vadim" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Object-Oriented Model/Классы-vadim.oom"/>
+			<Model Expanded="Yes" ID="{9CC01B2A-627E-4366-860A-E92F786E5509}" Name="Buyvol_OOM_Senya" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Object-Oriented Model/Классы_senya.oom"/>
 		</Folder>
 	</Local>
 	<BrowserModule Name="Repository"/>
