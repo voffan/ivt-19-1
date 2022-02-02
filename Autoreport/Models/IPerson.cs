@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Autoreport
+namespace Autoreport.Models
 {
-    class Person
+    interface IPerson
     {
         public int Id { get; }
         public string First_name { get; set; }

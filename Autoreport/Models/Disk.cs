@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Autoreport.DB
+namespace Autoreport.Models
 {
     class Disk
     {

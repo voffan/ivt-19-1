@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
+using Autoreport.Models;
 
-namespace Autoreport.DB
+namespace Autoreport.Data
 {
     class DiskContext : DbContext
     {
-        public DiskContext() : base("connection") { }
         public DbSet<Disk> Disks { get; set; }
     }
 }

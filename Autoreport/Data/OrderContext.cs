@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
+using Autoreport.Models;
 
-namespace Autoreport.DB.Context
+namespace Autoreport.Context
 {
     class OrderContext : DbContext
     {
-        public OrderContext() : base("connection") { }
         public DbSet<Order> Orders { get; set; }
     }
 }
