@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Autoreport.Models
+namespace Autoreport.Models.Classes
 {
     class Person
     {

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Autoreport.Models.Classes;
 
 namespace Autoreport.Models
 {
     class Employeer : Person
     {
-        public int Id { get; set; }
         [Range(4,4)]
         public int Passport_serial { get; set; }
         [Range(6, 6)]
