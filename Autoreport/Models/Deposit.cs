@@ -9,5 +9,6 @@ namespace Autoreport.Models
         public int Id { get; }
         public string Name { get; set; }
         public string Value { get; set; }
+        public DepositType Type { get; set; }
     }
 }
