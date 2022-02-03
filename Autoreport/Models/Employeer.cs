@@ -6,6 +6,7 @@ namespace Autoreport.Models
 {
     class Employeer : Person
     {
+        public int Id { get; set; }
         public int Password_serial { get; set; }
         public int Password_number { get; set; }
         public string Phone_number { get; set; }

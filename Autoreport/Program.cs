@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Autoreport.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Autoreport
 {
@@ -18,6 +20,11 @@ namespace Autoreport
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainWindow());
+            using (var context = new DataContext())
+            {
+                context.Database.EnsureCreated();
+                context.SaveChanges();
+            }
         }
     }
 }
