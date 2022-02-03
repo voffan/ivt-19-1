@@ -982,7 +982,7 @@ ColnFKName=%.3:PARENT%_%COLUMN%
 ColnFKNameUse=No
 RefrUpdRule=RESTRICT
 RefrDelRule=RESTRICT</a:ModelOptionsText>
-<a:RepositoryFilename>E:\Documents\Study\Программная инженерия\ivt-19-1\Object-Oriented Model\Классы_main.oom</a:RepositoryFilename>
+<a:RepositoryFilename>E:\Documents\Study\Программная инженерия\ivt-19-1\PD_Object-Oriented Model\Классы_main.oom</a:RepositoryFilename>
 <c:ObjectLanguage>
 <o:Shortcut Id="o3">
 <a:ObjectID>B92AD482-CB75-4563-ADF1-7F18370D84AF</a:ObjectID>
@@ -1558,8 +1558,8 @@ Shadow=0</a:DisplayPreferences>
 <o:AssociationSymbol Id="o5">
 <a:CreationDate>1635226255</a:CreationDate>
 <a:ModificationDate>1636437578</a:ModificationDate>
-<a:Rect>((18570,-3500), (24128,24124))</a:Rect>
-<a:ListOfPoints>((18607,24124),(18607,15799),(23828,15799),(23828,-3500))</a:ListOfPoints>
+<a:Rect>((18607,-3500), (23888,24124))</a:Rect>
+<a:ListOfPoints>((18607,24124),(18607,15799),(23588,15799),(23588,-3500))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1579,7 +1579,7 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 <o:AssociationSymbol Id="o9">
 <a:CreationDate>1635227829</a:CreationDate>
 <a:ModificationDate>1636437578</a:ModificationDate>
-<a:Rect>((5657,20520), (18144,22832))</a:Rect>
+<a:Rect>((5657,20520), (18144,22799))</a:Rect>
 <a:ListOfPoints>((7494,20520),(7494,22049),(18144,22049))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>3336</a:ArrowStyle>
@@ -1642,7 +1642,7 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 <o:AssociationSymbol Id="o18">
 <a:CreationDate>1635228775</a:CreationDate>
 <a:ModificationDate>1636437578</a:ModificationDate>
-<a:Rect>((21034,16046), (28967,21794))</a:Rect>
+<a:Rect>((21034,16016), (28967,21794))</a:Rect>
 <a:ListOfPoints>((21071,21794),(21071,17024),(28967,17024))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -1663,7 +1663,7 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 <o:AssociationSymbol Id="o21">
 <a:CreationDate>1635229642</a:CreationDate>
 <a:ModificationDate>1636437578</a:ModificationDate>
-<a:Rect>((-3366,4380), (5769,8276))</a:Rect>
+<a:Rect>((-3366,4351), (5769,8247))</a:Rect>
 <a:ListOfPoints>((-3366,7307),(733,7307),(733,5358),(5769,5358))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -1705,7 +1705,7 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 <o:AssociationSymbol Id="o27">
 <a:CreationDate>1635230338</a:CreationDate>
 <a:ModificationDate>1636437578</a:ModificationDate>
-<a:Rect>((22629,22203), (29448,24150))</a:Rect>
+<a:Rect>((22629,22173), (29448,24120))</a:Rect>
 <a:ListOfPoints>((22629,23181),(29448,23181))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -1726,8 +1726,8 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 <o:GeneralizationSymbol Id="o30">
 <a:CreationDate>1635234418</a:CreationDate>
 <a:ModificationDate>1636437578</a:ModificationDate>
-<a:Rect>((13025,-3634), (22260,5439))</a:Rect>
-<a:ListOfPoints>((13025,5439),(13025,-3134),(22260,-3134))</a:ListOfPoints>
+<a:Rect>((13025,-3634), (21799,5439))</a:Rect>
+<a:ListOfPoints>((13025,5439),(13025,-3134),(21799,-3134))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>7</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1746,8 +1746,8 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 <o:GeneralizationSymbol Id="o32">
 <a:CreationDate>1635234419</a:CreationDate>
 <a:ModificationDate>1636437578</a:ModificationDate>
-<a:Rect>((11337,-7828), (23351,-4173))</a:Rect>
-<a:ListOfPoints>((11337,-7828),(17706,-7828),(17706,-4673),(23351,-4673))</a:ListOfPoints>
+<a:Rect>((11337,-7828), (23044,-4173))</a:Rect>
+<a:ListOfPoints>((11337,-7828),(17706,-7828),(17706,-4673),(23044,-4673))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>7</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -2020,7 +2020,7 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 <a:CreationDate>1635234310</a:CreationDate>
 <a:ModificationDate>1636437578</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((21142,-6109), (29920,-1315))</a:Rect>
+<a:Rect>((20524,-6109), (30538,-1315))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -6674,12 +6674,12 @@ DISPNAME 0 Arial Unicode MS,8,N</a:FontList>
 </o:Attribute>
 <o:Attribute Id="o238">
 <a:ObjectID>4DD5D161-A8B7-4AE1-A659-EDEA8EAF6B29</a:ObjectID>
-<a:Name>product_id</a:Name>
+<a:Name>product_id???</a:Name>
 <a:Code>product_id</a:Code>
 <a:CreationDate>1634627146</a:CreationDate>
 <a:Creator>Student</a:Creator>
-<a:ModificationDate>1634627164</a:ModificationDate>
-<a:Modifier>Student</a:Modifier>
+<a:ModificationDate>1643808444</a:ModificationDate>
+<a:Modifier>Ilya</a:Modifier>
 <a:DataType>int</a:DataType>
 <a:Attribute.Visibility>-</a:Attribute.Visibility>
 </o:Attribute>
@@ -7110,9 +7110,9 @@ DISPNAME 0 Arial Unicode MS,8,N</a:FontList>
 <a:Code>firstName</a:Code>
 <a:CreationDate>1635234313</a:CreationDate>
 <a:Creator>Student</a:Creator>
-<a:ModificationDate>1635234342</a:ModificationDate>
-<a:Modifier>Student</a:Modifier>
-<a:DataType>int</a:DataType>
+<a:ModificationDate>1643808027</a:ModificationDate>
+<a:Modifier>Ilya</a:Modifier>
+<a:DataType>String</a:DataType>
 <a:Attribute.Visibility>-</a:Attribute.Visibility>
 </o:Attribute>
 <o:Attribute Id="o265">
@@ -7121,9 +7121,9 @@ DISPNAME 0 Arial Unicode MS,8,N</a:FontList>
 <a:Code>secondName</a:Code>
 <a:CreationDate>1635234313</a:CreationDate>
 <a:Creator>Student</a:Creator>
-<a:ModificationDate>1635234342</a:ModificationDate>
-<a:Modifier>Student</a:Modifier>
-<a:DataType>int</a:DataType>
+<a:ModificationDate>1643808027</a:ModificationDate>
+<a:Modifier>Ilya</a:Modifier>
+<a:DataType>String</a:DataType>
 <a:Attribute.Visibility>-</a:Attribute.Visibility>
 </o:Attribute>
 </c:Attributes>
@@ -11153,7 +11153,7 @@ DISPNAME 0 Arial Unicode MS,8,N</a:FontList>
 <a:Creator>Student</a:Creator>
 <a:ModificationDate>1643804953</a:ModificationDate>
 <a:Modifier>Ilya</a:Modifier>
-<a:TargetModelURL>file:///E|/Documents/Study/Программная инженерия/ivt-19-1/Object-Oriented Model/Классы-vadim.oom</a:TargetModelURL>
+<a:TargetModelURL>file:///E|/Documents/Study/Программная инженерия/ivt-19-1/PD_Object-Oriented Model/Классы-vadim.oom</a:TargetModelURL>
 <a:TargetModelID>9CC01B2A-627E-4366-860A-E92F786E5509</a:TargetModelID>
 <a:TargetModelClassID>18112060-1A4B-11D1-83D9-444553540000</a:TargetModelClassID>
 <a:TargetModelLastModificationDate>1643804953</a:TargetModelLastModificationDate>

@@ -22,6 +22,5 @@ namespace Autoreport.Models
         public OrderStatus Status { get; set; }
         public Deposit OrderDeposit { get; set; }
         public List<Disk> Disks { get; set; }
-
     }
 }
