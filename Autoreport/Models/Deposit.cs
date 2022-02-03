@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
-    enum DepositType
+    public enum DepositType
     {
-        Money,
-        Document
+        Money = 0,
+        Document = 1,
+        MoneyAndDocument = 3
     }
 
     class Deposit
     {
         public int Id { get; set; }
+        [MaxLength(200)]
         public string Name { get; set; }
+        [Range(1.0, 100000.0)]
         public string Value { get; set; }
         public DepositType Type { get; set; }
     }

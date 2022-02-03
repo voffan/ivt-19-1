@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
     class Employeer : Person
     {
         public int Id { get; set; }
-        public int Password_serial { get; set; }
-        public int Password_number { get; set; }
+        [Range(4,4)]
+        public int Passport_serial { get; set; }
+        [Range(6, 6)]
+        public int Passport_number { get; set; }
+        [MaxLength(20)]
         public string Phone_number { get; set; }
     }
 }

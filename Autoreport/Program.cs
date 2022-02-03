@@ -20,11 +20,12 @@ namespace Autoreport
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainWindow());
-            using (var context = new DataContext())
-            {
-                context.Database.EnsureCreated();
-                context.SaveChanges();
-            }
+
+            //using (var context = new DataContext())
+            //{
+            //    context.Database.EnsureCreated();
+            //    context.SaveChanges();
+            //}
         }
     }
 }
