@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Autoreport.Models;
-using Autoreport.Data;
 
 namespace Autoreport.Services
 {
-    class DepositService
+    internal class ClientService
     {
         public void Add()
         {
