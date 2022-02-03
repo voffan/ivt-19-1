@@ -15,8 +15,8 @@ namespace Autoreport.Models
     {
         public int Id { get; }
         public string Name { get; set; }
-        public string Country { get; set; }
-        public string Studio { get; set; }
+        public Country FilmCounty { get; set; }
+        public Studio FilmStudio { get; set; }
         public Director FilmDirector { get; set; }
         List<Genre> Genres { get; set; }
     }
