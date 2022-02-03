@@ -4,11 +4,8 @@ using System.Text;
 
 namespace Autoreport.Models
 {
-    class Director : IPerson
+    class Director : Person
     {
-        public int Id { get; }
-        public string First_name { get; set; }
-        public string Second_name { get; set; }
     }
 
     class Film

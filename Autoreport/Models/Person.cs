@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Autoreport.Models
 {
-    interface IPerson
+    class Person
     {
         
         public int Id { get; }

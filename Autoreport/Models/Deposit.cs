@@ -4,6 +4,12 @@ using System.Text;
 
 namespace Autoreport.Models
 {
+    enum DepositType
+    {
+        Money,
+        Document
+    }
+
     class Deposit
     {
         public int Id { get; }
