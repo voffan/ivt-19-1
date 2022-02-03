@@ -15,6 +15,7 @@ namespace Comp_park_app_form
         public Form1()
         {
             InitializeComponent();
+
         }
 
     }
