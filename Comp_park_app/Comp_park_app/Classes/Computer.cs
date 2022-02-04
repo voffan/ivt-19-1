@@ -7,9 +7,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Comp_park_app
 {
-    class Computer
+    public class Computer
     {
         public int Id { get; set; }
+        public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
         [MaxLength(100)]
         public string ItemNo { get; set; }
