@@ -25,7 +25,7 @@ namespace proekt_a4tech
         public DateTime Date { get; set; }
 
         public string Location { get; set; }
-        public Level Type { get; set; }
+        public Level Level { get; set; }
         public virtual List<Judge> Judges { get; set; }
     }
 }
