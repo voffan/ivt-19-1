@@ -9,7 +9,12 @@ namespace project.Classes
 {
     public class Plan
     {
+        public int Id { get; set; }
         public int count_box { get; set; }
-        [max_Length(20)]
+        [MaxLength(20)]
+        public string planDate { get; set; }
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
+
     }
 }

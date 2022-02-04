@@ -9,8 +9,8 @@ namespace project.Classes
 {
     public class Employee
     {
-        public int Id { get;set; }
-        [MaxLength(20)]
+        public int Id { get; set; }
+        [MaxLength(100)]
         public string Name { get; set; }
         public int PositionId { get; set; }
         public virtual Position Position { get; set; }
