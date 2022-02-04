@@ -14,7 +14,7 @@ namespace Comp_park_app
         public string Name { get; set; }
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
-
+        public int PositionId { get; set; }
         public virtual Position Position { get; set; }
 
         public virtual List<Computer> Computers { get; set; }

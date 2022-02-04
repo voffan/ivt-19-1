@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Comp_park_app
 {
-    public enum StatusC { Working, InRepair, Removed }
     public class Computer
     {
         public int Id { get; set; }
@@ -15,7 +14,7 @@ namespace Comp_park_app
         public virtual Department Department { get; set; }
         [MaxLength(100)]
         public string ItemNo { get; set; }
-        public StatusC Status { get; set; }
+        public Status Status { get; set; }
         //======
         public int MotherboardId { get; set; }
         public virtual Motherboard Motherboard { get; set; }
