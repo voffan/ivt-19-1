@@ -15,8 +15,10 @@ namespace gallerys.Models
         public int Year { get; set; }
         public int Price { get; set; }
         public int status { get; set; }
-        public virtual List<Journal> Journals { get; set; }
         public virtual Author Author { get; set; }
-        public virtual List<Genre> Genre { get; set; }
+        public int GenreId { get; set; }
+        public virtual Genre Genre { get; set; }
+
+        public virtual List<Journal> Journals { get; set; }
     }
 }

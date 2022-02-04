@@ -6,11 +6,8 @@ using gallerys.Models;
 
 namespace gallerys.Models
 {
-    public class Department
+    public class Department: Place
     {
-        public int Id { get; set; }
-        [MaxLength(100)]
-        public string Name { get; set; }
         
     }
 }

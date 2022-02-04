@@ -6,7 +6,7 @@ using gallerys.Models;
 
 namespace gallerys.Models
 {
-    public class Exhibition
+    public class Exhibition : Place
     {
         public int Id { get; set; }
         [MaxLength(200)]
