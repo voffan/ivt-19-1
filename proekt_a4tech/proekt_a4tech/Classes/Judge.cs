@@ -16,6 +16,6 @@ namespace proekt_a4tech
         [Range(1,10)]
         public string Category { get; set; }
         public DateTime Experience { get; set; }
-        public virtual Competition JudgeCompetition { get; set; }
+        public virtual List<Competition> Competitions { get; set; }
     }
 }

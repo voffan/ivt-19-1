@@ -13,9 +13,9 @@ namespace proekt_a4tech
         public int Id {get; set;}
         [MaxLength(100)]
         public float Record{get; set;}
-        public virtual Sportsman ResultSportsman { get; set; }
-        public virtual Competition ResultCompetition { get; set; }
-        public virtual SportKind ResultSportKind { get; set; }
-        public virtual Category ResultCategory { get; set; }
+        public virtual Sportsman Sportsman { get; set; }
+        public virtual Competition Competition { get; set; }
+        public virtual SportKind SportKind { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
