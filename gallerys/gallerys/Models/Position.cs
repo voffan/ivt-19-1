@@ -6,14 +6,10 @@ using gallerys.Models;
 
 namespace gallerys.Models
 {
-    public class Employee
+    public class Position
     {
         public int Id { get; set; }
         [MaxLength(100)]
         public string Name { get; set; }
-        [MaxLength(100)]
-        public string Right { get; set; }
-        public int PositionId { get; set; }
-        public virtual Position Positions { get; set; }
     }
 }
