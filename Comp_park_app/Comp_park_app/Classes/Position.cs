@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Comp_park_app
 {
-    class Position
+    public class Position
     {
         public int Id { get; set; }
         [MaxLength(100)]

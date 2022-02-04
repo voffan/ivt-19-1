@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Comp_park_app
 {
-    class Employee
+    public class Employee
     {
         public int Id { get; set; }
         [MaxLength(100)]
@@ -18,5 +18,6 @@ namespace Comp_park_app
         public virtual Position Position { get; set; }
 
         public virtual List<Computer> Computers { get; set; }
+        public virtual List<Peripheral> Peripherals { get; set; }
     }
 }
