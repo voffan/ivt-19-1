@@ -9,7 +9,6 @@ namespace project.Classes
 {
     public class Product
     {
-
         public int Id { get; set; }
         [MaxLength(200)]
         public string Type_box { get; set; }

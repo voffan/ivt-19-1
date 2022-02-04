@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace project.Classes
 {
-
     public class Plan
     {
         public int Id { get; set; }

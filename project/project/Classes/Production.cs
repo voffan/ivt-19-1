@@ -9,7 +9,6 @@ namespace project.Classes
 {
     public class Production
     {
-
         public int Id { get; set; }
         public virtual Schedule team { get; set; }
         public int ProductId { get; set; }
@@ -17,6 +16,5 @@ namespace project.Classes
         public int count { get; set; }
         [MaxLength(200)]
         public string comment { get; set; }
-
     }
 }
