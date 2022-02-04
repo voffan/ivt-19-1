@@ -15,10 +15,7 @@ namespace gallerys.Models
         public int Year { get; set; }
         public int Price { get; set; }
         public int status { get; set; }
-<<<<<<< HEAD
         public int AuthorId { get; set; }
-=======
->>>>>>> 12601dee55c3e9e0ccdc8fba1069884aa2ab34ef
         public virtual Author Author { get; set; }
         public int GenreId { get; set; }
         public virtual Genre Genre { get; set; }
