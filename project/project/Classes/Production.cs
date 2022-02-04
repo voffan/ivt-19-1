@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace project.Classes
 {
-    class Production
+    public class Production
     {
     }
 }

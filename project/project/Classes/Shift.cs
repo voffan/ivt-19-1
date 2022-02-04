@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace project.Classes
 {
-    class Shift
+    public class Shift
     {
     }
 }

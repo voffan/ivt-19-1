@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace project.Classes
 {
-    class Position
+    public class Position
     {
     }
 }
