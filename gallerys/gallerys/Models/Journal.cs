@@ -4,7 +4,7 @@ using System.Text;
 
 namespace gallerys.Models
 {
-    internal class Journal
+    public class Journal
     {
         public int Id { get; set; }
         public string oper_name { get; set; }

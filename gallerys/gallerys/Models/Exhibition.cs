@@ -4,7 +4,7 @@ using System.Text;
 
 namespace gallerys.Models
 {
-    internal class Exhi
+    public class Exhibition
     {
         public int Id { get; set; }
         public string Place { get; set; }
