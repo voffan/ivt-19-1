@@ -19,6 +19,7 @@ namespace Autoreport.Models
         public DateTime Order_date { get; set; }
         public DateTime Return_date { get; set; }
         public OrderStatus Status { get; set; }
+
         public virtual Client OrderClient { get; set; }
         public virtual Employeer OrderEmployeer { get; set; }
         public virtual Deposit OrderDeposit { get; set; }

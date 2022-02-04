@@ -14,5 +14,7 @@ namespace Autoreport.Models
         public int Order_count { get; set;}
         [Range(0, 20000)]
         public int Debt_count { get; set;}
+
+        public virtual List<Order> Orders { get; set; }
     }
 }

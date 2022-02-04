@@ -3,14 +3,16 @@ using System;
 using Autoreport.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Autoreport.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220204061345_попытка фикса наличия filmId в жанрах")]
+    partial class попыткафиксаналичияfilmIdвжанрах
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,7 +70,12 @@ namespace Autoreport.Migrations
                     b.Property<int>("General_count")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("Disks");
                 });
@@ -77,6 +84,9 @@ namespace Autoreport.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DiskId")
                         .HasColumnType("int");
 
                     b.Property<int?>("FilmCountyId")
@@ -93,6 +103,8 @@ namespace Autoreport.Migrations
                         .HasColumnType("varchar(200)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DiskId");
 
                     b.HasIndex("FilmCountyId");
 
@@ -196,36 +208,6 @@ namespace Autoreport.Migrations
                     b.ToTable("Studios");
                 });
 
-            modelBuilder.Entity("DiskFilm", b =>
-                {
-                    b.Property<int>("DisksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FilmsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DisksId", "FilmsId");
-
-                    b.HasIndex("FilmsId");
-
-                    b.ToTable("DiskFilm");
-                });
-
-            modelBuilder.Entity("DiskOrder", b =>
-                {
-                    b.Property<int>("DisksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DisksId", "OrdersId");
-
-                    b.HasIndex("OrdersId");
-
-                    b.ToTable("DiskOrder");
-                });
-
             modelBuilder.Entity("FilmGenre", b =>
                 {
                     b.Property<int>("FilmsId")
@@ -262,6 +244,13 @@ namespace Autoreport.Migrations
                     b.HasDiscriminator().HasValue("Client");
                 });
 
+            modelBuilder.Entity("Autoreport.Models.Director", b =>
+                {
+                    b.HasBaseType("Autoreport.Models.Person");
+
+                    b.HasDiscriminator().HasValue("Director");
+                });
+
             modelBuilder.Entity("Autoreport.Models.Employeer", b =>
                 {
                     b.HasBaseType("Autoreport.Models.Person");
@@ -279,14 +268,25 @@ namespace Autoreport.Migrations
                     b.HasDiscriminator().HasValue("Employeer");
                 });
 
+            modelBuilder.Entity("Autoreport.Models.Disk", b =>
+                {
+                    b.HasOne("Autoreport.Models.Order", null)
+                        .WithMany("Disks")
+                        .HasForeignKey("OrderId");
+                });
+
             modelBuilder.Entity("Autoreport.Models.Film", b =>
                 {
+                    b.HasOne("Autoreport.Models.Disk", null)
+                        .WithMany("Films")
+                        .HasForeignKey("DiskId");
+
                     b.HasOne("Autoreport.Models.Country", "FilmCounty")
                         .WithMany("Films")
                         .HasForeignKey("FilmCountyId");
 
-                    b.HasOne("Autoreport.Models.Person", "FilmDirector")
-                        .WithMany()
+                    b.HasOne("Autoreport.Models.Director", "FilmDirector")
+                        .WithMany("Films")
                         .HasForeignKey("FilmDirectorId");
 
                     b.HasOne("Autoreport.Models.Studio", "FilmStudio")
@@ -321,36 +321,6 @@ namespace Autoreport.Migrations
                     b.Navigation("OrderEmployeer");
                 });
 
-            modelBuilder.Entity("DiskFilm", b =>
-                {
-                    b.HasOne("Autoreport.Models.Disk", null)
-                        .WithMany()
-                        .HasForeignKey("DisksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Autoreport.Models.Film", null)
-                        .WithMany()
-                        .HasForeignKey("FilmsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DiskOrder", b =>
-                {
-                    b.HasOne("Autoreport.Models.Disk", null)
-                        .WithMany()
-                        .HasForeignKey("DisksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Autoreport.Models.Order", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("FilmGenre", b =>
                 {
                     b.HasOne("Autoreport.Models.Film", null)
@@ -371,6 +341,16 @@ namespace Autoreport.Migrations
                     b.Navigation("Films");
                 });
 
+            modelBuilder.Entity("Autoreport.Models.Disk", b =>
+                {
+                    b.Navigation("Films");
+                });
+
+            modelBuilder.Entity("Autoreport.Models.Order", b =>
+                {
+                    b.Navigation("Disks");
+                });
+
             modelBuilder.Entity("Autoreport.Models.Studio", b =>
                 {
                     b.Navigation("Films");
@@ -379,6 +359,11 @@ namespace Autoreport.Migrations
             modelBuilder.Entity("Autoreport.Models.Client", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("Autoreport.Models.Director", b =>
+                {
+                    b.Navigation("Films");
                 });
 #pragma warning restore 612, 618
         }
