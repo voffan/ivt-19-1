@@ -10,8 +10,6 @@ namespace proekt_a4tech
 {
     public class Sportsman
 {
-        [Key]
-        [Range(0, 100)]
         public int Id{get;set;}
         [MaxLength(200)]
         public string FullNname{get;set;}
@@ -22,11 +20,6 @@ namespace proekt_a4tech
         public float Weight { get; set; }
         [MaxLength(200)]
         public string Nationality{ get; set;}
-        [Range(0,1)]
         public bool Disability {get; set;}
-
-        public int ResultID{get; set;}
-        public Result Result{get; set;}
-
     }
 }

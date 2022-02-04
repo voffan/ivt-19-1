@@ -8,14 +8,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace proekt_a4tech
 {
-    public class Level
+    public enum Level
     {
-        public int Urban { get; set; }
-        public int District { get; set; }
-        public int Regional { get; set; }
-        public int State { get; set; }
-        public int World_Continental { get; set; }
-        public int Olympic { get; set; }
+        Urban,
+        District,
+        Regional,
+        State,
+        World_Continental,
+        Olympic
     }
     public class Competition
     {
@@ -23,7 +23,9 @@ namespace proekt_a4tech
         [MaxLength(200)]
         public string Name { get; set; }
         public DateTime Date { get; set; }
+
         public string Location { get; set; }
         public Level Type { get; set; }
+        public virtual List<Judge> Judges { get; set; }
     }
 }
