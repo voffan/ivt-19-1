@@ -8,7 +8,7 @@ namespace Autoreport.Models
     {
         Money = 0,
         Document = 1,
-        MoneyAndDocument = 3
+        MoneyAndDocument = 2
     }
 
     class Deposit

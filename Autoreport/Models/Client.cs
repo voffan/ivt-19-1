@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Autoreport.Models.Classes;
 
 namespace Autoreport.Models
 {
@@ -11,9 +10,9 @@ namespace Autoreport.Models
         public string Phone_number1 { get; set;}
         [MaxLength(20)]
         public string Phone_number2 { get; set;}
-        [Range(0,100)]
+        [Range(0, 20000)]
         public int Order_count { get; set;}
-        [Range(0, 100)]
+        [Range(0, 20000)]
         public int Debt_count { get; set;}
     }
 }

@@ -10,6 +10,7 @@ namespace Autoreport.Data
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<Employeer> Employeers { get; set; }
+        public DbSet<Person> Persons { get; set; }
         public DbSet<Disk> Disks { get; set; }
         public DbSet<Film> Films { get; set; }
         public DbSet<Country> Countries { get; set; }

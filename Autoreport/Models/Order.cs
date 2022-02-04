@@ -15,7 +15,7 @@ namespace Autoreport.Models
     {
         public int Id { get; set; }
         [Range(1.0, 100000.0)]
-        public int Cost { get; set; }
+        public double Cost { get; set; }
         public DateTime Order_date { get; set; }
         public DateTime Return_date { get; set; }
         public OrderStatus Status { get; set; }
