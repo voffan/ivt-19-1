@@ -10,5 +10,10 @@ namespace proekt_a4tech
 {
     public class Employee
     {
-}
+        public int Id { get; set; }
+        [MaxLength(200)]
+        public string FullName { get; set; }
+        [MaxLength(200)]
+        public string Position { get; set; }
+    }
 }

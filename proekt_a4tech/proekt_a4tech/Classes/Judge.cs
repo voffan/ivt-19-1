@@ -13,7 +13,9 @@ namespace proekt_a4tech
         public int Id { get; set; }
         [MaxLength(200)]
         public string FullNname { get; set; }
+        [Range(1,10)]
         public string Category { get; set; }
-        public string Experience { get; set; }
+        public DateTime Experience { get; set; }
+        public virtual Competition JudgeCompetition { get; set; }
     }
 }
