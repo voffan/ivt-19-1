@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,11 +22,12 @@ namespace Autoreport
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainWindow());
 
-            //using (var context = new DataContext())
-            //{
-            //    context.Database.EnsureCreated();
-            //    context.SaveChanges();
-            //}
+            using (var context = new DataContext())
+            {
+                Console.WriteLine(context.Database.CanConnect());
+                //context.Database.EnsureCreated();
+                //context.SaveChanges();
+            }
         }
     }
 }

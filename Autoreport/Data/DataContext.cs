@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Autoreport.Models;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace Autoreport.Data
 {
@@ -22,7 +24,7 @@ namespace Autoreport.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=autoreport;user=root;password=1234");
+            optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["AutoReportDB"].ConnectionString);
         }
     }
 }
