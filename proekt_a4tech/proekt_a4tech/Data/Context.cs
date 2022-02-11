@@ -16,6 +16,7 @@ namespace proekt_a4tech
         public DbSet<Competition> Competition { get; set; }
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Judge> Judge { get; set; }
+        public DbSet<Nationality> Nationality { get; set; }
         public DbSet<Result> Result { get; set; }
         public DbSet<SportKind> SportKind { get; set; }
         public DbSet<Sportsman> Sportsman { get; set; }
