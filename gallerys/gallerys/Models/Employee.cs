@@ -15,5 +15,6 @@ namespace gallerys.Models
         public string Right { get; set; }
         public int PositionId { get; set; }
         public virtual Position Positions { get; set; }
+        public virtual List<Journal> Journals { get; set; }
     }
 }

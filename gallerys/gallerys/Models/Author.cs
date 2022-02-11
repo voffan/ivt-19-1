@@ -13,6 +13,6 @@ namespace gallerys.Models
         public string Name { get; set; }
         [MaxLength(500)]
         public string Bio { get; set; }
-
+        public virtual List<Painting> Paintings { get; set; }
     }
 }
