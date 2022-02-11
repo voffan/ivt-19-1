@@ -25,8 +25,10 @@ namespace Autoreport.Models
         public int Passport_number { get; set; }
         [MaxLength(20)]
         public string Phone_number { get; set; }
+
         public EmplStatus EmplStatus { get; set; }
         public Position EmplPosition { get; set; }
+
         [MaxLength(64)]
         public string Login { get; set; }
         [MaxLength(256)]
