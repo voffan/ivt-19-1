@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace proekt_a4tech{
+
     public class Category
     {
         public int Id { get; set; }

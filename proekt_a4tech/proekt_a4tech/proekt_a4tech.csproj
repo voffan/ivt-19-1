@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Category.cs" />
+    <Compile Include="Classes\Nationality.cs" />
     <Compile Include="Classes\Sportsman.cs" />
     <Compile Include="Classes\Judge.cs" />
     <Compile Include="Classes\Result.cs" />

@@ -15,8 +15,7 @@ namespace proekt_a4tech
         public float Record{get; set;}
         public int SportsmanId { get; set; }
         public virtual Sportsman Sportsman { get; set; }
-        public int CompetitionId { get; set; }
-        public virtual Competition Competition { get; set; }
+        public virtual List<Competition> Competitions { get; set; }
         public int SportKindId { get; set; }
         public virtual SportKind SportKind { get; set; }
         public int CategorynId { get; set; }

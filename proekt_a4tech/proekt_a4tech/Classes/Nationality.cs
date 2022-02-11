@@ -8,16 +8,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace proekt_a4tech
 {
-    public enum Position
-    {
-
-    }
-    public class Employee
+    public class Nationality
     {
         public int Id { get; set; }
         [MaxLength(200)]
-        public string FullName { get; set; }
-        //PositionId
-        public Position Position { get; set; }
+        public string Name { get; set; }
     }
 }
