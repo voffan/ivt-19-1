@@ -14,7 +14,7 @@ namespace gallerys.Models
         [Range(1000, 3000)]
         public int Year { get; set; }
         public int Price { get; set; }
-        public int status { get; set; }
+        public enum status {}
         public int AuthorId { get; set; }
         public virtual Author Author { get; set; }
         public int GenreId { get; set; }

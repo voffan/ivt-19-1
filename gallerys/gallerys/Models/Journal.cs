@@ -13,6 +13,7 @@ namespace gallerys.Models
         public DateTime Oper_date { get; set; }
         public int PaintingId { get; set; }
         public virtual Painting Painting { get; set; }
+        public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
 
         public int ToId { get; set; }

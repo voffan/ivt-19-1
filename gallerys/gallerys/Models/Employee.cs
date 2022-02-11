@@ -11,8 +11,7 @@ namespace gallerys.Models
         public int Id { get; set; }
         [MaxLength(100)]
         public string Name { get; set; }
-        [MaxLength(100)]
-        public string Right { get; set; }
+        public enum Right { SYSadmin, director, manager, restorer }
         public int PositionId { get; set; }
         public virtual Position Positions { get; set; }
         public virtual List<Journal> Journals { get; set; }
