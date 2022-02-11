@@ -4,6 +4,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
+    enum EmplStatus {
+        Working,
+        Fired,
+        Vacation,
+        Sick
+    }
+
+    enum Position // должности
+    {
+        Admin,
+        Cashier
+    }
+
     class Employeer : Person
     {
         [Range(4,4)]
@@ -12,5 +25,11 @@ namespace Autoreport.Models
         public int Passport_number { get; set; }
         [MaxLength(20)]
         public string Phone_number { get; set; }
+        public EmplStatus EmplStatus { get; set; }
+        public Position EmplPosition { get; set; }
+        [MaxLength(64)]
+        public string Login { get; set; }
+        [MaxLength(256)]
+        public string PasswordHash { get; set; }
     }
 }
