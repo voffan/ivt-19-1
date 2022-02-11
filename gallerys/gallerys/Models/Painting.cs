@@ -6,6 +6,11 @@ using gallerys.Models;
 
 namespace gallerys.Models
 {
+    public enum status { 
+    InExhibition,
+    InRestoration,
+    InStorage
+    }
     public class Painting
     {
         public int Id { get; set; }
@@ -14,7 +19,7 @@ namespace gallerys.Models
         [Range(1000, 3000)]
         public int Year { get; set; }
         public int Price { get; set; }
-        public enum status {}
+        
         public int AuthorId { get; set; }
         public virtual Author Author { get; set; }
         public int GenreId { get; set; }
