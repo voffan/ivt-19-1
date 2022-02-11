@@ -17,5 +17,7 @@ namespace project.Classes
         public int PhoneNumber { get; set; }
         [MaxLength(50)]
         public string Adress { get; set; }
+        public int ShiftId { get; set; }
+        public .....
     }
 }
