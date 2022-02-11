@@ -16,5 +16,7 @@ namespace Comp_park_app
         public string Frequency { get; set; }
         [MaxLength(100)]
         public string Manufacturer { get; set; }
+        public int? ComputerId { get; set; }
+        public Computer Computer { get; set; }
     }
 }

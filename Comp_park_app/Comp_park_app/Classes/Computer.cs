@@ -26,6 +26,7 @@ namespace Comp_park_app
         public virtual Employee Employee { get; set; }
 
         public virtual List<RAM> RAMs { get; set; }
-
+        public virtual List<Processor> Processors { get; set; }
+        public virtual List<HDD> HDDs { get; set; }
     }
 }
