@@ -17,6 +17,7 @@ namespace proekt_a4tech
         public int Id { get; set; }
         [MaxLength(200)]
         public string FullName { get; set; }
+        //PositionId
         public Position Position { get; set; }
     }
 }

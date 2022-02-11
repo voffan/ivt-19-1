@@ -31,5 +31,6 @@ namespace proekt_a4tech
         public Location Location { get; set; }
         public Level Level { get; set; }
         public virtual List<Judge> Judges { get; set; }
+        public virtual List<Result> Results { get; set; }
     }
 }

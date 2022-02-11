@@ -15,10 +15,12 @@ namespace proekt_a4tech
         public string FullNname{get;set;}
         public DateTime Birthday{get; set;}
         [Range(0, 100)]
+        //enum
         public int Sex{get; set;}
         [Range(0,300)]
         public float Weight { get; set; }
         [MaxLength(200)]
+        //class
         public string Nationality{ get; set;}
         public bool Disability {get; set;}
     }
