@@ -15,5 +15,7 @@ namespace Comp_park_app
         [MaxLength(100)]
         public string Manufacturer { get; set; }
         public int Capacity { get; set; }
+        public int? ComputerId { get; set; }
+        public Computer Computer { get; set; }
     }
 }

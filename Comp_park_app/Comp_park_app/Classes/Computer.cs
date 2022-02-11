@@ -22,10 +22,10 @@ namespace Comp_park_app
         public virtual Processor Processor { get; set; }
         public int HDDId { get; set; }
         public virtual HDD HDD { get; set; }
-        public int RAMId { get; set; }
-        public virtual RAM RAM { get; set; }
         public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
+
+        public virtual List<RAM> RAMs { get; set; }
 
     }
 }
