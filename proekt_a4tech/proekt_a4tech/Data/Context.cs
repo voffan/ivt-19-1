@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity;
+using proekt_a4tech.Classes;
 
-namespace proekt_a4tech.Data
+
+namespace proekt_a4tech
 {
-    internal class Context
+    internal class Context : DbContext
     {
         public DbSet<Category> Category { get; set; }
         public DbSet<Competition> Competition { get; set; }
