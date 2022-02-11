@@ -9,7 +9,7 @@ namespace Comp_park_app.Classes
 {
     public class Context : DbContext
     {
-        public Context() : base("MyString") { }
+        public Context() : base("Comp_park") { }
 
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Department> Departments { get; set; }
