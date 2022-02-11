@@ -14,6 +14,6 @@ namespace project.Classes
         public virtual Shift Shift { get; set; }
         [MaxLength(20)]
         public string Date { get; set; }
-        public int planCount { get; set; }
+        public int PlanCount { get; set; }
     }
 }

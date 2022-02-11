@@ -11,6 +11,6 @@ namespace project.Classes
     {
         public int Id { get; set; }
         [MaxLength(100)]
-        public string name { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -13,8 +13,8 @@ namespace project.Classes
         public virtual Schedule team { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
-        public int count { get; set; }
+        public int Count { get; set; }
         [MaxLength(200)]
-        public string comment { get; set; }
+        public string Comment { get; set; }
     }
 }
