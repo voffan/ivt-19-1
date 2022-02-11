@@ -10,7 +10,8 @@ namespace proekt_a4tech
 {
     public enum Position
     {
-
+        Manager,
+        Admin
     }
     public class Employee
     {
