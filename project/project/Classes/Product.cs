@@ -10,8 +10,8 @@ namespace project.Classes
     public class Product
     {
         public int Id { get; set; }
-        [MaxLength(200)]
-        public string Type_box { get; set; }
+        public int TypeId { get; set; }
+        public virtual Type Type { get; set; }
         [MaxLength(20)]
         public string Size_box { get; set; }
     }

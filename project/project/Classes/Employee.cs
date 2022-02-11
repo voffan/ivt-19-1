@@ -14,10 +14,11 @@ namespace project.Classes
         public string Name { get; set; }
         public int PositionId { get; set; }
         public virtual Position Position { get; set; }
-        public int PhoneNumber { get; set; }
+        [MaxLength(20)]
+        public string PhoneNumber { get; set; }
         [MaxLength(50)]
         public string Adress { get; set; }
         public int ShiftId { get; set; }
-        public .....
+        public virtual Shift Shift { get; set; }
     }
 }

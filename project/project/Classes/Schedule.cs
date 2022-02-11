@@ -13,7 +13,7 @@ namespace project.Classes
         public int ShiftId { get; set; }
         public virtual Shift Shift { get; set; }
         [MaxLength(20)]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public int PlanCount { get; set; }
     }
 }
