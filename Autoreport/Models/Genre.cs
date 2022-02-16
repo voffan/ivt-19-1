@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
-    internal class Genre
+    internal class Genre : Model
     {
         public int Id { get; set; }
         [MaxLength(200)]

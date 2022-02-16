@@ -6,7 +6,7 @@ using Autoreport.Models;
 using System.Configuration;
 using System.Diagnostics;
 
-namespace Autoreport.Data
+namespace Autoreport.Database
 {
     class DataContext : DbContext
     {
@@ -24,7 +24,9 @@ namespace Autoreport.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["AutoReportDB"].ConnectionString);
+            // "server=localhost;database=autoreport;user=root;password=1234;"
+            // ConfigurationManager.ConnectionStrings["AutoReportDB"].ConnectionString
+            optionsBuilder.UseMySQL("server=localhost;database=autoreport;user=root;password=1234;");
         }
     }
 }

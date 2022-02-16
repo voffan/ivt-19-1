@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
-    internal class Country
+    internal class Country : Model
     {
         public int Id { get; set; }
         [MaxLength(200)]

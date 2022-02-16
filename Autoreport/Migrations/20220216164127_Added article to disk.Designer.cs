@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autoreport.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220204063825_фиксы связей")]
-    partial class фиксысвязей
+    [Migration("20220216164127_Added article to disk")]
+    partial class Addedarticletodisk
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,6 +60,9 @@ namespace Autoreport.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("Article")
+                        .HasColumnType("text");
 
                     b.Property<double>("Cost")
                         .HasColumnType("double");
@@ -268,11 +271,25 @@ namespace Autoreport.Migrations
                 {
                     b.HasBaseType("Autoreport.Models.Person");
 
+                    b.Property<int>("EmplPosition")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmplStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Login")
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
                     b.Property<int>("Passport_number")
                         .HasColumnType("int");
 
                     b.Property<int>("Passport_serial")
                         .HasColumnType("int");
+
+                    b.Property<string>("PasswordHash")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("Phone_number")
                         .HasMaxLength(20)
