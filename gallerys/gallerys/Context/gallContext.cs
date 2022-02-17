@@ -9,8 +9,9 @@ using System.Diagnostics;
 
 namespace gallerys.Context
 {
-    public class AppContext: DbContext
+    public class gallContext: DbContext
     {
+
         public DbSet<Place> Places { get; set; }
         public DbSet<Painting> Paintings { get; set; }
         public DbSet<Journal> Journals { get; set; }
@@ -19,11 +20,14 @@ namespace gallerys.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Author> Authors { get; set; }
-
+        public gallContext()
+        {
+            Database.EnsureCreated();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["gallery_bd"].ConnectionString);
-            optionsBuilder.UseMySQL("server=localhost;database=gallery_bd;user=root;password=root;");
+            //optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["gallerybd"].ConnectionString);
+            optionsBuilder.UseMySQL("server=localhost;database=gallerydb;user=root;password=root;");
         }
     }
 }
