@@ -8,7 +8,7 @@ namespace gallerys.Models
 {
     public enum Right
     {
-        SYSadmin,
+        admin,
         director,
         manager,
         restorer
