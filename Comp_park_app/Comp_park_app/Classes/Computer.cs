@@ -10,6 +10,7 @@ namespace Comp_park_app
     public class Computer
     {
         public int Id { get; set; }
+        [MaxLength(100)]
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
         [MaxLength(100)]

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.Entity;
 using Comp_park_app.Classes;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace Comp_park_app.Classes
 {
     public class Context : DbContext
     {
-        public Context() : base("Comp_park") { }
+        //public Context() : base("comp_park") { }
 
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -20,5 +21,10 @@ namespace Comp_park_app.Classes
         public DbSet<Position> Positions { get; set; }
         public DbSet<Processor> Processors { get; set; }
         public DbSet<RAM> RAMs { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //"server=localhost;database=autoreport;user=root;password=1234;"
+            optionsBuilder.UseMySQL("server=localhost;database=comp_park;user=root;password=1234;");
+        }
     }
 }
