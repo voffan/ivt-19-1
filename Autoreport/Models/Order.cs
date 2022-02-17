@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
-    enum OrderStatus
+    public enum OrderStatus
     {
         Proceed = 0,
         Expired = 1,
         Completed = 2
     }
 
-    class Order
+    public class Order
     {
         public int Id { get; set; }
         [Range(1.0, 100000.0)]

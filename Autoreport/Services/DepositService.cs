@@ -6,7 +6,7 @@ using Autoreport.Database;
 
 namespace Autoreport.Services
 {
-    class DepositService
+    public class DepositService
     {
         public void Add()
         {

@@ -7,6 +7,7 @@ using System.Drawing.Text;
 using System.Text;
 using System.Windows.Forms;
 using Autoreport.Services;
+using Autoreport.Database;
 
 namespace Autoreport.UI
 {
@@ -19,7 +20,7 @@ namespace Autoreport.UI
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            Employeer empl = EmployeerService.Login();
+            Connection._employeerService.Login("", "");
         }
     }
 }

@@ -6,7 +6,7 @@ using Autoreport.Database;
 
 namespace Autoreport.Services
 {
-    class DiskService
+    public class DiskService
     {
         public void Add()
         {

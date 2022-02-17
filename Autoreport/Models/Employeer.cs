@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
-    enum EmplStatus {
+    public enum EmplStatus {
         Working,
         Fired,
         Vacation,
         Sick
     }
 
-    enum Position // должности
+    public enum Position // должности
     {
         Admin,
         Cashier

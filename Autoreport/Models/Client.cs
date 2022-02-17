@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
-    class Client : Person
+    public class Client : Person
     {
         [MaxLength(20)]
         public string Phone_number1 { get; set;}

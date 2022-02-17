@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Autoreport.Services
 {
-    internal class FilmService
+    public class FilmService
     {
         public void Add()
         {

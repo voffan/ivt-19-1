@@ -5,10 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Autoreport.Models;
 using System.Configuration;
 using System.Diagnostics;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System.IO;
 
 namespace Autoreport.Database
 {
-    class DataContext : DbContext
+    public class DataContext : DbContext
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<Employeer> Employeers { get; set; }
@@ -24,9 +27,19 @@ namespace Autoreport.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // "server=localhost;database=autoreport;user=root;password=1234;"
-            optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["AutoReportDB"].ConnectionString);
-            //optionsBuilder.UseMySQL("server=localhost;database=autoreport;user=root;password=1234;");
+            ServiceCollection serviceCollection = new ServiceCollection();
+            IConfigurationRoot configuration = ConfigureServices(serviceCollection);
+
+            optionsBuilder.UseMySQL(configuration["ConnectionStrings:AutoReportDB"]);
+        }
+
+        private static IConfigurationRoot ConfigureServices(IServiceCollection serviceCollection)
+        {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
+                .AddJsonFile("appsettings.json", false)
+                .Build();
+            return configuration;
         }
     }
 }

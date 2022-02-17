@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
-    class Disk
+    public class Disk
     {
         public int Id { get; set; }
         [Range(0, 100000)]

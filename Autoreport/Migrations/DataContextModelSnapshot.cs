@@ -15,7 +15,7 @@ namespace Autoreport.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.13");
+                .HasAnnotation("ProductVersion", "5.0.14");
 
             modelBuilder.Entity("Autoreport.Models.Country", b =>
                 {
@@ -259,6 +259,10 @@ namespace Autoreport.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("Phone_number2")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Phone_number3")
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 

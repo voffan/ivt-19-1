@@ -6,7 +6,7 @@ using Autoreport.Database;
 
 namespace Autoreport.Services
 {
-    class OrderService
+    public class OrderService
     {
         public void Add()
         {

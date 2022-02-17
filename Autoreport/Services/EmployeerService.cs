@@ -6,29 +6,29 @@ using Autoreport.Database;
 
 namespace Autoreport.Services
 {
-    public static class EmployeerService
+    public class EmployeerService
     {
-        public static Employeer Login(Connection connection, string username, string pwd)
+        public Employeer Login(string username, string pwd)
         {
             return null;
         }
 
-        public static void Add()
+        public void Add()
         {
 
         }
 
-        public static void Get()
+        public void Get()
         {
 
         }
 
-        public static void Delete()
+        public void Delete()
         {
 
         }
 
-        public static void Edit()
+        public void Edit()
         {
 
         }

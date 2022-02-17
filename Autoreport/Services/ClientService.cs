@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Autoreport.Services
 {
-    internal class ClientService
+    public class ClientService
     {
         public void Add()
         {

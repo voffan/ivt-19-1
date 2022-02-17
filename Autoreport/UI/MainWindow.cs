@@ -16,13 +16,11 @@ namespace Autoreport.UI
     public partial class MainWindow : Form
     {
         Login Loginer;
-        Connection connection;
-
         Button currentButton;
 
         public MainWindow()
         {
-            connection = new Connection();
+            Connection.Connect();
             InitializeComponent();
             Login();
             employeersBtn.PerformClick();
@@ -42,7 +40,7 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = connection.Context.Employeers.ToList();
+            dataGridView.DataSource = Connection.Context.Employeers.ToList();
             dataGridView.Columns[0].Visible = false;
         }
 
@@ -54,7 +52,7 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = connection.Context.Clients.ToList();
+            dataGridView.DataSource = Connection.Context.Clients.ToList();
             dataGridView.Columns[0].Visible = false;
         }
 
@@ -66,7 +64,7 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = connection.Context.Disks.ToList();
+            dataGridView.DataSource = Connection.Context.Disks.ToList();
             dataGridView.Columns[0].Visible = false;
         }
 
@@ -78,7 +76,7 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = connection.Context.Films.ToList();
+            dataGridView.DataSource = Connection.Context.Films.ToList();
             dataGridView.Columns[0].Visible = false;
         }
 
@@ -90,7 +88,7 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = connection.Context.Orders.ToList();
+            dataGridView.DataSource = Connection.Context.Orders.ToList();
             dataGridView.Columns[0].Visible = false;
         }
 
@@ -102,7 +100,7 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = connection.Context.Deposits.ToList();
+            dataGridView.DataSource = Connection.Context.Deposits.ToList();
             dataGridView.Columns[0].Visible = false;
         }
     }
