@@ -24,7 +24,7 @@ namespace Comp_park_app.Classes
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //"server=localhost;database=autoreport;user=root;password=1234;"
-            optionsBuilder.UseMySQL("server=localhost;database=comp_park;user=root;password=1234;");
+            optionsBuilder.UseMySQL("server=localhost;database=comp_park;user=root;password=cola;");
         }
     }
 }
