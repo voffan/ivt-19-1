@@ -18,7 +18,7 @@ namespace gallerys.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=autoreport;user=root;password=1234");
+            optionsBuilder.UseMySQL("server=localhost;database=gallerybd;user=root;password=root");
         }
     }
 }
