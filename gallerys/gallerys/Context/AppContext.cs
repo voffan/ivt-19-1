@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using gallerys.Models;
+using System.Configuration;
+using System.Diagnostics;
+
+
 namespace gallerys.Context
 {
     public class AppContext: DbContext
@@ -18,7 +22,8 @@ namespace gallerys.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=gallerybd;user=root;password=root");
+            //optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["gallery_bd"].ConnectionString);
+            optionsBuilder.UseMySQL("server=localhost;database=gallery_bd;user=root;password=root;");
         }
     }
 }

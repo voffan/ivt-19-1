@@ -7,9 +7,9 @@ using gallerys.Models;
 namespace gallerys.Models
 {
     public enum status { 
-    InExhibition,
-    InRestoration,
-    InStorage
+        InExhibition,
+        InRestoration,
+        InStorage
     }
     public class Painting
     {
