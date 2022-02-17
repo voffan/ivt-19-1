@@ -11,7 +11,7 @@ namespace Autoreport.Models
         MoneyAndDocument = 2
     }
 
-    class Deposit : Model
+    class Deposit
     {
         public int Id { get; set; }
         [MaxLength(200)]

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
-    internal class Studio : Model
+    internal class Studio
     {
         public int Id { get; set; }
         [MaxLength(200)]

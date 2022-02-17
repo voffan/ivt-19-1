@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
-    class Film : Model
+    class Film
     {
         public int Id { get; set; }
         [MaxLength(200)]

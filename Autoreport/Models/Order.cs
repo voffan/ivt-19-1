@@ -11,7 +11,7 @@ namespace Autoreport.Models
         Completed = 2
     }
 
-    class Order : Model
+    class Order
     {
         public int Id { get; set; }
         [Range(1.0, 100000.0)]
