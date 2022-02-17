@@ -25,8 +25,8 @@ namespace Autoreport.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // "server=localhost;database=autoreport;user=root;password=1234;"
-            // ConfigurationManager.ConnectionStrings["AutoReportDB"].ConnectionString
-            optionsBuilder.UseMySQL("server=localhost;database=autoreport;user=root;password=1234;");
+            optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["AutoReportDB"].ConnectionString);
+            //optionsBuilder.UseMySQL("server=localhost;database=autoreport;user=root;password=1234;");
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Autoreport.Models
         Cashier
     }
 
-    class Employeer : Person
+    public class Employeer : Person
     {
         [Range(4,4)]
         public int Passport_serial { get; set; }

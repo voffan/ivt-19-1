@@ -102,6 +102,7 @@ namespace Autoreport.UI
             this.login_btn.TabIndex = 7;
             this.login_btn.Text = "Войти";
             this.login_btn.UseVisualStyleBackColor = true;
+            this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
             // 
             // Login
             // 

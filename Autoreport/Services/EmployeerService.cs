@@ -1,27 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Autoreport.Models;
+using Autoreport.Database;
 
 namespace Autoreport.Services
 {
-    internal class EmployeerService
+    public static class EmployeerService
     {
-        public void Add()
+        public static Employeer Login(Connection connection, string username, string pwd)
+        {
+            return null;
+        }
+
+        public static void Add()
         {
 
         }
 
-        public void Get()
+        public static void Get()
         {
 
         }
 
-        public void Delete()
+        public static void Delete()
         {
 
         }
 
-        public void Edit()
+        public static void Edit()
         {
 
         }
