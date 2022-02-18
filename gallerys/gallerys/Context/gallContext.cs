@@ -20,10 +20,6 @@ namespace gallerys.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public gallContext()
-        {
-            Database.EnsureCreated();
-        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["gallerybd"].ConnectionString);
