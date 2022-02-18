@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Autoreport.Database;
 using Autoreport.Models;
@@ -16,6 +17,14 @@ namespace Autoreport.Services
                 //... initiate fields
                 context.Clients.Add(c);
                 context.SaveChanges();
+            }
+        }
+
+        public List<Client> GetAll()
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                return db.Clients.ToList();
             }
         }
 

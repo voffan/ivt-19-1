@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using Autoreport.Database;
+using Autoreport.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Autoreport.UI
@@ -20,10 +21,9 @@ namespace Autoreport.UI
 
         public MainWindow()
         {
-            Connection.Connect();
             InitializeComponent();
             Login();
-            employeersBtn.PerformClick();
+            employeesBtn.PerformClick();
         }
 
         private void Login()
@@ -40,8 +40,8 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = Connection.Context.Employeers.ToList();
-            dataGridView.Columns[0].Visible = false;
+            dataGridView.DataSource = Connection.employeerService.GetAll();
+            dataGridView.Columns["Id"].Visible = false;
         }
 
         private void clientsBtn_Click(object sender, EventArgs e)
@@ -52,8 +52,8 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = Connection.Context.Clients.ToList();
-            dataGridView.Columns[0].Visible = false;
+            dataGridView.DataSource = Connection.clientService.GetAll();
+            dataGridView.Columns["Id"].Visible = false;
         }
 
         private void disksBtn_Click(object sender, EventArgs e)
@@ -64,8 +64,8 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = Connection.Context.Disks.ToList();
-            dataGridView.Columns[0].Visible = false;
+            //dataGridView.DataSource = Connection.Context.Disks.ToList();
+            //dataGridView.Columns["Id"].Visible = false;
         }
 
         private void filmsBtn_Click(object sender, EventArgs e)
@@ -76,8 +76,8 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = Connection.Context.Films.ToList();
-            dataGridView.Columns[0].Visible = false;
+            //dataGridView.DataSource = Connection.Context.Films.ToList();
+            //dataGridView.Columns["Id"].Visible = false;
         }
 
         private void ordersBtn_Click(object sender, EventArgs e)
@@ -88,8 +88,8 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = Connection.Context.Orders.ToList();
-            dataGridView.Columns[0].Visible = false;
+            //dataGridView.DataSource = Connection.Context.Orders.ToList();
+            //dataGridView.Columns["Id"].Visible = false;
         }
 
         private void depositsBtn_Click(object sender, EventArgs e)
@@ -100,8 +100,8 @@ namespace Autoreport.UI
             }
 
             currentButton = (Button)sender;
-            dataGridView.DataSource = Connection.Context.Deposits.ToList();
-            dataGridView.Columns[0].Visible = false;
+            //dataGridView.DataSource = Connection.Context.Deposits.ToList();
+            //dataGridView.Columns["Id"].Visible = false;
         }
     }
 }

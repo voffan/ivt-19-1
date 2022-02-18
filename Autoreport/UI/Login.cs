@@ -20,7 +20,7 @@ namespace Autoreport.UI
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            Connection._employeerService.Login("", "");
+            //Connection.employeeService.Login("", "");
         }
     }
 }

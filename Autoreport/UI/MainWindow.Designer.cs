@@ -37,7 +37,7 @@ namespace Autoreport.UI
             this.filmsBtn = new System.Windows.Forms.Button();
             this.disksBtn = new System.Windows.Forms.Button();
             this.clientsBtn = new System.Windows.Forms.Button();
-            this.employeersBtn = new System.Windows.Forms.Button();
+            this.employeesBtn = new System.Windows.Forms.Button();
             this.controlPanel = new System.Windows.Forms.Panel();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.reloadBtn = new System.Windows.Forms.Button();
@@ -64,7 +64,7 @@ namespace Autoreport.UI
             this.menuPanel.Controls.Add(this.filmsBtn);
             this.menuPanel.Controls.Add(this.disksBtn);
             this.menuPanel.Controls.Add(this.clientsBtn);
-            this.menuPanel.Controls.Add(this.employeersBtn);
+            this.menuPanel.Controls.Add(this.employeesBtn);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Name = "menuPanel";
@@ -164,19 +164,19 @@ namespace Autoreport.UI
             this.clientsBtn.UseVisualStyleBackColor = true;
             this.clientsBtn.Click += new System.EventHandler(this.clientsBtn_Click);
             // 
-            // employeersBtn
+            // employeesBtn
             // 
-            this.employeersBtn.Image = global::Autoreport.UI.Resources.worker;
-            this.employeersBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.employeersBtn.Location = new System.Drawing.Point(3, 3);
-            this.employeersBtn.Name = "employeersBtn";
-            this.employeersBtn.Size = new System.Drawing.Size(107, 31);
-            this.employeersBtn.TabIndex = 0;
-            this.employeersBtn.Text = "Сотрудники";
-            this.employeersBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.employeersBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.employeersBtn.UseVisualStyleBackColor = true;
-            this.employeersBtn.Click += new System.EventHandler(this.employeersBtn_Click);
+            this.employeesBtn.Image = global::Autoreport.UI.Resources.worker;
+            this.employeesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.employeesBtn.Location = new System.Drawing.Point(3, 3);
+            this.employeesBtn.Name = "employeesBtn";
+            this.employeesBtn.Size = new System.Drawing.Size(107, 31);
+            this.employeesBtn.TabIndex = 0;
+            this.employeesBtn.Text = "Сотрудники";
+            this.employeesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.employeesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.employeesBtn.UseVisualStyleBackColor = true;
+            this.employeesBtn.Click += new System.EventHandler(this.employeersBtn_Click);
             // 
             // controlPanel
             // 
@@ -289,7 +289,7 @@ namespace Autoreport.UI
         #endregion
 
         private System.Windows.Forms.Panel menuPanel;
-        private System.Windows.Forms.Button employeersBtn;
+        private System.Windows.Forms.Button employeesBtn;
         private System.Windows.Forms.Button depositsBtn;
         private System.Windows.Forms.Button ordersBtn;
         private System.Windows.Forms.Button filmsBtn;

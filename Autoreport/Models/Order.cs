@@ -21,7 +21,7 @@ namespace Autoreport.Models
         public OrderStatus Status { get; set; }
 
         public virtual Client OrderClient { get; set; }
-        public virtual Employeer OrderEmployeer { get; set; }
+        public virtual Employee OrderEmployeer { get; set; }
         public virtual Deposit OrderDeposit { get; set; }
         public virtual List<Disk> Disks { get; set; }
     }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using Autoreport.Models;
 using Autoreport.Database;
+using System.Linq;
 
 namespace Autoreport.Services
 {
-    public class EmployeerService
+    public class EmployeeService
     {
-        public Employeer Login(string username, string pwd)
+        public Employee Login(string username, string pwd)
         {
             return null;
         }
@@ -16,6 +17,14 @@ namespace Autoreport.Services
         public void Add()
         {
 
+        }
+
+        public List<Employee> GetAll()
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                return db.Employees.ToList();
+            }
         }
 
         public void Get()

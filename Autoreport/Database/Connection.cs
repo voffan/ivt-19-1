@@ -8,28 +8,23 @@ namespace Autoreport.Database
 {
     public static class Connection
     {
-        private static DataContext _context;
+        public static readonly ClientService clientService = new ClientService();
+        public static readonly DepositService depositService = new DepositService();
+        public static readonly DiskService diskService = new DiskService();
+        public static readonly EmployeeService employeerService = new EmployeeService();
+        public static readonly FilmService filmService = new FilmService();
+        public static readonly OrderService orderService = new OrderService();
 
-        public static DataContext Context
+        public static DataContext Connect()
         {
-            get => _context;
-        }
+            DataContext context = new DataContext();
 
-        public static ClientService _clientService = new ClientService();
-        public static DepositService _depositService = new DepositService();
-        public static DiskService _diskService = new DiskService();
-        public static EmployeerService _employeerService = new EmployeerService();
-        public static FilmService _filmService = new FilmService();
-        public static OrderService _orderService = new OrderService();
-
-        public static void Connect()
-        {
-            _context = new DataContext();
-
-            if (!_context.Database.CanConnect())
+            if (!context.Database.CanConnect())
             {
                 throw new Errors.DbConnectionError("Couldn't connect to database");
             }
+
+            return context;
         }
     }
 }
