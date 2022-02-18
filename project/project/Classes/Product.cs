@@ -11,7 +11,7 @@ namespace project.Classes
     {
         public int Id { get; set; }
         public int TypeId { get; set; }
-        public virtual Type Type { get; set; }
+        public virtual Typee Type { get; set; }
         [MaxLength(20)]
         public string Size_box { get; set; }
     }

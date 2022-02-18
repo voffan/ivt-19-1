@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Korobki_project.Classes;
 
-namespace project.Classes
+
+namespace Korobki_project.Classes
 {
-    public class Type
+    public class Typee
     {
         public int Id { get; set; }
         [MaxLength(20)]
