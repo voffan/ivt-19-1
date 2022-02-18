@@ -8,7 +8,13 @@ namespace Comp_park_app.Functions
     {
         public void Add()
         {
-
+            using (Context c = new Context())
+            {
+                HDD hdd = new HDD();
+                //... initiate field
+                c.HDDs.Add(hdd);
+                c.SaveChanges();
+            }
         }
 
         public void Delete()

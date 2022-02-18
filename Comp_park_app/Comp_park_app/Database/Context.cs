@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Comp_park_app.Classes;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Diagnostics;
 
-namespace Comp_park_app.Classes
+namespace Comp_park_app
 {
     public class Context : DbContext
     {
