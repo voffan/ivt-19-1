@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Comp_park_app;
 
 namespace Comp_park_app_form
 {
@@ -15,7 +16,8 @@ namespace Comp_park_app_form
         public Form1()
         {
             InitializeComponent();
-
+            Context c = new Context();
+            dataGridView1.DataSource = c.HDDs.ToList();
         }
 
     }
