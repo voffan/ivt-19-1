@@ -16,6 +16,7 @@ namespace Comp_park_app_form
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
+
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
