@@ -8,7 +8,13 @@ namespace Comp_park_app.Functions
     {
         public void Add()
         {
-
+            using (Context c = new Context())
+            {
+                Employee employee = new Employee();
+                //... initiate field
+                c.Employees.Add(employee);
+                c.SaveChanges();
+            }
         }
 
         public void Delete()

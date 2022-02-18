@@ -8,7 +8,13 @@ namespace Comp_park_app.Functions
     {
         public void Add()
         {
-
+            using (Context c = new Context())
+            {
+                Motherboard motherboard = new Motherboard();
+                //... initiate field
+                c.Motherboards.Add(motherboard);
+                c.SaveChanges();
+            }
         }
 
         public void Delete()

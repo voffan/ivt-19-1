@@ -8,7 +8,13 @@ namespace Comp_park_app.Functions
     {
         public void Add()
         {
-
+            using (Context c = new Context())
+            {
+                RAM ram = new RAM();
+                //... initiate field
+                c.RAMs.Add(ram);
+                c.SaveChanges();
+            }
         }
 
         public void Delete()

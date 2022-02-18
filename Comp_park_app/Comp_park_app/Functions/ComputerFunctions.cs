@@ -8,7 +8,13 @@ namespace Comp_park_app.Functions
     {
         public void Add()
         {
-
+            using (Context c = new Context())
+            {
+                Computer computer = new Computer();
+                //... initiate field
+                c.Computers.Add(computer);
+                c.SaveChanges();
+            }
         }
 
         public void Delete()
