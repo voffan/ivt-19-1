@@ -23,7 +23,6 @@ namespace proekt_a4tech
         public Sex Sex {get; set;}
         [Range(0,300)]
         public float Weight { get; set; }
-        [MaxLength(200)]
         public bool Disability {get; set;}
 
         public int NationalityId { get; set; }

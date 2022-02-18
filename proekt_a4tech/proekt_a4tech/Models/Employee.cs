@@ -10,14 +10,17 @@ namespace proekt_a4tech
 {
     public enum Position
     {
-
+        Manager,
+        Admin,
+        Trainer,
+        Chief,
+        Analyst
     }
     public class Employee
     {
         public int Id { get; set; }
         [MaxLength(200)]
         public string FullName { get; set; }
-        //PositionId
         public Position Position { get; set; }
     }
 }

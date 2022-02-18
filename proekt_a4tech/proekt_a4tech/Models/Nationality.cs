@@ -11,7 +11,7 @@ namespace proekt_a4tech
     public class Nationality
     {
         public int Id { get; set; }
-        [MaxLength(200)]
+        [MaxLength(100)]
         public string Name { get; set; }
     }
 }

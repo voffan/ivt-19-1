@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity;
-using proekt_a4tech.Classes;
-
+//using proekt_a4tech.Models;
 
 namespace proekt_a4tech
 {
-    internal class Context : DbContext
+    public class Context : DbContext
     {
         public DbSet<Category> Category { get; set; }
         public DbSet<Competition> Competition { get; set; }
@@ -20,6 +19,6 @@ namespace proekt_a4tech
         public DbSet<Result> Result { get; set; }
         public DbSet<SportKind> SportKind { get; set; }
         public DbSet<Sportsman> Sportsman { get; set; }
-
     }
+
 }

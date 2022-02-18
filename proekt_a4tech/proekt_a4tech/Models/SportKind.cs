@@ -12,6 +12,6 @@ namespace proekt_a4tech
     {
         public int Id { get; set; }
         [MaxLength(100)]
-        public float Name { get; set; }
+        public string Name { get; set; }
     }
 }
