@@ -14,7 +14,9 @@ namespace proekt_a4tech
         Admin,
         Trainer,
         Chief,
-        Analyst
+        Analyst,
+        Admin
+
     }
     public class Employee
     {
