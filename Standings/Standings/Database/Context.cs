@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.Entity;
-//using proekt_a4tech.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Diagnostics;
+using Standings.Models;
 
-
-namespace proekt_a4tech.DataBase
+namespace Standings.Database
 {
     public class Context : DbContext
     {
-
         public DbSet<Category> Categorys { get; set; }
         public DbSet<Competition> Competitions { get; set; }
         public DbSet<Employee> Employees { get; set; }
@@ -22,11 +19,10 @@ namespace proekt_a4tech.DataBase
         public DbSet<Nationality> Nationalitys { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<SportKind> SportKinds { get; set; }
-        public DbSet<Sportsman> Sportsmen { get; set; }
+        public DbSet<Sportsman> Sportsmans { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=a4tech;user=root;password=1234;");
+            optionsBuilder.UseMySQL("server=localhost;database=standings;user=root;password=1234;");
         }
     }
-
 }
