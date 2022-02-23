@@ -14,14 +14,13 @@ namespace Autoreport.Models
 
     public class Deposit
     {
-        [DisplayName("ID")]
         public int Id { get; set; }
 
         [DisplayName("Имя")]
         [MaxLength(200)]
         public string Name { get; set; }
 
-        [DisplayName("Цена")]
+        [DisplayName("Сумма")]
         [Range(1.0, 100000.0)]
         public string Value { get; set; }
 

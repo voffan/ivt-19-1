@@ -14,7 +14,6 @@ namespace Autoreport.Models
 
     public class Order
     {
-        [DisplayName("ID")]
         public int Id { get; set; }
 
         [DisplayName("Стоимость")]

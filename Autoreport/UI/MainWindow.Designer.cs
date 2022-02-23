@@ -46,6 +46,7 @@ namespace Autoreport.UI
             this.addBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.infoBtn = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.controlPanel.SuspendLayout();
@@ -181,6 +182,7 @@ namespace Autoreport.UI
             // controlPanel
             // 
             this.controlPanel.BackColor = System.Drawing.Color.Silver;
+            this.controlPanel.Controls.Add(this.infoBtn);
             this.controlPanel.Controls.Add(this.deleteBtn);
             this.controlPanel.Controls.Add(this.reloadBtn);
             this.controlPanel.Controls.Add(this.searchBtn);
@@ -263,6 +265,16 @@ namespace Autoreport.UI
             this.dataGridView.Size = new System.Drawing.Size(670, 474);
             this.dataGridView.TabIndex = 0;
             // 
+            // infoBtn
+            // 
+            this.infoBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.infoBtn.Location = new System.Drawing.Point(5, 119);
+            this.infoBtn.Name = "infoBtn";
+            this.infoBtn.Size = new System.Drawing.Size(136, 38);
+            this.infoBtn.TabIndex = 6;
+            this.infoBtn.Text = "Подробнее";
+            this.infoBtn.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -305,6 +317,7 @@ namespace Autoreport.UI
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button reloadBtn;
         private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button infoBtn;
     }
 }
 

@@ -2192,12 +2192,12 @@ Shadow=0</a:DisplayPreferences>
 </o:Requirement>
 <o:Requirement Id="o127">
 <a:ObjectID>B8B10A1E-EC90-4A9D-8455-D65E6E796DD0</a:ObjectID>
-<a:Requirement.Title>Пароль</a:Requirement.Title>
+<a:Requirement.Title>Хэш пароля</a:Requirement.Title>
 <a:Code>REQ_ 103</a:Code>
 <a:CreationDate>1632812488</a:CreationDate>
 <a:Creator>DELL</a:Creator>
-<a:ModificationDate>1632812490</a:ModificationDate>
-<a:Modifier>DELL</a:Modifier>
+<a:ModificationDate>1645626323</a:ModificationDate>
+<a:Modifier>Ilya</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
 <a:Risk>0</a:Risk>

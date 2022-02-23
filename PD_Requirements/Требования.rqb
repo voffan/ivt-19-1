@@ -311,7 +311,7 @@ DefaultChar=
 Script=
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables</a:ModelOptionsText>
-<a:RepositoryFilename>E:\Documents\Study\Программная инженерия\ivt-19-1\Требования.rqm</a:RepositoryFilename>
+<a:RepositoryFilename>E:\Documents\Study\Программная инженерия\ivt-19-1\PD_Requirements\Требования.rqm</a:RepositoryFilename>
 <c:DocumentViews>
 <o:RequirementsDocumentView Id="o3">
 <a:ObjectID>602119C2-9483-4669-BB91-B259CC872646</a:ObjectID>
@@ -1539,12 +1539,12 @@ Shadow=0</a:DisplayPreferences>
 <c:Requirements>
 <o:Requirement Id="o79">
 <a:ObjectID>235FA2AE-F11A-442F-A5EC-4CD739167C66</a:ObjectID>
-<a:Requirement.Title>Номер товара</a:Requirement.Title>
+<a:Requirement.Title>Артикль</a:Requirement.Title>
 <a:Code>REQ_  50</a:Code>
 <a:CreationDate>1632806814</a:CreationDate>
 <a:Creator>DELL</a:Creator>
-<a:ModificationDate>1632806823</a:ModificationDate>
-<a:Modifier>DELL</a:Modifier>
+<a:ModificationDate>1645011832</a:ModificationDate>
+<a:Modifier>Ilya</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
 <a:Risk>0</a:Risk>

@@ -7,7 +7,6 @@ namespace Autoreport.Models
 {
     public class Disk
     {
-        [DisplayName("ID")]
         public int Id { get; set; }
 
         [DisplayName("Общая стоимость")]
@@ -24,7 +23,6 @@ namespace Autoreport.Models
 
         [DisplayName("Категория")]
         public string Article { get; set; }
-
 
         [DisplayName("Фильмы")]
         public virtual List<Film> Films { get; set; }

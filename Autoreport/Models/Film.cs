@@ -7,7 +7,6 @@ namespace Autoreport.Models
 {
     public class Film
     {
-        [DisplayName("ID")]
         public int Id { get; set; }
 
         [DisplayName("Название")]
@@ -23,10 +22,7 @@ namespace Autoreport.Models
         [DisplayName("Режиссёр")]
         public virtual Person FilmDirector { get; set; }
 
-        [DisplayName("Жанры")]
         public virtual List<Genre> Genres { get; set; }
-
-        [DisplayName("Диски")]
         public virtual List<Disk> Disks { get; set; }
     }
 }

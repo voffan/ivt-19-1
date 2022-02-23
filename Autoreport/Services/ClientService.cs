@@ -11,7 +11,7 @@ namespace Autoreport.Services
     {
         public void Add()
         {
-            using (DataContext context = new DataContext())
+            using (DataContext context = Connection.Connect())
             {
                 Client c = new Client();
                 //... initiate fields
