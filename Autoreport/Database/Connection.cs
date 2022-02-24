@@ -14,6 +14,7 @@ namespace Autoreport.Database
         public static readonly EmployeeService employeerService = new EmployeeService();
         public static readonly FilmService filmService = new FilmService();
         public static readonly OrderService orderService = new OrderService();
+        public static readonly HashService hashService = new HashService();
 
         public static DataContext Connect()
         {

@@ -15,6 +15,10 @@ namespace Autoreport.Models
 
         [DisplayName("Фамилия")]
         [MaxLength(100)]
-        public string Second_name { get; set; }
+        public string Last_name { get; set; }
+
+        [DisplayName("Отчество")]
+        [MaxLength(100)]
+        public string Middle_name { get; set; }
     }
 }

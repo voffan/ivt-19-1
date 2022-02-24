@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -14,10 +15,13 @@ namespace Autoreport.Models
 
     public enum Position // должности
     {
+        [Description("Администратор")]
         Admin,
+        [Description("Кассир")]
         Cashier
     }
 
+    [Index(nameof(Login), IsUnique = true)]
     public class Employee : Person
     {
         [DisplayName("Серия паспорта")]

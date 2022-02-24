@@ -39,6 +39,7 @@ namespace Autoreport.UI
             this.clientsBtn = new System.Windows.Forms.Button();
             this.employeesBtn = new System.Windows.Forms.Button();
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.infoBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.reloadBtn = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@ namespace Autoreport.UI
             this.addBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.infoBtn = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.controlPanel.SuspendLayout();
@@ -58,7 +58,7 @@ namespace Autoreport.UI
             // 
             this.menuPanel.AutoSize = true;
             this.menuPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.menuPanel.BackColor = System.Drawing.Color.Silver;
+            this.menuPanel.BackColor = System.Drawing.Color.DarkGray;
             this.menuPanel.Controls.Add(this.panel2);
             this.menuPanel.Controls.Add(this.depositsBtn);
             this.menuPanel.Controls.Add(this.ordersBtn);
@@ -195,6 +195,16 @@ namespace Autoreport.UI
             this.controlPanel.Size = new System.Drawing.Size(146, 474);
             this.controlPanel.TabIndex = 2;
             // 
+            // infoBtn
+            // 
+            this.infoBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.infoBtn.Location = new System.Drawing.Point(5, 119);
+            this.infoBtn.Name = "infoBtn";
+            this.infoBtn.Size = new System.Drawing.Size(136, 38);
+            this.infoBtn.TabIndex = 6;
+            this.infoBtn.Text = "Подробнее";
+            this.infoBtn.UseVisualStyleBackColor = true;
+            // 
             // deleteBtn
             // 
             this.deleteBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -214,6 +224,7 @@ namespace Autoreport.UI
             this.reloadBtn.TabIndex = 4;
             this.reloadBtn.Text = "Обновить";
             this.reloadBtn.UseVisualStyleBackColor = true;
+            this.reloadBtn.Click += new System.EventHandler(this.reloadBtn_Click);
             // 
             // searchBtn
             // 
@@ -244,6 +255,7 @@ namespace Autoreport.UI
             this.addBtn.TabIndex = 0;
             this.addBtn.Text = "Добавить";
             this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // panel4
             // 
@@ -265,16 +277,6 @@ namespace Autoreport.UI
             this.dataGridView.Size = new System.Drawing.Size(670, 474);
             this.dataGridView.TabIndex = 0;
             // 
-            // infoBtn
-            // 
-            this.infoBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.infoBtn.Location = new System.Drawing.Point(5, 119);
-            this.infoBtn.Name = "infoBtn";
-            this.infoBtn.Size = new System.Drawing.Size(136, 38);
-            this.infoBtn.TabIndex = 6;
-            this.infoBtn.Text = "Подробнее";
-            this.infoBtn.UseVisualStyleBackColor = true;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -287,6 +289,7 @@ namespace Autoreport.UI
             this.MinimumSize = new System.Drawing.Size(650, 400);
             this.Name = "MainWindow";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.menuPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

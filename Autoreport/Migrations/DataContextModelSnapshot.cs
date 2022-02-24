@@ -46,7 +46,7 @@ namespace Autoreport.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -60,7 +60,7 @@ namespace Autoreport.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Article")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<double>("Cost")
                         .HasColumnType("double");
@@ -121,6 +121,29 @@ namespace Autoreport.Migrations
                     b.ToTable("Genre");
                 });
 
+            modelBuilder.Entity("Autoreport.Models.HashSetting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("HashSize")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Iterations")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Salt")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("SaltSize")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HashSettings");
+                });
+
             modelBuilder.Entity("Autoreport.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -140,10 +163,10 @@ namespace Autoreport.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Order_date")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("Return_date")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -167,13 +190,17 @@ namespace Autoreport.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("First_name")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Second_name")
+                    b.Property<string>("Last_name")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Middle_name")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
@@ -262,14 +289,10 @@ namespace Autoreport.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<string>("Phone_number3")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
-
                     b.HasDiscriminator().HasValue("Client");
                 });
 
-            modelBuilder.Entity("Autoreport.Models.Employeer", b =>
+            modelBuilder.Entity("Autoreport.Models.Employee", b =>
                 {
                     b.HasBaseType("Autoreport.Models.Person");
 
@@ -297,7 +320,10 @@ namespace Autoreport.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.HasDiscriminator().HasValue("Employeer");
+                    b.HasIndex("Login")
+                        .IsUnique();
+
+                    b.HasDiscriminator().HasValue("Employee");
                 });
 
             modelBuilder.Entity("Autoreport.Models.Film", b =>
@@ -331,7 +357,7 @@ namespace Autoreport.Migrations
                         .WithMany()
                         .HasForeignKey("OrderDepositId");
 
-                    b.HasOne("Autoreport.Models.Employeer", "OrderEmployeer")
+                    b.HasOne("Autoreport.Models.Employee", "OrderEmployeer")
                         .WithMany()
                         .HasForeignKey("OrderEmployeerId");
 

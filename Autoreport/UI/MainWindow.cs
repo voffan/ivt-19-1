@@ -18,10 +18,15 @@ namespace Autoreport.UI
     {
         Login Loginer;
         Button currentButton;
+        Form currentAddForm;
 
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
             Login();
             employeesBtn.PerformClick();
         }
@@ -29,28 +34,19 @@ namespace Autoreport.UI
         private void Login()
         {
             Loginer = new Login();
-            Loginer.Show();
+            Loginer.ShowDialog();
         }
 
         private void employeersBtn_Click(object sender, EventArgs e)
         {
-            if (currentButton == (Button)sender)
-            {
-                return;
-            }
-
             currentButton = (Button)sender;
+            currentAddForm = new AddEmployeeForm();
             dataGridView.DataSource = Connection.employeerService.GetAll();
             dataGridView.Columns["Id"].Visible = false;
         }
 
         private void clientsBtn_Click(object sender, EventArgs e)
         {
-            if (currentButton == (Button)sender)
-            {
-                return;
-            }
-
             currentButton = (Button)sender;
             dataGridView.DataSource = Connection.clientService.GetAll();
             dataGridView.Columns["Id"].Visible = false;
@@ -58,11 +54,6 @@ namespace Autoreport.UI
 
         private void disksBtn_Click(object sender, EventArgs e)
         {
-            if (currentButton == (Button)sender)
-            {
-                return;
-            }
-
             currentButton = (Button)sender;
             dataGridView.DataSource = Connection.diskService.GetAll();
             dataGridView.Columns["Id"].Visible = false;
@@ -70,11 +61,6 @@ namespace Autoreport.UI
 
         private void filmsBtn_Click(object sender, EventArgs e)
         {
-            if (currentButton == (Button)sender)
-            {
-                return;
-            }
-
             currentButton = (Button)sender;
             dataGridView.DataSource = Connection.filmService.GetAll();
             dataGridView.Columns["Id"].Visible = false;
@@ -82,11 +68,6 @@ namespace Autoreport.UI
 
         private void ordersBtn_Click(object sender, EventArgs e)
         {
-            if (currentButton == (Button)sender)
-            {
-                return;
-            }
-
             currentButton = (Button)sender;
             dataGridView.DataSource = Connection.orderService.GetAll();
             dataGridView.Columns["Id"].Visible = false;
@@ -94,14 +75,19 @@ namespace Autoreport.UI
 
         private void depositsBtn_Click(object sender, EventArgs e)
         {
-            if (currentButton == (Button)sender)
-            {
-                return;
-            }
-
             currentButton = (Button)sender;
             dataGridView.DataSource = Connection.depositService.GetAll();
             dataGridView.Columns["Id"].Visible = false;
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            currentAddForm.Show();
+        }
+
+        private void reloadBtn_Click(object sender, EventArgs e)
+        {
+            currentButton.PerformClick();
         }
     }
 }

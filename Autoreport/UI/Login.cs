@@ -20,7 +20,16 @@ namespace Autoreport.UI
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            //Connection.employeeService.Login("", "");
+            string login = login_text.Text, password = password_text.Text;
+
+            try
+            {
+                Connection.employeerService.Login(login, password);
+                Close();
+            } catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -24,13 +24,14 @@ namespace Autoreport.Database
         public DbSet<Order> Orders { get; set; }
         public DbSet<Genre> DopositType { get; set; }
         public DbSet<Deposit> Deposits { get; set; }
+        public DbSet<HashSetting> HashSettings { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             ServiceCollection serviceCollection = new ServiceCollection();
             IConfigurationRoot configuration = ConfigureServices(serviceCollection);
 
-            optionsBuilder.UseMySQL(configuration["ConnectionStrings:AutoReportDB"]);
+            optionsBuilder.UseMySql(configuration["ConnectionStrings:AutoReportDB"], new MySqlServerVersion(new Version(8, 0, 26)));
         }
 
         private static IConfigurationRoot ConfigureServices(IServiceCollection serviceCollection)

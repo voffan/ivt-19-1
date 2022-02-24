@@ -1,7 +1,7 @@
 ﻿
 namespace Autoreport.UI
 {
-    partial class AddForm
+    partial class AddEmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -50,6 +50,25 @@ namespace Autoreport.UI
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lastNameText = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.firstNameText = new System.Windows.Forms.TextBox();
+            this.middleNameText = new System.Windows.Forms.TextBox();
+            this.passportText = new System.Windows.Forms.MaskedTextBox();
+            this.positionBox = new System.Windows.Forms.ComboBox();
+            this.phoneText = new System.Windows.Forms.MaskedTextBox();
+            this.loginText = new System.Windows.Forms.TextBox();
+            this.passwordText = new System.Windows.Forms.TextBox();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.resetBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -57,6 +76,7 @@ namespace Autoreport.UI
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -289,15 +309,225 @@ namespace Autoreport.UI
             this.textBox12.Size = new System.Drawing.Size(156, 23);
             this.textBox12.TabIndex = 1;
             // 
-            // AddForm
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(232, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Фамилия";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(3, 34);
+            this.label7.Margin = new System.Windows.Forms.Padding(3);
+            this.label7.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(232, 25);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Имя";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(3, 65);
+            this.label9.Margin = new System.Windows.Forms.Padding(3);
+            this.label9.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(232, 25);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Отчество";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(3, 96);
+            this.label11.Margin = new System.Windows.Forms.Padding(3);
+            this.label11.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(232, 25);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Серия и номер паспорта";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(3, 127);
+            this.label13.Margin = new System.Windows.Forms.Padding(3);
+            this.label13.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(232, 25);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Должность";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(3, 158);
+            this.label14.Margin = new System.Windows.Forms.Padding(3);
+            this.label14.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(232, 25);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Номер телефона";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(3, 189);
+            this.label15.Margin = new System.Windows.Forms.Padding(3);
+            this.label15.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(232, 25);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Логин";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(3, 220);
+            this.label16.Margin = new System.Windows.Forms.Padding(3);
+            this.label16.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(232, 25);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Пароль";
+            // 
+            // lastNameText
+            // 
+            this.lastNameText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lastNameText.Location = new System.Drawing.Point(241, 3);
+            this.lastNameText.Name = "lastNameText";
+            this.lastNameText.Size = new System.Drawing.Size(232, 25);
+            this.lastNameText.TabIndex = 9;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.lastNameText);
+            this.flowLayoutPanel1.Controls.Add(this.label7);
+            this.flowLayoutPanel1.Controls.Add(this.firstNameText);
+            this.flowLayoutPanel1.Controls.Add(this.label9);
+            this.flowLayoutPanel1.Controls.Add(this.middleNameText);
+            this.flowLayoutPanel1.Controls.Add(this.label11);
+            this.flowLayoutPanel1.Controls.Add(this.passportText);
+            this.flowLayoutPanel1.Controls.Add(this.label13);
+            this.flowLayoutPanel1.Controls.Add(this.positionBox);
+            this.flowLayoutPanel1.Controls.Add(this.label14);
+            this.flowLayoutPanel1.Controls.Add(this.phoneText);
+            this.flowLayoutPanel1.Controls.Add(this.label15);
+            this.flowLayoutPanel1.Controls.Add(this.loginText);
+            this.flowLayoutPanel1.Controls.Add(this.label16);
+            this.flowLayoutPanel1.Controls.Add(this.passwordText);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 269);
+            this.flowLayoutPanel1.TabIndex = 10;
+            // 
+            // firstNameText
+            // 
+            this.firstNameText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.firstNameText.Location = new System.Drawing.Point(241, 34);
+            this.firstNameText.Name = "firstNameText";
+            this.firstNameText.Size = new System.Drawing.Size(232, 25);
+            this.firstNameText.TabIndex = 10;
+            // 
+            // middleNameText
+            // 
+            this.middleNameText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.middleNameText.Location = new System.Drawing.Point(241, 65);
+            this.middleNameText.Name = "middleNameText";
+            this.middleNameText.Size = new System.Drawing.Size(232, 25);
+            this.middleNameText.TabIndex = 11;
+            // 
+            // passportText
+            // 
+            this.passportText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.passportText.Location = new System.Drawing.Point(241, 96);
+            this.passportText.Mask = "0000-000000";
+            this.passportText.Name = "passportText";
+            this.passportText.Size = new System.Drawing.Size(232, 25);
+            this.passportText.TabIndex = 20;
+            // 
+            // positionBox
+            // 
+            this.positionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.positionBox.FormattingEnabled = true;
+            this.positionBox.Location = new System.Drawing.Point(241, 127);
+            this.positionBox.Name = "positionBox";
+            this.positionBox.Size = new System.Drawing.Size(232, 23);
+            this.positionBox.TabIndex = 18;
+            // 
+            // phoneText
+            // 
+            this.phoneText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.phoneText.Location = new System.Drawing.Point(241, 158);
+            this.phoneText.Mask = "+7 (000) 000-00-00";
+            this.phoneText.Name = "phoneText";
+            this.phoneText.Size = new System.Drawing.Size(232, 25);
+            this.phoneText.TabIndex = 19;
+            // 
+            // loginText
+            // 
+            this.loginText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.loginText.Location = new System.Drawing.Point(241, 189);
+            this.loginText.Name = "loginText";
+            this.loginText.Size = new System.Drawing.Size(232, 25);
+            this.loginText.TabIndex = 16;
+            // 
+            // passwordText
+            // 
+            this.passwordText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.passwordText.Location = new System.Drawing.Point(241, 220);
+            this.passwordText.Name = "passwordText";
+            this.passwordText.Size = new System.Drawing.Size(232, 25);
+            this.passwordText.TabIndex = 17;
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(288, 287);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(200, 30);
+            this.saveBtn.TabIndex = 11;
+            this.saveBtn.Text = "Сохранить";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // resetBtn
+            // 
+            this.resetBtn.Location = new System.Drawing.Point(12, 287);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(200, 30);
+            this.resetBtn.TabIndex = 12;
+            this.resetBtn.Text = "Сброс";
+            this.resetBtn.UseVisualStyleBackColor = true;
+            // 
+            // AddEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 461);
-            this.MaximumSize = new System.Drawing.Size(370, 500);
-            this.MinimumSize = new System.Drawing.Size(350, 200);
-            this.Name = "AddForm";
-            this.Text = "AddForm";
+            this.ClientSize = new System.Drawing.Size(500, 328);
+            this.Controls.Add(this.resetBtn);
+            this.Controls.Add(this.saveBtn);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.MaximumSize = new System.Drawing.Size(516, 500);
+            this.MinimumSize = new System.Drawing.Size(516, 200);
+            this.Name = "AddEmployeeForm";
+            this.Text = "Добавить сотрудника";
+            this.Load += new System.EventHandler(this.AddEmployeeForm_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -312,6 +542,8 @@ namespace Autoreport.UI
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -338,5 +570,24 @@ namespace Autoreport.UI
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox lastNameText;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox firstNameText;
+        private System.Windows.Forms.TextBox loginText;
+        private System.Windows.Forms.TextBox passwordText;
+        private System.Windows.Forms.TextBox middleNameText;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button resetBtn;
+        private System.Windows.Forms.ComboBox positionBox;
+        private System.Windows.Forms.MaskedTextBox phoneText;
+        private System.Windows.Forms.MaskedTextBox passportText;
     }
 }
