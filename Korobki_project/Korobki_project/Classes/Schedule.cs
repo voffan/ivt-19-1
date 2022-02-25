@@ -11,7 +11,7 @@ namespace Korobki_project.Classes
     public class Schedule
     {
         public int Id { get; set; }
-        public int ShifttId { get; set; }
+        public int ShiftId { get; set; }
         public virtual Shift Shift { get; set; }
         public DateTime Date { get; set; }
         public int PlanCount { get; set; }
