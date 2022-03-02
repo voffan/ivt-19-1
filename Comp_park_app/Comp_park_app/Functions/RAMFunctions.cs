@@ -6,11 +6,15 @@ namespace Comp_park_app.Functions
 {
     class RAMFunctions
     {
-        public void Add()
+        public void Add(string name, string manufacturer, int capacity)
         {
+            RAM ram = new RAM()
+            {
+                Name = name, Manufacturer = manufacturer, Capacity = capacity
+            };
+
             using (Context c = new Context())
             {
-                RAM ram = new RAM();
                 //... initiate field
                 c.RAMs.Add(ram);
                 c.SaveChanges();

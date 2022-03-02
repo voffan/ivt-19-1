@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comp_park_app;
 using Comp_park_app.UI;
+using Comp_park_app.Functions;
 
 namespace Comp_park_app_form
 {
@@ -95,6 +96,12 @@ namespace Comp_park_app_form
             label2.Text = "Текущий столбец: " + listBox1.SelectedItem.ToString();
         }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem.ToString() == "Оперативная память") {
+                Form form2 = new Form_addRAM();
+                form2.ShowDialog();
+            }
+        }
     }
 }
