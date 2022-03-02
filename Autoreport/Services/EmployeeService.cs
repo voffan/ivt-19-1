@@ -9,20 +9,47 @@ namespace Autoreport.Services
 {
     public class EmployeeService
     {
-        Employee currentEmployee;
+        private Employee currentEmployee;
+
+        public void Init()
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                Employee empl = db.Employees.Where(p => p.Id >= 0).FirstOrDefault();
+
+                if (empl == null)
+                {
+                    string emplPassword = "admin";
+
+                    Employee _empl = new Employee()
+                    {
+                        Last_name = "Админ",
+                        First_name = "Админ",
+                        Middle_name = "Админ",
+                        Passport_serial = 0000,
+                        Passport_number = 000000,
+                        EmplPosition = Position.Admin,
+                        Phone_number = "+7 (000) 000-00-00",
+                        Login = "admin",
+                        PasswordHash = Connection.hashService.GetPasswordHash(emplPassword)
+                };
+                    db.Employees.Add(_empl);
+                    db.SaveChanges();
+                }
+            }
+        }
 
         public void Login(string login, string pwd)
         {
             using (DataContext db = Connection.Connect())
             {
-                List<Employee> empls = db.Employees.Where(p => p.Login == login).ToList();
+                Employee empl = db.Employees.Where(p => p.Login == login).FirstOrDefault();
 
-                if (empls.Count == 0)
+                if (empl == null)
                 {
                     throw new Errors.UserNotExist("Пользователь с таким логином не найден");
                 }
 
-                Employee empl = empls[0];
                 bool validationResult = Connection.hashService.ValidatePasswordHash(
                     pwd, empl.PasswordHash);
 

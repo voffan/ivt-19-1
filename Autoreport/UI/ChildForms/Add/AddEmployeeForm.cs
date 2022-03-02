@@ -41,6 +41,8 @@ namespace Autoreport.UI
 
             Connection.employeerService.Add(lastName, firstName, middleName,
                 passport, position, phone, login, password);
+
+            Close();
         }
     }
 }

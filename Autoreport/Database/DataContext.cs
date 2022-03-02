@@ -19,7 +19,6 @@ namespace Autoreport.Database
         public DbSet<Disk> Disks { get; set; }
         public DbSet<Film> Films { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<Studio> Studios { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Genre> DopositType { get; set; }

@@ -27,6 +27,8 @@ namespace Autoreport.UI
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            this.Size = new Size(1280, 640);
+            Connection.employeerService.Init();
             Login();
             employeesBtn.PerformClick();
         }
@@ -82,7 +84,8 @@ namespace Autoreport.UI
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            currentAddForm.Show();
+            currentAddForm.ShowDialog();
+            currentButton.PerformClick();
         }
 
         private void reloadBtn_Click(object sender, EventArgs e)

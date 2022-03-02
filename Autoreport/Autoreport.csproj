@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Database\DataContext.cs~RF29f52815.TMP" />
     <None Remove="UI\Login.cs~RF261b3eb6.TMP" />
   </ItemGroup>
 

@@ -13,13 +13,13 @@ namespace Autoreport.Models
         [MaxLength(200)]
         public string Name { get; set; }
 
+        [DisplayName("Год")]
+        public DateTime year { get; set; }
+
         [DisplayName("Страна")]
         public virtual Country FilmCounty { get; set; }
 
-        [DisplayName("Студия")]
-        public virtual Studio FilmStudio { get; set; }
-
-        [DisplayName("Режиссёр")]
+        [DisplayName("Режиссёр")] 
         public virtual Person FilmDirector { get; set; }
 
         public virtual List<Genre> Genres { get; set; }
