@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace gallerys.Migrations
 {
-    public partial class migr : Migration
+    public partial class Migr : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
