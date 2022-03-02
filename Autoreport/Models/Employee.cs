@@ -21,7 +21,7 @@ namespace Autoreport.Models
         Cashier
     }
 
-    [Index(nameof(Login), IsUnique = true)]
+    [Index(nameof(Login), IsUnique = true)] // делаем логин работника уникальным
     public class Employee : Person
     {
         [DisplayName("Серия паспорта")]
