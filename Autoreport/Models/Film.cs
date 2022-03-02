@@ -14,13 +14,13 @@ namespace Autoreport.Models
         public string Name { get; set; }
 
         [DisplayName("Год")]
-        public DateTime year { get; set; }
+        public DateTime Year { get; set; }
 
         [DisplayName("Страна")]
-        public virtual Country FilmCounty { get; set; }
+        public virtual Country Film_Country { get; set; }
 
-        [DisplayName("Режиссёр")] 
-        public virtual Person FilmDirector { get; set; }
+        [DisplayName("Режиссёр")]
+        public virtual Person Film_Director { get; set; }
 
         public virtual List<Genre> Genres { get; set; }
         public virtual List<Disk> Disks { get; set; }

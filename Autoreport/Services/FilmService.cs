@@ -9,9 +9,19 @@ namespace Autoreport.Services
 {
     public class FilmService
     {
-        public void Add()
+        public void Add(string filmName, string filmYear)
         {
+            Film film = new Film()
+            {
+                Name = filmName,
+                Year = Convert.ToDateTime(filmYear)
+            };
 
+            using (DataContext db = Connection.Connect())
+            {
+                db.Films.Add(film);
+                db.SaveChanges();
+            }
         }
 
         public void Get()
