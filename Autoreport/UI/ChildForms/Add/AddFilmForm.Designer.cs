@@ -1,4 +1,4 @@
-﻿namespace Autoreport.UI.ChildForms.Add
+﻿namespace Autoreport.UI
 {
     partial class AddFilmForm
     {
@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.filmNameText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.filmYearText = new System.Windows.Forms.TextBox();
+            this.filmYearText = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.filmProducerText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,6 +61,7 @@
             this.saveBtn.TabIndex = 16;
             this.saveBtn.Text = "Сохранить";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -114,11 +115,12 @@
             // 
             // filmYearText
             // 
-            this.filmYearText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.filmYearText.Location = new System.Drawing.Point(241, 34);
+            this.filmYearText.Mask = "0000";
             this.filmYearText.Name = "filmYearText";
-            this.filmYearText.Size = new System.Drawing.Size(232, 25);
-            this.filmYearText.TabIndex = 11;
+            this.filmYearText.Size = new System.Drawing.Size(232, 23);
+            this.filmYearText.TabIndex = 19;
+            this.filmYearText.ValidatingType = typeof(System.DateTime);
             // 
             // label3
             // 
@@ -204,12 +206,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox filmNameText;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox filmYearText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox filmProducerText;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox filmGenreText;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox filmСountryText;
+        private System.Windows.Forms.MaskedTextBox filmYearText;
     }
 }

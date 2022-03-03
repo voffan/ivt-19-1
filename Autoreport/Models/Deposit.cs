@@ -16,9 +16,9 @@ namespace Autoreport.Models
     {
         public int Id { get; set; }
 
-        [DisplayName("Имя")]
-        [MaxLength(200)]
-        public string Name { get; set; }
+        [DisplayName("Данные")]
+        [MaxLength(300)]
+        public string Data { get; set; } // наименование, идентификационные данные
 
         [DisplayName("Сумма")]
         [Range(1.0, 100000.0)]
@@ -26,5 +26,8 @@ namespace Autoreport.Models
 
         [DisplayName("Тип залога")]
         public DepositType Type { get; set; }
+
+        [DisplayName("Владелец")]
+        public virtual Client Owner { get; set; }
     }
 }

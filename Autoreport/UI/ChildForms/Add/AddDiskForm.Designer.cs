@@ -31,7 +31,7 @@ namespace Autoreport.UI
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.articleText = new System.Windows.Forms.TextBox();
+            this.articleText = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.countText = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -78,11 +78,13 @@ namespace Autoreport.UI
             // 
             // articleText
             // 
-            this.articleText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.articleText.AsciiOnly = true;
             this.articleText.Location = new System.Drawing.Point(241, 3);
+            this.articleText.Mask = "aaaaaa";
             this.articleText.Name = "articleText";
-            this.articleText.Size = new System.Drawing.Size(232, 25);
-            this.articleText.TabIndex = 9;
+            this.articleText.Size = new System.Drawing.Size(232, 23);
+            this.articleText.TabIndex = 15;
+            this.articleText.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
             // label7
             // 
@@ -225,7 +227,6 @@ namespace Autoreport.UI
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox articleText;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox countText;
         private System.Windows.Forms.Label label9;
@@ -237,5 +238,6 @@ namespace Autoreport.UI
         private System.Windows.Forms.ListBox selectedFilmsBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button removeSelectedBtn;
+        private System.Windows.Forms.MaskedTextBox articleText;
     }
 }

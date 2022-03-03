@@ -11,24 +11,22 @@ namespace Autoreport.Services
 {
     public class DiskService
     {
-        public void Add(string article, string _count, string _cost, ListBox.ObjectCollection items)
+        public void Add(string article, string _count, string _cost, List<Film> films)
         {
+            int count = Int32.Parse(_count);
+            int cost = Int32.Parse(_cost);
+
+            Disk disk = new Disk()
+            {
+                Article = article,
+                General_count = count,
+                Cost = cost,
+                Films = films
+            };
+
             using (DataContext db = Connection.Connect())
             {
-                int count = Int32.Parse(_count);
-                int cost = Int32.Parse(_cost);
-
-                List<int> films_ids = items.Cast<GridSelectedItem>().Select(item => item.Id).ToList();
-                List <Film> films = db.Films.Where(f => films_ids.Any(item => item == f.Id)).ToList();
-
-                Disk disk = new Disk()
-                {
-                    Article = article,
-                    General_count = count,
-                    Cost = cost,
-                    Films = films
-                };
-
+                db.Update(disk);
                 db.Disks.Add(disk);
                 db.SaveChanges();
             }

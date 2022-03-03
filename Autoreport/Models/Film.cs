@@ -17,10 +17,10 @@ namespace Autoreport.Models
         public DateTime Year { get; set; }
 
         [DisplayName("Страна")]
-        public virtual Country Film_Country { get; set; }
+        public virtual Country FilmCounty { get; set; }
 
         [DisplayName("Режиссёр")]
-        public virtual Person Film_Director { get; set; }
+        public virtual Person FilmDirector { get; set; }
 
         public virtual List<Genre> Genres { get; set; }
         public virtual List<Disk> Disks { get; set; }

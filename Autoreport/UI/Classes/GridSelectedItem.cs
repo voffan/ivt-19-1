@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Autoreport.UI.Classes
 {
-    class GridSelectedItem
+    public class GridSelectedItem
     {
         public int Id { get; set; }
         public string VisibleName { get; set; }

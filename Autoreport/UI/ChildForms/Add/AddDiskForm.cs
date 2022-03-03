@@ -16,11 +16,15 @@ namespace Autoreport.UI
     public partial class AddDiskForm : Form
     {
         MainWindow owner;
-        Button ownerTabButton;
+        Button filmsTab;
+        Action<bool, Button> OwnerSelectModeEnabled;
+        Action CloseHandler;
 
-        public AddDiskForm()
+        public AddDiskForm(Button filmsTab, Action OnCloseHandler)
         {
             InitializeComponent();
+            this.filmsTab = filmsTab;
+            CloseHandler = OnCloseHandler;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -31,8 +35,14 @@ namespace Autoreport.UI
                 return;
             }
 
-            Connection.diskService.Add(articleText.Text, countText.Text, costText.Text, selectedFilmsBox.Items);
+            string article = articleText.Text;
+            string count = countText.Text;
+            string cost = costText.Text;
+            List<int> films_ids = selectedFilmsBox.Items.Cast<GridSelectedItem>()
+                .Select(item => item.Id).ToList();
 
+            Connection.diskService.Add(article, count, cost, Connection.filmService.GetByIds(films_ids));
+            CloseHandler();
             Close();
         }
 
@@ -46,35 +56,25 @@ namespace Autoreport.UI
 
         private void SelectFilmsBtn_Click(object sender, EventArgs e)
         {
-            // т.к. DisableAllTabsExcept переключит основное окно на другую вкладку
-            // то запоминает текущую вкладку, чтоб потом ее активировать
-            ownerTabButton = owner.GetCurrentTab();
-
-            owner.SetSelectionActive(true);
-            owner.DisableAllTabsExcept(owner.filmsBtn);
-            owner.ConnectSelectButton(OnSelectedHandler);
-
+            OwnerSelectModeEnabled(true, filmsTab);
             this.Hide();
         }
 
         private void OnSelectedHandler(ListBox.ObjectCollection items)
         {
-            owner.SetSelectionActive(false);
-            owner.EnableAllTabs();
-            owner.RemoveSelectConnection();
-
             foreach (GridSelectedItem item in items)
             {
                 selectedFilmsBox.Items.Add(item);
             }
 
-            ownerTabButton.PerformClick();
+            OwnerSelectModeEnabled(false, null);
             this.ShowDialog(owner);
         }
 
         private void AddDiskForm_Load(object sender, EventArgs e)
         {
             owner = (MainWindow)Owner;
+            OwnerSelectModeEnabled = owner.SelectMode(OnSelectedHandler);
         }
 
         private void SelectedFilmsBox_SelectedIndexChanged(object sender, EventArgs e)

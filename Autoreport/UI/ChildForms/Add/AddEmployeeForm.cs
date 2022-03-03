@@ -20,6 +20,12 @@ namespace Autoreport.UI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Вызывается при создании окна
+        /// Заполняет ComboBox positionBox значениями из Enum Position
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddEmployeeForm_Load(object sender, EventArgs e)
         {
             positionBox.DisplayMember = "Key";
@@ -27,6 +33,11 @@ namespace Autoreport.UI
             positionBox.DataSource = new BindingSource(DescriptionAttributes<Position>.RetrieveAttributes(), null);
         }
 
+        /// <summary>
+        /// Вызывает метод, сохраняющий данные из формы в БД
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveBtn_Click(object sender, EventArgs e)
         {
             string lastName = lastNameText.Text;

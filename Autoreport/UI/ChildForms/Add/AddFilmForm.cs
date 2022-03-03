@@ -19,6 +19,7 @@ namespace Autoreport.UI
         {
             InitializeComponent();
         }
+
         private void saveBtn_Click(object sender, EventArgs e)
         {
             string filmName = filmNameText.Text;

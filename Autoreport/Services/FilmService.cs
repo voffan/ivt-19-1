@@ -11,10 +11,12 @@ namespace Autoreport.Services
     {
         public void Add(string filmName, string filmYear)
         {
+            DateTime year = new DateTime(Int32.Parse(filmYear), 1, 1, 1, 1, 1, 1);
+
             Film film = new Film()
             {
                 Name = filmName,
-                Year = Convert.ToDateTime(filmYear)
+                Year = year
             };
 
             using (DataContext db = Connection.Connect())
@@ -34,6 +36,17 @@ namespace Autoreport.Services
             using (DataContext db = Connection.Connect())
             {
                 return db.Films.ToList();
+            }
+        }
+
+        public List<Film> GetByIds(List<int> ids)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                IQueryable<Film> films = db.Films
+                    .Where(f => ids.Any(item => item == f.Id));
+
+                return films.ToList();
             }
         }
 

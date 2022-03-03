@@ -32,12 +32,12 @@ namespace Autoreport.UI
             this.menuPanel = new System.Windows.Forms.Panel();
             this.reportPanel = new System.Windows.Forms.Panel();
             this.reportBtn = new System.Windows.Forms.Button();
-            this.depositsBtn = new System.Windows.Forms.Button();
-            this.ordersBtn = new System.Windows.Forms.Button();
-            this.filmsBtn = new System.Windows.Forms.Button();
-            this.disksBtn = new System.Windows.Forms.Button();
-            this.clientsBtn = new System.Windows.Forms.Button();
-            this.employeesBtn = new System.Windows.Forms.Button();
+            this.depositsTab = new System.Windows.Forms.Button();
+            this.ordersTab = new System.Windows.Forms.Button();
+            this.filmsTab = new System.Windows.Forms.Button();
+            this.disksTab = new System.Windows.Forms.Button();
+            this.clientsTab = new System.Windows.Forms.Button();
+            this.employeesTab = new System.Windows.Forms.Button();
             this.dataPanel = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.addBtn = new System.Windows.Forms.Button();
@@ -65,12 +65,12 @@ namespace Autoreport.UI
             this.menuPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.menuPanel.BackColor = System.Drawing.Color.DarkGray;
             this.menuPanel.Controls.Add(this.reportPanel);
-            this.menuPanel.Controls.Add(this.depositsBtn);
-            this.menuPanel.Controls.Add(this.ordersBtn);
-            this.menuPanel.Controls.Add(this.filmsBtn);
-            this.menuPanel.Controls.Add(this.disksBtn);
-            this.menuPanel.Controls.Add(this.clientsBtn);
-            this.menuPanel.Controls.Add(this.employeesBtn);
+            this.menuPanel.Controls.Add(this.depositsTab);
+            this.menuPanel.Controls.Add(this.ordersTab);
+            this.menuPanel.Controls.Add(this.filmsTab);
+            this.menuPanel.Controls.Add(this.disksTab);
+            this.menuPanel.Controls.Add(this.clientsTab);
+            this.menuPanel.Controls.Add(this.employeesTab);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Name = "menuPanel";
@@ -100,89 +100,89 @@ namespace Autoreport.UI
             this.reportBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.reportBtn.UseVisualStyleBackColor = true;
             // 
-            // depositsBtn
+            // depositsTab
             // 
-            this.depositsBtn.Image = global::Autoreport.UI.Resources.deposit;
-            this.depositsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.depositsBtn.Location = new System.Drawing.Point(472, 3);
-            this.depositsBtn.Name = "depositsBtn";
-            this.depositsBtn.Size = new System.Drawing.Size(80, 31);
-            this.depositsBtn.TabIndex = 5;
-            this.depositsBtn.Text = "Залоги";
-            this.depositsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.depositsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.depositsBtn.UseVisualStyleBackColor = true;
-            this.depositsBtn.Click += new System.EventHandler(this.DepositsBtn_Click);
+            this.depositsTab.Image = global::Autoreport.UI.Resources.deposit;
+            this.depositsTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.depositsTab.Location = new System.Drawing.Point(472, 3);
+            this.depositsTab.Name = "depositsTab";
+            this.depositsTab.Size = new System.Drawing.Size(80, 31);
+            this.depositsTab.TabIndex = 5;
+            this.depositsTab.Text = "Залоги";
+            this.depositsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.depositsTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.depositsTab.UseVisualStyleBackColor = true;
+            this.depositsTab.Click += new System.EventHandler(this.DepositsTab_Click);
             // 
-            // ordersBtn
+            // ordersTab
             // 
-            this.ordersBtn.Image = global::Autoreport.UI.Resources.cart;
-            this.ordersBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ordersBtn.Location = new System.Drawing.Point(386, 3);
-            this.ordersBtn.Name = "ordersBtn";
-            this.ordersBtn.Size = new System.Drawing.Size(80, 31);
-            this.ordersBtn.TabIndex = 4;
-            this.ordersBtn.Text = "Заказы";
-            this.ordersBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ordersBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ordersBtn.UseVisualStyleBackColor = true;
-            this.ordersBtn.Click += new System.EventHandler(this.OrdersBtn_Click);
+            this.ordersTab.Image = global::Autoreport.UI.Resources.cart;
+            this.ordersTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ordersTab.Location = new System.Drawing.Point(386, 3);
+            this.ordersTab.Name = "ordersTab";
+            this.ordersTab.Size = new System.Drawing.Size(80, 31);
+            this.ordersTab.TabIndex = 4;
+            this.ordersTab.Text = "Заказы";
+            this.ordersTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ordersTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ordersTab.UseVisualStyleBackColor = true;
+            this.ordersTab.Click += new System.EventHandler(this.OrdersTab_Click);
             // 
-            // filmsBtn
+            // filmsTab
             // 
-            this.filmsBtn.Image = global::Autoreport.UI.Resources.film_projector;
-            this.filmsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.filmsBtn.Location = new System.Drawing.Point(292, 3);
-            this.filmsBtn.Name = "filmsBtn";
-            this.filmsBtn.Size = new System.Drawing.Size(88, 31);
-            this.filmsBtn.TabIndex = 3;
-            this.filmsBtn.Text = "Фильмы";
-            this.filmsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.filmsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.filmsBtn.UseVisualStyleBackColor = true;
-            this.filmsBtn.Click += new System.EventHandler(this.FilmsBtn_Click);
+            this.filmsTab.Image = global::Autoreport.UI.Resources.film_projector;
+            this.filmsTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.filmsTab.Location = new System.Drawing.Point(292, 3);
+            this.filmsTab.Name = "filmsTab";
+            this.filmsTab.Size = new System.Drawing.Size(88, 31);
+            this.filmsTab.TabIndex = 3;
+            this.filmsTab.Text = "Фильмы";
+            this.filmsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.filmsTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.filmsTab.UseVisualStyleBackColor = true;
+            this.filmsTab.Click += new System.EventHandler(this.FilmsTab_Click);
             // 
-            // disksBtn
+            // disksTab
             // 
-            this.disksBtn.Image = global::Autoreport.UI.Resources.disk;
-            this.disksBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.disksBtn.Location = new System.Drawing.Point(211, 3);
-            this.disksBtn.Name = "disksBtn";
-            this.disksBtn.Size = new System.Drawing.Size(75, 31);
-            this.disksBtn.TabIndex = 2;
-            this.disksBtn.Text = "Диски";
-            this.disksBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.disksBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.disksBtn.UseVisualStyleBackColor = true;
-            this.disksBtn.Click += new System.EventHandler(this.DisksBtn_Click);
+            this.disksTab.Image = global::Autoreport.UI.Resources.disk;
+            this.disksTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.disksTab.Location = new System.Drawing.Point(211, 3);
+            this.disksTab.Name = "disksTab";
+            this.disksTab.Size = new System.Drawing.Size(75, 31);
+            this.disksTab.TabIndex = 2;
+            this.disksTab.Text = "Диски";
+            this.disksTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.disksTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.disksTab.UseVisualStyleBackColor = true;
+            this.disksTab.Click += new System.EventHandler(this.DisksTab_Click);
             // 
-            // clientsBtn
+            // clientsTab
             // 
-            this.clientsBtn.Image = global::Autoreport.UI.Resources.user_group;
-            this.clientsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.clientsBtn.Location = new System.Drawing.Point(116, 4);
-            this.clientsBtn.Name = "clientsBtn";
-            this.clientsBtn.Size = new System.Drawing.Size(89, 30);
-            this.clientsBtn.TabIndex = 1;
-            this.clientsBtn.Text = "Клиенты";
-            this.clientsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.clientsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.clientsBtn.UseVisualStyleBackColor = true;
-            this.clientsBtn.Click += new System.EventHandler(this.ClientsBtn_Click);
+            this.clientsTab.Image = global::Autoreport.UI.Resources.user_group;
+            this.clientsTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.clientsTab.Location = new System.Drawing.Point(116, 4);
+            this.clientsTab.Name = "clientsTab";
+            this.clientsTab.Size = new System.Drawing.Size(89, 30);
+            this.clientsTab.TabIndex = 1;
+            this.clientsTab.Text = "Клиенты";
+            this.clientsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.clientsTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.clientsTab.UseVisualStyleBackColor = true;
+            this.clientsTab.Click += new System.EventHandler(this.ClientsBtn_Click);
             // 
-            // employeesBtn
+            // employeesTab
             // 
-            this.employeesBtn.Image = global::Autoreport.UI.Resources.worker;
-            this.employeesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.employeesBtn.Location = new System.Drawing.Point(3, 3);
-            this.employeesBtn.Name = "employeesBtn";
-            this.employeesBtn.Size = new System.Drawing.Size(107, 31);
-            this.employeesBtn.TabIndex = 0;
-            this.employeesBtn.Text = "Сотрудники";
-            this.employeesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.employeesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.employeesBtn.UseVisualStyleBackColor = true;
-            this.employeesBtn.Click += new System.EventHandler(this.EmployeersBtn_Click);
+            this.employeesTab.Image = global::Autoreport.UI.Resources.worker;
+            this.employeesTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.employeesTab.Location = new System.Drawing.Point(3, 3);
+            this.employeesTab.Name = "employeesTab";
+            this.employeesTab.Size = new System.Drawing.Size(107, 31);
+            this.employeesTab.TabIndex = 0;
+            this.employeesTab.Text = "Сотрудники";
+            this.employeesTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.employeesTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.employeesTab.UseVisualStyleBackColor = true;
+            this.employeesTab.Click += new System.EventHandler(this.EmployeesTab_Click);
             // 
             // dataPanel
             // 
@@ -217,7 +217,7 @@ namespace Autoreport.UI
             this.addBtn.TabIndex = 0;
             this.addBtn.Text = "Добавить";
             this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            this.addBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // editBtn
             // 
@@ -248,7 +248,7 @@ namespace Autoreport.UI
             this.reloadBtn.TabIndex = 4;
             this.reloadBtn.Text = "Обновить";
             this.reloadBtn.UseVisualStyleBackColor = true;
-            this.reloadBtn.Click += new System.EventHandler(this.reloadBtn_Click);
+            this.reloadBtn.Click += new System.EventHandler(this.ReloadBtn_Click);
             // 
             // selectBtn
             // 
@@ -316,8 +316,9 @@ namespace Autoreport.UI
             this.selectedItemsBox.BackColor = System.Drawing.Color.Silver;
             this.selectedItemsBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.selectedItemsBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectedItemsBox.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.selectedItemsBox.FormattingEnabled = true;
-            this.selectedItemsBox.ItemHeight = 15;
+            this.selectedItemsBox.ItemHeight = 20;
             this.selectedItemsBox.Location = new System.Drawing.Point(5, 30);
             this.selectedItemsBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.selectedItemsBox.Name = "selectedItemsBox";
@@ -381,12 +382,12 @@ namespace Autoreport.UI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox selectedItemsBox;
         private System.Windows.Forms.Panel selectedItemsPanel;
-        public System.Windows.Forms.Button employeesBtn;
-        public System.Windows.Forms.Button depositsBtn;
-        public System.Windows.Forms.Button ordersBtn;
-        public System.Windows.Forms.Button filmsBtn;
-        public System.Windows.Forms.Button disksBtn;
-        public System.Windows.Forms.Button clientsBtn;
+        public System.Windows.Forms.Button employeesTab;
+        public System.Windows.Forms.Button depositsTab;
+        public System.Windows.Forms.Button ordersTab;
+        public System.Windows.Forms.Button filmsTab;
+        public System.Windows.Forms.Button disksTab;
+        public System.Windows.Forms.Button clientsTab;
     }
 }
 
