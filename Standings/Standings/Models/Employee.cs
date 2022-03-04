@@ -20,6 +20,10 @@ namespace Standings.Models
     {
         public int Id { get; set; }
         [MaxLength(200)]
+        public string Login { get; set; }
+        [MaxLength(200)]
+        public string Password { get; set; }
+        [MaxLength(200)]
         public string FullName { get; set; }
         public Position Position { get; set; }
     }

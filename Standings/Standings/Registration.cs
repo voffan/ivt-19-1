@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Standings.Database;
 
 namespace Standings
 {
@@ -20,19 +21,18 @@ namespace Standings
         private void button1_Click(object sender, EventArgs e)
         {
             string Pass = password1.Text, Login = Login1.Text;
-            if (password1.Text == password2.Text) 
-            {
-                try
+             
+            
+            try
                 {
-                    Connection.employeerService.Login(Login, Pass);
+                    Connection.judgeFunctions.Login(Login, Pass);
                     Close();
                 }
-                catch (Exception exc)
+            catch (Exception exc)
                 {
                     MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-                
+               
         }
     }
 }

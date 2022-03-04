@@ -30,6 +30,8 @@ namespace Standings.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Login = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
+                    Password = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
                     FullName = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
                     Position = table.Column<int>(type: "int", nullable: false)
                 },
@@ -44,6 +46,8 @@ namespace Standings.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Login = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
+                    Password = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
                     FullNname = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
                     Category = table.Column<string>(type: "text", nullable: true),
                     Experience = table.Column<DateTime>(type: "datetime", nullable: false)

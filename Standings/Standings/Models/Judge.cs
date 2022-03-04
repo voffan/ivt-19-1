@@ -12,6 +12,10 @@ namespace Standings.Models
     {
         public int Id { get; set; }
         [MaxLength(200)]
+        public string Login { get; set; }
+        [MaxLength(200)]
+        public string Password { get; set; }
+        [MaxLength(200)]
         public string FullNname { get; set; }
         [Range(1, 10)]
         public string Category { get; set; }

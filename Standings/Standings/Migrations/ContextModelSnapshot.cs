@@ -102,6 +102,14 @@ namespace Standings.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 
+                    b.Property<string>("Login")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Password")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
                     b.Property<int>("Position")
                         .HasColumnType("int");
 
@@ -123,6 +131,14 @@ namespace Standings.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("FullNname")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Login")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Password")
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 

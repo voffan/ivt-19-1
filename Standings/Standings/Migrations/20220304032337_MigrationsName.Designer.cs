@@ -9,7 +9,7 @@ using Standings.Database;
 namespace Standings.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220222093320_MigrationsName")]
+    [Migration("20220304032337_MigrationsName")]
     partial class MigrationsName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,6 +104,14 @@ namespace Standings.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 
+                    b.Property<string>("Login")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Password")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
                     b.Property<int>("Position")
                         .HasColumnType("int");
 
@@ -125,6 +133,14 @@ namespace Standings.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("FullNname")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Login")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Password")
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 

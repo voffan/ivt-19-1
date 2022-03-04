@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Standings.Database;
 
 namespace Standings
 {
@@ -15,6 +16,22 @@ namespace Standings
         public Autorization()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string Pass = Pass1.Text, Login = Login1.Text;
+
+
+            try
+            {
+                Connection.judgeFunctions.Login(Login, Pass);
+                Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

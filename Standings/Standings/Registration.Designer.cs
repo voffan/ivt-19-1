@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.password2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -99,11 +100,22 @@
             this.password2.Size = new System.Drawing.Size(192, 23);
             this.password2.TabIndex = 7;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Gadugi", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(100, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(295, 35);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Добро пожаловать!";
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 455);
+            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.password2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -127,5 +139,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox password2;
+        private System.Windows.Forms.Label label4;
     }
 }
