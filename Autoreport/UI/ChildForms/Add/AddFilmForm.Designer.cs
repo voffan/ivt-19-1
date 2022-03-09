@@ -38,15 +38,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.filmProducerText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.filmGenreText = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.filmСountryText = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // resetBtn
             // 
-            this.resetBtn.Location = new System.Drawing.Point(12, 194);
+            this.resetBtn.Location = new System.Drawing.Point(12, 287);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(200, 30);
             this.resetBtn.TabIndex = 17;
@@ -55,7 +55,7 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(288, 194);
+            this.saveBtn.Location = new System.Drawing.Point(288, 287);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 16;
@@ -73,12 +73,12 @@
             this.flowLayoutPanel1.Controls.Add(this.label3);
             this.flowLayoutPanel1.Controls.Add(this.filmProducerText);
             this.flowLayoutPanel1.Controls.Add(this.label4);
-            this.flowLayoutPanel1.Controls.Add(this.filmGenreText);
+            this.flowLayoutPanel1.Controls.Add(this.listBox1);
             this.flowLayoutPanel1.Controls.Add(this.label5);
             this.flowLayoutPanel1.Controls.Add(this.filmСountryText);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 176);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 269);
             this.flowLayoutPanel1.TabIndex = 15;
             // 
             // label1
@@ -154,19 +154,11 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Жанры";
             // 
-            // filmGenreText
-            // 
-            this.filmGenreText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.filmGenreText.Location = new System.Drawing.Point(241, 96);
-            this.filmGenreText.Name = "filmGenreText";
-            this.filmGenreText.Size = new System.Drawing.Size(232, 25);
-            this.filmGenreText.TabIndex = 15;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(3, 127);
+            this.label5.Location = new System.Drawing.Point(3, 223);
             this.label5.Margin = new System.Windows.Forms.Padding(3);
             this.label5.MinimumSize = new System.Drawing.Size(232, 25);
             this.label5.Name = "label5";
@@ -177,16 +169,28 @@
             // filmСountryText
             // 
             this.filmСountryText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.filmСountryText.Location = new System.Drawing.Point(241, 127);
+            this.filmСountryText.Location = new System.Drawing.Point(241, 223);
             this.filmСountryText.Name = "filmСountryText";
             this.filmСountryText.Size = new System.Drawing.Size(232, 25);
             this.filmСountryText.TabIndex = 17;
+            // 
+            // listBox1
+            // 
+            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.IntegralHeight = false;
+            this.listBox1.ItemHeight = 17;
+            this.listBox1.Location = new System.Drawing.Point(241, 96);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBox1.Size = new System.Drawing.Size(232, 121);
+            this.listBox1.TabIndex = 20;
             // 
             // AddFilmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 236);
+            this.ClientSize = new System.Drawing.Size(499, 328);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -209,9 +213,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox filmProducerText;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox filmGenreText;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox filmСountryText;
         private System.Windows.Forms.MaskedTextBox filmYearText;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

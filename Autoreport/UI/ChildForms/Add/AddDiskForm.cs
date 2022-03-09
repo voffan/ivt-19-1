@@ -34,7 +34,7 @@ namespace Autoreport.UI
                 MessageBox.Show("Не выбран ни один диск", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            
             string article = articleText.Text;
             string count = countText.Text;
             string cost = costText.Text;

@@ -50,7 +50,7 @@ namespace Autoreport.UI
             string login = loginText.Text;
             string password = passwordText.Text;
 
-            Connection.employeerService.Add(lastName, firstName, middleName,
+            Connection.employeeService.Add(lastName, firstName, middleName,
                 passport, position, phone, login, password);
 
             Close();

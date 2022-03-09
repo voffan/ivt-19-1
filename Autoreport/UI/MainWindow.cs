@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Autoreport.Database;
 using Autoreport.UI.Classes;
+using Autoreport.Models;
 
 namespace Autoreport.UI
 {
@@ -30,7 +31,7 @@ namespace Autoreport.UI
             SetAppearance(1200, 620, 50, 50);
             SetSelectionElementsActive(false);
 
-            Connection.employeerService.Init();
+            Connection.employeeService.Init();
 
             //Login();
 
@@ -53,11 +54,11 @@ namespace Autoreport.UI
         {
             currentTabButton = (Button)sender;
             currentAddForm = new AddEmployeeForm();
-            dataGridView.DataSource = Connection.employeerService.GetAll();
+            dataGridView.DataSource = Connection.employeeService.GetAll();
             dataGridView.Columns["Id"].Visible = false;
         }
 
-        private void ClientsBtn_Click(object sender, EventArgs e)
+        private void ClientsTab_Click(object sender, EventArgs e)
         {
             currentTabButton = (Button)sender;
             dataGridView.DataSource = Connection.clientService.GetAll();

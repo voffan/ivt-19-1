@@ -168,7 +168,7 @@ namespace Autoreport.UI
             this.clientsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.clientsTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.clientsTab.UseVisualStyleBackColor = true;
-            this.clientsTab.Click += new System.EventHandler(this.ClientsBtn_Click);
+            this.clientsTab.Click += new System.EventHandler(this.ClientsTab_Click);
             // 
             // employeesTab
             // 

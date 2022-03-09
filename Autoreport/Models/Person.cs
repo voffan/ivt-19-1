@@ -20,5 +20,10 @@ namespace Autoreport.Models
         [DisplayName("Отчество")]
         [MaxLength(100)]
         public string Middle_name { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("Id: {0}, Name: {1}", Id, First_name);
+        }
     }
 }

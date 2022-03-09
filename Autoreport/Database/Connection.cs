@@ -11,7 +11,7 @@ namespace Autoreport.Database
         public static readonly ClientService clientService = new ClientService();
         public static readonly DepositService depositService = new DepositService();
         public static readonly DiskService diskService = new DiskService();
-        public static readonly EmployeeService employeerService = new EmployeeService();
+        public static readonly EmployeeService employeeService = new EmployeeService();
         public static readonly FilmService filmService = new FilmService();
         public static readonly OrderService orderService = new OrderService();
         public static readonly HashService hashService = new HashService();

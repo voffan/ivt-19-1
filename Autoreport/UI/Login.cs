@@ -24,7 +24,7 @@ namespace Autoreport.UI
 
             try
             {
-                Connection.employeerService.Login(login, password);
+                Connection.employeeService.Login(login, password);
                 Close();
             } catch (Exception exc)
             {
