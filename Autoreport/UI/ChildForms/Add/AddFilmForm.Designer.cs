@@ -36,17 +36,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.filmYearText = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.filmProducerText = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.removeSelectedBtn = new System.Windows.Forms.Button();
+            this.selectBtn = new System.Windows.Forms.Button();
+            this.selectedDirectorsBox = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.filmСountryText = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // resetBtn
             // 
-            this.resetBtn.Location = new System.Drawing.Point(12, 287);
+            this.resetBtn.Location = new System.Drawing.Point(12, 349);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(200, 30);
             this.resetBtn.TabIndex = 17;
@@ -55,7 +59,7 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(288, 287);
+            this.saveBtn.Location = new System.Drawing.Point(288, 349);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 16;
@@ -71,14 +75,15 @@
             this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Controls.Add(this.filmYearText);
             this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Controls.Add(this.filmProducerText);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Controls.Add(this.selectedDirectorsBox);
             this.flowLayoutPanel1.Controls.Add(this.label4);
             this.flowLayoutPanel1.Controls.Add(this.listBox1);
             this.flowLayoutPanel1.Controls.Add(this.label5);
             this.flowLayoutPanel1.Controls.Add(this.filmСountryText);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 269);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 331);
             this.flowLayoutPanel1.TabIndex = 15;
             // 
             // label1
@@ -132,21 +137,57 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(232, 25);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Режиссер";
+            this.label3.Text = "Режиссеры";
             // 
-            // filmProducerText
+            // panel1
             // 
-            this.filmProducerText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.filmProducerText.Location = new System.Drawing.Point(241, 65);
-            this.filmProducerText.Name = "filmProducerText";
-            this.filmProducerText.Size = new System.Drawing.Size(232, 25);
-            this.filmProducerText.TabIndex = 13;
+            this.panel1.Controls.Add(this.removeSelectedBtn);
+            this.panel1.Controls.Add(this.selectBtn);
+            this.panel1.Location = new System.Drawing.Point(241, 65);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(75, 49);
+            this.panel1.TabIndex = 22;
+            // 
+            // removeSelectedBtn
+            // 
+            this.removeSelectedBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.removeSelectedBtn.Enabled = false;
+            this.removeSelectedBtn.Location = new System.Drawing.Point(0, 26);
+            this.removeSelectedBtn.Name = "removeSelectedBtn";
+            this.removeSelectedBtn.Size = new System.Drawing.Size(75, 23);
+            this.removeSelectedBtn.TabIndex = 13;
+            this.removeSelectedBtn.Text = "Удалить";
+            this.removeSelectedBtn.UseVisualStyleBackColor = true;
+            this.removeSelectedBtn.Click += new System.EventHandler(this.RemoveSelectedBtn_Click);
+            // 
+            // selectBtn
+            // 
+            this.selectBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.selectBtn.Location = new System.Drawing.Point(0, 0);
+            this.selectBtn.Name = "selectBtn";
+            this.selectBtn.Size = new System.Drawing.Size(75, 23);
+            this.selectBtn.TabIndex = 12;
+            this.selectBtn.Text = "Выбрать";
+            this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
+            // 
+            // selectedDirectorsBox
+            // 
+            this.selectedDirectorsBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.selectedDirectorsBox.FormattingEnabled = true;
+            this.selectedDirectorsBox.IntegralHeight = false;
+            this.selectedDirectorsBox.ItemHeight = 17;
+            this.selectedDirectorsBox.Location = new System.Drawing.Point(322, 65);
+            this.selectedDirectorsBox.Name = "selectedDirectorsBox";
+            this.selectedDirectorsBox.Size = new System.Drawing.Size(151, 87);
+            this.selectedDirectorsBox.TabIndex = 21;
+            this.selectedDirectorsBox.SelectedIndexChanged += new System.EventHandler(this.SelectedBox_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(3, 96);
+            this.label4.Location = new System.Drawing.Point(3, 158);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.MinimumSize = new System.Drawing.Size(232, 25);
             this.label4.Name = "label4";
@@ -154,11 +195,23 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Жанры";
             // 
+            // listBox1
+            // 
+            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.IntegralHeight = false;
+            this.listBox1.ItemHeight = 17;
+            this.listBox1.Location = new System.Drawing.Point(241, 158);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBox1.Size = new System.Drawing.Size(232, 121);
+            this.listBox1.TabIndex = 20;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(3, 223);
+            this.label5.Location = new System.Drawing.Point(3, 285);
             this.label5.Margin = new System.Windows.Forms.Padding(3);
             this.label5.MinimumSize = new System.Drawing.Size(232, 25);
             this.label5.Name = "label5";
@@ -169,28 +222,16 @@
             // filmСountryText
             // 
             this.filmСountryText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.filmСountryText.Location = new System.Drawing.Point(241, 223);
+            this.filmСountryText.Location = new System.Drawing.Point(241, 285);
             this.filmСountryText.Name = "filmСountryText";
             this.filmСountryText.Size = new System.Drawing.Size(232, 25);
             this.filmСountryText.TabIndex = 17;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.IntegralHeight = false;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(241, 96);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(232, 121);
-            this.listBox1.TabIndex = 20;
             // 
             // AddFilmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 328);
+            this.ClientSize = new System.Drawing.Size(499, 390);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -198,6 +239,7 @@
             this.Text = "AddFilmForm";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -211,11 +253,14 @@
         private System.Windows.Forms.TextBox filmNameText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox filmProducerText;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox filmСountryText;
         private System.Windows.Forms.MaskedTextBox filmYearText;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button removeSelectedBtn;
+        private System.Windows.Forms.Button selectBtn;
+        private System.Windows.Forms.ListBox selectedDirectorsBox;
     }
 }

@@ -9,7 +9,12 @@ namespace Autoreport.Services
 {
     public class EmployeeService
     {
-        private Employee currentEmployee;
+        Employee currentEmployee;
+
+        public Employee CurrentEmployee
+        {
+            get { return currentEmployee; }
+        }
 
         public void Init()
         {

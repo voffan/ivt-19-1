@@ -51,6 +51,7 @@ namespace Autoreport.UI
             this.label1 = new System.Windows.Forms.Label();
             this.selectedItemsBox = new System.Windows.Forms.ListBox();
             this.selectedItemsPanel = new System.Windows.Forms.Panel();
+            this.filmDirectorsSecondaryTab = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.reportPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -64,6 +65,7 @@ namespace Autoreport.UI
             this.menuPanel.AutoSize = true;
             this.menuPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.menuPanel.BackColor = System.Drawing.Color.DarkGray;
+            this.menuPanel.Controls.Add(this.filmDirectorsSecondaryTab);
             this.menuPanel.Controls.Add(this.reportPanel);
             this.menuPanel.Controls.Add(this.depositsTab);
             this.menuPanel.Controls.Add(this.ordersTab);
@@ -73,7 +75,9 @@ namespace Autoreport.UI
             this.menuPanel.Controls.Add(this.employeesTab);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
+            this.menuPanel.MinimumSize = new System.Drawing.Size(0, 37);
             this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Padding = new System.Windows.Forms.Padding(3);
             this.menuPanel.Size = new System.Drawing.Size(816, 37);
             this.menuPanel.TabIndex = 0;
             // 
@@ -81,19 +85,19 @@ namespace Autoreport.UI
             // 
             this.reportPanel.Controls.Add(this.reportBtn);
             this.reportPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.reportPanel.Location = new System.Drawing.Point(734, 0);
+            this.reportPanel.Location = new System.Drawing.Point(731, 3);
             this.reportPanel.Name = "reportPanel";
-            this.reportPanel.Size = new System.Drawing.Size(82, 37);
+            this.reportPanel.Size = new System.Drawing.Size(82, 31);
             this.reportPanel.TabIndex = 7;
             // 
             // reportBtn
             // 
-            this.reportBtn.AutoSize = true;
+            this.reportBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportBtn.Image = global::Autoreport.UI.Resources.report;
             this.reportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.reportBtn.Location = new System.Drawing.Point(5, 3);
+            this.reportBtn.Location = new System.Drawing.Point(0, 0);
             this.reportBtn.Name = "reportBtn";
-            this.reportBtn.Size = new System.Drawing.Size(73, 31);
+            this.reportBtn.Size = new System.Drawing.Size(82, 31);
             this.reportBtn.TabIndex = 6;
             this.reportBtn.Text = "Отчет";
             this.reportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,9 +106,11 @@ namespace Autoreport.UI
             // 
             // depositsTab
             // 
+            this.depositsTab.AutoSize = true;
+            this.depositsTab.Dock = System.Windows.Forms.DockStyle.Left;
             this.depositsTab.Image = global::Autoreport.UI.Resources.deposit;
             this.depositsTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.depositsTab.Location = new System.Drawing.Point(472, 3);
+            this.depositsTab.Location = new System.Drawing.Point(442, 3);
             this.depositsTab.Name = "depositsTab";
             this.depositsTab.Size = new System.Drawing.Size(80, 31);
             this.depositsTab.TabIndex = 5;
@@ -116,9 +122,11 @@ namespace Autoreport.UI
             // 
             // ordersTab
             // 
+            this.ordersTab.AutoSize = true;
+            this.ordersTab.Dock = System.Windows.Forms.DockStyle.Left;
             this.ordersTab.Image = global::Autoreport.UI.Resources.cart;
             this.ordersTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ordersTab.Location = new System.Drawing.Point(386, 3);
+            this.ordersTab.Location = new System.Drawing.Point(362, 3);
             this.ordersTab.Name = "ordersTab";
             this.ordersTab.Size = new System.Drawing.Size(80, 31);
             this.ordersTab.TabIndex = 4;
@@ -130,9 +138,11 @@ namespace Autoreport.UI
             // 
             // filmsTab
             // 
+            this.filmsTab.AutoSize = true;
+            this.filmsTab.Dock = System.Windows.Forms.DockStyle.Left;
             this.filmsTab.Image = global::Autoreport.UI.Resources.film_projector;
             this.filmsTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.filmsTab.Location = new System.Drawing.Point(292, 3);
+            this.filmsTab.Location = new System.Drawing.Point(274, 3);
             this.filmsTab.Name = "filmsTab";
             this.filmsTab.Size = new System.Drawing.Size(88, 31);
             this.filmsTab.TabIndex = 3;
@@ -144,9 +154,11 @@ namespace Autoreport.UI
             // 
             // disksTab
             // 
+            this.disksTab.AutoSize = true;
+            this.disksTab.Dock = System.Windows.Forms.DockStyle.Left;
             this.disksTab.Image = global::Autoreport.UI.Resources.disk;
             this.disksTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.disksTab.Location = new System.Drawing.Point(211, 3);
+            this.disksTab.Location = new System.Drawing.Point(199, 3);
             this.disksTab.Name = "disksTab";
             this.disksTab.Size = new System.Drawing.Size(75, 31);
             this.disksTab.TabIndex = 2;
@@ -158,11 +170,13 @@ namespace Autoreport.UI
             // 
             // clientsTab
             // 
+            this.clientsTab.AutoSize = true;
+            this.clientsTab.Dock = System.Windows.Forms.DockStyle.Left;
             this.clientsTab.Image = global::Autoreport.UI.Resources.user_group;
             this.clientsTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.clientsTab.Location = new System.Drawing.Point(116, 4);
+            this.clientsTab.Location = new System.Drawing.Point(110, 3);
             this.clientsTab.Name = "clientsTab";
-            this.clientsTab.Size = new System.Drawing.Size(89, 30);
+            this.clientsTab.Size = new System.Drawing.Size(89, 31);
             this.clientsTab.TabIndex = 1;
             this.clientsTab.Text = "Клиенты";
             this.clientsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -172,6 +186,8 @@ namespace Autoreport.UI
             // 
             // employeesTab
             // 
+            this.employeesTab.AutoSize = true;
+            this.employeesTab.Dock = System.Windows.Forms.DockStyle.Left;
             this.employeesTab.Image = global::Autoreport.UI.Resources.worker;
             this.employeesTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.employeesTab.Location = new System.Drawing.Point(3, 3);
@@ -337,6 +353,20 @@ namespace Autoreport.UI
             this.selectedItemsPanel.Size = new System.Drawing.Size(206, 474);
             this.selectedItemsPanel.TabIndex = 8;
             // 
+            // filmDirectorsSecondaryTab
+            // 
+            this.filmDirectorsSecondaryTab.AutoSize = true;
+            this.filmDirectorsSecondaryTab.Dock = System.Windows.Forms.DockStyle.Left;
+            this.filmDirectorsSecondaryTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.filmDirectorsSecondaryTab.Location = new System.Drawing.Point(522, 3);
+            this.filmDirectorsSecondaryTab.Name = "filmDirectorsSecondaryTab";
+            this.filmDirectorsSecondaryTab.Size = new System.Drawing.Size(100, 31);
+            this.filmDirectorsSecondaryTab.TabIndex = 8;
+            this.filmDirectorsSecondaryTab.Text = "Режиссеры";
+            this.filmDirectorsSecondaryTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.filmDirectorsSecondaryTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.filmDirectorsSecondaryTab.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -348,13 +378,13 @@ namespace Autoreport.UI
             this.Controls.Add(this.controlPanel);
             this.Controls.Add(this.menuPanel);
             this.Location = new System.Drawing.Point(50, 50);
-            this.MinimumSize = new System.Drawing.Size(650, 400);
+            this.MinimumSize = new System.Drawing.Size(623, 400);
             this.Name = "MainWindow";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.menuPanel.ResumeLayout(false);
+            this.menuPanel.PerformLayout();
             this.reportPanel.ResumeLayout(false);
-            this.reportPanel.PerformLayout();
             this.dataPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.controlPanel.ResumeLayout(false);
@@ -382,12 +412,13 @@ namespace Autoreport.UI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox selectedItemsBox;
         private System.Windows.Forms.Panel selectedItemsPanel;
-        public System.Windows.Forms.Button employeesTab;
         public System.Windows.Forms.Button depositsTab;
         public System.Windows.Forms.Button ordersTab;
         public System.Windows.Forms.Button filmsTab;
         public System.Windows.Forms.Button disksTab;
         public System.Windows.Forms.Button clientsTab;
+        public System.Windows.Forms.Button employeesTab;
+        public System.Windows.Forms.Button filmDirectorsSecondaryTab;
     }
 }
 

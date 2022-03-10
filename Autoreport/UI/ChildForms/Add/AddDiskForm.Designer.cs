@@ -39,7 +39,7 @@ namespace Autoreport.UI
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.removeSelectedBtn = new System.Windows.Forms.Button();
-            this.selectFilmsBtn = new System.Windows.Forms.Button();
+            this.selectBtn = new System.Windows.Forms.Button();
             this.selectedFilmsBox = new System.Windows.Forms.ListBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -143,7 +143,7 @@ namespace Autoreport.UI
             // panel1
             // 
             this.panel1.Controls.Add(this.removeSelectedBtn);
-            this.panel1.Controls.Add(this.selectFilmsBtn);
+            this.panel1.Controls.Add(this.selectBtn);
             this.panel1.Location = new System.Drawing.Point(241, 96);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(75, 49);
@@ -161,16 +161,16 @@ namespace Autoreport.UI
             this.removeSelectedBtn.UseVisualStyleBackColor = true;
             this.removeSelectedBtn.Click += new System.EventHandler(this.RemoveSelectedBtn_Click);
             // 
-            // selectFilmsBtn
+            // selectBtn
             // 
-            this.selectFilmsBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.selectFilmsBtn.Location = new System.Drawing.Point(0, 0);
-            this.selectFilmsBtn.Name = "selectFilmsBtn";
-            this.selectFilmsBtn.Size = new System.Drawing.Size(75, 23);
-            this.selectFilmsBtn.TabIndex = 12;
-            this.selectFilmsBtn.Text = "Выбрать";
-            this.selectFilmsBtn.UseVisualStyleBackColor = true;
-            this.selectFilmsBtn.Click += new System.EventHandler(this.SelectFilmsBtn_Click);
+            this.selectBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.selectBtn.Location = new System.Drawing.Point(0, 0);
+            this.selectBtn.Name = "selectBtn";
+            this.selectBtn.Size = new System.Drawing.Size(75, 23);
+            this.selectBtn.TabIndex = 12;
+            this.selectBtn.Text = "Выбрать";
+            this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
             // 
             // selectedFilmsBox
             // 
@@ -182,7 +182,7 @@ namespace Autoreport.UI
             this.selectedFilmsBox.Name = "selectedFilmsBox";
             this.selectedFilmsBox.Size = new System.Drawing.Size(151, 87);
             this.selectedFilmsBox.TabIndex = 13;
-            this.selectedFilmsBox.SelectedIndexChanged += new System.EventHandler(this.SelectedFilmsBox_SelectedIndexChanged);
+            this.selectedFilmsBox.SelectedIndexChanged += new System.EventHandler(this.SelectedBox_SelectedIndexChanged);
             // 
             // resetBtn
             // 
@@ -215,7 +215,7 @@ namespace Autoreport.UI
             this.MinimumSize = new System.Drawing.Size(516, 200);
             this.Name = "AddDiskForm";
             this.Text = "AddDiskForm";
-            this.Load += new System.EventHandler(this.AddDiskForm_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -234,7 +234,7 @@ namespace Autoreport.UI
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.Button selectFilmsBtn;
+        private System.Windows.Forms.Button selectBtn;
         private System.Windows.Forms.ListBox selectedFilmsBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button removeSelectedBtn;

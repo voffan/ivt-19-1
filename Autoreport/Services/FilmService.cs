@@ -59,5 +59,21 @@ namespace Autoreport.Services
         {
 
         }
+
+        internal void AddDirector(string lastName, string firstName, string middleName)
+        {
+            Person FilmDirector = new Person()
+            {
+                Last_name = lastName,
+                First_name = firstName,
+                Middle_name = middleName
+            };
+
+            using (DataContext db = Connection.Connect())
+            {
+                db.Persons.Add(FilmDirector);
+                db.SaveChanges();
+            }
+        }
     }
 }

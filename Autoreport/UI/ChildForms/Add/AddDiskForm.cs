@@ -16,14 +16,14 @@ namespace Autoreport.UI
     public partial class AddDiskForm : Form
     {
         MainWindow owner;
-        Button filmsTab;
-        Action<bool, Button> OwnerSelectModeEnabled;
+        Button relatedTab;
+        Action<bool, Button> OwnerSelectMode_Turn;
         Action CloseHandler;
 
-        public AddDiskForm(Button filmsTab, Action OnCloseHandler)
+        public AddDiskForm(Button relatedTab, Action OnCloseHandler)
         {
             InitializeComponent();
-            this.filmsTab = filmsTab;
+            this.relatedTab = relatedTab;
             CloseHandler = OnCloseHandler;
         }
 
@@ -54,9 +54,9 @@ namespace Autoreport.UI
                 removeSelectedBtn.Enabled = false;
         }
 
-        private void SelectFilmsBtn_Click(object sender, EventArgs e)
+        private void SelectBtn_Click(object sender, EventArgs e)
         {
-            OwnerSelectModeEnabled(true, filmsTab);
+            OwnerSelectMode_Turn(true, relatedTab);
             this.Hide();
         }
 
@@ -67,17 +67,17 @@ namespace Autoreport.UI
                 selectedFilmsBox.Items.Add(item);
             }
 
-            OwnerSelectModeEnabled(false, null);
+            OwnerSelectMode_Turn(false, null);
             this.ShowDialog(owner);
         }
 
-        private void AddDiskForm_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             owner = (MainWindow)Owner;
-            OwnerSelectModeEnabled = owner.SelectMode(OnSelectedHandler);
+            OwnerSelectMode_Turn = owner.SelectMode(OnSelectedHandler);
         }
 
-        private void SelectedFilmsBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void SelectedBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             removeSelectedBtn.Enabled = true;
         }
