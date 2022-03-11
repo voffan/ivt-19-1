@@ -9,8 +9,8 @@ using gallerys.Context;
 namespace gallerys.Migrations
 {
     [DbContext(typeof(gallContext))]
-    [Migration("20220302160835_Migr")]
-    partial class Migr
+    [Migration("20220311060639_migr1")]
+    partial class migr1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,9 +44,16 @@ namespace gallerys.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Login1")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
                     b.Property<string>("Name")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Passw1")
+                        .HasColumnType("text");
 
                     b.Property<int>("PositionId")
                         .HasColumnType("int");

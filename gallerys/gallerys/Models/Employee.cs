@@ -18,6 +18,10 @@ namespace gallerys.Models
         public int Id { get; set; }
         [MaxLength(100)]
         public string Name { get; set; }
+        [MaxLength(50)]
+        public string Login1 { get; set; }
+        [MinLength(4)]
+        public string Passw1 { get; set; }
         public Right Right { get; set; }
         public int PositionId { get; set; }
         public virtual Position Positions { get; set; }

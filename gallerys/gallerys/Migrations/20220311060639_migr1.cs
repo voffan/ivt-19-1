@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace gallerys.Migrations
 {
-    public partial class Migr : Migration
+    public partial class migr1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -100,6 +100,8 @@ namespace gallerys.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    Login1 = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Passw1 = table.Column<string>(type: "text", nullable: true),
                     Right = table.Column<int>(type: "int", nullable: false),
                     PositionId = table.Column<int>(type: "int", nullable: false)
                 },
