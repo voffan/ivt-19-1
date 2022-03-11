@@ -99,8 +99,8 @@ namespace Comp_park_app_form
         private void button2_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem.ToString() == "Оперативная память") {
-                Form form2 = new Form_addRAM();
-                form2.ShowDialog();
+                Form form_addRAM = new Form_addRAM();
+                form_addRAM.ShowDialog();
             }
         }
     }
