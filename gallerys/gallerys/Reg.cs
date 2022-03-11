@@ -23,10 +23,6 @@ namespace gallerys
             string log = textBox1.Text;
             string pass = textBox2.Text;
             gallContext c = new gallContext();
-            try
-            {
-                Connection.
-            }
         }
     }
 }

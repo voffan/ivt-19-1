@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using gallerys;
 using gallerys.Context;
+using Microsoft.EntityFrameworkCore;
 namespace gallerys
 {
     public partial class Form1 : Form
