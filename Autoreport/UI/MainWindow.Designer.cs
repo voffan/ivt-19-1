@@ -30,6 +30,7 @@ namespace Autoreport.UI
         private void InitializeComponent()
         {
             this.menuPanel = new System.Windows.Forms.Panel();
+            this.filmDirectorsSecondaryTab = new System.Windows.Forms.Button();
             this.reportPanel = new System.Windows.Forms.Panel();
             this.reportBtn = new System.Windows.Forms.Button();
             this.depositsTab = new System.Windows.Forms.Button();
@@ -44,14 +45,13 @@ namespace Autoreport.UI
             this.editBtn = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
             this.reloadBtn = new System.Windows.Forms.Button();
-            this.selectBtn = new System.Windows.Forms.Button();
+            this.doneBtn = new System.Windows.Forms.Button();
             this.infoBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.controlPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.selectedItemsBox = new System.Windows.Forms.ListBox();
             this.selectedItemsPanel = new System.Windows.Forms.Panel();
-            this.filmDirectorsSecondaryTab = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.reportPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -80,6 +80,21 @@ namespace Autoreport.UI
             this.menuPanel.Padding = new System.Windows.Forms.Padding(3);
             this.menuPanel.Size = new System.Drawing.Size(816, 37);
             this.menuPanel.TabIndex = 0;
+            // 
+            // filmDirectorsSecondaryTab
+            // 
+            this.filmDirectorsSecondaryTab.AutoSize = true;
+            this.filmDirectorsSecondaryTab.Dock = System.Windows.Forms.DockStyle.Left;
+            this.filmDirectorsSecondaryTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.filmDirectorsSecondaryTab.Location = new System.Drawing.Point(522, 3);
+            this.filmDirectorsSecondaryTab.Name = "filmDirectorsSecondaryTab";
+            this.filmDirectorsSecondaryTab.Size = new System.Drawing.Size(100, 31);
+            this.filmDirectorsSecondaryTab.TabIndex = 8;
+            this.filmDirectorsSecondaryTab.Text = "Режиссеры";
+            this.filmDirectorsSecondaryTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.filmDirectorsSecondaryTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.filmDirectorsSecondaryTab.UseVisualStyleBackColor = true;
+            this.filmDirectorsSecondaryTab.Click += new System.EventHandler(this.filmDirectorsSecondaryTab_Click);
             // 
             // reportPanel
             // 
@@ -266,15 +281,15 @@ namespace Autoreport.UI
             this.reloadBtn.UseVisualStyleBackColor = true;
             this.reloadBtn.Click += new System.EventHandler(this.ReloadBtn_Click);
             // 
-            // selectBtn
+            // doneBtn
             // 
-            this.selectBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.selectBtn.Location = new System.Drawing.Point(5, 393);
-            this.selectBtn.Name = "selectBtn";
-            this.selectBtn.Size = new System.Drawing.Size(136, 38);
-            this.selectBtn.TabIndex = 5;
-            this.selectBtn.Text = "Выбрать";
-            this.selectBtn.UseVisualStyleBackColor = true;
+            this.doneBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.doneBtn.Location = new System.Drawing.Point(5, 393);
+            this.doneBtn.Name = "doneBtn";
+            this.doneBtn.Size = new System.Drawing.Size(136, 38);
+            this.doneBtn.TabIndex = 5;
+            this.doneBtn.Text = "Готово";
+            this.doneBtn.UseVisualStyleBackColor = true;
             // 
             // infoBtn
             // 
@@ -303,7 +318,7 @@ namespace Autoreport.UI
             this.controlPanel.BackColor = System.Drawing.Color.Silver;
             this.controlPanel.Controls.Add(this.deleteBtn);
             this.controlPanel.Controls.Add(this.infoBtn);
-            this.controlPanel.Controls.Add(this.selectBtn);
+            this.controlPanel.Controls.Add(this.doneBtn);
             this.controlPanel.Controls.Add(this.reloadBtn);
             this.controlPanel.Controls.Add(this.searchBtn);
             this.controlPanel.Controls.Add(this.editBtn);
@@ -320,11 +335,11 @@ namespace Autoreport.UI
             this.label1.BackColor = System.Drawing.Color.Silver;
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Location = new System.Drawing.Point(5, 5);
-            this.label1.MaximumSize = new System.Drawing.Size(0, 25);
+            this.label1.MaximumSize = new System.Drawing.Size(0, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 25);
+            this.label1.Size = new System.Drawing.Size(196, 55);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Выбранные элементы";
+            this.label1.Text = "Выбранные записи\r\n(дважды кликните по записи, чтобы выбрать ее)";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // selectedItemsBox
@@ -335,10 +350,10 @@ namespace Autoreport.UI
             this.selectedItemsBox.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.selectedItemsBox.FormattingEnabled = true;
             this.selectedItemsBox.ItemHeight = 20;
-            this.selectedItemsBox.Location = new System.Drawing.Point(5, 30);
+            this.selectedItemsBox.Location = new System.Drawing.Point(5, 60);
             this.selectedItemsBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.selectedItemsBox.Name = "selectedItemsBox";
-            this.selectedItemsBox.Size = new System.Drawing.Size(196, 439);
+            this.selectedItemsBox.Size = new System.Drawing.Size(196, 409);
             this.selectedItemsBox.TabIndex = 1;
             // 
             // selectedItemsPanel
@@ -352,20 +367,6 @@ namespace Autoreport.UI
             this.selectedItemsPanel.Padding = new System.Windows.Forms.Padding(5);
             this.selectedItemsPanel.Size = new System.Drawing.Size(206, 474);
             this.selectedItemsPanel.TabIndex = 8;
-            // 
-            // filmDirectorsSecondaryTab
-            // 
-            this.filmDirectorsSecondaryTab.AutoSize = true;
-            this.filmDirectorsSecondaryTab.Dock = System.Windows.Forms.DockStyle.Left;
-            this.filmDirectorsSecondaryTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.filmDirectorsSecondaryTab.Location = new System.Drawing.Point(522, 3);
-            this.filmDirectorsSecondaryTab.Name = "filmDirectorsSecondaryTab";
-            this.filmDirectorsSecondaryTab.Size = new System.Drawing.Size(100, 31);
-            this.filmDirectorsSecondaryTab.TabIndex = 8;
-            this.filmDirectorsSecondaryTab.Text = "Режиссеры";
-            this.filmDirectorsSecondaryTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.filmDirectorsSecondaryTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.filmDirectorsSecondaryTab.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -405,7 +406,7 @@ namespace Autoreport.UI
         private System.Windows.Forms.Button editBtn;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button reloadBtn;
-        private System.Windows.Forms.Button selectBtn;
+        private System.Windows.Forms.Button doneBtn;
         private System.Windows.Forms.Button infoBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Panel controlPanel;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Autoreport.Models
 {
@@ -9,12 +10,11 @@ namespace Autoreport.Models
     {
         public int Id { get; set; }
 
-        [DisplayName("Название")]
-        [MaxLength(200)]
+        [Required, DisplayName("Название"), MaxLength(200)]
         public string Name { get; set; }
 
-        [DisplayName("Год")]
-        public DateTime Year { get; set; }
+        [Required, DisplayName("Дата выхода"), Column(TypeName = "Date")]
+        public DateTime Date { get; set; }
 
         [DisplayName("Страна")]
         public virtual Country FilmCounty { get; set; }

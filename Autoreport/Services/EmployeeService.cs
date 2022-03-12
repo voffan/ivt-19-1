@@ -34,6 +34,7 @@ namespace Autoreport.Services
                         Passport_serial = 0000,
                         Passport_number = 000000,
                         EmplPosition = Position.Admin,
+                        EmplStatus = EmplStatus.Working,
                         Phone_number = "+7 (000) 000-00-00",
                         Login = "admin",
                         PasswordHash = Connection.hashService.GetPasswordHash(emplPassword)
@@ -83,7 +84,8 @@ namespace Autoreport.Services
                 Last_name = lastName, First_name = firstName,
                 Middle_name = middleName, Passport_serial = passportSerial,
                 Passport_number = passportNumber, EmplPosition=position,
-                Phone_number = phone, Login = login, PasswordHash = passwordHash
+                EmplStatus = EmplStatus.Working, Phone_number = phone,
+                Login = login, PasswordHash = passwordHash
             };
 
             using (DataContext db = Connection.Connect())

@@ -9,16 +9,13 @@ namespace Autoreport.Models
     {
         public int Id { get; set; }
 
-        [DisplayName("Имя")]
-        [MaxLength(100)]
+        [DisplayName("Имя"), MaxLength(100)]
         public string First_name { get; set; }
 
-        [DisplayName("Фамилия")]
-        [MaxLength(100)]
+        [DisplayName("Фамилия"), MaxLength(100)]
         public string Last_name { get; set; }
 
-        [DisplayName("Отчество")]
-        [MaxLength(100)]
+        [DisplayName("Отчество"), MaxLength(100)]
         public string Middle_name { get; set; }
 
         public override string ToString()

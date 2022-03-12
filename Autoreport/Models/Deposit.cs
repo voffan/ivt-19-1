@@ -16,12 +16,10 @@ namespace Autoreport.Models
     {
         public int Id { get; set; }
 
-        [DisplayName("Данные")]
-        [MaxLength(300)]
+        [DisplayName("Данные"), MaxLength(300)]
         public string Data { get; set; } // наименование, идентификационные данные
 
-        [DisplayName("Сумма")]
-        [Range(1.0, 100000.0)]
+        [DisplayName("Сумма"), Range(1.0, 100000.0)]
         public string Value { get; set; }
 
         [DisplayName("Тип залога")]

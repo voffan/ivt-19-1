@@ -8,6 +8,11 @@
     <StartupObject />
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Database\DataContext.cs~RF29f52815.TMP" />
     <None Remove="UI\Login.cs~RF261b3eb6.TMP" />
@@ -46,6 +51,10 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UI\ChildForms\Add\Parents\" />
   </ItemGroup>
 
 </Project>

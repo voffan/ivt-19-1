@@ -142,14 +142,30 @@ namespace Autoreport.UI
             currentTabButton = (Button)sender;
             currentAddForm = new AddEmployeeForm();
             dataGridView.DataSource = Connection.employeeService.GetAll();
-            //dataGridView.Columns["Id"].Visible = false;
+            dataGridView.Columns["Id"].DisplayIndex = 0;
+            dataGridView.Columns["Id"].Visible = false;
+
+            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
+
+            SetCharacteristic(dataGridView.Columns["First_name"]);
+            SetCharacteristic(dataGridView.Columns["Last_name"]);
+            SetCharacteristic(dataGridView.Columns["Middle_name"]);
+            SetCharacteristic(dataGridView.Columns["EmplPosition"]);
         }
 
         private void ClientsTab_Click(object sender, EventArgs e)
         {
             currentTabButton = (Button)sender;
             dataGridView.DataSource = Connection.clientService.GetAll();
-            //dataGridView.Columns["Id"].Visible = false;
+            dataGridView.Columns["Id"].DisplayIndex = 0;
+            dataGridView.Columns["Id"].Visible = false;
+
+            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
+
+            SetCharacteristic(dataGridView.Columns["First_name"]);
+            SetCharacteristic(dataGridView.Columns["Last_name"]);
+            SetCharacteristic(dataGridView.Columns["Middle_name"]);
+            SetCharacteristic(dataGridView.Columns["Phone_number1"]);
         }
 
         private void DisksTab_Click(object sender, EventArgs e)
@@ -157,7 +173,12 @@ namespace Autoreport.UI
             currentTabButton = (Button)sender;
             currentAddForm = new AddDiskForm(filmsTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.diskService.GetAll();
-            //dataGridView.Columns["Id"].Visible = false;
+            dataGridView.Columns["Id"].DisplayIndex = 0;
+            dataGridView.Columns["Id"].Visible = false;
+
+            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
+
+            SetCharacteristic(dataGridView.Columns["Article"]);
         }
 
         private void FilmsTab_Click(object sender, EventArgs e)
@@ -165,21 +186,65 @@ namespace Autoreport.UI
             currentTabButton = (Button)sender;
             currentAddForm = new AddFilmForm(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.filmService.GetAll();
-            //dataGridView.Columns["Id"].Visible = false;
+            dataGridView.Columns["Id"].DisplayIndex = 0;
+            dataGridView.Columns["Id"].Visible = false;
+
+            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
+
+            SetCharacteristic(dataGridView.Columns["Name"]);
+            SetCharacteristic(dataGridView.Columns["Date"]);
         }
 
         private void OrdersTab_Click(object sender, EventArgs e)
         {
             currentTabButton = (Button)sender;
             dataGridView.DataSource = Connection.orderService.GetAll();
-            //dataGridView.Columns["Id"].Visible = false;
+            dataGridView.Columns["Id"].DisplayIndex = 0;
+            dataGridView.Columns["Id"].Visible = false;
         }
 
         private void DepositsTab_Click(object sender, EventArgs e)
         {
             currentTabButton = (Button)sender;
             dataGridView.DataSource = Connection.depositService.GetAll();
-            //dataGridView.Columns["Id"].Visible = false;
+            dataGridView.Columns["Id"].DisplayIndex = 0;
+            dataGridView.Columns["Id"].Visible = false;
+        }
+
+        private void filmDirectorsSecondaryTab_Click(object sender, EventArgs e)
+        {
+            currentTabButton = (Button)sender;
+            dataGridView.DataSource = Connection.filmService.GetFilmsDirectors();
+            dataGridView.Columns["Id"].DisplayIndex = 0;
+            dataGridView.Columns["Id"].Visible = false;
+
+            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
+
+            SetCharacteristic(dataGridView.Columns["First_name"]);
+            SetCharacteristic(dataGridView.Columns["Last_name"]);
+            SetCharacteristic(dataGridView.Columns["Middle_name"]);
+        }
+
+        /// <summary>
+        /// Замыкающая функция, устанавливающая значение "Characteristic" для
+        /// свойства Tag столбцов таблицы. Столбцы с тэгом Characteristic
+        /// могут понадобиться пользователю в первую очередь, поэтому они расположены
+        /// друг за другом и идут первыми после невидимого поля Id, индекс которого 0.
+        /// </summary>
+        /// <param name="startIndex"></param>
+        /// <returns></returns>
+        private Action<DataGridViewColumn> CharacteristicSetter(int startIndex = 1)
+        {
+            int index = startIndex;
+
+            void Set(DataGridViewColumn column)
+            {
+                column.Tag = "Characteristic";
+                column.DisplayIndex = index;
+                index++;
+            }
+
+            return Set;
         }
 
         /// <summary>
@@ -195,9 +260,10 @@ namespace Autoreport.UI
 
         /// <summary>
         /// Обрабатывает двойной клик по строке таблицы
-        /// Создает объект GridSelectedItem, полю Id которого устанавливает значение
-        /// элемента выбранной строки с индексом 0, полю VisibleName - значением
-        /// элемента с индексом 1
+        /// Создает объект GridSelectedItem
+        /// Полю GridSelectedItem.Id устанавливается значение Id выбранной строки
+        /// Поле GridSelectedItem.visibleName соответствует конкатенация значений тех полей,
+        /// свойство Tag которых установлено в значение "Characteristic"
         /// Добавляет созданный объект в ListBox selectedItemsBox,
         /// при условии, что там нет GridSelectedItem с таким же индексом)
         /// </summary>
@@ -207,14 +273,28 @@ namespace Autoreport.UI
         {
             if (e.RowIndex == -1) return;
 
+            int Id = (int)dataGridView.Rows[e.RowIndex].Cells[0].Value;
+
+            if (selectedItemsBox.Items.Cast<GridSelectedItem>().Count(_item => _item.Id == Id) != 0)
+                return;
+
+            string visibleName = "";
+
+            foreach (DataGridViewCell cell in dataGridView.Rows[e.RowIndex].Cells) {
+                if (cell.OwningColumn.Tag != null &&
+                    cell.OwningColumn.Tag.ToString() == "Characteristic")
+                {
+                    visibleName += cell.FormattedValue + " ";
+                }
+            }
+
+            visibleName.TrimEnd(); // удаляем последний пробел
+
             GridSelectedItem item = new GridSelectedItem()
             {
-                Id = (int)dataGridView.Rows[e.RowIndex].Cells[0].Value,
-                VisibleName = dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()
+                Id = Id,
+                VisibleName = visibleName
             };
-
-            if (selectedItemsBox.Items.Cast<GridSelectedItem>().Select(_item => _item.Id == item.Id).Count() != 0)
-                return;
 
             selectedItemsBox.Items.Add(item);
         }
@@ -231,9 +311,9 @@ namespace Autoreport.UI
         private void ShowSelectBtn(bool show)
         {
             if (show)
-                selectBtn.Show();
+                doneBtn.Show();
             else
-                selectBtn.Hide();
+                doneBtn.Hide();
         }
 
         /// <summary>
@@ -337,14 +417,14 @@ namespace Autoreport.UI
             dataGridView.CellDoubleClick -= tableItemDoubleClickEvent;
         }
 
-        private void ConnectSelectButton(EventHandler Handler)
+        private void ConnectDoneButton(EventHandler Handler)
         {
-            selectBtn.Click += Handler;
+            doneBtn.Click += Handler;
         }
 
-        private void RemoveSelectConnection(EventHandler Handler)
+        private void DisconnectDoneButton(EventHandler Handler)
         {
-            selectBtn.Click -= Handler;
+            doneBtn.Click -= Handler;
         }
 
         /// <summary>
@@ -352,7 +432,7 @@ namespace Autoreport.UI
         /// из начального режима в режим выбора значений из таблицы, 
         /// либо обратно в начальный режим.
         /// </summary>
-        /// <param name="Handler"></param>
+        /// <param name="Handler">Функция дочерней формы, которая вызывается при нажатии кнопки "Готово"</param>
         /// <returns name="Set" type="Action<bool, Button>">
         ///     Функция, примающая аргументы:
         ///         bool - активировать режим выбора если true, иначе - деактивировать
@@ -362,7 +442,7 @@ namespace Autoreport.UI
         public Action<bool, Button> SelectMode(Action<ListBox.ObjectCollection> Handler)
         {
             Button lastTab = currentTabButton;
-            EventHandler selectEventHandler = new EventHandler(
+            EventHandler doneEventHandler = new EventHandler(
                 (object sender, EventArgs e) => Handler(selectedItemsBox.Items));
 
             void Turn(bool enabled, Button selectTab)
@@ -377,12 +457,12 @@ namespace Autoreport.UI
                     }
 
                     DisableAllTabsExcept(selectTab);
-                    ConnectSelectButton(selectEventHandler);
+                    ConnectDoneButton(doneEventHandler);
                 }
                 else
                 {
                     EnableAllTabs();
-                    RemoveSelectConnection(selectEventHandler);
+                    DisconnectDoneButton(doneEventHandler);
                     
                     lastTab.PerformClick();
                 }

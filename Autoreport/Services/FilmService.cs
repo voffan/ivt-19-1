@@ -9,14 +9,12 @@ namespace Autoreport.Services
 {
     public class FilmService
     {
-        public void Add(string filmName, string filmYear)
+        public void Add(string filmName, DateTime filmDate)
         {
-            DateTime year = new DateTime(Int32.Parse(filmYear), 1, 1, 1, 1, 1, 1);
-
             Film film = new Film()
             {
                 Name = filmName,
-                Year = year
+                Date = filmDate
             };
 
             using (DataContext db = Connection.Connect())
@@ -36,6 +34,14 @@ namespace Autoreport.Services
             using (DataContext db = Connection.Connect())
             {
                 return db.Films.ToList();
+            }
+        }
+
+        public List<Person> GetFilmsDirectors()
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                return db.Persons.ToList();
             }
         }
 

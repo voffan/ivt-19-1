@@ -31,7 +31,7 @@ namespace Autoreport.UI.ChildForms.Add
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.lastNameText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -40,22 +40,22 @@ namespace Autoreport.UI.ChildForms.Add
             this.middleNameText = new System.Windows.Forms.TextBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayout.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // flowLayout
             // 
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.lastNameText);
-            this.flowLayoutPanel1.Controls.Add(this.label7);
-            this.flowLayoutPanel1.Controls.Add(this.firstNameText);
-            this.flowLayoutPanel1.Controls.Add(this.label9);
-            this.flowLayoutPanel1.Controls.Add(this.middleNameText);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 114);
-            this.flowLayoutPanel1.TabIndex = 12;
+            this.flowLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayout.Controls.Add(this.label1);
+            this.flowLayout.Controls.Add(this.lastNameText);
+            this.flowLayout.Controls.Add(this.label7);
+            this.flowLayout.Controls.Add(this.firstNameText);
+            this.flowLayout.Controls.Add(this.label9);
+            this.flowLayout.Controls.Add(this.middleNameText);
+            this.flowLayout.Location = new System.Drawing.Point(12, 12);
+            this.flowLayout.Name = "flowLayout";
+            this.flowLayout.Size = new System.Drawing.Size(476, 114);
+            this.flowLayout.TabIndex = 12;
             // 
             // label1
             // 
@@ -125,6 +125,7 @@ namespace Autoreport.UI.ChildForms.Add
             this.resetBtn.TabIndex = 15;
             this.resetBtn.Text = "Сброс";
             this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // saveBtn
             // 
@@ -143,18 +144,18 @@ namespace Autoreport.UI.ChildForms.Add
             this.ClientSize = new System.Drawing.Size(500, 173);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.resetBtn);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowLayout);
             this.Name = "AddFilmDirectorForm";
             this.Text = "AddFilmDirectorForm";
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayout.ResumeLayout(false);
+            this.flowLayout.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox firstNameText;

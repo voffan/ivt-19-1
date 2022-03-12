@@ -13,7 +13,7 @@ using Autoreport.Database;
 
 namespace Autoreport.UI
 {
-    public partial class AddEmployeeForm : Form
+    public partial class AddEmployeeForm : BaseAddForm
     {
         public AddEmployeeForm()
         {
@@ -33,12 +33,7 @@ namespace Autoreport.UI
             positionBox.DataSource = new BindingSource(DescriptionAttributes<Position>.RetrieveAttributes(), null);
         }
 
-        /// <summary>
-        /// Вызывает метод, сохраняющий данные из формы в БД
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void saveBtn_Click(object sender, EventArgs e)
+        protected override void saveBtn_Click(object sender, EventArgs e)
         {
             string lastName = lastNameText.Text;
             string firstName = firstNameText.Text;

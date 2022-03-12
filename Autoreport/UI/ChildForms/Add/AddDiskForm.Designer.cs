@@ -1,7 +1,10 @@
 ﻿
+using System;
+using System.Windows.Forms;
+
 namespace Autoreport.UI
 {
-    partial class AddDiskForm
+    partial class AddDiskForm : AddFormSelective
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +32,7 @@ namespace Autoreport.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.articleText = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -43,26 +46,26 @@ namespace Autoreport.UI
             this.selectedFilmsBox = new System.Windows.Forms.ListBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayout.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // flowLayout
             // 
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.articleText);
-            this.flowLayoutPanel1.Controls.Add(this.label7);
-            this.flowLayoutPanel1.Controls.Add(this.countText);
-            this.flowLayoutPanel1.Controls.Add(this.label9);
-            this.flowLayoutPanel1.Controls.Add(this.costText);
-            this.flowLayoutPanel1.Controls.Add(this.label11);
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Controls.Add(this.selectedFilmsBox);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 207);
-            this.flowLayoutPanel1.TabIndex = 11;
+            this.flowLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayout.Controls.Add(this.label1);
+            this.flowLayout.Controls.Add(this.articleText);
+            this.flowLayout.Controls.Add(this.label7);
+            this.flowLayout.Controls.Add(this.countText);
+            this.flowLayout.Controls.Add(this.label9);
+            this.flowLayout.Controls.Add(this.costText);
+            this.flowLayout.Controls.Add(this.label11);
+            this.flowLayout.Controls.Add(this.panel1);
+            this.flowLayout.Controls.Add(this.selectedFilmsBox);
+            this.flowLayout.Location = new System.Drawing.Point(12, 12);
+            this.flowLayout.Name = "flowLayout";
+            this.flowLayout.Size = new System.Drawing.Size(476, 207);
+            this.flowLayout.TabIndex = 11;
             // 
             // label1
             // 
@@ -192,6 +195,7 @@ namespace Autoreport.UI
             this.resetBtn.TabIndex = 14;
             this.resetBtn.Text = "Сброс";
             this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // saveBtn
             // 
@@ -210,14 +214,14 @@ namespace Autoreport.UI
             this.ClientSize = new System.Drawing.Size(500, 266);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowLayout);
             this.MaximumSize = new System.Drawing.Size(516, 500);
             this.MinimumSize = new System.Drawing.Size(516, 200);
             this.Name = "AddDiskForm";
             this.Text = "AddDiskForm";
             this.Load += new System.EventHandler(this.Form_Load);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayout.ResumeLayout(false);
+            this.flowLayout.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -225,7 +229,7 @@ namespace Autoreport.UI
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox countText;

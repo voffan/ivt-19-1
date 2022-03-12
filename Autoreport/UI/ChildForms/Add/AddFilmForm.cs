@@ -10,43 +10,40 @@ using System.Windows.Forms;
 using Autoreport.Models;
 using Autoreport.UI.Classes;
 using Autoreport.Database;
+using System.Globalization;
 
 namespace Autoreport.UI
 {
-    public partial class AddFilmForm : Form
+    public partial class AddFilmForm : AddFormSelective
     {
-        MainWindow owner;
-        Button relatedTab;
-
-        Action<bool, Button> OwnerSelectMode_Turn;
-        Action CloseHandler;
-
-        public AddFilmForm(Button relatedTab, Action OnCloseHandler)
+        public AddFilmForm(Button relatedTab, Action OnCloseHandler) : base()
         {
             InitializeComponent();
+
             this.relatedTab = relatedTab;
-            CloseHandler = OnCloseHandler;
+            this.CloseHandler = OnCloseHandler;
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        protected override void saveBtn_Click(object sender, EventArgs e)
         {
-            if (selectedDirectorsBox.Items.Count == 0)
-            {
-                MessageBox.Show("Не выбран ни один режиссер", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (selectedDirectorsBox.Items.Count == 0)
+            //{
+            //    MessageBox.Show("Не выбран ни один режиссер", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
             string filmName = filmNameText.Text;
-            string filmYear = filmYearText.Text;
-            List<int> directors_ids = selectedDirectorsBox.Items.Cast<GridSelectedItem>()
-                .Select(item => item.Id).ToList();
+            DateTime filmDate = DateTime.Parse(filmDateText.Text, new CultureInfo("de-DE"));
 
-            Connection.filmService.Add(filmName, filmYear);
+            //List<int> directors_ids = selectedDirectorsBox.Items.Cast<GridSelectedItem>()
+            //    .Select(item => item.Id).ToList();
+
+            Connection.filmService.Add(filmName, filmDate);
             CloseHandler();
             Close();
         }
 
-        private void RemoveSelectedBtn_Click(object sender, EventArgs e)
+        protected override void RemoveSelectedBtn_Click(object sender, EventArgs e)
         {
             selectedDirectorsBox.Items.RemoveAt(selectedDirectorsBox.SelectedIndex);
 
@@ -54,13 +51,7 @@ namespace Autoreport.UI
                 removeSelectedBtn.Enabled = false;
         }
 
-        private void SelectBtn_Click(object sender, EventArgs e)
-        {
-            OwnerSelectMode_Turn(true, relatedTab);
-            this.Hide();
-        }
-
-        private void OnSelectedHandler(ListBox.ObjectCollection items)
+        protected override void OnSelectedHandler(ListBox.ObjectCollection items)
         {
             foreach (GridSelectedItem item in items)
             {
@@ -71,13 +62,7 @@ namespace Autoreport.UI
             this.ShowDialog(owner);
         }
 
-        private void Form_Load(object sender, EventArgs e)
-        {
-            owner = (MainWindow)Owner;
-            OwnerSelectMode_Turn = owner.SelectMode(OnSelectedHandler);
-        }
-
-        private void SelectedBox_SelectedIndexChanged(object sender, EventArgs e)
+        protected override void SelectedBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             removeSelectedBtn.Enabled = true;
         }

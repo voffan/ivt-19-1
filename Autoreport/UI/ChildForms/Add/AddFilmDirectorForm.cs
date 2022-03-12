@@ -12,14 +12,14 @@ using Autoreport.Database;
 
 namespace Autoreport.UI.ChildForms.Add
 {
-    public partial class AddFilmDirectorForm : Form
+    public partial class AddFilmDirectorForm : BaseAddForm
     {
-        public AddFilmDirectorForm(Button relatedTab, Action OnCloseHandler)
+        public AddFilmDirectorForm()
         {
             InitializeComponent();
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        protected override void saveBtn_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }

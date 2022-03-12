@@ -16,8 +16,7 @@ namespace Autoreport.Models
     {
         public int Id { get; set; }
 
-        [DisplayName("Стоимость")]
-        [Range(1.0, 100000.0)]
+        [DisplayName("Стоимость"), Range(1.0, 100000.0)]
         public double Cost { get; set; }
 
         [DisplayName("Дата заказа")]

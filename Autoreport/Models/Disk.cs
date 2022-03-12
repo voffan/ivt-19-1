@@ -14,16 +14,13 @@ namespace Autoreport.Models
         [DisplayName("Артикль")]
         public string Article { get; set; }
 
-        [DisplayName("Общее количество")]
-        [Range(0, 100000)]
+        [DisplayName("Общее количество"), Range(0, 100000)]
         public int General_count { get; set; }
 
-        [DisplayName("Текущее количество")]
-        [Range(0, 100000)]
+        [DisplayName("Текущее количество"), Range(0, 100000)]
         public int Current_count { get; set; }
 
-        [DisplayName("Цена")]
-        [Range(0.1, 10000.0)]
+        [DisplayName("Цена"), Range(0.1, 10000.0)]
         public double Cost { get; set; }
 
         [DisplayName("Фильмы")]

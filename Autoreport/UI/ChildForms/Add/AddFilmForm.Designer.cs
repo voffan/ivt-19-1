@@ -30,11 +30,11 @@
         {
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.filmNameText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.filmYearText = new System.Windows.Forms.MaskedTextBox();
+            this.filmDateText = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.removeSelectedBtn = new System.Windows.Forms.Button();
@@ -44,7 +44,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.filmСountryText = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayout.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,7 @@
             this.resetBtn.TabIndex = 17;
             this.resetBtn.Text = "Сброс";
             this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // saveBtn
             // 
@@ -67,24 +68,24 @@
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // flowLayoutPanel1
+            // flowLayout
             // 
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.filmNameText);
-            this.flowLayoutPanel1.Controls.Add(this.label2);
-            this.flowLayoutPanel1.Controls.Add(this.filmYearText);
-            this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Controls.Add(this.selectedDirectorsBox);
-            this.flowLayoutPanel1.Controls.Add(this.label4);
-            this.flowLayoutPanel1.Controls.Add(this.listBox1);
-            this.flowLayoutPanel1.Controls.Add(this.label5);
-            this.flowLayoutPanel1.Controls.Add(this.filmСountryText);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 331);
-            this.flowLayoutPanel1.TabIndex = 15;
+            this.flowLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayout.Controls.Add(this.label1);
+            this.flowLayout.Controls.Add(this.filmNameText);
+            this.flowLayout.Controls.Add(this.label2);
+            this.flowLayout.Controls.Add(this.filmDateText);
+            this.flowLayout.Controls.Add(this.label3);
+            this.flowLayout.Controls.Add(this.panel1);
+            this.flowLayout.Controls.Add(this.selectedDirectorsBox);
+            this.flowLayout.Controls.Add(this.label4);
+            this.flowLayout.Controls.Add(this.listBox1);
+            this.flowLayout.Controls.Add(this.label5);
+            this.flowLayout.Controls.Add(this.filmСountryText);
+            this.flowLayout.Location = new System.Drawing.Point(12, 12);
+            this.flowLayout.Name = "flowLayout";
+            this.flowLayout.Size = new System.Drawing.Size(476, 331);
+            this.flowLayout.TabIndex = 15;
             // 
             // label1
             // 
@@ -118,14 +119,14 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Год выпуска";
             // 
-            // filmYearText
+            // filmDateText
             // 
-            this.filmYearText.Location = new System.Drawing.Point(241, 34);
-            this.filmYearText.Mask = "0000";
-            this.filmYearText.Name = "filmYearText";
-            this.filmYearText.Size = new System.Drawing.Size(232, 23);
-            this.filmYearText.TabIndex = 19;
-            this.filmYearText.ValidatingType = typeof(System.DateTime);
+            this.filmDateText.Location = new System.Drawing.Point(241, 34);
+            this.filmDateText.Mask = "00/00/0000";
+            this.filmDateText.Name = "filmDateText";
+            this.filmDateText.Size = new System.Drawing.Size(232, 23);
+            this.filmDateText.TabIndex = 19;
+            this.filmDateText.ValidatingType = typeof(System.DateTime);
             // 
             // label3
             // 
@@ -234,11 +235,12 @@
             this.ClientSize = new System.Drawing.Size(499, 390);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowLayout);
             this.Name = "AddFilmForm";
             this.Text = "AddFilmForm";
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.flowLayout.ResumeLayout(false);
+            this.flowLayout.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -248,7 +250,7 @@
 
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox filmNameText;
         private System.Windows.Forms.Label label2;
@@ -256,7 +258,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox filmСountryText;
-        private System.Windows.Forms.MaskedTextBox filmYearText;
+        private System.Windows.Forms.MaskedTextBox filmDateText;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button removeSelectedBtn;

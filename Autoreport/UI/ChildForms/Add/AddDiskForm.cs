@@ -13,21 +13,17 @@ using Autoreport.Database;
 
 namespace Autoreport.UI
 {
-    public partial class AddDiskForm : Form
+    public partial class AddDiskForm : AddFormSelective
     {
-        MainWindow owner;
-        Button relatedTab;
-        Action<bool, Button> OwnerSelectMode_Turn;
-        Action CloseHandler;
-
-        public AddDiskForm(Button relatedTab, Action OnCloseHandler)
+        public AddDiskForm(Button relatedTab, Action OnCloseHandler) : base()
         {
             InitializeComponent();
+
             this.relatedTab = relatedTab;
-            CloseHandler = OnCloseHandler;
+            this.CloseHandler = OnCloseHandler;
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        protected override void saveBtn_Click(object sender, EventArgs e)
         {
             if (selectedFilmsBox.Items.Count == 0)
             {
@@ -46,21 +42,7 @@ namespace Autoreport.UI
             Close();
         }
 
-        private void RemoveSelectedBtn_Click(object sender, EventArgs e)
-        {
-            selectedFilmsBox.Items.RemoveAt(selectedFilmsBox.SelectedIndex);
-
-            if (selectedFilmsBox.Items.Count == 0)
-                removeSelectedBtn.Enabled = false;
-        }
-
-        private void SelectBtn_Click(object sender, EventArgs e)
-        {
-            OwnerSelectMode_Turn(true, relatedTab);
-            this.Hide();
-        }
-
-        private void OnSelectedHandler(ListBox.ObjectCollection items)
+        protected override void OnSelectedHandler(ListBox.ObjectCollection items)
         {
             foreach (GridSelectedItem item in items)
             {
@@ -71,13 +53,15 @@ namespace Autoreport.UI
             this.ShowDialog(owner);
         }
 
-        private void Form_Load(object sender, EventArgs e)
+        protected override void RemoveSelectedBtn_Click(object sender, EventArgs e)
         {
-            owner = (MainWindow)Owner;
-            OwnerSelectMode_Turn = owner.SelectMode(OnSelectedHandler);
+            selectedFilmsBox.Items.RemoveAt(selectedFilmsBox.SelectedIndex);
+
+            if (selectedFilmsBox.Items.Count == 0)
+                removeSelectedBtn.Enabled = false;
         }
 
-        private void SelectedBox_SelectedIndexChanged(object sender, EventArgs e)
+        protected override void SelectedBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             removeSelectedBtn.Enabled = true;
         }

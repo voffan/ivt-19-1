@@ -59,7 +59,7 @@ namespace Autoreport.UI
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lastNameText = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.firstNameText = new System.Windows.Forms.TextBox();
             this.middleNameText = new System.Windows.Forms.TextBox();
             this.passportText = new System.Windows.Forms.MaskedTextBox();
@@ -76,7 +76,7 @@ namespace Autoreport.UI
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -413,29 +413,29 @@ namespace Autoreport.UI
             this.lastNameText.Size = new System.Drawing.Size(232, 25);
             this.lastNameText.TabIndex = 9;
             // 
-            // flowLayoutPanel1
+            // flowLayout
             // 
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.lastNameText);
-            this.flowLayoutPanel1.Controls.Add(this.label7);
-            this.flowLayoutPanel1.Controls.Add(this.firstNameText);
-            this.flowLayoutPanel1.Controls.Add(this.label9);
-            this.flowLayoutPanel1.Controls.Add(this.middleNameText);
-            this.flowLayoutPanel1.Controls.Add(this.label11);
-            this.flowLayoutPanel1.Controls.Add(this.passportText);
-            this.flowLayoutPanel1.Controls.Add(this.label13);
-            this.flowLayoutPanel1.Controls.Add(this.positionBox);
-            this.flowLayoutPanel1.Controls.Add(this.label14);
-            this.flowLayoutPanel1.Controls.Add(this.phoneText);
-            this.flowLayoutPanel1.Controls.Add(this.label15);
-            this.flowLayoutPanel1.Controls.Add(this.loginText);
-            this.flowLayoutPanel1.Controls.Add(this.label16);
-            this.flowLayoutPanel1.Controls.Add(this.passwordText);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 269);
-            this.flowLayoutPanel1.TabIndex = 10;
+            this.flowLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayout.Controls.Add(this.label1);
+            this.flowLayout.Controls.Add(this.lastNameText);
+            this.flowLayout.Controls.Add(this.label7);
+            this.flowLayout.Controls.Add(this.firstNameText);
+            this.flowLayout.Controls.Add(this.label9);
+            this.flowLayout.Controls.Add(this.middleNameText);
+            this.flowLayout.Controls.Add(this.label11);
+            this.flowLayout.Controls.Add(this.passportText);
+            this.flowLayout.Controls.Add(this.label13);
+            this.flowLayout.Controls.Add(this.positionBox);
+            this.flowLayout.Controls.Add(this.label14);
+            this.flowLayout.Controls.Add(this.phoneText);
+            this.flowLayout.Controls.Add(this.label15);
+            this.flowLayout.Controls.Add(this.loginText);
+            this.flowLayout.Controls.Add(this.label16);
+            this.flowLayout.Controls.Add(this.passwordText);
+            this.flowLayout.Location = new System.Drawing.Point(12, 12);
+            this.flowLayout.Name = "flowLayout";
+            this.flowLayout.Size = new System.Drawing.Size(476, 269);
+            this.flowLayout.TabIndex = 10;
             // 
             // firstNameText
             // 
@@ -514,6 +514,7 @@ namespace Autoreport.UI
             this.resetBtn.TabIndex = 12;
             this.resetBtn.Text = "Сброс";
             this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // AddEmployeeForm
             // 
@@ -522,7 +523,7 @@ namespace Autoreport.UI
             this.ClientSize = new System.Drawing.Size(500, 328);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowLayout);
             this.MaximumSize = new System.Drawing.Size(516, 500);
             this.MinimumSize = new System.Drawing.Size(516, 200);
             this.Name = "AddEmployeeForm";
@@ -542,8 +543,8 @@ namespace Autoreport.UI
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayout.ResumeLayout(false);
+            this.flowLayout.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -579,7 +580,7 @@ namespace Autoreport.UI
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox lastNameText;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.TextBox firstNameText;
         private System.Windows.Forms.TextBox loginText;
         private System.Windows.Forms.TextBox passwordText;
