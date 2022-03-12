@@ -53,8 +53,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UI\ChildForms\Add\Parents\" />
-  </ItemGroup>
-
 </Project>
