@@ -9,14 +9,24 @@ namespace Autoreport.Services
 {
     public class ClientService
     {
-        public void Add()
+        public void Add(string lastName, string firstName, string middleName,
+                         string phone1, string phone2
+                        )
         {
-            using (DataContext context = Connection.Connect())
+
+            Client client = new Client()
             {
-                Client c = new Client();
-                //... initiate fields
-                context.Clients.Add(c);
-                context.SaveChanges();
+                Last_name = lastName,
+                First_name = firstName,
+                Middle_name = middleName,
+                Phone_number1 = phone1,
+                Phone_number2 = phone1
+            };
+
+            using (DataContext db = Connection.Connect())
+            {
+                db.Clients.Add(client);
+                db.SaveChanges();
             }
         }
 
