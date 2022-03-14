@@ -38,7 +38,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.phoneText = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.phoneAdditionalText = new System.Windows.Forms.MaskedTextBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.flowLayout.SuspendLayout();
@@ -56,7 +56,7 @@
             this.flowLayout.Controls.Add(this.label14);
             this.flowLayout.Controls.Add(this.phoneText);
             this.flowLayout.Controls.Add(this.label2);
-            this.flowLayout.Controls.Add(this.maskedTextBox1);
+            this.flowLayout.Controls.Add(this.phoneAdditionalText);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
             this.flowLayout.Size = new System.Drawing.Size(476, 156);
@@ -155,14 +155,14 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Номер телефона 2";
             // 
-            // maskedTextBox1
+            // phoneAdditionalText
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maskedTextBox1.Location = new System.Drawing.Point(241, 127);
-            this.maskedTextBox1.Mask = "+7 (000) 000-00-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(232, 25);
-            this.maskedTextBox1.TabIndex = 21;
+            this.phoneAdditionalText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.phoneAdditionalText.Location = new System.Drawing.Point(241, 127);
+            this.phoneAdditionalText.Mask = "+7 (000) 000-00-00";
+            this.phoneAdditionalText.Name = "phoneAdditionalText";
+            this.phoneAdditionalText.Size = new System.Drawing.Size(232, 25);
+            this.phoneAdditionalText.TabIndex = 21;
             // 
             // resetBtn
             // 
@@ -211,7 +211,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.MaskedTextBox phoneText;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox phoneAdditionalText;
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
     }

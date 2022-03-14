@@ -26,7 +26,7 @@ namespace Autoreport.UI
             string firstName = firstNameText.Text;
             string middleName = middleNameText.Text;
             string phone1 = phoneText.Text;
-            string phone2 = phoneText.Text;
+            string phone2 = phoneAdditionalText.Text;
 
             Connection.clientService.Add(lastName, firstName, middleName,
                phone1, phone2 );

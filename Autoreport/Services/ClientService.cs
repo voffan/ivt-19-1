@@ -13,14 +13,13 @@ namespace Autoreport.Services
                          string phone1, string phone2
                         )
         {
-
             Client client = new Client()
             {
                 Last_name = lastName,
                 First_name = firstName,
                 Middle_name = middleName,
                 Phone_number1 = phone1,
-                Phone_number2 = phone1
+                Phone_number2 = phone2
             };
 
             using (DataContext db = Connection.Connect())

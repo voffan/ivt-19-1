@@ -156,6 +156,7 @@ namespace Autoreport.UI
         private void ClientsTab_Click(object sender, EventArgs e)
         {
             currentTabButton = (Button)sender;
+            currentAddForm = new AddClientForm();
             dataGridView.DataSource = Connection.clientService.GetAll();
             dataGridView.Columns["Id"].DisplayIndex = 0;
             dataGridView.Columns["Id"].Visible = false;
