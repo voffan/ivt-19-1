@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Comp_park_app.Functions
 {
-    class EmployeeFunctions
+    class DepartmentFunctions
     {
-        public void Add(string name, int departmentid, int positionid)
+        public void Add(string name, int number)
         {
-            Employee employee = new Employee()
+            Department department = new Department()
             {
                 Name = name,
-                DepartmentId = departmentid,
-                PositionId = positionid
+                Number = number
+                
             };
 
             using (Context c = new Context())
             {
                 //... initiate field
-                c.Employees.Add(employee);
+                c.Departments.Add(department);
                 c.SaveChanges();
             }
         }

@@ -6,11 +6,16 @@ namespace Comp_park_app.Functions
 {
     class MotherboardFunctions
     {
-        public void Add()
+        public void Add(string name, string manufacturer)
         {
+            Motherboard motherboard = new Motherboard()
+            {
+                Name = name,
+                Manufacturer = manufacturer,
+            };
+
             using (Context c = new Context())
             {
-                Motherboard motherboard = new Motherboard();
                 //... initiate field
                 c.Motherboards.Add(motherboard);
                 c.SaveChanges();

@@ -98,6 +98,42 @@ namespace Comp_park_app_form
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // Появление формы Form_addDepartment
+            if (listBox1.SelectedIndex == 1)
+            {
+                Form form_addDepartment = new Form_addDepartment();
+                form_addDepartment.ShowDialog();
+            }
+            // Появление формы Form_addEmployee
+            if (listBox1.SelectedIndex == 2)
+            {
+                Form form_addEmployee = new Form_addEmployee();
+                form_addEmployee.ShowDialog();
+            }
+            // Появление формы Form_addHDD
+            if (listBox1.SelectedIndex == 3)
+            {
+                Form form_addHDD = new Form_addHDD();
+                form_addHDD.ShowDialog();
+            }
+            // Появление формы Form_addMotherboard
+            if (listBox1.SelectedIndex == 4)
+            {
+                Form form_addMotherboard = new Form_addMotherboard();
+                form_addMotherboard.ShowDialog();
+            }
+            // Появление формы Form_addPeripheral
+            if (listBox1.SelectedIndex == 5)
+            {
+                Form form_addPeripheral = new Form_addPeripheral();
+                form_addPeripheral.ShowDialog();
+            }
+            // Появление формы Form_addProcessor
+            if (listBox1.SelectedIndex == 6)
+            {
+                Form form_addProcessor = new Form_addProcessor();
+                form_addProcessor.ShowDialog();
+            }
             // Появление формы Form_addRAM
             if (listBox1.SelectedIndex == 7) { 
                 Form form_addRAM = new Form_addRAM();

@@ -6,11 +6,19 @@ namespace Comp_park_app.Functions
 {
     class PeripheralFunctions
     {
-        public void Add()
+        public void Add(string name, string itemno, int departmentid, int employeeid)
         {
+            Peripheral peripheral = new Peripheral()
+            {
+               
+                Name = name,
+                ItemNo = itemno,
+                DepartmentId = departmentid,
+                EmployeeId = employeeid
+            };
+
             using (Context c = new Context())
             {
-                Peripheral peripheral = new Peripheral();
                 //... initiate field
                 c.Peripherals.Add(peripheral);
                 c.SaveChanges();

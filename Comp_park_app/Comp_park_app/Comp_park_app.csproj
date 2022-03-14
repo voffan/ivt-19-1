@@ -16,4 +16,16 @@
     <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Form_addEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form_addMotherboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form_addProcessor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
