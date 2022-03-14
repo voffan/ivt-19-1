@@ -59,7 +59,7 @@
             this.flowLayout.Controls.Add(this.phoneAdditionalText);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
-            this.flowLayout.Size = new System.Drawing.Size(476, 156);
+            this.flowLayout.Size = new System.Drawing.Size(476, 176);
             this.flowLayout.TabIndex = 11;
             // 
             // label1
@@ -166,16 +166,17 @@
             // 
             // resetBtn
             // 
-            this.resetBtn.Location = new System.Drawing.Point(15, 174);
+            this.resetBtn.Location = new System.Drawing.Point(12, 194);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(200, 30);
             this.resetBtn.TabIndex = 13;
             this.resetBtn.Text = "Сброс";
             this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(288, 174);
+            this.saveBtn.Location = new System.Drawing.Point(288, 194);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 14;
@@ -187,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 216);
+            this.ClientSize = new System.Drawing.Size(497, 235);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.flowLayout);
@@ -200,8 +201,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox lastNameText;
         private System.Windows.Forms.Label label7;
@@ -214,5 +213,6 @@
         private System.Windows.Forms.MaskedTextBox phoneAdditionalText;
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.FlowLayoutPanel flowLayout;
     }
 }

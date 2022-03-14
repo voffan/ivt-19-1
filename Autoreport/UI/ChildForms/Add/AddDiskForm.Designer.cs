@@ -229,7 +229,6 @@ namespace Autoreport.UI
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox countText;
@@ -243,5 +242,6 @@ namespace Autoreport.UI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button removeSelectedBtn;
         private System.Windows.Forms.MaskedTextBox articleText;
+        private System.Windows.Forms.FlowLayoutPanel flowLayout;
     }
 }

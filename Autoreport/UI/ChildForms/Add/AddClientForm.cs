@@ -19,7 +19,7 @@ namespace Autoreport.UI
         {
             InitializeComponent();
         }
-        
+
         protected override void saveBtn_Click(object sender, EventArgs e)
         {
             string lastName = lastNameText.Text;
@@ -33,5 +33,10 @@ namespace Autoreport.UI
 
             Close();
         }
+
+        //protected override void resetBtn_Click(object sender, EventArgs e)
+        //{
+        //    base.resetBtn_Click(sender, e);
+        //}
     }
 }

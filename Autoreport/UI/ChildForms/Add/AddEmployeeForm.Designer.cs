@@ -580,7 +580,6 @@ namespace Autoreport.UI
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox lastNameText;
-        private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.TextBox firstNameText;
         private System.Windows.Forms.TextBox loginText;
         private System.Windows.Forms.TextBox passwordText;
@@ -590,5 +589,6 @@ namespace Autoreport.UI
         private System.Windows.Forms.ComboBox positionBox;
         private System.Windows.Forms.MaskedTextBox phoneText;
         private System.Windows.Forms.MaskedTextBox passportText;
+        private System.Windows.Forms.FlowLayoutPanel flowLayout;
     }
 }

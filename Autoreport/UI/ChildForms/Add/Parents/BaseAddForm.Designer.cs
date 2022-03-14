@@ -38,7 +38,5 @@ namespace Autoreport.UI
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel flowLayout;
     }
 }

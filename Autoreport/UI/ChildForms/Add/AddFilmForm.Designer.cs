@@ -250,7 +250,6 @@
 
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox filmNameText;
         private System.Windows.Forms.Label label2;
@@ -264,5 +263,6 @@
         private System.Windows.Forms.Button removeSelectedBtn;
         private System.Windows.Forms.Button selectBtn;
         private System.Windows.Forms.ListBox selectedDirectorsBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayout;
     }
 }

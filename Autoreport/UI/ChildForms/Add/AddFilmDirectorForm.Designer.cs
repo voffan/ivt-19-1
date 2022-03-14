@@ -155,7 +155,6 @@ namespace Autoreport.UI.ChildForms.Add
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox firstNameText;
@@ -164,5 +163,6 @@ namespace Autoreport.UI.ChildForms.Add
         private System.Windows.Forms.TextBox lastNameText;
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.FlowLayoutPanel flowLayout;
     }
 }
