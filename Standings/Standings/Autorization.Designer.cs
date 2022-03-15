@@ -39,7 +39,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(171, 338);
+            this.button1.Location = new System.Drawing.Point(176, 338);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(146, 34);
             this.button1.TabIndex = 0;
@@ -49,14 +49,14 @@
             // 
             // Login1
             // 
-            this.Login1.Location = new System.Drawing.Point(200, 132);
+            this.Login1.Location = new System.Drawing.Point(205, 156);
             this.Login1.Name = "Login1";
             this.Login1.Size = new System.Drawing.Size(184, 23);
             this.Login1.TabIndex = 1;
             // 
             // Pass1
             // 
-            this.Pass1.Location = new System.Drawing.Point(200, 208);
+            this.Pass1.Location = new System.Drawing.Point(205, 232);
             this.Pass1.Name = "Pass1";
             this.Pass1.Size = new System.Drawing.Size(184, 23);
             this.Pass1.TabIndex = 2;
@@ -65,7 +65,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(110, 136);
+            this.label1.Location = new System.Drawing.Point(115, 160);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 19);
             this.label1.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(110, 212);
+            this.label2.Location = new System.Drawing.Point(115, 236);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 19);
             this.label2.TabIndex = 4;
@@ -85,11 +85,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Gadugi", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(100, 30);
+            this.label3.Location = new System.Drawing.Point(144, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(295, 35);
+            this.label3.Size = new System.Drawing.Size(201, 35);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Добро пожаловать!";
+            this.label3.Text = "Авторизация";
             // 
             // Autorization
             // 

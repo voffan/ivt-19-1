@@ -17,7 +17,7 @@ namespace Standings
         {
             InitializeComponent();
         }
-
+        MainMenu mainmenu = new MainMenu();
         private void button1_Click_1(object sender, EventArgs e)
         {
             string Pass = Pass1.Text, Login = Login1.Text;
@@ -27,6 +27,8 @@ namespace Standings
             {
                 Connection.judgeFunctions.Login(Login, Pass);
                 Close();
+                
+                
             }
             catch (Exception exc)
             {
