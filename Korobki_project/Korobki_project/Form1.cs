@@ -19,6 +19,7 @@ namespace Korobki_project
         {
             InitializeComponent();
             Context c = new Context();
+<<<<<<< HEAD
            dataGridView1.DataSource = c.Employees.Join(c.Shifts, e => e.ShiftId, s => s.Id, (e, s) => new
             {
                 Id = e.Id,
@@ -43,7 +44,11 @@ namespace Korobki_project
 
         private void button1_Click(object sender, EventArgs e)
         {
+=======
+            dataGridView1.DataSource = c.Employees.Include("Position").ToList();
+>>>>>>> b36045f5962eacf41fb154ba0c56f8d4f41bd9df
 
         }
+
     }
 }
