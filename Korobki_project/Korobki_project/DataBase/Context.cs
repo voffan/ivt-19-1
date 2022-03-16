@@ -16,6 +16,7 @@ namespace Korobki_project
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Production> Productions { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Position> Positions { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Shift> Shifts { get; set; }
         public DbSet<Typee> Typees { get; set; }
