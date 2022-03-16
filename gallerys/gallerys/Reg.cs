@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using gallerys;
 using gallerys.Context;
+using gallerys.components;
 namespace gallerys
 {
     public partial class Reg : Form
@@ -22,7 +23,15 @@ namespace gallerys
         {
             string log = textBox1.Text;
             string pass = textBox2.Text;
-            gallContext c = new gallContext();
+            try
+            {
+                Connection.employeeSer.Login(log, pass);
+                Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
