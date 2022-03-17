@@ -13,9 +13,14 @@ namespace Autoreport.UI
     public partial class MainWindow : Form
     {
         Login Loginer;
+
         Button currentTabButton;
         Form currentAddForm;
+        Action<int> currentDeleteAction;
+
         DataGridViewCellEventHandler tableItemDoubleClickEvent;
+        EventHandler tableItemSelectEvent;
+        EventHandler selectedItemSelectEvent;
 
         List<Button> permissions = new List<Button>();
         List<Button> secondaryTabs;
@@ -29,7 +34,9 @@ namespace Autoreport.UI
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            tableItemDoubleClickEvent = new DataGridViewCellEventHandler(ItemDoubleClick);
+            tableItemDoubleClickEvent = new DataGridViewCellEventHandler(DataGridItemDoubleClick);
+            tableItemSelectEvent = new EventHandler(DataGridItemSelectd);
+            selectedItemSelectEvent = new EventHandler(SelectBoxItemSelected);
             secondaryTabs = new List<Button>() { filmDirectorsSecondaryTab };
 
             SetAppearance(1200, 620, 50, 50);
@@ -137,14 +144,21 @@ namespace Autoreport.UI
             }
         }
 
-        private void EmployeesTab_Click(object sender, EventArgs e)
+        private void TabClicked(Button btn)
         {
-            currentTabButton = (Button)sender;
-            currentAddForm = new AddEmployeeForm();
-            dataGridView.DataSource = Connection.employeeService.GetAll();
+            currentTabButton = btn;
             dataGridView.Columns["Id"].DisplayIndex = 0;
             dataGridView.Columns["Id"].Visible = false;
+        }
 
+        private void EmployeesTab_Click(object sender, EventArgs e)
+        {
+            deleteBtn.Enabled = false;
+            currentAddForm = new AddEmployeeForm();
+            currentDeleteAction = Connection.employeeService.Delete;
+            dataGridView.DataSource = Connection.employeeService.GetAll();
+
+            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
@@ -155,12 +169,11 @@ namespace Autoreport.UI
 
         private void ClientsTab_Click(object sender, EventArgs e)
         {
-            currentTabButton = (Button)sender;
+            deleteBtn.Enabled = false;
             currentAddForm = new AddClientForm();
             dataGridView.DataSource = Connection.clientService.GetAll();
-            dataGridView.Columns["Id"].DisplayIndex = 0;
-            dataGridView.Columns["Id"].Visible = false;
 
+            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
@@ -171,12 +184,11 @@ namespace Autoreport.UI
 
         private void DisksTab_Click(object sender, EventArgs e)
         {
-            currentTabButton = (Button)sender;
+            deleteBtn.Enabled = false;
             currentAddForm = new AddDiskForm(filmsTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.diskService.GetAll();
-            dataGridView.Columns["Id"].DisplayIndex = 0;
-            dataGridView.Columns["Id"].Visible = false;
 
+            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["Article"]);
@@ -184,12 +196,11 @@ namespace Autoreport.UI
 
         private void FilmsTab_Click(object sender, EventArgs e)
         {
-            currentTabButton = (Button)sender;
+            deleteBtn.Enabled = false;
             currentAddForm = new AddFilmForm(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.filmService.GetAll();
-            dataGridView.Columns["Id"].DisplayIndex = 0;
-            dataGridView.Columns["Id"].Visible = false;
 
+            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["Name"]);
@@ -198,27 +209,26 @@ namespace Autoreport.UI
 
         private void OrdersTab_Click(object sender, EventArgs e)
         {
-            currentTabButton = (Button)sender;
+            deleteBtn.Enabled = false;
             dataGridView.DataSource = Connection.orderService.GetAll();
-            dataGridView.Columns["Id"].DisplayIndex = 0;
-            dataGridView.Columns["Id"].Visible = false;
+
+            TabClicked((Button)sender);
         }
 
         private void DepositsTab_Click(object sender, EventArgs e)
         {
-            currentTabButton = (Button)sender;
+            deleteBtn.Enabled = false;
             dataGridView.DataSource = Connection.depositService.GetAll();
-            dataGridView.Columns["Id"].DisplayIndex = 0;
-            dataGridView.Columns["Id"].Visible = false;
+
+            TabClicked((Button)sender);
         }
 
         private void filmDirectorsSecondaryTab_Click(object sender, EventArgs e)
         {
-            currentTabButton = (Button)sender;
+            deleteBtn.Enabled = false;
             dataGridView.DataSource = Connection.filmService.GetFilmsDirectors();
-            dataGridView.Columns["Id"].DisplayIndex = 0;
-            dataGridView.Columns["Id"].Visible = false;
 
+            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
@@ -259,6 +269,16 @@ namespace Autoreport.UI
             currentTabButton.PerformClick();
         }
 
+        private void DataGridItemSelectd(object sender, EventArgs e)
+        {
+            selectBtn.Enabled = true;
+        }
+
+        private void SelectBoxItemSelected(object sender, EventArgs e)
+        {
+            removeFromSelectedBtn.Enabled = true;
+        }
+
         /// <summary>
         /// Обрабатывает двойной клик по строке таблицы
         /// Создает объект GridSelectedItem
@@ -270,11 +290,11 @@ namespace Autoreport.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ItemDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridItemDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
 
-            int Id = (int)dataGridView.Rows[e.RowIndex].Cells[0].Value;
+            int Id = (int)dataGridView.Rows[e.RowIndex].Cells["Id"].Value;
 
             if (selectedItemsBox.Items.Cast<GridSelectedItem>().Count(_item => _item.Id == Id) != 0)
                 return;
@@ -300,6 +320,19 @@ namespace Autoreport.UI
             selectedItemsBox.Items.Add(item);
         }
 
+        private void selectBtn_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell cell in dataGridView.SelectedCells)
+            {
+                DataGridItemDoubleClick(null, new DataGridViewCellEventArgs(cell.ColumnIndex, cell.RowIndex));
+            }
+        }
+
+        private void removeFromSelectedBtn_Click(object sender, EventArgs e)
+        {
+            selectedItemsBox.Items.RemoveAt(selectedItemsBox.SelectedIndex);
+        }
+
         private void ReloadBtn_Click(object sender, EventArgs e)
         {
             currentTabButton.PerformClick();
@@ -309,7 +342,7 @@ namespace Autoreport.UI
         /// Показывает/скрывает кнопку selectBtn
         /// </summary>
         /// <param name="show"></param>
-        private void ShowSelectBtn(bool show)
+        private void ShowDoneBtn(bool show)
         {
             if (show)
                 doneBtn.Show();
@@ -333,19 +366,50 @@ namespace Autoreport.UI
                 selectedItemsPanel.Hide();
         }
 
+        private void ConnectTableItemClick()
+        {
+            dataGridView.CellDoubleClick += tableItemDoubleClickEvent;
+            dataGridView.SelectionChanged += tableItemSelectEvent;
+        }
+
+        private void DisconnectTableItemClick()
+        {
+            dataGridView.CellDoubleClick -= tableItemDoubleClickEvent;
+            dataGridView.SelectionChanged -= tableItemSelectEvent;
+        }
+
+        private void ConnectSelectedItemClick()
+        {
+            selectedItemsBox.SelectedIndexChanged += selectedItemSelectEvent;
+        }
+
+        private void DisonnectSelectedItemClick()
+        {
+            selectedItemsBox.SelectedIndexChanged -= selectedItemSelectEvent;
+        }
+
         /// <summary>
         /// Показывает/скрывает элементы selectedItemsBox и selectBtn
         /// </summary>
         /// <param name="active"></param>
         private void SetSelectionElementsActive(bool active)
         {
-            ShowSelectBtn(active);
+            ShowDoneBtn(active);
             ShowSelectionBox(active);
 
             if (active)
-                ConnectTableItemDblClick();
+            {
+                ConnectTableItemClick();
+                ConnectSelectedItemClick();
+            }
             else
-                DisconnectTableItemDblClick();
+            {
+                DisconnectTableItemClick();
+                DisonnectSelectedItemClick();
+
+                selectBtn.Enabled = false;
+                removeFromSelectedBtn.Enabled = false;
+            }    
         }
 
         /// <summary>
@@ -368,31 +432,39 @@ namespace Autoreport.UI
         /// <param name="excepted">Кнопка - исключение</param>
         private void DisableAllTabsExcept(Button excepted)
         {
-            foreach (Control tab in menuPanel.Controls)
-            {
-                if (tab != excepted)
-                {
-                    tab.Enabled = false;
-                }
-            }
+            DisableButtonsOfPanelExcept(new Button[] { excepted }, menuPanel);
 
-            excepted.Enabled = true;
-            excepted.Show();
+            excepted.Show(); // вкладка Режиссеров скрыта, ее надо показать
             excepted.PerformClick();
         }
 
         /// <summary>
-        /// Делает неактивными все кнопки в панели controlPanel за исключением массива Control'ов,
-        /// которые передаются функции
+        /// Делает неактивными все кнопки в панели controlPanel
         /// </summary>
-        /// <param name="excepted">Массив кнопок исплючений</param>
-        private void DisableAllControlButtonsExcept(Control[] excepted)
+        /// <param name="excepted"></param>
+        private void DisableAllControlButtonsExcept(Button[] excepted)
         {
-            foreach (Control button in controlPanel.Controls)
+            DisableButtonsOfPanelExcept(excepted, controlPanel);
+        }
+
+        /// <summary>
+        /// Делает неактивными все кнопки внутри переданной панели,
+        /// это касается также тех кнопок, которые находятся внутри других
+        /// панелей переданной панели
+        /// </summary>
+        /// <param name="excepted">Массив кнопок, которые нужно оставить активными</param>
+        /// <param name="panel">Панель, внутри которой требуется искать кнопки</param>
+        private void DisableButtonsOfPanelExcept(Button[] excepted, Panel panel)
+        {
+            foreach (Control control in panel.Controls)
             {
-                if (!excepted.Contains(button))
+                if (control.GetType() == typeof(Button))
                 {
-                    button.Enabled = false;
+                    control.Enabled = excepted.Contains(control);
+                }
+                else if (control.GetType() == typeof(Panel))
+                {
+                    DisableButtonsOfPanelExcept(excepted, (Panel)control);
                 }
             }
         }
@@ -406,16 +478,6 @@ namespace Autoreport.UI
             {
                 button.Enabled = false;
             }
-        }
-
-        public void ConnectTableItemDblClick()
-        {
-            dataGridView.CellDoubleClick += tableItemDoubleClickEvent;
-        }
-
-        public void DisconnectTableItemDblClick()
-        {
-            dataGridView.CellDoubleClick -= tableItemDoubleClickEvent;
         }
 
         private void ConnectDoneButton(EventHandler Handler)
@@ -470,6 +532,24 @@ namespace Autoreport.UI
             }
 
             return Turn;
+        }
+
+        private void dataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedRows.Count == 0)
+                deleteBtn.Enabled = false;
+            else
+                deleteBtn.Enabled = true;
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView.SelectedRows)
+            {
+                currentDeleteAction((int)row.Cells["Id"].Value);
+            }
+
+            reloadBtn.PerformClick();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Autoreport.Models.Classes;
 
 namespace Autoreport.Models
@@ -33,7 +34,7 @@ namespace Autoreport.Models
         [DisplayName("Тип залога")]
         public DepositType Type { get; set; }
 
-        [DisplayName("Владелец")]
+        [DisplayName("Владелец"), ForeignKey("ClientId")]
         public virtual Client Owner { get; set; }
     }
 }

@@ -52,12 +52,16 @@ namespace Autoreport.UI
             this.label1 = new System.Windows.Forms.Label();
             this.selectedItemsBox = new System.Windows.Forms.ListBox();
             this.selectedItemsPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.removeFromSelectedBtn = new System.Windows.Forms.Button();
+            this.selectBtn = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.reportPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.controlPanel.SuspendLayout();
             this.selectedItemsPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPanel
@@ -221,7 +225,7 @@ namespace Autoreport.UI
             this.dataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataPanel.Location = new System.Drawing.Point(0, 37);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(464, 474);
+            this.dataPanel.Size = new System.Drawing.Size(480, 474);
             this.dataPanel.TabIndex = 3;
             // 
             // dataGridView
@@ -236,8 +240,9 @@ namespace Autoreport.UI
             this.dataGridView.RowHeadersWidth = 60;
             this.dataGridView.RowTemplate.Height = 25;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(464, 474);
+            this.dataGridView.Size = new System.Drawing.Size(480, 474);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
             // addBtn
             // 
@@ -312,6 +317,7 @@ namespace Autoreport.UI
             this.deleteBtn.TabIndex = 7;
             this.deleteBtn.Text = "Удалить";
             this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // controlPanel
             // 
@@ -337,7 +343,7 @@ namespace Autoreport.UI
             this.label1.Location = new System.Drawing.Point(5, 5);
             this.label1.MaximumSize = new System.Drawing.Size(0, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 55);
+            this.label1.Size = new System.Drawing.Size(180, 55);
             this.label1.TabIndex = 0;
             this.label1.Text = "Выбранные записи\r\n(дважды кликните по записи, чтобы выбрать ее)";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -353,20 +359,56 @@ namespace Autoreport.UI
             this.selectedItemsBox.Location = new System.Drawing.Point(5, 60);
             this.selectedItemsBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.selectedItemsBox.Name = "selectedItemsBox";
-            this.selectedItemsBox.Size = new System.Drawing.Size(196, 409);
+            this.selectedItemsBox.Size = new System.Drawing.Size(180, 372);
             this.selectedItemsBox.TabIndex = 1;
             // 
             // selectedItemsPanel
             // 
             this.selectedItemsPanel.BackColor = System.Drawing.Color.Silver;
             this.selectedItemsPanel.Controls.Add(this.selectedItemsBox);
+            this.selectedItemsPanel.Controls.Add(this.panel1);
             this.selectedItemsPanel.Controls.Add(this.label1);
             this.selectedItemsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.selectedItemsPanel.Location = new System.Drawing.Point(464, 37);
+            this.selectedItemsPanel.Location = new System.Drawing.Point(480, 37);
             this.selectedItemsPanel.Name = "selectedItemsPanel";
             this.selectedItemsPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.selectedItemsPanel.Size = new System.Drawing.Size(206, 474);
+            this.selectedItemsPanel.Size = new System.Drawing.Size(190, 474);
             this.selectedItemsPanel.TabIndex = 8;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.removeFromSelectedBtn);
+            this.panel1.Controls.Add(this.selectBtn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(5, 432);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(3);
+            this.panel1.Size = new System.Drawing.Size(180, 37);
+            this.panel1.TabIndex = 2;
+            // 
+            // removeFromSelectedBtn
+            // 
+            this.removeFromSelectedBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.removeFromSelectedBtn.Enabled = false;
+            this.removeFromSelectedBtn.Location = new System.Drawing.Point(90, 3);
+            this.removeFromSelectedBtn.Name = "removeFromSelectedBtn";
+            this.removeFromSelectedBtn.Size = new System.Drawing.Size(87, 31);
+            this.removeFromSelectedBtn.TabIndex = 2;
+            this.removeFromSelectedBtn.Text = "Удалить";
+            this.removeFromSelectedBtn.UseVisualStyleBackColor = true;
+            this.removeFromSelectedBtn.Click += new System.EventHandler(this.removeFromSelectedBtn_Click);
+            // 
+            // selectBtn
+            // 
+            this.selectBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.selectBtn.Enabled = false;
+            this.selectBtn.Location = new System.Drawing.Point(3, 3);
+            this.selectBtn.Name = "selectBtn";
+            this.selectBtn.Size = new System.Drawing.Size(87, 31);
+            this.selectBtn.TabIndex = 1;
+            this.selectBtn.Text = "Выбрать";
+            this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
             // 
             // MainWindow
             // 
@@ -390,6 +432,7 @@ namespace Autoreport.UI
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.controlPanel.ResumeLayout(false);
             this.selectedItemsPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,6 +463,9 @@ namespace Autoreport.UI
         public System.Windows.Forms.Button clientsTab;
         public System.Windows.Forms.Button employeesTab;
         public System.Windows.Forms.Button filmDirectorsSecondaryTab;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button removeFromSelectedBtn;
+        private System.Windows.Forms.Button selectBtn;
     }
 }
 
