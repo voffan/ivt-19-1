@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Autoreport.Database;
 using Autoreport.UI.Classes;
 using Autoreport.Models;
+using Autoreport.UI.ChildForms.Add;
 
 namespace Autoreport.UI
 {
@@ -37,7 +38,7 @@ namespace Autoreport.UI
 
             Connection.employeeService.Init();
 
-            Login();
+            //Login();
 
             if (permissions.Count > 0)
                 permissions[0].PerformClick();
@@ -207,9 +208,15 @@ namespace Autoreport.UI
         private void DepositsTab_Click(object sender, EventArgs e)
         {
             currentTabButton = (Button)sender;
+            currentAddForm = new AddDepositForm (clientsTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.depositService.GetAll();
             dataGridView.Columns["Id"].DisplayIndex = 0;
             dataGridView.Columns["Id"].Visible = false;
+
+            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
+
+            SetCharacteristic(dataGridView.Columns["Data"]);
+            
         }
 
         private void filmDirectorsSecondaryTab_Click(object sender, EventArgs e)
@@ -274,7 +281,9 @@ namespace Autoreport.UI
         {
             if (e.RowIndex == -1) return;
 
-            int Id = (int)dataGridView.Rows[e.RowIndex].Cells[0].Value;
+            Console.WriteLine(dataGridView.Rows[e.RowIndex].Cells[0].Value);
+
+            int Id = (int)dataGridView.Rows[e.RowIndex].Cells["Id"].Value; 
 
             if (selectedItemsBox.Items.Cast<GridSelectedItem>().Count(_item => _item.Id == Id) != 0)
                 return;

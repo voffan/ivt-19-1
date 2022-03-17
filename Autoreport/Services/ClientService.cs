@@ -37,6 +37,29 @@ namespace Autoreport.Services
             }
         }
 
+       /* public List<Client> GetByIds(List<int> ids)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                IQueryable<Client> clients = db.Clients
+                    .Where(c => ids.Any(item => item == c.Id));
+
+                return clients.ToList();
+            }
+        }*/
+
+        public Client GetById(int client_id)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                IQueryable client = db.Clients
+                    .Where(cl => cl.Id == client_id);
+
+    
+                return (Client)client;
+            }
+        }
+
         public void Get()
         {
 

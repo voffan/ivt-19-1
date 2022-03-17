@@ -7,6 +7,7 @@ namespace Autoreport.Models
 {
     public class Person
     {
+        [Key]  
         public int Id { get; set; }
 
         [DisplayName("Имя"), MaxLength(100)]
