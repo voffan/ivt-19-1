@@ -11,11 +11,11 @@ namespace Autoreport.Models
     public enum DepositType
     {
         [Description("Деньги")]
-        Money = 0,
+        Money,
         [Description("Документ")]
-        Document = 1,
+        Document,
         [Description("Деньги и документ")]
-        MoneyAndDocument = 2
+        MoneyAndDocument
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ namespace Autoreport.Models
         public string Value { get; set; }
 
         [DisplayName("Тип залога")]
-        public DepositType Type { get; set; }
+        public DepositType TypePosition { get; set; }
 
         [DisplayName("Владелец"), ForeignKey("ClientId")]
         public virtual Client Owner { get; set; }

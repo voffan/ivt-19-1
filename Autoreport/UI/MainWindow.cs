@@ -218,9 +218,15 @@ namespace Autoreport.UI
         private void DepositsTab_Click(object sender, EventArgs e)
         {
             deleteBtn.Enabled = false;
+            currentAddForm = new AddDepositForm(clientsTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.depositService.GetAll();
-
             TabClicked((Button)sender);
+            dataGridView.Columns["Id"].DisplayIndex = 0;
+            dataGridView.Columns["Id"].Visible = false;
+
+            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
+
+            SetCharacteristic(dataGridView.Columns["Data"]);
         }
 
         private void filmDirectorsSecondaryTab_Click(object sender, EventArgs e)

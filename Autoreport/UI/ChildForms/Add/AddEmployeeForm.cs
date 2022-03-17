@@ -50,5 +50,7 @@ namespace Autoreport.UI
 
             Close();
         }
+
+        
     }
 }
