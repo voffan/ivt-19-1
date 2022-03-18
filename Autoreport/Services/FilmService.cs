@@ -37,6 +37,22 @@ namespace Autoreport.Services
             }
         }
 
+        public List<Genre> GetGenres()
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                return db.Genres.ToList();
+            }
+        }
+
+        public List<Country> GetCountries()
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                return db.Countries.ToList();
+            }
+        }
+
         public List<Person> GetFilmsDirectors()
         {
             using (DataContext db = Connection.Connect())

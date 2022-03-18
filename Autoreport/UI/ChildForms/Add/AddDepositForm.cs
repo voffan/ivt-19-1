@@ -33,20 +33,22 @@ namespace Autoreport.UI
             positionDepositBox.DataSource = new BindingSource(DescriptionAttributes<DepositType>.RetrieveAttributes(), null);
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        protected override void saveBtn_Click(object sender, EventArgs e)
         {
             if (selectedClientsBox.Items.Count == 0)
             {
                 MessageBox.Show("Не выбран ни один диск", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             string data = dataText.Text;
             int sum = Convert.ToInt32(sumText.Text);
+
             DepositType position = (DepositType)Enum.Parse(typeof(DepositType),
                 positionDepositBox.SelectedValue.ToString());
+
             int clients_ids = selectedClientsBox.Items.Cast<GridSelectedItem>()
                 .Select(item => item.Id).ToList()[0];
-
 
             Connection.depositService.Add(data,sum,position,Connection.clientService.GetById(clients_ids));
             CloseHandler();

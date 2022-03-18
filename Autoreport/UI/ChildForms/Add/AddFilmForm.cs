@@ -24,6 +24,16 @@ namespace Autoreport.UI
             this.CloseHandler = OnCloseHandler;
         }
 
+        public void AddFilmForm_Click(object sender, EventArgs e)
+        {
+            Country[] countries = Connection.filmService.GetCountries().ToArray();
+
+            genresBox.Items.AddRange(Connection.filmService.GetGenres().ToArray());
+            countryBox.Items.AddRange(countries);
+
+            countryBox.SelectedItem = countries.Where(c => c.Name == "США").ToList()[0];
+        }
+
         protected override void saveBtn_Click(object sender, EventArgs e)
         {
             //if (selectedDirectorsBox.Items.Count == 0)

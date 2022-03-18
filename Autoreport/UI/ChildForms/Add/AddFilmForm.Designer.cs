@@ -41,9 +41,9 @@
             this.selectBtn = new System.Windows.Forms.Button();
             this.selectedDirectorsBox = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.genresBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.filmСountryText = new System.Windows.Forms.TextBox();
+            this.countryBox = new System.Windows.Forms.ComboBox();
             this.flowLayout.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -79,9 +79,9 @@
             this.flowLayout.Controls.Add(this.panel1);
             this.flowLayout.Controls.Add(this.selectedDirectorsBox);
             this.flowLayout.Controls.Add(this.label4);
-            this.flowLayout.Controls.Add(this.listBox1);
+            this.flowLayout.Controls.Add(this.genresBox);
             this.flowLayout.Controls.Add(this.label5);
-            this.flowLayout.Controls.Add(this.filmСountryText);
+            this.flowLayout.Controls.Add(this.countryBox);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
             this.flowLayout.Size = new System.Drawing.Size(476, 331);
@@ -196,17 +196,17 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Жанры";
             // 
-            // listBox1
+            // genresBox
             // 
-            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.IntegralHeight = false;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(241, 158);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(232, 121);
-            this.listBox1.TabIndex = 20;
+            this.genresBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.genresBox.FormattingEnabled = true;
+            this.genresBox.IntegralHeight = false;
+            this.genresBox.ItemHeight = 17;
+            this.genresBox.Location = new System.Drawing.Point(241, 158);
+            this.genresBox.Name = "genresBox";
+            this.genresBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.genresBox.Size = new System.Drawing.Size(232, 121);
+            this.genresBox.TabIndex = 20;
             // 
             // label5
             // 
@@ -220,13 +220,13 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Страна";
             // 
-            // filmСountryText
+            // countryBox
             // 
-            this.filmСountryText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.filmСountryText.Location = new System.Drawing.Point(241, 285);
-            this.filmСountryText.Name = "filmСountryText";
-            this.filmСountryText.Size = new System.Drawing.Size(232, 25);
-            this.filmСountryText.TabIndex = 17;
+            this.countryBox.FormattingEnabled = true;
+            this.countryBox.Location = new System.Drawing.Point(241, 285);
+            this.countryBox.Name = "countryBox";
+            this.countryBox.Size = new System.Drawing.Size(232, 23);
+            this.countryBox.TabIndex = 23;
             // 
             // AddFilmForm
             // 
@@ -239,6 +239,7 @@
             this.Name = "AddFilmForm";
             this.Text = "AddFilmForm";
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Load += new System.EventHandler(this.AddFilmForm_Click);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -256,13 +257,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox filmСountryText;
         private System.Windows.Forms.MaskedTextBox filmDateText;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox genresBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button removeSelectedBtn;
         private System.Windows.Forms.Button selectBtn;
         private System.Windows.Forms.ListBox selectedDirectorsBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayout;
+        private System.Windows.Forms.ComboBox countryBox;
     }
 }
