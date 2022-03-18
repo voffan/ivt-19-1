@@ -171,6 +171,7 @@ namespace Autoreport.UI
         {
             deleteBtn.Enabled = false;
             currentAddForm = new AddClientForm();
+            currentDeleteAction = Connection.clientService.Delete;
             dataGridView.DataSource = Connection.clientService.GetAll();
 
             TabClicked((Button)sender);
@@ -186,6 +187,7 @@ namespace Autoreport.UI
         {
             deleteBtn.Enabled = false;
             currentAddForm = new AddDiskForm(filmsTab, reloadBtn.PerformClick);
+            currentDeleteAction = Connection.diskService.Delete;
             dataGridView.DataSource = Connection.diskService.GetAll();
 
             TabClicked((Button)sender);
@@ -198,6 +200,7 @@ namespace Autoreport.UI
         {
             deleteBtn.Enabled = false;
             currentAddForm = new AddFilmForm(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
+            currentDeleteAction = Connection.filmService.Delete;
             dataGridView.DataSource = Connection.filmService.GetAll();
 
             TabClicked((Button)sender);
@@ -210,6 +213,7 @@ namespace Autoreport.UI
         private void OrdersTab_Click(object sender, EventArgs e)
         {
             deleteBtn.Enabled = false;
+            currentDeleteAction = Connection.orderService.Delete;
             dataGridView.DataSource = Connection.orderService.GetAll();
 
             TabClicked((Button)sender);
@@ -219,6 +223,7 @@ namespace Autoreport.UI
         {
             deleteBtn.Enabled = false;
             currentAddForm = new AddDepositForm(clientsTab, reloadBtn.PerformClick);
+            currentDeleteAction = Connection.depositService.Delete;
             dataGridView.DataSource = Connection.depositService.GetAll();
             TabClicked((Button)sender);
             dataGridView.Columns["Id"].DisplayIndex = 0;
