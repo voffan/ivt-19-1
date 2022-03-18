@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Autoreport.UI.Classes;
 using Autoreport.Database;
 
-namespace Autoreport.UI.ChildForms.Add
+namespace Autoreport.UI
 {
     public partial class AddFilmDirectorForm : BaseAddForm
     {
@@ -21,7 +21,13 @@ namespace Autoreport.UI.ChildForms.Add
 
         protected override void saveBtn_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string lastName = lastNameText.Text;
+            string firstName = firstNameText.Text;
+            string middleName = middleNameText.Text;
+
+            Connection.filmService.AddDirector(lastName, firstName, middleName);
+
+            Close();
         }
     }
 }

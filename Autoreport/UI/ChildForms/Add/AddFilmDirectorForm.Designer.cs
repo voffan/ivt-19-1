@@ -1,9 +1,9 @@
 ﻿
 using System;
 
-namespace Autoreport.UI.ChildForms.Add
+namespace Autoreport.UI
 {
-    partial class AddFilmDirectorForm
+    partial class AddFilmDirectorForm : BaseAddForm
     {
         /// <summary>
         /// Required designer variable.

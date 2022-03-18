@@ -232,6 +232,7 @@ namespace Autoreport.UI
         private void filmDirectorsSecondaryTab_Click(object sender, EventArgs e)
         {
             deleteBtn.Enabled = false;
+            currentAddForm = new AddFilmDirectorForm();
             dataGridView.DataSource = Connection.filmService.GetFilmsDirectors();
 
             TabClicked((Button)sender);
