@@ -17,7 +17,7 @@ namespace Autoreport.Models
         public DateTime Date { get; set; }
 
         [DisplayName("Страна")]
-        public virtual Country FilmCounty { get; set; }
+        public virtual Country FilmCountry { get; set; }
 
         [DisplayName("Режиссёр")]
         public virtual Person FilmDirector { get; set; }

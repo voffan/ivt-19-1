@@ -72,6 +72,14 @@ namespace Autoreport.Services
                         string passport, Position position, string phone,
                         string login, string password)
         {
+            using (DataContext db = Connection.Connect())
+            {
+                if (db.Employees.Where(empl => empl.Login == login).Count() > 0)
+                {
+                    throw new Errors.UserAlreadyExists("Пользователь с таким логином уже существует");
+                }
+            }
+
             string[] passportSplited = passport.Split("-");
             int passportSerial, passportNumber;
 

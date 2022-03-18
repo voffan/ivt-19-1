@@ -10,6 +10,12 @@ using Autoreport.Models;
 
 namespace Autoreport.UI
 {
+    public enum SelectMode
+    {
+        Enabled,
+        Disabled
+    }
+
     public partial class MainWindow : Form
     {
         Login Loginer;
@@ -18,13 +24,16 @@ namespace Autoreport.UI
         Form currentAddForm;
         Action<int> currentDeleteAction;
 
-        DataGridViewCellEventHandler tableItemDoubleClickEvent;
-        EventHandler tableItemSelectEvent;
-        EventHandler selectedItemSelectEvent;
+        List<Button> permittedTabs = new List<Button>(); // вкладки, доступные пользователю
+        List<Button> currentlyPermittedActions = new List<Button>(); // действия, доступные на какой-либо вкладке
+        List<Button> secondaryTabs; // вкладки, отображающиеся только при определенных условиях
 
-        List<Button> permissions = new List<Button>();
-        List<Button> secondaryTabs;
-        
+        Dictionary<Button, Action> tabAction = new Dictionary<Button, Action>();
+
+        DataGridViewCellEventHandler tableItemDoubleClickEvent; // даблклик по строке таблицы
+        EventHandler tableItemSelectEvent; // выбор строки из таблицы
+        EventHandler selectedItemSelectEvent; // выбор строки из списка selectedItemBox
+
         public readonly Dictionary<string, Button> tabs;
 
         public MainWindow()
@@ -34,31 +43,47 @@ namespace Autoreport.UI
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            tableItemDoubleClickEvent = new DataGridViewCellEventHandler(DataGridItemDoubleClick);
-            tableItemSelectEvent = new EventHandler(DataGridItemSelectd);
-            selectedItemSelectEvent = new EventHandler(SelectBoxItemSelected);
             secondaryTabs = new List<Button>() { filmDirectorsSecondaryTab };
 
+            SetTabAction();
+            SetEventHandlers();
             SetAppearance(1200, 620, 50, 50);
             SetSelectionElementsActive(false);
 
             Connection.employeeService.Init();
-
             Login();
 
-            if (permissions.Count > 0)
-                permissions[0].PerformClick();
+            if (permittedTabs.Count > 0)
+                permittedTabs[0].PerformClick();
             else // срабатывает только когда закоменчиваем Login()
             {
-                permissions.AddRange(new List<Button>()
+                permittedTabs.AddRange(new List<Button>()
                 {
                     this.clientsTab, this.depositsTab, this.employeesTab,
                     this.disksTab, this.filmsTab, this.ordersTab
                 });
-                permissions[0].PerformClick();
+                permittedTabs[0].PerformClick();
             }
 
             HideSecondaryTabs();
+        }
+
+        private void SetTabAction()
+        {
+            tabAction.Add(employeesTab, EmployeesTab_Click);
+            tabAction.Add(clientsTab, ClientsTab_Click);
+            tabAction.Add(disksTab, DisksTab_Click);
+            tabAction.Add(filmsTab, FilmsTab_Click);
+            tabAction.Add(ordersTab, OrdersTab_Click);
+            tabAction.Add(depositsTab, DepositsTab_Click);
+            tabAction.Add(filmDirectorsSecondaryTab, FilmDirectorsSecondaryTab_Click);
+        }
+
+        private void SetEventHandlers()
+        {
+            tableItemDoubleClickEvent = new DataGridViewCellEventHandler(DataGridItemDoubleClick);
+            tableItemSelectEvent = new EventHandler(DataGridItemSelectd);
+            selectedItemSelectEvent = new EventHandler(SelectBoxItemSelected);
         }
 
         private void SetAppearance(int w, int h, int x, int y)
@@ -74,6 +99,8 @@ namespace Autoreport.UI
                 secondaryTab.Enabled = false;
                 secondaryTab.Hide();
             }
+
+            CalculateMinSize(); // т.к. количество табов могло уменьшиться, пересчитываем размер
         }
 
         private void Login()
@@ -93,14 +120,21 @@ namespace Autoreport.UI
         {
             int minWindowWidth = 6 + 16; // menupanel left and right margin + window borders
 
-            foreach (Control obj in menuPanel.Controls)
+            minWindowWidth += reportPanel.Width;
+
+            foreach (Control obj in tabsLayout.Controls)
             {
                 if (obj.Visible)
-                    minWindowWidth += obj.Size.Width;
+                    minWindowWidth += obj.Size.Width + 6;
             }
 
             Size size = new Size { Width = minWindowWidth, Height = this.MinimumSize.Height };
             this.MinimumSize = size;
+
+            if (this.Size.Width < size.Width)
+            {
+                this.Size = size;
+            }
         }
 
         /// <summary>
@@ -110,7 +144,7 @@ namespace Autoreport.UI
         {
             if (Connection.employeeService.CurrentEmployee.EmplPosition == Position.Admin)
             {
-                permissions.AddRange(new List<Button>()
+                permittedTabs.AddRange(new List<Button>()
                 {
                     this.clientsTab, this.depositsTab, this.employeesTab,
                     this.disksTab, this.filmsTab, this.ordersTab
@@ -118,7 +152,7 @@ namespace Autoreport.UI
             } 
             else if (Connection.employeeService.CurrentEmployee.EmplPosition == Position.Cashier)
             {
-                permissions.AddRange(new List<Button>()
+                permittedTabs.AddRange(new List<Button>()
                 {
                     this.clientsTab, this.depositsTab, this.disksTab, 
                     this.filmsTab, this.ordersTab
@@ -131,34 +165,45 @@ namespace Autoreport.UI
         /// </summary>
         private void ShowAvailableTabs()
         {
-            for (int i = 0; i < menuPanel.Controls.Count; i++)
+            for (int i = 0; i < tabsLayout.Controls.Count; i++)
             {
-                if (menuPanel.Controls[i].GetType() == typeof(Button))
+                if (!permittedTabs.Contains(tabsLayout.Controls[i]))
                 {
-                    if (!permissions.Contains(menuPanel.Controls[i]))
-                    {
-                        menuPanel.Controls[i].Enabled = false;
-                        menuPanel.Controls[i].Hide();
-                    }
+                    tabsLayout.Controls[i].Enabled = false;
+                    tabsLayout.Controls[i].Hide();
                 }
             }
         }
 
-        private void TabClicked(Button btn)
+        private void TabClicked(object sender, EventArgs e)
         {
-            currentTabButton = btn;
+            currentlyPermittedActions.Clear();
+
+            if (currentTabButton != null)
+                currentTabButton.BackColor = Color.Gainsboro;
+
+            currentTabButton = (Button)sender;
+            currentTabButton.BackColor = Color.WhiteSmoke;
+
+            tabAction[currentTabButton](); // вызываем метод, связанный с вкладкой
+            DisableAllControlButtonsExcept(currentlyPermittedActions.ToArray());
+
+            if (dataGridView.SelectedRows.Count == 0 || !currentlyPermittedActions.Contains(deleteBtn))
+                deleteBtn.Enabled = false;
+
             dataGridView.Columns["Id"].DisplayIndex = 0;
             dataGridView.Columns["Id"].Visible = false;
         }
 
-        private void EmployeesTab_Click(object sender, EventArgs e)
+        private void EmployeesTab_Click()
         {
-            deleteBtn.Enabled = false;
+            currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn });
+
+            //deleteBtn.Enabled = false;
             currentAddForm = new AddEmployeeForm();
             currentDeleteAction = Connection.employeeService.Delete;
             dataGridView.DataSource = Connection.employeeService.GetAll();
 
-            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
@@ -167,14 +212,16 @@ namespace Autoreport.UI
             SetCharacteristic(dataGridView.Columns["EmplPosition"]);
         }
 
-        private void ClientsTab_Click(object sender, EventArgs e)
+        private void ClientsTab_Click()
         {
-            deleteBtn.Enabled = false;
+            currentlyPermittedActions.AddRange(new List<Button>() { 
+                addBtn, editBtn, searchBtn, reloadBtn, deleteBtn, doneBtn 
+            });
+
             currentAddForm = new AddClientForm();
             currentDeleteAction = Connection.clientService.Delete;
             dataGridView.DataSource = Connection.clientService.GetAll();
 
-            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
@@ -183,49 +230,57 @@ namespace Autoreport.UI
             SetCharacteristic(dataGridView.Columns["Phone_number1"]);
         }
 
-        private void DisksTab_Click(object sender, EventArgs e)
+        private void DisksTab_Click()
         {
-            deleteBtn.Enabled = false;
+            currentlyPermittedActions.AddRange(new List<Button>() { 
+                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn, doneBtn 
+            });
+
             currentAddForm = new AddDiskForm(filmsTab, reloadBtn.PerformClick);
             currentDeleteAction = Connection.diskService.Delete;
             dataGridView.DataSource = Connection.diskService.GetAll();
 
-            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["Article"]);
         }
 
-        private void FilmsTab_Click(object sender, EventArgs e)
+        private void FilmsTab_Click()
         {
-            deleteBtn.Enabled = false;
+            currentlyPermittedActions.AddRange(new List<Button>() { 
+                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
+            });
+
             currentAddForm = new AddFilmForm(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
             currentDeleteAction = Connection.filmService.Delete;
             dataGridView.DataSource = Connection.filmService.GetAll();
 
-            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["Name"]);
             SetCharacteristic(dataGridView.Columns["Date"]);
         }
 
-        private void OrdersTab_Click(object sender, EventArgs e)
+        private void OrdersTab_Click()
         {
-            deleteBtn.Enabled = false;
+            currentlyPermittedActions.AddRange(new List<Button>() { 
+                addBtn, editBtn, searchBtn, reloadBtn, infoBtn 
+            });
+
             currentDeleteAction = Connection.orderService.Delete;
             dataGridView.DataSource = Connection.orderService.GetAll();
-
-            TabClicked((Button)sender);
         }
 
-        private void DepositsTab_Click(object sender, EventArgs e)
+        private void DepositsTab_Click()
         {
-            deleteBtn.Enabled = false;
+            currentlyPermittedActions.AddRange(new List<Button>() {
+                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
+            });
+
             currentAddForm = new AddDepositForm(clientsTab, reloadBtn.PerformClick);
             currentDeleteAction = Connection.depositService.Delete;
             dataGridView.DataSource = Connection.depositService.GetAll();
-            TabClicked((Button)sender);
+
             dataGridView.Columns["Id"].DisplayIndex = 0;
             dataGridView.Columns["Id"].Visible = false;
 
@@ -234,13 +289,15 @@ namespace Autoreport.UI
             SetCharacteristic(dataGridView.Columns["Data"]);
         }
 
-        private void filmDirectorsSecondaryTab_Click(object sender, EventArgs e)
+        private void FilmDirectorsSecondaryTab_Click()
         {
-            deleteBtn.Enabled = false;
+            currentlyPermittedActions.AddRange(new List<Button>() { 
+                addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn
+            });
+            
             currentAddForm = new AddFilmDirectorForm();
             dataGridView.DataSource = Connection.filmService.GetFilmsDirectors();
 
-            TabClicked((Button)sender);
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
@@ -429,7 +486,7 @@ namespace Autoreport.UI
         /// </summary>
         private void EnableAllTabs()
         {
-            foreach (Control tab in menuPanel.Controls)
+            foreach (Control tab in tabsLayout.Controls)
             {
                 tab.Enabled = true;
             }
@@ -444,9 +501,13 @@ namespace Autoreport.UI
         /// <param name="excepted">Кнопка - исключение</param>
         private void DisableAllTabsExcept(Button excepted)
         {
-            DisableButtonsOfPanelExcept(new Button[] { excepted }, menuPanel);
+            if (!excepted.Visible)
+            {
+                excepted.Show(); // вкладка Режиссеров скрыта, ее надо показать
+                CalculateMinSize(); // т.к. появилась новая вкладка, то надо пересчитать минимальный размер
+            }
 
-            excepted.Show(); // вкладка Режиссеров скрыта, ее надо показать
+            DisableButtonsOfPanelExcept(new Button[] { excepted }, tabsLayout);
             excepted.PerformClick();
         }
 
@@ -460,7 +521,7 @@ namespace Autoreport.UI
         }
 
         /// <summary>
-        /// Делает неактивными все кнопки внутри переданной панели,
+        /// Делает неактивными все видимые кнопки внутри переданной панели,
         /// это касается также тех кнопок, которые находятся внутри других
         /// панелей переданной панели
         /// </summary>
@@ -470,25 +531,14 @@ namespace Autoreport.UI
         {
             foreach (Control control in panel.Controls)
             {
-                if (control.GetType() == typeof(Button))
+                if (control.GetType() == typeof(Button) && control.Visible)
                 {
                     control.Enabled = excepted.Contains(control);
                 }
-                else if (control.GetType() == typeof(Panel))
+                else if (typeof(Panel).IsAssignableFrom(control.GetType()))
                 {
                     DisableButtonsOfPanelExcept(excepted, (Panel)control);
                 }
-            }
-        }
-
-        /// <summary>
-        /// Делает активными все элементы в панели controlPanel
-        /// </summary>
-        private void EnableAllControlButtons()
-        {
-            foreach (Control button in controlPanel.Controls)
-            {
-                button.Enabled = false;
             }
         }
 
@@ -508,23 +558,23 @@ namespace Autoreport.UI
         /// либо обратно в начальный режим.
         /// </summary>
         /// <param name="Handler">Функция дочерней формы, которая вызывается при нажатии кнопки "Готово"</param>
-        /// <returns name="Set" type="Action<bool, Button>">
+        /// <returns name="Set" type="Action<SelectMode, Button>">
         ///     Функция, примающая аргументы:
         ///         bool - активировать режим выбора если true, иначе - деактивировать
         ///         Button - ссылка на кнопку-вкладку, связанную с таблицей, из которой будут 
         ///         выбираться элементы
         /// </returns>
-        public Action<bool, Button> SelectMode(Action<ListBox.ObjectCollection> Handler)
+        public Action<SelectMode, Button> SelectMode(Action<ListBox.ObjectCollection> Handler)
         {
             Button lastTab = currentTabButton;
             EventHandler doneEventHandler = new EventHandler(
                 (object sender, EventArgs e) => Handler(selectedItemsBox.Items));
 
-            void Turn(bool enabled, Button selectTab)
+            void Turn(SelectMode state, Button selectTab)
             {
-                SetSelectionElementsActive(enabled);
+                bool is_enabled = state == UI.SelectMode.Enabled;
 
-                if (enabled)
+                if (is_enabled)
                 {
                     if (selectTab == null)
                     {
@@ -541,6 +591,8 @@ namespace Autoreport.UI
                     
                     lastTab.PerformClick();
                 }
+
+                SetSelectionElementsActive(is_enabled);
             }
 
             return Turn;
@@ -548,6 +600,9 @@ namespace Autoreport.UI
 
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
+            if (!currentlyPermittedActions.Contains(deleteBtn))
+                return;
+
             if (dataGridView.SelectedRows.Count == 0)
                 deleteBtn.Enabled = false;
             else

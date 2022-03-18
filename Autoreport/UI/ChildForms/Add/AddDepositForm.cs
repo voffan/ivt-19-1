@@ -21,11 +21,11 @@ namespace Autoreport.UI
         {
             InitializeComponent();
 
+            selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;
             this.CloseHandler = OnCloseHandler;
         }
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void AddDepositForm_Load(object sender, EventArgs e)
         {
             positionDepositBox.DisplayMember = "Key";
@@ -35,7 +35,7 @@ namespace Autoreport.UI
 
         protected override void saveBtn_Click(object sender, EventArgs e)
         {
-            if (selectedClientsBox.Items.Count == 0)
+            if (selectedBox.Items.Count == 0)
             {
                 MessageBox.Show("Не выбран ни один диск", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -47,28 +47,19 @@ namespace Autoreport.UI
             DepositType position = (DepositType)Enum.Parse(typeof(DepositType),
                 positionDepositBox.SelectedValue.ToString());
 
-            int clients_ids = selectedClientsBox.Items.Cast<GridSelectedItem>()
+            int clients_ids = selectedBox.Items.Cast<GridSelectedItem>()
                 .Select(item => item.Id).ToList()[0];
 
             Connection.depositService.Add(data,sum,position,Connection.clientService.GetById(clients_ids));
             CloseHandler();
             Close();
         }
-        protected override void OnSelectedHandler(ListBox.ObjectCollection items)
-        {
-            foreach (GridSelectedItem item in items)
-            {
-                selectedClientsBox.Items.Add(item);
-            }
 
-            OwnerSelectMode_Turn(false, null);
-            this.ShowDialog(owner);
-        }
         private void removeSelectedBtn_Click(object sender, EventArgs e)
         {
-            selectedClientsBox.Items.RemoveAt(selectedClientsBox.SelectedIndex);
+            selectedBox.Items.RemoveAt(selectedBox.SelectedIndex);
 
-            if (selectedClientsBox.Items.Count == 0)
+            if (selectedBox.Items.Count == 0)
                 removeSelectedBtn.Enabled = false;
         }
 

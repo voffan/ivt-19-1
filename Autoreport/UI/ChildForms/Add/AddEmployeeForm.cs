@@ -45,12 +45,16 @@ namespace Autoreport.UI
             string login = loginText.Text;
             string password = passwordText.Text;
 
-            Connection.employeeService.Add(lastName, firstName, middleName,
-                passport, position, phone, login, password);
-
-            Close();
-        }
-
-        
+            try
+            {
+                Connection.employeeService.Add(lastName, firstName, middleName,
+                    passport, position, phone, login, password);
+                Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }  
     }
 }

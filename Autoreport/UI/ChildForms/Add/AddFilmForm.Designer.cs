@@ -1,6 +1,6 @@
 ﻿namespace Autoreport.UI
 {
-    partial class AddFilmForm
+    partial class AddFilmForm : AddFormSelective
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.removeSelectedBtn = new System.Windows.Forms.Button();
             this.selectBtn = new System.Windows.Forms.Button();
-            this.selectedDirectorsBox = new System.Windows.Forms.ListBox();
+            this.selectedBox = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.genresBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -77,7 +77,7 @@
             this.flowLayout.Controls.Add(this.filmDateText);
             this.flowLayout.Controls.Add(this.label3);
             this.flowLayout.Controls.Add(this.panel1);
-            this.flowLayout.Controls.Add(this.selectedDirectorsBox);
+            this.flowLayout.Controls.Add(this.selectedBox);
             this.flowLayout.Controls.Add(this.label4);
             this.flowLayout.Controls.Add(this.genresBox);
             this.flowLayout.Controls.Add(this.label5);
@@ -172,17 +172,18 @@
             this.selectBtn.UseVisualStyleBackColor = true;
             this.selectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
             // 
-            // selectedDirectorsBox
+            // selectedBox
             // 
-            this.selectedDirectorsBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.selectedDirectorsBox.FormattingEnabled = true;
-            this.selectedDirectorsBox.IntegralHeight = false;
-            this.selectedDirectorsBox.ItemHeight = 17;
-            this.selectedDirectorsBox.Location = new System.Drawing.Point(322, 65);
-            this.selectedDirectorsBox.Name = "selectedDirectorsBox";
-            this.selectedDirectorsBox.Size = new System.Drawing.Size(151, 87);
-            this.selectedDirectorsBox.TabIndex = 21;
-            this.selectedDirectorsBox.SelectedIndexChanged += new System.EventHandler(this.SelectedBox_SelectedIndexChanged);
+            this.selectedBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.selectedBox.FormattingEnabled = true;
+            this.selectedBox.IntegralHeight = false;
+            this.selectedBox.ItemHeight = 17;
+            this.selectedBox.Location = new System.Drawing.Point(322, 65);
+            this.selectedBox.Name = "selectedBox";
+            this.selectedBox.Size = new System.Drawing.Size(151, 87);
+            this.selectedBox.TabIndex = 21;
+            this.selectedBox.Tag = "";
+            this.selectedBox.SelectedIndexChanged += new System.EventHandler(this.SelectedBox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -238,8 +239,8 @@
             this.Controls.Add(this.flowLayout);
             this.Name = "AddFilmForm";
             this.Text = "AddFilmForm";
+            this.Load += new System.EventHandler(this.AddFilmForm_Load);
             this.Load += new System.EventHandler(this.Form_Load);
-            this.Load += new System.EventHandler(this.AddFilmForm_Click);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -262,7 +263,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button removeSelectedBtn;
         private System.Windows.Forms.Button selectBtn;
-        private System.Windows.Forms.ListBox selectedDirectorsBox;
+        private System.Windows.Forms.ListBox selectedBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.ComboBox countryBox;
     }

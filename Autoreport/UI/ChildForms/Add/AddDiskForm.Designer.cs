@@ -43,7 +43,7 @@ namespace Autoreport.UI
             this.panel1 = new System.Windows.Forms.Panel();
             this.removeSelectedBtn = new System.Windows.Forms.Button();
             this.selectBtn = new System.Windows.Forms.Button();
-            this.selectedFilmsBox = new System.Windows.Forms.ListBox();
+            this.selectedBox = new System.Windows.Forms.ListBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.flowLayout.SuspendLayout();
@@ -61,7 +61,7 @@ namespace Autoreport.UI
             this.flowLayout.Controls.Add(this.costText);
             this.flowLayout.Controls.Add(this.label11);
             this.flowLayout.Controls.Add(this.panel1);
-            this.flowLayout.Controls.Add(this.selectedFilmsBox);
+            this.flowLayout.Controls.Add(this.selectedBox);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
             this.flowLayout.Size = new System.Drawing.Size(476, 207);
@@ -175,17 +175,17 @@ namespace Autoreport.UI
             this.selectBtn.UseVisualStyleBackColor = true;
             this.selectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
             // 
-            // selectedFilmsBox
+            // selectedBox
             // 
-            this.selectedFilmsBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.selectedFilmsBox.FormattingEnabled = true;
-            this.selectedFilmsBox.IntegralHeight = false;
-            this.selectedFilmsBox.ItemHeight = 17;
-            this.selectedFilmsBox.Location = new System.Drawing.Point(322, 96);
-            this.selectedFilmsBox.Name = "selectedFilmsBox";
-            this.selectedFilmsBox.Size = new System.Drawing.Size(151, 87);
-            this.selectedFilmsBox.TabIndex = 13;
-            this.selectedFilmsBox.SelectedIndexChanged += new System.EventHandler(this.SelectedBox_SelectedIndexChanged);
+            this.selectedBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.selectedBox.FormattingEnabled = true;
+            this.selectedBox.IntegralHeight = false;
+            this.selectedBox.ItemHeight = 17;
+            this.selectedBox.Location = new System.Drawing.Point(322, 96);
+            this.selectedBox.Name = "selectedBox";
+            this.selectedBox.Size = new System.Drawing.Size(151, 87);
+            this.selectedBox.TabIndex = 13;
+            this.selectedBox.SelectedIndexChanged += new System.EventHandler(this.SelectedBox_SelectedIndexChanged);
             // 
             // resetBtn
             // 
@@ -238,7 +238,7 @@ namespace Autoreport.UI
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button selectBtn;
-        private System.Windows.Forms.ListBox selectedFilmsBox;
+        private System.Windows.Forms.ListBox selectedBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button removeSelectedBtn;
         private System.Windows.Forms.MaskedTextBox articleText;

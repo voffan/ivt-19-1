@@ -41,5 +41,14 @@ namespace Autoreport.Database
                 .Build();
             return configuration;
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<Deposit>()
+                .HasOne(e => e.Owner)
+                .WithOne()
+                .OnDelete(DeleteBehavior.SetNull);
+        }
     }
 }

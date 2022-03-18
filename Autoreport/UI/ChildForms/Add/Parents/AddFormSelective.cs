@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autoreport.UI.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,10 @@ namespace Autoreport.UI
     public partial class AddFormSelective : BaseAddForm
     {
         protected MainWindow owner;
-        protected Action<bool, Button> OwnerSelectMode_Turn;
+        protected Action<SelectMode, Button> OwnerSelectMode_Turn;
         protected Button relatedTab;
         protected Action CloseHandler;
+        protected string selectedBoxTag = "SelectedBox";
 
         public AddFormSelective()
         {
@@ -30,8 +32,33 @@ namespace Autoreport.UI
         /// <param name="e"></param>
         protected void SelectBtn_Click(object sender, EventArgs e)
         {
-            OwnerSelectMode_Turn(true, relatedTab);
+            OwnerSelectMode_Turn(SelectMode.Enabled, relatedTab);
             this.Hide();
+        }
+
+        protected void OnSelectedHandler(ListBox.ObjectCollection items)
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c.GetType() == typeof(FlowLayoutPanel))
+                {
+                    foreach (Control underC in c.Controls)
+                    {
+                        if (underC.Tag != null && underC.Tag == selectedBoxTag)
+                        {
+                            foreach (GridSelectedItem item in items)
+                            {
+                                ((ListBox)underC).Items.Add(item);
+                            }
+
+                            OwnerSelectMode_Turn(SelectMode.Disabled, null);
+                            this.ShowDialog(owner);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
         }
 
         protected void Form_Load(object sender, EventArgs e)
@@ -41,7 +68,6 @@ namespace Autoreport.UI
         }
 
         protected virtual void RemoveSelectedBtn_Click(object sender, EventArgs e) { }
-        protected virtual void OnSelectedHandler(ListBox.ObjectCollection items) { }
         protected virtual void SelectedBox_SelectedIndexChanged(object sender, EventArgs e) { }
     }
 }

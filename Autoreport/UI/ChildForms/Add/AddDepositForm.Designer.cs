@@ -39,7 +39,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.removeSelectedBtn = new System.Windows.Forms.Button();
             this.selectBtn = new System.Windows.Forms.Button();
-            this.selectedClientsBox = new System.Windows.Forms.ListBox();
+            this.selectedBox = new System.Windows.Forms.ListBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.flowLayout.SuspendLayout();
@@ -57,7 +57,7 @@
             this.flowLayout.Controls.Add(this.positionDepositBox);
             this.flowLayout.Controls.Add(this.label2);
             this.flowLayout.Controls.Add(this.panel1);
-            this.flowLayout.Controls.Add(this.selectedClientsBox);
+            this.flowLayout.Controls.Add(this.selectedBox);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
             this.flowLayout.Size = new System.Drawing.Size(476, 269);
@@ -169,17 +169,17 @@
             this.selectBtn.UseVisualStyleBackColor = true;
             this.selectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
             // 
-            // selectedClientsBox
+            // selectedBox
             // 
-            this.selectedClientsBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.selectedClientsBox.FormattingEnabled = true;
-            this.selectedClientsBox.IntegralHeight = false;
-            this.selectedClientsBox.ItemHeight = 17;
-            this.selectedClientsBox.Location = new System.Drawing.Point(322, 96);
-            this.selectedClientsBox.Name = "selectedClientsBox";
-            this.selectedClientsBox.Size = new System.Drawing.Size(151, 87);
-            this.selectedClientsBox.TabIndex = 21;
-            this.selectedClientsBox.SelectedIndexChanged += new System.EventHandler(this.selectedClientsBox_SelectedIndexChanged);
+            this.selectedBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.selectedBox.FormattingEnabled = true;
+            this.selectedBox.IntegralHeight = false;
+            this.selectedBox.ItemHeight = 17;
+            this.selectedBox.Location = new System.Drawing.Point(322, 96);
+            this.selectedBox.Name = "selectedBox";
+            this.selectedBox.Size = new System.Drawing.Size(151, 87);
+            this.selectedBox.TabIndex = 21;
+            this.selectedBox.SelectedIndexChanged += new System.EventHandler(this.selectedClientsBox_SelectedIndexChanged);
             // 
             // resetBtn
             // 
@@ -210,8 +210,8 @@
             this.Controls.Add(this.flowLayout);
             this.Name = "AddDepositForm";
             this.Text = "AddDepositForm";
-            this.Load += new System.EventHandler(this.AddDepositForm_Load);
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Load += new System.EventHandler(this.AddDepositForm_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -234,6 +234,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button removeSelectedBtn;
         private System.Windows.Forms.Button selectBtn;
-        private System.Windows.Forms.ListBox selectedClientsBox;
+        private System.Windows.Forms.ListBox selectedBox;
     }
 }

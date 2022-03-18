@@ -20,11 +20,12 @@ namespace Autoreport.UI
         {
             InitializeComponent();
 
+            selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;
             this.CloseHandler = OnCloseHandler;
         }
 
-        public void AddFilmForm_Click(object sender, EventArgs e)
+        public void AddFilmForm_Load(object sender, EventArgs e)
         {
             Country[] countries = Connection.filmService.GetCountries().ToArray();
 
@@ -55,22 +56,22 @@ namespace Autoreport.UI
 
         protected override void RemoveSelectedBtn_Click(object sender, EventArgs e)
         {
-            selectedDirectorsBox.Items.RemoveAt(selectedDirectorsBox.SelectedIndex);
+            selectedBox.Items.RemoveAt(selectedBox.SelectedIndex);
 
-            if (selectedDirectorsBox.Items.Count == 0)
+            if (selectedBox.Items.Count == 0)
                 removeSelectedBtn.Enabled = false;
         }
 
-        protected override void OnSelectedHandler(ListBox.ObjectCollection items)
-        {
-            foreach (GridSelectedItem item in items)
-            {
-                selectedDirectorsBox.Items.Add(item);
-            }
+        //protected override void OnSelectedHandler(ListBox.ObjectCollection items)
+        //{
+        //    foreach (GridSelectedItem item in items)
+        //    {
+        //        selectedBox.Items.Add(item);
+        //    }
 
-            OwnerSelectMode_Turn(false, null);
-            this.ShowDialog(owner);
-        }
+        //    OwnerSelectMode_Turn(SelectMode.Disabled, null);
+        //    this.ShowDialog(owner);
+        //}
 
         protected override void SelectedBox_SelectedIndexChanged(object sender, EventArgs e)
         {

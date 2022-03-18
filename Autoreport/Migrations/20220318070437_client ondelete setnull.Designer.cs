@@ -3,14 +3,16 @@ using System;
 using Autoreport.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Autoreport.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220318070437_client ondelete setnull")]
+    partial class clientondeletesetnull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,7 +96,7 @@ namespace Autoreport.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
 
-                    b.Property<int?>("FilmCountryId")
+                    b.Property<int?>("FilmCountyId")
                         .HasColumnType("int");
 
                     b.Property<int?>("FilmDirectorId")
@@ -107,7 +109,7 @@ namespace Autoreport.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FilmCountryId");
+                    b.HasIndex("FilmCountyId");
 
                     b.HasIndex("FilmDirectorId");
 
@@ -331,15 +333,15 @@ namespace Autoreport.Migrations
 
             modelBuilder.Entity("Autoreport.Models.Film", b =>
                 {
-                    b.HasOne("Autoreport.Models.Country", "FilmCountry")
+                    b.HasOne("Autoreport.Models.Country", "FilmCounty")
                         .WithMany("Films")
-                        .HasForeignKey("FilmCountryId");
+                        .HasForeignKey("FilmCountyId");
 
                     b.HasOne("Autoreport.Models.Person", "FilmDirector")
                         .WithMany()
                         .HasForeignKey("FilmDirectorId");
 
-                    b.Navigation("FilmCountry");
+                    b.Navigation("FilmCounty");
 
                     b.Navigation("FilmDirector");
                 });
