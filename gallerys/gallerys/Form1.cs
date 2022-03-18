@@ -17,13 +17,44 @@ namespace gallerys
         public Form1()
         {
             InitializeComponent();
-            gallContext c = new gallContext();
-            dataGridView1.DataSource = c.Paintings.ToList();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            gallContext c = new gallContext();
+            MessageBox.Show("Приветствую вас, ");
+        }
+
+
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            gallContext c = new gallContext();
+            string selectedtable = comboBox1.SelectedItem.ToString();
+            if (selectedtable == "Картины")
+            {
+                dataGridView1.DataSource = c.Paintings.ToList();
+            }
+            if (selectedtable == "Сотрудники")
+            {
+                dataGridView1.DataSource = c.Employees.ToList();
+            }
+            if (selectedtable == "Жанры")
+            {
+                dataGridView1.DataSource = c.Genres.ToList();
+            }
+            if (selectedtable == "Авторы")
+            {
+                dataGridView1.DataSource = c.Authors.ToList();
+            }
+            if (selectedtable == "Журнал передвижения картин")
+            {
+                dataGridView1.DataSource = c.Journals.ToList();
+            }
+            if (selectedtable == "Выставки")
+            {
+                dataGridView1.DataSource = c.Exhibitions.ToList();
+            }
+            label1.Text = "Текущий список: " + selectedtable;
         }
     }
 }

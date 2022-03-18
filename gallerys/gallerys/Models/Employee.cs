@@ -23,8 +23,6 @@ namespace gallerys.Models
         [MinLength(4)]
         public string Passw1 { get; set; }
         public Right Right { get; set; }
-        public int PositionId { get; set; }
-        public virtual Position Positions { get; set; }
         public virtual List<Journal> Journals { get; set; }
     }
 }

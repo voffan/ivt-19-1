@@ -9,8 +9,8 @@ using gallerys.Context;
 namespace gallerys.Migrations
 {
     [DbContext(typeof(gallContext))]
-    [Migration("20220311060639_migr1")]
-    partial class migr1
+    [Migration("20220318055119_migr")]
+    partial class migr
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,15 +55,10 @@ namespace gallerys.Migrations
                     b.Property<string>("Passw1")
                         .HasColumnType("text");
 
-                    b.Property<int>("PositionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Right")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PositionId");
 
                     b.ToTable("Employees");
                 });
@@ -172,21 +167,6 @@ namespace gallerys.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("Place");
                 });
 
-            modelBuilder.Entity("gallerys.Models.Position", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Position");
-                });
-
             modelBuilder.Entity("gallerys.Models.Department", b =>
                 {
                     b.HasBaseType("gallerys.Models.Place");
@@ -203,17 +183,6 @@ namespace gallerys.Migrations
                         .HasColumnType("varchar(200)");
 
                     b.HasDiscriminator().HasValue("Exhibition");
-                });
-
-            modelBuilder.Entity("gallerys.Models.Employee", b =>
-                {
-                    b.HasOne("gallerys.Models.Position", "Positions")
-                        .WithMany()
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Positions");
                 });
 
             modelBuilder.Entity("gallerys.Models.Journal", b =>

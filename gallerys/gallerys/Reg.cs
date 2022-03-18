@@ -26,6 +26,8 @@ namespace gallerys
             try
             {
                 Connection.employeeSer.Login(log, pass);
+                Form1 frm1 = new Form1();
+                frm1.ShowDialog();
                 Close();
             }
             catch (Exception exc)

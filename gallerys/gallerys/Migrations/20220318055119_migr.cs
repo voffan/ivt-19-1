@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace gallerys.Migrations
 {
-    public partial class migr1 : Migration
+    public partial class migr : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +20,22 @@ namespace gallerys.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Authors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    Login1 = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Passw1 = table.Column<string>(type: "text", nullable: true),
+                    Right = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -51,19 +67,6 @@ namespace gallerys.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Position",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Position", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Paintings",
                 columns: table => new
                 {
@@ -89,29 +92,6 @@ namespace gallerys.Migrations
                         name: "FK_Paintings_Genres_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genres",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Employees",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
-                    Login1 = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
-                    Passw1 = table.Column<string>(type: "text", nullable: true),
-                    Right = table.Column<int>(type: "int", nullable: false),
-                    PositionId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employees", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Employees_Position_PositionId",
-                        column: x => x.PositionId,
-                        principalTable: "Position",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -158,11 +138,6 @@ namespace gallerys.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employees_PositionId",
-                table: "Employees",
-                column: "PositionId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Journals_EmployeeId",
                 table: "Journals",
                 column: "EmployeeId");
@@ -206,9 +181,6 @@ namespace gallerys.Migrations
 
             migrationBuilder.DropTable(
                 name: "Places");
-
-            migrationBuilder.DropTable(
-                name: "Position");
 
             migrationBuilder.DropTable(
                 name: "Authors");
