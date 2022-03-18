@@ -46,7 +46,7 @@ namespace Comp_park_app_form
             this.dataGridView1.Location = new System.Drawing.Point(12, 79);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(832, 541);
+            this.dataGridView1.Size = new System.Drawing.Size(845, 541);
             this.dataGridView1.TabIndex = 0;
             // 
             // listBox1
@@ -63,7 +63,7 @@ namespace Comp_park_app_form
             "Периферийные устройства",
             "Процессоры",
             "Оперативная память"});
-            this.listBox1.Location = new System.Drawing.Point(850, 96);
+            this.listBox1.Location = new System.Drawing.Point(872, 97);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(238, 164);
             this.listBox1.TabIndex = 1;
@@ -72,7 +72,7 @@ namespace Comp_park_app_form
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(850, 78);
+            this.label1.Location = new System.Drawing.Point(872, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 15);
             this.label1.TabIndex = 2;
@@ -80,9 +80,10 @@ namespace Comp_park_app_form
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(910, 276);
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(872, 267);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 23);
+            this.button1.Size = new System.Drawing.Size(238, 30);
             this.button1.TabIndex = 3;
             this.button1.Text = "Переключиться";
             this.button1.UseVisualStyleBackColor = true;
@@ -91,17 +92,18 @@ namespace Comp_park_app_form
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(850, 46);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(12, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(183, 15);
+            this.label2.Size = new System.Drawing.Size(184, 30);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Текущий столбец: Компьютеры";
+            this.label2.Text = "Текущий список:\r\n";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(933, 329);
+            this.button2.Location = new System.Drawing.Point(872, 320);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(83, 32);
             this.button2.TabIndex = 5;
             this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = true;
@@ -111,7 +113,7 @@ namespace Comp_park_app_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 668);
+            this.ClientSize = new System.Drawing.Size(1119, 668);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);

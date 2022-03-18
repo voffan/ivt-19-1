@@ -27,10 +27,10 @@ namespace Comp_park_app
         // если все поля заполнены, в противной случае вызывает окно с ошибкой
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0 && textBox_capacity.Text.Length != 0 && textBox_computerid.Text.Length != 0)
+            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0 && textBox_capacity.Text.Length != 0)
             {
                 HDDFunctions HDD = new HDDFunctions();
-                HDD.Add(textBox_name.Text, textBox_Manufacturer.Text, Convert.ToInt32(textBox_capacity.Text), Convert.ToInt32(textBox_computerid.Text));
+                HDD.Add(textBox_name.Text, textBox_Manufacturer.Text, Convert.ToInt32(textBox_capacity.Text));
                 this.Close();
             }
             else

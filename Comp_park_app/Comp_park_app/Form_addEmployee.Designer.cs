@@ -42,64 +42,64 @@ namespace Comp_park_app
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(201, 73);
+            this.textBox_name.Location = new System.Drawing.Point(172, 70);
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(100, 23);
             this.textBox_name.TabIndex = 0;
             // 
-            // textBox_departmentid
+            // textBox_Manufacturer
             // 
-            this.textBox_Manufacturer.Location = new System.Drawing.Point(201, 102);
-            this.textBox_Manufacturer.Name = "textBox_departmentid";
+            this.textBox_Manufacturer.Location = new System.Drawing.Point(172, 99);
+            this.textBox_Manufacturer.Name = "textBox_Manufacturer";
             this.textBox_Manufacturer.Size = new System.Drawing.Size(100, 23);
             this.textBox_Manufacturer.TabIndex = 1;
             // 
-            // textBox_positionid
+            // textBox_capacity
             // 
-            this.textBox_capacity.Location = new System.Drawing.Point(201, 131);
-            this.textBox_capacity.Name = "textBox_positionid";
+            this.textBox_capacity.Location = new System.Drawing.Point(172, 128);
+            this.textBox_capacity.Name = "textBox_capacity";
             this.textBox_capacity.Size = new System.Drawing.Size(100, 23);
             this.textBox_capacity.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(103, 76);
+            this.label1.Location = new System.Drawing.Point(71, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 15);
+            this.label1.Size = new System.Drawing.Size(34, 15);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Название";
+            this.label1.Text = "ФИО";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(103, 105);
+            this.label2.Location = new System.Drawing.Point(71, 102);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 15);
+            this.label2.Size = new System.Drawing.Size(85, 15);
             this.label2.TabIndex = 6;
             this.label2.Text = "Номер отдела";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(103, 134);
+            this.label3.Location = new System.Drawing.Point(71, 131);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 15);
+            this.label3.Size = new System.Drawing.Size(69, 15);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Номер должности";
+            this.label3.Text = "Должность";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(150, 21);
+            this.label4.Location = new System.Drawing.Point(131, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 15);
+            this.label4.Size = new System.Drawing.Size(66, 15);
             this.label4.TabIndex = 8;
             this.label4.Text = "Сотрудник";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(129, 299);
+            this.button1.Location = new System.Drawing.Point(71, 184);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -109,7 +109,7 @@ namespace Comp_park_app
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(295, 299);
+            this.button2.Location = new System.Drawing.Point(197, 184);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -117,11 +117,11 @@ namespace Comp_park_app
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form2
+            // Form_addEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(355, 281);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -131,7 +131,7 @@ namespace Comp_park_app
             this.Controls.Add(this.textBox_capacity);
             this.Controls.Add(this.textBox_Manufacturer);
             this.Controls.Add(this.textBox_name);
-            this.Name = "Form2";
+            this.Name = "Form_addEmployee";
             this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -31,10 +31,8 @@ namespace Comp_park_app
         {
             this.textBox_name = new System.Windows.Forms.TextBox();
             this.textBox_Manufacturer = new System.Windows.Forms.TextBox();
-            
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -42,23 +40,22 @@ namespace Comp_park_app
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(201, 73);
+            this.textBox_name.Location = new System.Drawing.Point(177, 76);
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(100, 23);
             this.textBox_name.TabIndex = 0;
             // 
             // textBox_Manufacturer
             // 
-            this.textBox_Manufacturer.Location = new System.Drawing.Point(201, 102);
+            this.textBox_Manufacturer.Location = new System.Drawing.Point(177, 105);
             this.textBox_Manufacturer.Name = "textBox_Manufacturer";
             this.textBox_Manufacturer.Size = new System.Drawing.Size(100, 23);
             this.textBox_Manufacturer.TabIndex = 1;
-            
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(103, 76);
+            this.label1.Location = new System.Drawing.Point(79, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 5;
@@ -67,24 +64,24 @@ namespace Comp_park_app
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(103, 105);
+            this.label2.Location = new System.Drawing.Point(79, 108);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 15);
+            this.label2.Size = new System.Drawing.Size(45, 15);
             this.label2.TabIndex = 6;
             this.label2.Text = "Номер";
-            
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(150, 21);
+            this.label4.Location = new System.Drawing.Point(150, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 15);
+            this.label4.Size = new System.Drawing.Size(40, 15);
             this.label4.TabIndex = 8;
             this.label4.Text = "Отдел";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(129, 299);
+            this.button1.Location = new System.Drawing.Point(79, 179);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -94,7 +91,7 @@ namespace Comp_park_app
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(295, 299);
+            this.button2.Location = new System.Drawing.Point(202, 179);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -102,11 +99,11 @@ namespace Comp_park_app
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form2
+            // Form_addDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(355, 281);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -114,7 +111,7 @@ namespace Comp_park_app
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_Manufacturer);
             this.Controls.Add(this.textBox_name);
-            this.Name = "Form2";
+            this.Name = "Form_addDepartment";
             this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();

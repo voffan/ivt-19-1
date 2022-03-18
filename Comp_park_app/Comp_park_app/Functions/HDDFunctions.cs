@@ -6,14 +6,13 @@ namespace Comp_park_app.Functions
 {
     class HDDFunctions
     {
-        public void Add(string name, string manufacturer, int capacity, int computerid)
+        public void Add(string name, string manufacturer, int capacity)
         {
             HDD hdd = new HDD()
             {
                 Name = name,
                 Manufacturer = manufacturer,
                 Capacity = capacity,
-                ComputerId = computerid
             };
 
             using (Context c = new Context())

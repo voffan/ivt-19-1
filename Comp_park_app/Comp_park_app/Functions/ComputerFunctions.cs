@@ -6,7 +6,7 @@ namespace Comp_park_app.Functions
 {
     class ComputerFunctions
     {
-        public void Add()
+        public void Add(/*List<HDD> HDDs, List<RAM> RAMs*/)
         {
             using (Context c = new Context())
             {
