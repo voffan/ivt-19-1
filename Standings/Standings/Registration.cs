@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Standings.Database;
 using MySql.Data.MySqlClient;
+using Standings.Functions;
 
 namespace Standings
 {
@@ -23,20 +24,29 @@ namespace Standings
         private void button1_Click(object sender, EventArgs e)
         {
             Context connect = new Context();
+            Autorization autor = new Autorization();
             string FullName = FullName1.Text,
                 Category = Category1.Text,
                 Login = Login1.Text,
                 Password1 = password1.Text,
                 Password2 = password2.Text;
+                
             if (Password1 == Password2)
             {
                 if(FullName1.Text == "" || Category1.Text == "" || Login1.Text == "" || password1.Text == "" || password2.Text == "")
                 {
-
+                    MessageBox.Show("Заполните ВСЕ поля!");
                 }
                 else
                 {
-                    MessageBox.Show("Заполните ВСЕ поля!");
+                    using (Context db = Connection.Connect())
+                    {
+                        JudgeFunctions.Register(Login, Password1, FullName, Category, dateTimePicker1.Value);
+                        
+                        this.Close();
+                        autor.Show();
+
+                    }
                 }
 
             }

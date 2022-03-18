@@ -13,11 +13,12 @@ namespace Standings
 {
     public partial class Autorization : Form
     {
+        MainMenu mainmenu = new MainMenu();
         public Autorization()
         {
             InitializeComponent();
         }
-        MainMenu mainmenu = new MainMenu();
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
             string Pass = Pass1.Text, Login = Login1.Text;
@@ -26,14 +27,26 @@ namespace Standings
             try
             {
                 Connection.judgeFunctions.Login(Login, Pass);
-                Close();
-                
-                
+                this.Hide();
+                mainmenu.Show();
+          
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
+        }
+
+        private void Autorization_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Registration regis = new Registration();
+            regis.Show();
         }
     }
 }

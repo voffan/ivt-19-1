@@ -16,10 +16,16 @@ namespace Standings
         {
             InitializeComponent();
         }
-
+        
+        
         private void MainMenu_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

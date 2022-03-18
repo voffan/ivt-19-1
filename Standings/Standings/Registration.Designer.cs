@@ -69,6 +69,7 @@
             this.password1.Name = "password1";
             this.password1.Size = new System.Drawing.Size(192, 23);
             this.password1.TabIndex = 2;
+            this.password1.UseSystemPasswordChar = true;
             this.password1.TextChanged += new System.EventHandler(this.password1_TextChanged);
             // 
             // label1
@@ -109,6 +110,7 @@
             this.password2.Name = "password2";
             this.password2.Size = new System.Drawing.Size(192, 23);
             this.password2.TabIndex = 7;
+            this.password2.UseSystemPasswordChar = true;
             this.password2.TextChanged += new System.EventHandler(this.password2_TextChanged);
             // 
             // label4

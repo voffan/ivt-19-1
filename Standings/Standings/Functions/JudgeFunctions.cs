@@ -42,5 +42,19 @@ namespace Standings.Functions
                 currentJudge = empl;
             }
         }
+        public static void Register(string login, string password, string fullname, string category, DateTime exp)
+        {
+            using (Context db = new Context())
+            {
+                Judge j = new Judge();
+                j.Login = login;
+                j.Password = password;
+                j.FullNname = fullname;
+                j.Category = category;
+                j.Experience = exp;
+                db.Judges.Add(j);
+                db.SaveChanges();
+            }
+        }
     }
 }
