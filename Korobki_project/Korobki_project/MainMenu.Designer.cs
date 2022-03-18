@@ -1,7 +1,7 @@
 ﻿
 namespace Korobki_project
 {
-    partial class Form1
+    partial class MainMenu
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,6 @@ namespace Korobki_project
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -84,7 +83,7 @@ namespace Korobki_project
             this.button3.Text = "Редактировать";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,58 +93,18 @@ namespace Korobki_project
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainMenu";
+            this.Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-=======
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.label1 = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(28, 53);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.RowTemplate.Height = 25;
-			this.dataGridView1.Size = new System.Drawing.Size(690, 150);
-			this.dataGridView1.TabIndex = 0;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(28, 35);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(38, 15);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "label1";
-			// 
-			// Form1
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.dataGridView1);
-			this.Name = "Form1";
-			this.Text = "Form1";
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
->>>>>>> b36045f5962eacf41fb154ba0c56f8d4f41bd9df
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-<<<<<<< HEAD
         private System.Windows.Forms.Button button1;
-=======
->>>>>>> b36045f5962eacf41fb154ba0c56f8d4f41bd9df
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

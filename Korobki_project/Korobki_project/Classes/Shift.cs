@@ -16,5 +16,9 @@ namespace Korobki_project.Classes
         public string Name { get; set; }
 
         public virtual List<Employee> Employees { get; set; }
-    }
+		public override string ToString()
+		{
+            return Name;
+		}
+	}
 }

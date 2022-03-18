@@ -13,14 +13,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project
 {
-    public partial class Form1 : Form
+    public partial class MainMenu : Form
     {
-        public Form1()
+        public MainMenu()
         {
             InitializeComponent();
             Context c = new Context();
-<<<<<<< HEAD
-           dataGridView1.DataSource = c.Employees.Join(c.Shifts, e => e.ShiftId, s => s.Id, (e, s) => new
+         /*  dataGridView1.DataSource = c.Employees.Join(c.Shifts, e => e.ShiftId, s => s.Id, (e, s) => new
             {
                 Id = e.Id,
                 Name = e.Name,
@@ -37,18 +36,16 @@ namespace Korobki_project
                 PhoneNumber = e.PhoneNumber,
                 Adress = e.Adress,
                 Shift = e.Shift
-            }).ToList();
-            //dataGridView1.DataSource = c.Employees.Include("Position").ToList();
-
+            }).ToList();*/
+            dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").ToList();
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-=======
-            dataGridView1.DataSource = c.Employees.Include("Position").ToList();
->>>>>>> b36045f5962eacf41fb154ba0c56f8d4f41bd9df
 
         }
-
     }
 }
