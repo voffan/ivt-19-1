@@ -4,12 +4,12 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace Korobki_project.Migrations
 {
-    public partial class MigrationsName : Migration
+    public partial class migrant : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Position",
+                name: "Positions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -18,7 +18,7 @@ namespace Korobki_project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Position", x => x.Id);
+                    table.PrimaryKey("PK_Positions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -54,6 +54,8 @@ namespace Korobki_project.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    Login = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    Password = table.Column<string>(type: "text", nullable: true),
                     PositionId = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
                     Adress = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
@@ -63,9 +65,9 @@ namespace Korobki_project.Migrations
                 {
                     table.PrimaryKey("PK_Employees", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Employees_Position_PositionId",
+                        name: "FK_Employees_Positions_PositionId",
                         column: x => x.PositionId,
-                        principalTable: "Position",
+                        principalTable: "Positions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -214,7 +216,7 @@ namespace Korobki_project.Migrations
                 name: "Productions");
 
             migrationBuilder.DropTable(
-                name: "Position");
+                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "Products");

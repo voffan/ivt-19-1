@@ -13,9 +13,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project
 {
-    public partial class MainMenu : Form
+    public partial class EmployeeForm : Form
     {
-        public MainMenu()
+        public EmployeeForm()
         {
             InitializeComponent();
             Context c = new Context();
@@ -39,13 +39,35 @@ namespace Korobki_project
             }).ToList();*/
             dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").ToList();
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PlanForm planForm = new PlanForm();
+            planForm.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MenuForm main = new MenuForm();
+            main.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ProductionForm productionForm = new ProductionForm();
+            productionForm.Show();
         }
     }
 }

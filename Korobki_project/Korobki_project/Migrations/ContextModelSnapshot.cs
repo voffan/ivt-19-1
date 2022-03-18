@@ -27,9 +27,16 @@ namespace Korobki_project.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
+                    b.Property<string>("Login")
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
+
                     b.Property<string>("Name")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(20)

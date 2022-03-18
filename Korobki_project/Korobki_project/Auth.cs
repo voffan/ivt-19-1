@@ -27,12 +27,12 @@ namespace Korobki_project
 
 		}
 
-		private void button1_Click(object sender, EventArgs e)
-		{
-			this.Visible = false;
-			Logged log = new Logged();
-			log.Show();
+        private void button1_Click(object sender, EventArgs e)
+        {
+			this.Hide();
+			MenuForm main = new MenuForm();
+			main.Show();
 
 		}
-	}
+    }
 }

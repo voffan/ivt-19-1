@@ -12,8 +12,8 @@ namespace Korobki_project.Classes
     public class Production
     {
         public int Id { get; set; }
-        public int TeamId { get; set; }
-        public virtual Schedule Team { get; set; }
+        public int ScheduleId { get; set; }
+        public virtual Schedule Schedule { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
         public int Count { get; set; }

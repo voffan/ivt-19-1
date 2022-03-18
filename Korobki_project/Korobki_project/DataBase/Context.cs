@@ -12,7 +12,7 @@ namespace Korobki_project
     {
         //public Context() : base("MyStri") { }
 
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Classes.Employee> Employees { get; set; }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Production> Productions { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -22,7 +22,7 @@ namespace Korobki_project
         public DbSet<Typee> Typees { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=korobkibd;user=root;password=1234;");
+            optionsBuilder.UseMySQL("server=localhost;database=korobkibd;user=root;password=root;");
         }
     }
 }

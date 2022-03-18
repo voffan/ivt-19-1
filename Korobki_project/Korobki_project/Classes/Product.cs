@@ -16,5 +16,9 @@ namespace Korobki_project.Classes
         public virtual Typee Typee { get; set; }
         [MaxLength(20)]
         public string Size_box { get; set; }
+        public override string ToString()
+        {
+            return Size_box;
+        }
     }
 }

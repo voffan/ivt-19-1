@@ -15,5 +15,11 @@ namespace Korobki_project.Classes
         public virtual Shift Shift { get; set; }
         public DateTime Date { get; set; }
         public int PlanCount { get; set; }
+       /* public override string ToString()
+        {
+            return Date.ToString();
+        }*/
+        
+        
     }
 }

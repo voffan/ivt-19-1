@@ -13,7 +13,7 @@ namespace Korobki_project.Functions
         {
             using (Context c = new Context())
             {
-                Employee employee = new Employee();
+                Classes.Employee employee = new Classes.Employee();
                 //... initiate field
                 c.Employees.Add(employee);
                 c.SaveChanges();

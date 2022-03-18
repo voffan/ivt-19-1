@@ -14,6 +14,10 @@ namespace Korobki_project.Classes
         public int Id { get; set; }
         [MaxLength(100)]
         public string Name { get; set; }
+        [MaxLength(25)]
+        public string Login { get; set; }
+        [MinLength (5)]
+        public string Password { get; set; }
         public int PositionId { get; set; }
         public virtual Position Position { get; set; }
         [MaxLength(20)]
