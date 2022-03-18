@@ -47,11 +47,15 @@ namespace Autoreport.Services
                 return db.Deposits.ToList();
             }
         }
-       
 
-        public void Delete()
+
+        public void Delete(int Id)
         {
-
+            using (DataContext db = Connection.Connect())
+            {
+                db.Deposits.Remove(db.Deposits.Where(empl => empl.Id == Id).ToList()[0]);
+                db.SaveChanges();
+            }
         }
 
         public void Edit()

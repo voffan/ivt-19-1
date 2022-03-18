@@ -65,9 +65,13 @@ namespace Autoreport.Services
 
         }
 
-        public void Delete()
+        public void Delete(int Id)
         {
-
+            using (DataContext db = Connection.Connect())
+            {
+                db.Clients.Remove(db.Clients.Where(empl => empl.Id == Id).ToList()[0]);
+                db.SaveChanges();
+            }
         }
 
         public void Edit()
