@@ -41,16 +41,9 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                List<Person> result = new();
-                List<Person> persons = db.Persons.ToList();
-
-                foreach (Person pers in persons)
-                {
-                    if (pers.GetType() != typeof(Client) && pers.GetType() != typeof(Employee))
-                    {
-                        result.Add(pers);
-                    }
-                }
+                var result = db.Persons.AsEnumerable()
+                    .Where(pers => (pers.GetType() != typeof(Client) && pers.GetType() != typeof(Employee)))
+                    .ToList();
 
                 return result;
             }
