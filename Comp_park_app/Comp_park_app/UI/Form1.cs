@@ -17,12 +17,12 @@ namespace Comp_park_app_form {
             InitializeComponent();
             Context c = new Context();
             dataGridView1.DataSource = c.Computers.ToList();
-            dataGridView1.Columns[1].Visible = false;
+            /*dataGridView1.Columns[1].Visible = false;
             dataGridView1.Columns[2].Visible = false;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
             dataGridView1.Columns[7].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
+            dataGridView1.Columns[8].Visible = false;*/
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e) {
@@ -42,12 +42,12 @@ namespace Comp_park_app_form {
                 case 0: //Computers
                     Context c0 = new Context();
                     dataGridView1.DataSource = c0.Computers.ToList();
-                    dataGridView1.Columns[1].Visible = false;
+                    /*dataGridView1.Columns[1].Visible = false;
                     dataGridView1.Columns[2].Visible = false;
                     dataGridView1.Columns[5].Visible = false;
                     dataGridView1.Columns[6].Visible = false;
                     dataGridView1.Columns[7].Visible = false;
-                    dataGridView1.Columns[8].Visible = false;
+                    dataGridView1.Columns[8].Visible = false;*/
                     break;
                 case 1: //Departments
                     Context c1 = new Context();

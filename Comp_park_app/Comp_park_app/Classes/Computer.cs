@@ -16,7 +16,6 @@ namespace Comp_park_app
         [MaxLength(100)]
         public string ItemNo { get; set; }
         public Status Status { get; set; }
-        //======
         public int MotherboardId { get; set; }
         public virtual Motherboard Motherboard { get; set; }
         public int EmployeeId { get; set; }

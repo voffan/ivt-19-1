@@ -22,15 +22,32 @@ namespace Comp_park_app
             this.Close();
         }
 
+        private void Form_Load(object sender, EventArgs e)
+        {
+            using (Context c = new Context())
+            {
+                comboBox_Department.DataSource = c.Departments.ToList();
+                comboBox_Department.DisplayMember = "Name";
+                comboBox_Department.ValueMember = "Id";
+
+                comboBox_Position.DataSource = c.Positions.ToList();
+                comboBox_Position.DisplayMember = "Name";
+                comboBox_Position.ValueMember = "Id";
+            }
+
+        }
         // При нажатии кнопки создается новый экземпляр класса и вызывается метод Add, которому передается три аргумента
         // (Наименование, производитель и обьем оперативной памяти), который добавляет в список новый элемент,
         // если все поля заполнены, в противной случае вызывает окно с ошибкой
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0 && textBox_capacity.Text.Length != 0)
+            if (textBox_name.Text.Length != 0 && comboBox_Department.SelectedIndex >= 0 && comboBox_Position.SelectedIndex >= 0)
             {
                 EmployeeFunctions employee = new EmployeeFunctions();
-                employee.Add(textBox_name.Text, Convert.ToInt32(textBox_Manufacturer.Text), Convert.ToInt32(textBox_capacity.Text));
+                var name = textBox_name.Text;
+                var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
+                var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
+                employee.Add(name, departmentid, positionid);
                 this.Close();
             }
             else

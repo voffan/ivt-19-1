@@ -22,17 +22,39 @@ namespace Comp_park_app
             this.Close();
         }
 
+        private void Form_Load(object sender, EventArgs e)
+        {
+            foreach (var item in Enum.GetValues(typeof(Status)))
+            {
+                comboBox_Status.Items.Add(item);
+            }
+            using (Context c = new Context())
+            {
+                comboBox_Department.DataSource = c.Departments.ToList();
+                comboBox_Department.DisplayMember = "Name";
+                comboBox_Department.ValueMember = "Id";
+
+                comboBox_Employee.DataSource = c.Employees.ToList();
+                comboBox_Employee.DisplayMember = "Name";
+                comboBox_Employee.ValueMember = "Id";
+            }
+        }
+
         // При нажатии кнопки создается новый экземпляр класса и вызывается метод Add, которому передается три аргумента
         // (Наименование, производитель и обьем оперативной памяти), который добавляет в список новый элемент,
         // если все поля заполнены, в противной случае вызывает окно с ошибкой
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox_name.Text.Length != 0 && textBox_itemno.Text.Length != 0 &&
-                textBox_departmentid.Text.Length != 0 && textBox_employeeid.Text.Length != 0)
+                comboBox_Department.SelectedIndex >= 0 && comboBox_Employee.SelectedIndex >= 0)
             {
                 PeripheralFunctions Peripheral = new PeripheralFunctions();
-                Peripheral.Add(textBox_name.Text, textBox_itemno.Text,
-                    Convert.ToInt32(textBox_departmentid.Text), Convert.ToInt32(textBox_employeeid.Text));
+                var name = textBox_name.Text;
+                var itemno = textBox_itemno.Text;
+                var status = (Status)comboBox_Status.SelectedItem;
+                var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
+                var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
+                Peripheral.Add(name, itemno, status, departmentid, employeeid);
                 this.Close();
             }
             else

@@ -6,13 +6,14 @@ namespace Comp_park_app.Functions
 {
     class PeripheralFunctions
     {
-        public void Add(string name, string itemno, int departmentid, int employeeid)
+        public void Add(string name, string itemno, Status status, int departmentid, int employeeid)
         {
             Peripheral peripheral = new Peripheral()
             {
                
                 Name = name,
                 ItemNo = itemno,
+                Status = status,
                 DepartmentId = departmentid,
                 EmployeeId = employeeid
             };

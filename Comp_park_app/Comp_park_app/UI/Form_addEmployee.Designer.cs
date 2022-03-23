@@ -30,14 +30,14 @@ namespace Comp_park_app
         private void InitializeComponent()
         {
             this.textBox_name = new System.Windows.Forms.TextBox();
-            this.textBox_Manufacturer = new System.Windows.Forms.TextBox();
-            this.textBox_capacity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.comboBox_Department = new System.Windows.Forms.ComboBox();
+            this.comboBox_Position = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBox_name
@@ -46,20 +46,6 @@ namespace Comp_park_app
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(100, 23);
             this.textBox_name.TabIndex = 0;
-            // 
-            // textBox_Manufacturer
-            // 
-            this.textBox_Manufacturer.Location = new System.Drawing.Point(172, 99);
-            this.textBox_Manufacturer.Name = "textBox_Manufacturer";
-            this.textBox_Manufacturer.Size = new System.Drawing.Size(100, 23);
-            this.textBox_Manufacturer.TabIndex = 1;
-            // 
-            // textBox_capacity
-            // 
-            this.textBox_capacity.Location = new System.Drawing.Point(172, 128);
-            this.textBox_capacity.Name = "textBox_capacity";
-            this.textBox_capacity.Size = new System.Drawing.Size(100, 23);
-            this.textBox_capacity.TabIndex = 2;
             // 
             // label1
             // 
@@ -75,9 +61,9 @@ namespace Comp_park_app
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(71, 102);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 15);
+            this.label2.Size = new System.Drawing.Size(40, 15);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Номер отдела";
+            this.label2.Text = "Отдел";
             // 
             // label3
             // 
@@ -117,22 +103,39 @@ namespace Comp_park_app
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // comboBox_Department
+            // 
+            this.comboBox_Department.FormattingEnabled = true;
+            this.comboBox_Department.Location = new System.Drawing.Point(172, 99);
+            this.comboBox_Department.Name = "comboBox_Department";
+            this.comboBox_Department.Size = new System.Drawing.Size(100, 23);
+            this.comboBox_Department.TabIndex = 11;
+            // 
+            // comboBox_Position
+            // 
+            this.comboBox_Position.FormattingEnabled = true;
+            this.comboBox_Position.Location = new System.Drawing.Point(172, 128);
+            this.comboBox_Position.Name = "comboBox_Position";
+            this.comboBox_Position.Size = new System.Drawing.Size(100, 23);
+            this.comboBox_Position.TabIndex = 12;
+            // 
             // Form_addEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 281);
+            this.Controls.Add(this.comboBox_Position);
+            this.Controls.Add(this.comboBox_Department);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox_capacity);
-            this.Controls.Add(this.textBox_Manufacturer);
             this.Controls.Add(this.textBox_name);
             this.Name = "Form_addEmployee";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,13 +144,13 @@ namespace Comp_park_app
         #endregion
 
         private System.Windows.Forms.TextBox textBox_name;
-        private System.Windows.Forms.TextBox textBox_Manufacturer;
-        private System.Windows.Forms.TextBox textBox_capacity;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox_Department;
+        private System.Windows.Forms.ComboBox comboBox_Position;
     }
 }
