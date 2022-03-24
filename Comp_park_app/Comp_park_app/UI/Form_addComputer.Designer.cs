@@ -245,26 +245,29 @@ namespace Comp_park_app
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(459, 55);
+            this.comboBox1.Location = new System.Drawing.Point(386, 22);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 22;
+            this.comboBox1.Visible = false;
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(459, 103);
+            this.comboBox2.Location = new System.Drawing.Point(386, 58);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 23);
             this.comboBox2.TabIndex = 23;
+            this.comboBox2.Visible = false;
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(459, 160);
+            this.comboBox3.Location = new System.Drawing.Point(386, 103);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 23);
             this.comboBox3.TabIndex = 24;
+            this.comboBox3.Visible = false;
             // 
             // Form_addComputer
             // 

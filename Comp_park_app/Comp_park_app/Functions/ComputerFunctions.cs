@@ -21,17 +21,22 @@ namespace Comp_park_app.Functions
                 Processors = processors
             };
 
+            
+            using (Context c = new Context())
+            {
+                //... initiate field
+                c.Computers.Add(comp);
+                
+                c.SaveChanges();
+                
+            }
+            var id = comp.Id;
             HDD hdd = new HDD();
             RAM ram = new RAM();
             Processor processor = new Processor();
 
             using (Context c = new Context())
             {
-                //... initiate field
-                c.Computers.Add(comp);
-                c.SaveChanges();
-                var id = comp.Id;
-
                 foreach (var a in hdds)
                 {
                     if (c.Entry(hdd).Entity.Id == a.Id)
