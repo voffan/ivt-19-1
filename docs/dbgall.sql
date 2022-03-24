@@ -26,7 +26,7 @@ CREATE TABLE `__efmigrationshistory` (
   `MigrationId` varchar(150) NOT NULL,
   `ProductVersion` varchar(32) NOT NULL,
   PRIMARY KEY (`MigrationId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `__efmigrationshistory` (
 
 LOCK TABLES `__efmigrationshistory` WRITE;
 /*!40000 ALTER TABLE `__efmigrationshistory` DISABLE KEYS */;
-INSERT INTO `__efmigrationshistory` VALUES ('20220302160835_Migr','5.0.14');
+INSERT INTO `__efmigrationshistory` VALUES ('20220318055119_migr','5.0.14');
 /*!40000 ALTER TABLE `__efmigrationshistory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,7 +51,7 @@ CREATE TABLE `authors` (
   `Name` varchar(200) DEFAULT NULL,
   `Bio` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,12 +73,11 @@ DROP TABLE IF EXISTS `employees`;
 CREATE TABLE `employees` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) DEFAULT NULL,
+  `Login1` varchar(50) DEFAULT NULL,
+  `Passw1` text,
   `Right` int NOT NULL,
-  `PositionId` int NOT NULL,
-  PRIMARY KEY (`Id`),
-  KEY `IX_Employees_PositionId` (`PositionId`),
-  CONSTRAINT `FK_Employees_Position_PositionId` FOREIGN KEY (`PositionId`) REFERENCES `position` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,6 +86,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+INSERT INTO `employees` VALUES (1,'Osipov Denis','qwe','asd',0),(2,'tolya','asd','asd1',0);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +101,7 @@ CREATE TABLE `genres` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +136,7 @@ CREATE TABLE `journals` (
   CONSTRAINT `FK_Journals_Paintings_PaintingId` FOREIGN KEY (`PaintingId`) REFERENCES `paintings` (`Id`) ON DELETE CASCADE,
   CONSTRAINT `FK_Journals_Places_FromId` FOREIGN KEY (`FromId`) REFERENCES `places` (`Id`) ON DELETE CASCADE,
   CONSTRAINT `FK_Journals_Places_ToId` FOREIGN KEY (`ToId`) REFERENCES `places` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +168,7 @@ CREATE TABLE `paintings` (
   KEY `IX_Paintings_GenreId` (`GenreId`),
   CONSTRAINT `FK_Paintings_Authors_AuthorId` FOREIGN KEY (`AuthorId`) REFERENCES `authors` (`Id`) ON DELETE CASCADE,
   CONSTRAINT `FK_Paintings_Genres_GenreId` FOREIGN KEY (`GenreId`) REFERENCES `genres` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +193,7 @@ CREATE TABLE `places` (
   `Discriminator` text NOT NULL,
   `Place` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,37 +204,6 @@ LOCK TABLES `places` WRITE;
 /*!40000 ALTER TABLE `places` DISABLE KEYS */;
 /*!40000 ALTER TABLE `places` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `position`
---
-
-DROP TABLE IF EXISTS `position`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `position` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `Name` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `position`
---
-
-LOCK TABLES `position` WRITE;
-/*!40000 ALTER TABLE `position` DISABLE KEYS */;
-/*!40000 ALTER TABLE `position` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping events for database 'gallery_bd'
---
-
---
--- Dumping routines for database 'gallery_bd'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -245,4 +214,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-03  1:27:18
+-- Dump completed on 2022-03-25  0:20:29
