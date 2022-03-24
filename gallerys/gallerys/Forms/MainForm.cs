@@ -10,16 +10,17 @@ using System.Windows.Forms;
 using gallerys;
 using gallerys.Context;
 using Microsoft.EntityFrameworkCore;
+using gallerys.Forms;
 namespace gallerys
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        Form addForm;
+        private void MainForm_Load(object sender, EventArgs e)
         {
             gallContext c = new gallContext();
             MessageBox.Show("Приветствую вас, ");
@@ -55,6 +56,11 @@ namespace gallerys
                 dataGridView1.DataSource = c.Exhibitions.ToList();
             }
             label1.Text = "Текущий список: " + selectedtable;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addForm.ShowDialog(this);
         }
     }
 }

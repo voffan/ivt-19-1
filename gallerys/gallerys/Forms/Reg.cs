@@ -26,7 +26,7 @@ namespace gallerys
             try
             {
                 Connection.employeeSer.Login(log, pass);
-                Form1 frm1 = new Form1();
+                MainForm frm1 = new MainForm();
                 frm1.ShowDialog();
                 Close();
             }
