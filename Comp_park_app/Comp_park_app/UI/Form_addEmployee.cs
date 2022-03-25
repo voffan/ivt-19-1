@@ -13,9 +13,13 @@ namespace Comp_park_app
 {
     public partial class Form_addEmployee : Form
     {
-        public Form_addEmployee()
+        bool Type_Add;
+        public Form_addEmployee(bool Add)
         {
             InitializeComponent();
+            button1.Visible = Add;
+            button_Edit.Visible = !Add;
+            Type_Add = Add;
         }
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
@@ -24,15 +28,22 @@ namespace Comp_park_app
 
         private void Form_Load(object sender, EventArgs e)
         {
-            using (Context c = new Context())
+            if (Type_Add)
             {
-                comboBox_Department.DataSource = c.Departments.ToList();
-                comboBox_Department.DisplayMember = "Name";
-                comboBox_Department.ValueMember = "Id";
+                using (Context c = new Context())
+                {
+                    comboBox_Department.DataSource = c.Departments.ToList();
+                    comboBox_Department.DisplayMember = "Name";
+                    comboBox_Department.ValueMember = "Id";
 
-                comboBox_Position.DataSource = c.Positions.ToList();
-                comboBox_Position.DisplayMember = "Name";
-                comboBox_Position.ValueMember = "Id";
+                    comboBox_Position.DataSource = c.Positions.ToList();
+                    comboBox_Position.DisplayMember = "Name";
+                    comboBox_Position.ValueMember = "Id";
+                }
+            }
+            else
+            {
+                //For edit mode
             }
 
         }

@@ -13,15 +13,19 @@ namespace Comp_park_app
 {
     public partial class Form_addComputer : Form
     {
-        public Form_addComputer()
+        bool Type_Add;
+        public Form_addComputer(bool Add)
         {
             InitializeComponent();
+            button_addComputer.Visible = Add;
+            button_Edit.Visible = !Add;
+            Type_Add = Add;
+            
         }
 
 
         private void comboBox_HDD_SelectedIndexChanged(object sender, EventArgs e)//Add item from combobox to listbox
         {
-            
             listBox1.Items.Add(comboBox_HDD.SelectedItem);
             comboBox_HDD.Items.Remove(comboBox_HDD.SelectedItem);
         }
@@ -39,8 +43,7 @@ namespace Comp_park_app
         }
 
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e) //Add item from listbox to combobox
-        {
-            
+        {         
             comboBox_HDD.Items.Add(listBox1.SelectedItem);
             listBox1.Items.Remove(listBox1.SelectedItem);
         }
@@ -57,72 +60,79 @@ namespace Comp_park_app
 
         private void Form_addComputer_Load(object sender, EventArgs e)
         {
-            foreach (var item in Enum.GetValues(typeof(Status)))
+            if (Type_Add)
             {
-                comboBox_Status.Items.Add(item);
+                foreach (var item in Enum.GetValues(typeof(Status)))
+                {
+                    comboBox_Status.Items.Add(item);
+                }
+
+                using (Context c = new Context())
+                {
+                    comboBox1.DataSource = c.HDDs.ToList();
+                    comboBox1.DisplayMember = "Name";
+                    comboBox1.ValueMember = "Id";
+
+                    comboBox2.DataSource = c.RAMs.ToList();
+                    comboBox2.DisplayMember = "Name";
+                    comboBox2.ValueMember = "Id";
+
+                    comboBox3.DataSource = c.Processors.ToList();
+                    comboBox3.DisplayMember = "Name";
+                    comboBox3.ValueMember = "Id";
+
+                    comboBox_Department.DataSource = c.Departments.ToList();
+                    comboBox_Department.DisplayMember = "Name";
+                    comboBox_Department.ValueMember = "Id";
+
+                    comboBox_Employee.DataSource = c.Employees.ToList();
+                    comboBox_Employee.DisplayMember = "Name";
+                    comboBox_Employee.ValueMember = "Id";
+
+                    //comboBox_HDD.DataSource = c.HDDs.ToList();
+                    comboBox_HDD.DisplayMember = "Name";
+                    comboBox_HDD.ValueMember = "Id";
+
+                    //comboBox_RAM.DataSource = c.RAMs.ToList();
+                    comboBox_RAM.DisplayMember = "Name";
+                    comboBox_RAM.ValueMember = "Id";
+
+                    //comboBox_Processor.DataSource = c.Processors.ToList();
+                    comboBox_Processor.DisplayMember = "Name";
+                    comboBox_Processor.ValueMember = "Id";
+
+                    comboBox_Motherboard.DataSource = c.Motherboards.ToList();
+                    comboBox_Motherboard.DisplayMember = "Name";
+                    comboBox_Motherboard.ValueMember = "Id";
+
+                }
+
+                listBox1.DisplayMember = "Name";
+                listBox1.ValueMember = "Id";
+
+                listBox2.DisplayMember = "Name";
+                listBox2.ValueMember = "Id";
+
+                listBox3.DisplayMember = "Name";
+                listBox3.ValueMember = "Id";
+
+                for (int i = 0; i < comboBox1.Items.Count; i++)
+                {
+                    comboBox_HDD.Items.Add(((HDD)comboBox1.Items[i]));
+                }
+                for (int i = 0; i < comboBox2.Items.Count; i++)
+                {
+                    comboBox_RAM.Items.Add(((RAM)comboBox2.Items[i]));
+                }
+                for (int i = 0; i < comboBox3.Items.Count; i++)
+                {
+                    comboBox_Processor.Items.Add(((Processor)comboBox3.Items[i]));
+                }
             }
-
-            using (Context c = new Context()) {
-                comboBox1.DataSource = c.HDDs.ToList();
-                comboBox1.DisplayMember = "Name";
-                comboBox1.ValueMember = "Id";
-
-                comboBox2.DataSource = c.RAMs.ToList();
-                comboBox2.DisplayMember = "Name";
-                comboBox2.ValueMember = "Id";
-
-                comboBox3.DataSource = c.Processors.ToList();
-                comboBox3.DisplayMember = "Name";
-                comboBox3.ValueMember = "Id";
-
-                comboBox_Department.DataSource = c.Departments.ToList();
-                comboBox_Department.DisplayMember = "Name";
-                comboBox_Department.ValueMember = "Id";
-
-                comboBox_Employee.DataSource = c.Employees.ToList();
-                comboBox_Employee.DisplayMember = "Name";
-                comboBox_Employee.ValueMember = "Id";
-
-                //comboBox_HDD.DataSource = c.HDDs.ToList();
-                comboBox_HDD.DisplayMember = "Name";
-                comboBox_HDD.ValueMember = "Id";
-
-                //comboBox_RAM.DataSource = c.RAMs.ToList();
-                comboBox_RAM.DisplayMember = "Name";
-                comboBox_RAM.ValueMember = "Id";
-
-                //comboBox_Processor.DataSource = c.Processors.ToList();
-                comboBox_Processor.DisplayMember = "Name";
-                comboBox_Processor.ValueMember = "Id";
-
-                comboBox_Motherboard.DataSource = c.Motherboards.ToList();
-                comboBox_Motherboard.DisplayMember = "Name";
-                comboBox_Motherboard.ValueMember = "Id";
-                
-            }
-
-            listBox1.DisplayMember = "Name";
-            listBox1.ValueMember = "Id";
-
-            listBox2.DisplayMember = "Name";
-            listBox2.ValueMember = "Id";
-
-            listBox3.DisplayMember = "Name";
-            listBox3.ValueMember = "Id";
-
-            for (int i = 0; i < comboBox1.Items.Count; i++)
+            else
             {
-                comboBox_HDD.Items.Add(((HDD)comboBox1.Items[i]));
+                //For edit mode
             }
-            for (int i = 0; i < comboBox2.Items.Count; i++)
-            {
-                comboBox_RAM.Items.Add(((RAM)comboBox2.Items[i]));
-            }
-            for (int i = 0; i < comboBox3.Items.Count; i++)
-            {
-                comboBox_Processor.Items.Add(((Processor)comboBox3.Items[i]));
-            }
-
         }
 
         private void button_addComputer_Click(object sender, EventArgs e)

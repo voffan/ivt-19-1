@@ -13,14 +13,26 @@ namespace Comp_park_app
 {
     public partial class Form_addMotherboard : Form
     {
-        public Form_addMotherboard()
+        bool Type_Add;
+        public Form_addMotherboard(bool Add)
         {
             InitializeComponent();
+            button1.Visible = Add;
+            button_Edit.Visible = !Add;
+            Type_Add = Add;
         }
 
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
             this.Close();
+        }
+
+        private void Form_Load(object sender, EventArgs e)
+        {
+            if (!Type_Add)
+            {
+                //For edit mode
+            }
         }
 
         // При нажатии кнопки создается новый экземпляр класса и вызывается метод Add, которому передается три аргумента

@@ -13,9 +13,13 @@ namespace Comp_park_app
 {
     public partial class Form_addPeripheral : Form
     {
-        public Form_addPeripheral()
+        bool Type_Add;
+        public Form_addPeripheral(bool Add)
         {
             InitializeComponent();
+            button1.Visible = Add;
+            button_Edit.Visible = !Add;
+            Type_Add = Add;
         }
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
@@ -24,19 +28,26 @@ namespace Comp_park_app
 
         private void Form_Load(object sender, EventArgs e)
         {
-            foreach (var item in Enum.GetValues(typeof(Status)))
+            if (Type_Add)
             {
-                comboBox_Status.Items.Add(item);
-            }
-            using (Context c = new Context())
-            {
-                comboBox_Department.DataSource = c.Departments.ToList();
-                comboBox_Department.DisplayMember = "Name";
-                comboBox_Department.ValueMember = "Id";
+                foreach (var item in Enum.GetValues(typeof(Status)))
+                {
+                    comboBox_Status.Items.Add(item);
+                }
+                using (Context c = new Context())
+                {
+                    comboBox_Department.DataSource = c.Departments.ToList();
+                    comboBox_Department.DisplayMember = "Name";
+                    comboBox_Department.ValueMember = "Id";
 
-                comboBox_Employee.DataSource = c.Employees.ToList();
-                comboBox_Employee.DisplayMember = "Name";
-                comboBox_Employee.ValueMember = "Id";
+                    comboBox_Employee.DataSource = c.Employees.ToList();
+                    comboBox_Employee.DisplayMember = "Name";
+                    comboBox_Employee.ValueMember = "Id";
+                }
+            }
+            else
+            {
+                //For edit mode
             }
         }
 

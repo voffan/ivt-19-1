@@ -82,53 +82,111 @@ namespace Comp_park_app_form {
         }
 
         // Формы добавления
-        private void button2_Click(object sender, EventArgs e) {
+        private void button2_Click(object sender, EventArgs e) { //Add button
 
             // Появление формы Form_addComputer
             if (listBox1.SelectedIndex == 0) {
-                Form form_addComputer = new Form_addComputer();
+                Form form_addComputer = new Form_addComputer(true);
                 form_addComputer.ShowDialog();
             }
 
             // Появление формы Form_addDepartment
             if (listBox1.SelectedIndex == 1) {
-                Form form_addDepartment = new Form_addDepartment();
+                Form form_addDepartment = new Form_addDepartment(true);
                 form_addDepartment.ShowDialog();
             }
 
             // Появление формы Form_addEmployee
             if (listBox1.SelectedIndex == 2) {
-                Form form_addEmployee = new Form_addEmployee();
+                Form form_addEmployee = new Form_addEmployee(true);
                 form_addEmployee.ShowDialog();
             }
 
             // Появление формы Form_addHDD
             if (listBox1.SelectedIndex == 3) {
-                Form form_addHDD = new Form_addHDD();
+                Form form_addHDD = new Form_addHDD(true);
                 form_addHDD.ShowDialog();
             }
 
             // Появление формы Form_addMotherboard
             if (listBox1.SelectedIndex == 4) {
-                Form form_addMotherboard = new Form_addMotherboard();
+                Form form_addMotherboard = new Form_addMotherboard(true);
                 form_addMotherboard.ShowDialog();
             }
 
             // Появление формы Form_addPeripheral
             if (listBox1.SelectedIndex == 5) {
-                Form form_addPeripheral = new Form_addPeripheral();
+                Form form_addPeripheral = new Form_addPeripheral(true);
                 form_addPeripheral.ShowDialog();
             }
 
             // Появление формы Form_addProcessor
             if (listBox1.SelectedIndex == 6) {
-                Form form_addProcessor = new Form_addProcessor();
+                Form form_addProcessor = new Form_addProcessor(true);
                 form_addProcessor.ShowDialog();
             }
 
             // Появление формы Form_addRAM
             if (listBox1.SelectedIndex == 7) { 
-                Form form_addRAM = new Form_addRAM();
+                Form form_addRAM = new Form_addRAM(true, -1);
+                form_addRAM.ShowDialog();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e) //Edit button
+        {
+            if (listBox1.SelectedIndex == 0)
+            {
+                Form form_addComputer = new Form_addComputer(false);
+                form_addComputer.ShowDialog();
+            }
+
+            // Появление формы Form_addDepartment
+            if (listBox1.SelectedIndex == 1)
+            {
+                Form form_addDepartment = new Form_addDepartment(false);
+                form_addDepartment.ShowDialog();
+            }
+
+            // Появление формы Form_addEmployee
+            if (listBox1.SelectedIndex == 2)
+            {
+                Form form_addEmployee = new Form_addEmployee(false);
+                form_addEmployee.ShowDialog();
+            }
+
+            // Появление формы Form_addHDD
+            if (listBox1.SelectedIndex == 3)
+            {
+                Form form_addHDD = new Form_addHDD(false);
+                form_addHDD.ShowDialog();
+            }
+
+            // Появление формы Form_addMotherboard
+            if (listBox1.SelectedIndex == 4)
+            {
+                Form form_addMotherboard = new Form_addMotherboard(false);
+                form_addMotherboard.ShowDialog();
+            }
+
+            // Появление формы Form_addPeripheral
+            if (listBox1.SelectedIndex == 5)
+            {
+                Form form_addPeripheral = new Form_addPeripheral(false);
+                form_addPeripheral.ShowDialog();
+            }
+
+            // Появление формы Form_addProcessor
+            if (listBox1.SelectedIndex == 6)
+            {
+                Form form_addProcessor = new Form_addProcessor(false);
+                form_addProcessor.ShowDialog();
+            }
+
+            // Появление формы Form_addRAM
+            if (listBox1.SelectedIndex == 7)
+            {
+                Form form_addRAM = new Form_addRAM(false, Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Id"].Value));
                 form_addRAM.ShowDialog();
             }
         }

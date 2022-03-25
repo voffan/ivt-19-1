@@ -36,6 +36,7 @@ namespace Comp_park_app
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button_Edit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_name
@@ -99,11 +100,21 @@ namespace Comp_park_app
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button_Edit
+            // 
+            this.button_Edit.Location = new System.Drawing.Point(75, 160);
+            this.button_Edit.Name = "button_Edit";
+            this.button_Edit.Size = new System.Drawing.Size(75, 23);
+            this.button_Edit.TabIndex = 11;
+            this.button_Edit.Text = "Изменить";
+            this.button_Edit.UseVisualStyleBackColor = true;
+            // 
             // Form_addMotherboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 281);
+            this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
@@ -113,6 +124,7 @@ namespace Comp_park_app
             this.Controls.Add(this.textBox_name);
             this.Name = "Form_addMotherboard";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +141,6 @@ namespace Comp_park_app
         
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_Edit;
     }
 }

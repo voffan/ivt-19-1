@@ -53,6 +53,7 @@ namespace Comp_park_app
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button_Edit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox_HDD
@@ -269,11 +270,21 @@ namespace Comp_park_app
             this.comboBox3.TabIndex = 24;
             this.comboBox3.Visible = false;
             // 
+            // button_Edit
+            // 
+            this.button_Edit.Location = new System.Drawing.Point(422, 520);
+            this.button_Edit.Name = "button_Edit";
+            this.button_Edit.Size = new System.Drawing.Size(121, 23);
+            this.button_Edit.TabIndex = 25;
+            this.button_Edit.Text = "Изменить";
+            this.button_Edit.UseVisualStyleBackColor = true;
+            // 
             // Form_addComputer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 565);
+            this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
@@ -332,5 +343,6 @@ namespace Comp_park_app
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button button_Edit;
     }
 }

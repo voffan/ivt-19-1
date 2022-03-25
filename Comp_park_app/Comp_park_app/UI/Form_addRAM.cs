@@ -13,14 +13,38 @@ namespace Comp_park_app
 {
     public partial class Form_addRAM : Form
     {
-        public Form_addRAM()
+        bool Type_Add;
+        int id;
+        public Form_addRAM(bool Add, int index)
         {
             InitializeComponent();
+            button1.Visible = Add;
+            button_Edit.Visible = !Add;
+            Type_Add = Add;
+            id = index;
         }
 
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
             this.Close();
+        }
+
+        private void Form_Load(object sender, EventArgs e)
+        {
+            if (!Type_Add)
+            {
+                using(Context c = new Context())
+                {
+                    /*var rams = from r in c.RAMs
+                               where r.Id.Equals(id)
+                               select r;*/
+                    var rams = c.RAMs.Find(id);
+                    textBox_name.Text = rams.Name;
+                    textBox_Manufacturer.Text = rams.Manufacturer;
+                    textBox_capacity.Text = rams.Capacity.ToString();
+                }
+                //For edit mode
+            }
         }
 
         // При нажатии кнопки создается новый экземпляр класса и вызывается метод Add, которому передается три аргумента

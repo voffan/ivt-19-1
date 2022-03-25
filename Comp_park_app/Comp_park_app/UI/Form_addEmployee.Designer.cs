@@ -38,6 +38,7 @@ namespace Comp_park_app
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox_Department = new System.Windows.Forms.ComboBox();
             this.comboBox_Position = new System.Windows.Forms.ComboBox();
+            this.button_Edit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_name
@@ -119,11 +120,21 @@ namespace Comp_park_app
             this.comboBox_Position.Size = new System.Drawing.Size(100, 23);
             this.comboBox_Position.TabIndex = 12;
             // 
+            // button_Edit
+            // 
+            this.button_Edit.Location = new System.Drawing.Point(71, 184);
+            this.button_Edit.Name = "button_Edit";
+            this.button_Edit.Size = new System.Drawing.Size(75, 23);
+            this.button_Edit.TabIndex = 13;
+            this.button_Edit.Text = "Изменить";
+            this.button_Edit.UseVisualStyleBackColor = true;
+            // 
             // Form_addEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 281);
+            this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.comboBox_Position);
             this.Controls.Add(this.comboBox_Department);
             this.Controls.Add(this.button2);
@@ -152,5 +163,6 @@ namespace Comp_park_app
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox_Department;
         private System.Windows.Forms.ComboBox comboBox_Position;
+        private System.Windows.Forms.Button button_Edit;
     }
 }
