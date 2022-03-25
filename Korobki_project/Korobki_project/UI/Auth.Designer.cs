@@ -55,6 +55,7 @@ namespace Korobki_project
 			this.password.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.password.Location = new System.Drawing.Point(93, 209);
 			this.password.Name = "password";
+			this.password.PasswordChar = '*';
 			this.password.PlaceholderText = "Password";
 			this.password.Size = new System.Drawing.Size(198, 23);
 			this.password.TabIndex = 1;

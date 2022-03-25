@@ -29,37 +29,37 @@ namespace Korobki_project
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 36);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(588, 184);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // mySqlDataAdapter1
-            // 
-            this.mySqlDataAdapter1.DeleteCommand = null;
-            this.mySqlDataAdapter1.InsertCommand = null;
-            this.mySqlDataAdapter1.SelectCommand = null;
-            this.mySqlDataAdapter1.UpdateCommand = null;
-            // 
-            // PlanForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "PlanForm";
-            this.Text = "PlanForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.RowTemplate.Height = 25;
+			this.dataGridView1.Size = new System.Drawing.Size(760, 287);
+			this.dataGridView1.TabIndex = 0;
+			// 
+			// mySqlDataAdapter1
+			// 
+			this.mySqlDataAdapter1.DeleteCommand = null;
+			this.mySqlDataAdapter1.InsertCommand = null;
+			this.mySqlDataAdapter1.SelectCommand = null;
+			this.mySqlDataAdapter1.UpdateCommand = null;
+			// 
+			// PlanForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(784, 311);
+			this.Controls.Add(this.dataGridView1);
+			this.Name = "PlanForm";
+			this.Text = "PlanForm";
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.ResumeLayout(false);
 
         }
 
