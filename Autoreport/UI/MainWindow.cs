@@ -10,15 +10,21 @@ using Autoreport.Models;
 
 namespace Autoreport.UI
 {
-    public enum SelectMode
+    /// <summary>
+    /// General - обычный режим окна с пролистыванием и модификацией данных
+    /// Select - режим, в котором эта форма становится источником для выбора данных для других форм
+    /// </summary>
+    public enum Mode
     {
-        Enabled,
-        Disabled
+        General,
+        Select
     }
 
     public partial class MainWindow : Form
     {
         Login Loginer;
+
+        Mode currentMode = Mode.General; // поле должно менять состояния только внутри метода WindowMode
 
         Button currentTabButton;
         Form currentAddForm;
@@ -28,13 +34,13 @@ namespace Autoreport.UI
         List<Button> currentlyPermittedActions = new List<Button>(); // действия, доступные на какой-либо вкладке
         List<Button> secondaryTabs; // вкладки, отображающиеся только при определенных условиях
 
-        Dictionary<Button, Action> tabAction = new Dictionary<Button, Action>();
+        // соответствие таба и связанного с ним метода
+        // используется в методе TabClicked для того, чтоб не писать кучу if'ов
+        Dictionary<Button, Action<Action<DataGridViewColumn>>> tabAction = new Dictionary<Button, Action<Action<DataGridViewColumn>>>();
 
         DataGridViewCellEventHandler tableItemDoubleClickEvent; // даблклик по строке таблицы
         EventHandler tableItemSelectEvent; // выбор строки из таблицы
         EventHandler selectedItemSelectEvent; // выбор строки из списка selectedItemBox
-
-        public readonly Dictionary<string, Button> tabs;
 
         public MainWindow()
         {
@@ -43,8 +49,7 @@ namespace Autoreport.UI
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            secondaryTabs = new List<Button>() { filmDirectorsSecondaryTab };
-
+            SetSecondaryTabs();
             SetTabAction();
             SetEventHandlers();
             SetAppearance(1200, 620, 50, 50);
@@ -66,6 +71,11 @@ namespace Autoreport.UI
             }
 
             HideSecondaryTabs();
+        }
+
+        private void SetSecondaryTabs()
+        {
+            secondaryTabs = new List<Button>() { filmDirectorsSecondaryTab };
         }
 
         private void SetTabAction()
@@ -175,36 +185,48 @@ namespace Autoreport.UI
             }
         }
 
+        /// <summary>
+        /// Общий метод для обработки кликов по табам, который вызывает частные методы для каждой отдельной вкладки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TabClicked(object sender, EventArgs e)
         {
-            currentlyPermittedActions.Clear();
+            currentlyPermittedActions.Clear(); // чистим список доступных на вкладке кнопок, чтоб добавить новые данные
 
-            if (currentTabButton != null)
+            if (currentTabButton != null) // восстанавливаем для предыдущей кнопки дефолтный цвет
                 currentTabButton.BackColor = Color.Gainsboro;
 
             currentTabButton = (Button)sender;
             currentTabButton.BackColor = Color.WhiteSmoke;
 
-            tabAction[currentTabButton](); // вызываем метод, связанный с вкладкой
+            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
+            tabAction[currentTabButton](SetCharacteristic); // вызываем метод, связанный с вкладкой
+
+            // выключаем все кнопки-действия за исключением тех, что были добавлены в currentlyPermittedActions
             DisableAllControlButtonsExcept(currentlyPermittedActions.ToArray());
 
+            // если таблица пустая, то выключаем кнопки-действия, оставляя необходимые
+            // при этом беря во внимание, что некоторые из "необходимых" могут не входить в currentlyPermittedActions,
+            // тогда их оставлять не нужно
             if (dataGridView.SelectedRows.Count == 0 || !currentlyPermittedActions.Contains(deleteBtn))
-                deleteBtn.Enabled = false;
+            {
+                Button[] necessary = new Button[] { addBtn, reloadBtn, doneBtn }
+                                        .Where(b => currentlyPermittedActions.Contains(b))
+                                        .ToArray();
+                DisableAllControlButtonsExcept(necessary);
+            }
 
             dataGridView.Columns["Id"].DisplayIndex = 0;
             dataGridView.Columns["Id"].Visible = false;
         }
 
-        private void EmployeesTab_Click()
+        private void EmployeesTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn });
 
-            //deleteBtn.Enabled = false;
             currentAddForm = new AddEmployeeForm();
-            currentDeleteAction = Connection.employeeService.Delete;
             dataGridView.DataSource = Connection.employeeService.GetAll();
-
-            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
             SetCharacteristic(dataGridView.Columns["Last_name"]);
@@ -212,17 +234,14 @@ namespace Autoreport.UI
             SetCharacteristic(dataGridView.Columns["EmplPosition"]);
         }
 
-        private void ClientsTab_Click()
+        private void ClientsTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
-                addBtn, editBtn, searchBtn, reloadBtn, deleteBtn, doneBtn 
+                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn
             });
 
             currentAddForm = new AddClientForm();
-            currentDeleteAction = Connection.clientService.Delete;
             dataGridView.DataSource = Connection.clientService.GetAll();
-
-            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
             SetCharacteristic(dataGridView.Columns["Last_name"]);
@@ -230,7 +249,7 @@ namespace Autoreport.UI
             SetCharacteristic(dataGridView.Columns["Phone_number1"]);
         }
 
-        private void DisksTab_Click()
+        private void DisksTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn, doneBtn 
@@ -240,28 +259,24 @@ namespace Autoreport.UI
             currentDeleteAction = Connection.diskService.Delete;
             dataGridView.DataSource = Connection.diskService.GetAll();
 
-            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
-
             SetCharacteristic(dataGridView.Columns["Article"]);
+            SetCharacteristic(dataGridView.Columns["Cost"]);
         }
 
-        private void FilmsTab_Click()
+        private void FilmsTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
             });
 
             currentAddForm = new AddFilmForm(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
-            currentDeleteAction = Connection.filmService.Delete;
             dataGridView.DataSource = Connection.filmService.GetAll();
-
-            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["Name"]);
             SetCharacteristic(dataGridView.Columns["Date"]);
         }
 
-        private void OrdersTab_Click()
+        private void OrdersTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn 
@@ -271,34 +286,29 @@ namespace Autoreport.UI
             dataGridView.DataSource = Connection.orderService.GetAll();
         }
 
-        private void DepositsTab_Click()
+        private void DepositsTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() {
-                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
-            });
+            List<Button> permittedActions = null;
+
+            if (currentMode == Mode.General)
+                permittedActions = new List<Button>() { editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+            else if (currentMode == Mode.Select)
+                permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+
+            currentlyPermittedActions.AddRange(permittedActions);
 
             currentAddForm = new AddDepositForm(clientsTab, reloadBtn.PerformClick);
-            currentDeleteAction = Connection.depositService.Delete;
             dataGridView.DataSource = Connection.depositService.GetAll();
-
-            dataGridView.Columns["Id"].DisplayIndex = 0;
-            dataGridView.Columns["Id"].Visible = false;
-
-            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["Data"]);
         }
 
-        private void FilmDirectorsSecondaryTab_Click()
+        private void FilmDirectorsSecondaryTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() { 
-                addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn
-            });
+            currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn });
             
             currentAddForm = new AddFilmDirectorForm();
             dataGridView.DataSource = Connection.filmService.GetFilmsDirectors();
-
-            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
             SetCharacteristic(dataGridView.Columns["Last_name"]);
@@ -307,11 +317,11 @@ namespace Autoreport.UI
 
         /// <summary>
         /// Замыкающая функция, устанавливающая значение "Characteristic" для
-        /// свойства Tag столбцов таблицы. Столбцы с тэгом Characteristic
-        /// могут понадобиться пользователю в первую очередь, поэтому они расположены
-        /// друг за другом и идут первыми после невидимого поля Id, индекс которого 0.
+        /// свойства Tag столбцов таблицы.
+        /// Столбцы с тэгом Characteristic имеют приоритет, поэтому они расположены
+        /// друг за другом и идут по порядку(1,2,...) после невидимого поля Id, индекс которого 0.
         /// </summary>
-        /// <param name="startIndex"></param>
+        /// <param name="startIndex">Какая первая позиция по порядку</param>
         /// <returns></returns>
         private Action<DataGridViewColumn> CharacteristicSetter(int startIndex = 1)
         {
@@ -558,21 +568,20 @@ namespace Autoreport.UI
         /// либо обратно в начальный режим.
         /// </summary>
         /// <param name="Handler">Функция дочерней формы, которая вызывается при нажатии кнопки "Готово"</param>
-        /// <returns name="Set" type="Action<SelectMode, Button>">
-        ///     Функция, примающая аргументы:
-        ///         bool - активировать режим выбора если true, иначе - деактивировать
-        ///         Button - ссылка на кнопку-вкладку, связанную с таблицей, из которой будут 
-        ///         выбираться элементы
+        /// <returns name="Set" type="Action<Mode, Button>">
+        ///     Button - ссылка на кнопку-вкладку, связанную с таблицей, из которой будут 
+        ///     выбираться элементы
         /// </returns>
-        public Action<SelectMode, Button> SelectMode(Action<ListBox.ObjectCollection> Handler)
+        public Action<Mode, Button> WindowMode(Action<ListBox.ObjectCollection> Handler)
         {
             Button lastTab = currentTabButton;
             EventHandler doneEventHandler = new EventHandler(
                 (object sender, EventArgs e) => Handler(selectedItemsBox.Items));
 
-            void Turn(SelectMode state, Button selectTab)
+            void Turn(Mode state, Button selectTab)
             {
-                bool is_enabled = state == UI.SelectMode.Enabled;
+                bool is_enabled = state == Mode.General;
+                currentMode = state;
 
                 if (is_enabled)
                 {

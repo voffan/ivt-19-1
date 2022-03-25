@@ -50,7 +50,7 @@ namespace Autoreport.UI
         //        selectedBox.Items.Add(item);
         //    }
 
-        //    OwnerSelectMode_Turn(SelectMode.Disabled, null);
+        //    OwnerSelectMode_Turn(Mode.Disabled, null);
         //    this.ShowDialog(owner);
         //}
 

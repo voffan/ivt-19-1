@@ -44,11 +44,11 @@ namespace Autoreport.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-                .Entity<Deposit>()
-                .HasOne(e => e.Owner)
-                .WithOne()
-                .OnDelete(DeleteBehavior.SetNull);
+            //modelBuilder
+            //    .Entity<Film>()
+            //    .HasMany(film => film.FilmDirectors)
+            //    .WithMany(director => director.Films)
+            //    .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

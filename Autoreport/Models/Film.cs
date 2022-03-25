@@ -8,6 +8,7 @@ namespace Autoreport.Models
 {
     public class Film
     {
+        [Key]
         public int Id { get; set; }
 
         [Required, DisplayName("Название"), MaxLength(200)]
@@ -16,13 +17,15 @@ namespace Autoreport.Models
         [Required, DisplayName("Дата выхода"), Column(TypeName = "Date")]
         public DateTime Date { get; set; }
 
-        [DisplayName("Страна")]
+        [Required, DisplayName("Страна")]
         public virtual Country FilmCountry { get; set; }
 
-        [DisplayName("Режиссёры")]
+        [Required]
         public virtual List<Person> FilmDirectors { get; set; }
 
+        [Required]
         public virtual List<Genre> Genres { get; set; }
+
         public virtual List<Disk> Disks { get; set; }
     }
 }

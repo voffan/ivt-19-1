@@ -3,14 +3,16 @@ using System;
 using Autoreport.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Autoreport.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220325112855_добавлена связь режиссера и фильма")]
+    partial class добавленасвязьрежиссераифильма
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +26,6 @@ namespace Autoreport.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 
@@ -39,7 +40,7 @@ namespace Autoreport.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("ClientId")
+                    b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
                     b.Property<string>("Data")
@@ -54,7 +55,8 @@ namespace Autoreport.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientId")
+                        .IsUnique();
 
                     b.ToTable("Deposits");
                 });
@@ -66,7 +68,6 @@ namespace Autoreport.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Article")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<double>("Cost")
@@ -95,7 +96,7 @@ namespace Autoreport.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
 
-                    b.Property<int>("FilmCountryId")
+                    b.Property<int?>("FilmCountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -157,7 +158,7 @@ namespace Autoreport.Migrations
                     b.Property<double>("Cost")
                         .HasColumnType("double");
 
-                    b.Property<int>("OrderClientId")
+                    b.Property<int?>("OrderClientId")
                         .HasColumnType("int");
 
                     b.Property<int?>("OrderDepositId")
@@ -197,12 +198,10 @@ namespace Autoreport.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("First_name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Last_name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
@@ -288,7 +287,6 @@ namespace Autoreport.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Phone_number1")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
@@ -310,7 +308,6 @@ namespace Autoreport.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Login")
-                        .IsRequired()
                         .HasMaxLength(64)
                         .HasColumnType("varchar(64)");
 
@@ -321,12 +318,10 @@ namespace Autoreport.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PasswordHash")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
 
                     b.Property<string>("Phone_number")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
@@ -339,10 +334,9 @@ namespace Autoreport.Migrations
             modelBuilder.Entity("Autoreport.Models.Deposit", b =>
                 {
                     b.HasOne("Autoreport.Models.Client", "Owner")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithOne()
+                        .HasForeignKey("Autoreport.Models.Deposit", "ClientId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Owner");
                 });
@@ -351,9 +345,7 @@ namespace Autoreport.Migrations
                 {
                     b.HasOne("Autoreport.Models.Country", "FilmCountry")
                         .WithMany("Films")
-                        .HasForeignKey("FilmCountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FilmCountryId");
 
                     b.Navigation("FilmCountry");
                 });
@@ -362,9 +354,7 @@ namespace Autoreport.Migrations
                 {
                     b.HasOne("Autoreport.Models.Client", "OrderClient")
                         .WithMany("Orders")
-                        .HasForeignKey("OrderClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderClientId");
 
                     b.HasOne("Autoreport.Models.Deposit", "OrderDeposit")
                         .WithMany()

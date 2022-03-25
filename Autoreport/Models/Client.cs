@@ -7,7 +7,7 @@ namespace Autoreport.Models
 {
     public class Client : Person
     {
-        [DisplayName("Номер телефона 1"), MaxLength(20)]
+        [Required, DisplayName("Номер телефона 1"), MaxLength(20)]
         public string Phone_number1 { get; set;}
 
         [DisplayName("Номер телефона 2"), MaxLength(20)]

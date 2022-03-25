@@ -22,6 +22,7 @@ namespace Autoreport.Services
 
             using (DataContext db = Connection.Connect())
             {
+                db.Update(film);
                 db.Films.Add(film);
                 db.SaveChanges();
             }

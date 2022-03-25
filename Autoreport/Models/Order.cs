@@ -1,43 +1,49 @@
-﻿using System;
+﻿using Autoreport.Models.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.Models
 {
+    [TypeConverter(typeof(ExpectationResultConverter<OrderStatus>))]
     public enum OrderStatus
     {
+        [Description("В процессе")]
         Proceed = 0,
+        [Description("Просрочен")]
         Expired = 1,
+        [Description("Завершен")]
         Completed = 2
     }
 
     public class Order
     {
+        [Key]
         public int Id { get; set; }
 
-        [DisplayName("Стоимость"), Range(1.0, 100000.0)]
+        [Required, DisplayName("Стоимость"), Range(1.0, 100000.0)]
         public double Cost { get; set; }
 
-        [DisplayName("Дата заказа")]
+        [Required, DisplayName("Дата заказа")]
         public DateTime Order_date { get; set; }
 
-        [DisplayName("Дата возврата")]
+        [Required, DisplayName("Дата возврата")]
         public DateTime Return_date { get; set; }
 
-        [DisplayName("Статус")]
+        [Required, DisplayName("Статус")]
         public OrderStatus Status { get; set; }
 
-        [DisplayName("Клиент")]
+        [Required, DisplayName("Клиент")]
         public virtual Client OrderClient { get; set; }
 
-        [DisplayName("Сотрудник")]
+        [Required, DisplayName("Сотрудник")]
         public virtual Employee OrderEmployeer { get; set; }
 
-        [DisplayName("Заказ")]
+        [Required, DisplayName("Залог")]
         public virtual Deposit OrderDeposit { get; set; }
 
-        [DisplayName("Диски")]
+        [Required] // DisplayName("Диски")
         public virtual List<Disk> Disks { get; set; }
     }
 }

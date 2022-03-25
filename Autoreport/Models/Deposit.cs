@@ -23,6 +23,7 @@ namespace Autoreport.Models
     /// </summary>
     public class Deposit
     {
+        [Key]
         public int Id { get; set; }
 
         [DisplayName("Данные"), MaxLength(300)]
@@ -31,10 +32,10 @@ namespace Autoreport.Models
         [DisplayName("Сумма"), Range(1.0, 100000.0)]
         public string Value { get; set; }
 
-        [DisplayName("Тип залога")]
+        [Required, DisplayName("Тип залога")]
         public DepositType TypePosition { get; set; }
 
-        [DisplayName("Владелец"), ForeignKey("ClientId")]
+        [Required, DisplayName("Владелец"), ForeignKey("ClientId")]
         public virtual Client Owner { get; set; }
     }
 }

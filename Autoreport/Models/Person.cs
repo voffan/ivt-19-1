@@ -7,17 +7,19 @@ namespace Autoreport.Models
 {
     public class Person
     {
-        [Key]
+        [Key] // нужно для ForeignKey моделей, ссылающихся на эту или производные
         public int Id { get; set; }
 
-        [DisplayName("Имя"), MaxLength(100)]
+        [Required, DisplayName("Имя"), MaxLength(100)]
         public string First_name { get; set; }
 
-        [DisplayName("Фамилия"), MaxLength(100)]
+        [Required, DisplayName("Фамилия"), MaxLength(100)]
         public string Last_name { get; set; }
 
         [DisplayName("Отчество"), MaxLength(100)]
         public string Middle_name { get; set; }
+
+        public virtual List<Film> Films { get; set; }
 
         //  public override string ToString() хз зачем пускай будет
         // {

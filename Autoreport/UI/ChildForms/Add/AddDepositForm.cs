@@ -20,6 +20,7 @@ namespace Autoreport.UI
         public AddDepositForm(Button relatedTab, Action OnCloseHandler) : base()
         {
             InitializeComponent();
+            this.Load += new EventHandler(this.Form_Load);
 
             selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;
