@@ -17,9 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Forms\FormsforAdd\AddEmployee - Копировать.Designer.cs">
-      <DependentUpon>AddEmployee.Designer.cs</DependentUpon>
-    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -28,9 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Forms\FormsforAdd\AddEmployee - Копировать.resx">
-      <DependentUpon>AddEmployee.resx</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
