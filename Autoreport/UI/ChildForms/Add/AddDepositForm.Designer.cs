@@ -60,7 +60,7 @@
             this.flowLayout.Controls.Add(this.selectedBox);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
-            this.flowLayout.Size = new System.Drawing.Size(476, 269);
+            this.flowLayout.Size = new System.Drawing.Size(476, 207);
             this.flowLayout.TabIndex = 11;
             // 
             // label1
@@ -183,7 +183,7 @@
             // 
             // resetBtn
             // 
-            this.resetBtn.Location = new System.Drawing.Point(12, 287);
+            this.resetBtn.Location = new System.Drawing.Point(12, 225);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(200, 30);
             this.resetBtn.TabIndex = 13;
@@ -192,7 +192,7 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(288, 287);
+            this.saveBtn.Location = new System.Drawing.Point(288, 225);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 14;
@@ -204,13 +204,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 328);
+            this.ClientSize = new System.Drawing.Size(500, 267);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.flowLayout);
             this.Name = "AddDepositForm";
             this.Text = "AddDepositForm";
-            this.Load += new System.EventHandler(this.Form_Load);
             this.Load += new System.EventHandler(this.AddDepositForm_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();

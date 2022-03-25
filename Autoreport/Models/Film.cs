@@ -19,8 +19,8 @@ namespace Autoreport.Models
         [DisplayName("Страна")]
         public virtual Country FilmCountry { get; set; }
 
-        [DisplayName("Режиссёр")]
-        public virtual Person FilmDirector { get; set; }
+        [DisplayName("Режиссёры")]
+        public virtual List<Person> FilmDirectors { get; set; }
 
         public virtual List<Genre> Genres { get; set; }
         public virtual List<Disk> Disks { get; set; }

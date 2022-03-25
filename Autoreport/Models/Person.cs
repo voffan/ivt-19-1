@@ -19,9 +19,14 @@ namespace Autoreport.Models
         [DisplayName("Отчество"), MaxLength(100)]
         public string Middle_name { get; set; }
 
+        //  public override string ToString() хз зачем пускай будет
+        // {
+        //      return String.Format("Id: {0}, Name: {1}", Id, First_name);
+        //  }
+
         public override string ToString()
         {
-            return String.Format("Id: {0}, Name: {1}", Id, First_name);
+            return String.Format("{0} {1} {2}", Last_name, First_name, Middle_name);
         }
     }
 }

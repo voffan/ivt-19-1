@@ -239,8 +239,8 @@
             this.Controls.Add(this.flowLayout);
             this.Name = "AddFilmForm";
             this.Text = "AddFilmForm";
-            this.Load += new System.EventHandler(this.AddFilmForm_Load);
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Load += new System.EventHandler(this.AddFilmForm_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.panel1.ResumeLayout(false);

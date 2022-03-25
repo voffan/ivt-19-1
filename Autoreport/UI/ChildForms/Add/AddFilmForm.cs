@@ -37,19 +37,21 @@ namespace Autoreport.UI
 
         protected override void saveBtn_Click(object sender, EventArgs e)
         {
-            //if (selectedDirectorsBox.Items.Count == 0)
-            //{
-            //    MessageBox.Show("Не выбран ни один режиссер", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            if (selectedBox.Items.Count == 0)
+            {
+                MessageBox.Show("Не выбран ни один режиссер", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             string filmName = filmNameText.Text;
             DateTime filmDate = DateTime.Parse(filmDateText.Text, new CultureInfo("de-DE"));
 
-            //List<int> directors_ids = selectedDirectorsBox.Items.Cast<GridSelectedItem>()
-            //    .Select(item => item.Id).ToList();
+            List<int> directors_ids = selectedBox.Items.Cast<GridSelectedItem>()
+                .Select(item => item.Id).ToList();
 
-            Connection.filmService.Add(filmName, filmDate);
+            var selectedDirectors = Connection.filmService.GetFilmsDirectors().Where(d => directors_ids.Contains(d.Id)).ToList();
+
+            Connection.filmService.Add(filmName, filmDate, (Country)countryBox.SelectedItem, selectedDirectors, genresBox.SelectedItems.Cast<Genre>().ToList());
             CloseHandler();
             Close();
         }

@@ -6,6 +6,8 @@ using Autoreport.Database;
 using Autoreport.UI.Classes;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
+
 namespace Autoreport.Services
 {
     public class DepositService
@@ -44,7 +46,11 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                return db.Deposits.ToList();
+               // var users = from u in db.Users
+                //            join c in db.Companies on u.CompanyId equals c.Id
+                //            select new { Name = u.Name, Company = c.Name, Age = u.Age };
+                return db.Deposits.Include("Owner")
+                    .ToList();
             }
         }
 

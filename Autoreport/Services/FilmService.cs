@@ -9,12 +9,15 @@ namespace Autoreport.Services
 {
     public class FilmService
     {
-        public void Add(string filmName, DateTime filmDate)
+        public void Add(string filmName, DateTime filmDate, Country country, List<Person> director, List<Genre> genres)
         {
             Film film = new Film()
             {
                 Name = filmName,
-                Date = filmDate
+                Date = filmDate,
+                FilmCountry = country,
+                FilmDirectors = director,
+                Genres = genres
             };
 
             using (DataContext db = Connection.Connect())
