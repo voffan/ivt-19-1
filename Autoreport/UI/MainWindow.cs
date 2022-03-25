@@ -580,14 +580,14 @@ namespace Autoreport.UI
 
             void Turn(Mode state, Button selectTab)
             {
-                bool is_enabled = state == Mode.General;
+                bool isSelectEnabled = state == Mode.Select;
                 currentMode = state;
 
-                if (is_enabled)
+                if (isSelectEnabled)
                 {
                     if (selectTab == null)
                     {
-                        throw new ArgumentNullException("Когда первый аргумент равен true, второй аргумент не может быть null");
+                        throw new ArgumentNullException("Когда state равен Mode.Select, второй аргумент не может быть null");
                     }
 
                     DisableAllTabsExcept(selectTab);
@@ -601,7 +601,7 @@ namespace Autoreport.UI
                     lastTab.PerformClick();
                 }
 
-                SetSelectionElementsActive(is_enabled);
+                SetSelectionElementsActive(isSelectEnabled);
             }
 
             return Turn;

@@ -14,7 +14,7 @@ namespace Autoreport.UI
     public partial class AddFormSelective : BaseAddForm
     {
         protected MainWindow owner;
-        protected Action<Mode, Button> OwnerSelectMode_Turn;
+        protected Action<Mode, Button> OwnerMode_Turn;
         protected Button relatedTab;
         protected Action CloseHandler;
         protected string selectedBoxTag = "SelectedBox";
@@ -32,7 +32,7 @@ namespace Autoreport.UI
         /// <param name="e"></param>
         protected void SelectBtn_Click(object sender, EventArgs e)
         {
-            OwnerSelectMode_Turn(Mode.General, relatedTab);
+            OwnerMode_Turn(Mode.Select, relatedTab);
             this.Hide();
         }
 
@@ -51,7 +51,7 @@ namespace Autoreport.UI
                                 ((ListBox)underC).Items.Add(item);
                             }
 
-                            OwnerSelectMode_Turn(Mode.Select, null);
+                            OwnerMode_Turn(Mode.General, null);
                             this.ShowDialog(owner);
                             break;
                         }
@@ -64,7 +64,7 @@ namespace Autoreport.UI
         protected void Form_Load(object sender, EventArgs e)
         {
             owner = (MainWindow)Owner;
-            OwnerSelectMode_Turn = owner.WindowMode(OnSelectedHandler);
+            OwnerMode_Turn = owner.WindowMode(OnSelectedHandler);
         }
 
         protected virtual void RemoveSelectedBtn_Click(object sender, EventArgs e) { }
