@@ -9,32 +9,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Korobki_project;
 using Microsoft.EntityFrameworkCore;
+using Korobki_project.UI;
+
 
 namespace Korobki_project
 {
-    public partial class PlanForm : Form
+    public partial class EmployeeForm : Form
     {
-        public PlanForm()
+        public EmployeeForm()
         {
             InitializeComponent();
             Context c = new Context();
-            dataGridView1.DataSource = c.Plans.Include("Product").ToList();
+            dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").ToList();
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[3].Visible = false;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            EmployeeForm eform = new EmployeeForm();
-            eform.Show();
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MenuForm main = new MenuForm();
-            main.Show();
+
         }
+
     }
 }

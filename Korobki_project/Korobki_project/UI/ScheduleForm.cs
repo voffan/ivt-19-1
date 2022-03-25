@@ -8,26 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Korobki_project;
+using Korobki_project.UI;
 using Microsoft.EntityFrameworkCore;
 
-namespace Korobki_project
+namespace Korobki_project.UI
 {
-    public partial class ProductionForm : Form
+    public partial class ScheduleForm : Form
     {
-        public ProductionForm()
+        public ScheduleForm()
         {
             InitializeComponent();
             Context c = new Context();
-            dataGridView1.DataSource = c.Productions.Include("Product").ToList();
+            dataGridView1.DataSource = c.Schedules.Include("Shift").ToList();
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            MenuForm main = new MenuForm();
-            main.Show();
         }
     }
 }

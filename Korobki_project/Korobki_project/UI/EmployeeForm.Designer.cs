@@ -1,15 +1,15 @@
 ﻿
 namespace Korobki_project
 {
-    partial class ProductionForm
+    partial class EmployeeForm
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -24,8 +24,8 @@ namespace Korobki_project
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -39,51 +39,51 @@ namespace Korobki_project
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(35, 62);
+            this.dataGridView1.Location = new System.Drawing.Point(28, 53);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(365, 239);
+            this.dataGridView1.Size = new System.Drawing.Size(871, 150);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(35, 12);
+            this.button1.Location = new System.Drawing.Point(28, 223);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 22);
+            this.button1.Size = new System.Drawing.Size(138, 38);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Menu";
+            this.button1.Text = "добавить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(113, 12);
+            this.button2.Location = new System.Drawing.Point(188, 223);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 22);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Employees";
+            this.button2.Size = new System.Drawing.Size(138, 38);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Удалить";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(206, 12);
+            this.button3.Location = new System.Drawing.Point(348, 223);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 22);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Plans";
+            this.button3.Size = new System.Drawing.Size(138, 38);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Редактировать";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // ProductionForm
+            // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1031, 450);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "ProductionForm";
-            this.Text = "ProductionForm";
+            this.Name = "EmployeeForm";
+            this.Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -97,3 +97,4 @@ namespace Korobki_project
         private System.Windows.Forms.Button button3;
     }
 }
+

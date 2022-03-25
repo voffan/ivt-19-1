@@ -14,5 +14,9 @@ namespace Korobki_project.Classes
         public int Id { get; set; }
         [MaxLength(20)]
         public string Type_name { get; set; }
+        public override string ToString()
+        {
+            return Type_name;
+        }
     }
 }
