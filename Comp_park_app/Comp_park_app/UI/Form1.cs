@@ -192,5 +192,97 @@ namespace Comp_park_app_form {
                 form_addRAM.ShowDialog();
             }
         }
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            int index = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Id"].Value);
+
+            if (listBox1.SelectedIndex == 0)
+            {
+                DeleteCheck del = new DeleteCheck();
+                if (del.ShowDialog() == DialogResult.OK)
+                {
+                    ComputerFunctions computer = new ComputerFunctions();
+                    computer.Delete(index);
+                }
+            }
+
+                // Появление формы Form_addDepartment
+            if (listBox1.SelectedIndex == 1)
+            {
+                DeleteCheck del = new DeleteCheck();
+                if (del.ShowDialog() == DialogResult.OK)
+                {
+                    DepartmentFunctions department = new DepartmentFunctions();
+                    department.Delete(index);
+                }
+            }
+
+            // Появление формы Form_addEmployee
+            if (listBox1.SelectedIndex == 2)
+            {
+                DeleteCheck del = new DeleteCheck();
+                if (del.ShowDialog() == DialogResult.OK)
+                {
+                    EmployeeFunctions employee = new EmployeeFunctions();
+                    employee.Delete(index);
+                }
+            }
+
+            // Появление формы Form_addHDD
+            if (listBox1.SelectedIndex == 3)
+            {
+                DeleteCheck del = new DeleteCheck();
+                if (del.ShowDialog() == DialogResult.OK)
+                {
+                    HDDFunctions hdd = new HDDFunctions();
+                    hdd.Delete(index);
+                }
+            }
+
+            // Появление формы Form_addMotherboard
+            if (listBox1.SelectedIndex == 4)
+            {
+                DeleteCheck del = new DeleteCheck();
+                if (del.ShowDialog() == DialogResult.OK)
+                {
+                    MotherboardFunctions motherboard = new MotherboardFunctions();
+                    motherboard.Delete(index);
+                }
+            }
+
+            // Появление формы Form_addPeripheral
+            if (listBox1.SelectedIndex == 5)
+            {
+                DeleteCheck del = new DeleteCheck();
+                if (del.ShowDialog() == DialogResult.OK)
+                {
+                    PeripheralFunctions peripheral = new PeripheralFunctions();
+                    peripheral.Delete(index);
+                }
+            }
+
+            // Появление формы Form_addProcessor
+            if (listBox1.SelectedIndex == 6)
+            {
+                DeleteCheck del = new DeleteCheck();
+                if (del.ShowDialog() == DialogResult.OK)
+                {
+                    ProcessorFunctions processor = new ProcessorFunctions();
+                    processor.Delete(index);
+                }
+            }
+
+            // Появление формы Form_addRAM
+            if (listBox1.SelectedIndex == 7)
+            {
+                DeleteCheck del = new DeleteCheck();
+                if (del.ShowDialog() == DialogResult.OK)
+                {
+                    RAMFunctions ram = new RAMFunctions();
+                    ram.Delete(index);
+                }
+            }
+        }
     }
 }

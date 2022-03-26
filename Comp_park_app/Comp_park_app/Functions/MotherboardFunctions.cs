@@ -22,9 +22,15 @@ namespace Comp_park_app.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            Motherboard motherboard;
+            using (Context c = new Context())
+            {
+                motherboard = c.Motherboards.Find(index);
+                c.Remove(motherboard);
+                c.SaveChanges();
+            }
         }
 
         public void Edit(int id, string name, string manufacturer)

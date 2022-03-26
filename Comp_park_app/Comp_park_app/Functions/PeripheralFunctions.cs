@@ -29,9 +29,15 @@ namespace Comp_park_app.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            Peripheral peripheral;
+            using (Context c = new Context())
+            {
+                peripheral = c.Peripherals.Find(index);
+                c.Remove(peripheral);
+                c.SaveChanges();
+            }
         }
 
         public void Edit(int id, string name, string itemno, Status status, int departmentid, int employeeid)

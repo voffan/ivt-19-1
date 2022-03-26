@@ -25,9 +25,15 @@ namespace Comp_park_app.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            Department department;
+            using (Context c = new Context())
+            {
+                department = c.Departments.Find(index);
+                c.Remove(department);
+                c.SaveChanges();
+            }
         }
 
         public void Edit(int index, string name, int number)

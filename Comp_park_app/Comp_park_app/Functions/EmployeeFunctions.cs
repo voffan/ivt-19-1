@@ -28,9 +28,15 @@ namespace Comp_park_app.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            Employee employee;
+            using (Context c = new Context())
+            {
+                employee = c.Employees.Find(index);
+                c.Remove(employee);
+                c.SaveChanges();
+            }
         }
 
         public void Edit(int id, string name, int departmentid, int positionid)

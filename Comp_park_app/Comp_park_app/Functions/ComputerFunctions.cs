@@ -63,9 +63,15 @@ namespace Comp_park_app.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            Computer comp;
+            using (Context c = new Context())
+            {
+                comp = c.Computers.Find(index);
+                c.Remove(comp);
+                c.SaveChanges();
+            }
         }
 
         public void Edit(int index, int departmentid, string itemno, Status status, int motherboardid,

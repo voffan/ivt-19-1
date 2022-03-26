@@ -21,9 +21,15 @@ namespace Comp_park_app.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            RAM ram;
+            using (Context c = new Context())
+            {
+                ram = c.RAMs.Find(index);
+                c.Remove(ram);
+                c.SaveChanges();
+            }
         }
 
         public void Edit(int index, string name, string manufacturer, int capacity)

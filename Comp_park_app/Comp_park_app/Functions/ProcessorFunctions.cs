@@ -23,9 +23,15 @@ namespace Comp_park_app.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            Processor processor;
+            using (Context c = new Context())
+            {
+                processor = c.Processors.Find(index);
+                c.Remove(processor);
+                c.SaveChanges();
+            }
         }
 
         public void Edit(int id, string name, string manufacturer, string frequency)

@@ -23,9 +23,15 @@ namespace Comp_park_app.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            HDD hdd;
+            using (Context c = new Context())
+            {
+                hdd = c.HDDs.Find(index);
+                c.Remove(hdd);
+                c.SaveChanges();
+            }
         }
 
         public void Edit(int id, string name, string manufacturer, int capacity)
