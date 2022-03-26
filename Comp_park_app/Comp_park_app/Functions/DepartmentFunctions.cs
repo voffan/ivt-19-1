@@ -30,9 +30,16 @@ namespace Comp_park_app.Functions
 
         }
 
-        public void Edit()
+        public void Edit(int index, string name, int number)
         {
-
+            Department department;
+            using (Context c = new Context())
+            {
+                department = c.Departments.Find(index);
+                department.Name = name;
+                department.Number = number;
+                c.SaveChanges();
+            }
         }
     }
 }

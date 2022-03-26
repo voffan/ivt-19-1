@@ -28,9 +28,18 @@ namespace Comp_park_app.Functions
 
         }
 
-        public void Edit()
+        public void Edit(int id, string name, string manufacturer, string frequency)
         {
+            Processor processor;
+            using (Context c = new Context())
+            {
+                processor = c.Processors.Find(id);
+                processor.Name = name;
+                processor.Manufacturer = manufacturer;
+                processor.Frequency = frequency;
 
+                c.SaveChanges();
+            }
         }
     }
 }

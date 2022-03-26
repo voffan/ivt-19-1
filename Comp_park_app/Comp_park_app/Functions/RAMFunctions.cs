@@ -26,9 +26,18 @@ namespace Comp_park_app.Functions
 
         }
 
-        public void Edit()
+        public void Edit(int index, string name, string manufacturer, int capacity)
         {
+            RAM ram;
+            using(Context c = new Context())
+            {
+                ram = c.RAMs.Find(index);
+                ram.Name = name;
+                ram.Manufacturer = manufacturer;
+                ram.Capacity = capacity;
 
+                c.SaveChanges();
+            }
         }
     }
 }

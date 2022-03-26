@@ -278,6 +278,7 @@ namespace Comp_park_app
             this.button_Edit.TabIndex = 25;
             this.button_Edit.Text = "Изменить";
             this.button_Edit.UseVisualStyleBackColor = true;
+            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
             // 
             // Form_addComputer
             // 

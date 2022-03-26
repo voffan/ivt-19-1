@@ -14,12 +14,14 @@ namespace Comp_park_app
     public partial class Form_addEmployee : Form
     {
         bool Type_Add;
-        public Form_addEmployee(bool Add)
+        int id;
+        public Form_addEmployee(bool Add, int index)
         {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
+            id = index;
         }
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
@@ -28,8 +30,7 @@ namespace Comp_park_app
 
         private void Form_Load(object sender, EventArgs e)
         {
-            if (Type_Add)
-            {
+            
                 using (Context c = new Context())
                 {
                     comboBox_Department.DataSource = c.Departments.ToList();
@@ -40,9 +41,17 @@ namespace Comp_park_app
                     comboBox_Position.DisplayMember = "Name";
                     comboBox_Position.ValueMember = "Id";
                 }
-            }
-            else
+            
+            if (!Type_Add)
             {
+                Employee employee;
+                using(Context c = new Context())
+                {
+                    employee = c.Employees.Find(id);
+                    textBox_name.Text = employee.Name;
+                    comboBox_Department.SelectedItem = employee.Department;
+                    comboBox_Position.SelectedItem = employee.Position;
+                }
                 //For edit mode
             }
 
@@ -59,6 +68,23 @@ namespace Comp_park_app
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
                 employee.Add(name, departmentid, positionid);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+            if (textBox_name.Text.Length != 0 && comboBox_Department.SelectedIndex >= 0 && comboBox_Position.SelectedIndex >= 0)
+            {
+                EmployeeFunctions employee = new EmployeeFunctions();
+                var name = textBox_name.Text;
+                var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
+                var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
+                employee.Edit(id, name, departmentid, positionid);
                 this.Close();
             }
             else

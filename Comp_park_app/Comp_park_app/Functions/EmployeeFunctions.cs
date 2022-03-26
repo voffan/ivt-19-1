@@ -20,6 +20,9 @@ namespace Comp_park_app.Functions
             using (Context c = new Context())
             {
                 //... initiate field
+                employee.Department = c.Departments.Find(departmentid); //Virtual object
+                employee.Position = c.Positions.Find(positionid);
+
                 c.Employees.Add(employee);
                 c.SaveChanges();
             }
@@ -30,9 +33,21 @@ namespace Comp_park_app.Functions
 
         }
 
-        public void Edit()
+        public void Edit(int id, string name, int departmentid, int positionid)
         {
+            Employee employee;
+            using (Context c = new Context())
+            {
+                employee = c.Employees.Find(id);
+                employee.Name = name;
+                employee.DepartmentId = departmentid;
+                employee.PositionId = positionid;
 
+                employee.Department = c.Departments.Find(departmentid);
+                employee.Position = c.Positions.Find(positionid);
+
+                c.SaveChanges();
+            }
         }
     }
 }

@@ -14,12 +14,14 @@ namespace Comp_park_app
     public partial class Form_addDepartment : Form
     {
         bool Type_Add;
-        public Form_addDepartment(bool Add)
+        int id;
+        public Form_addDepartment(bool Add, int index)
         {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
+            id = index;
         }
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
@@ -30,6 +32,13 @@ namespace Comp_park_app
         {
             if (!Type_Add)
             {
+                Department department;
+                using(Context c = new Context())
+                {
+                    department = c.Departments.Find(id);
+                    textBox_name.Text = department.Name;
+                    textBox_Manufacturer.Text = Convert.ToString(department.Number);
+                }
                 //For edit mode
             }
         }
@@ -43,6 +52,20 @@ namespace Comp_park_app
             {
                 DepartmentFunctions Department = new DepartmentFunctions();
                 Department.Add(textBox_name.Text, Convert.ToInt32(textBox_Manufacturer.Text));
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0)
+            {
+                DepartmentFunctions Department = new DepartmentFunctions();
+                Department.Edit(id, textBox_name.Text, Convert.ToInt32(textBox_Manufacturer.Text));
                 this.Close();
             }
             else

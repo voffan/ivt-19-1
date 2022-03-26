@@ -27,9 +27,17 @@ namespace Comp_park_app.Functions
 
         }
 
-        public void Edit()
+        public void Edit(int id, string name, string manufacturer)
         {
+            Motherboard motherboard;
+            using (Context c = new Context())
+            {
+                motherboard = c.Motherboards.Find(id);
+                motherboard.Name = name;
+                motherboard.Manufacturer = manufacturer;
 
+                c.SaveChanges();
+            }
         }
     }
 }

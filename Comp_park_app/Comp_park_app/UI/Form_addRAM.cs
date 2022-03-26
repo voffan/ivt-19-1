@@ -62,5 +62,19 @@ namespace Comp_park_app
                 MessageBox.Show("Error");
             }
         }
+
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0 && textBox_capacity.Text.Length != 0)
+            {
+                RAMFunctions RAM = new RAMFunctions();
+                RAM.Edit(id, textBox_name.Text, textBox_Manufacturer.Text, Convert.ToInt32(textBox_capacity.Text));
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+        }
     }
 }

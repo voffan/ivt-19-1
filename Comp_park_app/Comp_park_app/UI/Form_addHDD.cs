@@ -14,12 +14,14 @@ namespace Comp_park_app
     public partial class Form_addHDD : Form
     {
         bool Type_Add;
-        public Form_addHDD(bool Add)
+        int id;
+        public Form_addHDD(bool Add, int index)
         {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
+            id = index;
         }
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
@@ -30,6 +32,14 @@ namespace Comp_park_app
         {
             if (!Type_Add)
             {
+                HDD hdd;
+                using(Context c = new Context())
+                {
+                    hdd = c.HDDs.Find(id);
+                    textBox_name.Text = hdd.Name;
+                    textBox_Manufacturer.Text = hdd.Manufacturer;
+                    textBox_capacity.Text = hdd.Capacity.ToString();
+                }
                 //For edit mode
             }
         }
@@ -43,6 +53,20 @@ namespace Comp_park_app
             {
                 HDDFunctions HDD = new HDDFunctions();
                 HDD.Add(textBox_name.Text, textBox_Manufacturer.Text, Convert.ToInt32(textBox_capacity.Text));
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0 && textBox_capacity.Text.Length != 0)
+            {
+                HDDFunctions HDD = new HDDFunctions();
+                HDD.Edit(id, textBox_name.Text, textBox_Manufacturer.Text, Convert.ToInt32(textBox_capacity.Text));
                 this.Close();
             }
             else

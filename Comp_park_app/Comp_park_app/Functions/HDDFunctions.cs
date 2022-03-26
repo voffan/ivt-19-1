@@ -28,9 +28,18 @@ namespace Comp_park_app.Functions
 
         }
 
-        public void Edit()
+        public void Edit(int id, string name, string manufacturer, int capacity)
         {
+            HDD hdd;
+            using (Context c = new Context())
+            {
+                hdd = c.HDDs.Find(id);
+                hdd.Name = name;
+                hdd.Manufacturer = manufacturer;
+                hdd.Capacity = capacity;
 
+                c.SaveChanges();
+            }
         }
     }
 }

@@ -14,13 +14,14 @@ namespace Comp_park_app
     public partial class Form_addComputer : Form
     {
         bool Type_Add;
-        public Form_addComputer(bool Add)
+        int id;
+        public Form_addComputer(bool Add, int index)
         {
             InitializeComponent();
             button_addComputer.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
-            
+            id = index;
         }
 
 
@@ -60,8 +61,7 @@ namespace Comp_park_app
 
         private void Form_addComputer_Load(object sender, EventArgs e)
         {
-            if (Type_Add)
-            {
+            
                 foreach (var item in Enum.GetValues(typeof(Status)))
                 {
                     comboBox_Status.Items.Add(item);
@@ -128,9 +128,34 @@ namespace Comp_park_app
                 {
                     comboBox_Processor.Items.Add(((Processor)comboBox3.Items[i]));
                 }
-            }
-            else
+            
+            if (!Type_Add)
             {
+                Computer comp;
+                using(Context c = new Context())
+                {
+                    comp = c.Computers.Find(id);
+
+                    comboBox_Department.SelectedItem = comp.Department;
+                    textBox_ItemNo.Text = comp.ItemNo;
+                    comboBox_Status.SelectedItem = comp.Status;
+                    comboBox_Employee.SelectedItem = comp.Employee;
+                    
+                    for (int i = 0; i < comp.HDDs.Count; i++)
+                    {
+                        listBox1.Items.Add(comp.HDDs[i]);
+                    }
+                    for (int i = 0; i < comp.RAMs.Count; i++)
+                    {
+                        listBox2.Items.Add(comp.RAMs[i]);
+                    }
+                    for (int i = 0; i < comp.Processors.Count; i++)
+                    {
+                        listBox3.Items.Add(comp.Processors[i]);
+                    }
+
+                    comboBox_Motherboard.SelectedItem = comp.Motherboard;
+                }
                 //For edit mode
             }
         }
@@ -142,9 +167,6 @@ namespace Comp_park_app
                 listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox3.Items.Count > 0 &&
                 comboBox_Motherboard.SelectedIndex >= 0)
             {
-                ((HDD)listBox1.Items[0]).Id += 6;
-                ((RAM)listBox2.Items[0]).Id += 6;
-                ((Processor)listBox3.Items[0]).Id += 6;
 
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var itemno = textBox_ItemNo.Text;
@@ -158,6 +180,34 @@ namespace Comp_park_app
                 var motherboardid = Convert.ToInt32(comboBox_Motherboard.SelectedValue);
                 ComputerFunctions Computer = new ComputerFunctions();
                 Computer.Add(departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+            if (comboBox_Department.SelectedIndex >= 0 && textBox_ItemNo.Text.Length != 0 &&
+                comboBox_Status.SelectedIndex >= 0 && comboBox_Employee.SelectedIndex >= 0 &&
+                listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox3.Items.Count > 0 &&
+                comboBox_Motherboard.SelectedIndex >= 0)
+            {
+                var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
+                var itemno = textBox_ItemNo.Text;
+                Status status = (Status)comboBox_Status.SelectedItem;
+                var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
+
+
+                var hdds = listBox1.Items.Cast<HDD>().ToList();
+                var rams = listBox2.Items.Cast<RAM>().ToList();
+                var processors = listBox3.Items.Cast<Processor>().ToList();
+                var motherboardid = Convert.ToInt32(comboBox_Motherboard.SelectedValue);
+
+                ComputerFunctions Computer = new ComputerFunctions();
+                Computer.Edit(id, departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors);
                 this.Close();
             }
             else
