@@ -36,14 +36,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.positionDepositBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.removeSelectedBtn = new System.Windows.Forms.Button();
-            this.selectBtn = new System.Windows.Forms.Button();
             this.selectedBox = new System.Windows.Forms.ListBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.flowLayout.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayout
@@ -56,11 +52,10 @@
             this.flowLayout.Controls.Add(this.label13);
             this.flowLayout.Controls.Add(this.positionDepositBox);
             this.flowLayout.Controls.Add(this.label2);
-            this.flowLayout.Controls.Add(this.panel1);
             this.flowLayout.Controls.Add(this.selectedBox);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
-            this.flowLayout.Size = new System.Drawing.Size(476, 207);
+            this.flowLayout.Size = new System.Drawing.Size(476, 145);
             this.flowLayout.TabIndex = 11;
             // 
             // label1
@@ -123,7 +118,7 @@
             this.positionDepositBox.Name = "positionDepositBox";
             this.positionDepositBox.Size = new System.Drawing.Size(232, 23);
             this.positionDepositBox.TabIndex = 18;
-            this.positionDepositBox.Click += new System.EventHandler(this.selectedClientsBox_SelectedIndexChanged);
+            this.positionDepositBox.Click += new System.EventHandler(this.Select_Click);
             // 
             // label2
             // 
@@ -137,53 +132,21 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Владелец";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.removeSelectedBtn);
-            this.panel1.Controls.Add(this.selectBtn);
-            this.panel1.Location = new System.Drawing.Point(241, 96);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(75, 49);
-            this.panel1.TabIndex = 20;
-            // 
-            // removeSelectedBtn
-            // 
-            this.removeSelectedBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.removeSelectedBtn.Enabled = false;
-            this.removeSelectedBtn.Location = new System.Drawing.Point(0, 26);
-            this.removeSelectedBtn.Name = "removeSelectedBtn";
-            this.removeSelectedBtn.Size = new System.Drawing.Size(75, 23);
-            this.removeSelectedBtn.TabIndex = 13;
-            this.removeSelectedBtn.Text = "Удалить";
-            this.removeSelectedBtn.UseVisualStyleBackColor = true;
-            this.removeSelectedBtn.Click += new System.EventHandler(this.removeSelectedBtn_Click);
-            // 
-            // selectBtn
-            // 
-            this.selectBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.selectBtn.Location = new System.Drawing.Point(0, 0);
-            this.selectBtn.Name = "selectBtn";
-            this.selectBtn.Size = new System.Drawing.Size(75, 23);
-            this.selectBtn.TabIndex = 12;
-            this.selectBtn.Text = "Выбрать";
-            this.selectBtn.UseVisualStyleBackColor = true;
-            this.selectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
-            // 
             // selectedBox
             // 
             this.selectedBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.selectedBox.FormattingEnabled = true;
             this.selectedBox.IntegralHeight = false;
             this.selectedBox.ItemHeight = 17;
-            this.selectedBox.Location = new System.Drawing.Point(322, 96);
+            this.selectedBox.Location = new System.Drawing.Point(241, 96);
             this.selectedBox.Name = "selectedBox";
-            this.selectedBox.Size = new System.Drawing.Size(151, 87);
+            this.selectedBox.Size = new System.Drawing.Size(232, 25);
             this.selectedBox.TabIndex = 21;
-            this.selectedBox.SelectedIndexChanged += new System.EventHandler(this.selectedClientsBox_SelectedIndexChanged);
+            this.selectedBox.Click += new System.EventHandler(this.Select_Click);
             // 
             // resetBtn
             // 
-            this.resetBtn.Location = new System.Drawing.Point(12, 225);
+            this.resetBtn.Location = new System.Drawing.Point(12, 163);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(200, 30);
             this.resetBtn.TabIndex = 13;
@@ -192,7 +155,7 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(288, 225);
+            this.saveBtn.Location = new System.Drawing.Point(288, 163);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 14;
@@ -204,16 +167,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 267);
+            this.ClientSize = new System.Drawing.Size(500, 204);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.flowLayout);
             this.Name = "AddDepositForm";
             this.Text = "AddDepositForm";
-            this.Load += new System.EventHandler(this.AddDepositForm_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -230,9 +192,6 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.TextBox dataText;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button removeSelectedBtn;
-        private System.Windows.Forms.Button selectBtn;
         private System.Windows.Forms.ListBox selectedBox;
     }
 }

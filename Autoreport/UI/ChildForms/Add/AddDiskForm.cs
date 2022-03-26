@@ -57,14 +57,11 @@ namespace Autoreport.UI
         protected override void RemoveSelectedBtn_Click(object sender, EventArgs e)
         {
             selectedBox.Items.RemoveAt(selectedBox.SelectedIndex);
-
-            if (selectedBox.Items.Count == 0)
-                removeSelectedBtn.Enabled = false;
         }
 
         protected override void SelectedBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            removeSelectedBtn.Enabled = true;
+            removeSelectedBtn.Enabled = selectedBox.SelectedIndex != -1;
         }
 
         private void DigitText_KeyPress(object sender, KeyPressEventArgs e)

@@ -14,10 +14,11 @@ namespace Autoreport.UI
     public partial class AddFormSelective : BaseAddForm
     {
         protected MainWindow owner;
-        protected Action<Mode, Button> OwnerMode_Turn;
+        protected Action<Mode, Button, GridSelectedItem[]> OwnerMode_Turn;
         protected Button relatedTab;
         protected Action CloseHandler;
-        protected string selectedBoxTag = "SelectedBox";
+        protected int maxSelectedCount = 100;
+        protected readonly string selectedBoxTag = "SelectedBox";
 
         public AddFormSelective()
         {
@@ -30,13 +31,36 @@ namespace Autoreport.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void SelectBtn_Click(object sender, EventArgs e)
+        protected void Select_Click(object sender, EventArgs e)
         {
-            OwnerMode_Turn(Mode.Select, relatedTab);
+            OwnerMode_Turn(Mode.Select, relatedTab, GetSelectedListBox().Items.Cast<GridSelectedItem>().ToArray());
             this.Hide();
         }
 
         protected void OnSelectedHandler(ListBox.ObjectCollection items)
+        {
+            ListBox listBox = GetSelectedListBox();
+
+            // очистка листбокса от старых записей, т.к. они все равно копируются в селектбокс мэйнвиндоу
+            listBox.Items.Clear();
+
+            if (items.Count > maxSelectedCount)
+            {
+                MessageBox.Show(String.Format("Количество выбранных записей({0}) превысило максимальное({1})", items.Count, maxSelectedCount),
+                    "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            foreach (GridSelectedItem item in items)
+            {
+                listBox.Items.Add(item);
+            }
+
+            OwnerMode_Turn(Mode.General, null, null);
+            this.ShowDialog(owner);
+        }
+
+        private ListBox GetSelectedListBox()
         {
             foreach (Control c in this.Controls)
             {
@@ -46,19 +70,13 @@ namespace Autoreport.UI
                     {
                         if (underC.Tag != null && underC.Tag == selectedBoxTag)
                         {
-                            foreach (GridSelectedItem item in items)
-                            {
-                                ((ListBox)underC).Items.Add(item);
-                            }
-
-                            OwnerMode_Turn(Mode.General, null);
-                            this.ShowDialog(owner);
-                            break;
+                            return (ListBox)underC;
                         }
                     }
-                    break;
                 }
             }
+
+            return null;
         }
 
         protected void Form_Load(object sender, EventArgs e)

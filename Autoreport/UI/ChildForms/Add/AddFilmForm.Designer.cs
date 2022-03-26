@@ -170,7 +170,7 @@
             this.selectBtn.TabIndex = 12;
             this.selectBtn.Text = "Выбрать";
             this.selectBtn.UseVisualStyleBackColor = true;
-            this.selectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
+            this.selectBtn.Click += new System.EventHandler(this.Select_Click);
             // 
             // selectedBox
             // 

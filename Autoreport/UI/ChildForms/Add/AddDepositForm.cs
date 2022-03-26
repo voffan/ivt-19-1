@@ -16,11 +16,11 @@ namespace Autoreport.UI
 {
     public partial class AddDepositForm : AddFormSelective
     {
-        /*Button relatedTab, Action OnCloseHandler*/   /*: base()*/
         public AddDepositForm(Button relatedTab, Action OnCloseHandler) : base()
         {
+            base.maxSelectedCount = 1;
             InitializeComponent();
-            this.Load += new EventHandler(this.Form_Load);
+            //this.Load += new EventHandler(this.Form_Load);
 
             selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;
@@ -55,28 +55,5 @@ namespace Autoreport.UI
             CloseHandler();
             Close();
         }
-
-        private void removeSelectedBtn_Click(object sender, EventArgs e)
-        {
-            selectedBox.Items.RemoveAt(selectedBox.SelectedIndex);
-
-            if (selectedBox.Items.Count == 0)
-                removeSelectedBtn.Enabled = false;
-        }
-
-        private void selectedClientsBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            removeSelectedBtn.Enabled = true;
-        }
-
-        /*private void sumText_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }*/
-
-
     }
 }

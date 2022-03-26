@@ -4,6 +4,7 @@ using System.Text;
 using System.Linq;
 using Autoreport.Models;
 using Autoreport.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Autoreport.Services
 {
@@ -37,7 +38,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                return db.Films.ToList();
+                return db.Films.Include(f => f.FilmCountry).ToList();
             }
         }
 

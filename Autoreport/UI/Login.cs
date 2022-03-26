@@ -13,6 +13,8 @@ namespace Autoreport.UI
 {
     public partial class Login : Form
     {
+        public bool loggedIn = false;
+
         public Login()
         {
             InitializeComponent();
@@ -25,9 +27,11 @@ namespace Autoreport.UI
             try
             {
                 Connection.employeeService.Login(login, password);
+                loggedIn = true;
                 Close();
             } catch (Exception exc)
             {
+                loggedIn = false;
                 MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -118,6 +118,21 @@ namespace Autoreport.UI
             Loginer = new Login();
             Loginer.ShowDialog();
 
+            if (!Loginer.loggedIn)
+            {
+                // Connection.employeeService.CurrentEmployee == null - говорит о том, что авторизации до этого
+                // не происходило, значит приложение только запущено, тогда в ответ на закрытие окна авторизации
+                // приложение должно прекратить работу
+                // иначе оставляем авторизированным тот профиль, под которым был совершен вход ранее, тогда
+                // установка полномочий и прочее не требуется
+                if (Connection.employeeService.CurrentEmployee == null)
+                {
+                    Close();
+                }
+                else
+                    return;
+            }
+
             SetPermissions();
             ShowAvailableTabs();
             CalculateMinSize();
@@ -209,12 +224,15 @@ namespace Autoreport.UI
             // если таблица пустая, то выключаем кнопки-действия, оставляя необходимые
             // при этом беря во внимание, что некоторые из "необходимых" могут не входить в currentlyPermittedActions,
             // тогда их оставлять не нужно
-            if (dataGridView.SelectedRows.Count == 0 || !currentlyPermittedActions.Contains(deleteBtn))
+            if (dataGridView.SelectedRows.Count == 0)
             {
                 Button[] necessary = new Button[] { addBtn, reloadBtn, doneBtn }
                                         .Where(b => currentlyPermittedActions.Contains(b))
                                         .ToArray();
                 DisableAllControlButtonsExcept(necessary);
+            } else if (!currentlyPermittedActions.Contains(deleteBtn))
+            {
+                deleteBtn.Enabled = false;
             }
 
             dataGridView.Columns["Id"].DisplayIndex = 0;
@@ -251,9 +269,14 @@ namespace Autoreport.UI
 
         private void DisksTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() { 
-                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn, doneBtn 
-            });
+            List<Button> permittedActions = null;
+
+            if (currentMode == Mode.General)
+                permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn, doneBtn };
+            else if (currentMode == Mode.Select)
+                permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+
+            currentlyPermittedActions.AddRange(permittedActions);
 
             currentAddForm = new AddDiskForm(filmsTab, reloadBtn.PerformClick);
             currentDeleteAction = Connection.diskService.Delete;
@@ -291,7 +314,7 @@ namespace Autoreport.UI
             List<Button> permittedActions = null;
 
             if (currentMode == Mode.General)
-                permittedActions = new List<Button>() { editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+                permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
             else if (currentMode == Mode.Select)
                 permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
 
@@ -355,7 +378,7 @@ namespace Autoreport.UI
 
         private void SelectBoxItemSelected(object sender, EventArgs e)
         {
-            removeFromSelectedBtn.Enabled = true;
+            removeFromSelectedBtn.Enabled = selectedItemsBox.SelectedIndex != -1;
         }
 
         /// <summary>
@@ -438,7 +461,6 @@ namespace Autoreport.UI
         {
             if (show)
             {
-                selectedItemsBox.Items.Clear();
                 selectedItemsPanel.Show();
             }
             else
@@ -568,28 +590,31 @@ namespace Autoreport.UI
         /// либо обратно в начальный режим.
         /// </summary>
         /// <param name="Handler">Функция дочерней формы, которая вызывается при нажатии кнопки "Готово"</param>
-        /// <returns name="Set" type="Action<Mode, Button>">
+        /// <returns name="Set" type="Action<Mode, Button, List<GridSelectedItem>>">
         ///     Button - ссылка на кнопку-вкладку, связанную с таблицей, из которой будут 
         ///     выбираться элементы
+        ///     GridSelectedItem[] - элементы, который были выбраны при предыдущем входе в режим выбора
         /// </returns>
-        public Action<Mode, Button> WindowMode(Action<ListBox.ObjectCollection> Handler)
+        public Action<Mode, Button, GridSelectedItem[]> WindowMode(Action<ListBox.ObjectCollection> Handler)
         {
             Button lastTab = currentTabButton;
             EventHandler doneEventHandler = new EventHandler(
                 (object sender, EventArgs e) => Handler(selectedItemsBox.Items));
 
-            void Turn(Mode state, Button selectTab)
+            void Turn(Mode state, Button selectTab = null, GridSelectedItem[] previewSelected = null)
             {
+                selectedItemsBox.Items.Clear();
                 bool isSelectEnabled = state == Mode.Select;
                 currentMode = state;
 
                 if (isSelectEnabled)
                 {
-                    if (selectTab == null)
+                    if (selectTab == null || previewSelected == null)
                     {
-                        throw new ArgumentNullException("Когда state равен Mode.Select, второй аргумент не может быть null");
+                        throw new ArgumentNullException("Когда state равен Mode.Select, второй и третий аргументы не могут быть null");
                     }
 
+                    selectedItemsBox.Items.AddRange(previewSelected);
                     DisableAllTabsExcept(selectTab);
                     ConnectDoneButton(doneEventHandler);
                 }
