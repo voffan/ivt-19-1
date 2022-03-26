@@ -18,6 +18,8 @@ namespace Autoreport.UI
         public AddEmployeeForm()
         {
             InitializeComponent();
+
+            AddInputControl_ArrowKeyPressEventListener(flowLayout);
         }
 
         /// <summary>

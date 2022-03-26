@@ -62,18 +62,16 @@ namespace Autoreport.UI
 
         private ListBox GetSelectedListBox()
         {
-            foreach (Control c in this.Controls)
+            foreach (Control c in GetPanels())
             {
-                if (c.GetType() == typeof(FlowLayoutPanel))
+                foreach (Control underC in c.Controls)
                 {
-                    foreach (Control underC in c.Controls)
+                    if (underC.Tag != null && underC.Tag == selectedBoxTag)
                     {
-                        if (underC.Tag != null && underC.Tag == selectedBoxTag)
-                        {
-                            return (ListBox)underC;
-                        }
+                        return (ListBox)underC;
                     }
                 }
+                break;
             }
 
             return null;

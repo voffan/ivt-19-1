@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Autoreport.UI
 {
-    public partial class BaseAddForm : Form
+    public partial class BaseAddForm : BaseForm
     {
         public BaseAddForm() : base()
         {
@@ -31,30 +31,20 @@ namespace Autoreport.UI
         /// <param name="e"></param>
         protected void resetBtn_Click(object sender, EventArgs e)
         {
-            foreach (Control c in this.Controls)
+            foreach (Panel panel in GetPanels())
             {
-                if (c.GetType() == typeof(FlowLayoutPanel))
+                foreach (Control inputControl in GetPanelInputControls(panel))
                 {
-                    foreach (Control underC in c.Controls)
+                    if (typeof(TextBoxBase).IsAssignableFrom(inputControl.GetType()))
                     {
-                        if (underC.GetType() == typeof(Label) || underC.GetType() == typeof(Panel))
-                            continue;
-
-                        if (typeof(TextBoxBase).IsAssignableFrom(underC.GetType()))
-                        {
-                            ((TextBoxBase)underC).Clear();
-                        }
-                        else if (underC.GetType() == typeof(ListBox))
-                        {
-                            ((ListBox)underC).Items.Clear();
-                        }
-                        else if (underC.GetType() == typeof(TextBox))
-                        {
-                            ((TextBox)c).Clear();
-                        }
+                        ((TextBoxBase)inputControl).Clear();
                     }
-                    break;
+                    else if (inputControl.GetType() == typeof(ListBox))
+                    {
+                        ((ListBox)inputControl).Items.Clear();
+                    }
                 }
+                break;
             }
         }
     }

@@ -19,6 +19,8 @@ namespace Autoreport.UI
         {
             InitializeComponent();
 
+            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+
             selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;
             this.CloseHandler = OnCloseHandler;
@@ -42,17 +44,6 @@ namespace Autoreport.UI
             CloseHandler();
             Close();
         }
-
-        //protected override void OnSelectedHandler(ListBox.ObjectCollection items)
-        //{
-        //    foreach (GridSelectedItem item in items)
-        //    {
-        //        selectedBox.Items.Add(item);
-        //    }
-
-        //    OwnerMode_Turn(Mode.Disabled, null);
-        //    this.ShowDialog(owner);
-        //}
 
         protected override void RemoveSelectedBtn_Click(object sender, EventArgs e)
         {

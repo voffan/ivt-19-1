@@ -18,6 +18,7 @@ namespace Autoreport.UI
         public AddClientForm()
         {
             InitializeComponent();
+            AddInputControl_ArrowKeyPressEventListener(flowLayout);
         }
 
         protected override void saveBtn_Click(object sender, EventArgs e)
@@ -33,10 +34,5 @@ namespace Autoreport.UI
 
             Close();
         }
-
-        //protected override void resetBtn_Click(object sender, EventArgs e)
-        //{
-        //    base.resetBtn_Click(sender, e);
-        //}
     }
 }

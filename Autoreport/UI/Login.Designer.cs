@@ -1,7 +1,7 @@
 ﻿
 namespace Autoreport.UI
 {
-    partial class Login
+    partial class Login : BaseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -86,8 +86,8 @@ namespace Autoreport.UI
             // 
             this.panel1.Controls.Add(this.login_btn);
             this.panel1.Controls.Add(this.login_label);
-            this.panel1.Controls.Add(this.password_text);
             this.panel1.Controls.Add(this.login_text);
+            this.panel1.Controls.Add(this.password_text);
             this.panel1.Controls.Add(this.password_label);
             this.panel1.Location = new System.Drawing.Point(12, 65);
             this.panel1.Name = "panel1";

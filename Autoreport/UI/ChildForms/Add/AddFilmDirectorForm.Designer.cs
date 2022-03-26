@@ -75,7 +75,7 @@ namespace Autoreport.UI
             this.lastNameText.Location = new System.Drawing.Point(241, 3);
             this.lastNameText.Name = "lastNameText";
             this.lastNameText.Size = new System.Drawing.Size(232, 25);
-            this.lastNameText.TabIndex = 15;
+            this.lastNameText.TabIndex = 11;
             // 
             // label7
             // 
@@ -95,7 +95,7 @@ namespace Autoreport.UI
             this.firstNameText.Location = new System.Drawing.Point(241, 34);
             this.firstNameText.Name = "firstNameText";
             this.firstNameText.Size = new System.Drawing.Size(232, 25);
-            this.firstNameText.TabIndex = 10;
+            this.firstNameText.TabIndex = 15;
             // 
             // label9
             // 
@@ -115,7 +115,7 @@ namespace Autoreport.UI
             this.middleNameText.Location = new System.Drawing.Point(241, 65);
             this.middleNameText.Name = "middleNameText";
             this.middleNameText.Size = new System.Drawing.Size(232, 25);
-            this.middleNameText.TabIndex = 11;
+            this.middleNameText.TabIndex = 17;
             // 
             // resetBtn
             // 

@@ -68,7 +68,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(232, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Данные";
+            this.label1.Text = "Данные документа";
             // 
             // dataText
             // 
@@ -118,7 +118,6 @@
             this.positionDepositBox.Name = "positionDepositBox";
             this.positionDepositBox.Size = new System.Drawing.Size(232, 23);
             this.positionDepositBox.TabIndex = 18;
-            this.positionDepositBox.Click += new System.EventHandler(this.Select_Click);
             // 
             // label2
             // 
@@ -152,6 +151,7 @@
             this.resetBtn.TabIndex = 13;
             this.resetBtn.Text = "Сброс";
             this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // saveBtn
             // 
@@ -173,7 +173,7 @@
             this.Controls.Add(this.flowLayout);
             this.Name = "AddDepositForm";
             this.Text = "AddDepositForm";
-            this.Load += new System.EventHandler(this.Form_Load);
+            this.Load += new System.EventHandler(this.AddDepositForm_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.ResumeLayout(false);

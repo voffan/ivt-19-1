@@ -17,6 +17,8 @@ namespace Autoreport.UI
         public AddFilmDirectorForm()
         {
             InitializeComponent();
+
+            AddInputControl_ArrowKeyPressEventListener(flowLayout);
         }
 
         protected override void saveBtn_Click(object sender, EventArgs e)

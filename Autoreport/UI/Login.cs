@@ -11,13 +11,14 @@ using Autoreport.Database;
 
 namespace Autoreport.UI
 {
-    public partial class Login : Form
+    public partial class Login : BaseForm
     {
         public bool loggedIn = false;
 
         public Login()
         {
             InitializeComponent();
+            AddInputControl_ArrowKeyPressEventListener();
         }
 
         private void login_btn_Click(object sender, EventArgs e)

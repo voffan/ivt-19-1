@@ -1,9 +1,7 @@
 ﻿
-using System.Windows.Forms;
-
 namespace Autoreport.UI
 {
-    partial class BaseAddForm : BaseForm
+    partial class BaseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,10 +29,17 @@ namespace Autoreport.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // BaseForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "BaseAddForm";
+            this.Name = "BaseForm";
+            this.Text = "BaseForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

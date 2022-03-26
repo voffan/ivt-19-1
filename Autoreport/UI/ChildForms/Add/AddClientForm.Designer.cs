@@ -1,6 +1,6 @@
 ﻿namespace Autoreport.UI
 {
-    partial class AddClientForm
+    partial class AddClientForm : BaseAddForm
     {
         /// <summary>
         /// Required designer variable.

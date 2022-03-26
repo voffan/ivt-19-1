@@ -20,6 +20,10 @@ namespace Autoreport.UI
         {
             InitializeComponent();
 
+            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+
+            this.Load += new EventHandler(this.AddFilmForm_Load);
+
             selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;
             this.CloseHandler = OnCloseHandler;
@@ -33,6 +37,17 @@ namespace Autoreport.UI
             countryBox.Items.AddRange(countries);
 
             countryBox.SelectedItem = countries.Where(c => c.Name == "США").ToList()[0];
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            // после поочередного вызова Hide и ShowDialog у maskedtext
+            // пропадают нижние подчеркивания
+            string oldText = filmDateText.Text;
+            filmDateText.Text = "0";
+            filmDateText.Text = oldText;
         }
 
         protected override void saveBtn_Click(object sender, EventArgs e)
