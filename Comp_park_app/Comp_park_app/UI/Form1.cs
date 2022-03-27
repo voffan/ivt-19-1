@@ -15,8 +15,9 @@ namespace Comp_park_app_form {
     public partial class Form1 : Form {
         public Form1() {
             InitializeComponent();
-            Context c = new Context();
-            dataGridView1.DataSource = c.Computers.ToList();
+            using (Context c = new Context())
+                dataGridView1.DataSource = c.Computers.ToList();
+            label2.Text = "Текущий список: Компьютеры";
             /*dataGridView1.Columns[1].Visible = false;
             dataGridView1.Columns[2].Visible = false;
             dataGridView1.Columns[5].Visible = false;
