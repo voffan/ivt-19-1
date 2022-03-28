@@ -12,11 +12,18 @@ namespace Autoreport.UI
 {
     public partial class BaseForm : Form
     {
+        protected string MainButtonTag = "MainButton"; // тэг для таких кнопок как "Сохранить"/"Войти" и т.д.
+
         public BaseForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Возвращает текстовые поля, либо листбоксы, хранящиеся внутри переданной панели
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         protected IEnumerable<Control> GetPanelInputControls(Panel p)
         {
             foreach (Control underC in p.Controls)
@@ -32,6 +39,10 @@ namespace Autoreport.UI
             }
         }
 
+        /// <summary>
+        /// Возвращает панели(не вложенные в другие панели), расположенные в окне
+        /// </summary>
+        /// <returns></returns>
         protected IEnumerable<Panel> GetPanels()
         {
             foreach (Control c in this.Controls)
@@ -43,14 +54,19 @@ namespace Autoreport.UI
             }
         }
 
+        protected IEnumerable<Button> GetAllButtons(Control control)
+        {
+            if (control.Controls == null || control.Controls.Count == 0)
+                return Enumerable.Empty<Button>();
+
+            return control.Controls.OfType<Button>().Concat(control.Controls.Cast<Control>().SelectMany(x => GetAllButtons(x)));
+        }
+
         protected void AddInputControl_ArrowKeyPressEventListener()
         {
             foreach (Panel panel in GetPanels())
             {
-                foreach (Control inputControl in GetPanelInputControls(panel))
-                {
-                    inputControl.KeyDown += new KeyEventHandler(ArrowKeyPress);
-                }
+                AddInputControl_ArrowKeyPressEventListener(panel);
             }
         }
 
@@ -62,8 +78,17 @@ namespace Autoreport.UI
             }
         }
 
+        /// <summary>
+        /// Позволяет перемещать фокус между инпутами при помощи стрелок
+        /// <вверх>, <вниз> на кливиатуре
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ArrowKeyPress(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode != Keys.Up && e.KeyCode != Keys.Down)
+                return;
+
             Control prev = null;
             bool activeNext = false;
 
@@ -92,6 +117,36 @@ namespace Autoreport.UI
                     }
 
                     prev = c;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Добавляет форме прослушиватель нажатия кнопки Enter
+        /// Для корректной работы у передаваемой формы параметр KeyPreview должен быть true
+        /// </summary>
+        /// <param name="f"></param>
+        protected void AddFormEnterPressEvent(Form f)
+        {
+            f.KeyDown += new KeyEventHandler(EnterKeyPress);
+        }
+
+        /// <summary>
+        /// При нажатии на Enter вызывает событие клика по кнопке, помеченной тэгом MainButton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void EnterKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter)
+                return;
+
+            foreach (Button b in GetAllButtons((Control)sender))
+            {
+                if (b.Tag != null && b.Tag.ToString() == MainButtonTag)
+                {
+                    b.PerformClick();
+                    break;
                 }
             }
         }

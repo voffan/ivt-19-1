@@ -64,6 +64,7 @@
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 16;
+            this.saveBtn.Tag = "MainButton";
             this.saveBtn.Text = "Сохранить";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
@@ -237,6 +238,7 @@
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.flowLayout);
+            this.KeyPreview = true;
             this.Name = "AddFilmForm";
             this.Text = "AddFilmForm";
             this.Load += new System.EventHandler(this.Form_Load);

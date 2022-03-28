@@ -210,10 +210,10 @@ namespace Autoreport.UI
             currentlyPermittedActions.Clear(); // чистим список доступных на вкладке кнопок, чтоб добавить новые данные
 
             if (currentTabButton != null) // восстанавливаем для предыдущей кнопки дефолтный цвет
-                currentTabButton.BackColor = Color.Gainsboro;
+                currentTabButton.BackColor = Color.FromArgb(240, 240, 240); ;
 
             currentTabButton = (Button)sender;
-            currentTabButton.BackColor = Color.WhiteSmoke;
+            currentTabButton.BackColor = Color.FromArgb(205, 205, 205);
 
             Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
             tabAction[currentTabButton](SetCharacteristic); // вызываем метод, связанный с вкладкой
@@ -260,7 +260,7 @@ namespace Autoreport.UI
 
             currentAddForm = new AddClientForm();
             dataGridView.DataSource = Connection.clientService.GetAll();
-
+            
             SetCharacteristic(dataGridView.Columns["First_name"]);
             SetCharacteristic(dataGridView.Columns["Last_name"]);
             SetCharacteristic(dataGridView.Columns["Middle_name"]);
@@ -289,10 +289,11 @@ namespace Autoreport.UI
         private void FilmsTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
-                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
+                addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
             });
 
             currentAddForm = new AddFilmForm(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
+            currentDeleteAction = Connection.filmService.Delete;
             dataGridView.DataSource = Connection.filmService.GetAll();
 
             SetCharacteristic(dataGridView.Columns["Name"]);
@@ -314,7 +315,7 @@ namespace Autoreport.UI
             List<Button> permittedActions = null;
 
             if (currentMode == Mode.General)
-                permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+                permittedActions = new List<Button>() { editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
             else if (currentMode == Mode.Select)
                 permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
 
@@ -352,6 +353,7 @@ namespace Autoreport.UI
 
             void Set(DataGridViewColumn column)
             {
+                Console.WriteLine("{0} - {1}", column.HeaderText, index);
                 column.Tag = "Characteristic";
                 column.DisplayIndex = index;
                 index++;

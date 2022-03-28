@@ -19,6 +19,7 @@ namespace Autoreport.UI
         {
             InitializeComponent();
             AddInputControl_ArrowKeyPressEventListener();
+            AddFormEnterPressEvent(this);
         }
 
         private void login_btn_Click(object sender, EventArgs e)

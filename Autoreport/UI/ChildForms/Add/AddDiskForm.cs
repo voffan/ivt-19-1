@@ -20,6 +20,7 @@ namespace Autoreport.UI
             InitializeComponent();
 
             AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddFormEnterPressEvent(this);
 
             selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;

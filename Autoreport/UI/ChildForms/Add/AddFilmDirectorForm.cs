@@ -19,6 +19,7 @@ namespace Autoreport.UI
             InitializeComponent();
 
             AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddFormEnterPressEvent(this);
         }
 
         protected override void saveBtn_Click(object sender, EventArgs e)

@@ -21,6 +21,7 @@ namespace Autoreport.UI
             InitializeComponent();
 
             AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddFormEnterPressEvent(this);
 
             this.Load += new EventHandler(this.AddFilmForm_Load);
 

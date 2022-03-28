@@ -22,6 +22,7 @@ namespace Autoreport.UI
 
             InitializeComponent();
             AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddFormEnterPressEvent(this);
 
             this.Load += new EventHandler(this.Form_Load);
 

@@ -502,6 +502,7 @@ namespace Autoreport.UI
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 11;
+            this.saveBtn.Tag = "MainButton";
             this.saveBtn.Text = "Сохранить";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
@@ -524,6 +525,7 @@ namespace Autoreport.UI
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.flowLayout);
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(516, 500);
             this.MinimumSize = new System.Drawing.Size(516, 200);
             this.Name = "AddEmployeeForm";

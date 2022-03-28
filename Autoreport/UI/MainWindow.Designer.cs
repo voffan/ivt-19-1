@@ -78,7 +78,7 @@ namespace Autoreport.UI
             this.menuPanel.MinimumSize = new System.Drawing.Size(0, 37);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.menuPanel.Size = new System.Drawing.Size(816, 37);
+            this.menuPanel.Size = new System.Drawing.Size(795, 37);
             this.menuPanel.TabIndex = 0;
             // 
             // tabsLayout
@@ -102,7 +102,7 @@ namespace Autoreport.UI
             // employeesTab
             // 
             this.employeesTab.AutoSize = true;
-            this.employeesTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.employeesTab.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.employeesTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.employeesTab.Dock = System.Windows.Forms.DockStyle.Top;
             this.employeesTab.FlatAppearance.BorderSize = 0;
@@ -124,7 +124,7 @@ namespace Autoreport.UI
             // clientsTab
             // 
             this.clientsTab.AutoSize = true;
-            this.clientsTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.clientsTab.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.clientsTab.Dock = System.Windows.Forms.DockStyle.Top;
             this.clientsTab.FlatAppearance.BorderSize = 0;
             this.clientsTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -145,7 +145,7 @@ namespace Autoreport.UI
             // disksTab
             // 
             this.disksTab.AutoSize = true;
-            this.disksTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.disksTab.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.disksTab.Dock = System.Windows.Forms.DockStyle.Top;
             this.disksTab.FlatAppearance.BorderSize = 0;
             this.disksTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -166,7 +166,7 @@ namespace Autoreport.UI
             // filmsTab
             // 
             this.filmsTab.AutoSize = true;
-            this.filmsTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.filmsTab.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.filmsTab.Dock = System.Windows.Forms.DockStyle.Top;
             this.filmsTab.FlatAppearance.BorderSize = 0;
             this.filmsTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -187,7 +187,7 @@ namespace Autoreport.UI
             // ordersTab
             // 
             this.ordersTab.AutoSize = true;
-            this.ordersTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.ordersTab.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ordersTab.Dock = System.Windows.Forms.DockStyle.Top;
             this.ordersTab.FlatAppearance.BorderSize = 0;
             this.ordersTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -208,7 +208,7 @@ namespace Autoreport.UI
             // depositsTab
             // 
             this.depositsTab.AutoSize = true;
-            this.depositsTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.depositsTab.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.depositsTab.Dock = System.Windows.Forms.DockStyle.Top;
             this.depositsTab.FlatAppearance.BorderSize = 0;
             this.depositsTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -229,7 +229,7 @@ namespace Autoreport.UI
             // filmDirectorsSecondaryTab
             // 
             this.filmDirectorsSecondaryTab.AutoSize = true;
-            this.filmDirectorsSecondaryTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.filmDirectorsSecondaryTab.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.filmDirectorsSecondaryTab.Dock = System.Windows.Forms.DockStyle.Top;
             this.filmDirectorsSecondaryTab.FlatAppearance.BorderSize = 0;
             this.filmDirectorsSecondaryTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -250,7 +250,7 @@ namespace Autoreport.UI
             // 
             this.reportPanel.Controls.Add(this.reportBtn);
             this.reportPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.reportPanel.Location = new System.Drawing.Point(731, 3);
+            this.reportPanel.Location = new System.Drawing.Point(710, 3);
             this.reportPanel.Name = "reportPanel";
             this.reportPanel.Size = new System.Drawing.Size(82, 31);
             this.reportPanel.TabIndex = 7;
@@ -275,7 +275,7 @@ namespace Autoreport.UI
             this.dataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataPanel.Location = new System.Drawing.Point(0, 37);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(480, 474);
+            this.dataPanel.Size = new System.Drawing.Size(459, 472);
             this.dataPanel.TabIndex = 3;
             // 
             // dataGridView
@@ -290,7 +290,7 @@ namespace Autoreport.UI
             this.dataGridView.RowHeadersWidth = 60;
             this.dataGridView.RowTemplate.Height = 25;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(480, 474);
+            this.dataGridView.Size = new System.Drawing.Size(459, 472);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
@@ -328,7 +328,7 @@ namespace Autoreport.UI
             // reloadBtn
             // 
             this.reloadBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.reloadBtn.Location = new System.Drawing.Point(5, 431);
+            this.reloadBtn.Location = new System.Drawing.Point(5, 429);
             this.reloadBtn.Name = "reloadBtn";
             this.reloadBtn.Size = new System.Drawing.Size(136, 38);
             this.reloadBtn.TabIndex = 4;
@@ -339,7 +339,7 @@ namespace Autoreport.UI
             // doneBtn
             // 
             this.doneBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.doneBtn.Location = new System.Drawing.Point(5, 393);
+            this.doneBtn.Location = new System.Drawing.Point(5, 391);
             this.doneBtn.Name = "doneBtn";
             this.doneBtn.Size = new System.Drawing.Size(136, 38);
             this.doneBtn.TabIndex = 5;
@@ -361,7 +361,7 @@ namespace Autoreport.UI
             // 
             this.deleteBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.deleteBtn.Enabled = false;
-            this.deleteBtn.Location = new System.Drawing.Point(5, 355);
+            this.deleteBtn.Location = new System.Drawing.Point(5, 353);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(136, 38);
             this.deleteBtn.TabIndex = 7;
@@ -380,10 +380,10 @@ namespace Autoreport.UI
             this.controlPanel.Controls.Add(this.editBtn);
             this.controlPanel.Controls.Add(this.addBtn);
             this.controlPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.controlPanel.Location = new System.Drawing.Point(670, 37);
+            this.controlPanel.Location = new System.Drawing.Point(649, 37);
             this.controlPanel.Name = "controlPanel";
             this.controlPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.controlPanel.Size = new System.Drawing.Size(146, 474);
+            this.controlPanel.Size = new System.Drawing.Size(146, 472);
             this.controlPanel.TabIndex = 2;
             // 
             // label1
@@ -409,7 +409,7 @@ namespace Autoreport.UI
             this.selectedItemsBox.Location = new System.Drawing.Point(5, 60);
             this.selectedItemsBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.selectedItemsBox.Name = "selectedItemsBox";
-            this.selectedItemsBox.Size = new System.Drawing.Size(180, 372);
+            this.selectedItemsBox.Size = new System.Drawing.Size(180, 370);
             this.selectedItemsBox.TabIndex = 1;
             // 
             // selectedItemsPanel
@@ -419,10 +419,10 @@ namespace Autoreport.UI
             this.selectedItemsPanel.Controls.Add(this.panel1);
             this.selectedItemsPanel.Controls.Add(this.label1);
             this.selectedItemsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.selectedItemsPanel.Location = new System.Drawing.Point(480, 37);
+            this.selectedItemsPanel.Location = new System.Drawing.Point(459, 37);
             this.selectedItemsPanel.Name = "selectedItemsPanel";
             this.selectedItemsPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.selectedItemsPanel.Size = new System.Drawing.Size(190, 474);
+            this.selectedItemsPanel.Size = new System.Drawing.Size(190, 472);
             this.selectedItemsPanel.TabIndex = 8;
             // 
             // panel1
@@ -430,7 +430,7 @@ namespace Autoreport.UI
             this.panel1.Controls.Add(this.removeFromSelectedBtn);
             this.panel1.Controls.Add(this.selectBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(5, 432);
+            this.panel1.Location = new System.Drawing.Point(5, 430);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3);
             this.panel1.Size = new System.Drawing.Size(180, 37);
@@ -465,7 +465,7 @@ namespace Autoreport.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(816, 511);
+            this.ClientSize = new System.Drawing.Size(795, 509);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.selectedItemsPanel);
             this.Controls.Add(this.controlPanel);
