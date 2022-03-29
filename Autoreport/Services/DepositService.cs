@@ -12,20 +12,13 @@ namespace Autoreport.Services
 {
     public class DepositService
     {
-        Deposit currentDeposit;
-        public Deposit CurrentDeposit
+        public void Add(string data, int value, DepositType dType, Client clients)
         {
-            get { return currentDeposit; }
-        }
-
-        public void Add(string data, int _value,DepositType position, Client clients)
-        {
-            string value = Convert.ToString(_value);
             Deposit deposit = new Deposit()
             {
                 Data = data,
                 Value = value,
-                TypePosition = position,
+                DepositType = dType,
                 Owner = clients
             };
 
@@ -35,7 +28,6 @@ namespace Autoreport.Services
                 db.Deposits.Add(deposit);
                 db.SaveChanges();
             }
-
         }
 
         public void Get()
@@ -54,6 +46,17 @@ namespace Autoreport.Services
             }
         }
 
+        public Deposit GetById(int dep_id)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                Deposit deposit = db.Deposits
+                    .Where(dep => dep.Id == dep_id).ToList()[0];
+
+
+                return deposit;
+            }
+        }
 
         public void Delete(int Id)
         {

@@ -45,6 +45,17 @@ namespace Autoreport.Services
             }
         }
 
+        public List<Disk> GetByIds(List<int> ids)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                IQueryable<Disk> disks = db.Disks
+                    .Where(d => ids.Any(item => item == d.Id));
+
+                return disks.ToList();
+            }
+        }
+
         public void Delete(int Id)
         {
             using (DataContext db = Connection.Connect())

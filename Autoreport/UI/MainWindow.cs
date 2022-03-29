@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using Autoreport.Database;
 using Autoreport.UI.Classes;
 using Autoreport.Models;
+using System.Reflection;
+using System.ComponentModel;
 
 namespace Autoreport.UI
 {
@@ -41,6 +43,15 @@ namespace Autoreport.UI
         DataGridViewCellEventHandler tableItemDoubleClickEvent; // даблклик по строке таблицы
         EventHandler tableItemSelectEvent; // выбор строки из таблицы
         EventHandler selectedItemSelectEvent; // выбор строки из списка selectedItemBox
+
+        // список навешанных на кнопку "Готово" слушателей
+        // нужен для того, чтоб менять порядок вызова eventhandler'ов кнопки "Готово"
+        // например, идет вызов форм: добавить заказ -> выбрать депозит -> добавить депозит -> выбрать клиента
+        // в таком случае после стадии выбора клиента ПЕРВЫМ должен вызваться EventHandler,
+        // навешанный формой добавления депозита, чтоб вернуть нас в эту форму, однако в реальности, что логично,
+        // первым вызовется хэндлер навешанный первой вызванной формой - добавления заказа и тогда вместо формы депозита
+        // нас вернет на форму заказа, что неправильно.
+        List<EventHandler> doneBtnHandlers = new List<EventHandler>();
 
         public MainWindow()
         {
@@ -243,7 +254,7 @@ namespace Autoreport.UI
         {
             currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn });
 
-            currentAddForm = new AddEmployeeForm();
+            currentAddForm = new AddEmployeeF();
             dataGridView.DataSource = Connection.employeeService.GetAll();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
@@ -258,7 +269,7 @@ namespace Autoreport.UI
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn
             });
 
-            currentAddForm = new AddClientForm();
+            currentAddForm = new AddClientF();
             dataGridView.DataSource = Connection.clientService.GetAll();
             
             SetCharacteristic(dataGridView.Columns["First_name"]);
@@ -278,7 +289,7 @@ namespace Autoreport.UI
 
             currentlyPermittedActions.AddRange(permittedActions);
 
-            currentAddForm = new AddDiskForm(filmsTab, reloadBtn.PerformClick);
+            currentAddForm = new AddDiskF(filmsTab, reloadBtn.PerformClick);
             currentDeleteAction = Connection.diskService.Delete;
             dataGridView.DataSource = Connection.diskService.GetAll();
 
@@ -292,7 +303,7 @@ namespace Autoreport.UI
                 addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
             });
 
-            currentAddForm = new AddFilmForm(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
+            currentAddForm = new AddFilmF(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
             currentDeleteAction = Connection.filmService.Delete;
             dataGridView.DataSource = Connection.filmService.GetAll();
 
@@ -306,7 +317,7 @@ namespace Autoreport.UI
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn 
             });
 
-            currentDeleteAction = Connection.orderService.Delete;
+            currentAddForm = new AddOrderF(depositsTab, disksTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.orderService.GetAll();
         }
 
@@ -315,23 +326,26 @@ namespace Autoreport.UI
             List<Button> permittedActions = null;
 
             if (currentMode == Mode.General)
-                permittedActions = new List<Button>() { editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+                permittedActions = new List<Button>() { editBtn, searchBtn, reloadBtn, deleteBtn, infoBtn, doneBtn };
             else if (currentMode == Mode.Select)
                 permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
 
             currentlyPermittedActions.AddRange(permittedActions);
 
-            currentAddForm = new AddDepositForm(clientsTab, reloadBtn.PerformClick);
+            currentDeleteAction = Connection.depositService.Delete;
+            currentAddForm = new AddDepositF(clientsTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.depositService.GetAll();
 
             SetCharacteristic(dataGridView.Columns["Data"]);
+            SetCharacteristic(dataGridView.Columns["Value"]);
+            SetCharacteristic(dataGridView.Columns["TypePosition"]);
         }
 
         private void FilmDirectorsSecondaryTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn });
             
-            currentAddForm = new AddFilmDirectorForm();
+            currentAddForm = new AddFilmDirectorF();
             dataGridView.DataSource = Connection.filmService.GetFilmsDirectors();
 
             SetCharacteristic(dataGridView.Columns["First_name"]);
@@ -353,7 +367,6 @@ namespace Autoreport.UI
 
             void Set(DataGridViewColumn column)
             {
-                Console.WriteLine("{0} - {1}", column.HeaderText, index);
                 column.Tag = "Characteristic";
                 column.DisplayIndex = index;
                 index++;
@@ -396,12 +409,23 @@ namespace Autoreport.UI
         /// <param name="e"></param>
         private void DataGridItemDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            Console.WriteLine("datagridview item double clicked or selected");
+
             if (e.RowIndex == -1) return;
+
+            Console.WriteLine("0");
 
             int Id = (int)dataGridView.Rows[e.RowIndex].Cells["Id"].Value;
 
+            foreach (object it in selectedItemsBox.Items)
+            {
+                Console.WriteLine("{0} {1}", ((GridSelectedItem)it).VisibleName, (GridSelectedItem)it == null);
+            }
+
             if (selectedItemsBox.Items.Cast<GridSelectedItem>().Count(_item => _item.Id == Id) != 0)
                 return;
+
+            Console.WriteLine("1");
 
             string visibleName = "";
 
@@ -426,9 +450,13 @@ namespace Autoreport.UI
 
         private void selectBtn_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewCell cell in dataGridView.SelectedCells)
+            foreach (DataGridViewRow row in dataGridView.SelectedRows)
             {
-                DataGridItemDoubleClick(null, new DataGridViewCellEventArgs(cell.ColumnIndex, cell.RowIndex));
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    DataGridItemDoubleClick(null, new DataGridViewCellEventArgs(cell.ColumnIndex, cell.RowIndex));
+                    break;
+                }
             }
         }
 
@@ -443,7 +471,7 @@ namespace Autoreport.UI
         }
 
         /// <summary>
-        /// Показывает/скрывает кнопку selectBtn
+        /// Показывает/скрывает кнопку doneBtn
         /// </summary>
         /// <param name="show"></param>
         private void ShowDoneBtn(bool show)
@@ -471,7 +499,9 @@ namespace Autoreport.UI
 
         private void ConnectTableItemClick()
         {
+            dataGridView.CellDoubleClick -= tableItemDoubleClickEvent;
             dataGridView.CellDoubleClick += tableItemDoubleClickEvent;
+
             dataGridView.SelectionChanged += tableItemSelectEvent;
         }
 
@@ -578,12 +608,34 @@ namespace Autoreport.UI
 
         private void ConnectDoneButton(EventHandler Handler)
         {
+            EventHandler tmp = null;
+
+            if (doneBtnHandlers.Count > 0)
+            {
+                tmp = doneBtnHandlers[0];
+
+                doneBtn.Click -= tmp;
+                doneBtnHandlers.RemoveAt(0);
+            }
+
             doneBtn.Click += Handler;
+            doneBtnHandlers.Add(Handler);
+
+            if (tmp != null)
+            {
+                doneBtnHandlers.Add(tmp);
+            }
         }
 
         private void DisconnectDoneButton(EventHandler Handler)
         {
             doneBtn.Click -= Handler;
+            doneBtnHandlers.Remove(Handler);
+
+            if (doneBtnHandlers.Count > 0)
+            {
+                doneBtn.Click += doneBtnHandlers[0];
+            }
         }
 
         /// <summary>
@@ -602,10 +654,10 @@ namespace Autoreport.UI
             Button lastTab = currentTabButton;
             EventHandler doneEventHandler = new EventHandler(
                 (object sender, EventArgs e) => Handler(selectedItemsBox.Items));
+            bool fromSelectedMode = currentMode == Mode.Select;
 
             void Turn(Mode state, Button selectTab = null, GridSelectedItem[] previewSelected = null)
             {
-                selectedItemsBox.Items.Clear();
                 bool isSelectEnabled = state == Mode.Select;
                 currentMode = state;
 
@@ -619,16 +671,23 @@ namespace Autoreport.UI
                     selectedItemsBox.Items.AddRange(previewSelected);
                     DisableAllTabsExcept(selectTab);
                     ConnectDoneButton(doneEventHandler);
+                    SetSelectionElementsActive(isSelectEnabled);
                 }
                 else
                 {
-                    EnableAllTabs();
+                    if (!fromSelectedMode)
+                    {
+                        EnableAllTabs();
+                        SetSelectionElementsActive(isSelectEnabled);
+                    } else
+                    {
+                        DisableAllTabsExcept(lastTab);
+                    }
+
                     DisconnectDoneButton(doneEventHandler);
-                    
+                    selectedItemsBox.Items.Clear();
                     lastTab.PerformClick();
                 }
-
-                SetSelectionElementsActive(isSelectEnabled);
             }
 
             return Turn;

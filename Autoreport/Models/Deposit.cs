@@ -30,10 +30,10 @@ namespace Autoreport.Models
         public string Data { get; set; } // наименование / идентификационные данные документа
 
         [DisplayName("Сумма"), Range(1.0, 100000.0)]
-        public string Value { get; set; }
+        public int Value { get; set; }
 
         [Required, DisplayName("Тип залога")]
-        public DepositType TypePosition { get; set; }
+        public DepositType DepositType { get; set; }
 
         [Required, DisplayName("Владелец"), ForeignKey("ClientId")]
         public virtual Client Owner { get; set; }

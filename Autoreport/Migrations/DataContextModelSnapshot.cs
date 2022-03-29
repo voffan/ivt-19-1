@@ -46,11 +46,11 @@ namespace Autoreport.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)");
 
-                    b.Property<int>("TypePosition")
+                    b.Property<int>("DepositType")
                         .HasColumnType("int");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("longtext");
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

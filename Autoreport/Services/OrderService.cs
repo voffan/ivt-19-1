@@ -9,7 +9,7 @@ namespace Autoreport.Services
 {
     public class OrderService
     {
-        public void Add()
+        public void Add(DateTime OrderDate, DateTime ReturnDate, Employee OrderEmployeer, Deposit OrderDeposit, List<Disk> Disks)
         {
 
         }
