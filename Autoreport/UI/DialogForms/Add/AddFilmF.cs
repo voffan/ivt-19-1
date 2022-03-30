@@ -64,12 +64,11 @@ namespace Autoreport.UI
             string filmName = filmNameText.Text;
             DateTime filmDate = DateTime.Parse(filmDateText.Text, new CultureInfo("de-DE"));
 
-            List<int> directors_ids = selectedBox.Items.Cast<GridSelectedItem>()
-                .Select(item => item.Id).ToList();
+            List<Person> directors = selectedBox.Items.Cast<Person>().ToList();
 
-            var selectedDirectors = Connection.filmService.GetFilmsDirectors().Where(d => directors_ids.Contains(d.Id)).ToList();
+            //var selectedDirectors = Connection.filmService.GetFilmsDirectors().Where(d => directors_ids.Contains(d.Id)).ToList();
 
-            Connection.filmService.Add(filmName, filmDate, (Country)countryBox.SelectedItem, selectedDirectors, genresBox.SelectedItems.Cast<Genre>().ToList());
+            Connection.filmService.Add(filmName, filmDate, (Country)countryBox.SelectedItem, directors, genresBox.SelectedItems.Cast<Genre>().ToList());
             CloseHandler();
             Close();
         }

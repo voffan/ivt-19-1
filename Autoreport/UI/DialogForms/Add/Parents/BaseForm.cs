@@ -28,11 +28,10 @@ namespace Autoreport.UI
         {
             foreach (Control underC in p.Controls)
             {
-                if (underC.GetType() == typeof(Label) || underC.GetType() == typeof(Panel))
+                if (underC is Label || underC is Panel)
                     continue;
 
-                if (typeof(TextBoxBase).IsAssignableFrom(underC.GetType()) ||
-                    underC.GetType() == typeof(ListBox)) 
+                if (typeof(TextBoxBase).IsAssignableFrom(underC.GetType()) || underC is ListBox) 
                 {
                     yield return underC;
                 }
@@ -40,18 +39,19 @@ namespace Autoreport.UI
         }
 
         /// <summary>
-        /// Возвращает панели(не вложенные в другие панели), расположенные в окне
+        /// Возвращает все панели
         /// </summary>
         /// <returns></returns>
-        protected IEnumerable<Panel> GetPanels()
+        protected IEnumerable<Panel> GetAllPanels(Control control)
         {
-            foreach (Control c in this.Controls)
-            {
-                if (typeof(Panel).IsAssignableFrom(c.GetType()))
-                {
-                    yield return (Panel)c;
-                }
-            }
+            if (control.Controls == null || control.Controls.Count == 0)
+                return Enumerable.Empty<Panel>();
+
+            return control.Controls
+                .Cast<Control>()
+                .Where(c => typeof(Panel).IsAssignableFrom(c.GetType()))
+                .Cast<Panel>()
+                .Concat(control.Controls.Cast<Control>().SelectMany(x => GetAllPanels(x)));
         }
 
         protected IEnumerable<Button> GetAllButtons(Control control)
@@ -64,7 +64,7 @@ namespace Autoreport.UI
 
         protected void AddInputControl_ArrowKeyPressEventListener()
         {
-            foreach (Panel panel in GetPanels())
+            foreach (Panel panel in GetAllPanels(this))
             {
                 AddInputControl_ArrowKeyPressEventListener(panel);
             }
@@ -92,7 +92,7 @@ namespace Autoreport.UI
             Control prev = null;
             bool activeNext = false;
 
-            foreach (Panel p in GetPanels())
+            foreach (Panel p in GetAllPanels(this))
             {
                 foreach (Control c in GetPanelInputControls(p))
                 {

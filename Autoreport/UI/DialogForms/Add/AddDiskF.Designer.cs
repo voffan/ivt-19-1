@@ -40,14 +40,16 @@ namespace Autoreport.UI
             this.label9 = new System.Windows.Forms.Label();
             this.costText = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.removeSelectedBtn = new System.Windows.Forms.Button();
             this.selectBtn = new System.Windows.Forms.Button();
             this.selectedBox = new System.Windows.Forms.ListBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.flowLayout.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayout
@@ -60,11 +62,10 @@ namespace Autoreport.UI
             this.flowLayout.Controls.Add(this.label9);
             this.flowLayout.Controls.Add(this.costText);
             this.flowLayout.Controls.Add(this.label11);
-            this.flowLayout.Controls.Add(this.panel1);
-            this.flowLayout.Controls.Add(this.selectedBox);
+            this.flowLayout.Controls.Add(this.panel2);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
-            this.flowLayout.Size = new System.Drawing.Size(476, 207);
+            this.flowLayout.Size = new System.Drawing.Size(505, 207);
             this.flowLayout.TabIndex = 11;
             // 
             // label1
@@ -85,7 +86,7 @@ namespace Autoreport.UI
             this.articleText.Location = new System.Drawing.Point(241, 3);
             this.articleText.Mask = "aaaaaa";
             this.articleText.Name = "articleText";
-            this.articleText.Size = new System.Drawing.Size(232, 23);
+            this.articleText.Size = new System.Drawing.Size(261, 23);
             this.articleText.TabIndex = 15;
             this.articleText.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
@@ -106,7 +107,7 @@ namespace Autoreport.UI
             this.countText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.countText.Location = new System.Drawing.Point(241, 34);
             this.countText.Name = "countText";
-            this.countText.Size = new System.Drawing.Size(232, 25);
+            this.countText.Size = new System.Drawing.Size(261, 25);
             this.countText.TabIndex = 10;
             this.countText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DigitText_KeyPress);
             // 
@@ -127,7 +128,7 @@ namespace Autoreport.UI
             this.costText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.costText.Location = new System.Drawing.Point(241, 65);
             this.costText.Name = "costText";
-            this.costText.Size = new System.Drawing.Size(232, 25);
+            this.costText.Size = new System.Drawing.Size(261, 25);
             this.costText.TabIndex = 11;
             this.costText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DigitText_KeyPress);
             // 
@@ -143,49 +144,59 @@ namespace Autoreport.UI
             this.label11.TabIndex = 4;
             this.label11.Text = "Фильмы";
             // 
-            // panel1
+            // panel2
             // 
-            this.panel1.Controls.Add(this.removeSelectedBtn);
-            this.panel1.Controls.Add(this.selectBtn);
-            this.panel1.Location = new System.Drawing.Point(241, 96);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(75, 49);
-            this.panel1.TabIndex = 14;
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.selectedBox);
+            this.panel2.Location = new System.Drawing.Point(241, 96);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(261, 93);
+            this.panel2.TabIndex = 25;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.removeSelectedBtn);
+            this.panel3.Controls.Add(this.selectBtn);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(261, 29);
+            this.panel3.TabIndex = 17;
             // 
             // removeSelectedBtn
             // 
-            this.removeSelectedBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.removeSelectedBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.removeSelectedBtn.Enabled = false;
-            this.removeSelectedBtn.Location = new System.Drawing.Point(0, 26);
+            this.removeSelectedBtn.Location = new System.Drawing.Point(75, 0);
             this.removeSelectedBtn.Name = "removeSelectedBtn";
-            this.removeSelectedBtn.Size = new System.Drawing.Size(75, 23);
+            this.removeSelectedBtn.Size = new System.Drawing.Size(75, 29);
             this.removeSelectedBtn.TabIndex = 13;
             this.removeSelectedBtn.Text = "Удалить";
+            this.removeSelectedBtn.Click += this.RemoveSelectedBtn_Click;
             this.removeSelectedBtn.UseVisualStyleBackColor = true;
-            this.removeSelectedBtn.Click += new System.EventHandler(this.RemoveSelectedBtn_Click);
             // 
             // selectBtn
             // 
-            this.selectBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.selectBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.selectBtn.Location = new System.Drawing.Point(0, 0);
             this.selectBtn.Name = "selectBtn";
-            this.selectBtn.Size = new System.Drawing.Size(75, 23);
+            this.selectBtn.Size = new System.Drawing.Size(75, 29);
             this.selectBtn.TabIndex = 12;
             this.selectBtn.Text = "Выбрать";
+            this.selectBtn.Click += this.Select_Click;
             this.selectBtn.UseVisualStyleBackColor = true;
-            this.selectBtn.Click += new System.EventHandler(this.Select_Click);
             // 
             // selectedBox
             // 
+            this.selectedBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.selectedBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.selectedBox.FormattingEnabled = true;
             this.selectedBox.IntegralHeight = false;
             this.selectedBox.ItemHeight = 17;
-            this.selectedBox.Location = new System.Drawing.Point(322, 96);
+            this.selectedBox.Location = new System.Drawing.Point(0, 0);
             this.selectedBox.Name = "selectedBox";
-            this.selectedBox.Size = new System.Drawing.Size(151, 87);
-            this.selectedBox.TabIndex = 13;
-            this.selectedBox.SelectedIndexChanged += new System.EventHandler(this.SelectedBox_SelectedIndexChanged);
+            this.selectedBox.Size = new System.Drawing.Size(261, 63);
+            this.selectedBox.TabIndex = 16;
             // 
             // resetBtn
             // 
@@ -199,7 +210,7 @@ namespace Autoreport.UI
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(288, 225);
+            this.saveBtn.Location = new System.Drawing.Point(317, 225);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 13;
@@ -207,23 +218,24 @@ namespace Autoreport.UI
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // AddDiskForm
+            // AddDiskF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 266);
+            this.ClientSize = new System.Drawing.Size(529, 266);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.flowLayout);
             this.KeyPreview = true;
-            this.MaximumSize = new System.Drawing.Size(516, 500);
-            this.MinimumSize = new System.Drawing.Size(516, 200);
-            this.Name = "AddDiskForm";
+            this.MaximumSize = new System.Drawing.Size(545, 500);
+            this.MinimumSize = new System.Drawing.Size(545, 200);
+            this.Name = "AddDiskF";
             this.Text = "AddDiskForm";
             this.Load += new System.EventHandler(this.Form_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -238,11 +250,12 @@ namespace Autoreport.UI
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.Button selectBtn;
-        private System.Windows.Forms.ListBox selectedBox;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button removeSelectedBtn;
         private System.Windows.Forms.MaskedTextBox articleText;
         private System.Windows.Forms.FlowLayoutPanel flowLayout;
+        private Panel panel2;
+        private Panel panel3;
+        private Button removeSelectedBtn;
+        private Button selectBtn;
+        private ListBox selectedBox;
     }
 }

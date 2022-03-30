@@ -163,7 +163,7 @@ namespace Autoreport.Migrations
                     b.Property<int?>("OrderDepositId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OrderEmployeerId")
+                    b.Property<int>("OrderEmployeerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Order_date")
@@ -371,8 +371,10 @@ namespace Autoreport.Migrations
                         .HasForeignKey("OrderDepositId");
 
                     b.HasOne("Autoreport.Models.Employee", "OrderEmployeer")
-                        .WithMany()
-                        .HasForeignKey("OrderEmployeerId");
+                        .WithMany("Orders")
+                        .HasForeignKey("OrderEmployeerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("OrderClient");
 
@@ -447,6 +449,11 @@ namespace Autoreport.Migrations
                 });
 
             modelBuilder.Entity("Autoreport.Models.Client", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("Autoreport.Models.Employee", b =>
                 {
                     b.Navigation("Orders");
                 });

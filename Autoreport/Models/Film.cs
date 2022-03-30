@@ -27,5 +27,10 @@ namespace Autoreport.Models
         public virtual List<Genre> Genres { get; set; }
 
         public virtual List<Disk> Disks { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0} ({1})", Name, Date.Year);
+        }
     }
 }

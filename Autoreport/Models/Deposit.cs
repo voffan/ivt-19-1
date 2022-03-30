@@ -40,11 +40,18 @@ namespace Autoreport.Models
 
         public override string ToString()
         {
+            string owner = "";
+
+            if (Owner != null)
+            {
+                owner = String.Format("{0}; ", Owner.ToString());
+            }
+
             return this.DepositType switch
             {
-                DepositType.Money => String.Format("Деньги: {0}", Value),
-                DepositType.Document => String.Format("Документ: {0}", Data),
-                DepositType.MoneyAndDocument => String.Format("Деньги: {0}; документ: {1}", Value, Data),
+                DepositType.Money => String.Format(owner + "Деньги: {0}", Value),
+                DepositType.Document => String.Format(owner + "Документ: {0}", Data),
+                DepositType.MoneyAndDocument => String.Format(owner + "Деньги: {0}; документ: {1}", Value, Data),
                 _ => String.Format("Деньги: {0}", Value),
             };
         }

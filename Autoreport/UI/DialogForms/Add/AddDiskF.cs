@@ -40,10 +40,9 @@ namespace Autoreport.UI
             string article = articleText.Text;
             string count = countText.Text;
             string cost = costText.Text;
-            List<int> films_ids = selectedBox.Items.Cast<GridSelectedItem>()
-                .Select(item => item.Id).ToList();
+            List<Film> films = selectedBox.Items.Cast<Film>().ToList();
 
-            Connection.diskService.Add(article, count, cost, Connection.filmService.GetByIds(films_ids));
+            Connection.diskService.Add(article, count, cost, films);
             CloseHandler();
             Close();
         }

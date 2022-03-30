@@ -226,8 +226,8 @@ namespace Autoreport.UI
             currentTabButton = (Button)sender;
             currentTabButton.BackColor = Color.FromArgb(205, 205, 205);
 
-            Action<DataGridViewColumn> SetCharacteristic = CharacteristicSetter();
-            tabAction[currentTabButton](SetCharacteristic); // вызываем метод, связанный с вкладкой
+            Action<DataGridViewColumn> GoFirst = CharacteristicSetter();
+            tabAction[currentTabButton](GoFirst); // вызываем метод, связанный с вкладкой
 
             // выключаем все кнопки-действия за исключением тех, что были добавлены в currentlyPermittedActions
             DisableAllControlButtonsExcept(currentlyPermittedActions.ToArray());
@@ -250,20 +250,20 @@ namespace Autoreport.UI
             dataGridView.Columns["Id"].Visible = false;
         }
 
-        private void EmployeesTab_Click(Action<DataGridViewColumn> SetCharacteristic)
+        private void EmployeesTab_Click(Action<DataGridViewColumn> GoFirst)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn });
 
             currentAddForm = new AddEmployeeF();
             dataGridView.DataSource = Connection.employeeService.GetAll();
 
-            SetCharacteristic(dataGridView.Columns["First_name"]);
-            SetCharacteristic(dataGridView.Columns["Last_name"]);
-            SetCharacteristic(dataGridView.Columns["Middle_name"]);
-            SetCharacteristic(dataGridView.Columns["EmplPosition"]);
+            GoFirst(dataGridView.Columns["First_name"]);
+            GoFirst(dataGridView.Columns["Last_name"]);
+            GoFirst(dataGridView.Columns["Middle_name"]);
+            GoFirst(dataGridView.Columns["EmplPosition"]);
         }
 
-        private void ClientsTab_Click(Action<DataGridViewColumn> SetCharacteristic)
+        private void ClientsTab_Click(Action<DataGridViewColumn> GoFirst)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn
@@ -272,13 +272,13 @@ namespace Autoreport.UI
             currentAddForm = new AddClientF();
             dataGridView.DataSource = Connection.clientService.GetAll();
             
-            SetCharacteristic(dataGridView.Columns["First_name"]);
-            SetCharacteristic(dataGridView.Columns["Last_name"]);
-            SetCharacteristic(dataGridView.Columns["Middle_name"]);
-            SetCharacteristic(dataGridView.Columns["Phone_number1"]);
+            GoFirst(dataGridView.Columns["First_name"]);
+            GoFirst(dataGridView.Columns["Last_name"]);
+            GoFirst(dataGridView.Columns["Middle_name"]);
+            GoFirst(dataGridView.Columns["Phone_number1"]);
         }
 
-        private void DisksTab_Click(Action<DataGridViewColumn> SetCharacteristic)
+        private void DisksTab_Click(Action<DataGridViewColumn> GoFirst)
         {
             List<Button> permittedActions = null;
 
@@ -293,11 +293,11 @@ namespace Autoreport.UI
             currentDeleteAction = Connection.diskService.Delete;
             dataGridView.DataSource = Connection.diskService.GetAll();
 
-            SetCharacteristic(dataGridView.Columns["Article"]);
-            SetCharacteristic(dataGridView.Columns["Cost"]);
+            GoFirst(dataGridView.Columns["Article"]);
+            GoFirst(dataGridView.Columns["Cost"]);
         }
 
-        private void FilmsTab_Click(Action<DataGridViewColumn> SetCharacteristic)
+        private void FilmsTab_Click(Action<DataGridViewColumn> GoFirst)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
                 addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
@@ -307,11 +307,11 @@ namespace Autoreport.UI
             currentDeleteAction = Connection.filmService.Delete;
             dataGridView.DataSource = Connection.filmService.GetAll();
 
-            SetCharacteristic(dataGridView.Columns["Name"]);
-            SetCharacteristic(dataGridView.Columns["Date"]);
+            GoFirst(dataGridView.Columns["Name"]);
+            GoFirst(dataGridView.Columns["Date"]);
         }
 
-        private void OrdersTab_Click(Action<DataGridViewColumn> SetCharacteristic)
+        private void OrdersTab_Click(Action<DataGridViewColumn> GoFirst)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn
@@ -322,7 +322,7 @@ namespace Autoreport.UI
             dataGridView.DataSource = Connection.orderService.GetAll();
         }
 
-        private void DepositsTab_Click(Action<DataGridViewColumn> SetCharacteristic)
+        private void DepositsTab_Click(Action<DataGridViewColumn> GoFirst)
         {
             List<Button> permittedActions = null;
 
@@ -337,21 +337,21 @@ namespace Autoreport.UI
             currentAddForm = new AddDepositF(clientsTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.depositService.GetAll();
 
-            SetCharacteristic(dataGridView.Columns["Data"]);
-            SetCharacteristic(dataGridView.Columns["Value"]);
-            SetCharacteristic(dataGridView.Columns["DepositType"]);
+            GoFirst(dataGridView.Columns["Data"]);
+            GoFirst(dataGridView.Columns["Value"]);
+            GoFirst(dataGridView.Columns["DepositType"]);
         }
 
-        private void FilmDirectorsSecondaryTab_Click(Action<DataGridViewColumn> SetCharacteristic)
+        private void FilmDirectorsSecondaryTab_Click(Action<DataGridViewColumn> GoFirst)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn });
             
             currentAddForm = new AddFilmDirectorF();
             dataGridView.DataSource = Connection.filmService.GetFilmsDirectors();
 
-            SetCharacteristic(dataGridView.Columns["First_name"]);
-            SetCharacteristic(dataGridView.Columns["Last_name"]);
-            SetCharacteristic(dataGridView.Columns["Middle_name"]);
+            GoFirst(dataGridView.Columns["First_name"]);
+            GoFirst(dataGridView.Columns["Last_name"]);
+            GoFirst(dataGridView.Columns["Middle_name"]);
         }
 
         /// <summary>
@@ -368,7 +368,6 @@ namespace Autoreport.UI
 
             void Set(DataGridViewColumn column)
             {
-                column.Tag = "Characteristic";
                 column.DisplayIndex = index;
                 index++;
             }
@@ -410,38 +409,15 @@ namespace Autoreport.UI
         /// <param name="e"></param>
         private void DataGridItemDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("datagridview item double clicked or selected");
-
             if (e.RowIndex == -1) return;
 
-            Console.WriteLine("0");
+            //Type itemType = dataGridView.DataSource.GetType().GetGenericArguments().Single();
+            var relatedItem = dataGridView.Rows[e.RowIndex].DataBoundItem;
 
-            int Id = (int)dataGridView.Rows[e.RowIndex].Cells["Id"].Value;
-
-            if (selectedItemsBox.Items.Cast<GridSelectedItem>().Count(_item => _item.Id == Id) != 0)
+            if (selectedItemsBox.Items.Cast<object>().Count(_item => _item == relatedItem) != 0)
                 return;
 
-            Console.WriteLine("1");
-
-            string visibleName = "";
-
-            foreach (DataGridViewCell cell in dataGridView.Rows[e.RowIndex].Cells) {
-                if (cell.OwningColumn.Tag != null &&
-                    cell.OwningColumn.Tag.ToString() == "Characteristic")
-                {
-                    visibleName += cell.FormattedValue + " ";
-                }
-            }
-
-            visibleName.TrimEnd(); // удаляем последний пробел
-
-            GridSelectedItem item = new GridSelectedItem()
-            {
-                Id = Id,
-                VisibleName = visibleName
-            };
-
-            selectedItemsBox.Items.Add(item);
+            selectedItemsBox.Items.Add(relatedItem);
         }
 
         private void selectBtn_Click(object sender, EventArgs e)
@@ -640,19 +616,19 @@ namespace Autoreport.UI
         /// либо обратно в начальный режим.
         /// </summary>
         /// <param name="Handler">Функция дочерней формы, которая вызывается при нажатии кнопки "Готово"</param>
-        /// <returns name="Set" type="Action<Mode, Button, List<GridSelectedItem>>">
+        /// <returns name="Set" type="Action<Mode, Button, List<object>>">
         ///     Button - ссылка на кнопку-вкладку, связанную с таблицей, из которой будут 
         ///     выбираться элементы
-        ///     GridSelectedItem[] - элементы, который были выбраны при предыдущем входе в режим выбора
+        ///     object(`Model`)[] - элементы, который были выбраны при предыдущем входе в режим выбора
         /// </returns>
-        public Action<Mode, Button, GridSelectedItem[]> WindowMode(Action<ListBox.ObjectCollection> Handler)
+        public Action<Mode, Button, object[]> WindowMode(Action<ListBox.ObjectCollection> Handler)
         {
             Button lastTab = currentTabButton;
             EventHandler doneEventHandler = new EventHandler(
                 (object sender, EventArgs e) => Handler(selectedItemsBox.Items));
             bool fromSelectedMode = currentMode == Mode.Select;
 
-            void Turn(Mode state, Button selectTab = null, GridSelectedItem[] previewSelected = null)
+            void Turn(Mode state, Button selectTab = null, object[] previewSelected = null)
             {
                 bool isSelectEnabled = state == Mode.Select;
                 currentMode = state;

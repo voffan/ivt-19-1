@@ -31,7 +31,7 @@ namespace Autoreport.UI
         /// <param name="e"></param>
         protected void resetBtn_Click(object sender, EventArgs e)
         {
-            foreach (Panel panel in GetPanels())
+            foreach (Panel panel in GetAllPanels(this))
             {
                 foreach (Control inputControl in GetPanelInputControls(panel))
                 {
@@ -39,12 +39,11 @@ namespace Autoreport.UI
                     {
                         ((TextBoxBase)inputControl).Clear();
                     }
-                    else if (inputControl.GetType() == typeof(ListBox))
+                    else if (inputControl is ListBox)
                     {
                         ((ListBox)inputControl).Items.Clear();
                     }
                 }
-                break;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace Autoreport.UI
     public partial class AddFormSelective : BaseAddForm
     {
         protected MainWindow owner;
-        protected Action<Mode, Button, GridSelectedItem[]> OwnerMode_Turn;
+        protected Action<Mode, Button, object[]> OwnerMode_Turn;
         protected Button relatedTab;
         protected Action CloseHandler;
         protected int maxSelectedCount = 100;
@@ -34,13 +34,12 @@ namespace Autoreport.UI
         /// <param name="e"></param>
         protected void Select_Click(object sender, EventArgs e)
         {
-            OwnerMode_Turn(Mode.Select, relatedTab, GetSelectedListBox().Items.Cast<GridSelectedItem>().ToArray());
+            OwnerMode_Turn(Mode.Select, relatedTab, GetSelectedListBox().Items.Cast<object>().ToArray());
             this.Hide();
         }
 
         protected void OnSelectedHandler(ListBox.ObjectCollection items)
         {
-            Console.WriteLine("Call from {0}", this.Name);
             ListBox listBox = GetSelectedListBox();
 
             // очистка листбокса от старых записей, т.к. они все равно копируются в селектбокс мэйнвиндоу
@@ -53,7 +52,7 @@ namespace Autoreport.UI
                 return;
             }
 
-            foreach (GridSelectedItem item in items)
+            foreach (object item in items)
             {
                 listBox.Items.Add(item);
             }
@@ -64,7 +63,7 @@ namespace Autoreport.UI
 
         private ListBox GetSelectedListBox()
         {
-            foreach (Control c in GetPanels())
+            foreach (Control c in GetAllPanels(this))
             {
                 foreach (Control underC in c.Controls)
                 {
@@ -73,7 +72,6 @@ namespace Autoreport.UI
                         return (ListBox)underC;
                     }
                 }
-                break;
             }
 
             return null;

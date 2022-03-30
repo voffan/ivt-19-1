@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Autoreport.Services.Errors
 {
-    class OrderErrors
+    class NotEnoughDisks : Exception
     {
+        public NotEnoughDisks(string message) : base(message) { }
     }
 }

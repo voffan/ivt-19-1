@@ -44,14 +44,12 @@ namespace Autoreport.UI
             DateTime orderDate = orderDateText.Value;
             DateTime returnDate = returnDateText.Value;
 
-            int deposit_id = selectedBox_Deposit.Items.Cast<GridSelectedItem>().Select(item => item.Id).ToList()[0];
-            List<int> disks_ids = selectedBox_Disks.Items.Cast<GridSelectedItem>()
-                .Select(item => item.Id).ToList();
+            Deposit deposit = selectedBox_Deposit.Items.Cast<Deposit>().ToList()[0];
+            List<Disk> disks = selectedBox_Disks.Items.Cast<Disk>().ToList();
 
             Connection.orderService.Add(orderDate, returnDate, 
-                Connection.employeeService.CurrentEmployee, 
-                Connection.depositService.GetById(deposit_id),
-                Connection.diskService.GetByIds(disks_ids));
+                Connection.employeeService.CurrentEmployee,
+                deposit, disks);
 
             CloseHandler();
             Close();
@@ -59,9 +57,17 @@ namespace Autoreport.UI
 
         private void OrderF_Load(object sender, EventArgs e)
         {
-            if (selectedBox_Deposit.Items.Count > 0 && selectedBox_Deposit.Items[0] != null)
+            if (selectedBox_Deposit.Items.Count > 0)
             {
-                ownerLabel.Text = selectedBox_Deposit.Items[0].ToString();
+                ownerLabel.Text = ((Deposit)selectedBox_Deposit.Items[0]).Owner.ToString();
+            }
+
+            if (selectedBox_Disks.Items.Count > 0)
+            {
+                costLabel.Text = selectedBox_Disks.Items.Cast<Disk>().Sum(i => i.Cost).ToString();
+            } else
+            {
+                costLabel.Text = "0";
             }
         }
 

@@ -54,10 +54,9 @@ namespace Autoreport.UI
             DepositType position = (DepositType)Enum.Parse(typeof(DepositType),
                 positionDepositBox.SelectedValue.ToString());
 
-            int client_id = selectedBox.Items.Cast<GridSelectedItem>()
-                .Select(item => item.Id).ToList()[0];
+            Client client_id = selectedBox.Items.Cast<Client>().ToList()[0];
 
-            Connection.depositService.Add(data, sum, position, Connection.clientService.GetById(client_id));
+            Connection.depositService.Add(data, sum, position, client_id);
             CloseHandler();
             Close();
         }

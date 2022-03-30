@@ -20,6 +20,7 @@ namespace Autoreport.Services
             {
                 Article = article,
                 General_count = count,
+                Current_count = count,
                 Cost = cost,
                 Films = films
             };
