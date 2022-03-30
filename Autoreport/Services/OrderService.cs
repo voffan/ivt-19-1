@@ -4,6 +4,7 @@ using System.Text;
 using Autoreport.Models;
 using Autoreport.Database;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Autoreport.Services
 {
@@ -11,7 +12,24 @@ namespace Autoreport.Services
     {
         public void Add(DateTime OrderDate, DateTime ReturnDate, Employee OrderEmployeer, Deposit OrderDeposit, List<Disk> Disks)
         {
+            Order order = new Order()
+            {
+                Cost = Disks.Sum(disk => disk.Cost),
+                Order_date = OrderDate,
+                Return_date = ReturnDate,
+                Status = OrderStatus.Proceed,
+                OrderClient = OrderDeposit.Owner,
+                OrderEmployeer = OrderEmployeer,
+                OrderDeposit = OrderDeposit,
+                Disks = Disks
+            };
 
+            using (DataContext db = Connection.Connect())
+            {
+                db.Update(order);
+                db.Orders.Add(order);
+                db.SaveChanges();
+            }
         }
 
         public void Get()
@@ -23,7 +41,11 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                return db.Orders.ToList();
+                return db.Orders
+                    .Include("OrderClient")
+                    .Include("OrderEmployeer")
+                    .Include("OrderDeposit")
+                    .ToList();
             }
         }
 
@@ -31,7 +53,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Orders.Remove(db.Orders.Where(empl => empl.Id == Id).ToList()[0]);
+                db.Orders.Remove(db.Orders.Where(order => order.Id == Id).ToList()[0]);
                 db.SaveChanges();
             }
         }

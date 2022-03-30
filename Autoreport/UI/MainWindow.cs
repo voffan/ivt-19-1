@@ -314,9 +314,10 @@ namespace Autoreport.UI
         private void OrdersTab_Click(Action<DataGridViewColumn> SetCharacteristic)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
-                addBtn, editBtn, searchBtn, reloadBtn, infoBtn 
+                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn
             });
 
+            currentDeleteAction = Connection.orderService.Delete;
             currentAddForm = new AddOrderF(depositsTab, disksTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.orderService.GetAll();
         }
@@ -338,7 +339,7 @@ namespace Autoreport.UI
 
             SetCharacteristic(dataGridView.Columns["Data"]);
             SetCharacteristic(dataGridView.Columns["Value"]);
-            SetCharacteristic(dataGridView.Columns["TypePosition"]);
+            SetCharacteristic(dataGridView.Columns["DepositType"]);
         }
 
         private void FilmDirectorsSecondaryTab_Click(Action<DataGridViewColumn> SetCharacteristic)
@@ -416,11 +417,6 @@ namespace Autoreport.UI
             Console.WriteLine("0");
 
             int Id = (int)dataGridView.Rows[e.RowIndex].Cells["Id"].Value;
-
-            foreach (object it in selectedItemsBox.Items)
-            {
-                Console.WriteLine("{0} {1}", ((GridSelectedItem)it).VisibleName, (GridSelectedItem)it == null);
-            }
 
             if (selectedItemsBox.Items.Cast<GridSelectedItem>().Count(_item => _item.Id == Id) != 0)
                 return;

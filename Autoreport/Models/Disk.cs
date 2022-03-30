@@ -29,5 +29,10 @@ namespace Autoreport.Models
 
         //[DisplayName("Заказы")]
         public virtual List<Order> Orders { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0}: {1}", Article, Cost);
+        }
     }
 }

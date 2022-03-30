@@ -38,9 +38,6 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-               // var users = from u in db.Users
-                //            join c in db.Companies on u.CompanyId equals c.Id
-                //            select new { Name = u.Name, Company = c.Name, Age = u.Age };
                 return db.Deposits.Include("Owner")
                     .ToList();
             }
@@ -51,8 +48,9 @@ namespace Autoreport.Services
             using (DataContext db = Connection.Connect())
             {
                 Deposit deposit = db.Deposits
-                    .Where(dep => dep.Id == dep_id).ToList()[0];
-
+                    .Where(dep => dep.Id == dep_id)
+                    .Include("Owner")
+                    .ToList()[0];
 
                 return deposit;
             }

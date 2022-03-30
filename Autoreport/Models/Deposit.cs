@@ -37,5 +37,16 @@ namespace Autoreport.Models
 
         [Required, DisplayName("Владелец"), ForeignKey("ClientId")]
         public virtual Client Owner { get; set; }
+
+        public override string ToString()
+        {
+            return this.DepositType switch
+            {
+                DepositType.Money => String.Format("Деньги: {0}", Value),
+                DepositType.Document => String.Format("Документ: {0}", Data),
+                DepositType.MoneyAndDocument => String.Format("Деньги: {0}; документ: {1}", Value, Data),
+                _ => String.Format("Деньги: {0}", Value),
+            };
+        }
     }
 }
