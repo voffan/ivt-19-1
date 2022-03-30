@@ -11,6 +11,7 @@ using gallerys;
 using gallerys.Context;
 using Microsoft.EntityFrameworkCore;
 using gallerys.Forms;
+using gallerys.Forms.FormsforAdd;
 namespace gallerys
 {
     public partial class MainForm : Form
@@ -19,7 +20,6 @@ namespace gallerys
         {
             InitializeComponent();
         }
-        Form addForm;
         private void MainForm_Load(object sender, EventArgs e)
         {
             gallContext c = new gallContext();
@@ -60,7 +60,27 @@ namespace gallerys
 
         private void button1_Click(object sender, EventArgs e)
         {
-            addForm.ShowDialog(this);
+            //Картины Жанры Авторы Сотрудники Журнал передвижения картин Выставки
+            if (comboBox1.Text == "Картины")
+            {
+                AddPaint add = new AddPaint();
+                add.ShowDialog();
+            }
+            if (comboBox1.Text == "Жанры")
+            {
+                AddGenre add = new AddGenre();
+                add.ShowDialog();
+            }
+            if (comboBox1.Text == "Авторы")
+            {
+                AddAuthors add = new AddAuthors();
+                add.ShowDialog();
+            }
+            if (comboBox1.Text == "Сотрудники")
+            {
+                AddEmployee add = new AddEmployee();
+                add.ShowDialog();
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gallerys.components
 {
-    class JournalSer
-    {
+    public class JournalSer
+    { 
     }
 }

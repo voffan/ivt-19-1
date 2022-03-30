@@ -16,5 +16,10 @@ namespace gallerys.Forms.FormsforAdd
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
