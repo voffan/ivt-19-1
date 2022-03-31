@@ -158,7 +158,7 @@ namespace Autoreport.UI
             this.costLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.costLabel.Location = new System.Drawing.Point(188, 0);
             this.costLabel.Name = "costLabel";
-            this.costLabel.Size = new System.Drawing.Size(73, 29);
+            this.costLabel.Size = new System.Drawing.Size(93, 29);
             this.costLabel.TabIndex = 15;
             this.costLabel.Text = "0";
             this.costLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -246,7 +246,8 @@ namespace Autoreport.UI
             // ownerLabel
             // 
             this.ownerLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ownerLabel.Location = new System.Drawing.Point(241, 192);
+            this.ownerLabel.Location = new System.Drawing.Point(241, 195);
+            this.ownerLabel.Margin = new System.Windows.Forms.Padding(3);
             this.ownerLabel.Name = "ownerLabel";
             this.ownerLabel.Size = new System.Drawing.Size(281, 25);
             this.ownerLabel.TabIndex = 23;
@@ -264,7 +265,7 @@ namespace Autoreport.UI
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(317, 256);
+            this.saveBtn.Location = new System.Drawing.Point(337, 255);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 13;
@@ -285,7 +286,7 @@ namespace Autoreport.UI
             this.MinimumSize = new System.Drawing.Size(565, 200);
             this.Name = "AddOrderF";
             this.Text = "Добавить заказ";
-            this.Load += new System.EventHandler(this.Form_Load);
+            this.Load += new System.EventHandler(this.OrderF_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.panel2.ResumeLayout(false);

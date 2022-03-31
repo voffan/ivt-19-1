@@ -338,8 +338,8 @@ namespace Autoreport.UI
             currentAddForm = new AddDepositF(clientsTab, reloadBtn.PerformClick);
             dataGridView.DataSource = Connection.depositService.GetAll();
 
-            GoFirst(dataGridView.Columns["Data"]);
-            GoFirst(dataGridView.Columns["Value"]);
+            GoFirst(dataGridView.Columns["DocumentData"]);
+            GoFirst(dataGridView.Columns["MoneyValue"]);
             GoFirst(dataGridView.Columns["DepositType"]);
         }
 
@@ -581,37 +581,47 @@ namespace Autoreport.UI
 
         private void ConnectDoneButton(EventHandler Handler)
         {
-            EventHandler tmp = null;
+            //Console.WriteLine("connecting this method as {0}", Handler.GetHashCode());
 
-            if (doneBtnHandlers.Count > 0)
+            doneBtnHandlers.Insert(0, Handler);
+
+            foreach (EventHandler eh in doneBtnHandlers)
             {
-                tmp = doneBtnHandlers[0];
-
-                doneBtn.Click -= tmp;
-                doneBtnHandlers.RemoveAt(0);
+                doneBtn.Click -= eh;
             }
 
-            doneBtn.Click += Handler;
-            doneBtnHandlers.Add(Handler);
+            doneBtn.Click += doneBtnHandlers.First();
 
-            if (tmp != null)
-            {
-                doneBtnHandlers.Add(tmp);
-            }
+            //Console.Write("connect reuslt handlers: ");
+            //foreach (EventHandler eh in doneBtnHandlers)
+            //{
+            //    Console.Write("{0}, ", eh.GetHashCode());
+            //}
+            //Console.WriteLine("");
         }
 
         private void DisconnectDoneButton(EventHandler Handler)
         {
+            //Console.WriteLine("disconnecting method: {0}", Handler.GetHashCode());
+
             doneBtn.Click -= Handler;
             doneBtnHandlers.Remove(Handler);
 
             if (doneBtnHandlers.Count > 0)
             {
-                doneBtn.Click += doneBtnHandlers[0];
+                doneBtn.Click += doneBtnHandlers.First();
             }
+
+            //Console.Write("disconnect reuslt handlers: ");
+            //foreach (EventHandler eh in doneBtnHandlers)
+            //{
+            //    Console.Write("{0}, ", eh.GetHashCode());
+            //}
+            //Console.WriteLine("");
         }
 
         /// <summary>
+        /// 
         /// Замыкающая функция, возвращающая процедуру, переводящую окно 
         /// из начального режима в режим выбора значений из таблицы, 
         /// либо обратно в начальный режим.

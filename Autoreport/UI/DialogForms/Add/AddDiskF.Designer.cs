@@ -66,7 +66,7 @@ namespace Autoreport.UI
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
             this.flowLayout.Size = new System.Drawing.Size(505, 207);
-            this.flowLayout.TabIndex = 11;
+            this.flowLayout.TabIndex = 30;
             // 
             // label1
             // 
@@ -77,17 +77,18 @@ namespace Autoreport.UI
             this.label1.MinimumSize = new System.Drawing.Size(232, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(232, 25);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Артикль";
             // 
             // articleText
             // 
             this.articleText.AsciiOnly = true;
+            this.articleText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.articleText.Location = new System.Drawing.Point(241, 3);
             this.articleText.Mask = "aaaaaa";
             this.articleText.Name = "articleText";
-            this.articleText.Size = new System.Drawing.Size(261, 23);
-            this.articleText.TabIndex = 15;
+            this.articleText.Size = new System.Drawing.Size(261, 25);
+            this.articleText.TabIndex = 0;
             this.articleText.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
             // label7
@@ -99,7 +100,7 @@ namespace Autoreport.UI
             this.label7.MinimumSize = new System.Drawing.Size(232, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(232, 25);
-            this.label7.TabIndex = 1;
+            this.label7.TabIndex = 11;
             this.label7.Text = "Количество";
             // 
             // countText
@@ -108,7 +109,7 @@ namespace Autoreport.UI
             this.countText.Location = new System.Drawing.Point(241, 34);
             this.countText.Name = "countText";
             this.countText.Size = new System.Drawing.Size(261, 25);
-            this.countText.TabIndex = 10;
+            this.countText.TabIndex = 1;
             this.countText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DigitText_KeyPress);
             // 
             // label9
@@ -120,7 +121,7 @@ namespace Autoreport.UI
             this.label9.MinimumSize = new System.Drawing.Size(232, 25);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(232, 25);
-            this.label9.TabIndex = 2;
+            this.label9.TabIndex = 12;
             this.label9.Text = "Цена";
             // 
             // costText
@@ -129,7 +130,7 @@ namespace Autoreport.UI
             this.costText.Location = new System.Drawing.Point(241, 65);
             this.costText.Name = "costText";
             this.costText.Size = new System.Drawing.Size(261, 25);
-            this.costText.TabIndex = 11;
+            this.costText.TabIndex = 2;
             this.costText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DigitText_KeyPress);
             // 
             // label11
@@ -141,7 +142,7 @@ namespace Autoreport.UI
             this.label11.MinimumSize = new System.Drawing.Size(232, 25);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(232, 25);
-            this.label11.TabIndex = 4;
+            this.label11.TabIndex = 13;
             this.label11.Text = "Фильмы";
             // 
             // panel2
@@ -170,9 +171,8 @@ namespace Autoreport.UI
             this.removeSelectedBtn.Location = new System.Drawing.Point(75, 0);
             this.removeSelectedBtn.Name = "removeSelectedBtn";
             this.removeSelectedBtn.Size = new System.Drawing.Size(75, 29);
-            this.removeSelectedBtn.TabIndex = 13;
+            this.removeSelectedBtn.TabIndex = 5;
             this.removeSelectedBtn.Text = "Удалить";
-            this.removeSelectedBtn.Click += this.RemoveSelectedBtn_Click;
             this.removeSelectedBtn.UseVisualStyleBackColor = true;
             // 
             // selectBtn
@@ -181,10 +181,10 @@ namespace Autoreport.UI
             this.selectBtn.Location = new System.Drawing.Point(0, 0);
             this.selectBtn.Name = "selectBtn";
             this.selectBtn.Size = new System.Drawing.Size(75, 29);
-            this.selectBtn.TabIndex = 12;
+            this.selectBtn.TabIndex = 4;
             this.selectBtn.Text = "Выбрать";
-            this.selectBtn.Click += this.Select_Click;
             this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Click += new System.EventHandler(this.Select_Click);
             // 
             // selectedBox
             // 
@@ -196,14 +196,14 @@ namespace Autoreport.UI
             this.selectedBox.Location = new System.Drawing.Point(0, 0);
             this.selectedBox.Name = "selectedBox";
             this.selectedBox.Size = new System.Drawing.Size(261, 63);
-            this.selectedBox.TabIndex = 16;
+            this.selectedBox.TabIndex = 3;
             // 
             // resetBtn
             // 
             this.resetBtn.Location = new System.Drawing.Point(12, 225);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(200, 30);
-            this.resetBtn.TabIndex = 14;
+            this.resetBtn.TabIndex = 21;
             this.resetBtn.Text = "Сброс";
             this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
@@ -213,7 +213,7 @@ namespace Autoreport.UI
             this.saveBtn.Location = new System.Drawing.Point(317, 225);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
-            this.saveBtn.TabIndex = 13;
+            this.saveBtn.TabIndex = 20;
             this.saveBtn.Text = "Сохранить";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
@@ -231,7 +231,6 @@ namespace Autoreport.UI
             this.MinimumSize = new System.Drawing.Size(545, 200);
             this.Name = "AddDiskF";
             this.Text = "AddDiskForm";
-            this.Load += new System.EventHandler(this.Form_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.panel2.ResumeLayout(false);

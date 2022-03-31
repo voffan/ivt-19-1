@@ -465,10 +465,11 @@ namespace Autoreport.UI
             // positionBox
             // 
             this.positionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.positionBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.positionBox.FormattingEnabled = true;
             this.positionBox.Location = new System.Drawing.Point(241, 127);
             this.positionBox.Name = "positionBox";
-            this.positionBox.Size = new System.Drawing.Size(232, 23);
+            this.positionBox.Size = new System.Drawing.Size(232, 25);
             this.positionBox.TabIndex = 18;
             // 
             // phoneText
@@ -516,7 +517,7 @@ namespace Autoreport.UI
             this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
-            // AddEmployeeForm
+            // AddEmployeeF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -527,7 +528,7 @@ namespace Autoreport.UI
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(516, 500);
             this.MinimumSize = new System.Drawing.Size(516, 200);
-            this.Name = "AddEmployeeForm";
+            this.Name = "AddEmployeeF";
             this.Text = "Добавить сотрудника";
             this.Load += new System.EventHandler(this.AddEmployeeForm_Load);
             this.tableLayoutPanel2.ResumeLayout(false);

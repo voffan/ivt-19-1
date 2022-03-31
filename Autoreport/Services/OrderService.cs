@@ -26,7 +26,7 @@ namespace Autoreport.Services
 
             using (DataContext db = Connection.Connect())
             {
-                db.Update(order);
+                db.Entry(order).State = EntityState.Modified;
                 db.Orders.Add(order);
 
                 OrderDeposit.Owner.Order_count++;
@@ -55,9 +55,9 @@ namespace Autoreport.Services
             using (DataContext db = Connection.Connect())
             {
                 return db.Orders
-                    .Include("OrderClient")
-                    .Include("OrderEmployeer")
-                    .Include("OrderDeposit")
+                    .Include(x => x.OrderClient)
+                    .Include(x => x.OrderEmployeer)
+                    .Include(x => x.OrderDeposit)
                     .ToList();
             }
         }
@@ -66,7 +66,25 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Orders.Remove(db.Orders.Where(order => order.Id == Id).ToList()[0]);
+                Order order = db.Orders
+                    .Include(x => x.OrderClient)
+                    .Include(x => x.Disks)
+                    .Where(order => order.Id == Id)
+                    .ToList()[0];
+
+                Client orderClient = order.OrderClient;
+                List<Disk> orderDisks = order.Disks;
+
+                db.Entry(orderClient).State = EntityState.Modified;
+                orderClient.Order_count--;
+
+                foreach (Disk disk in orderDisks)
+                {
+                    db.Entry(disk).State = EntityState.Modified;
+                    disk.Current_count++;
+                }
+
+                db.Orders.Remove(order);
                 db.SaveChanges();
             }
         }

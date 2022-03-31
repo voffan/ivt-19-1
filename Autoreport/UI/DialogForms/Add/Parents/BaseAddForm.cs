@@ -18,6 +18,49 @@ namespace Autoreport.UI
         }
 
         /// <summary>
+        /// Возвращает все поля для ввода
+        /// </summary>
+        /// <returns></returns>
+        protected IEnumerable<Control> GetAllFields()
+        {
+            foreach (Panel panel in GetAllPanels(this))
+            {
+                foreach (Control inputControl in GetPanelInputControls(panel))
+                {
+                    yield return inputControl;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Возвращает true, если нет ни одного пустого поля для ввода
+        /// </summary>
+        /// <returns></returns>
+        protected bool AllFieldsNotEmpty()
+        {
+            foreach (Control field in GetAllFields())
+            {
+                if (FieldIsEmpty(field))
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Возвращает все незаполненные поля, в т.ч. MaskedTextBox'ы, в которых условие маски не выполнено
+        /// </summary>
+        /// <returns></returns>
+        protected IEnumerable<Control> GetAllBlankFields()
+        {
+            foreach (Control field in GetAllFields())
+            {
+                if (FieldIsEmpty(field) || (field is MaskedTextBox && !((MaskedTextBox)field).MaskCompleted))
+                    yield return field;
+            }
+        }
+
+        /// <summary>
         /// Вызывает метод, сохраняющий данные из формы в БД
         /// </summary>
         /// <param name="sender"></param>
@@ -31,19 +74,9 @@ namespace Autoreport.UI
         /// <param name="e"></param>
         protected void resetBtn_Click(object sender, EventArgs e)
         {
-            foreach (Panel panel in GetAllPanels(this))
+            foreach (Control inputControl in GetAllFields())
             {
-                foreach (Control inputControl in GetPanelInputControls(panel))
-                {
-                    if (typeof(TextBoxBase).IsAssignableFrom(inputControl.GetType()))
-                    {
-                        ((TextBoxBase)inputControl).Clear();
-                    }
-                    else if (inputControl is ListBox)
-                    {
-                        ((ListBox)inputControl).Items.Clear();
-                    }
-                }
+                ClearField(inputControl);
             }
         }
     }

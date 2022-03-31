@@ -39,7 +39,7 @@ namespace Autoreport.UI
         }
 
         /// <summary>
-        /// Возвращает все панели
+        /// Возвращает все панели внутри переданного Control
         /// </summary>
         /// <returns></returns>
         protected IEnumerable<Panel> GetAllPanels(Control control)
@@ -54,6 +54,11 @@ namespace Autoreport.UI
                 .Concat(control.Controls.Cast<Control>().SelectMany(x => GetAllPanels(x)));
         }
 
+        /// <summary>
+        /// Возвращает все кнопки внутри переданного Control
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
         protected IEnumerable<Button> GetAllButtons(Control control)
         {
             if (control.Controls == null || control.Controls.Count == 0)
@@ -62,6 +67,9 @@ namespace Autoreport.UI
             return control.Controls.OfType<Button>().Concat(control.Controls.Cast<Control>().SelectMany(x => GetAllButtons(x)));
         }
 
+        /// <summary>
+        /// Вызывает AddInputControl_ArrowKeyPressEventListener для всех панелей окна
+        /// </summary>
         protected void AddInputControl_ArrowKeyPressEventListener()
         {
             foreach (Panel panel in GetAllPanels(this))
@@ -70,6 +78,10 @@ namespace Autoreport.UI
             }
         }
 
+        /// <summary>
+        /// Для всех полей для ввода внутри переданной панели добавляет слушатель нажатия на стрелки-клавиши "Вверх"/"Вниз"
+        /// </summary>
+        /// <param name="panel"></param>
         protected void AddInputControl_ArrowKeyPressEventListener(Panel panel)
         {
             foreach (Control inputControl in GetPanelInputControls(panel))
@@ -100,7 +112,8 @@ namespace Autoreport.UI
                     {
                         if (e.KeyCode == Keys.Up && prev != null)
                         {
-                            prev.Focus();
+                            ControlFocus(prev);
+
                             return;
                         }
                         else if (e.KeyCode == Keys.Down)
@@ -112,12 +125,23 @@ namespace Autoreport.UI
 
                     if (activeNext)
                     {
-                        c.Focus();
+                        ControlFocus(c);
                         return;
                     }
 
                     prev = c;
                 }
+            }
+        }
+
+        private void ControlFocus(Control control)
+        {
+            control.Focus();
+
+            if (typeof(TextBoxBase).IsAssignableFrom(control.GetType()))
+            {
+                ((TextBoxBase)control).SelectionStart = 0;
+                ((TextBoxBase)control).SelectionLength = 0;
             }
         }
 
@@ -148,6 +172,49 @@ namespace Autoreport.UI
                     b.PerformClick();
                     break;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Проверяет, является ли переданный Control "пустым", т.е. если это TextBox, то
+        /// смотрим, пустое ли это текстовое поле, если это SelectBox, то проверяем, содержит ли
+        /// он что-либо, если это обычный ListBox, то проверяет, выбраны ли в нем какие-то элементы
+        /// </summary>
+        /// <param name="field">Проверяемый Control</param>
+        /// <returns>true если Control пустойб иначе else</returns>
+        protected bool FieldIsEmpty(Control field)
+        {
+            if (typeof(TextBoxBase).IsAssignableFrom(field.GetType()))
+            {
+                return ((TextBoxBase)field).Text == "";
+            }
+            else if (field is ListBox)
+            {
+                if (((ListBox)field).Name != null && ((ListBox)field).Name.StartsWith("selectedBox"))
+                {
+                    return ((ListBox)field).Items.Count == 0;
+                } else
+                {
+                    return ((ListBox)field).SelectedItems.Count == 0;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Очищает переданное поле(TextBox/ListBox)
+        /// </summary>
+        /// <param name="field"></param>
+        protected void ClearField(Control field)
+        {
+            if (typeof(TextBoxBase).IsAssignableFrom(field.GetType()))
+            {
+                ((TextBoxBase)field).Clear();
+            }
+            else if (field is ListBox)
+            {
+                ((ListBox)field).Items.Clear();
             }
         }
     }

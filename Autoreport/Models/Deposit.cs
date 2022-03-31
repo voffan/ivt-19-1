@@ -26,11 +26,11 @@ namespace Autoreport.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Данные"), MaxLength(300)]
-        public string Data { get; set; } // наименование / идентификационные данные документа
+        [DisplayName("Данные документа"), MaxLength(300)]
+        public string DocumentData { get; set; }
 
-        [DisplayName("Сумма"), Range(1.0, 100000.0)]
-        public int Value { get; set; }
+        [DisplayName("Денежная сумма"), Range(1, 100000)]
+        public uint MoneyValue { get; set; }
 
         [Required, DisplayName("Тип залога")]
         public DepositType DepositType { get; set; }
@@ -49,10 +49,10 @@ namespace Autoreport.Models
 
             return this.DepositType switch
             {
-                DepositType.Money => String.Format(owner + "Деньги: {0}", Value),
-                DepositType.Document => String.Format(owner + "Документ: {0}", Data),
-                DepositType.MoneyAndDocument => String.Format(owner + "Деньги: {0}; документ: {1}", Value, Data),
-                _ => String.Format("Деньги: {0}", Value),
+                DepositType.Money => String.Format(owner + "Деньги: {0}", MoneyValue),
+                DepositType.Document => String.Format(owner + "Документ: {0}", DocumentData),
+                DepositType.MoneyAndDocument => String.Format(owner + "Деньги: {0}; документ: {1}", MoneyValue, DocumentData),
+                _ => String.Format("Деньги: {0}", MoneyValue),
             };
         }
     }

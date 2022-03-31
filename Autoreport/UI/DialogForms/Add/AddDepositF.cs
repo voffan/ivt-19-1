@@ -26,7 +26,7 @@ namespace Autoreport.UI
             saveBtn.Tag = this.MainButtonTag;
             AddFormEnterPressEvent(this);
 
-            this.Load += new EventHandler(this.Form_Load);
+            this.Load += new EventHandler(Form_Load);
 
             selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;
@@ -35,6 +35,9 @@ namespace Autoreport.UI
 
         private void AddDepositForm_Load(object sender, EventArgs e)
         {
+            if (Loaded)
+                return;
+
             positionDepositBox.DisplayMember = "Key";
             positionDepositBox.ValueMember = "Value";
             positionDepositBox.DataSource = new BindingSource(DescriptionAttributes<DepositType>.RetrieveAttributes(), null);
@@ -49,7 +52,7 @@ namespace Autoreport.UI
             }
 
             string data = dataText.Text;
-            int sum = Convert.ToInt32(sumText.Text);
+            uint sum = Convert.ToUInt32(sumText.Text);
 
             DepositType position = (DepositType)Enum.Parse(typeof(DepositType),
                 positionDepositBox.SelectedValue.ToString());

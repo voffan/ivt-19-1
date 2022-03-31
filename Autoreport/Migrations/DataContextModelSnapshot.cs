@@ -42,15 +42,15 @@ namespace Autoreport.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Data")
-                        .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
-
                     b.Property<int>("DepositType")
                         .HasColumnType("int");
 
-                    b.Property<int>("Value")
-                        .HasColumnType("int");
+                    b.Property<string>("DocumentData")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
+
+                    b.Property<uint>("MoneyValue")
+                        .HasColumnType("int unsigned");
 
                     b.HasKey("Id");
 

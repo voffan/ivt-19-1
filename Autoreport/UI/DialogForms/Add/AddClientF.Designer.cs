@@ -184,7 +184,7 @@
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // AddClientForm
+            // AddClientF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -193,7 +193,9 @@
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.flowLayout);
             this.KeyPreview = true;
-            this.Name = "AddClientForm";
+            this.MaximumSize = new System.Drawing.Size(513, 274);
+            this.MinimumSize = new System.Drawing.Size(513, 274);
+            this.Name = "AddClientF";
             this.Text = "AddClientForm";
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();

@@ -25,7 +25,7 @@ namespace Autoreport.UI
             saveBtn.Tag = this.MainButtonTag;
             AddFormEnterPressEvent(this);
 
-            this.Load += new EventHandler(this.AddFilmForm_Load);
+            this.Load += new EventHandler(this.Form_Load);
 
             selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;
@@ -34,6 +34,9 @@ namespace Autoreport.UI
 
         public void AddFilmForm_Load(object sender, EventArgs e)
         {
+            if (Loaded)
+                return;
+
             Country[] countries = Connection.filmService.GetCountries().ToArray();
 
             genresBox.Items.AddRange(Connection.filmService.GetGenres().ToArray());

@@ -27,7 +27,8 @@ namespace Autoreport.UI
             saveBtn.Tag = this.MainButtonTag;
             AddFormEnterPressEvent(this);
 
-            this.Load += OrderF_Load;
+            this.Load += Form_Load;
+
             this.depositRelatedTab = depositRelatedTab;
             this.disksRelatedTab = disksRelatedTab;
             this.CloseHandler = OnCloseHandler;

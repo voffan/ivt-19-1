@@ -19,7 +19,7 @@ namespace Autoreport.UI
         protected Action CloseHandler;
         protected int maxSelectedCount = 100;
         protected readonly string selectedBoxTag = "SelectedBox";
-        private bool Loaded = false;
+        protected bool Loaded = false;
 
         public AddFormSelective()
         {
@@ -80,9 +80,11 @@ namespace Autoreport.UI
         protected void Form_Load(object sender, EventArgs e)
         {
             owner = (MainWindow)Owner;
-            
+
             if (!Loaded)
+            {
                 OwnerMode_Turn = owner.WindowMode(OnSelectedHandler);
+            }
 
             Loaded = true;
         }

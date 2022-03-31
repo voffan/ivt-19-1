@@ -21,6 +21,8 @@ namespace Autoreport.UI
 
             AddInputControl_ArrowKeyPressEventListener(flowLayout);
 
+            this.Load += new EventHandler(Form_Load);
+
             saveBtn.Tag = this.MainButtonTag;
             AddFormEnterPressEvent(this);
 

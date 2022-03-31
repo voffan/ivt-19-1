@@ -32,14 +32,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.sumText = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.positionDepositBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.selectedBox = new System.Windows.Forms.ListBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.sumText = new System.Windows.Forms.NumericUpDown();
             this.flowLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sumText)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayout
@@ -90,14 +91,6 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Сумма";
             // 
-            // sumText
-            // 
-            this.sumText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.sumText.Location = new System.Drawing.Point(241, 34);
-            this.sumText.Name = "sumText";
-            this.sumText.Size = new System.Drawing.Size(232, 25);
-            this.sumText.TabIndex = 10;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -113,10 +106,11 @@
             // positionDepositBox
             // 
             this.positionDepositBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.positionDepositBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.positionDepositBox.FormattingEnabled = true;
             this.positionDepositBox.Location = new System.Drawing.Point(241, 65);
             this.positionDepositBox.Name = "positionDepositBox";
-            this.positionDepositBox.Size = new System.Drawing.Size(232, 23);
+            this.positionDepositBox.Size = new System.Drawing.Size(232, 25);
             this.positionDepositBox.TabIndex = 18;
             // 
             // label2
@@ -163,7 +157,20 @@
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // AddDepositForm
+            // sumText
+            // 
+            this.sumText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.sumText.Location = new System.Drawing.Point(241, 34);
+            this.sumText.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.sumText.Name = "sumText";
+            this.sumText.Size = new System.Drawing.Size(232, 25);
+            this.sumText.TabIndex = 15;
+            // 
+            // AddDepositF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -172,11 +179,14 @@
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.flowLayout);
             this.KeyPreview = true;
-            this.Name = "AddDepositForm";
+            this.MaximumSize = new System.Drawing.Size(516, 243);
+            this.MinimumSize = new System.Drawing.Size(516, 243);
+            this.Name = "AddDepositF";
             this.Text = "AddDepositForm";
             this.Load += new System.EventHandler(this.AddDepositForm_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sumText)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -186,7 +196,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox sumText;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox positionDepositBox;
         private System.Windows.Forms.Button resetBtn;
@@ -194,5 +203,6 @@
         private System.Windows.Forms.TextBox dataText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox selectedBox;
+        private System.Windows.Forms.NumericUpDown sumText;
     }
 }

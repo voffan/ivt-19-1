@@ -44,8 +44,10 @@
             this.genresBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.countryBox = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayout.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // resetBtn
@@ -76,8 +78,7 @@
             this.flowLayout.Controls.Add(this.label2);
             this.flowLayout.Controls.Add(this.filmDateText);
             this.flowLayout.Controls.Add(this.label3);
-            this.flowLayout.Controls.Add(this.panel1);
-            this.flowLayout.Controls.Add(this.selectedBox);
+            this.flowLayout.Controls.Add(this.panel2);
             this.flowLayout.Controls.Add(this.label4);
             this.flowLayout.Controls.Add(this.genresBox);
             this.flowLayout.Controls.Add(this.label5);
@@ -121,10 +122,11 @@
             // 
             // filmDateText
             // 
+            this.filmDateText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.filmDateText.Location = new System.Drawing.Point(241, 34);
             this.filmDateText.Mask = "00/00/0000";
             this.filmDateText.Name = "filmDateText";
-            this.filmDateText.Size = new System.Drawing.Size(232, 23);
+            this.filmDateText.Size = new System.Drawing.Size(232, 25);
             this.filmDateText.TabIndex = 19;
             this.filmDateText.ValidatingType = typeof(System.DateTime);
             // 
@@ -144,18 +146,19 @@
             // 
             this.panel1.Controls.Add(this.removeSelectedBtn);
             this.panel1.Controls.Add(this.selectBtn);
-            this.panel1.Location = new System.Drawing.Point(241, 65);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(75, 49);
+            this.panel1.Size = new System.Drawing.Size(232, 29);
             this.panel1.TabIndex = 22;
             // 
             // removeSelectedBtn
             // 
-            this.removeSelectedBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.removeSelectedBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.removeSelectedBtn.Enabled = false;
-            this.removeSelectedBtn.Location = new System.Drawing.Point(0, 26);
+            this.removeSelectedBtn.Location = new System.Drawing.Point(75, 0);
             this.removeSelectedBtn.Name = "removeSelectedBtn";
-            this.removeSelectedBtn.Size = new System.Drawing.Size(75, 23);
+            this.removeSelectedBtn.Size = new System.Drawing.Size(75, 29);
             this.removeSelectedBtn.TabIndex = 13;
             this.removeSelectedBtn.Text = "Удалить";
             this.removeSelectedBtn.UseVisualStyleBackColor = true;
@@ -163,10 +166,10 @@
             // 
             // selectBtn
             // 
-            this.selectBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.selectBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.selectBtn.Location = new System.Drawing.Point(0, 0);
             this.selectBtn.Name = "selectBtn";
-            this.selectBtn.Size = new System.Drawing.Size(75, 23);
+            this.selectBtn.Size = new System.Drawing.Size(75, 29);
             this.selectBtn.TabIndex = 12;
             this.selectBtn.Text = "Выбрать";
             this.selectBtn.UseVisualStyleBackColor = true;
@@ -178,9 +181,9 @@
             this.selectedBox.FormattingEnabled = true;
             this.selectedBox.IntegralHeight = false;
             this.selectedBox.ItemHeight = 17;
-            this.selectedBox.Location = new System.Drawing.Point(322, 65);
+            this.selectedBox.Location = new System.Drawing.Point(0, 0);
             this.selectedBox.Name = "selectedBox";
-            this.selectedBox.Size = new System.Drawing.Size(151, 87);
+            this.selectedBox.Size = new System.Drawing.Size(232, 63);
             this.selectedBox.TabIndex = 21;
             this.selectedBox.Tag = "";
             this.selectedBox.SelectedIndexChanged += new System.EventHandler(this.SelectedBox_SelectedIndexChanged);
@@ -189,7 +192,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(3, 158);
+            this.label4.Location = new System.Drawing.Point(3, 164);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.MinimumSize = new System.Drawing.Size(232, 25);
             this.label4.Name = "label4";
@@ -203,7 +206,7 @@
             this.genresBox.FormattingEnabled = true;
             this.genresBox.IntegralHeight = false;
             this.genresBox.ItemHeight = 17;
-            this.genresBox.Location = new System.Drawing.Point(241, 158);
+            this.genresBox.Location = new System.Drawing.Point(241, 164);
             this.genresBox.Name = "genresBox";
             this.genresBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.genresBox.Size = new System.Drawing.Size(232, 121);
@@ -213,7 +216,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(3, 285);
+            this.label5.Location = new System.Drawing.Point(3, 291);
             this.label5.Margin = new System.Windows.Forms.Padding(3);
             this.label5.MinimumSize = new System.Drawing.Size(232, 25);
             this.label5.Name = "label5";
@@ -223,13 +226,23 @@
             // 
             // countryBox
             // 
+            this.countryBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.countryBox.FormattingEnabled = true;
-            this.countryBox.Location = new System.Drawing.Point(241, 285);
+            this.countryBox.Location = new System.Drawing.Point(241, 291);
             this.countryBox.Name = "countryBox";
-            this.countryBox.Size = new System.Drawing.Size(232, 23);
+            this.countryBox.Size = new System.Drawing.Size(232, 25);
             this.countryBox.TabIndex = 23;
             // 
-            // AddFilmForm
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.selectedBox);
+            this.panel2.Location = new System.Drawing.Point(241, 65);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(232, 93);
+            this.panel2.TabIndex = 18;
+            // 
+            // AddFilmF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -238,12 +251,15 @@
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.flowLayout);
             this.KeyPreview = true;
-            this.Name = "AddFilmForm";
+            this.MaximumSize = new System.Drawing.Size(515, 429);
+            this.MinimumSize = new System.Drawing.Size(515, 429);
+            this.Name = "AddFilmF";
             this.Text = "AddFilmForm";
-            this.Load += new System.EventHandler(this.Form_Load);
+            this.Load += new System.EventHandler(this.AddFilmForm_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -266,5 +282,6 @@
         private System.Windows.Forms.ListBox selectedBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.ComboBox countryBox;
+        private System.Windows.Forms.Panel panel2;
     }
 }
