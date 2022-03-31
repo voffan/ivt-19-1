@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Korobki_project.UI;
 
 namespace Korobki_project
 {
@@ -17,7 +18,7 @@ namespace Korobki_project
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuForm());
+            Application.Run(new EmployeeAddForm());
         }
     }
 }
