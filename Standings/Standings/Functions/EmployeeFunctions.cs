@@ -30,26 +30,26 @@ namespace Standings.Functions
         {
 
         }
-        public void Login(string login, string pwd)
-        {
-            using (Context db = Connection.Connect())
-            {
-                Employee empl = db.Employees.Where(p => p.Login == login).FirstOrDefault();
+        //public void Login(string login, string pwd)
+        //{
+        //    using (Context db = Connection.Connect())
+        //    {
+        //        Employee empl = db.Employees.Where(p => p.Login == login).FirstOrDefault();
 
-                if (empl == null)
-                {
-                    throw new Errors.UserNotExist("Пользователь с таким логином не найден");
-                }
+        //        if (empl == null)
+        //        {
+        //            throw new Errors.UserNotExist("Пользователь с таким логином не найден");
+        //        }
 
-                bool validationResult = empl.Password.CompareTo(pwd) == 0;
+        //        bool validationResult = empl.Password.CompareTo(pwd) == 0;
 
-                if (!validationResult)
-                {
-                    throw new Errors.IncorrectPassword("Неправильный пароль");
-                }
+        //        if (!validationResult)
+        //        {
+        //            throw new Errors.IncorrectPassword("Неправильный пароль");
+        //        }
 
-                currentEmployee = empl;
-            }
-        }
+        //        currentEmployee = empl;
+        //    }
+        //}
     }
 }

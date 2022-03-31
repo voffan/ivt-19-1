@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Standings.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,8 +17,8 @@ namespace Standings
         {
             InitializeComponent();
         }
-        
-        
+
+
         private void MainMenu_Load(object sender, EventArgs e)
         {
 
@@ -26,6 +27,14 @@ namespace Standings
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void списокСотрудниковToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmployeeWindows EW = new EmployeeWindows();
+            EW.MdiParent = this;
+            EW.LayoutMdi(MdiLayout.Cascade);
+            EW.Show();
         }
     }
 }

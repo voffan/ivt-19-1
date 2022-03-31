@@ -22,7 +22,7 @@ namespace Standings.Database
         public DbSet<Sportsman> Sportsmans { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=standings;user=root;password=1234;");
+            optionsBuilder.UseMySQL("server=localhost;database=Standings;user=root;password=1234;");
         }
     }
 }

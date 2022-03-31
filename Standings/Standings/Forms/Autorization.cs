@@ -26,7 +26,7 @@ namespace Standings
 
             try
             {
-                Connection.judgeFunctions.Login(Login, Pass);
+                Connection.user.Login(Login, Pass);
                 this.Hide();
                 mainmenu.Show();
           
@@ -48,5 +48,6 @@ namespace Standings
             Registration regis = new Registration();
             regis.Show();
         }
+
     }
 }
