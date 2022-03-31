@@ -266,9 +266,10 @@ namespace Autoreport.UI
         private void ClientsTab_Click(Action<DataGridViewColumn> GoFirst)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
-                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn
+                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn, deleteBtn
             });
 
+            currentDeleteAction = Connection.clientService.Delete;
             currentAddForm = new AddClientF();
             dataGridView.DataSource = Connection.clientService.GetAll();
             

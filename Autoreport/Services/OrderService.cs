@@ -29,18 +29,16 @@ namespace Autoreport.Services
                 db.Update(order);
                 db.Orders.Add(order);
 
-                Client orderClient = db.Clients.Find(OrderDeposit.Owner.Id);
-                orderClient.Order_count++;
+                OrderDeposit.Owner.Order_count++;
+                db.Entry(OrderDeposit.Owner).State = EntityState.Modified;
 
-                foreach (Disk disk in db.Disks)
+                foreach (Disk disk in Disks)
                 {
-                    if (!Disks.Contains(disk))
-                        continue;
-
                     if (disk.Current_count == 0)
                         throw new Errors.NotEnoughDisks("Такие диски в данный момент отсутствуют");
-
+                    
                     disk.Current_count--;
+                    db.Entry(disk).State = EntityState.Modified;
                 }
 
                 db.SaveChanges();
