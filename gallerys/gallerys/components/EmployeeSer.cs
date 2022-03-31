@@ -56,6 +56,7 @@ namespace gallerys.components
                 {
                     throw new Errors.UserErrors("Пользователь с таким логином не найден");
                 }
+                currentEmployee = empl;
             }
         }
     }

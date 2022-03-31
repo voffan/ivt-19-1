@@ -29,6 +29,36 @@ namespace gallerys
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            InitTable();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Картины Жанры Авторы Сотрудники Журнал передвижения картин Выставки
+            if (comboBox1.Text == "Картины")
+            {
+                AddPaint add = new AddPaint();
+                add.ShowDialog();
+            }
+            if (comboBox1.Text == "Жанры")
+            {
+                AddGenre add = new AddGenre();
+                add.ShowDialog();
+            }
+            if (comboBox1.Text == "Авторы")
+            {
+                AddAuthors add = new AddAuthors();
+                add.ShowDialog();
+            }
+            if (comboBox1.Text == "Сотрудники")
+            {
+                AddEmployee add = new AddEmployee();
+                add.ShowDialog();
+            }
+            InitTable();
+        }
+        private void InitTable()
+        {
             gallContext c = new gallContext();
             string selectedtable = comboBox1.SelectedItem.ToString();
             if (selectedtable == "Картины")
@@ -56,31 +86,6 @@ namespace gallerys
                 dataGridView1.DataSource = c.Exhibitions.ToList();
             }
             label1.Text = "Текущий список: " + selectedtable;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //Картины Жанры Авторы Сотрудники Журнал передвижения картин Выставки
-            if (comboBox1.Text == "Картины")
-            {
-                AddPaint add = new AddPaint();
-                add.ShowDialog();
-            }
-            if (comboBox1.Text == "Жанры")
-            {
-                AddGenre add = new AddGenre();
-                add.ShowDialog();
-            }
-            if (comboBox1.Text == "Авторы")
-            {
-                AddAuthors add = new AddAuthors();
-                add.ShowDialog();
-            }
-            if (comboBox1.Text == "Сотрудники")
-            {
-                AddEmployee add = new AddEmployee();
-                add.ShowDialog();
-            }
         }
     }
 }
