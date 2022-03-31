@@ -59,7 +59,9 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1080, 720);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1080, 720);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
