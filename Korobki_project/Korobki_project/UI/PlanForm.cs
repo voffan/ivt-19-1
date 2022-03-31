@@ -23,7 +23,9 @@ namespace Korobki_project
             dataGridView1.Columns[3].Visible = false;
         }
 
+        private void PlanFromAddButton_Click(object sender, EventArgs e)
+        {
 
-       
+        }
     }
 }

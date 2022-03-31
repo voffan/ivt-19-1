@@ -22,7 +22,7 @@ namespace Korobki_project
         public DbSet<Typee> Typees { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=korobkibd;user=root;password=1234;");
+            optionsBuilder.UseMySQL("server=localhost;database=korobkibd;user=root;password=root;");
         }
     }
 }
