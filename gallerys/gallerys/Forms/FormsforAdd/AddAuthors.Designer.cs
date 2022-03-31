@@ -50,7 +50,6 @@ namespace gallerys.Forms.FormsforAdd
             this.label1.Size = new System.Drawing.Size(133, 37);
             this.label1.TabIndex = 5;
             this.label1.Text = "Фамилия";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -127,6 +126,7 @@ namespace gallerys.Forms.FormsforAdd
             this.button2.TabIndex = 18;
             this.button2.Text = "Отменить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -137,8 +137,9 @@ namespace gallerys.Forms.FormsforAdd
             this.button1.TabIndex = 17;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // EditAuthors
+            // AddAuthors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,7 +154,7 @@ namespace gallerys.Forms.FormsforAdd
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Name = "EditAuthors";
+            this.Name = "AddAuthors";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление автора";
             this.ResumeLayout(false);

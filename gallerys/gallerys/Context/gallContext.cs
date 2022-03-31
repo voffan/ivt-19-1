@@ -23,7 +23,7 @@ namespace gallerys.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["gallerybd"].ConnectionString);
-            optionsBuilder.UseMySQL("server=10.14.156.158;database=gallery_bd;user=root;password=1234;");
+            optionsBuilder.UseMySQL("server=10.14.156.158;database=gallery_db;user=root;password=1234;");
         }
     }
 }

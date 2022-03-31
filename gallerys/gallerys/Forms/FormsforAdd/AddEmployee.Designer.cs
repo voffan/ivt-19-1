@@ -39,22 +39,27 @@ namespace gallerys.Forms.FormsforAdd
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(177, 340);
+            this.button2.Location = new System.Drawing.Point(162, 470);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(160, 39);
             this.button2.TabIndex = 28;
             this.button2.Text = "Отменить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(177, 288);
+            this.button1.Location = new System.Drawing.Point(162, 418);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 39);
             this.button1.TabIndex = 27;
@@ -66,7 +71,7 @@ namespace gallerys.Forms.FormsforAdd
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(75, 237);
+            this.label4.Location = new System.Drawing.Point(75, 358);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 37);
             this.label4.TabIndex = 26;
@@ -138,16 +143,58 @@ namespace gallerys.Forms.FormsforAdd
             "Менеджер",
             "Реставратор",
             "Администратор"});
-            this.comboBox1.Location = new System.Drawing.Point(177, 237);
+            this.comboBox1.Location = new System.Drawing.Point(177, 355);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(242, 45);
             this.comboBox1.TabIndex = 29;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(76, 226);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 37);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Логин";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox4.Location = new System.Drawing.Point(177, 221);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(320, 48);
+            this.textBox4.TabIndex = 31;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox5.Location = new System.Drawing.Point(177, 287);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(320, 48);
+            this.textBox5.TabIndex = 33;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(59, 292);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 37);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Пароль";
             // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 391);
+            this.ClientSize = new System.Drawing.Size(511, 520);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -177,5 +224,9 @@ namespace gallerys.Forms.FormsforAdd
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label6;
     }
 }
