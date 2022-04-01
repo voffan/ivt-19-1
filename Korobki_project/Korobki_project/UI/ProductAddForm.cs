@@ -11,28 +11,27 @@ using MySql.Data.MySqlClient;
 
 namespace Korobki_project.UI
 {
-    public partial class PlanFromAdd : Form
+    public partial class ProductAddForm : Form
     {
-        public PlanFromAdd()
+        public ProductAddForm()
         {
             InitializeComponent();
         }
 
-        private void PlanFromAdd_Load(object sender, EventArgs e)
+        private void ProductsAddForm_Load(object sender, EventArgs e)
         {
-            comboBox1.DataSource = (new Context()).Products.ToList();
-            comboBox1.DisplayMember = "Size_box";
+            comboBox1.DataSource = (new Context()).Typees.ToList();
+            comboBox1.DisplayMember = "Type_name";
             comboBox1.ValueMember = "Id";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length!=0 && textBox2.Text.Length!=0)
+            int c1 = comboBox1.SelectedIndex + 1;
+            if (textBox1.Text.Length != 0)
             {
-                int c1 = comboBox1.SelectedIndex + 1;
-                int count = Convert.ToInt32(textBox1.Text);
                 string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
-                string sql = "INSERT plans(Count_box, PlanDate,ProductId)" + "VALUES(" + count + ", '" + textBox2.Text + "'," + c1 + ")";
+                string sql = "INSERT products(TypeeId, Size_box)" + "VALUES(" + c1 + ", '" + textBox1.Text + "')";
                 MySqlConnection conn = new MySqlConnection(connStr);
                 conn.Open();
                 MySqlCommand command = new MySqlCommand(sql, conn);

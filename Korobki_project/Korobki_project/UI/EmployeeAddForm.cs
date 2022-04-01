@@ -35,8 +35,8 @@ namespace Korobki_project.UI
 			{
 				int c1 = comboBox1.SelectedIndex + 1;
 				int c2 = comboBox2.SelectedIndex + 1;
-				int id = 4;
-				string connStr = "server=localhost; port=3306; username=root; password=1234; database=korobkibd;";
+				//int id = 4;
+				string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
 				string sql = "INSERT employees(Name, Login, Password, PositionId, PhoneNumber, Adress, ShiftId) " +
 					"VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', " + c1 + ",  '" + textBox4.Text + "', '" + textBox5.Text + "', " + c2 + ");";
 
@@ -49,7 +49,7 @@ namespace Korobki_project.UI
 			}
 			else
 			{
-				MessageBox.Show(Convert.ToString(comboBox1.SelectedIndex));
+				MessageBox.Show("Заполните все поля");
 			}
 		}
 	}
