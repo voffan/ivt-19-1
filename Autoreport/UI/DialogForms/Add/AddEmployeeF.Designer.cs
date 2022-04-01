@@ -1,5 +1,6 @@
-﻿
-namespace Autoreport.UI
+﻿using Autoreport.UI.Add.Parents;
+
+namespace Autoreport.UI.Add
 {
     partial class AddEmployeeF : BaseAddForm
     {

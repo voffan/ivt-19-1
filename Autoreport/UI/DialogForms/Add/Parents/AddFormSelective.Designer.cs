@@ -1,7 +1,7 @@
 ﻿
 using System.Windows.Forms;
 
-namespace Autoreport.UI
+namespace Autoreport.UI.Add.Parents
 {
     partial class AddFormSelective : BaseAddForm
     {

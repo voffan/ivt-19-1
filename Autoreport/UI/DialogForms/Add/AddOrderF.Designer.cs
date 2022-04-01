@@ -1,8 +1,9 @@
 ﻿
 using System;
 using System.Windows.Forms;
+using Autoreport.UI.Add.Parents;
 
-namespace Autoreport.UI
+namespace Autoreport.UI.Add
 {
     partial class AddOrderF : AddFormSelective
     {

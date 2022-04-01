@@ -11,8 +11,9 @@ using Autoreport.Models;
 using Autoreport.UI.Classes;
 using Autoreport.Database;
 using System.Globalization;
+using Autoreport.UI.Add.Parents;
 
-namespace Autoreport.UI
+namespace Autoreport.UI.Add
 {
     public partial class AddFilmF : AddFormSelective
     {

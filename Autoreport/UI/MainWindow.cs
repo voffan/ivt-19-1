@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Autoreport.Database;
 using Autoreport.UI.Classes;
+using Autoreport.UI.Add;
 using Autoreport.Models;
 using System.Reflection;
 using System.ComponentModel;

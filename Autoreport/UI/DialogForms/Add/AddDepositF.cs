@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using Autoreport.Models;
 using Autoreport.UI.Classes;
 using Autoreport.Database;
-using Autoreport.UI;
+using Autoreport.UI.Add.Parents;
 
-namespace Autoreport.UI
+namespace Autoreport.UI.Add
 {
     public partial class AddDepositF : AddFormSelective
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Autoreport.UI
+namespace Autoreport.UI.Add.Parents
 {
     public partial class BaseAddForm : BaseForm
     {

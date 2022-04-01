@@ -1,7 +1,8 @@
 ﻿
 using System;
+using Autoreport.UI.Add.Parents;
 
-namespace Autoreport.UI
+namespace Autoreport.UI.Add
 {
     partial class AddFilmDirectorF : BaseAddForm
     {

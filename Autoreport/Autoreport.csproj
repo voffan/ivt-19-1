@@ -34,9 +34,32 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="UI\DialogForms\Add\AddOrderF.cs">
+    <Compile Update="UI\DialogForms\Edit\EditClientF.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UI\DialogForms\Edit\EditDepositF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\DialogForms\Edit\EditDiskF.cs" />
+    <Compile Update="UI\DialogForms\Edit\EditEmployeeF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\DialogForms\Edit\EditFilmDirectorF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\DialogForms\Edit\EditFilmF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\DialogForms\Edit\EditOrderF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\DialogForms\Edit\Parents\EditFormSelective.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\DialogForms\Edit\Parents\BaseEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\DialogForms\Add\AddOrderF.cs" />
     <Compile Update="UI\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
