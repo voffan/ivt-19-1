@@ -194,6 +194,7 @@ namespace Korobki_project.UI
 			this.Controls.Add(this.textBox1);
 			this.Name = "EmployeeAddForm";
 			this.Text = "EmployeeAddForm";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeAddForm_FormClosed);
 			this.Load += new System.EventHandler(this.EmployeeAddForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();

@@ -31,17 +31,12 @@ namespace Korobki_project
 
 		}
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-			/*
-			this.Hide();
-			MenuForm main = new MenuForm();
-			main.Show();
-			*/
 
+		private void userChek()
+		{
 			Context c = new Context();
-			
-			string connStr = "server=localhost; port=3306; username=root; password=1234; database=korobkibd;";
+
+			string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
 			string sql = "SELECT * FROM employees WHERE Login = @un and  Password = @up";
 
 			MySqlConnection conn = new MySqlConnection(connStr);
@@ -70,14 +65,13 @@ namespace Korobki_project
 			}
 
 			conn.Close();
-
 		}
 
 		private void userRole()
 		{
 			string UserName = login.Text;
 
-			string connStr = "server=localhost; port=3306; username=root; password=1234; database=korobkibd;";
+			string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
 			string sql = "SELECT PositionId FROM employees WHERE Login = @un";
 
 			MySqlConnection conn = new MySqlConnection(connStr);
@@ -104,10 +98,17 @@ namespace Korobki_project
 			}
 			conn.Close();
 		}
+        private void button1_Click(object sender, EventArgs e)
+        {
+			userChek();
+		}
 
-		private void registr_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		private void password_KeyPress(object sender, KeyPressEventArgs e)
 		{
-
+			if(e.KeyChar==13)
+			{
+				userChek();
+			}
 		}
 	}
 }

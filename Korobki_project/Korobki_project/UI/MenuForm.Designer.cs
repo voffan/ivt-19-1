@@ -38,7 +38,7 @@ namespace Korobki_project
 			this.button6 = new System.Windows.Forms.Button();
 			this.button7 = new System.Windows.Forms.Button();
 			this.button8 = new System.Windows.Forms.Button();
-			this.button9 = new System.Windows.Forms.Button();
+			this.btnadd = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -128,14 +128,15 @@ namespace Korobki_project
 			this.button8.UseVisualStyleBackColor = true;
 			this.button8.Click += new System.EventHandler(this.button8_Click);
 			// 
-			// button9
+			// btnadd
 			// 
-			this.button9.Location = new System.Drawing.Point(717, 476);
-			this.button9.Name = "button9";
-			this.button9.Size = new System.Drawing.Size(75, 23);
-			this.button9.TabIndex = 9;
-			this.button9.Text = "button9";
-			this.button9.UseVisualStyleBackColor = true;
+			this.btnadd.Location = new System.Drawing.Point(702, 385);
+			this.btnadd.Name = "btnadd";
+			this.btnadd.Size = new System.Drawing.Size(86, 28);
+			this.btnadd.TabIndex = 9;
+			this.btnadd.Text = "Добавить";
+			this.btnadd.UseVisualStyleBackColor = true;
+			this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
 			// 
 			// MenuForm
 			// 
@@ -143,7 +144,7 @@ namespace Korobki_project
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
 			this.ClientSize = new System.Drawing.Size(804, 511);
-			this.Controls.Add(this.button9);
+			this.Controls.Add(this.btnadd);
 			this.Controls.Add(this.button8);
 			this.Controls.Add(this.button7);
 			this.Controls.Add(this.button6);
@@ -157,6 +158,7 @@ namespace Korobki_project
 			this.MaximizeBox = false;
 			this.Name = "MenuForm";
 			this.Text = "MenuForm";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuForm_FormClosed);
 			this.Load += new System.EventHandler(this.MenuForm_Load);
 			this.ResumeLayout(false);
 
@@ -173,6 +175,6 @@ namespace Korobki_project
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
-		private System.Windows.Forms.Button button9;
+		private System.Windows.Forms.Button btnadd;
 	}
 }

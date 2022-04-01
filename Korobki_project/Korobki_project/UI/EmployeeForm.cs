@@ -20,11 +20,13 @@ namespace Korobki_project
         {
             InitializeComponent();
             Context c = new Context();
-            dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").ToList();
+            dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").OrderBy(e=>e.Name).ToList();
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[3].Visible = false;
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[8].Visible = false;
+            //this.dataGridView1.Sort(this.dataGridView1.Columns[1], ListSortDirection.Ascending);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
