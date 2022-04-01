@@ -137,6 +137,7 @@
             this.Category1.Name = "Category1";
             this.Category1.Size = new System.Drawing.Size(192, 23);
             this.Category1.TabIndex = 10;
+            this.Category1.TextChanged += new System.EventHandler(this.Category1_TextChanged);
             // 
             // label5
             // 

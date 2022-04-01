@@ -21,27 +21,6 @@ namespace Standings.Functions
         {
 
         }
-        //public void Login(string login, string pwd)
-        //{
-        //    using (Context db = Connection.Connect())
-        //    {
-        //        Judge empl = db.Judges.Where(p => p.Login == login).FirstOrDefault();
-
-        //        if (empl == null)
-        //        {
-        //            throw new Errors.UserNotExist("Пользователь с таким логином не найден");
-        //        }
-
-        //        bool validationResult = empl.Password.CompareTo(pwd) == 0;
-
-        //        if (!validationResult)
-        //        {
-        //            throw new Errors.IncorrectPassword("Неправильный пароль");
-        //        }
-
-        //        currentJudge = empl;
-        //    }
-        //}
         public static void Register(string login, string password, string fullname, string category, DateTime exp)
         {
             using (Context db = new Context())

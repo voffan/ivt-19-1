@@ -119,5 +119,10 @@ namespace Standings
         {
 
         }
+
+        private void Category1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
