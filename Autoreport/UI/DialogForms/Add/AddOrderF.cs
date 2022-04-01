@@ -80,7 +80,7 @@ namespace Autoreport.UI.Add
 
         protected override void SelectedBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            removeSelectedBtn.Enabled = selectedBox_Deposit.SelectedIndex != -1;
+            removeSelectedBtn.Enabled = selectedBox_Disks.SelectedIndex != -1;
         }
 
         private void selectedBox_Deposit_Click(object sender, EventArgs e)

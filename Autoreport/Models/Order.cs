@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Autoreport.Models
 {
@@ -34,13 +35,13 @@ namespace Autoreport.Models
         [Required, DisplayName("Статус")]
         public OrderStatus Status { get; set; }
 
-        [Required, DisplayName("Клиент")]
+        [Required, DisplayName("Клиент"), ForeignKey("ClientId")]
         public virtual Client OrderClient { get; set; }
 
-        [Required, DisplayName("Сотрудник")]
-        public virtual Employee OrderEmployeer { get; set; }
+        [Required, DisplayName("Сотрудник"), ForeignKey("EmployeeId")]
+        public virtual Employee OrderEmployee { get; set; }
 
-        [Required, DisplayName("Залог")]
+        [Required, DisplayName("Залог"), ForeignKey("DepositId")]
         public virtual Deposit OrderDeposit { get; set; }
 
         [Required] // DisplayName("Диски")

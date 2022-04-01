@@ -13,7 +13,7 @@ namespace Autoreport.UI.Add.Parents
 {
     public partial class AddFormSelective : BaseAddForm
     {
-        protected MainWindow owner;
+        protected MainF owner;
         protected Action<Mode, Button, object[]> OwnerMode_Turn;
         protected Button relatedTab;
         protected Action CloseHandler;
@@ -34,6 +34,7 @@ namespace Autoreport.UI.Add.Parents
         /// <param name="e"></param>
         protected void Select_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("{0} enabling select mode", this.Name);
             OwnerMode_Turn(Mode.Select, relatedTab, GetSelectedListBox().Items.Cast<object>().ToArray());
             this.Hide();
         }
@@ -57,11 +58,12 @@ namespace Autoreport.UI.Add.Parents
                 listBox.Items.Add(item);
             }
 
+            Console.WriteLine("{0} disabling select mode", this.Name);
             OwnerMode_Turn(Mode.General, null, null);
             this.ShowDialog(owner);
         }
 
-        private ListBox GetSelectedListBox()
+        protected ListBox GetSelectedListBox()
         {
             foreach (Control c in GetAllPanels(this))
             {
@@ -79,7 +81,7 @@ namespace Autoreport.UI.Add.Parents
 
         protected void Form_Load(object sender, EventArgs e)
         {
-            owner = (MainWindow)Owner;
+            owner = (MainF)Owner;
 
             if (!Loaded)
             {

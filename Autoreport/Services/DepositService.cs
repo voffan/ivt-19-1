@@ -24,7 +24,7 @@ namespace Autoreport.Services
                     }
                     break;
                 case DepositType.Money:
-                    if (documentData != null || documentData != "")
+                    if (documentData != null && documentData.Trim().Length > 0)
                     {
                         throw new DocumentGivenButMoneyChoosed("Указан тип депозита - деньги, но переданы данные документа");
                     }

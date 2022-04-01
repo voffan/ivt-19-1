@@ -175,6 +175,7 @@ namespace Autoreport.UI.Add
             this.removeSelectedBtn.TabIndex = 5;
             this.removeSelectedBtn.Text = "Удалить";
             this.removeSelectedBtn.UseVisualStyleBackColor = true;
+            this.removeSelectedBtn.Click += new System.EventHandler(this.RemoveSelectedBtn_Click);
             // 
             // selectBtn
             // 
@@ -198,6 +199,7 @@ namespace Autoreport.UI.Add
             this.selectedBox.Name = "selectedBox";
             this.selectedBox.Size = new System.Drawing.Size(261, 63);
             this.selectedBox.TabIndex = 3;
+            this.selectedBox.SelectedIndexChanged += new System.EventHandler(this.SelectedBox_SelectedIndexChanged);
             // 
             // resetBtn
             // 

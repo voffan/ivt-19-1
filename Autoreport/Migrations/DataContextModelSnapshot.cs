@@ -154,16 +154,16 @@ namespace Autoreport.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
                     b.Property<double>("Cost")
                         .HasColumnType("double");
 
-                    b.Property<int>("OrderClientId")
+                    b.Property<int>("DepositId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OrderDepositId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderEmployeerId")
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Order_date")
@@ -177,11 +177,11 @@ namespace Autoreport.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderClientId");
+                    b.HasIndex("ClientId");
 
-                    b.HasIndex("OrderDepositId");
+                    b.HasIndex("DepositId");
 
-                    b.HasIndex("OrderEmployeerId");
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Orders");
                 });
@@ -362,17 +362,19 @@ namespace Autoreport.Migrations
                 {
                     b.HasOne("Autoreport.Models.Client", "OrderClient")
                         .WithMany("Orders")
-                        .HasForeignKey("OrderClientId")
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Autoreport.Models.Deposit", "OrderDeposit")
                         .WithMany()
-                        .HasForeignKey("OrderDepositId");
+                        .HasForeignKey("DepositId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Autoreport.Models.Employee", "OrderEmployeer")
+                    b.HasOne("Autoreport.Models.Employee", "OrderEmployee")
                         .WithMany("Orders")
-                        .HasForeignKey("OrderEmployeerId")
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -380,7 +382,7 @@ namespace Autoreport.Migrations
 
                     b.Navigation("OrderDeposit");
 
-                    b.Navigation("OrderEmployeer");
+                    b.Navigation("OrderEmployee");
                 });
 
             modelBuilder.Entity("DiskFilm", b =>
