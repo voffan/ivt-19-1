@@ -6,8 +6,8 @@
 ### Требования для запуска:
 * [.NET 5 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
 * [MySQL version 8.0.26](https://downloads.mysql.com/archives/community/)
-* [MySQL Connector/Net 8.0.26] (https://downloads.mysql.com/archives/c-net/)
-* [MySQL Workbench 8.0.26] (https://downloads.mysql.com/archives/workbench/)
+* [MySQL Connector/Net 8.0.26](https://downloads.mysql.com/archives/c-net/)
+* [MySQL Workbench 8.0.26](https://downloads.mysql.com/archives/workbench/)
 * [Git](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop)
 * [VisualStudio 2019](https://docs.microsoft.com/ru-ru/visualstudio/releases/2019/history)
 
