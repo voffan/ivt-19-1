@@ -9,7 +9,7 @@ using gallerys.Context;
 namespace gallerys.Migrations
 {
     [DbContext(typeof(gallContext))]
-    [Migration("20220318055119_migr")]
+    [Migration("20220401032146_migr")]
     partial class migr
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

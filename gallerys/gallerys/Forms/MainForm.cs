@@ -87,5 +87,10 @@ namespace gallerys
             }
             label1.Text = "Текущий список: " + selectedtable;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
