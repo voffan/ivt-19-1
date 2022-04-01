@@ -16,18 +16,14 @@ namespace Comp_park_app.Functions
                 Status = status,
                 MotherboardId = motherboardid,
                 EmployeeId = employeeid,
-                HDDs = hdds,
-                RAMs = rams,
-                Processors = processors
+                //HDDs = hdds,
+                //RAMs = rams,
+                //Processors = processors
             };
 
             
             using (Context c = new Context())
             {
-                //... initiate field
-                comp.Department = c.Departments.Find(departmentid); //Virtual objects
-                comp.Motherboard = c.Motherboards.Find(motherboardid);
-                comp.Employee = c.Employees.Find(employeeid);
 
                 c.Computers.Add(comp);
                 
@@ -45,19 +41,19 @@ namespace Comp_park_app.Functions
                 {
                     hdd = c.HDDs.Find(a.Id);
                     hdd.ComputerId = id;
-                    hdd.Computer = comp;
+                    c.Entry(hdd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 }
                 foreach (var a in rams)
                 {
                     ram = c.RAMs.Find(a.Id);
                     ram.ComputerId = id;
-                    ram.Computer = comp;
+                    c.Entry(ram).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 }
                 foreach (var a in processors)
                 {
                     processor = c.Processors.Find(a.Id);
                     processor.ComputerId = id;
-                    processor.Computer = comp;
+                    c.Entry(processor).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 }
                 c.SaveChanges();
             }
