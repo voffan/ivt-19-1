@@ -44,6 +44,7 @@ namespace Comp_park_app.Functions
                 hdd.Manufacturer = manufacturer;
                 hdd.Capacity = capacity;
 
+                c.Entry(hdd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
             }
         }

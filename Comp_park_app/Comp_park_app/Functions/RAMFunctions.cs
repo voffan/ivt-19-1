@@ -42,6 +42,7 @@ namespace Comp_park_app.Functions
                 ram.Manufacturer = manufacturer;
                 ram.Capacity = capacity;
 
+                c.Entry(ram).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
             }
         }

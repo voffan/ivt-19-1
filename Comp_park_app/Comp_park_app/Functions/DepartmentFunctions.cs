@@ -44,6 +44,7 @@ namespace Comp_park_app.Functions
                 department = c.Departments.Find(index);
                 department.Name = name;
                 department.Number = number;
+                c.Entry(department).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
             }
         }

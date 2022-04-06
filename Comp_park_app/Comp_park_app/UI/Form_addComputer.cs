@@ -132,6 +132,9 @@ namespace Comp_park_app
             if (!Type_Add)
             {
                 Computer comp;
+                HDD hdd;
+                RAM ram;
+                Processor processor;
                 using(Context c = new Context())
                 {
                     comp = c.Computers.Find(id);
@@ -140,8 +143,36 @@ namespace Comp_park_app
                     textBox_ItemNo.Text = comp.ItemNo;
                     comboBox_Status.SelectedItem = comp.Status;
                     comboBox_Employee.SelectedItem = comp.Employee;
-                    
-                    for (int i = 0; i < comp.HDDs.Count; i++)
+
+
+                    for (int i = 1; i < c.HDDs.Count(); i++)
+                    {
+                        HDD hd = c.HDDs.First(r => r.Id == i);
+                        if (hd.ComputerId == comp.Id)
+                        {
+                            listBox1.Items.Add(hd);
+                        }
+                    }
+
+                    for (int i = 1; i < c.RAMs.Count(); i++)
+                    {
+                        RAM hd = c.RAMs.First(r => r.Id == i);
+                        if (hd.ComputerId == comp.Id)
+                        {
+                            listBox2.Items.Add(hd);
+                        }
+                    }
+
+                    for (int i = 1; i < c.Processors.Count(); i++)
+                    {
+                        Processor hd = c.Processors.First(r => r.Id == i);
+                        if (hd.ComputerId == comp.Id)
+                        {
+                            listBox3.Items.Add(hd);
+                        }
+                    }
+
+                    /*for (int i = 0; i < comp.HDDs.Count; i++)
                     {
                         listBox1.Items.Add(comp.HDDs[i]);
                     }
@@ -152,7 +183,9 @@ namespace Comp_park_app
                     for (int i = 0; i < comp.Processors.Count; i++)
                     {
                         listBox3.Items.Add(comp.Processors[i]);
-                    }
+                    }*/
+
+
 
                     comboBox_Motherboard.SelectedItem = comp.Motherboard;
                 }

@@ -42,6 +42,7 @@ namespace Comp_park_app.Functions
                 motherboard.Name = name;
                 motherboard.Manufacturer = manufacturer;
 
+                c.Entry(motherboard).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
             }
         }

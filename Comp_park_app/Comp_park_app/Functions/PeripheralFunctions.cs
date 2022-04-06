@@ -21,9 +21,6 @@ namespace Comp_park_app.Functions
             using (Context c = new Context())
             {
                 //... initiate field
-                peripheral.Department = c.Departments.Find(departmentid);//Virtual object
-                peripheral.Employee = c.Employees.Find(employeeid);
-
                 c.Peripherals.Add(peripheral);
                 c.SaveChanges();
             }
@@ -52,9 +49,7 @@ namespace Comp_park_app.Functions
                 peripheral.DepartmentId = departmentid;
                 peripheral.EmployeeId = employeeid;
 
-                peripheral.Department = c.Departments.Find(departmentid);
-                peripheral.Employee = c.Employees.Find(employeeid);
-
+                c.Entry(peripheral).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
             }
         }

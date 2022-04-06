@@ -20,8 +20,7 @@ namespace Comp_park_app.Functions
             using (Context c = new Context())
             {
                 //... initiate field
-                employee.Department = c.Departments.Find(departmentid); //Virtual object
-                employee.Position = c.Positions.Find(positionid);
+                
 
                 c.Employees.Add(employee);
                 c.SaveChanges();
@@ -49,8 +48,7 @@ namespace Comp_park_app.Functions
                 employee.DepartmentId = departmentid;
                 employee.PositionId = positionid;
 
-                employee.Department = c.Departments.Find(departmentid);
-                employee.Position = c.Positions.Find(positionid);
+                c.Entry(employee).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
 
                 c.SaveChanges();
             }

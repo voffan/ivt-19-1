@@ -44,6 +44,8 @@ namespace Comp_park_app.Functions
                 processor.Manufacturer = manufacturer;
                 processor.Frequency = frequency;
 
+                c.Entry(processor).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
                 c.SaveChanges();
             }
         }
