@@ -29,9 +29,17 @@ namespace Autoreport.Services
             }
         }
 
-        public void Get()
+        public Film Get(int Id)
         {
-
+            using (DataContext db = Connection.Connect())
+            {
+                Film film = db.Films
+                    .Include(x => x.FilmDirectors)
+                    .Include(x => x.FilmCountry)
+                    .Include(x => x.Genres)
+                .FirstOrDefault(x => x.Id == Id);
+                return film;
+            }
         }
 
         public List<Film> GetAll()
@@ -90,9 +98,18 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit()
+        public void Edit(Film editingEntity, string filmName, DateTime filmDate, Country country, List<Person> director, List<Genre> genres)
         {
-
+            using (DataContext db = Connection.Connect())
+            {
+                db.Entry(editingEntity).State = EntityState.Modified;
+                editingEntity.Name = filmName;
+                editingEntity.Date = filmDate;
+                editingEntity.FilmCountry = country;
+                editingEntity.FilmDirectors = director;
+                editingEntity.Genres = genres;
+                db.SaveChanges();
+            }
         }
 
         internal void AddDirector(string lastName, string firstName, string middleName)
