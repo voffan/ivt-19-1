@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comp_park_app.Functions;
+using Comp_park_app_form;
 
 namespace Comp_park_app
 {
@@ -15,13 +16,15 @@ namespace Comp_park_app
     {
         bool Type_Add;
         int id;
-        public Form_addEmployee(bool Add, int index)
+        Form1 frm1;
+        public Form_addEmployee(bool Add, int index, Form1 fr1)
         {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
             id = index;
+            frm1 = fr1;
         }
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
@@ -36,10 +39,12 @@ namespace Comp_park_app
                     comboBox_Department.DataSource = c.Departments.ToList();
                     comboBox_Department.DisplayMember = "Name";
                     comboBox_Department.ValueMember = "Id";
+                comboBox_Department.DropDownStyle = ComboBoxStyle.DropDownList;
 
                     comboBox_Position.DataSource = c.Positions.ToList();
                     comboBox_Position.DisplayMember = "Name";
                     comboBox_Position.ValueMember = "Id";
+                comboBox_Position.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
             
             if (!Type_Add)
@@ -49,8 +54,8 @@ namespace Comp_park_app
                 {
                     employee = c.Employees.Find(id);
                     textBox_name.Text = employee.Name;
-                    comboBox_Department.SelectedItem = employee.Department;
-                    comboBox_Position.SelectedItem = employee.Position;
+                    comboBox_Department.SelectedItem = c.Departments.Find(employee.DepartmentId);
+                    comboBox_Position.SelectedItem = c.Positions.Find(employee.PositionId);
                 }
                 //For edit mode
             }
@@ -68,6 +73,7 @@ namespace Comp_park_app
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
                 employee.Add(name, departmentid, positionid);
+                frm1.Update_datagridview(2);
                 this.Close();
             }
             else
@@ -85,6 +91,7 @@ namespace Comp_park_app
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
                 employee.Edit(id, name, departmentid, positionid);
+                frm1.Update_datagridview(2);
                 this.Close();
             }
             else

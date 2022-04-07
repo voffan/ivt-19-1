@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comp_park_app.Functions;
+using Comp_park_app_form;
 
 namespace Comp_park_app
 {
@@ -15,13 +16,15 @@ namespace Comp_park_app
     {
         bool Type_Add;
         int id;
-        public Form_addRAM(bool Add, int index)
+        Form1 frm1;
+        public Form_addRAM(bool Add, int index, Form1 fr1)
         {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
             id = index;
+            frm1 = fr1;
         }
 
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
@@ -55,6 +58,7 @@ namespace Comp_park_app
             if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0 && textBox_capacity.Text.Length != 0) {
                 RAMFunctions RAM = new RAMFunctions();
                 RAM.Add(textBox_name.Text, textBox_Manufacturer.Text, Convert.ToInt32(textBox_capacity.Text));
+                frm1.Update_datagridview(7);
                 this.Close();
             }
             else
@@ -69,6 +73,7 @@ namespace Comp_park_app
             {
                 RAMFunctions RAM = new RAMFunctions();
                 RAM.Edit(id, textBox_name.Text, textBox_Manufacturer.Text, Convert.ToInt32(textBox_capacity.Text));
+                frm1.Update_datagridview(7);
                 this.Close();
             }
             else

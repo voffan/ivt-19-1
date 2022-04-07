@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comp_park_app.Functions;
+using Comp_park_app_form;
 
 namespace Comp_park_app
 {
@@ -15,13 +16,15 @@ namespace Comp_park_app
     {
         bool Type_Add;
         int id;
-        public Form_addComputer(bool Add, int index)
+        Form1 frm1;
+        public Form_addComputer(bool Add, int index, Form1 fr1)
         {
             InitializeComponent();
             button_addComputer.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
             id = index;
+            frm1 = fr1;
         }
 
 
@@ -67,6 +70,8 @@ namespace Comp_park_app
                     comboBox_Status.Items.Add(item);
                 }
 
+            comboBox_Status.DropDownStyle = ComboBoxStyle.DropDownList;
+
                 using (Context c = new Context())
                 {
                     comboBox1.DataSource = c.HDDs.ToList();
@@ -84,26 +89,32 @@ namespace Comp_park_app
                     comboBox_Department.DataSource = c.Departments.ToList();
                     comboBox_Department.DisplayMember = "Name";
                     comboBox_Department.ValueMember = "Id";
+                comboBox_Department.DropDownStyle = ComboBoxStyle.DropDownList;
 
                     comboBox_Employee.DataSource = c.Employees.ToList();
                     comboBox_Employee.DisplayMember = "Name";
                     comboBox_Employee.ValueMember = "Id";
+                comboBox_Employee.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                    //comboBox_HDD.DataSource = c.HDDs.ToList();
+                    
                     comboBox_HDD.DisplayMember = "Name";
                     comboBox_HDD.ValueMember = "Id";
+                comboBox_HDD.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                    //comboBox_RAM.DataSource = c.RAMs.ToList();
+                    
                     comboBox_RAM.DisplayMember = "Name";
                     comboBox_RAM.ValueMember = "Id";
+                comboBox_RAM.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                    //comboBox_Processor.DataSource = c.Processors.ToList();
+                    
                     comboBox_Processor.DisplayMember = "Name";
                     comboBox_Processor.ValueMember = "Id";
+                comboBox_Processor.DropDownStyle = ComboBoxStyle.DropDownList;
 
                     comboBox_Motherboard.DataSource = c.Motherboards.ToList();
                     comboBox_Motherboard.DisplayMember = "Name";
                     comboBox_Motherboard.ValueMember = "Id";
+                comboBox_Motherboard.DropDownStyle = ComboBoxStyle.DropDownList;
 
                 }
 
@@ -139,10 +150,10 @@ namespace Comp_park_app
                 {
                     comp = c.Computers.Find(id);
 
-                    comboBox_Department.SelectedItem = comp.Department;
+                   
                     textBox_ItemNo.Text = comp.ItemNo;
                     comboBox_Status.SelectedItem = comp.Status;
-                    comboBox_Employee.SelectedItem = comp.Employee;
+                    
 
 
                     for (int i = 1; i < c.HDDs.Count(); i++)
@@ -151,6 +162,12 @@ namespace Comp_park_app
                         if (hd.ComputerId == comp.Id)
                         {
                             listBox1.Items.Add(hd);
+                            for (int j = 0; j < comboBox_HDD.Items.Count; j++) {
+                                if (((HDD)comboBox_HDD.Items[j]).Id == hd.Id)
+                                {
+                                    comboBox_HDD.Items.RemoveAt(j);
+                                }
+                            }
                         }
                     }
 
@@ -160,6 +177,13 @@ namespace Comp_park_app
                         if (hd.ComputerId == comp.Id)
                         {
                             listBox2.Items.Add(hd);
+                            for (int j = 0; j < comboBox_RAM.Items.Count; j++)
+                            {
+                                if (((RAM)comboBox_RAM.Items[j]).Id == hd.Id)
+                                {
+                                    comboBox_RAM.Items.RemoveAt(j);
+                                }
+                            }
                         }
                     }
 
@@ -169,25 +193,22 @@ namespace Comp_park_app
                         if (hd.ComputerId == comp.Id)
                         {
                             listBox3.Items.Add(hd);
+                            for (int j = 0; j < comboBox_Processor.Items.Count; j++)
+                            {
+                                if (((Processor)comboBox_Processor.Items[j]).Id == hd.Id)
+                                {
+                                    comboBox_Processor.Items.RemoveAt(j);
+                                }
+                            }
                         }
                     }
 
-                    /*for (int i = 0; i < comp.HDDs.Count; i++)
-                    {
-                        listBox1.Items.Add(comp.HDDs[i]);
-                    }
-                    for (int i = 0; i < comp.RAMs.Count; i++)
-                    {
-                        listBox2.Items.Add(comp.RAMs[i]);
-                    }
-                    for (int i = 0; i < comp.Processors.Count; i++)
-                    {
-                        listBox3.Items.Add(comp.Processors[i]);
-                    }*/
+                   
+                    comboBox_Department.SelectedItem = c.Departments.Find(comp.DepartmentId);
 
+                    comboBox_Employee.SelectedItem = c.Employees.Find(comp.EmployeeId);
 
-
-                    comboBox_Motherboard.SelectedItem = comp.Motherboard;
+                    comboBox_Motherboard.SelectedItem = c.Motherboards.Find(comp.MotherboardId);
                 }
                 //For edit mode
             }
@@ -213,6 +234,7 @@ namespace Comp_park_app
                 var motherboardid = Convert.ToInt32(comboBox_Motherboard.SelectedValue);
                 ComputerFunctions Computer = new ComputerFunctions();
                 Computer.Add(departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors);
+                frm1.Update_datagridview(0);
                 this.Close();
             }
             else
@@ -241,6 +263,7 @@ namespace Comp_park_app
 
                 ComputerFunctions Computer = new ComputerFunctions();
                 Computer.Edit(id, departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors);
+                frm1.Update_datagridview(0);
                 this.Close();
             }
             else

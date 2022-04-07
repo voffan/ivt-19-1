@@ -87,51 +87,53 @@ namespace Comp_park_app_form {
 
             // Появление формы Form_addComputer
             if (listBox1.SelectedIndex == 0) {
-                Form form_addComputer = new Form_addComputer(true, -1);
+                Form form_addComputer = new Form_addComputer(true, -1, this);
                 form_addComputer.ShowDialog();
             }
 
             // Появление формы Form_addDepartment
             if (listBox1.SelectedIndex == 1) {
-                Form form_addDepartment = new Form_addDepartment(true, -1);
+                Form form_addDepartment = new Form_addDepartment(true, -1, this);
                 form_addDepartment.ShowDialog();
             }
 
             // Появление формы Form_addEmployee
             if (listBox1.SelectedIndex == 2) {
-                Form form_addEmployee = new Form_addEmployee(true, -1);
+                Form form_addEmployee = new Form_addEmployee(true, -1, this);
                 form_addEmployee.ShowDialog();
             }
 
             // Появление формы Form_addHDD
             if (listBox1.SelectedIndex == 3) {
-                Form form_addHDD = new Form_addHDD(true, -1);
+                Form form_addHDD = new Form_addHDD(true, -1, this);
+                
                 form_addHDD.ShowDialog();
             }
 
             // Появление формы Form_addMotherboard
             if (listBox1.SelectedIndex == 4) {
-                Form form_addMotherboard = new Form_addMotherboard(true, -1);
+                Form form_addMotherboard = new Form_addMotherboard(true, -1, this);
                 form_addMotherboard.ShowDialog();
             }
 
             // Появление формы Form_addPeripheral
             if (listBox1.SelectedIndex == 5) {
-                Form form_addPeripheral = new Form_addPeripheral(true, -1);
+                Form form_addPeripheral = new Form_addPeripheral(true, -1, this);
                 form_addPeripheral.ShowDialog();
             }
 
             // Появление формы Form_addProcessor
             if (listBox1.SelectedIndex == 6) {
-                Form form_addProcessor = new Form_addProcessor(true, -1);
+                Form form_addProcessor = new Form_addProcessor(true, -1, this);
                 form_addProcessor.ShowDialog();
             }
 
             // Появление формы Form_addRAM
             if (listBox1.SelectedIndex == 7) { 
-                Form form_addRAM = new Form_addRAM(true, -1);
+                Form form_addRAM = new Form_addRAM(true, -1, this);
                 form_addRAM.ShowDialog();
             }
+
         }
 
         private void button3_Click(object sender, EventArgs e) //Edit button
@@ -140,58 +142,59 @@ namespace Comp_park_app_form {
 
             if (listBox1.SelectedIndex == 0)
             {
-                Form form_addComputer = new Form_addComputer(false, index);
+                Form form_addComputer = new Form_addComputer(false, index, this);
                 form_addComputer.ShowDialog();
             }
 
             // Появление формы Form_addDepartment
             if (listBox1.SelectedIndex == 1)
             {
-                Form form_addDepartment = new Form_addDepartment(false, index);
+                Form form_addDepartment = new Form_addDepartment(false, index, this);
                 form_addDepartment.ShowDialog();
             }
 
             // Появление формы Form_addEmployee
             if (listBox1.SelectedIndex == 2)
             {
-                Form form_addEmployee = new Form_addEmployee(false, index);
+                Form form_addEmployee = new Form_addEmployee(false, index, this);
                 form_addEmployee.ShowDialog();
             }
 
             // Появление формы Form_addHDD
             if (listBox1.SelectedIndex == 3)
             {
-                Form form_addHDD = new Form_addHDD(false, index);
+                Form form_addHDD = new Form_addHDD(false, index, this);
                 form_addHDD.ShowDialog();
             }
 
             // Появление формы Form_addMotherboard
             if (listBox1.SelectedIndex == 4)
             {
-                Form form_addMotherboard = new Form_addMotherboard(false, index);
+                Form form_addMotherboard = new Form_addMotherboard(false, index, this);
                 form_addMotherboard.ShowDialog();
             }
 
             // Появление формы Form_addPeripheral
             if (listBox1.SelectedIndex == 5)
             {
-                Form form_addPeripheral = new Form_addPeripheral(false, index);
+                Form form_addPeripheral = new Form_addPeripheral(false, index, this);
                 form_addPeripheral.ShowDialog();
             }
 
             // Появление формы Form_addProcessor
             if (listBox1.SelectedIndex == 6)
             {
-                Form form_addProcessor = new Form_addProcessor(false, index);
+                Form form_addProcessor = new Form_addProcessor(false, index, this);
                 form_addProcessor.ShowDialog();
             }
 
             // Появление формы Form_addRAM
             if (listBox1.SelectedIndex == 7)
             {
-                Form form_addRAM = new Form_addRAM(false, index);
+                Form form_addRAM = new Form_addRAM(false, index, this);
                 form_addRAM.ShowDialog();
             }
+
         }
 
         private void button_Delete_Click(object sender, EventArgs e)
@@ -205,6 +208,7 @@ namespace Comp_park_app_form {
                 {
                     ComputerFunctions computer = new ComputerFunctions();
                     computer.Delete(index);
+                    Update_datagridview(0);
                 }
             }
 
@@ -216,6 +220,7 @@ namespace Comp_park_app_form {
                 {
                     DepartmentFunctions department = new DepartmentFunctions();
                     department.Delete(index);
+                    Update_datagridview(1);
                 }
             }
 
@@ -227,6 +232,7 @@ namespace Comp_park_app_form {
                 {
                     EmployeeFunctions employee = new EmployeeFunctions();
                     employee.Delete(index);
+                    Update_datagridview(2);
                 }
             }
 
@@ -238,6 +244,7 @@ namespace Comp_park_app_form {
                 {
                     HDDFunctions hdd = new HDDFunctions();
                     hdd.Delete(index);
+                    Update_datagridview(3);
                 }
             }
 
@@ -249,6 +256,7 @@ namespace Comp_park_app_form {
                 {
                     MotherboardFunctions motherboard = new MotherboardFunctions();
                     motherboard.Delete(index);
+                    Update_datagridview(4);
                 }
             }
 
@@ -260,6 +268,7 @@ namespace Comp_park_app_form {
                 {
                     PeripheralFunctions peripheral = new PeripheralFunctions();
                     peripheral.Delete(index);
+                    Update_datagridview(5);
                 }
             }
 
@@ -271,6 +280,7 @@ namespace Comp_park_app_form {
                 {
                     ProcessorFunctions processor = new ProcessorFunctions();
                     processor.Delete(index);
+                    Update_datagridview(6);
                 }
             }
 
@@ -282,8 +292,56 @@ namespace Comp_park_app_form {
                 {
                     RAMFunctions ram = new RAMFunctions();
                     ram.Delete(index);
+                    Update_datagridview(7);
                 }
             }
+
         }
+
+       public void Update_datagridview(int index) //Update datagridview when adding new record or editing record or deleting
+       {
+            switch (index)
+            {
+                case 0: //Computers
+                    Context c0 = new Context();
+                    dataGridView1.DataSource = c0.Computers.ToList();
+                    /*dataGridView1.Columns[1].Visible = false;
+                    dataGridView1.Columns[2].Visible = false;
+                    dataGridView1.Columns[5].Visible = false;
+                    dataGridView1.Columns[6].Visible = false;
+                    dataGridView1.Columns[7].Visible = false;
+                    dataGridView1.Columns[8].Visible = false;*/
+                    break;
+                case 1: //Departments
+                    Context c1 = new Context();
+                    dataGridView1.DataSource = c1.Departments.ToList();
+                    break;
+                case 2: //Employees
+                    Context c2 = new Context();
+                    dataGridView1.DataSource = c2.Employees.ToList();
+                    break;
+                case 3: //HDDs
+                    Context c3 = new Context();
+                    dataGridView1.DataSource = c3.HDDs.ToList();
+                    break;
+                case 4: //Motherboards
+                    Context c4 = new Context();
+                    dataGridView1.DataSource = c4.Motherboards.ToList();
+                    break;
+                case 5: //Peripherals
+                    Context c5 = new Context();
+                    dataGridView1.DataSource = c5.Peripherals.ToList();
+                    break;
+                case 6: //Processors
+                    Context c6 = new Context();
+                    dataGridView1.DataSource = c6.Processors.ToList();
+                    break;
+                case 7: //RAMs
+                    Context c7 = new Context();
+                    dataGridView1.DataSource = c7.RAMs.ToList();
+                    break;
+            }
+        }
+
     }
 }

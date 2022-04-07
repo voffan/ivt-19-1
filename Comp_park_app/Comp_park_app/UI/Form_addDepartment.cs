@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comp_park_app.Functions;
+using Comp_park_app_form;
 
 namespace Comp_park_app
 {
@@ -15,13 +16,15 @@ namespace Comp_park_app
     {
         bool Type_Add;
         int id;
-        public Form_addDepartment(bool Add, int index)
+        Form1 frm1;
+        public Form_addDepartment(bool Add, int index, Form1 fr1)
         {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
             id = index;
+            frm1 = fr1;
         }
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
@@ -52,6 +55,7 @@ namespace Comp_park_app
             {
                 DepartmentFunctions Department = new DepartmentFunctions();
                 Department.Add(textBox_name.Text, Convert.ToInt32(textBox_Manufacturer.Text));
+                frm1.Update_datagridview(1);
                 this.Close();
             }
             else
@@ -66,6 +70,7 @@ namespace Comp_park_app
             {
                 DepartmentFunctions Department = new DepartmentFunctions();
                 Department.Edit(id, textBox_name.Text, Convert.ToInt32(textBox_Manufacturer.Text));
+                frm1.Update_datagridview(1);
                 this.Close();
             }
             else

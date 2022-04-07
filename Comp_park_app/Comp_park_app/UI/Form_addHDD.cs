@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comp_park_app.Functions;
+using Comp_park_app_form;
 
 namespace Comp_park_app
 {
@@ -15,14 +16,18 @@ namespace Comp_park_app
     {
         bool Type_Add;
         int id;
-        public Form_addHDD(bool Add, int index)
+        Form1 frm1;
+        public Form_addHDD(bool Add, int index, Form1 fr1)
         {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
             id = index;
+            frm1 = fr1;
         }
+
+        
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
             this.Close();
@@ -53,6 +58,7 @@ namespace Comp_park_app
             {
                 HDDFunctions HDD = new HDDFunctions();
                 HDD.Add(textBox_name.Text, textBox_Manufacturer.Text, Convert.ToInt32(textBox_capacity.Text));
+                frm1.Update_datagridview(3);
                 this.Close();
             }
             else
@@ -67,6 +73,7 @@ namespace Comp_park_app
             {
                 HDDFunctions HDD = new HDDFunctions();
                 HDD.Edit(id, textBox_name.Text, textBox_Manufacturer.Text, Convert.ToInt32(textBox_capacity.Text));
+                frm1.Update_datagridview(3);
                 this.Close();
             }
             else

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comp_park_app.Functions;
+using Comp_park_app_form;
 
 namespace Comp_park_app
 {
@@ -15,13 +16,15 @@ namespace Comp_park_app
     {
         bool Type_Add;
         int id;
-        public Form_addPeripheral(bool Add, int index)
+        Form1 frm1;
+        public Form_addPeripheral(bool Add, int index, Form1 fr1)
         {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
             Type_Add = Add;
             id = index;
+            frm1 = fr1;
         }
         private void button2_Click(object sender, EventArgs e) //Закрытие формы
         {
@@ -35,15 +38,20 @@ namespace Comp_park_app
                 {
                     comboBox_Status.Items.Add(item);
                 }
+
+            comboBox_Status.DropDownStyle = ComboBoxStyle.DropDownList;
+
                 using (Context c = new Context())
                 {
                     comboBox_Department.DataSource = c.Departments.ToList();
                     comboBox_Department.DisplayMember = "Name";
                     comboBox_Department.ValueMember = "Id";
+                comboBox_Department.DropDownStyle = ComboBoxStyle.DropDownList;
 
                     comboBox_Employee.DataSource = c.Employees.ToList();
                     comboBox_Employee.DisplayMember = "Name";
                     comboBox_Employee.ValueMember = "Id";
+                comboBox_Employee.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
             
             if (!Type_Add)
@@ -55,8 +63,8 @@ namespace Comp_park_app
                     textBox_name.Text = peripheral.Name;
                     textBox_itemno.Text = peripheral.ItemNo;
                     comboBox_Status.SelectedItem = peripheral.Status;
-                    comboBox_Department.SelectedItem = peripheral.Department;
-                    comboBox_Employee.SelectedItem = peripheral.Employee;
+                    comboBox_Department.SelectedItem = c.Departments.Find(peripheral.DepartmentId);
+                    comboBox_Employee.SelectedItem = c.Employees.Find(peripheral.EmployeeId);
                 }
                 //For edit mode
             }
@@ -77,6 +85,7 @@ namespace Comp_park_app
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
                 Peripheral.Add(name, itemno, status, departmentid, employeeid);
+                frm1.Update_datagridview(5);
                 this.Close();
             }
             else
@@ -97,6 +106,7 @@ namespace Comp_park_app
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
                 Peripheral.Edit(id, name, itemno, status, departmentid, employeeid);
+                frm1.Update_datagridview(5);
                 this.Close();
             }
             else
