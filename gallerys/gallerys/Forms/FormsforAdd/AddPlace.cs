@@ -12,9 +12,10 @@ namespace gallerys.Forms.FormsforAdd
 {
     public partial class AddPlace : Form
     {
-        public AddPlace()
+        public AddPlace(string s, string s1)
         {
             InitializeComponent();
+            this.Text = s + " " + s1;
         }
     }
 }

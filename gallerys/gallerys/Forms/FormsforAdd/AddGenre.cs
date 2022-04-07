@@ -12,9 +12,10 @@ namespace gallerys.Forms.FormsforAdd
 {
     public partial class AddGenre : Form
     {
-        public AddGenre()
+        public AddGenre(string s, string s1)
         {
             InitializeComponent();
+            this.Text = s + " " + s1;
         }
     }
 }

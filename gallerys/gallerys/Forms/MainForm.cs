@@ -34,25 +34,26 @@ namespace gallerys
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string s = "Добавить";
             //Картины Жанры Авторы Сотрудники Журнал передвижения картин Выставки
             if (comboBox1.Text == "Картины")
             {
-                AddPaint add = new AddPaint();
+                AddPaint add = new AddPaint(s, comboBox1.Text);
                 add.ShowDialog();
             }
             if (comboBox1.Text == "Жанры")
             {
-                AddGenre add = new AddGenre();
+                AddGenre add = new AddGenre(s, comboBox1.Text);
                 add.ShowDialog();
             }
             if (comboBox1.Text == "Авторы")
             {
-                AddAuthors add = new AddAuthors();
+                AddAuthors add = new AddAuthors(s, comboBox1.Text);
                 add.ShowDialog();
             }
             if (comboBox1.Text == "Сотрудники")
             {
-                AddEmployee add = new AddEmployee();
+                AddEmployee add = new AddEmployee(s, comboBox1.Text);
                 add.ShowDialog();
             }
             InitTable();
@@ -86,6 +87,11 @@ namespace gallerys
                 dataGridView1.DataSource = c.Exhibitions.ToList();
             }
             label1.Text = "Текущий список: " + selectedtable;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

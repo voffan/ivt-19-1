@@ -156,7 +156,6 @@ namespace gallerys.Forms.FormsforAdd
             this.Controls.Add(this.textBox1);
             this.Name = "AddAuthors";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Добавление автора";
             this.ResumeLayout(false);
             this.PerformLayout();
 

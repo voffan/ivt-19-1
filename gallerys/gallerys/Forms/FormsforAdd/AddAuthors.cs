@@ -18,9 +18,10 @@ namespace gallerys.Forms.FormsforAdd
 {
     public partial class AddAuthors : Form
     {
-        public AddAuthors()
+        public AddAuthors(string s, string s1)
         {
             InitializeComponent();
+            this.Text = s + " " + s1;
         }
 
         private void button1_Click(object sender, EventArgs e)
