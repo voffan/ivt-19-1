@@ -17,9 +17,10 @@ namespace gallerys.Forms.FormsforAdd
 {
     public partial class AddEmployee : Form
     {
-        public AddEmployee()
+        public AddEmployee(string s, string s1)
         {
             InitializeComponent();
+            this.Text = s + " " + s1;
         }
 
         private void button1_Click(object sender, EventArgs e)

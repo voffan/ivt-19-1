@@ -26,7 +26,9 @@ namespace gallerys
             try
             {
                 Connection.employeeSer.Login(log, pass);
+                string s = Connection.employeeSer.CurrentEmployee.Name;
                 MainForm frm1 = new MainForm();
+                MessageBox.Show("Приветсвуем вас, "+s);
                 frm1.ShowDialog();
                 Close();
             }
