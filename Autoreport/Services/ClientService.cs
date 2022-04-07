@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Autoreport.Database;
 using Autoreport.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Autoreport.Services
 {
@@ -36,18 +37,6 @@ namespace Autoreport.Services
                 return db.Clients.ToList();
             }
         }
-
-       /* public List<Client> GetByIds(List<int> ids)
-        {
-            using (DataContext db = Connection.Connect())
-            {
-                IQueryable<Client> clients = db.Clients
-                    .Where(c => ids.Any(item => item == c.Id));
-
-                return clients.ToList();
-            }
-        }*/
-
         public Client GetById(int client_id)
         {
             using (DataContext db = Connection.Connect())
@@ -60,9 +49,19 @@ namespace Autoreport.Services
             }
         }
 
-        public void Get()
+        public Client Get(int Id)
         {
+            using (DataContext db = Connection.Connect())
+            {
+                Client client = db.Clients
+                .FirstOrDefault(x => x.Id == Id);
+                return client;
+            }
+        }
 
+        private void CheckExpiration(Client client, DataContext db)
+        {
+            throw new NotImplementedException();
         }
 
         public void Delete(int Id)
@@ -74,9 +73,18 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit()
+        public void Edit(Client editingEntity,string lastName, string firstName, string middleName, string phone1, string phone2)
         {
-
+            using (DataContext db = Connection.Connect())
+            {
+                db.Entry(editingEntity).State = EntityState.Modified;
+                editingEntity.Last_name = lastName;
+                editingEntity.First_name = firstName;
+                editingEntity.Middle_name = middleName;
+                editingEntity.Phone_number1 = phone1;
+                editingEntity.Phone_number2 = phone2;
+                db.SaveChanges();
+            }
         }
     }
 }
