@@ -146,7 +146,7 @@ namespace Comp_park_app
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_name);
             this.Name = "Form_addEmployee";
-            this.Text = "Form2";
+            this.Text = "Form_Employee";
             this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

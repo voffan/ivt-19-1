@@ -195,7 +195,7 @@ namespace Comp_park_app
             this.Controls.Add(this.textBox_name);
             this.Controls.Add(this.textBox_itemno);
             this.Name = "Form_addPeripheral";
-            this.Text = "Form2";
+            this.Text = "Form_Peripheral";
             this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

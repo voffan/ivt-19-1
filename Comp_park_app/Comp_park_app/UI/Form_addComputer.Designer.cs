@@ -311,7 +311,7 @@ namespace Comp_park_app
             this.Controls.Add(this.comboBox_RAM);
             this.Controls.Add(this.comboBox_HDD);
             this.Name = "Form_addComputer";
-            this.Text = "Form_addComputer";
+            this.Text = "Form_Computer";
             this.Load += new System.EventHandler(this.Form_addComputer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

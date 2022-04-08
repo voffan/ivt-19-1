@@ -124,7 +124,7 @@ namespace Comp_park_app
             this.Controls.Add(this.textBox_Manufacturer);
             this.Controls.Add(this.textBox_name);
             this.Name = "Form_addMotherboard";
-            this.Text = "Form2";
+            this.Text = "Form_Motherboard";
             this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
