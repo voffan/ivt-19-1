@@ -39,10 +39,9 @@ namespace Autoreport.UI.Edit
         {
             if (Loaded)
                 return;
-            Country[] countries = Connection.filmService.GetCountries().ToArray();
-            genresBox.Items.AddRange(Connection.filmService.GetGenres().ToArray());
-            countryBox.Items.AddRange(countries);
-            countryBox.SelectedItem = countries.Where(c => c.Name == "США").ToList()[0];
+            countryBox.DataSource = Connection.Connect().Countries.ToList();
+            countryBox.DisplayMember = "Name";
+            countryBox.ValueMember = "Id";
         }
 
         protected override void OnShown(EventArgs e)
@@ -70,7 +69,7 @@ namespace Autoreport.UI.Edit
 
             //var selectedDirectors = Connection.filmService.GetFilmsDirectors().Where(d => directors_ids.Contains(d.Id)).ToList();
 
-            Connection.filmService.Edit(editingEntity, filmName, filmDate, (Country)countryBox.SelectedItem, directors, genresBox.SelectedItems.Cast<Genre>().ToList());
+            Connection.filmService.Edit(editingEntity, filmName, filmDate,(int)countryBox.SelectedValue, directors, genresBox.SelectedItems.Cast<Genre>().ToList());
             CloseHandler();
             Close();
         }
@@ -96,7 +95,7 @@ namespace Autoreport.UI.Edit
             filmDateText.Text = editingEntity.Date.ToString();
             selectedBox.Items.AddRange(editingEntity.FilmDirectors.ToArray());
             //genresBox.Items.AddRange(editingEntity.Genres.ToArray());
-            countryBox.Text = editingEntity.FilmCountry.ToString();
+            countryBox.SelectedItem = editingEntity.FilmCountry.Name;
         }
         private void selectBtn_Click(object sender, EventArgs e)
         {

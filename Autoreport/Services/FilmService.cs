@@ -98,14 +98,14 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit(Film editingEntity, string filmName, DateTime filmDate, Country country, List<Person> director, List<Genre> genres)
+        public void Edit(Film editingEntity, string filmName, DateTime filmDate, int country_id, List<Person> director, List<Genre> genres)
         {
             using (DataContext db = Connection.Connect())
             {
                 db.Entry(editingEntity).State = EntityState.Modified;
                 editingEntity.Name = filmName;
                 editingEntity.Date = filmDate;
-                editingEntity.FilmCountry = country;
+                editingEntity.FilmCountry = db.Countries.Find(country_id);
                 editingEntity.FilmDirectors = director;
                 editingEntity.Genres = genres;
                 db.SaveChanges();
