@@ -20,7 +20,7 @@ namespace Korobki_project.UI
             InitializeComponent();
             Context c = new Context();
             dataGridView1.DataSource = c.Shifts.ToList();
-            
+            dataGridView1.Columns[0].Visible = false;
         }
     }
 }

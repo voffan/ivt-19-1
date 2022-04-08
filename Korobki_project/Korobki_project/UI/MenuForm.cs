@@ -97,45 +97,45 @@ namespace Korobki_project
                 case 1:
                     EmployeeAddForm employeeAddForm = new EmployeeAddForm();
                     employeeAddForm.Show();
-                    this.Close();
+                    this.Hide();
                     break;
                 case 2:
                     PlanFromAdd planFromAdd = new PlanFromAdd();
                     planFromAdd.Show();
-                    this.Close();
+                    this.Hide();
                     break;
-				/*case 3:
+                /*case 3:
 					ProductionForm productionForm = new ProductionForm();
 					productionForm.Show();
-					this.Close();
+					this.Hide();
 					break;*/
-				case 4:
+                case 4:
                     PositionsAddForm positionsAddForm = new PositionsAddForm();
                     positionsAddForm.Show();
-                    this.Close();
+                    this.Hide();
                     break;
                 case 5:
                     ProductAddForm productAddForm = new ProductAddForm();
                     productAddForm.Show();
-                    this.Close();
+                    this.Hide();
                     break;
-                /*case 6:
-                    ScheduleForm scheduleForm = new ScheduleForm();
-                    scheduleForm.Show();
-                    this.Close();
-                    break;*/
-                /*case 7:
-                    ShiftForm shiftForm = new ShiftForm();
-                    shiftForm.Show();
-                    this.Close();
-                    break;*/
-                /*case 8:
-                    TypeeForm typeeForm = new TypeeForm();
-                    typeeForm.Show();
-                    this.Close();
-                    break;*/
+                    /*case 6:
+                        ScheduleForm scheduleForm = new ScheduleForm();
+                        scheduleForm.Show();
+                        this.Hide();
+                        break;*/
+                    /*case 7:
+                        ShiftForm shiftForm = new ShiftForm();
+                        shiftForm.Show();
+                        this.Hide();
+                        break;*/
+                    /*case 8:
+                        TypeeForm typeeForm = new TypeeForm();
+                        typeeForm.Show();
+                        this.Hide();
+                        break;*/
             }
-		}
+        }
 
 		private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
