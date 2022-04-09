@@ -34,13 +34,13 @@ namespace Autoreport.UI.Edit
             this.label1 = new System.Windows.Forms.Label();
             this.dataText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.sumText = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.positionDepositBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.selectedBox = new System.Windows.Forms.ListBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.sumText = new System.Windows.Forms.NumericUpDown();
             this.flowLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sumText)).BeginInit();
             this.SuspendLayout();
@@ -92,6 +92,19 @@ namespace Autoreport.UI.Edit
             this.label7.Size = new System.Drawing.Size(232, 25);
             this.label7.TabIndex = 1;
             this.label7.Text = "Сумма";
+            // 
+            // sumText
+            // 
+            this.sumText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.sumText.Location = new System.Drawing.Point(241, 34);
+            this.sumText.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.sumText.Name = "sumText";
+            this.sumText.Size = new System.Drawing.Size(232, 25);
+            this.sumText.TabIndex = 15;
             // 
             // label13
             // 
@@ -159,20 +172,7 @@ namespace Autoreport.UI.Edit
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // sumText
-            // 
-            this.sumText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.sumText.Location = new System.Drawing.Point(241, 34);
-            this.sumText.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.sumText.Name = "sumText";
-            this.sumText.Size = new System.Drawing.Size(232, 25);
-            this.sumText.TabIndex = 15;
-            // 
-            // AddDepositF
+            // EditDepositF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -183,8 +183,8 @@ namespace Autoreport.UI.Edit
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(516, 243);
             this.MinimumSize = new System.Drawing.Size(516, 243);
-            this.Name = "AddDepositF";
-            this.Text = "AddDepositForm";
+            this.Name = "EditDepositF";
+            this.Text = "Редактировать депозит";
             this.Load += new System.EventHandler(this.AddDepositForm_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();

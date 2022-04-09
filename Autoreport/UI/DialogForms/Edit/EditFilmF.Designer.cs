@@ -38,6 +38,7 @@ namespace Autoreport.UI.Edit
             this.label2 = new System.Windows.Forms.Label();
             this.filmDateText = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.removeSelectedBtn = new System.Windows.Forms.Button();
             this.selectBtn = new System.Windows.Forms.Button();
@@ -46,10 +47,9 @@ namespace Autoreport.UI.Edit
             this.genresBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.countryBox = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayout.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // resetBtn
@@ -144,6 +144,15 @@ namespace Autoreport.UI.Edit
             this.label3.TabIndex = 12;
             this.label3.Text = "Режиссеры";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.selectedBox);
+            this.panel2.Location = new System.Drawing.Point(241, 65);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(232, 93);
+            this.panel2.TabIndex = 18;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.removeSelectedBtn);
@@ -235,16 +244,7 @@ namespace Autoreport.UI.Edit
             this.countryBox.Size = new System.Drawing.Size(232, 25);
             this.countryBox.TabIndex = 23;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.selectedBox);
-            this.panel2.Location = new System.Drawing.Point(241, 65);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(232, 93);
-            this.panel2.TabIndex = 18;
-            // 
-            // AddFilmF
+            // EditFilmF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -255,13 +255,13 @@ namespace Autoreport.UI.Edit
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(515, 429);
             this.MinimumSize = new System.Drawing.Size(515, 429);
-            this.Name = "AddFilmF";
-            this.Text = "AddFilmForm";
+            this.Name = "EditFilmF";
+            this.Text = "Редактировать фильм";
             this.Load += new System.EventHandler(this.AddFilmForm_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

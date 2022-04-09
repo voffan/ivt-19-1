@@ -289,7 +289,7 @@ namespace Autoreport.UI.Edit
             this.MaximumSize = new System.Drawing.Size(565, 500);
             this.MinimumSize = new System.Drawing.Size(565, 200);
             this.Name = "EditOrderF";
-            this.Text = "Добавить заказ";
+            this.Text = "Редактировать заказ";
             this.Load += new System.EventHandler(this.OrderF_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();

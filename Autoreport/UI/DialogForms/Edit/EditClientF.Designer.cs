@@ -186,7 +186,7 @@ namespace Autoreport.UI.Edit
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // AddClientF
+            // EditClientF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -197,8 +197,8 @@ namespace Autoreport.UI.Edit
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(513, 274);
             this.MinimumSize = new System.Drawing.Size(513, 274);
-            this.Name = "AddClientF";
-            this.Text = "AddClientForm";
+            this.Name = "EditClientF";
+            this.Text = "Редактировать клиента";
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.ResumeLayout(false);

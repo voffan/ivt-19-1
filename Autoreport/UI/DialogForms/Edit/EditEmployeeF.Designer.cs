@@ -518,7 +518,7 @@ namespace Autoreport.UI.Edit
             this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
-            // AddEmployeeF
+            // EditEmployeeF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -529,8 +529,8 @@ namespace Autoreport.UI.Edit
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(516, 500);
             this.MinimumSize = new System.Drawing.Size(516, 200);
-            this.Name = "AddEmployeeF";
-            this.Text = "Добавить сотрудника";
+            this.Name = "EditEmployeeF";
+            this.Text = "Редактировать сотрудника";
             this.Load += new System.EventHandler(this.AddEmployeeForm_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

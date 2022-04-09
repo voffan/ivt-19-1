@@ -19,6 +19,7 @@ namespace Autoreport.UI.Edit
     {
         Button filmDirectorRelatedTab;
         Film editingEntity;
+
         public EditFilmF(Button filmDirectorRelatedTab, Action OnCloseHandler) : base()
         {
             InitializeComponent();
@@ -37,11 +38,30 @@ namespace Autoreport.UI.Edit
 
         public void AddFilmForm_Load(object sender, EventArgs e)
         {
+            if (editingEntity == null)
+            {
+                // не был вызван LoadField с корректным айди
+                MessageBox.Show("Не проинициализированы поля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (Loaded)
                 return;
-            countryBox.DataSource = Connection.Connect().Countries.ToList();
+
+            Console.WriteLine("form loaded");
+            countryBox.DataSource = Connection.filmService.GetCountries();
             countryBox.DisplayMember = "Name";
             countryBox.ValueMember = "Id";
+            countryBox.SelectedValue = editingEntity.FilmCountry.Id;
+
+            genresBox.DataSource = Connection.filmService.GetGenres();
+            genresBox.DisplayMember = "Name";
+            genresBox.ValueMember = "Id";
+
+            for (int i = 0; i < editingEntity.Genres.Count; i++)
+            {
+                genresBox.SetSelected(genresBox.Items.IndexOf(genresBox.Items.Cast<object>().First(x => ((Genre)x).Id == editingEntity.Genres[i].Id)), true);
+            }
         }
 
         protected override void OnShown(EventArgs e)
@@ -83,20 +103,21 @@ namespace Autoreport.UI.Edit
         {
             removeSelectedBtn.Enabled = selectedBox.SelectedIndex != -1;
         }
+
         public override void LoadField(int entityId)
         {
             editingEntity = Connection.filmService.Get(entityId);
 
             if (editingEntity == null)
             {
-                MessageBox.Show("Такого фильма не сущесвует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Такого фильма не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             filmNameText.Text = editingEntity.Name;
             filmDateText.Text = editingEntity.Date.ToString();
             selectedBox.Items.AddRange(editingEntity.FilmDirectors.ToArray());
-            //genresBox.Items.AddRange(editingEntity.Genres.ToArray());
-            countryBox.SelectedItem = editingEntity.FilmCountry.Name;
         }
+
         private void selectBtn_Click(object sender, EventArgs e)
         {
             this.relatedTab = filmDirectorRelatedTab;

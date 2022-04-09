@@ -138,7 +138,7 @@ namespace Autoreport.UI.Edit
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // AddFilmDirectorF
+            // EditFilmDirectorF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,8 +149,8 @@ namespace Autoreport.UI.Edit
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(516, 212);
             this.MinimumSize = new System.Drawing.Size(516, 212);
-            this.Name = "AddFilmDirectorF";
-            this.Text = "AddFilmDirectorForm";
+            this.Name = "EditFilmDirectorF";
+            this.Text = "Редактировать режиссера";
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.ResumeLayout(false);

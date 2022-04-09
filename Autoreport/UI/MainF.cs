@@ -401,7 +401,8 @@ namespace Autoreport.UI
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            currentEditForm.LoadField(Int32.Parse(dataGridView.SelectedRows[0].Cells["Id"].Value.ToString()));
+            int selectedItemId = Int32.Parse(dataGridView.SelectedRows[0].Cells["Id"].Value.ToString());
+            currentEditForm.LoadField(selectedItemId);
             currentEditForm.ShowDialog(this);
             currentTabButton.PerformClick();
         }
