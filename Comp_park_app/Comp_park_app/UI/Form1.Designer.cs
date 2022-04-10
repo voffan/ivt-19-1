@@ -39,6 +39,8 @@ namespace Comp_park_app_form
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button_Delete = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button_search = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,11 +133,30 @@ namespace Comp_park_app_form
             this.button_Delete.UseVisualStyleBackColor = true;
             this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(414, 40);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(224, 23);
+            this.textBox1.TabIndex = 8;
+            // 
+            // button_search
+            // 
+            this.button_search.Location = new System.Drawing.Point(665, 40);
+            this.button_search.Name = "button_search";
+            this.button_search.Size = new System.Drawing.Size(75, 23);
+            this.button_search.TabIndex = 9;
+            this.button_search.Text = "Поиск";
+            this.button_search.UseVisualStyleBackColor = true;
+            this.button_search.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 668);
+            this.Controls.Add(this.button_search);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -162,6 +183,8 @@ namespace Comp_park_app_form
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button_Delete;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button_search;
     }
 }
 

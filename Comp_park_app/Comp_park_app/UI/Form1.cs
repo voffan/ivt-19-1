@@ -343,5 +343,76 @@ namespace Comp_park_app_form {
             }
         }
 
+        private void button4_Click(object sender, EventArgs e) { // Поиск в списках
+
+            using (Context context = new Context()) {
+
+                /*
+                if (listBox1.SelectedIndex == 0) {
+                    // Query for all blogs with names starting with B
+                    var search = context.Computers
+                    .Where(b => b.Name.Contains(textBox1.Text))
+                    .ToList();
+                    dataGridView1.DataSource = search;
+                }
+                */
+
+                //Поиск в списке департаментов по названию
+                if (listBox1.SelectedIndex == 1) { 
+                    var search = context.Departments
+                    .Where(b => b.Name.Contains(textBox1.Text))
+                    .ToList();
+                    dataGridView1.DataSource = search;
+                }
+
+                //Поиск в списке сотрудников по фИО
+                if (listBox1.SelectedIndex == 2) { 
+                    var search = context.Employees
+                    .Where(b => b.Name.Contains(textBox1.Text))
+                    .ToList();
+                    dataGridView1.DataSource = search;
+                }
+
+                //Поиск в списке жестких дисков по названию
+                if (listBox1.SelectedIndex == 3) { 
+                    var search = context.HDDs
+                    .Where(b => b.Name.Contains(textBox1.Text))
+                    .ToList();
+                    dataGridView1.DataSource = search;
+                }
+
+                //Поиск в списке материнских плат по названию
+                if (listBox1.SelectedIndex == 4) { 
+                    var search = context.Motherboards
+                    .Where(b => b.Name.Contains(textBox1.Text))
+                    .ToList();
+                    dataGridView1.DataSource = search;
+                }
+
+                //Поиск в списке периферийной технике по названию
+                if (listBox1.SelectedIndex == 5) { 
+                    var search = context.Peripherals
+                    .Where(b => b.Name.Contains(textBox1.Text))
+                    .ToList();
+                    dataGridView1.DataSource = search;
+                }
+
+                //Поиск в списке процессоров по названию
+                if (listBox1.SelectedIndex == 6) { 
+                    var search = context.Processors
+                    .Where(b => b.Name.Contains(textBox1.Text))
+                    .ToList();
+                    dataGridView1.DataSource = search;
+                }
+
+                //Поиск в списке оперативной памяти по названию
+                if (listBox1.SelectedIndex == 7) {
+                    var search = context.RAMs
+                    .Where(b => b.Name.Contains(textBox1.Text))
+                    .ToList();
+                    dataGridView1.DataSource = search;
+                }
+            }
+        }
     }
 }
