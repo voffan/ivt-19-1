@@ -11,7 +11,9 @@ using Autoreport.UI.Edit;
 using Autoreport.UI.Edit.Parents;
 using Autoreport.Models;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Autoreport.UI
 {
@@ -25,7 +27,7 @@ namespace Autoreport.UI
         Select
     }
 
-    public partial class MainF : Form
+    public partial class MainF : BaseForm
     {
         Login Loginer;
 
@@ -35,14 +37,19 @@ namespace Autoreport.UI
         Form currentAddForm;
         BaseEditForm currentEditForm;
         Action<int> currentDeleteAction;
+        Func<List<object>> currentFindFunction;
+        Func<List<object>> currentGetFunction;
 
         List<Button> permittedTabs = new List<Button>(); // вкладки, доступные пользователю
         List<Button> currentlyPermittedActions = new List<Button>(); // действия, доступные на какой-либо вкладке
         List<Button> secondaryTabs; // вкладки, отображающиеся только при определенных условиях
 
-        // соответствие таба и связанного с ним метода
+        // соответствие таба и связанного с ним обработчика нажатия
         // используется в методе TabClicked для того, чтоб не писать кучу if'ов
-        Dictionary<Button, Action<Action<DataGridViewColumn>>> tabAction = new Dictionary<Button, Action<Action<DataGridViewColumn>>>();
+        Dictionary<Button, Action<Action<DataGridViewColumn>, bool>> tabAction = new Dictionary<Button, Action<Action<DataGridViewColumn>, bool>>();
+
+        // соответствие таба и связанного с ним метода получения списка всех данных
+        Dictionary<Button, Func<List<object>>> tabGetAllFunction = new Dictionary<Button, Func<List<object>>>();
 
         DataGridViewCellEventHandler tableItemDoubleClickEvent; // даблклик по строке таблицы
         EventHandler tableItemSelectEvent; // выбор строки из таблицы
@@ -66,9 +73,10 @@ namespace Autoreport.UI
         {
             SetSecondaryTabs();
             SetTabAction();
-            SetEventHandlers();
+            SetTableEventHandlers();
             SetAppearance(1200, 620, 50, 50);
             SetSelectionElementsActive(false);
+            SetSearchPanelActive(false);
 
             Connection.employeeService.Init();
             Login();
@@ -88,6 +96,17 @@ namespace Autoreport.UI
             HideSecondaryTabs();
         }
 
+        private void SetSearchPanelActive(bool v)
+        {
+            if (v)
+            {
+                searchPanel.Show();
+                EnableButtonsOfPanelExcept(new Button[] { }, searchPanel);
+            }
+            else
+                searchPanel.Hide();
+        }
+
         private void SetSecondaryTabs()
         {
             secondaryTabs = new List<Button>() { filmDirectorsSecondaryTab };
@@ -102,9 +121,17 @@ namespace Autoreport.UI
             tabAction.Add(ordersTab, OrdersTab_Click);
             tabAction.Add(depositsTab, DepositsTab_Click);
             tabAction.Add(filmDirectorsSecondaryTab, FilmDirectorsSecondaryTab_Click);
+
+            tabGetAllFunction.Add(employeesTab, () => Connection.employeeService.GetAll().Cast<object>().ToList());
+            tabGetAllFunction.Add(clientsTab, () => Connection.clientService.GetAll().Cast<object>().ToList());
+            tabGetAllFunction.Add(disksTab, () => Connection.diskService.GetAll().Cast<object>().ToList());
+            tabGetAllFunction.Add(filmsTab, () => Connection.filmService.GetAll().Cast<object>().ToList());
+            tabGetAllFunction.Add(ordersTab, () => Connection.orderService.GetAll().Cast<object>().ToList());
+            tabGetAllFunction.Add(depositsTab, () => Connection.depositService.GetAll().Cast<object>().ToList());
+            tabGetAllFunction.Add(filmDirectorsSecondaryTab, () => Connection.filmService.GetFilmsDirectors().Cast<object>().ToList());
         }
 
-        private void SetEventHandlers()
+        private void SetTableEventHandlers()
         {
             tableItemDoubleClickEvent = new DataGridViewCellEventHandler(DataGridItemDoubleClick);
             tableItemSelectEvent = new EventHandler(DataGridItemSelectd);
@@ -230,8 +257,10 @@ namespace Autoreport.UI
             currentTabButton = (Button)sender;
             currentTabButton.BackColor = Color.FromArgb(205, 205, 205);
 
+            currentGetFunction = tabGetAllFunction[currentTabButton];
+
             Action<DataGridViewColumn> GoFirst = CharacteristicSetter();
-            tabAction[currentTabButton](GoFirst); // вызываем метод, связанный с вкладкой
+            tabAction[currentTabButton](GoFirst, true); // вызываем метод, связанный с вкладкой
 
             // выключаем все кнопки-действия за исключением тех, что были добавлены в currentlyPermittedActions
             DisableAllControlButtonsExcept(currentlyPermittedActions.ToArray());
@@ -254,13 +283,17 @@ namespace Autoreport.UI
             dataGridView.Columns["Id"].Visible = false;
         }
 
-        private void EmployeesTab_Click(Action<DataGridViewColumn> GoFirst)
+        private void EmployeesTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn });
 
+            if (updateSearchPanel)
+                UpdateSearchPanel(typeof(Employee));
+
             currentAddForm = new AddEmployeeF();
             currentEditForm = new EditEmployeeF();
-            dataGridView.DataSource = Connection.employeeService.GetAll();
+            dataGridView.DataSource = currentGetFunction().Cast<Employee>().ToList();
+            currentFindFunction = () => Find(Connection.employeeService.GetAll().Cast<object>()).ToList();
 
             GoFirst(dataGridView.Columns["First_name"]);
             GoFirst(dataGridView.Columns["Last_name"]);
@@ -268,24 +301,28 @@ namespace Autoreport.UI
             GoFirst(dataGridView.Columns["EmplPosition"]);
         }
 
-        private void ClientsTab_Click(Action<DataGridViewColumn> GoFirst)
+        private void ClientsTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn, deleteBtn
             });
 
+            if (updateSearchPanel)
+                UpdateSearchPanel(typeof(Client));
+            
             currentDeleteAction = Connection.clientService.Delete;
             currentAddForm = new AddClientF();
             currentEditForm = new EditClientF();
-            dataGridView.DataSource = Connection.clientService.GetAll();
-            
+            dataGridView.DataSource = currentGetFunction().Cast<Client>().ToList();
+            currentFindFunction = () => Find(Connection.clientService.GetAll().Cast<object>()).ToList();
+
             GoFirst(dataGridView.Columns["First_name"]);
             GoFirst(dataGridView.Columns["Last_name"]);
             GoFirst(dataGridView.Columns["Middle_name"]);
             GoFirst(dataGridView.Columns["Phone_number1"]);
         }
 
-        private void DisksTab_Click(Action<DataGridViewColumn> GoFirst)
+        private void DisksTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
         {
             List<Button> permittedActions = null;
 
@@ -296,44 +333,56 @@ namespace Autoreport.UI
 
             currentlyPermittedActions.AddRange(permittedActions);
 
+            if (updateSearchPanel)
+                UpdateSearchPanel(typeof(Disk));
+
             currentAddForm = new AddDiskF(filmsTab, reloadBtn.PerformClick);
             currentEditForm = new EditDiskF(filmsTab, reloadBtn.PerformClick);
             currentDeleteAction = Connection.diskService.Delete;
-            dataGridView.DataSource = Connection.diskService.GetAll();
+            dataGridView.DataSource = currentGetFunction().Cast<Disk>().ToList();
+            currentFindFunction = () => Find(Connection.diskService.GetAll().Cast<object>()).ToList();
 
             GoFirst(dataGridView.Columns["Article"]);
             GoFirst(dataGridView.Columns["Cost"]);
         }
 
-        private void FilmsTab_Click(Action<DataGridViewColumn> GoFirst)
+        private void FilmsTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
                 addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
             });
 
+            if (updateSearchPanel)
+                UpdateSearchPanel(typeof(Film));
+
             currentAddForm = new AddFilmF(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
             currentEditForm = new EditFilmF(filmDirectorsSecondaryTab, reloadBtn.PerformClick);
             currentDeleteAction = Connection.filmService.Delete;
-            dataGridView.DataSource = Connection.filmService.GetAll();
+            dataGridView.DataSource = currentGetFunction().Cast<Film>().ToList();
+            currentFindFunction = () => Find(Connection.filmService.GetAll().Cast<object>()).ToList();
 
             GoFirst(dataGridView.Columns["Name"]);
             GoFirst(dataGridView.Columns["Date"]);
         }
 
-        private void OrdersTab_Click(Action<DataGridViewColumn> GoFirst)
+        private void OrdersTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { 
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn
             });
 
-            dataGridView.DataSource = Connection.orderService.GetAll();
+            if (updateSearchPanel)
+                UpdateSearchPanel(typeof(Order));
+
+            dataGridView.DataSource = currentGetFunction().Cast<Order>().ToList();
+            currentFindFunction = () => Find(Connection.orderService.GetAll().Cast<object>()).ToList();
 
             currentDeleteAction = Connection.orderService.Delete;
             currentAddForm = new AddOrderF(depositsTab, disksTab, reloadBtn.PerformClick);
             currentEditForm = new EditOrderF(depositsTab, disksTab, reloadBtn.PerformClick);
         }
 
-        private void DepositsTab_Click(Action<DataGridViewColumn> GoFirst)
+        private void DepositsTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
         {
             List<Button> permittedActions = null;
 
@@ -344,27 +393,109 @@ namespace Autoreport.UI
 
             currentlyPermittedActions.AddRange(permittedActions);
 
+            if (updateSearchPanel)
+                UpdateSearchPanel(typeof(Deposit));
+
             currentDeleteAction = Connection.depositService.Delete;
             currentAddForm = new AddDepositF(clientsTab, reloadBtn.PerformClick);
             currentEditForm = new EditDepositF(clientsTab, reloadBtn.PerformClick);
-            dataGridView.DataSource = Connection.depositService.GetAll();
+            dataGridView.DataSource = currentGetFunction().Cast<Deposit>().ToList();
+            currentFindFunction = () => Find(Connection.depositService.GetAll().Cast<object>()).ToList();
 
             GoFirst(dataGridView.Columns["DocumentData"]);
             GoFirst(dataGridView.Columns["MoneyValue"]);
             GoFirst(dataGridView.Columns["DepositType"]);
         }
 
-        private void FilmDirectorsSecondaryTab_Click(Action<DataGridViewColumn> GoFirst)
+        private void FilmDirectorsSecondaryTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn });
-            
+
+            if (updateSearchPanel)
+                UpdateSearchPanel(typeof(Person), new string[] { "First_name", "Last_name", "Middle_name" });
+
             currentAddForm = new AddFilmDirectorF();
             currentEditForm = new EditFilmDirectorF();
-            dataGridView.DataSource = Connection.filmService.GetFilmsDirectors();
+            dataGridView.DataSource = currentGetFunction().Cast<Person>().ToList();
+            currentFindFunction = () => Find(Connection.filmService.GetFilmsDirectors().Cast<object>()).ToList();
 
             GoFirst(dataGridView.Columns["First_name"]);
             GoFirst(dataGridView.Columns["Last_name"]);
             GoFirst(dataGridView.Columns["Middle_name"]);
+        }
+
+        private IEnumerable<object> Find(IEnumerable<object> processList)
+        {
+            IEnumerable<Control> ctrls = GetPanelInputControls(searchControlsPanel);
+
+            foreach (object Obj in processList)
+            {
+                foreach (PropertyInfo property in Obj.GetType().GetProperties())
+                {
+                    Control relatedControl = ctrls.FirstOrDefault(x => x.Name == property.Name);
+
+                    if (relatedControl == null)
+                        continue;
+
+                    if (relatedControl.Text.Length > 0)
+                    {
+                        if (property.GetValue(Obj, null).ToString() == relatedControl.Text)
+                        {
+                            yield return Obj;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Добавляет поля для ввода данных, по которым будет производиться поиск
+        /// </summary>
+        /// <param name="T"></param>
+        private void UpdateSearchPanel(Type T, string[] concreteFields = null, string[] exceptFields = null)
+        {
+            searchControlsPanel.Controls.Clear();
+
+            foreach (MemberInfo member in T.GetMembers())
+            {
+                if (member.MemberType == MemberTypes.Property)
+                {
+                    if (exceptFields != null && exceptFields.Contains(member.Name))
+                        return;
+
+                    if (concreteFields != null && !concreteFields.Contains(member.Name))
+                        return;
+
+                    if (member.GetCustomAttributes().OfType<KeyAttribute>().Count() > 0)
+                        continue;
+
+                    foreach (Attribute attribute in member.GetCustomAttributes())
+                    {
+                        if (attribute is DisplayNameAttribute)
+                        {
+                            int index = searchControlsPanel.RowCount - 1;
+
+                            Label textLabel = new Label();
+                            textLabel.AutoSize = false;
+                            textLabel.Dock = DockStyle.Top;
+                            textLabel.Margin = new Padding(0, 0, 0, 2);
+                            textLabel.TextAlign = ContentAlignment.MiddleLeft;
+                            textLabel.Text = ((DisplayNameAttribute)attribute).DisplayName;
+
+                            TextBox searchDataInput = new TextBox();
+                            searchDataInput.Dock = DockStyle.Top;
+                            searchDataInput.Name = member.Name;
+                            searchDataInput.Margin = new Padding(0, 0, 0, 2);
+                            searchDataInput.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+
+                            searchControlsPanel.Controls.Add(textLabel);
+                            searchControlsPanel.Controls.Add(searchDataInput);
+                            searchControlsPanel.RowStyles[index].SizeType = SizeType.Absolute;
+                            searchControlsPanel.RowStyles[index].Height = 26;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -607,13 +738,28 @@ namespace Autoreport.UI
         {
             foreach (Control control in panel.Controls)
             {
-                if (control.GetType() == typeof(Button) && control.Visible)
+                if (control is Button && control.Visible)
                 {
                     control.Enabled = excepted.Contains(control);
                 }
                 else if (typeof(Panel).IsAssignableFrom(control.GetType()))
                 {
                     DisableButtonsOfPanelExcept(excepted, (Panel)control);
+                }
+            }
+        }
+
+        private void EnableButtonsOfPanelExcept(Button[] excepted, Panel panel)
+        {
+            foreach (Control control in panel.Controls)
+            {
+                if (control is Button && control.Visible)
+                {
+                    control.Enabled = !excepted.Contains(control);
+                }
+                else if (typeof(Panel).IsAssignableFrom(control.GetType()))
+                {
+                    EnableButtonsOfPanelExcept(excepted, (Panel)control);
                 }
             }
         }
@@ -736,6 +882,34 @@ namespace Autoreport.UI
             }
 
             reloadBtn.PerformClick();
+        }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            SetSearchPanelActive(true);
+        }
+
+        private void closeSearchPanelBtn_Click(object sender, EventArgs e)
+        {
+            SetSearchPanelActive(false);
+            currentTabButton.PerformClick();
+        }
+
+        private void findBtn_Click(object sender, EventArgs e)
+        {
+            currentlyPermittedActions.Clear();
+            currentGetFunction = currentFindFunction;
+
+            Action<DataGridViewColumn> GoFirst = CharacteristicSetter();
+            tabAction[currentTabButton](GoFirst, false);
+        }
+
+        private void resetFoundBtn_Click(object sender, EventArgs e)
+        {
+            foreach (Control ctrl in GetPanelInputControls(searchControlsPanel))
+            {
+                ClearField(ctrl);
+            }
         }
     }
 }

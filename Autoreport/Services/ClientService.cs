@@ -86,5 +86,10 @@ namespace Autoreport.Services
                 db.SaveChanges();
             }
         }
+
+        public List<Client> Search(params string[] strParams)
+        {
+            return null;
+        }
     }
 }

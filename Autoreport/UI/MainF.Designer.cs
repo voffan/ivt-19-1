@@ -1,7 +1,7 @@
 ﻿
 namespace Autoreport.UI
 {
-    partial class MainF
+    partial class MainF : BaseForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -56,6 +56,12 @@ namespace Autoreport.UI
             this.panel1 = new System.Windows.Forms.Panel();
             this.removeFromSelectedBtn = new System.Windows.Forms.Button();
             this.selectBtn = new System.Windows.Forms.Button();
+            this.searchPanel = new System.Windows.Forms.Panel();
+            this.searchControlsPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.closeSearchPanelBtn = new System.Windows.Forms.Button();
+            this.resetFoundBtn = new System.Windows.Forms.Button();
+            this.findBtn = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.tabsLayout.SuspendLayout();
             this.reportPanel.SuspendLayout();
@@ -64,6 +70,8 @@ namespace Autoreport.UI
             this.controlPanel.SuspendLayout();
             this.selectedItemsPanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.searchPanel.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPanel
@@ -78,7 +86,7 @@ namespace Autoreport.UI
             this.menuPanel.MinimumSize = new System.Drawing.Size(0, 37);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.menuPanel.Size = new System.Drawing.Size(795, 37);
+            this.menuPanel.Size = new System.Drawing.Size(957, 37);
             this.menuPanel.TabIndex = 0;
             // 
             // tabsLayout
@@ -250,7 +258,7 @@ namespace Autoreport.UI
             // 
             this.reportPanel.Controls.Add(this.reportBtn);
             this.reportPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.reportPanel.Location = new System.Drawing.Point(710, 3);
+            this.reportPanel.Location = new System.Drawing.Point(872, 3);
             this.reportPanel.Name = "reportPanel";
             this.reportPanel.Size = new System.Drawing.Size(82, 31);
             this.reportPanel.TabIndex = 7;
@@ -275,7 +283,7 @@ namespace Autoreport.UI
             this.dataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataPanel.Location = new System.Drawing.Point(0, 37);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(393, 472);
+            this.dataPanel.Size = new System.Drawing.Size(203, 472);
             this.dataPanel.TabIndex = 3;
             // 
             // dataGridView
@@ -290,7 +298,7 @@ namespace Autoreport.UI
             this.dataGridView.RowHeadersWidth = 60;
             this.dataGridView.RowTemplate.Height = 25;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(393, 472);
+            this.dataGridView.Size = new System.Drawing.Size(203, 472);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
@@ -325,6 +333,7 @@ namespace Autoreport.UI
             this.searchBtn.TabIndex = 3;
             this.searchBtn.Text = "Поиск";
             this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // reloadBtn
             // 
@@ -381,7 +390,7 @@ namespace Autoreport.UI
             this.controlPanel.Controls.Add(this.editBtn);
             this.controlPanel.Controls.Add(this.addBtn);
             this.controlPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.controlPanel.Location = new System.Drawing.Point(649, 37);
+            this.controlPanel.Location = new System.Drawing.Point(811, 37);
             this.controlPanel.Name = "controlPanel";
             this.controlPanel.Padding = new System.Windows.Forms.Padding(5);
             this.controlPanel.Size = new System.Drawing.Size(146, 472);
@@ -394,7 +403,7 @@ namespace Autoreport.UI
             this.label1.Location = new System.Drawing.Point(5, 5);
             this.label1.MaximumSize = new System.Drawing.Size(0, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 55);
+            this.label1.Size = new System.Drawing.Size(244, 55);
             this.label1.TabIndex = 0;
             this.label1.Text = "Выбранные записи\r\n(дважды кликните по записи, чтобы выбрать ее)";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -410,17 +419,18 @@ namespace Autoreport.UI
             this.selectedItemsBox.Location = new System.Drawing.Point(5, 60);
             this.selectedItemsBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.selectedItemsBox.Name = "selectedItemsBox";
-            this.selectedItemsBox.Size = new System.Drawing.Size(246, 370);
+            this.selectedItemsBox.Size = new System.Drawing.Size(244, 368);
             this.selectedItemsBox.TabIndex = 1;
             // 
             // selectedItemsPanel
             // 
             this.selectedItemsPanel.BackColor = System.Drawing.Color.Silver;
+            this.selectedItemsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.selectedItemsPanel.Controls.Add(this.selectedItemsBox);
             this.selectedItemsPanel.Controls.Add(this.panel1);
             this.selectedItemsPanel.Controls.Add(this.label1);
             this.selectedItemsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.selectedItemsPanel.Location = new System.Drawing.Point(393, 37);
+            this.selectedItemsPanel.Location = new System.Drawing.Point(555, 37);
             this.selectedItemsPanel.Name = "selectedItemsPanel";
             this.selectedItemsPanel.Padding = new System.Windows.Forms.Padding(5);
             this.selectedItemsPanel.Size = new System.Drawing.Size(256, 472);
@@ -431,10 +441,10 @@ namespace Autoreport.UI
             this.panel1.Controls.Add(this.removeFromSelectedBtn);
             this.panel1.Controls.Add(this.selectBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(5, 430);
+            this.panel1.Location = new System.Drawing.Point(5, 428);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(246, 37);
+            this.panel1.Size = new System.Drawing.Size(244, 37);
             this.panel1.TabIndex = 2;
             // 
             // removeFromSelectedBtn
@@ -443,7 +453,7 @@ namespace Autoreport.UI
             this.removeFromSelectedBtn.Enabled = false;
             this.removeFromSelectedBtn.Location = new System.Drawing.Point(123, 3);
             this.removeFromSelectedBtn.Name = "removeFromSelectedBtn";
-            this.removeFromSelectedBtn.Size = new System.Drawing.Size(120, 31);
+            this.removeFromSelectedBtn.Size = new System.Drawing.Size(118, 31);
             this.removeFromSelectedBtn.TabIndex = 2;
             this.removeFromSelectedBtn.Text = "Удалить";
             this.removeFromSelectedBtn.UseVisualStyleBackColor = true;
@@ -461,19 +471,97 @@ namespace Autoreport.UI
             this.selectBtn.UseVisualStyleBackColor = true;
             this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
             // 
-            // MainWindow
+            // searchPanel
+            // 
+            this.searchPanel.BackColor = System.Drawing.Color.Silver;
+            this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchPanel.Controls.Add(this.searchControlsPanel);
+            this.searchPanel.Controls.Add(this.panel3);
+            this.searchPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.searchPanel.Location = new System.Drawing.Point(203, 37);
+            this.searchPanel.Name = "searchPanel";
+            this.searchPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.searchPanel.Size = new System.Drawing.Size(352, 472);
+            this.searchPanel.TabIndex = 9;
+            // 
+            // searchControlsPanel
+            // 
+            this.searchControlsPanel.AutoScroll = true;
+            this.searchControlsPanel.ColumnCount = 2;
+            this.searchControlsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.searchControlsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.searchControlsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchControlsPanel.Location = new System.Drawing.Point(5, 5);
+            this.searchControlsPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.searchControlsPanel.Name = "searchControlsPanel";
+            this.searchControlsPanel.RowCount = 2;
+            this.searchControlsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.searchControlsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.searchControlsPanel.Size = new System.Drawing.Size(340, 423);
+            this.searchControlsPanel.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.closeSearchPanelBtn);
+            this.panel3.Controls.Add(this.resetFoundBtn);
+            this.panel3.Controls.Add(this.findBtn);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(5, 428);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(3);
+            this.panel3.Size = new System.Drawing.Size(340, 37);
+            this.panel3.TabIndex = 2;
+            // 
+            // closeSearchPanelBtn
+            // 
+            this.closeSearchPanelBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.closeSearchPanelBtn.Enabled = false;
+            this.closeSearchPanelBtn.Location = new System.Drawing.Point(227, 3);
+            this.closeSearchPanelBtn.Name = "closeSearchPanelBtn";
+            this.closeSearchPanelBtn.Size = new System.Drawing.Size(110, 31);
+            this.closeSearchPanelBtn.TabIndex = 3;
+            this.closeSearchPanelBtn.Text = "Закрыть";
+            this.closeSearchPanelBtn.UseVisualStyleBackColor = true;
+            this.closeSearchPanelBtn.Click += new System.EventHandler(this.closeSearchPanelBtn_Click);
+            // 
+            // resetFoundBtn
+            // 
+            this.resetFoundBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.resetFoundBtn.Enabled = false;
+            this.resetFoundBtn.Location = new System.Drawing.Point(115, 3);
+            this.resetFoundBtn.Name = "resetFoundBtn";
+            this.resetFoundBtn.Size = new System.Drawing.Size(112, 31);
+            this.resetFoundBtn.TabIndex = 2;
+            this.resetFoundBtn.Text = "Сбросить";
+            this.resetFoundBtn.UseVisualStyleBackColor = true;
+            this.resetFoundBtn.Click += new System.EventHandler(this.resetFoundBtn_Click);
+            // 
+            // findBtn
+            // 
+            this.findBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.findBtn.Enabled = false;
+            this.findBtn.Location = new System.Drawing.Point(3, 3);
+            this.findBtn.Name = "findBtn";
+            this.findBtn.Size = new System.Drawing.Size(112, 31);
+            this.findBtn.TabIndex = 1;
+            this.findBtn.Text = "Искать";
+            this.findBtn.UseVisualStyleBackColor = true;
+            this.findBtn.Click += new System.EventHandler(this.findBtn_Click);
+            // 
+            // MainF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(795, 509);
+            this.ClientSize = new System.Drawing.Size(957, 509);
             this.Controls.Add(this.dataPanel);
+            this.Controls.Add(this.searchPanel);
             this.Controls.Add(this.selectedItemsPanel);
             this.Controls.Add(this.controlPanel);
             this.Controls.Add(this.menuPanel);
             this.Location = new System.Drawing.Point(50, 50);
             this.MinimumSize = new System.Drawing.Size(623, 400);
-            this.Name = "MainWindow";
+            this.Name = "MainF";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.menuPanel.ResumeLayout(false);
@@ -486,6 +574,8 @@ namespace Autoreport.UI
             this.controlPanel.ResumeLayout(false);
             this.selectedItemsPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.searchPanel.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,6 +610,12 @@ namespace Autoreport.UI
         private System.Windows.Forms.Button removeFromSelectedBtn;
         private System.Windows.Forms.Button selectBtn;
         private System.Windows.Forms.FlowLayoutPanel tabsLayout;
+        private System.Windows.Forms.Panel searchPanel;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button resetFoundBtn;
+        private System.Windows.Forms.Button findBtn;
+        private System.Windows.Forms.TableLayoutPanel searchControlsPanel;
+        private System.Windows.Forms.Button closeSearchPanelBtn;
     }
 }
 
