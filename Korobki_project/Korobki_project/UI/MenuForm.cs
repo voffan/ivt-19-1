@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Korobki_project;
 using Korobki_project.UI;
 using Microsoft.EntityFrameworkCore;
+using Korobki_project.Classes;
 
 namespace Korobki_project
 {
@@ -104,11 +105,11 @@ namespace Korobki_project
                     planFromAdd.Show();
                     this.Hide();
                     break;
-                /*case 3:
-					ProductionForm productionForm = new ProductionForm();
-					productionForm.Show();
+                case 3:
+					ProductionAddForm productionFormAdd = new ProductionAddForm();
+					productionFormAdd.Show();
 					this.Hide();
-					break;*/
+					break;
                 case 4:
                     PositionsAddForm positionsAddForm = new PositionsAddForm();
                     positionsAddForm.Show();
@@ -119,21 +120,21 @@ namespace Korobki_project
                     productAddForm.Show();
                     this.Hide();
                     break;
-                    /*case 6:
-                        ScheduleForm scheduleForm = new ScheduleForm();
-                        scheduleForm.Show();
+                    case 6:
+                        ScheduleFormAdd scheduleFormAdd = new ScheduleFormAdd();
+                        scheduleFormAdd.Show();
                         this.Hide();
-                        break;*/
-                    /*case 7:
-                        ShiftForm shiftForm = new ShiftForm();
-                        shiftForm.Show();
+                        break;
+                    case 7:
+                        ShiftAddForm shiftFormAdd = new ShiftAddForm();
+                        shiftFormAdd.Show();
                         this.Hide();
-                        break;*/
-                    /*case 8:
-                        TypeeForm typeeForm = new TypeeForm();
-                        typeeForm.Show();
+                        break;
+                    case 8:
+                        TypeeFormAdd typeeFormAdd = new TypeeFormAdd();
+                        typeeFormAdd.Show();
                         this.Hide();
-                        break;*/
+                        break;
             }
         }
 
