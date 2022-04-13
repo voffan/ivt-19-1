@@ -14,6 +14,7 @@ using Comp_park_app.Functions;
 namespace Comp_park_app_form {
     public partial class Form1 : Form {
         public Form1() {
+
             InitializeComponent();
             using (Context c = new Context())
                 dataGridView1.DataSource = c.Computers.ToList();
