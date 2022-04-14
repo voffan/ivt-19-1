@@ -100,8 +100,7 @@ namespace gallerys
             {
                 if (selectedtable == "Картины")
                 {
-                    dataGridView1.DataSource = c.Paintings.Include("Name").ToList();
-
+                    dataGridView1.DataSource = c.Paintings.ToList();
                 }
                 if (selectedtable == "Сотрудники")
                 {
