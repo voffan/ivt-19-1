@@ -43,5 +43,10 @@ namespace Korobki_project.Classes
             MenuForm main = new MenuForm();
             main.Show();
         }
-    }
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

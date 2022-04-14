@@ -93,7 +93,7 @@ namespace Korobki_project
 
 		private void btnadd_Click(object sender, EventArgs e)
 		{
-			switch (pf)
+            switch (pf)
             {
                 case 1:
                     EmployeeAddForm employeeAddForm = new EmployeeAddForm();
@@ -106,10 +106,10 @@ namespace Korobki_project
                     this.Hide();
                     break;
                 case 3:
-					ProductionAddForm productionFormAdd = new ProductionAddForm();
-					productionFormAdd.Show();
-					this.Hide();
-					break;
+                    ProductionAddForm productionFormAdd = new ProductionAddForm();
+                    productionFormAdd.Show();
+                    this.Hide();
+                    break;
                 case 4:
                     PositionsAddForm positionsAddForm = new PositionsAddForm();
                     positionsAddForm.Show();
@@ -120,27 +120,32 @@ namespace Korobki_project
                     productAddForm.Show();
                     this.Hide();
                     break;
-                    case 6:
-                        ScheduleFormAdd scheduleFormAdd = new ScheduleFormAdd();
-                        scheduleFormAdd.Show();
-                        this.Hide();
-                        break;
-                    case 7:
-                        ShiftAddForm shiftFormAdd = new ShiftAddForm();
-                        shiftFormAdd.Show();
-                        this.Hide();
-                        break;
-                    case 8:
-                        TypeeFormAdd typeeFormAdd = new TypeeFormAdd();
-                        typeeFormAdd.Show();
-                        this.Hide();
-                        break;
+                case 6:
+                    ScheduleFormAdd scheduleFormAdd = new ScheduleFormAdd();
+                    scheduleFormAdd.Show();
+                    this.Hide();
+                    break;
+                case 7:
+                    ShiftAddForm shiftFormAdd = new ShiftAddForm();
+                    shiftFormAdd.Show();
+                    this.Hide();
+                    break;
+                case 8:
+                    TypeeFormAdd typeeFormAdd = new TypeeFormAdd();
+                    typeeFormAdd.Show();
+                    this.Hide();
+                    break;
             }
         }
 
 		private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
             Application.Exit();
+		}
+
+		private void button9_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

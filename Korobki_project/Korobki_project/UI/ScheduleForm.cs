@@ -21,6 +21,7 @@ namespace Korobki_project.UI
             Context c = new Context();
             dataGridView1.DataSource = c.Schedules.Include("Shift").ToList();
             dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
         }
     }
 }

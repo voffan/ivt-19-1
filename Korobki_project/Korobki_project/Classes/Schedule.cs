@@ -17,7 +17,7 @@ namespace Korobki_project.Classes
         public int PlanCount { get; set; }
         public override string ToString()
         {
-            return Date.ToString();
+            return Date.ToString("dd.MM.yyyy");
         }
         
         

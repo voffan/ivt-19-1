@@ -140,9 +140,9 @@ namespace Korobki_project.UI
 			this.label5.AutoSize = true;
 			this.label5.Location = new System.Drawing.Point(12, 206);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(85, 15);
+			this.label5.Size = new System.Drawing.Size(88, 15);
 			this.label5.TabIndex = 11;
-			this.label5.Text = "PhoneNumber";
+			this.label5.Text = "Phone Number";
 			// 
 			// label6
 			// 

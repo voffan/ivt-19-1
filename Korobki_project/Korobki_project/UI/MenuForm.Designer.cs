@@ -39,6 +39,7 @@ namespace Korobki_project
 			this.button7 = new System.Windows.Forms.Button();
 			this.button8 = new System.Windows.Forms.Button();
 			this.btnadd = new System.Windows.Forms.Button();
+			this.button9 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -138,12 +139,23 @@ namespace Korobki_project
 			this.btnadd.UseVisualStyleBackColor = true;
 			this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
 			// 
+			// button9
+			// 
+			this.button9.Location = new System.Drawing.Point(611, 385);
+			this.button9.Name = "button9";
+			this.button9.Size = new System.Drawing.Size(85, 28);
+			this.button9.TabIndex = 10;
+			this.button9.Text = "Удалить";
+			this.button9.UseVisualStyleBackColor = true;
+			this.button9.Click += new System.EventHandler(this.button9_Click);
+			// 
 			// MenuForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
 			this.ClientSize = new System.Drawing.Size(804, 511);
+			this.Controls.Add(this.button9);
 			this.Controls.Add(this.btnadd);
 			this.Controls.Add(this.button8);
 			this.Controls.Add(this.button7);
@@ -176,5 +188,6 @@ namespace Korobki_project
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
 		private System.Windows.Forms.Button btnadd;
+		private System.Windows.Forms.Button button9;
 	}
 }
