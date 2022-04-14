@@ -128,7 +128,60 @@ namespace gallerys
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string s = "Редактировать";
+            if (comboBox1.Text == "")
+            {
+                MessageBox.Show("Выберите таблицу");
+            }
+            //Картины Жанры Авторы Сотрудники Журнал передвижения картин Выставки
+            else
+            {
+                if (dataGridView1.CurrentRow != null)
+                {
+                    int p = dataGridView1.CurrentRow.Index;
+                    if ((Connection.employeeSer.CurrentEmployee.Right == 0) || (Connection.employeeSer.CurrentEmployee.Right == Models.Right.manager))
+                    {
+                        if (comboBox1.Text == "Картины")
+                        {
+                            AddPaint add = new AddPaint(s, comboBox1.Text);
+                            add.textBox1.Text = dataGridView1.Rows[p].Cells[1].Value.ToString();
 
+                            add.ShowDialog();
+                        }
+                        if (comboBox1.Text == "Жанры")
+                        {
+                            AddGenre add = new AddGenre(s, comboBox1.Text);
+                            add.ShowDialog();
+                        }
+                        if (comboBox1.Text == "Авторы")
+                        {
+                            AddAuthors add = new AddAuthors(s, comboBox1.Text);
+                            add.ShowDialog();
+                        }
+                        if (comboBox1.Text == "Сотрудники")
+                        {
+                            AddEmployee add = new AddEmployee(s, comboBox1.Text);
+                            string sp = dataGridView1.Rows[p].Cells[1].Value.ToString();
+                            string[] sp1 = sp.Split(" ");
+                            add.textBox1.Text = sp1[0];
+                            add.textBox2.Text = sp1[1];
+                            add.textBox3.Text = sp1[2];
+                            add.textBox4.Text = dataGridView1.Rows[p].Cells[2].Value.ToString();
+                            add.textBox5.Text = dataGridView1.Rows[p].Cells[3].Value.ToString();
+                            add.ShowDialog();
+                        }
+                        InitTable();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вы не можете добавлять");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Выберите редактируемый объект");
+                }
+            }
         }
     }
 }

@@ -32,7 +32,7 @@ namespace gallerys.Forms.FormsforAdd
             string pass = textBox5.Text;
             string right = comboBox1.Text;
             EmployeeSer employeeSer = new EmployeeSer();
-            employeeSer.Add(surname + name + otchestvo, login, pass, right);
+            employeeSer.Add(surname + " " + name + " " + otchestvo, login, pass, right);
             MessageBox.Show("Вы успешно добавили сотрудника");
             this.Close();
         }

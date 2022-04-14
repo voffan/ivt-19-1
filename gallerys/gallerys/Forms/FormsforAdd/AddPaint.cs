@@ -17,5 +17,10 @@ namespace gallerys.Forms.FormsforAdd
             InitializeComponent();
             this.Text = s + " " + s1;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
