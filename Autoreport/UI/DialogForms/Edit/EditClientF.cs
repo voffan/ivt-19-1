@@ -64,10 +64,9 @@ namespace Autoreport.UI.Edit
             string firstName = firstNameText.Text;
             string middleName = middleNameText.Text;
             string phone1 = phoneText.Text;
+            string phone2 = phoneAdditionalText.Text;
 
-            string phone2;
-
-            if (phoneAdditionalNotFilled) // иначе phone2 добавится в таком виде: +7 ( )
+            if (!phoneAdditionalNotFilled) // иначе phone2 добавится в таком виде: +7 ( )
                 phone2 = phoneAdditionalText.Text;
             else
                 phone2 = "";
