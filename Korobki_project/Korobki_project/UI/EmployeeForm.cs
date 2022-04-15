@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using Korobki_project;
 using Microsoft.EntityFrameworkCore;
 using Korobki_project.UI;
-
+using System.Data.OleDb;
+using MySql.Data.MySqlClient;
 
 namespace Korobki_project
 {
@@ -29,10 +30,37 @@ namespace Korobki_project
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+		private void button2_Click(object sender, EventArgs e)
+		{
+            int a, b, c;
+            if (dataGridView1.SelectedRows != null)
+            {
+                b = dataGridView1.CurrentRow.Index;
+                a = Convert.ToInt32(dataGridView1.Rows[b].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Действительно удалить запись в БД?", "Удаление", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
+                    string sql = "DELETE FROM korobkibd.employees WHERE Id = " + a + ";";
+                    MySqlConnection conn = new MySqlConnection(connStr);
+                    conn.Open();
+                    MySqlCommand command = new MySqlCommand(sql, conn);
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Удалено");
+                    this.Close();
+                    MenuForm main = new MenuForm();
+                    main.Show();
+                }
+            }
 
         }
 
-    }
+		private void EmployeeForm_FormClosed_1(object sender, FormClosedEventArgs e)
+		{
+        /*    MenuForm main = new MenuForm();
+            main.Show();
+        */
+        }
+	}
 }

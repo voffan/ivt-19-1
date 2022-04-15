@@ -11,6 +11,7 @@ using Korobki_project;
 using Korobki_project.UI;
 using Microsoft.EntityFrameworkCore;
 using Korobki_project.Classes;
+using System.Data.OleDb;
 
 namespace Korobki_project
 {
@@ -39,8 +40,7 @@ namespace Korobki_project
         }
         private void MenuForm_Load(object sender, EventArgs e)
         {
-            pf = 1;
-            PanelForm(new EmployeeForm());
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -143,9 +143,11 @@ namespace Korobki_project
             Application.Exit();
 		}
 
-		private void button9_Click(object sender, EventArgs e)
-		{
-
-		}
+        private void button9_Click(object sender, EventArgs e)
+        {
+            EmployeeForm employeeForm = new EmployeeForm();
+            employeeForm.Show();
+            this.Hide();
+        }
 	}
 }
