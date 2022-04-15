@@ -70,7 +70,7 @@ namespace gallerys.Forms.FormsforAdd
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(50, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 37);
+            this.label2.Size = new System.Drawing.Size(173, 37);
             this.label2.TabIndex = 5;
             this.label2.Text = "Год издания";
             // 
@@ -116,10 +116,6 @@ namespace gallerys.Forms.FormsforAdd
             // 
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "На реставрации",
-            "В хранилище",
-            "На выставке"});
             this.comboBox1.Location = new System.Drawing.Point(226, 232);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(246, 45);
@@ -129,10 +125,6 @@ namespace gallerys.Forms.FormsforAdd
             // 
             this.comboBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "На реставрации",
-            "В хранилище",
-            "На выставке"});
             this.comboBox2.Location = new System.Drawing.Point(226, 294);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(246, 45);
@@ -152,10 +144,6 @@ namespace gallerys.Forms.FormsforAdd
             // 
             this.comboBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "На реставрации",
-            "В хранилище",
-            "На выставке"});
             this.comboBox3.Location = new System.Drawing.Point(226, 352);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(246, 45);
@@ -214,6 +202,7 @@ namespace gallerys.Forms.FormsforAdd
             this.Name = "AddPaint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление картины";
+            this.Load += new System.EventHandler(this.AddPaint_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
