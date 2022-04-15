@@ -20,9 +20,17 @@ namespace Standings.Functions
                 context.SaveChanges();
             }
         }
-        public void Delete()
+        public void Delete(int Id)
         {
+            using (Context db = Connection.Connect())
+            {
+                Sportsman c = db.Sportsmans
+                    .Where(q => q.Id == Id)
+                    .FirstOrDefault();
 
+                db.Sportsmans.Remove(c);
+                db.SaveChanges();
+            }
         }
 
         public void Edit()

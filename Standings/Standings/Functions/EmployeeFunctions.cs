@@ -31,13 +31,21 @@ namespace Standings.Functions
         {
             using (Context db = Connection.Connect())
             {
-                db.Employees.Remove(db.Employees.Where(empl => empl.Id == Id).ToList()[0]);
+                Employee c = db.Employees
+                    .Where(q => q.Id == Id)
+                    .FirstOrDefault();
+
+                db.Employees.Remove(c);
                 db.SaveChanges();
             }
         }
-        public void Edit()
+        public void Edit(int Id)
         {
-
+            using (Context db = Connection.Connect())
+            {
+                //Employee c = db.Employees
+                    //.Where()
+            }
         }
     }
 }

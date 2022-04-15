@@ -14,7 +14,9 @@ namespace Standings.Forms
 {
     public partial class EmployeeWindows : Form
     {
-        
+        Action<int> currentDeleteAction;
+        List<Button> currentlyPermittedActions = new List<Button>();
+        DataGridViewCellEventHandler tableItemDoubleClickEvent;
         public EmployeeWindows()
         {
             InitializeComponent();
@@ -37,24 +39,34 @@ namespace Standings.Forms
             dataGridView1.DataSource = context.Employees.ToList();
         }
 
-        private void dataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            if (!currentlyPermittedActions.Contains(deleteBtn))
-                return;
-
-            if (dataGridView.SelectedRows.Count == 0)
-                deleteBtn.Enabled = false;
-            else
-                deleteBtn.Enabled = true;
-        }
         private void button3_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dataGridView.SelectedRows)
+            
+            currentDeleteAction = Connection.employeeFunctions.Delete;
+
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 currentDeleteAction((int)row.Cells["Id"].Value);
             }
+            InitTabl();
+        }
 
-            reloadBtn.PerformClick();
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!currentlyPermittedActions.Contains(button3))
+                return;
+
+            if (dataGridView1.SelectedRows.Count == 0)
+                button3.Enabled = false;
+            else
+                button3.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UpdateEmployee AE = new UpdateEmployee();
+            AE.ShowDialog();
+            InitTabl();
         }
     }
 }
