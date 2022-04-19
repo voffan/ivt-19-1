@@ -46,17 +46,6 @@ namespace Autoreport.UI.Add
             countryBox.SelectedItem = countries.Where(c => c.Name == "США").ToList()[0];
         }
 
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-
-            // после поочередного вызова Hide и ShowDialog у maskedtext
-            // пропадают нижние подчеркивания
-            string oldText = filmDateText.Text;
-            filmDateText.Text = "0";
-            filmDateText.Text = oldText;
-        }
-
         protected override void saveBtn_Click(object sender, EventArgs e)
         {
             if (selectedBox.Items.Count == 0)
@@ -66,13 +55,11 @@ namespace Autoreport.UI.Add
             }
 
             string filmName = filmNameText.Text;
-            DateTime filmDate = DateTime.Parse(filmDateText.Text, new CultureInfo("de-DE"));
+            int filmYear = Int32.Parse(filmYearText.Text);
 
             List<Person> directors = selectedBox.Items.Cast<Person>().ToList();
 
-            //var selectedDirectors = Connection.filmService.GetFilmsDirectors().Where(d => directors_ids.Contains(d.Id)).ToList();
-
-            Connection.filmService.Add(filmName, filmDate, (Country)countryBox.SelectedItem, directors, genresBox.SelectedItems.Cast<Genre>().ToList());
+            Connection.filmService.Add(filmName, filmYear, (Country)countryBox.SelectedItem, directors, genresBox.SelectedItems.Cast<Genre>().ToList());
             CloseHandler();
             Close();
         }

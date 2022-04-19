@@ -14,8 +14,8 @@ namespace Autoreport.Models
         [Required, DisplayName("Название"), MaxLength(200)]
         public string Name { get; set; }
 
-        [Required, DisplayName("Дата выхода"), Column(TypeName = "Date")]
-        public DateTime Date { get; set; }
+        [Required, DisplayName("Год выхода"), Range(1900, 2100)]
+        public int Year { get; set; }
 
         [Required, DisplayName("Страна")]
         public virtual Country FilmCountry { get; set; }
@@ -30,7 +30,7 @@ namespace Autoreport.Models
 
         public override string ToString()
         {
-            return String.Format("{0} ({1})", Name, Date.Year);
+            return String.Format("{0} ({1})", Name, Year);
         }
     }
 }

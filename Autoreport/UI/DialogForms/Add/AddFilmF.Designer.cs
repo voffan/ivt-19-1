@@ -36,8 +36,8 @@ namespace Autoreport.UI.Add
             this.label1 = new System.Windows.Forms.Label();
             this.filmNameText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.filmDateText = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.removeSelectedBtn = new System.Windows.Forms.Button();
             this.selectBtn = new System.Windows.Forms.Button();
@@ -46,10 +46,11 @@ namespace Autoreport.UI.Add
             this.genresBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.countryBox = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.filmYearText = new System.Windows.Forms.NumericUpDown();
             this.flowLayout.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filmYearText)).BeginInit();
             this.SuspendLayout();
             // 
             // resetBtn
@@ -78,7 +79,7 @@ namespace Autoreport.UI.Add
             this.flowLayout.Controls.Add(this.label1);
             this.flowLayout.Controls.Add(this.filmNameText);
             this.flowLayout.Controls.Add(this.label2);
-            this.flowLayout.Controls.Add(this.filmDateText);
+            this.flowLayout.Controls.Add(this.filmYearText);
             this.flowLayout.Controls.Add(this.label3);
             this.flowLayout.Controls.Add(this.panel2);
             this.flowLayout.Controls.Add(this.label4);
@@ -122,16 +123,6 @@ namespace Autoreport.UI.Add
             this.label2.TabIndex = 10;
             this.label2.Text = "Год выпуска";
             // 
-            // filmDateText
-            // 
-            this.filmDateText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.filmDateText.Location = new System.Drawing.Point(241, 34);
-            this.filmDateText.Mask = "00/00/0000";
-            this.filmDateText.Name = "filmDateText";
-            this.filmDateText.Size = new System.Drawing.Size(232, 25);
-            this.filmDateText.TabIndex = 19;
-            this.filmDateText.ValidatingType = typeof(System.DateTime);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -143,6 +134,15 @@ namespace Autoreport.UI.Add
             this.label3.Size = new System.Drawing.Size(232, 25);
             this.label3.TabIndex = 12;
             this.label3.Text = "Режиссеры";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.selectedBox);
+            this.panel2.Location = new System.Drawing.Point(241, 65);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(232, 93);
+            this.panel2.TabIndex = 18;
             // 
             // panel1
             // 
@@ -235,14 +235,29 @@ namespace Autoreport.UI.Add
             this.countryBox.Size = new System.Drawing.Size(232, 25);
             this.countryBox.TabIndex = 23;
             // 
-            // panel2
+            // filmYearText
             // 
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.selectedBox);
-            this.panel2.Location = new System.Drawing.Point(241, 65);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(232, 93);
-            this.panel2.TabIndex = 18;
+            this.filmYearText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.filmYearText.Location = new System.Drawing.Point(241, 34);
+            this.filmYearText.Maximum = new decimal(new int[] {
+            2100,
+            0,
+            0,
+            0});
+            this.filmYearText.Minimum = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
+            this.filmYearText.Name = "filmYearText";
+            this.filmYearText.Size = new System.Drawing.Size(232, 25);
+            this.filmYearText.TabIndex = 18;
+            this.filmYearText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.filmYearText.Value = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
             // 
             // AddFilmF
             // 
@@ -260,8 +275,9 @@ namespace Autoreport.UI.Add
             this.Load += new System.EventHandler(this.AddFilmForm_Load);
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.filmYearText)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,7 +292,6 @@ namespace Autoreport.UI.Add
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox filmDateText;
         private System.Windows.Forms.ListBox genresBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button removeSelectedBtn;
@@ -285,5 +300,6 @@ namespace Autoreport.UI.Add
         private System.Windows.Forms.FlowLayoutPanel flowLayout;
         private System.Windows.Forms.ComboBox countryBox;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.NumericUpDown filmYearText;
     }
 }

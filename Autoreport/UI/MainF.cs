@@ -369,7 +369,7 @@ namespace Autoreport.UI
 
             CharacteristicSetter(1,
                 dataGridView.Columns["Name"],
-                dataGridView.Columns["Date"]);
+                dataGridView.Columns["Year"]);
         }
 
         private void OrdersTab_Click(bool updateSearchPanel = true)

@@ -83,13 +83,13 @@ namespace Autoreport.UI.Edit
             }
 
             string filmName = filmNameText.Text;
-            DateTime filmDate = DateTime.Parse(filmDateText.Text, new CultureInfo("de-DE"));
+            int filmYear = Int32.Parse(filmYearText.Text);
 
             List<Person> directors = selectedBox.Items.Cast<Person>().ToList();
 
             //var selectedDirectors = Connection.filmService.GetFilmsDirectors().Where(d => directors_ids.Contains(d.Id)).ToList();
 
-            Connection.filmService.Edit(editingEntity, filmName, filmDate, (int)countryBox.SelectedValue, directors, genresBox.SelectedItems.Cast<Genre>().ToList());
+            Connection.filmService.Edit(editingEntity, filmName, filmYear, (int)countryBox.SelectedValue, directors, genresBox.SelectedItems.Cast<Genre>().ToList());
             CloseHandler();
             Close();
         }
@@ -114,7 +114,7 @@ namespace Autoreport.UI.Edit
             }
 
             filmNameText.Text = editingEntity.Name;
-            filmDateText.Text = editingEntity.Date.ToString();
+            filmYearText.Text = editingEntity.Year.ToString();
             selectedBox.Items.AddRange(editingEntity.FilmDirectors.ToArray());
         }
     }

@@ -10,12 +10,12 @@ namespace Autoreport.Services
 {
     public class FilmService
     {
-        public void Add(string filmName, DateTime filmDate, Country country, List<Person> director, List<Genre> genres)
+        public void Add(string filmName, int filmYear, Country country, List<Person> director, List<Genre> genres)
         {
             Film film = new Film()
             {
                 Name = filmName,
-                Date = filmDate,
+                Year = filmYear,
                 FilmCountry = country,
                 FilmDirectors = director,
                 Genres = genres
@@ -98,7 +98,7 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit(Film editingEntity, string filmName, DateTime filmDate, int countryId, List<Person> directors, List<Genre> genres)
+        public void Edit(Film editingEntity, string filmName, int filmYear, int countryId, List<Person> directors, List<Genre> genres)
         {
             using (DataContext db = Connection.Connect())
             {
@@ -109,7 +109,7 @@ namespace Autoreport.Services
                     .First();
 
                 film.Name = filmName;
-                film.Date = filmDate;
+                film.Year = filmYear;
                 film.FilmCountry = db.Countries.Find(countryId);
                 film.FilmDirectors = db.Persons.Where(x => directors.Select(y => y.Id).Contains(x.Id)).ToList();
                 film.Genres = db.Genres.Where(x => genres.Select(y => y.Id).Contains(x.Id)).ToList();
