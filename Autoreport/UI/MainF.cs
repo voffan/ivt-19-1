@@ -45,10 +45,11 @@ namespace Autoreport.UI
         List<Button> secondaryTabs; // вкладки, отображающиеся только при определенных условиях
 
         // соответствие таба и связанного с ним обработчика нажатия
-        // используется в методе TabClicked для того, чтоб не писать кучу if'ов
-        Dictionary<Button, Action<Action<DataGridViewColumn>, bool>> tabAction = new Dictionary<Button, Action<Action<DataGridViewColumn>, bool>>();
+        // используется в методе TabClicked
+        Dictionary<Button, Action< bool>> tabAction = new Dictionary<Button, Action<bool>>();
 
-        // соответствие таба и связанного с ним метода получения списка всех данных
+        // соответствие таба и связанного с ним метода получения данных
+        // нужен для того, чтоб можно было к currentGetFunction приравнивать метод поиска
         Dictionary<Button, Func<List<object>>> tabGetAllFunction = new Dictionary<Button, Func<List<object>>>();
 
         DataGridViewCellEventHandler tableItemDoubleClickEvent; // даблклик по строке таблицы
@@ -101,12 +102,15 @@ namespace Autoreport.UI
             if (v)
             {
                 searchPanel.Show();
-                EnableButtonsOfPanelExcept(new Button[] { }, searchPanel);
+                TurnVisibleButtons(true, searchPanel);
             }
             else
                 searchPanel.Hide();
         }
 
+        /// <summary>
+        /// Устанавливает список secondary вкладок
+        /// </summary>
         private void SetSecondaryTabs()
         {
             secondaryTabs = new List<Button>() { filmDirectorsSecondaryTab };
@@ -216,12 +220,12 @@ namespace Autoreport.UI
                     this.clientsTab, this.depositsTab, this.employeesTab,
                     this.disksTab, this.filmsTab, this.ordersTab
                 });
-            } 
+            }
             else if (Connection.employeeService.CurrentEmployee.EmplPosition == Position.Cashier)
             {
                 permittedTabs.AddRange(new List<Button>()
                 {
-                    this.clientsTab, this.depositsTab, this.disksTab, 
+                    this.clientsTab, this.depositsTab, this.disksTab,
                     this.filmsTab, this.ordersTab
                 });
             }
@@ -259,11 +263,10 @@ namespace Autoreport.UI
 
             currentGetFunction = tabGetAllFunction[currentTabButton];
 
-            Action<DataGridViewColumn> GoFirst = CharacteristicSetter();
-            tabAction[currentTabButton](GoFirst, true); // вызываем метод, связанный с вкладкой
+            tabAction[currentTabButton](true); // вызываем метод, связанный с вкладкой
 
             // выключаем все кнопки-действия за исключением тех, что были добавлены в currentlyPermittedActions
-            DisableAllControlButtonsExcept(currentlyPermittedActions.ToArray());
+            TurnVisibleButtons(false, controlPanel, currentlyPermittedActions.ToArray());
 
             // если таблица пустая, то выключаем кнопки-действия, оставляя необходимые
             // при этом беря во внимание, что некоторые из "необходимых" могут не входить в currentlyPermittedActions,
@@ -273,7 +276,7 @@ namespace Autoreport.UI
                 Button[] necessary = new Button[] { addBtn, reloadBtn, doneBtn }
                                         .Where(b => currentlyPermittedActions.Contains(b))
                                         .ToArray();
-                DisableAllControlButtonsExcept(necessary);
+                TurnVisibleButtons(false, controlPanel, necessary);
             } else if (!currentlyPermittedActions.Contains(deleteBtn))
             {
                 deleteBtn.Enabled = false;
@@ -283,7 +286,7 @@ namespace Autoreport.UI
             dataGridView.Columns["Id"].Visible = false;
         }
 
-        private void EmployeesTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
+        private void EmployeesTab_Click(bool updateSearchPanel = true)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn });
 
@@ -295,34 +298,36 @@ namespace Autoreport.UI
             dataGridView.DataSource = currentGetFunction().Cast<Employee>().ToList();
             currentFindFunction = () => Find(Connection.employeeService.GetAll().Cast<object>()).ToList();
 
-            GoFirst(dataGridView.Columns["First_name"]);
-            GoFirst(dataGridView.Columns["Last_name"]);
-            GoFirst(dataGridView.Columns["Middle_name"]);
-            GoFirst(dataGridView.Columns["EmplPosition"]);
+            CharacteristicSetter(1,
+                dataGridView.Columns["First_name"],
+                dataGridView.Columns["Last_name"],
+                dataGridView.Columns["Middle_name"],
+                dataGridView.Columns["EmplPosition"]);
         }
 
-        private void ClientsTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
+        private void ClientsTab_Click(bool updateSearchPanel = true)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() { 
+            currentlyPermittedActions.AddRange(new List<Button>() {
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn, deleteBtn
             });
 
             if (updateSearchPanel)
                 UpdateSearchPanel(typeof(Client));
-            
+
             currentDeleteAction = Connection.clientService.Delete;
             currentAddForm = new AddClientF();
             currentEditForm = new EditClientF();
             dataGridView.DataSource = currentGetFunction().Cast<Client>().ToList();
             currentFindFunction = () => Find(Connection.clientService.GetAll().Cast<object>()).ToList();
 
-            GoFirst(dataGridView.Columns["First_name"]);
-            GoFirst(dataGridView.Columns["Last_name"]);
-            GoFirst(dataGridView.Columns["Middle_name"]);
-            GoFirst(dataGridView.Columns["Phone_number1"]);
+            CharacteristicSetter(1,
+                dataGridView.Columns["First_name"],
+                dataGridView.Columns["Last_name"],
+                dataGridView.Columns["Middle_name"],
+                dataGridView.Columns["Phone_number1"]);
         }
 
-        private void DisksTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
+        private void DisksTab_Click(bool updateSearchPanel = true)
         {
             List<Button> permittedActions = null;
 
@@ -342,14 +347,15 @@ namespace Autoreport.UI
             dataGridView.DataSource = currentGetFunction().Cast<Disk>().ToList();
             currentFindFunction = () => Find(Connection.diskService.GetAll().Cast<object>()).ToList();
 
-            GoFirst(dataGridView.Columns["Article"]);
-            GoFirst(dataGridView.Columns["Cost"]);
+            CharacteristicSetter(1,
+                dataGridView.Columns["Article"],
+                dataGridView.Columns["Cost"]);
         }
 
-        private void FilmsTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
+        private void FilmsTab_Click(bool updateSearchPanel = true)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() { 
-                addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn 
+            currentlyPermittedActions.AddRange(new List<Button>() {
+                addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn
             });
 
             if (updateSearchPanel)
@@ -361,13 +367,14 @@ namespace Autoreport.UI
             dataGridView.DataSource = currentGetFunction().Cast<Film>().ToList();
             currentFindFunction = () => Find(Connection.filmService.GetAll().Cast<object>()).ToList();
 
-            GoFirst(dataGridView.Columns["Name"]);
-            GoFirst(dataGridView.Columns["Date"]);
+            CharacteristicSetter(1,
+                dataGridView.Columns["Name"],
+                dataGridView.Columns["Date"]);
         }
 
-        private void OrdersTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
+        private void OrdersTab_Click(bool updateSearchPanel = true)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() { 
+            currentlyPermittedActions.AddRange(new List<Button>() {
                 addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn
             });
 
@@ -382,7 +389,7 @@ namespace Autoreport.UI
             currentEditForm = new EditOrderF(depositsTab, disksTab, reloadBtn.PerformClick);
         }
 
-        private void DepositsTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
+        private void DepositsTab_Click(bool updateSearchPanel = true)
         {
             List<Button> permittedActions = null;
 
@@ -402,12 +409,13 @@ namespace Autoreport.UI
             dataGridView.DataSource = currentGetFunction().Cast<Deposit>().ToList();
             currentFindFunction = () => Find(Connection.depositService.GetAll().Cast<object>()).ToList();
 
-            GoFirst(dataGridView.Columns["DocumentData"]);
-            GoFirst(dataGridView.Columns["MoneyValue"]);
-            GoFirst(dataGridView.Columns["DepositType"]);
+            CharacteristicSetter(1,
+                dataGridView.Columns["DocumentData"],
+                dataGridView.Columns["MoneyValue"],
+                dataGridView.Columns["DepositType"]);
         }
 
-        private void FilmDirectorsSecondaryTab_Click(Action<DataGridViewColumn> GoFirst, bool updateSearchPanel = true)
+        private void FilmDirectorsSecondaryTab_Click(bool updateSearchPanel = true)
         {
             currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn });
 
@@ -419,37 +427,66 @@ namespace Autoreport.UI
             dataGridView.DataSource = currentGetFunction().Cast<Person>().ToList();
             currentFindFunction = () => Find(Connection.filmService.GetFilmsDirectors().Cast<object>()).ToList();
 
-            GoFirst(dataGridView.Columns["First_name"]);
-            GoFirst(dataGridView.Columns["Last_name"]);
-            GoFirst(dataGridView.Columns["Middle_name"]);
+            CharacteristicSetter(1,
+                dataGridView.Columns["First_name"],
+                dataGridView.Columns["Last_name"],
+                dataGridView.Columns["Middle_name"]);
+        }
+
+        /// <summary>
+        /// Выстраивает переданные колонны из DataGridView в том порядке, в котором они были переданы
+        /// </summary>
+        /// <param name="startIndex">Индекс первой колонны</param>
+        /// <param name="columns"></param>
+        private void CharacteristicSetter(int startIndex = 1, params DataGridViewColumn[] columns)
+        {
+            for (int i = 0; i < columns.Length; i++)
+            {
+                columns[i].DisplayIndex = startIndex + i;
+            }
         }
 
         private IEnumerable<object> Find(IEnumerable<object> processList)
         {
             IEnumerable<Control> ctrls = GetPanelInputControls(searchControlsPanel);
+            int filledControls = ctrls.Count(x => x.Text.Length > 0);
 
             foreach (object Obj in processList)
             {
-                foreach (PropertyInfo property in Obj.GetType().GetProperties())
+                if (GetAppropriate(Obj, ctrls).Count() == filledControls)
+                    yield return Obj;
+            }
+        }
+
+        private IEnumerable<object> GetAppropriate(object Obj, IEnumerable<Control> ctrls)
+        {
+            foreach (PropertyInfo property in Obj.GetType().GetProperties())
+            {
+                // ищем поле, имя которого совпадает с названием свойства
+                Control relatedControl = ctrls.FirstOrDefault(x => x.Name == property.Name);
+
+                // если не нашли, значит по этому свойству поиск не производится, пропускаем
+                if (relatedControl == null)
+                    continue;
+
+                // проверяем, было ли поле заполнено
+                if (relatedControl.Text.Length > 0)
                 {
-                    Control relatedControl = ctrls.FirstOrDefault(x => x.Name == property.Name);
-
-                    if (relatedControl == null)
-                        continue;
-
-                    if (relatedControl.Text.Length > 0)
+                    if (Compare(property.GetValue(Obj, null).ToString(), relatedControl.Text))
                     {
-                        if (property.GetValue(Obj, null).ToString() == relatedControl.Text)
-                        {
-                            yield return Obj;
-                        }
+                        yield return Obj;
                     }
                 }
             }
         }
 
+        private bool Compare(string left, string right)
+        {
+            return left.ToLower().Contains(right.ToLower());
+        }
+
         /// <summary>
-        /// Добавляет поля для ввода данных, по которым будет производиться поиск
+        /// Добавляет/обновляет поля для ввода данных, по которым будет производиться поиск
         /// </summary>
         /// <param name="T"></param>
         private void UpdateSearchPanel(Type T, string[] concreteFields = null, string[] exceptFields = null)
@@ -499,27 +536,6 @@ namespace Autoreport.UI
         }
 
         /// <summary>
-        /// Замыкающая функция, устанавливающая значение "Characteristic" для
-        /// свойства Tag столбцов таблицы.
-        /// Столбцы с тэгом Characteristic имеют приоритет, поэтому они расположены
-        /// друг за другом и идут по порядку(1,2,...) после невидимого поля Id, индекс которого 0.
-        /// </summary>
-        /// <param name="startIndex">Какая первая позиция по порядку</param>
-        /// <returns></returns>
-        private Action<DataGridViewColumn> CharacteristicSetter(int startIndex = 1)
-        {
-            int index = startIndex;
-
-            void Set(DataGridViewColumn column)
-            {
-                column.DisplayIndex = index;
-                index++;
-            }
-
-            return Set;
-        }
-
-        /// <summary>
         /// реакция на нажатие кнопки Добавить
         /// </summary>
         /// <param name="sender"></param>
@@ -550,7 +566,6 @@ namespace Autoreport.UI
                 index = dataGridView.SelectedCells[0].RowIndex;
             }
 
-            
             bool correctRow = index != -1;
             selectBtn.Enabled = correctRow;
 
@@ -685,7 +700,7 @@ namespace Autoreport.UI
 
                 selectBtn.Enabled = false;
                 removeFromSelectedBtn.Enabled = false;
-            }    
+            }
         }
 
         /// <summary>
@@ -714,60 +729,31 @@ namespace Autoreport.UI
                 CalculateMinSize(); // т.к. появилась новая вкладка, то надо пересчитать минимальный размер
             }
 
-            DisableButtonsOfPanelExcept(new Button[] { excepted }, tabsLayout);
+            TurnVisibleButtons(false, tabsLayout, new Button[] { excepted });
             excepted.PerformClick();
         }
 
         /// <summary>
-        /// Делает неактивными все кнопки в панели controlPanel
+        /// Рекурсивно меняет состояния всем видимым кнопкам внутри переданной панели,
+        /// и прочих панелей, содержащихся внутри переданной
         /// </summary>
-        /// <param name="excepted"></param>
-        private void DisableAllControlButtonsExcept(Button[] excepted)
+        /// <param name="enabled">Состояние, в которое следует перевести кнопку</param>
+        /// <param name="panel">Панель, кнопки которой будут затронуты</param>
+        /// <param name="reverse">Кнопки, которые перейдут в противоположное состояние от того, что передано</param>
+        private void TurnVisibleButtons(bool enabled, Panel panel, Button[] reverse = null)
         {
-            DisableButtonsOfPanelExcept(excepted, controlPanel);
+            foreach (Button btn in GetAllButtons(panel).Where(x => x.Visible))
+            {
+                btn.Enabled = enabled || (reverse != null && reverse.Contains(btn));
+            }
         }
 
         /// <summary>
-        /// Делает неактивными все видимые кнопки внутри переданной панели,
-        /// это касается также тех кнопок, которые находятся внутри других
-        /// панелей переданной панели
+        /// Добавляет слушателя события клика для кнопки "Готово"
         /// </summary>
-        /// <param name="excepted">Массив кнопок, которые нужно оставить активными</param>
-        /// <param name="panel">Панель, внутри которой требуется искать кнопки</param>
-        private void DisableButtonsOfPanelExcept(Button[] excepted, Panel panel)
-        {
-            foreach (Control control in panel.Controls)
-            {
-                if (control is Button && control.Visible)
-                {
-                    control.Enabled = excepted.Contains(control);
-                }
-                else if (typeof(Panel).IsAssignableFrom(control.GetType()))
-                {
-                    DisableButtonsOfPanelExcept(excepted, (Panel)control);
-                }
-            }
-        }
-
-        private void EnableButtonsOfPanelExcept(Button[] excepted, Panel panel)
-        {
-            foreach (Control control in panel.Controls)
-            {
-                if (control is Button && control.Visible)
-                {
-                    control.Enabled = !excepted.Contains(control);
-                }
-                else if (typeof(Panel).IsAssignableFrom(control.GetType()))
-                {
-                    EnableButtonsOfPanelExcept(excepted, (Panel)control);
-                }
-            }
-        }
-
+        /// <param name="Handler"></param>
         private void ConnectDoneButton(EventHandler Handler)
         {
-            //Console.WriteLine("connecting this method as {0}", Handler.GetHashCode());
-
             doneBtnHandlers.Insert(0, Handler);
 
             foreach (EventHandler eh in doneBtnHandlers)
@@ -776,19 +762,14 @@ namespace Autoreport.UI
             }
 
             doneBtn.Click += doneBtnHandlers.First();
-
-            //Console.Write("connect reuslt handlers: ");
-            //foreach (EventHandler eh in doneBtnHandlers)
-            //{
-            //    Console.Write("{0}, ", eh.GetHashCode());
-            //}
-            //Console.WriteLine("");
         }
 
+        /// <summary>
+        /// Удаляет слушателя события клик для кнопки "Готово"
+        /// </summary>
+        /// <param name="Handler"></param>
         private void DisconnectDoneButton(EventHandler Handler)
         {
-            //Console.WriteLine("disconnecting method: {0}", Handler.GetHashCode());
-
             doneBtn.Click -= Handler;
             doneBtnHandlers.Remove(Handler);
 
@@ -796,13 +777,6 @@ namespace Autoreport.UI
             {
                 doneBtn.Click += doneBtnHandlers.First();
             }
-
-            //Console.Write("disconnect reuslt handlers: ");
-            //foreach (EventHandler eh in doneBtnHandlers)
-            //{
-            //    Console.Write("{0}, ", eh.GetHashCode());
-            //}
-            //Console.WriteLine("");
         }
 
         /// <summary>
@@ -836,7 +810,6 @@ namespace Autoreport.UI
                         throw new ArgumentNullException("Когда state равен Mode.Select, второй и третий аргументы не могут быть null");
                     }
 
-                    Console.WriteLine("bbb");
                     selectedItemsBox.Items.Clear();
                     selectedItemsBox.Items.AddRange(previewSelected);
                     DisableAllTabsExcept(selectTab);
@@ -868,10 +841,7 @@ namespace Autoreport.UI
             if (!currentlyPermittedActions.Contains(deleteBtn))
                 return;
 
-            if (dataGridView.SelectedRows.Count == 0)
-                deleteBtn.Enabled = false;
-            else
-                deleteBtn.Enabled = true;
+            deleteBtn.Enabled = dataGridView.SelectedRows.Count != 0;
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -900,8 +870,7 @@ namespace Autoreport.UI
             currentlyPermittedActions.Clear();
             currentGetFunction = currentFindFunction;
 
-            Action<DataGridViewColumn> GoFirst = CharacteristicSetter();
-            tabAction[currentTabButton](GoFirst, false);
+            tabAction[currentTabButton](false);
         }
 
         private void resetFoundBtn_Click(object sender, EventArgs e)

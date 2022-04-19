@@ -15,7 +15,7 @@ namespace Autoreport.UI.Edit.Parents
     public partial class EditFormSelective : BaseEditForm
     {
         protected MainF owner;
-        protected Action<Mode, Button, object[]> OwnerMode_Turn;
+        protected Action<Mode, Button, object[]> OwnerMode;
         protected Button relatedTab;
         protected Action CloseHandler;
         protected int maxSelectedCount = 100;
@@ -35,8 +35,8 @@ namespace Autoreport.UI.Edit.Parents
         /// <param name="e"></param>
         protected void Select_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("{0} enabling select mode", this.Name);
-            OwnerMode_Turn(Mode.Select, relatedTab, GetSelectedListBox().Items.Cast<object>().ToArray());
+            //Console.WriteLine("{0} enabling select mode", this.Name);
+            OwnerMode(Mode.Select, relatedTab, GetSelectedListBox().Items.Cast<object>().ToArray());
             this.Hide();
         }
 
@@ -60,7 +60,7 @@ namespace Autoreport.UI.Edit.Parents
             }
 
             Console.WriteLine("{0} disabling select mode", this.Name);
-            OwnerMode_Turn(Mode.General, null, null);
+            OwnerMode(Mode.General, null, null);
             this.ShowDialog(owner);
         }
 
@@ -70,7 +70,7 @@ namespace Autoreport.UI.Edit.Parents
             {
                 foreach (Control underC in c.Controls)
                 {
-                    if (underC.Tag != null && underC.Tag == selectedBoxTag)
+                    if (underC.Tag != null && (string)underC.Tag == selectedBoxTag)
                     {
                         return (ListBox)underC;
                     }
@@ -86,7 +86,7 @@ namespace Autoreport.UI.Edit.Parents
 
             if (!Loaded)
             {
-                OwnerMode_Turn = owner.WindowMode(OnSelectedHandler);
+                OwnerMode = owner.WindowMode(OnSelectedHandler);
             }
 
             Loaded = true;

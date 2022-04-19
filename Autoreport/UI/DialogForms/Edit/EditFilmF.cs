@@ -17,7 +17,6 @@ namespace Autoreport.UI.Edit
 {
     public partial class EditFilmF : EditFormSelective
     {
-        Button filmDirectorRelatedTab;
         Film editingEntity;
 
         public EditFilmF(Button filmDirectorRelatedTab, Action OnCloseHandler) : base()
@@ -32,7 +31,7 @@ namespace Autoreport.UI.Edit
             this.Load += new EventHandler(this.Form_Load);
 
             selectedBox.Tag = this.selectedBoxTag;
-            this.filmDirectorRelatedTab = filmDirectorRelatedTab;
+            this.relatedTab = filmDirectorRelatedTab;
             this.CloseHandler = OnCloseHandler;
         }
 
@@ -57,7 +56,8 @@ namespace Autoreport.UI.Edit
             genresBox.DisplayMember = "Name";
             genresBox.ValueMember = "Id";
 
-            genresBox.ClearSelected();
+            genresBox.ClearSelected(); // первый элемент автоматически устанавливается выбранным, поэтому убираем
+
             for (int i = 0; i < editingEntity.Genres.Count; i++)
             {
                 genresBox.SetSelected(genresBox.Items.IndexOf(genresBox.Items.Cast<object>().First(x => ((Genre)x).Id == editingEntity.Genres[i].Id)), true);
@@ -69,9 +69,9 @@ namespace Autoreport.UI.Edit
             base.OnShown(e);
             // после поочередного вызова Hide и ShowDialog у maskedtext
             // пропадают нижние подчеркивания
-            string oldText = filmDateText.Text;
-            filmDateText.Text = "0";
-            filmDateText.Text = oldText;
+            //string oldText = filmDateText.Text;
+            //filmDateText.Text = "0";
+            //filmDateText.Text = oldText;
         }
 
         protected override void saveBtn_Click(object sender, EventArgs e)
@@ -116,12 +116,6 @@ namespace Autoreport.UI.Edit
             filmNameText.Text = editingEntity.Name;
             filmDateText.Text = editingEntity.Date.ToString();
             selectedBox.Items.AddRange(editingEntity.FilmDirectors.ToArray());
-        }
-
-        private void selectBtn_Click(object sender, EventArgs e)
-        {
-            this.relatedTab = filmDirectorRelatedTab;
-            this.Select_Click(sender, e);
         }
     }
 }
