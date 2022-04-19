@@ -37,7 +37,7 @@ namespace Autoreport.Services
                     .Include(x => x.FilmDirectors)
                     .Include(x => x.FilmCountry)
                     .Include(x => x.Genres)
-                .FirstOrDefault(x => x.Id == Id);
+                    .FirstOrDefault(x => x.Id == Id);
                 return film;
             }
         }
@@ -98,16 +98,22 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit(Film editingEntity, string filmName, DateTime filmDate, int country_id, List<Person> director, List<Genre> genres)
+        public void Edit(Film editingEntity, string filmName, DateTime filmDate, int countryId, List<Person> directors, List<Genre> genres)
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Entry(editingEntity).State = EntityState.Modified;
-                editingEntity.Name = filmName;
-                editingEntity.Date = filmDate;
-                editingEntity.FilmCountry = db.Countries.Find(country_id);
-                editingEntity.FilmDirectors = director;
-                editingEntity.Genres = genres;
+                var film = db.Films
+                    .Include(f => f.Genres)
+                    .Include(f => f.FilmDirectors)
+                    .Where(f => f.Id == editingEntity.Id)
+                    .First();
+
+                film.Name = filmName;
+                film.Date = filmDate;
+                film.FilmCountry = db.Countries.Find(countryId);
+                film.FilmDirectors = db.Persons.Where(x => directors.Select(y => y.Id).Contains(x.Id)).ToList();
+                film.Genres = db.Genres.Where(x => genres.Select(y => y.Id).Contains(x.Id)).ToList();
+
                 db.SaveChanges();
             }
         }

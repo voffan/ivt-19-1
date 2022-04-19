@@ -48,7 +48,6 @@ namespace Autoreport.UI.Edit
             if (Loaded)
                 return;
 
-            Console.WriteLine("form loaded");
             countryBox.DataSource = Connection.filmService.GetCountries();
             countryBox.DisplayMember = "Name";
             countryBox.ValueMember = "Id";
@@ -58,6 +57,7 @@ namespace Autoreport.UI.Edit
             genresBox.DisplayMember = "Name";
             genresBox.ValueMember = "Id";
 
+            genresBox.ClearSelected();
             for (int i = 0; i < editingEntity.Genres.Count; i++)
             {
                 genresBox.SetSelected(genresBox.Items.IndexOf(genresBox.Items.Cast<object>().First(x => ((Genre)x).Id == editingEntity.Genres[i].Id)), true);
@@ -89,7 +89,7 @@ namespace Autoreport.UI.Edit
 
             //var selectedDirectors = Connection.filmService.GetFilmsDirectors().Where(d => directors_ids.Contains(d.Id)).ToList();
 
-            Connection.filmService.Edit(editingEntity, filmName, filmDate,(int)countryBox.SelectedValue, directors, genresBox.SelectedItems.Cast<Genre>().ToList());
+            Connection.filmService.Edit(editingEntity, filmName, filmDate, (int)countryBox.SelectedValue, directors, genresBox.SelectedItems.Cast<Genre>().ToList());
             CloseHandler();
             Close();
         }

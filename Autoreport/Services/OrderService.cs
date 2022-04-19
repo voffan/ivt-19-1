@@ -86,7 +86,6 @@ namespace Autoreport.Services
                     .FirstOrDefault(x => x.Id == Id);
 
                 CheckExpiration(order, db);
-
                 return order;
             }
         }
@@ -138,13 +137,16 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Entry(editingEntity).State = EntityState.Modified;
+                var order = db.Orders
+                    .Include(x => x.OrderClient)
+                    .Include(x => x.OrderDeposit)
+                    .Include(x => x.Disks)
+                    .FirstOrDefault(x => x.Id == editingEntity.Id);
 
-                editingEntity.Return_date = returnDate;
-                editingEntity.OrderClient = deposit.Owner;
-                editingEntity.OrderDeposit = deposit;
-                editingEntity.Disks.Clear();
-                editingEntity.Disks.AddRange(disks);
+                order.Return_date = returnDate;
+                order.OrderClient = db.Clients.FirstOrDefault(x => x.Id == deposit.Owner.Id);
+                order.OrderDeposit = db.Deposits.FirstOrDefault(x => x.Id == deposit.Id);
+                order.Disks = db.Disks.Where(x => disks.Select(y => y.Id).Contains(x.Id)).ToList();
 
                 db.SaveChanges();
             }

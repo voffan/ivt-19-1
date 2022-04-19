@@ -47,6 +47,7 @@ namespace Autoreport.UI.Edit
 
             orderDateText.Value = editingEntity.Order_date;
             returnDateText.Value = editingEntity.Return_date;
+
             selectedBox_Deposit.Items.Add(editingEntity.OrderDeposit);
             selectedBox_Disks.Items.AddRange(editingEntity.Disks.ToArray());
         }
