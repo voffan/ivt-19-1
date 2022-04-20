@@ -20,10 +20,10 @@ namespace Autoreport.Models
         [Required, DisplayName("Страна")]
         public virtual Country FilmCountry { get; set; }
 
-        [Required]
+        [Required, DisplayName("Режиссеры")]
         public virtual List<Person> FilmDirectors { get; set; }
 
-        [Required]
+        [Required, DisplayName("Жанры")]
         public virtual List<Genre> Genres { get; set; }
 
         public virtual List<Disk> Disks { get; set; }

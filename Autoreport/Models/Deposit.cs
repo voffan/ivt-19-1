@@ -42,10 +42,10 @@ namespace Autoreport.Models
         {
             return this.DepositType switch
             {
-                DepositType.Money => String.Format("Деньги: {0}", MoneyValue),
-                DepositType.Document => String.Format("Документ: {0}", DocumentData),
-                DepositType.MoneyAndDocument => String.Format("Деньги: {0}; документ: {1}", MoneyValue, DocumentData),
-                _ => String.Format("Деньги: {0}", MoneyValue),
+                DepositType.Money => $"Деньги: {MoneyValue}",
+                DepositType.Document => $"Документ: {DocumentData}",
+                DepositType.MoneyAndDocument => $"Деньги: {MoneyValue}р.; документ: {DocumentData}",
+                _ => $"Деньги: {MoneyValue}р."
             };
         }
     }

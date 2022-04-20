@@ -10,4 +10,14 @@ namespace Autoreport.Services.Errors
     {
         public NotEnoughDisks(string message) : base(message) { }
     }
+
+    class DateExpired : Exception
+    {
+        public DateExpired(string message) : base(message) { }
+    }
+
+    class DateNotExpired : Exception
+    {
+        public DateNotExpired(string message) : base(message) { }
+    }
 }

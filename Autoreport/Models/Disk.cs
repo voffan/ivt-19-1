@@ -24,15 +24,15 @@ namespace Autoreport.Models
         [Required, DisplayName("Цена"), Range(0.1, 10000.0)]
         public double Cost { get; set; }
 
-        [Required] // DisplayName("Фильмы")
+        [Required, DisplayName("Фильмы")]
         public virtual List<Film> Films { get; set; }
 
-        //[DisplayName("Заказы")]
+        [DisplayName("Заказы")]
         public virtual List<Order> Orders { get; set; }
 
         public override string ToString()
         {
-            return String.Format("{0}: {1}", Article, Cost);
+            return $"{Article} ({Cost}р)";
         }
     }
 }

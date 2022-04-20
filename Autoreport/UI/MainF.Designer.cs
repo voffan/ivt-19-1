@@ -366,6 +366,7 @@ namespace Autoreport.UI
             this.infoBtn.TabIndex = 6;
             this.infoBtn.Text = "Подробнее";
             this.infoBtn.UseVisualStyleBackColor = true;
+            this.infoBtn.Click += new System.EventHandler(this.infoBtn_Click);
             // 
             // deleteBtn
             // 

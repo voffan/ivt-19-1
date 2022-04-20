@@ -50,6 +50,7 @@ namespace Autoreport.Models
         [Required, DisplayName("Хэш пароля"), MaxLength(256)]
         public string PasswordHash { get; set; }
 
+        [DisplayName("Заказы")]
         public virtual List<Order> Orders { get; set; }
     }
 }

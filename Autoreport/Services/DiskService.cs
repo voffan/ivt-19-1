@@ -6,6 +6,7 @@ using Autoreport.Database;
 using Autoreport.UI.Classes;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
 
 namespace Autoreport.Services
 {
@@ -16,18 +17,16 @@ namespace Autoreport.Services
             int count = Int32.Parse(_count);
             int cost = Int32.Parse(_cost);
 
-            Disk disk = new Disk()
-            {
-                Article = article,
-                General_count = count,
-                Current_count = count,
-                Cost = cost,
-                Films = films
-            };
+            using (DataContext db = Connection.Connect()) {
+                Disk disk = new Disk()
+                {
+                    Article = article,
+                    General_count = count,
+                    Current_count = count,
+                    Cost = cost,
+                    Films = db.Films.Where(x => films.Contains(x)).ToList()
+                };
 
-            using (DataContext db = Connection.Connect())
-            {
-                db.Update(disk);
                 db.Disks.Add(disk);
                 db.SaveChanges();
             }
@@ -42,7 +41,10 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                return db.Disks.ToList();
+                return db.Disks
+                    .Include(x => x.Films)
+                    .Include(x => x.Orders)
+                    .ToList();
             }
         }
 

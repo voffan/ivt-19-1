@@ -52,6 +52,8 @@ namespace Autoreport.UI.Edit
             this.ownerLabel = new System.Windows.Forms.Label();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.statusBox = new System.Windows.Forms.ComboBox();
             this.flowLayout.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,6 +66,8 @@ namespace Autoreport.UI.Edit
             this.flowLayout.Controls.Add(this.orderDateText);
             this.flowLayout.Controls.Add(this.label2);
             this.flowLayout.Controls.Add(this.returnDateText);
+            this.flowLayout.Controls.Add(this.label13);
+            this.flowLayout.Controls.Add(this.statusBox);
             this.flowLayout.Controls.Add(this.label3);
             this.flowLayout.Controls.Add(this.panel2);
             this.flowLayout.Controls.Add(this.label11);
@@ -126,7 +130,7 @@ namespace Autoreport.UI.Edit
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(3, 65);
+            this.label3.Location = new System.Drawing.Point(3, 96);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.MinimumSize = new System.Drawing.Size(232, 25);
             this.label3.Name = "label3";
@@ -138,7 +142,7 @@ namespace Autoreport.UI.Edit
             // 
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.selectedBox_Disks);
-            this.panel2.Location = new System.Drawing.Point(241, 65);
+            this.panel2.Location = new System.Drawing.Point(241, 96);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(281, 93);
             this.panel2.TabIndex = 24;
@@ -215,7 +219,7 @@ namespace Autoreport.UI.Edit
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(3, 164);
+            this.label11.Location = new System.Drawing.Point(3, 195);
             this.label11.Margin = new System.Windows.Forms.Padding(3);
             this.label11.MinimumSize = new System.Drawing.Size(232, 25);
             this.label11.Name = "label11";
@@ -229,7 +233,7 @@ namespace Autoreport.UI.Edit
             this.selectedBox_Deposit.FormattingEnabled = true;
             this.selectedBox_Deposit.IntegralHeight = false;
             this.selectedBox_Deposit.ItemHeight = 17;
-            this.selectedBox_Deposit.Location = new System.Drawing.Point(241, 164);
+            this.selectedBox_Deposit.Location = new System.Drawing.Point(241, 195);
             this.selectedBox_Deposit.Name = "selectedBox_Deposit";
             this.selectedBox_Deposit.Size = new System.Drawing.Size(281, 25);
             this.selectedBox_Deposit.TabIndex = 22;
@@ -239,7 +243,7 @@ namespace Autoreport.UI.Edit
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(3, 195);
+            this.label4.Location = new System.Drawing.Point(3, 226);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.MinimumSize = new System.Drawing.Size(232, 25);
             this.label4.Name = "label4";
@@ -250,7 +254,7 @@ namespace Autoreport.UI.Edit
             // ownerLabel
             // 
             this.ownerLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ownerLabel.Location = new System.Drawing.Point(241, 195);
+            this.ownerLabel.Location = new System.Drawing.Point(241, 226);
             this.ownerLabel.Margin = new System.Windows.Forms.Padding(3);
             this.ownerLabel.Name = "ownerLabel";
             this.ownerLabel.Size = new System.Drawing.Size(281, 25);
@@ -276,6 +280,28 @@ namespace Autoreport.UI.Edit
             this.saveBtn.Text = "Сохранить";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(3, 65);
+            this.label13.Margin = new System.Windows.Forms.Padding(3);
+            this.label13.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(232, 25);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Статус";
+            // 
+            // statusBox
+            // 
+            this.statusBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.statusBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.statusBox.FormattingEnabled = true;
+            this.statusBox.Location = new System.Drawing.Point(241, 65);
+            this.statusBox.Name = "statusBox";
+            this.statusBox.Size = new System.Drawing.Size(281, 25);
+            this.statusBox.TabIndex = 20;
             // 
             // EditOrderF
             // 
@@ -320,5 +346,7 @@ namespace Autoreport.UI.Edit
         private Panel panel2;
         private Label label5;
         private Label costLabel;
+        private Label label13;
+        private ComboBox statusBox;
     }
 }

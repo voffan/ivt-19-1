@@ -5,6 +5,7 @@ using Autoreport.Models;
 using Autoreport.Database;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Autoreport.Services.Errors;
 
 namespace Autoreport.Services
 {
@@ -35,7 +36,7 @@ namespace Autoreport.Services
                 foreach (Disk disk in Disks)
                 {
                     if (disk.Current_count == 0)
-                        throw new Errors.NotEnoughDisks("Такие диски в данный момент отсутствуют");
+                        throw new NotEnoughDisks("Такие диски в данный момент отсутствуют");
                     
                     disk.Current_count--;
                     db.Entry(disk).State = EntityState.Modified;
@@ -61,12 +62,14 @@ namespace Autoreport.Services
                 && order.Status != OrderStatus.Expired
                 && order.Status != OrderStatus.Completed)
             {
+                Connection.clientService.SetDebt(order.OrderClient, true);
                 order.Status = OrderStatus.Expired;
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
             }
             else if (currentDate < order.Return_date && order.Status == OrderStatus.Expired)
             {
+                Connection.clientService.SetDebt(order.OrderClient, false);
                 order.Status = OrderStatus.Proceed;
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
@@ -80,9 +83,6 @@ namespace Autoreport.Services
             using (DataContext db = Connection.Connect())
             {
                 Order order = db.Orders
-                    .Include(x => x.Disks)
-                    .Include(x => x.OrderClient)
-                    .Include(x => x.OrderDeposit)
                     .FirstOrDefault(x => x.Id == Id);
 
                 CheckExpiration(order, db);
@@ -95,10 +95,6 @@ namespace Autoreport.Services
             using (DataContext db = Connection.Connect())
             {
                 return db.Orders
-                    .Include(x => x.OrderClient)
-                    .Include(x => x.OrderEmployee)
-                    .Include(x => x.OrderDeposit)
-                    .Include(x => x.Disks)
                     .ToList()
                     .Select(x => CheckExpiration(x, db))
                     .ToList();
@@ -110,11 +106,7 @@ namespace Autoreport.Services
             using (DataContext db = Connection.Connect())
             {
                 Order order = db.Orders
-                    .Include(x => x.OrderClient)
-                    .Include(x => x.OrderDeposit)
-                    .Include(x => x.Disks)
-                    .Where(order => order.Id == Id)
-                    .ToList()[0];
+                    .First(order => order.Id == Id);
 
                 Client orderClient = order.OrderClient;
                 List<Disk> orderDisks = order.Disks;
@@ -133,20 +125,36 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit(Order editingEntity, DateTime returnDate, Deposit deposit, List<Disk> disks)
+        public void Edit(Order editingEntity, OrderStatus status, DateTime returnDate, Deposit deposit, List<Disk> disks)
         {
             using (DataContext db = Connection.Connect())
             {
+                if (status == OrderStatus.Proceed && returnDate < DateTime.Now)
+                {
+                    throw new DateExpired("Статус заказа установлен в значение 'В процессе', но дата истекла");
+                }
+                else if (status == OrderStatus.Expired && returnDate >= DateTime.Now)
+                {
+                    throw new DateNotExpired("Статус заказа установлен в значение 'Просрочен', но дата еще не истекла");
+                }
+
                 var order = db.Orders
-                    .Include(x => x.OrderClient)
-                    .Include(x => x.OrderDeposit)
-                    .Include(x => x.Disks)
-                    .FirstOrDefault(x => x.Id == editingEntity.Id);
+                    .First(x => x.Id == editingEntity.Id);
 
                 order.Return_date = returnDate;
                 order.OrderClient = db.Clients.FirstOrDefault(x => x.Id == deposit.Owner.Id);
                 order.OrderDeposit = db.Deposits.FirstOrDefault(x => x.Id == deposit.Id);
                 order.Disks = db.Disks.Where(x => disks.Select(y => y.Id).Contains(x.Id)).ToList();
+
+                if (status == OrderStatus.Completed)
+                {
+                    order.OrderClient.Order_count--;
+
+                    foreach (Disk disk in order.Disks)
+                    {
+                        disk.Current_count++;
+                    }
+                }
 
                 db.SaveChanges();
             }

@@ -24,7 +24,9 @@ namespace Autoreport.Models.Classes
             {
                 foreach (var memberInfo in typeof(T).GetMembers())
                 {
-                    DescriptionAttribute[] list = memberInfo.GetCustomAttributes(typeof(DescriptionAttribute), true).Cast<DescriptionAttribute>().ToArray();
+                    DescriptionAttribute[] list = memberInfo
+                        .GetCustomAttributes(typeof(DescriptionAttribute), true)
+                        .Cast<DescriptionAttribute>().ToArray();
                     
                     if (list.Length > 0 && memberInfo.Name == value.ToString())
                     {

@@ -30,13 +30,31 @@ namespace Autoreport.Services
             }
         }
 
+        public void SetDebt(Client toClient, bool increase)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                Client client = db.Clients.First(c => c.Id == toClient.Id);
+
+                if (increase)
+                    client.Debt_count++;
+                else
+                    client.Debt_count--;
+
+                db.SaveChanges();
+            }
+        }
+
         public List<Client> GetAll()
         {
             using (DataContext db = Connection.Connect())
             {
-                return db.Clients.ToList();
+                return db.Clients
+                    .Include(c => c.Orders)
+                    .ToList();
             }
         }
+
         public Client GetById(int client_id)
         {
             using (DataContext db = Connection.Connect())

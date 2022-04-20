@@ -44,6 +44,19 @@ namespace Autoreport.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Order>()
+                .Navigation(e => e.OrderClient)
+                .AutoInclude();
+            modelBuilder.Entity<Order>()
+                .Navigation(e => e.Disks)
+                .AutoInclude();
+            modelBuilder.Entity<Order>()
+                .Navigation(e => e.OrderEmployee)
+                .AutoInclude();
+            modelBuilder.Entity<Order>()
+                .Navigation(e => e.OrderDeposit)
+                .AutoInclude();
+
             //modelBuilder
             //    .Entity<Film>()
             //    .HasMany(film => film.FilmDirectors)

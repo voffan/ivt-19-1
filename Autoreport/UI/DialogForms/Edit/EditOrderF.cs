@@ -36,6 +36,35 @@ namespace Autoreport.UI.Edit
             this.CloseHandler = OnCloseHandler;
         }
 
+        private void OrderF_Load(object sender, EventArgs e)
+        {
+            if (editingEntity == null)
+            {
+                // не был вызван LoadField с корректным айди
+                MessageBox.Show("Не проинициализированы поля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (selectedBox_Deposit.Items.Count > 0)
+            {
+                ownerLabel.Text = ((Deposit)selectedBox_Deposit.Items[0]).Owner.ToString();
+            }
+
+            if (selectedBox_Disks.Items.Count > 0)
+            {
+                costLabel.Text = selectedBox_Disks.Items.Cast<Disk>().Sum(i => i.Cost).ToString();
+            }
+            else
+            {
+                costLabel.Text = "0";
+            }
+
+            statusBox.DisplayMember = "Key";
+            statusBox.ValueMember = "Value";
+            statusBox.DataSource = new BindingSource(DescriptionAttributes<OrderStatus>.RetrieveAttributes(), null);
+            statusBox.SelectedValue = editingEntity.Status.ToString();
+        }
+
         public override void LoadField(int entityId)
         {
             editingEntity = Connection.orderService.Get(entityId);
@@ -63,29 +92,23 @@ namespace Autoreport.UI.Edit
             DateTime orderDate = orderDateText.Value;
             DateTime returnDate = returnDateText.Value;
 
+            OrderStatus status = (OrderStatus)Enum.Parse(typeof(OrderStatus),
+                statusBox.SelectedValue.ToString());
+
             Deposit deposit = selectedBox_Deposit.Items.Cast<Deposit>().ToList()[0];
             List<Disk> disks = selectedBox_Disks.Items.Cast<Disk>().ToList();
 
-            Connection.orderService.Edit(editingEntity, returnDate, deposit, disks);
+            try
+            {
+                Connection.orderService.Edit(editingEntity, status, returnDate, deposit, disks);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             CloseHandler();
             Close();
-        }
-
-        private void OrderF_Load(object sender, EventArgs e)
-        {
-            if (selectedBox_Deposit.Items.Count > 0)
-            {
-                ownerLabel.Text = ((Deposit)selectedBox_Deposit.Items[0]).Owner.ToString();
-            }
-
-            if (selectedBox_Disks.Items.Count > 0)
-            {
-                costLabel.Text = selectedBox_Disks.Items.Cast<Disk>().Sum(i => i.Cost).ToString();
-            } else
-            {
-                costLabel.Text = "0";
-            }
         }
 
         protected override void RemoveSelectedBtn_Click(object sender, EventArgs e)

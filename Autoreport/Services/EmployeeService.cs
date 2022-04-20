@@ -4,6 +4,7 @@ using System.Text;
 using Autoreport.Models;
 using Autoreport.Database;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Autoreport.Services
 {

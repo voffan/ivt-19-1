@@ -14,6 +14,7 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Collections;
 
 namespace Autoreport.UI
 {
@@ -498,12 +499,17 @@ namespace Autoreport.UI
                 if (member.MemberType == MemberTypes.Property)
                 {
                     if (exceptFields != null && exceptFields.Contains(member.Name))
-                        return;
+                        continue;
 
                     if (concreteFields != null && !concreteFields.Contains(member.Name))
-                        return;
+                        continue;
 
-                    if (member.GetCustomAttributes().OfType<KeyAttribute>().Count() > 0)
+                    PropertyInfo property = T.GetProperties().First(x => x.Name == member.Name);
+                    
+                    // отсеиваем key-value поля и поля, являющиеся списками
+                    if (member.GetCustomAttributes().OfType<KeyAttribute>().Count() > 0 ||
+                            property.PropertyType != typeof(string) &&
+                            typeof(IEnumerable).IsAssignableFrom(property.PropertyType))
                         continue;
 
                     foreach (Attribute attribute in member.GetCustomAttributes())
@@ -879,6 +885,13 @@ namespace Autoreport.UI
             {
                 ClearField(ctrl);
             }
+
+            reloadBtn.PerformClick();
+        }
+
+        private void infoBtn_Click(object sender, EventArgs e)
+        {
+            (new Detailed(dataGridView.SelectedRows[0].DataBoundItem)).Show();
         }
     }
 }

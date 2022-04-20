@@ -19,6 +19,7 @@ namespace Autoreport.Models
         [DisplayName("Количество задолженностей"), Range(0, 20000)]
         public int Debt_count { get; set;} // задолженности
 
+        [DisplayName("Заказы")]
         public virtual List<Order> Orders { get; set; }
     }
 }

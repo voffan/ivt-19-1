@@ -26,10 +26,10 @@ namespace Autoreport.Models
         [Required, DisplayName("Стоимость"), Range(1.0, 100000.0)]
         public double Cost { get; set; }
 
-        [Required, DisplayName("Дата заказа")]
+        [Required, DisplayName("Дата заказа"), Column(TypeName = "Date")]
         public DateTime Order_date { get; set; }
 
-        [Required, DisplayName("Дата возврата")]
+        [Required, DisplayName("Дата возврата"), Column(TypeName = "Date")]
         public DateTime Return_date { get; set; }
 
         [Required, DisplayName("Статус")]
@@ -44,7 +44,13 @@ namespace Autoreport.Models
         [Required, DisplayName("Залог"), ForeignKey("DepositId")]
         public virtual Deposit OrderDeposit { get; set; }
 
-        [Required] // DisplayName("Диски")
+        [Required, DisplayName("Диски")]
         public virtual List<Disk> Disks { get; set; }
+
+        public override string ToString()
+        {
+            string status = TypeDescriptor.GetConverter(Status).ConvertToString(Status);
+            return $"({status}){Cost}р. От: {Order_date.ToString("dd/MM/yyyy")} До: {Return_date.ToString("dd/MM/yyyy")}";
+        }
     }
 }

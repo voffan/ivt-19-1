@@ -46,7 +46,12 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                return db.Films.Include(f => f.FilmCountry).ToList();
+                return db.Films
+                    .Include(f => f.Disks)
+                    .Include(f => f.FilmCountry)
+                    .Include(f => f.FilmDirectors)
+                    .Include(f => f.Genres)
+                    .ToList();
             }
         }
 
