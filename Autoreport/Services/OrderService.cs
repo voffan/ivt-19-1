@@ -11,37 +11,35 @@ namespace Autoreport.Services
 {
     public class OrderService
     {
-        public void Add(DateTime OrderDate, DateTime ReturnDate, Employee OrderEmployeer, Deposit OrderDeposit, List<Disk> Disks)
+        public void Add(DateTime OrderDate, DateTime ReturnDate, Employee OrderEmployee, Deposit OrderDeposit, List<Disk> Disks)
         {
-            Order order = new Order()
-            {
-                Cost = Disks.Sum(disk => disk.Cost),
-                Order_date = OrderDate,
-                Return_date = ReturnDate,
-                Status = OrderStatus.Proceed,
-                OrderClient = OrderDeposit.Owner,
-                OrderEmployee = OrderEmployeer,
-                OrderDeposit = OrderDeposit,
-                Disks = Disks
-            };
-
             using (DataContext db = Connection.Connect())
             {
-                db.Entry(order).State = EntityState.Modified;
-                db.Orders.Add(order);
+                Deposit orderDeposit = db.Deposits.Include(x => x.Owner).First(x => OrderDeposit.Id == x.Id);
+
+                Order order = new Order()
+                {
+                    Cost = Disks.Sum(disk => disk.Cost),
+                    Order_date = OrderDate,
+                    Return_date = ReturnDate,
+                    Status = OrderStatus.Proceed,
+                    OrderClient = orderDeposit.Owner,
+                    OrderEmployee = db.Employees.First(x => x.Id == OrderEmployee.Id),
+                    OrderDeposit = orderDeposit,
+                    Disks = db.Disks.Where(x => Disks.Select(x => x.Id).Contains(x.Id)).ToList()
+                };
 
                 OrderDeposit.Owner.Order_count++;
-                db.Entry(OrderDeposit.Owner).State = EntityState.Modified;
 
-                foreach (Disk disk in Disks)
+                foreach (Disk disk in order.Disks)
                 {
                     if (disk.Current_count == 0)
                         throw new NotEnoughDisks("Такие диски в данный момент отсутствуют");
                     
                     disk.Current_count--;
-                    db.Entry(disk).State = EntityState.Modified;
                 }
 
+                db.Orders.Add(order);
                 db.SaveChanges();
             }
         }

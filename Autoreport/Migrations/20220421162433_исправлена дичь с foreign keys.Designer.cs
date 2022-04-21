@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autoreport.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220401075745_set foreign keys for orders")]
-    partial class setforeignkeysfororders
+    [Migration("20220421162433_исправлена дичь с foreign keys")]
+    partial class исправленадичьсforeignkeys
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,9 +94,6 @@ namespace Autoreport.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("Date");
-
                     b.Property<int>("FilmCountryId")
                         .HasColumnType("int");
 
@@ -104,6 +101,9 @@ namespace Autoreport.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -169,10 +169,10 @@ namespace Autoreport.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Order_date")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("Date");
 
                     b.Property<DateTime>("Return_date")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("Date");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

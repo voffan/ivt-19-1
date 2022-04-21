@@ -35,14 +35,23 @@ namespace Autoreport.Models
         [Required, DisplayName("Статус")]
         public OrderStatus Status { get; set; }
 
-        [Required, DisplayName("Клиент"), ForeignKey("ClientId")]
+        [Required, DisplayName("Клиент")]
         public virtual Client OrderClient { get; set; }
 
-        [Required, DisplayName("Сотрудник"), ForeignKey("EmployeeId")]
+        [ForeignKey("OrderClient")]
+        public int ClientId { get; set; }
+
+        [Required, DisplayName("Сотрудник")]
         public virtual Employee OrderEmployee { get; set; }
 
-        [Required, DisplayName("Залог"), ForeignKey("DepositId")]
+        [ForeignKey("OrderEmployee")]
+        public int EmployeeId { get; set; }
+
+        [Required, DisplayName("Залог")]
         public virtual Deposit OrderDeposit { get; set; }
+
+        [ForeignKey("OrderDeposit")]
+        public int DepositId { get; set; }
 
         [Required, DisplayName("Диски")]
         public virtual List<Disk> Disks { get; set; }
