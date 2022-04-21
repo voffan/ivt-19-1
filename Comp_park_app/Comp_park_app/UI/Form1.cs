@@ -300,7 +300,7 @@ namespace Comp_park_app_form {
 
         }
 
-       public void Update_datagridview(int index) //Update datagridview when adding new record or editing record or deleting
+        public void Update_datagridview(int index) //Update datagridview when adding new record or editing record or deleting
        {
             switch (index) {
                 case 0: //Computers
@@ -344,7 +344,8 @@ namespace Comp_park_app_form {
             }
         }
 
-        private void button4_Click(object sender, EventArgs e) { // Поиск в списках
+        // Поиск в списках
+        private void button4_Click(object sender, EventArgs e) { 
 
             using (Context context = new Context()) {
 

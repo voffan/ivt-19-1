@@ -12,6 +12,8 @@ namespace Comp_park_app
         public int Id { get; set; }
         [MaxLength(100)]
         public string Name { get; set; }
+        [MaxLength(256)]
+        public string Password { get; set; }
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
         public int PositionId { get; set; }

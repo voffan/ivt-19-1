@@ -3,14 +3,16 @@ using System;
 using Comp_park_app;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Comp_park_app.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220420135815_comp_parkv3")]
+    partial class comp_parkv3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,8 +85,8 @@ namespace Comp_park_app.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Password")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<int>("PositionId")
                         .HasColumnType("int");

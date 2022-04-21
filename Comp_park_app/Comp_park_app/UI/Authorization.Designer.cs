@@ -29,29 +29,31 @@ namespace Comp_park_app.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox_login = new System.Windows.Forms.TextBox();
-            this.textBox_password = new System.Windows.Forms.TextBox();
+            this.textBox_Login = new System.Windows.Forms.TextBox();
+            this.textBox_Password = new System.Windows.Forms.TextBox();
             this.label_login = new System.Windows.Forms.Label();
             this.label_password = new System.Windows.Forms.Label();
             this.button_entry = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button_regis = new System.Windows.Forms.Button();
             this.button_exit = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox_login
+            // textBox_Login
             // 
-            this.textBox_login.Location = new System.Drawing.Point(162, 93);
-            this.textBox_login.Name = "textBox_login";
-            this.textBox_login.Size = new System.Drawing.Size(100, 23);
-            this.textBox_login.TabIndex = 0;
+            this.textBox_Login.Location = new System.Drawing.Point(162, 93);
+            this.textBox_Login.Name = "textBox_Login";
+            this.textBox_Login.Size = new System.Drawing.Size(100, 23);
+            this.textBox_Login.TabIndex = 0;
             // 
-            // textBox_password
+            // textBox_Password
             // 
-            this.textBox_password.Location = new System.Drawing.Point(162, 150);
-            this.textBox_password.Name = "textBox_password";
-            this.textBox_password.Size = new System.Drawing.Size(100, 23);
-            this.textBox_password.TabIndex = 1;
+            this.textBox_Password.Location = new System.Drawing.Point(162, 150);
+            this.textBox_Password.Name = "textBox_Password";
+            this.textBox_Password.Size = new System.Drawing.Size(100, 23);
+            this.textBox_Password.TabIndex = 1;
             // 
             // label_login
             // 
@@ -109,19 +111,39 @@ namespace Comp_park_app.UI
             this.button_exit.Text = "Выход";
             this.button_exit.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(65, 193);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 15);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(59, 343);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 15);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "label4";
+            // 
             // Authorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 357);
+            this.ClientSize = new System.Drawing.Size(357, 395);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button_exit);
             this.Controls.Add(this.button_regis);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_entry);
             this.Controls.Add(this.label_password);
             this.Controls.Add(this.label_login);
-            this.Controls.Add(this.textBox_password);
-            this.Controls.Add(this.textBox_login);
+            this.Controls.Add(this.textBox_Password);
+            this.Controls.Add(this.textBox_Login);
             this.Name = "Authorization";
             this.Text = "Authorization";
             this.Load += new System.EventHandler(this.Authorization_Load);
@@ -132,13 +154,15 @@ namespace Comp_park_app.UI
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox_login;
-        private System.Windows.Forms.TextBox textBox_password;
+        private System.Windows.Forms.TextBox textBox_Login;
+        private System.Windows.Forms.TextBox textBox_Password;
         private System.Windows.Forms.Label label_login;
         private System.Windows.Forms.Label label_password;
         private System.Windows.Forms.Button button_entry;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_regis;
         private System.Windows.Forms.Button button_exit;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
