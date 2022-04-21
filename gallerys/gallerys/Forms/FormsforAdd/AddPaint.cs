@@ -39,6 +39,9 @@ namespace gallerys.Forms.FormsforAdd
             if (this.Text == "Редактировать Картины")
             {
                 PaintSer p = new PaintSer();
+                p.comboxAuthor(comboBox2);
+                p.comboxStatus(comboBox1);
+                p.comboxGenre(comboBox3);
             }
             else
             {

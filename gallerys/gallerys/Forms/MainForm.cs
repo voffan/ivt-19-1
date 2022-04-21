@@ -69,7 +69,7 @@ namespace gallerys
         {
             gallContext c = new gallContext();
             string selectedtable = comboBox1.SelectedItem.ToString();
-            if ((Connection.employeeSer.CurrentEmployee.Right == 0))
+            if ((Connection.employeeSer.CurrentEmployee.Right == 0) || (Connection.employeeSer.CurrentEmployee.Right == Models.Right.manager))
             {
                 if (selectedtable == "Картины")
                 {
@@ -102,18 +102,24 @@ namespace gallerys
                 if (selectedtable == "Картины")
                 {
                     dataGridView1.DataSource = c.Paintings.ToList();
+                    dataGridView1.Columns[0].Visible = false;
                 }
                 if (selectedtable == "Сотрудники")
                 {
                     dataGridView1.DataSource = c.Employees.ToList();
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[2].Visible = false;
+                    dataGridView1.Columns[3].Visible = false;
                 }
                 if (selectedtable == "Жанры")
                 {
                     dataGridView1.DataSource = c.Genres.ToList();
+                    dataGridView1.Columns[0].Visible = false;
                 }
                 if (selectedtable == "Авторы")
                 {
                     dataGridView1.DataSource = c.Authors.ToList();
+                    dataGridView1.Columns[0].Visible = false;
                 }
                 if (selectedtable == "Журнал передвижения картин")
                 {
@@ -122,6 +128,7 @@ namespace gallerys
                 if (selectedtable == "Выставки")
                 {
                     dataGridView1.DataSource = c.Exhibitions.ToList();
+                    dataGridView1.Columns[0].Visible = false;
                 }
             }
             label1.Text = "Текущий список: " + selectedtable;
@@ -146,7 +153,9 @@ namespace gallerys
                         {
                             AddPaint add = new AddPaint(s, comboBox1.Text);
                             add.textBox1.Text = dataGridView1.Rows[p].Cells[1].Value.ToString();
-
+                            add.textBox2.Text = dataGridView1.Rows[p].Cells[2].Value.ToString();
+                            add.textBox3.Text = dataGridView1.Rows[p].Cells[3].Value.ToString();
+                            add.comboBox1.SelectedItem = dataGridView1.Rows[p].Cells[4].Value.ToString();
                             add.ShowDialog();
                         }
                         if (comboBox1.Text == "Жанры")
@@ -183,6 +192,11 @@ namespace gallerys
                     MessageBox.Show("Выберите редактируемый объект");
                 }
             }
+        }
+
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dataGridView1.Sort(dataGridView1.Columns[e.ColumnIndex], ListSortDirection.Ascending);
         }
     }
 }
