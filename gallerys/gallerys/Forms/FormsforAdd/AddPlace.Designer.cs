@@ -44,6 +44,7 @@ namespace gallerys.Forms.FormsforAdd
             this.button2.TabIndex = 24;
             this.button2.Text = "Отменить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 

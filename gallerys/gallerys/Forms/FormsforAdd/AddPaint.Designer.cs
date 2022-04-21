@@ -70,7 +70,7 @@ namespace gallerys.Forms.FormsforAdd
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(50, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 37);
+            this.label2.Size = new System.Drawing.Size(170, 37);
             this.label2.TabIndex = 5;
             this.label2.Text = "Год издания";
             // 
@@ -168,6 +168,7 @@ namespace gallerys.Forms.FormsforAdd
             this.button2.TabIndex = 16;
             this.button2.Text = "Отменить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 

@@ -27,26 +27,31 @@ namespace gallerys.Forms.FormsforAdd
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //status s = comboBox1.Text;
-            //PaintSer p = new PaintSer();
-            //p.Add(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), )
+            PaintSer p = new PaintSer();
+            var author = (Author)comboBox2.SelectedValue;
+            var stat = (status)Enum.Parse(typeof(status), comboBox1.SelectedValue.ToString());
+            var g = (Genre)comboBox3.SelectedItem;
+            p.Add(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, author, g);
         }
 
         private void AddPaint_Load(object sender, EventArgs e)
         {
-            gallContext c = new gallContext();
-            //comboBox1.DataSource = Enum.GetValues(typeof(status)).Cast<Painting>();
-            List<Painting> stat = c.Paintings.ToList();
-            DataTable dt = new DataTable();
-            dt.Columns.Add("id");
-            dt.Columns.Add("name");
-            foreach (Painting usepurpose in stat)
+            if (this.Text == "Редактировать Картины")
             {
-                dt.Rows.Add(usepurpose.AuthorId, usepurpose.Author);
+                PaintSer p = new PaintSer();
             }
-            comboBox2.ValueMember = dt.Columns[0].ColumnName;
-            comboBox2.DisplayMember = dt.Columns[1].ColumnName;
-            comboBox2.DataSource = dt;
+            else
+            {
+                PaintSer p = new PaintSer();
+                p.comboxAuthor(comboBox2);
+                p.comboxStatus(comboBox1);
+                p.comboxGenre(comboBox3);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
