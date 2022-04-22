@@ -20,9 +20,17 @@ namespace Korobki_project.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            
+                Shift table;
+                using (Context c = new Context())
+                {
+                    table = c.Shifts.Find(index);
+                    c.Remove(table);
+                    c.SaveChanges();
+                }
+            
         }
 
         public void Edit()

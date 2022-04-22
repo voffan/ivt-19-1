@@ -49,16 +49,14 @@ namespace Korobki_project
                     conn.Close();
                     MessageBox.Show("Удалено");
                     this.Close();
-                    MenuForm main = new MenuForm();
-                    main.Show();
                 }
             }
-
         }
 
-		private void EmployeeForm_FormClosed_1(object sender, FormClosedEventArgs e)
+        private void EmployeeForm_FormClosed_1(object sender, FormClosedEventArgs e)
 		{
-        /*    MenuForm main = new MenuForm();
+        /*   
+            MenuForm main = new MenuForm();
             main.Show();
         */
         }

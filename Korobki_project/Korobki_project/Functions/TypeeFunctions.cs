@@ -7,7 +7,7 @@ using Korobki_project.Classes;
 
 namespace Korobki_project.Functions
 {
-    class TypeeProductions
+    class TypeeFunctions
     {
         public void Add()
         {
@@ -20,9 +20,15 @@ namespace Korobki_project.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            Typee table;
+            using (Context c = new Context())
+            {
+                table = c.Typees.Find(index);
+                c.Remove(table);
+                c.SaveChanges();
+            }
         }
 
         public void Edit()

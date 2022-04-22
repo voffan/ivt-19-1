@@ -7,14 +7,14 @@ using Korobki_project.Classes;
 
 namespace Korobki_project.Functions
 {
-    class ProductFunctions
-    {
+	class PositionFunctions
+	{
         public void Delete(int index)
         {
-            Product table;
+            Position table;
             using (Context c = new Context())
             {
-                table = c.Products.Find(index);
+                table = c.Positions.Find(index);
                 c.Remove(table);
                 c.SaveChanges();
             }

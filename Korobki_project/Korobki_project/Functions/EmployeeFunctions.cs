@@ -20,14 +20,20 @@ namespace Korobki_project.Functions
             }
         }
 
-        public void Delete()
+        public void Delete(int index)
         {
-
+            Employee comp;
+            using (Context c = new Context())
+            {
+                comp = c.Employees.Find(index);
+                c.Remove(comp);
+                c.SaveChanges();
+            }
         }
-
         public void Edit()
         {
 
         }
     }
 }
+

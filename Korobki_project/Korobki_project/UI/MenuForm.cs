@@ -12,6 +12,8 @@ using Korobki_project.UI;
 using Microsoft.EntityFrameworkCore;
 using Korobki_project.Classes;
 using System.Data.OleDb;
+using MySql.Data.MySqlClient;
+using Korobki_project.Functions;
 
 namespace Korobki_project
 {
@@ -23,76 +25,92 @@ namespace Korobki_project
         {
             InitializeComponent();
         }
-        private void PanelForm(Form fm)
-        {
-            if (active!=null)
-            {
-                active.Close();
-            }
-            active = fm;
-            fm.TopLevel = false;
-            fm.FormBorderStyle = FormBorderStyle.None;
-            fm.Dock = DockStyle.Fill;
-            this.panel1.Controls.Add(fm);
-            this.panel1.Tag = fm;
-            fm.BringToFront();
-            fm.Show();
-        }
+
         private void MenuForm_Load(object sender, EventArgs e)
         {
-
+            pf = 1;
+            Context c = new Context();
+            dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").OrderBy(e => e.Name).ToList();
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             pf = 1;
-            PanelForm(new EmployeeForm());
+            Context c = new Context();
+            dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").OrderBy(e => e.Name).ToList();
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             pf = 2;
-            PanelForm(new PlanForm());
+            Context c = new Context();
+            dataGridView1.DataSource = c.Plans.Include("Product").ToList();
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             pf = 3;
-            PanelForm(new ProductionForm());
+            Context c = new Context();
+            dataGridView1.DataSource = c.Productions.Include("Team").Include("Product").ToList();
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             pf = 4;
-            PanelForm(new PositionForm());
+            Context c = new Context();
+            dataGridView1.DataSource = c.Positions.ToList();
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             pf = 5;
-            PanelForm(new ProductForm());
+            Context c = new Context();
+            dataGridView1.DataSource = c.Products.Include("Typee").ToList();
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             pf = 6;
-            PanelForm(new ScheduleForm());
+            Context c = new Context();
+            dataGridView1.DataSource = c.Schedules.Include("Shift").ToList();
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             pf = 7;
-            PanelForm(new ShiftForm());
+            Context c = new Context();
+            dataGridView1.DataSource = c.Shifts.ToList();
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             pf = 8;
-            PanelForm(new TypeeForm());
+            Context c = new Context();
+            dataGridView1.DataSource = c.Typees.ToList();
+            dataGridView1.Columns[0].Visible = false;
         }
 
-		private void btnadd_Click(object sender, EventArgs e)
-		{
+        private void btnadd_Click(object sender, EventArgs e)
+        {
             switch (pf)
             {
                 case 1:
@@ -138,16 +156,68 @@ namespace Korobki_project
             }
         }
 
-		private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
-		{
+        private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
             Application.Exit();
-		}
+        }
+
+        private int id()
+        {
+            int a, b, c;
+            if (dataGridView1.SelectedRows != null)
+            {
+                b = dataGridView1.CurrentRow.Index;
+                a = Convert.ToInt32(dataGridView1.Rows[b].Cells[0].Value);
+                return a;
+            }
+            return -1;
+        }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            EmployeeForm employeeForm = new EmployeeForm();
-            employeeForm.Show();
-            this.Hide();
+            DialogResult dialogResult = MessageBox.Show("Действительно удалить запись в БД?", "Удаление", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                int index = id();
+                if (index != -1)
+                {
+                    switch (pf)
+                    {
+                        case 1:
+                            EmployeeFunctions ef = new EmployeeFunctions();
+                            ef.Delete(index);
+                            break;
+                        case 2:
+                            PlanFunctions plf = new PlanFunctions();
+                            plf.Delete(index);
+                            break;
+                        case 3:
+                            ProductionFunctions prd = new ProductionFunctions();
+                            prd.Delete(index);
+                            break;
+                        case 4:
+                            PositionFunctions pst = new PositionFunctions();
+                            pst.Delete(index);
+                            break;
+                        case 5:
+                            ProductFunctions pr = new ProductFunctions();
+                            pr.Delete(index);
+                            break;
+                        case 6:
+                            ScheduleFunctions sch = new ScheduleFunctions();
+                            sch.Delete(index);
+                            break;
+                        case 7:
+                            ShiftFunctions sh = new ShiftFunctions();
+                            sh.Delete(index);
+                            break;
+                        case 8:
+                            TypeeFunctions tp = new TypeeFunctions();
+                            tp.Delete(index);
+                            break;
+                    }
+                }
+            }
         }
-	}
+    }
 }
