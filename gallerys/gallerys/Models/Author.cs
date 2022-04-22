@@ -14,5 +14,11 @@ namespace gallerys.Models
         [MaxLength(500)]
         public string Bio { get; set; }
         public virtual List<Painting> Paintings { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+
+        }
     }
 }
