@@ -111,7 +111,15 @@ namespace Autoreport.Services
                 return db.Employees.ToList();
             }
         }
-
+        public Employee GetById(int empl_id)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                Employee empl = db.Employees
+                    .Where(empl => empl.Id == empl_id).ToList()[0];
+                return empl;
+            }
+        }
         public void Get()
         {
 
@@ -126,9 +134,32 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit()
+        public void Edit(Employee editingEntity, string lastName, string firstName, string middleName,
+                        string passport, Position position, string phone,
+                        string login)
         {
+            using (DataContext db = Connection.Connect())
+            {
 
+                var empl = db.Employees
+                    .First(x => x.Id == editingEntity.Id);
+
+                string[] passportSplited = passport.Split("-");
+                int passportSerial, passportNumber;
+
+                Int32.TryParse(passportSplited[0], out passportSerial);
+                Int32.TryParse(passportSplited[1], out passportNumber);
+
+                empl.Last_name = lastName;
+                empl.First_name = firstName;
+                empl.Middle_name = middleName;
+                empl.Passport_number =passportNumber;
+                empl.Passport_serial =passportSerial;
+                empl.EmplPosition = position;
+                empl.Phone_number = phone;
+                empl.Login = login;
+                db.SaveChanges();
+            }
         }
     }
 }
