@@ -74,7 +74,7 @@ namespace gallerys
                 if (selectedtable == "Картины")
                 {
                     dataGridView1.DataSource = c.Paintings.ToList();
-                    dataGridView1.DataSource = c.Paintings.Include("Author").ToList();
+                    dataGridView1.DataSource = c.Paintings.Include("Author").Include("Genre").ToList();
                 }
                 if (selectedtable == "Сотрудники")
                 {
@@ -102,6 +102,8 @@ namespace gallerys
                 if (selectedtable == "Картины")
                 {
                     dataGridView1.DataSource = c.Paintings.ToList();
+                    dataGridView1.DataSource = c.Paintings.Include("Author").ToList();
+                    dataGridView1.DataSource = c.Genres.Include("Genre").ToList();
                     dataGridView1.Columns[0].Visible = false;
                 }
                 if (selectedtable == "Сотрудники")

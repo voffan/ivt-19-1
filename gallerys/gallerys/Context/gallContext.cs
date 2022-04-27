@@ -24,7 +24,7 @@ namespace gallerys.Context
         {
             //optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["gallerybd"].ConnectionString);
             //optionsBuilder.UseMySQL("server=10.14.156.158;database=gallery_db;user=root;password=1234;");
-            optionsBuilder.UseMySQL("server=localhost;database=gallery_db;user=root;password=1234;");
+            optionsBuilder.UseMySQL("server=localhost;database=gallery_bd;user=root;password=1234;");
         }
     }
 }

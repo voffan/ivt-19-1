@@ -16,12 +16,21 @@ namespace gallerys.components
 {
     public class PaintSer
     {
-        public void Add(string name, int date, int price, status stat, Author author, Genre genre)
+        public void Add(string name, int date, int price, status stat, int author, int genre)
         {
-            Painting paint = new Painting() { Name = name, Year = date, Price = price, Status = stat, Author = author, Genre = genre };
+            Painting paint = new Painting() { Name = name, Year = date, Price = price, Status = stat, AuthorId = author, GenreId = genre };
             using (gallContext db = Connection.Connect())
             {
                 db.Paintings.Add(paint);
+                db.SaveChanges();
+            }
+        }
+        public void Edit(string name, int date, int price, status stat, int author, int genre)
+        {
+            Painting paint = new Painting() { Name = name, Year = date, Price = price, Status = stat, AuthorId = author, GenreId = genre };
+            using (gallContext db = Connection.Connect())
+            {
+                db.Entry(paint).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
             }
         }
