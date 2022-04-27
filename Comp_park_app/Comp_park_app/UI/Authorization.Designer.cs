@@ -110,6 +110,7 @@ namespace Comp_park_app.UI
             this.button_exit.TabIndex = 7;
             this.button_exit.Text = "Выход";
             this.button_exit.UseVisualStyleBackColor = true;
+            this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
             // label3
             // 
