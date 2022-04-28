@@ -284,7 +284,12 @@ namespace Autoreport.UI
             }
 
             dataGridView.Columns["Id"].DisplayIndex = 0;
-            dataGridView.Columns["Id"].Visible = false;
+
+            foreach (DataGridViewColumn dgc in dataGridView.Columns)
+            {
+                if (dgc.Name.Contains("Id"))
+                    dgc.Visible = false;
+            }
         }
 
         private void EmployeesTab_Click(bool updateSearchPanel = true)

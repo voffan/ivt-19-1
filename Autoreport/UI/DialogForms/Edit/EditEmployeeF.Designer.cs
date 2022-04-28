@@ -531,7 +531,7 @@ namespace Autoreport.UI.Edit
             this.MinimumSize = new System.Drawing.Size(516, 200);
             this.Name = "EditEmployeeF";
             this.Text = "Редактировать сотрудника";
-            this.Load += new System.EventHandler(this.AddEmployeeForm_Load);
+            this.Load += new System.EventHandler(this.OrderE_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);

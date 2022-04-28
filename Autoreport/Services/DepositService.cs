@@ -58,7 +58,8 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                return db.Deposits.Include("Owner")
+                return db.Deposits
+                    .Include("Owner")
                     .ToList();
             }
         }

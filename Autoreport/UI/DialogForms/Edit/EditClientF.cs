@@ -33,11 +33,13 @@ namespace Autoreport.UI.Edit
             {
                 MessageBox.Show("Такого клиента не сущесвует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             lastNameText.Text = editingEntity.Last_name;
             firstNameText.Text = editingEntity.First_name;
             middleNameText.Text = editingEntity.Middle_name;
             phoneText.Text = editingEntity.Phone_number1;
             phoneAdditionalText.Text = editingEntity.Phone_number2;
+            debtCountText.Value = editingEntity.Debt_count;
         }
 
         protected override void saveBtn_Click(object sender, EventArgs e)
@@ -65,13 +67,14 @@ namespace Autoreport.UI.Edit
             string middleName = middleNameText.Text;
             string phone1 = phoneText.Text;
             string phone2 = phoneAdditionalText.Text;
+            int debtCount = (int)debtCountText.Value;
 
             if (!phoneAdditionalNotFilled) // иначе phone2 добавится в таком виде: +7 ( )
                 phone2 = phoneAdditionalText.Text;
             else
                 phone2 = "";
 
-            Connection.clientService.Edit(editingEntity,lastName,firstName,middleName,phone1,phone2);
+            Connection.clientService.Edit(editingEntity, lastName, firstName, middleName, phone1, phone2, debtCount);
 
             Close();
         }

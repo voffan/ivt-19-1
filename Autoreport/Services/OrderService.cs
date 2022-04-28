@@ -15,7 +15,11 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                Deposit orderDeposit = db.Deposits.Include(x => x.Owner).First(x => OrderDeposit.Id == x.Id);
+                Deposit orderDeposit = db.Deposits
+                    .Include(x => x.Owner)
+                    .First(x => OrderDeposit.Id == x.Id);
+
+                Client owner = db.Clients.First(x => x.Id == orderDeposit.Owner.Id);
 
                 Order order = new Order()
                 {
@@ -23,13 +27,13 @@ namespace Autoreport.Services
                     Order_date = OrderDate,
                     Return_date = ReturnDate,
                     Status = OrderStatus.Proceed,
-                    OrderClient = orderDeposit.Owner,
+                    OrderClient = owner,
                     OrderEmployee = db.Employees.First(x => x.Id == OrderEmployee.Id),
                     OrderDeposit = orderDeposit,
                     Disks = db.Disks.Where(x => Disks.Select(x => x.Id).Contains(x.Id)).ToList()
                 };
 
-                OrderDeposit.Owner.Order_count++;
+                Connection.clientService.VaryOrder(owner, true);
 
                 foreach (Disk disk in order.Disks)
                 {
@@ -60,14 +64,14 @@ namespace Autoreport.Services
                 && order.Status != OrderStatus.Expired
                 && order.Status != OrderStatus.Completed)
             {
-                Connection.clientService.SetDebt(order.OrderClient, true);
+                Connection.clientService.VaryDebt(order.OrderClient, true);
                 order.Status = OrderStatus.Expired;
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
             }
             else if (currentDate < order.Return_date && order.Status == OrderStatus.Expired)
             {
-                Connection.clientService.SetDebt(order.OrderClient, false);
+                Connection.clientService.VaryDebt(order.OrderClient, false);
                 order.Status = OrderStatus.Proceed;
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
@@ -110,7 +114,7 @@ namespace Autoreport.Services
                 List<Disk> orderDisks = order.Disks;
 
                 db.Entry(orderClient).State = EntityState.Modified;
-                orderClient.Order_count--;
+                Connection.clientService.VaryOrder(orderClient, false);
 
                 foreach (Disk disk in orderDisks)
                 {
@@ -146,7 +150,7 @@ namespace Autoreport.Services
 
                 if (status == OrderStatus.Completed)
                 {
-                    order.OrderClient.Order_count--;
+                    Connection.clientService.VaryOrder(order.OrderClient, false);
 
                     foreach (Disk disk in order.Disks)
                     {

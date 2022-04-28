@@ -38,6 +38,8 @@ namespace Autoreport.UI.Edit
             this.orderDateText = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.returnDateText = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.statusBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,8 +54,6 @@ namespace Autoreport.UI.Edit
             this.ownerLabel = new System.Windows.Forms.Label();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.statusBox = new System.Windows.Forms.ComboBox();
             this.flowLayout.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -76,7 +76,7 @@ namespace Autoreport.UI.Edit
             this.flowLayout.Controls.Add(this.ownerLabel);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
-            this.flowLayout.Size = new System.Drawing.Size(525, 238);
+            this.flowLayout.Size = new System.Drawing.Size(525, 269);
             this.flowLayout.TabIndex = 11;
             // 
             // label1
@@ -125,6 +125,28 @@ namespace Autoreport.UI.Edit
             this.returnDateText.Name = "returnDateText";
             this.returnDateText.Size = new System.Drawing.Size(281, 25);
             this.returnDateText.TabIndex = 18;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(3, 65);
+            this.label13.Margin = new System.Windows.Forms.Padding(3);
+            this.label13.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(232, 25);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Статус";
+            // 
+            // statusBox
+            // 
+            this.statusBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.statusBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.statusBox.FormattingEnabled = true;
+            this.statusBox.Location = new System.Drawing.Point(241, 65);
+            this.statusBox.Name = "statusBox";
+            this.statusBox.Size = new System.Drawing.Size(281, 25);
+            this.statusBox.TabIndex = 20;
             // 
             // label3
             // 
@@ -263,7 +285,7 @@ namespace Autoreport.UI.Edit
             // 
             // resetBtn
             // 
-            this.resetBtn.Location = new System.Drawing.Point(12, 256);
+            this.resetBtn.Location = new System.Drawing.Point(12, 287);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(200, 30);
             this.resetBtn.TabIndex = 14;
@@ -273,7 +295,7 @@ namespace Autoreport.UI.Edit
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(337, 255);
+            this.saveBtn.Location = new System.Drawing.Point(337, 287);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 13;
@@ -281,33 +303,11 @@ namespace Autoreport.UI.Edit
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(3, 65);
-            this.label13.Margin = new System.Windows.Forms.Padding(3);
-            this.label13.MinimumSize = new System.Drawing.Size(232, 25);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(232, 25);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Статус";
-            // 
-            // statusBox
-            // 
-            this.statusBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.statusBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.statusBox.FormattingEnabled = true;
-            this.statusBox.Location = new System.Drawing.Point(241, 65);
-            this.statusBox.Name = "statusBox";
-            this.statusBox.Size = new System.Drawing.Size(281, 25);
-            this.statusBox.TabIndex = 20;
-            // 
             // EditOrderF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 293);
+            this.ClientSize = new System.Drawing.Size(549, 329);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.flowLayout);

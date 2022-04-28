@@ -27,13 +27,6 @@ namespace Autoreport.UI.Edit
             AddFormEnterPressEvent(this);
         }
 
-        /// <summary>
-        /// Вызывается при создании окна
-        /// Заполняет ComboBox positionBox значениями из Enum Position
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
         protected override void saveBtn_Click(object sender, EventArgs e)
         {
             string lastName = lastNameText.Text;
@@ -55,6 +48,7 @@ namespace Autoreport.UI.Edit
                 MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public override void LoadField(int empl_id)
         {
             editingEntity = Connection.employeeService.GetById(empl_id);
@@ -66,12 +60,11 @@ namespace Autoreport.UI.Edit
             lastNameText.Text = editingEntity.Last_name;
             firstNameText.Text = editingEntity.First_name;
             middleNameText.Text = editingEntity.Middle_name;
-            passportText.Text = "editingEntity.Passport_serial" + "editingEntity.Passport_number";
+            passportText.AppendText(editingEntity.Passport_serial.ToString() + editingEntity.Passport_number.ToString());
             phoneText.Text = editingEntity.Phone_number;
             loginText.Text = editingEntity.Login;
-            passportText.Text = editingEntity.PasswordHash;
-            
         }
+
         private void OrderE_Load(object sender, EventArgs e)
         {
             if (editingEntity == null)
@@ -80,6 +73,7 @@ namespace Autoreport.UI.Edit
                 MessageBox.Show("Не проинициализированы поля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             positionBox.DisplayMember = "Key";
             positionBox.ValueMember = "Value";
             positionBox.DataSource = new BindingSource(DescriptionAttributes<Position>.RetrieveAttributes(), null);

@@ -30,17 +30,24 @@ namespace Autoreport.Services
             }
         }
 
-        public void SetDebt(Client toClient, bool increase)
+        public void VaryDebt(Client toClient, bool increase)
         {
             using (DataContext db = Connection.Connect())
             {
                 Client client = db.Clients.First(c => c.Id == toClient.Id);
 
-                if (increase)
-                    client.Debt_count++;
-                else
-                    client.Debt_count--;
+                _ = (increase) ? client.Debt_count++ : client.Debt_count--;
+                db.SaveChanges();
+            }
+        }
 
+        public void VaryOrder(Client toClient, bool increase)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                Client client = db.Clients.First(c => c.Id == toClient.Id);
+
+                _ = (increase) ? client.Order_count++ : client.Order_count--;
                 db.SaveChanges();
             }
         }
@@ -62,7 +69,6 @@ namespace Autoreport.Services
                 Client client = db.Clients
                     .Where(cl => cl.Id == client_id).ToList()[0];
 
-    
                 return client;
             }
         }
@@ -72,14 +78,9 @@ namespace Autoreport.Services
             using (DataContext db = Connection.Connect())
             {
                 Client client = db.Clients
-                .FirstOrDefault(x => x.Id == Id);
+                    .FirstOrDefault(x => x.Id == Id);
                 return client;
             }
-        }
-
-        private void CheckExpiration(Client client, DataContext db)
-        {
-            throw new NotImplementedException();
         }
 
         public void Delete(int Id)
@@ -91,7 +92,9 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit(Client editingEntity,string lastName, string firstName, string middleName, string phone1, string phone2)
+        public void Edit(Client editingEntity, string lastName, string firstName, string middleName, 
+            string phone1, string phone2,
+            int debtCount)
         {
             using (DataContext db = Connection.Connect())
             {
@@ -101,6 +104,7 @@ namespace Autoreport.Services
                 editingEntity.Middle_name = middleName;
                 editingEntity.Phone_number1 = phone1;
                 editingEntity.Phone_number2 = phone2;
+                editingEntity.Debt_count = debtCount;
                 db.SaveChanges();
             }
         }

@@ -43,7 +43,10 @@ namespace Autoreport.UI.Edit
             this.phoneAdditionalText = new System.Windows.Forms.MaskedTextBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.debtCountText = new System.Windows.Forms.NumericUpDown();
             this.flowLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.debtCountText)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayout
@@ -59,9 +62,11 @@ namespace Autoreport.UI.Edit
             this.flowLayout.Controls.Add(this.phoneText);
             this.flowLayout.Controls.Add(this.label2);
             this.flowLayout.Controls.Add(this.phoneAdditionalText);
+            this.flowLayout.Controls.Add(this.label3);
+            this.flowLayout.Controls.Add(this.debtCountText);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
-            this.flowLayout.Size = new System.Drawing.Size(476, 176);
+            this.flowLayout.Size = new System.Drawing.Size(476, 207);
             this.flowLayout.TabIndex = 11;
             // 
             // label1
@@ -168,7 +173,7 @@ namespace Autoreport.UI.Edit
             // 
             // resetBtn
             // 
-            this.resetBtn.Location = new System.Drawing.Point(12, 194);
+            this.resetBtn.Location = new System.Drawing.Point(12, 225);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(200, 30);
             this.resetBtn.TabIndex = 13;
@@ -178,7 +183,7 @@ namespace Autoreport.UI.Edit
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(288, 194);
+            this.saveBtn.Location = new System.Drawing.Point(288, 225);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 14;
@@ -186,21 +191,46 @@ namespace Autoreport.UI.Edit
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(3, 158);
+            this.label3.Margin = new System.Windows.Forms.Padding(3);
+            this.label3.MinimumSize = new System.Drawing.Size(232, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(232, 25);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Количество задолженностей";
+            // 
+            // debtCountText
+            // 
+            this.debtCountText.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.debtCountText.Location = new System.Drawing.Point(241, 158);
+            this.debtCountText.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.debtCountText.Name = "debtCountText";
+            this.debtCountText.Size = new System.Drawing.Size(232, 25);
+            this.debtCountText.TabIndex = 23;
+            // 
             // EditClientF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 235);
+            this.ClientSize = new System.Drawing.Size(497, 267);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.flowLayout);
             this.KeyPreview = true;
-            this.MaximumSize = new System.Drawing.Size(513, 274);
             this.MinimumSize = new System.Drawing.Size(513, 274);
             this.Name = "EditClientF";
             this.Text = "Редактировать клиента";
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.debtCountText)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -219,5 +249,7 @@ namespace Autoreport.UI.Edit
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.FlowLayoutPanel flowLayout;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown debtCountText;
     }
 }
