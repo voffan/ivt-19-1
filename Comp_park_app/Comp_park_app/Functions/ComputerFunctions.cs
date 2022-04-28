@@ -101,7 +101,9 @@ namespace Comp_park_app.Functions
                 comp.MotherboardId = motherboardid;
                 comp.EmployeeId = employeeid;
 
-                foreach(var i in comp.HDDs)
+                // не работает: Object reference not set to an instance of an object. Не удаляет из жестких дисков, оперативок и процессоров айди компьютера
+                /*
+                 foreach(var i in comp.HDDs)
                 {
                         i.ComputerId = null;
                         c.Entry(i).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
@@ -120,6 +122,8 @@ namespace Comp_park_app.Functions
                         c.Entry(i).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                      
                 }
+                 */
+
 
                 foreach (var a in hdds)
                 {

@@ -76,18 +76,19 @@ namespace Comp_park_app_form
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(872, 79);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(920, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 15);
+            this.label1.Size = new System.Drawing.Size(131, 15);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Столбцы базы данных:";
+            this.label1.Text = "Столбцы базы данных";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(872, 267);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(238, 30);
+            this.button1.Size = new System.Drawing.Size(238, 32);
             this.button1.TabIndex = 3;
             this.button1.Text = "Переключиться";
             this.button1.UseVisualStyleBackColor = true;
@@ -105,9 +106,10 @@ namespace Comp_park_app_form
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.Location = new System.Drawing.Point(872, 320);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 32);
+            this.button2.Size = new System.Drawing.Size(112, 32);
             this.button2.TabIndex = 5;
             this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = true;
@@ -115,9 +117,10 @@ namespace Comp_park_app_form
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(981, 320);
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button3.Location = new System.Drawing.Point(998, 320);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 32);
+            this.button3.Size = new System.Drawing.Size(112, 32);
             this.button3.TabIndex = 6;
             this.button3.Text = "Изменить";
             this.button3.UseVisualStyleBackColor = true;
@@ -125,9 +128,10 @@ namespace Comp_park_app_form
             // 
             // button_Delete
             // 
-            this.button_Delete.Location = new System.Drawing.Point(872, 390);
+            this.button_Delete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_Delete.Location = new System.Drawing.Point(872, 375);
             this.button_Delete.Name = "button_Delete";
-            this.button_Delete.Size = new System.Drawing.Size(83, 35);
+            this.button_Delete.Size = new System.Drawing.Size(238, 32);
             this.button_Delete.TabIndex = 7;
             this.button_Delete.Text = "Удалить";
             this.button_Delete.UseVisualStyleBackColor = true;
@@ -135,16 +139,18 @@ namespace Comp_park_app_form
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(414, 40);
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(531, 31);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 23);
+            this.textBox1.Size = new System.Drawing.Size(224, 29);
             this.textBox1.TabIndex = 8;
             // 
             // button_search
             // 
-            this.button_search.Location = new System.Drawing.Point(665, 40);
+            this.button_search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_search.Location = new System.Drawing.Point(761, 31);
             this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(75, 23);
+            this.button_search.Size = new System.Drawing.Size(96, 30);
             this.button_search.TabIndex = 9;
             this.button_search.Text = "Поиск";
             this.button_search.UseVisualStyleBackColor = true;

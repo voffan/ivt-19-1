@@ -49,16 +49,30 @@ namespace Comp_park_app.Functions {
             }
         }
 
+        public static List<Employee> Search(string name) {
+            using (Context c = new Context()) {
+                var search = c.Employees
+                    .Where(b => b.Name.Contains(name))
+                    .ToList();
+                return search;
+            }
+        }
+
         public static string HashPassword(string password) {
             var md5 = MD5.Create();
             var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
             return Convert.ToBase64String(hash);
         }
 
-        public static bool VerifyHashedPassword(string hashedPassword, string password) {
-            var md5 = MD5.Create();
-            var pass = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
-            return hashedPassword ==  Convert.ToBase64String(pass);
+        public static bool VerifyHashedPassword(string log, string password) {
+            string hashedPassword;
+            using (Context c = new Context()) {
+                var b = c.Employees.FirstOrDefault(e => e.Name == log);
+                hashedPassword = b.Password;
+                var md5 = MD5.Create();
+                var pass = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return hashedPassword == Convert.ToBase64String(pass);
+            }
         }
 
        

@@ -17,5 +17,14 @@ namespace Comp_park_app.Functions {
             }
 
         }
+
+        public static List<Position> Search(string name) {
+            using (Context c = new Context()) {
+                var search = c.Positions
+                    .Where(b => b.Name.Contains(name))
+                    .ToList();
+                return search;
+            }
+        }
     }
 }

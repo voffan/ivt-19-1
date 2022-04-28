@@ -29,23 +29,19 @@ namespace Comp_park_app.UI
         /// </summary>
         private void InitializeComponent()
         {
-            
             this.SuspendLayout();
-            
+            // 
             // DeleteCheck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(215, 121);
-           
             this.Name = "DeleteCheck";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
-        #endregion
 
-       
+        #endregion
     }
 }

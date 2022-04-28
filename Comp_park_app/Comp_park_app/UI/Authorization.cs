@@ -19,17 +19,16 @@ namespace Comp_park_app.UI {
         private void button_entry_Click(object sender, EventArgs e) {
             //EmployeeFunctions aut = new EmployeeFunctions();
             using (Context c = new Context()) {
-                var b = c.Employees.FirstOrDefault(e => e.Name == textBox_Login.Text);
-                bool prov = EmployeeFunctions.VerifyHashedPassword(b.Password, textBox_Password.Text);
-                label3.Text = b.Password;
-                if (b != null && prov) {
-                    Program.Context.MainForm = new Form1();
-                    this.Close();
-                    // покажет вторую форму и оставит приложение живым до ее закрытия
-                    Program.Context.MainForm.Show();
-
-                }else { 
-
+                if (textBox_Login.Text.Length > 0 && textBox_Password.Text.Length > 0) {
+                    bool prov = EmployeeFunctions.VerifyHashedPassword(textBox_Login.Text, textBox_Password.Text);
+                    if (prov) {
+                        Program.Context.MainForm = new Form1();
+                        this.Close();
+                        // покажет вторую форму и оставит приложение живым до ее закрытия
+                        Program.Context.MainForm.Show();
+                    }
+                } else {
+                    MessageBox.Show("Логин и/или пароль не заполнены");
                 }
             }
         }
@@ -43,8 +42,7 @@ namespace Comp_park_app.UI {
 
         }
 
-        private void button_exit_Click(object sender, EventArgs e)
-        {
+        private void button_exit_Click(object sender, EventArgs e) {
             this.Close();
         }
     }
