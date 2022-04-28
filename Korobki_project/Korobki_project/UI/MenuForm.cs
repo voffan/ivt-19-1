@@ -19,8 +19,8 @@ namespace Korobki_project
 {
     public partial class MenuForm : Form
     {
-        private Form active;
         int pf = 1;
+        Context c = new Context();
         public MenuForm()
         {
             InitializeComponent();
@@ -29,7 +29,6 @@ namespace Korobki_project
         private void MenuForm_Load(object sender, EventArgs e)
         {
             pf = 1;
-            Context c = new Context();
             dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").OrderBy(e => e.Name).ToList();
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[3].Visible = false;
@@ -40,74 +39,97 @@ namespace Korobki_project
         private void button1_Click(object sender, EventArgs e)
         {
             pf = 1;
-            Context c = new Context();
-            dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").OrderBy(e => e.Name).ToList();
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
+            load_db();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             pf = 2;
-            Context c = new Context();
-            dataGridView1.DataSource = c.Plans.Include("Product").ToList();
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
+            load_db();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             pf = 3;
-            Context c = new Context();
-            dataGridView1.DataSource = c.Productions.Include("Team").Include("Product").ToList();
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
+            load_db();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             pf = 4;
-            Context c = new Context();
-            dataGridView1.DataSource = c.Positions.ToList();
-            dataGridView1.Columns[0].Visible = false;
+            load_db();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             pf = 5;
-            Context c = new Context();
-            dataGridView1.DataSource = c.Products.Include("Typee").ToList();
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
+            load_db();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             pf = 6;
-            Context c = new Context();
-            dataGridView1.DataSource = c.Schedules.Include("Shift").ToList();
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
+            load_db();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             pf = 7;
-            Context c = new Context();
-            dataGridView1.DataSource = c.Shifts.ToList();
-            dataGridView1.Columns[0].Visible = false;
+            load_db();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             pf = 8;
-            Context c = new Context();
-            dataGridView1.DataSource = c.Typees.ToList();
-            dataGridView1.Columns[0].Visible = false;
+            load_db();
         }
+
+        private void load_db()
+		{
+            switch (pf)
+			{
+                case 1:
+                    dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").OrderBy(e => e.Name).ToList();
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[3].Visible = false;
+                    dataGridView1.Columns[4].Visible = false;
+                    dataGridView1.Columns[8].Visible = false;
+                    break;
+                case 2:
+                    dataGridView1.DataSource = c.Plans.Include("Product").ToList();
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[3].Visible = false;
+                    break;
+                case 3:
+                    dataGridView1.DataSource = c.Productions.Include("Team").Include("Product").ToList();
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[1].Visible = false;
+                    dataGridView1.Columns[3].Visible = false;
+                    break;
+                case 4:
+                    dataGridView1.DataSource = c.Positions.ToList();
+                    dataGridView1.Columns[0].Visible = false;
+                    break;
+                case 5:
+                    dataGridView1.DataSource = c.Products.Include("Typee").ToList();
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[1].Visible = false;
+                    break;
+                case 6:
+                    dataGridView1.DataSource = c.Schedules.Include("Shift").ToList();
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[1].Visible = false;
+                    break;
+                case 7:
+                    dataGridView1.DataSource = c.Shifts.ToList();
+                    dataGridView1.Columns[0].Visible = false;
+                    break;
+                case 8:
+                    dataGridView1.DataSource = c.Typees.ToList();
+                    dataGridView1.Columns[0].Visible = false;
+                    break;
+            }
+		}
 
         private void btnadd_Click(object sender, EventArgs e)
         {
@@ -163,12 +185,19 @@ namespace Korobki_project
 
         private int id()
         {
-            int a, b, c;
+            int a, b;
             if (dataGridView1.SelectedRows != null)
             {
-                b = dataGridView1.CurrentRow.Index;
-                a = Convert.ToInt32(dataGridView1.Rows[b].Cells[0].Value);
-                return a;
+                if (dataGridView1.CurrentRow != null)
+                {
+                    b = dataGridView1.CurrentRow.Index;
+                    a = Convert.ToInt32(dataGridView1.Rows[b].Cells[0].Value);
+                    return a;
+                }
+                else
+                {
+                    MessageBox.Show("Строка не выбрана!");
+                }
             }
             return -1;
         }
@@ -179,8 +208,8 @@ namespace Korobki_project
             if (dialogResult == DialogResult.Yes)
             {
                 int index = id();
-                if (index != -1)
-                {
+                if(dataGridView1.CurrentRow != null)
+				{
                     switch (pf)
                     {
                         case 1:
@@ -216,6 +245,7 @@ namespace Korobki_project
                             tp.Delete(index);
                             break;
                     }
+                    load_db();
                 }
             }
         }

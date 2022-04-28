@@ -27,7 +27,7 @@ namespace Korobki_project.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int c1 = comboBox1.SelectedIndex + 1;
+            string c1 = comboBox1.SelectedValue.ToString();
             if (textBox1.Text.Length != 0)
             {
                 string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
