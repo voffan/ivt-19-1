@@ -40,12 +40,13 @@ namespace Korobki_project
 			this.btnadd = new System.Windows.Forms.Button();
 			this.button9 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.button10 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(12, 12);
+			this.button1.Location = new System.Drawing.Point(47, 27);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 0;
@@ -55,7 +56,7 @@ namespace Korobki_project
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(93, 12);
+			this.button2.Location = new System.Drawing.Point(128, 27);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
 			this.button2.TabIndex = 1;
@@ -65,7 +66,7 @@ namespace Korobki_project
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(174, 12);
+			this.button3.Location = new System.Drawing.Point(209, 27);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(83, 23);
 			this.button3.TabIndex = 2;
@@ -75,7 +76,7 @@ namespace Korobki_project
 			// 
 			// button4
 			// 
-			this.button4.Location = new System.Drawing.Point(263, 12);
+			this.button4.Location = new System.Drawing.Point(298, 27);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(83, 23);
 			this.button4.TabIndex = 4;
@@ -85,7 +86,7 @@ namespace Korobki_project
 			// 
 			// button5
 			// 
-			this.button5.Location = new System.Drawing.Point(352, 12);
+			this.button5.Location = new System.Drawing.Point(387, 27);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(83, 23);
 			this.button5.TabIndex = 5;
@@ -95,7 +96,7 @@ namespace Korobki_project
 			// 
 			// button6
 			// 
-			this.button6.Location = new System.Drawing.Point(441, 12);
+			this.button6.Location = new System.Drawing.Point(476, 27);
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(83, 23);
 			this.button6.TabIndex = 6;
@@ -105,7 +106,7 @@ namespace Korobki_project
 			// 
 			// button7
 			// 
-			this.button7.Location = new System.Drawing.Point(530, 12);
+			this.button7.Location = new System.Drawing.Point(565, 27);
 			this.button7.Name = "button7";
 			this.button7.Size = new System.Drawing.Size(83, 23);
 			this.button7.TabIndex = 7;
@@ -115,7 +116,7 @@ namespace Korobki_project
 			// 
 			// button8
 			// 
-			this.button8.Location = new System.Drawing.Point(619, 12);
+			this.button8.Location = new System.Drawing.Point(654, 27);
 			this.button8.Name = "button8";
 			this.button8.Size = new System.Drawing.Size(83, 23);
 			this.button8.TabIndex = 8;
@@ -125,7 +126,7 @@ namespace Korobki_project
 			// 
 			// btnadd
 			// 
-			this.btnadd.Location = new System.Drawing.Point(616, 396);
+			this.btnadd.Location = new System.Drawing.Point(651, 362);
 			this.btnadd.Name = "btnadd";
 			this.btnadd.Size = new System.Drawing.Size(86, 28);
 			this.btnadd.TabIndex = 9;
@@ -135,7 +136,7 @@ namespace Korobki_project
 			// 
 			// button9
 			// 
-			this.button9.Location = new System.Drawing.Point(525, 396);
+			this.button9.Location = new System.Drawing.Point(47, 363);
 			this.button9.Name = "button9";
 			this.button9.Size = new System.Drawing.Size(85, 28);
 			this.button9.TabIndex = 10;
@@ -146,17 +147,27 @@ namespace Korobki_project
 			// dataGridView1
 			// 
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(12, 68);
+			this.dataGridView1.Location = new System.Drawing.Point(47, 56);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(690, 300);
 			this.dataGridView1.TabIndex = 11;
+			// 
+			// button10
+			// 
+			this.button10.Location = new System.Drawing.Point(530, 363);
+			this.button10.Name = "button10";
+			this.button10.Size = new System.Drawing.Size(115, 28);
+			this.button10.TabIndex = 12;
+			this.button10.Text = "Редактировать";
+			this.button10.UseVisualStyleBackColor = true;
 			// 
 			// MenuForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
-			this.ClientSize = new System.Drawing.Size(709, 511);
+			this.ClientSize = new System.Drawing.Size(782, 444);
+			this.Controls.Add(this.button10);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.button9);
 			this.Controls.Add(this.btnadd);
@@ -192,5 +203,6 @@ namespace Korobki_project
 		private System.Windows.Forms.Button btnadd;
 		private System.Windows.Forms.Button button9;
 		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.Button button10;
 	}
 }

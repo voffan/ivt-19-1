@@ -33,8 +33,8 @@ namespace Korobki_project.UI
 		{
 			if (textBox1.TextLength != 0 && textBox2.TextLength != 0 && textBox3.TextLength != 0 && textBox4.TextLength != 0 && textBox5.TextLength != 0)
 			{
-				int c1 = comboBox1.SelectedIndex + 1;
-				int c2 = comboBox2.SelectedIndex + 1;
+				string c1 = comboBox1.SelectedValue.ToString();
+				string c2 = comboBox2.SelectedValue.ToString();
 				//int id = 4;
 				string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
 				string sql = "INSERT employees(Name, Login, Password, PositionId, PhoneNumber, Adress, ShiftId) " +

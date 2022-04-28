@@ -33,18 +33,18 @@ namespace Korobki_project.UI
         {
             if (textBox1.TextLength != 0 && textBox2.TextLength != 0)
             {
-                int c1 = comboBox1.SelectedIndex + 1;
-                int c2 = comboBox2.SelectedIndex + 1;
-                string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
-                string sql = "INSERT productions(TeamId, ProductId, Count, Comment) " +
-                    "VALUES(" + c1 + ", " + c2 + ", '" + textBox1.Text + "',  '" + textBox2.Text + "');";
-                MySqlConnection conn = new MySqlConnection(connStr);
-                conn.Open();
-                MySqlCommand command = new MySqlCommand(sql, conn);
-                command.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Добавлено");
-            }
+                string c1 = comboBox1.SelectedValue.ToString();
+                string c2 = comboBox2.SelectedValue.ToString();
+				string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
+				string sql = "INSERT productions(TeamId, ProductId, Count, Comment) " +
+					"VALUES(" + c1 + ", " + c2 + ", '" + textBox1.Text + "',  '" + textBox2.Text + "');";
+				MySqlConnection conn = new MySqlConnection(connStr);
+				conn.Open();
+				MySqlCommand command = new MySqlCommand(sql, conn);
+				command.ExecuteNonQuery();
+				conn.Close();
+				MessageBox.Show("Добавлено");
+			}
             else
             {
                 MessageBox.Show("Заполните все поля");

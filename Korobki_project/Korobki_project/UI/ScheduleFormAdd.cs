@@ -28,8 +28,8 @@ namespace Korobki_project.UI
         {
             if (textBox1.Text.Length!=0)
             {
-                int c1 = comboBox1.SelectedIndex + 1;
-                
+                string c1 = comboBox1.SelectedValue.ToString();
+
                 string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
                 string sql = "INSERT schedules(ShiftId, Date, PlanCount)" + "VALUES(" + c1 + ", '" + dateTimePicker1.Value.Date.ToString("yyyy.MM.dd") + "', '" + textBox1.Text + "')";
                 MySqlConnection conn = new MySqlConnection(connStr);

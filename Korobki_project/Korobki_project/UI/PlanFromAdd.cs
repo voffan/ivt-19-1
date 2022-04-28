@@ -29,7 +29,7 @@ namespace Korobki_project.UI
         {
             if (textBox1.Text.Length!=0)
             {
-                int c1 = comboBox1.SelectedIndex + 1;
+                string c1 = comboBox1.SelectedValue.ToString();
                 int count = Convert.ToInt32(textBox1.Text);
                 string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
                 string sql = "INSERT plans(Count_box, PlanDate,ProductId)" + "VALUES(" + count + ", '" + dateTimePicker1.Value.Date.ToString("dd.MM.yyyy") + "'," + c1 + ")";
