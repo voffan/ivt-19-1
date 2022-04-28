@@ -54,6 +54,7 @@ namespace Korobki_project.UI
             this.button1.TabIndex = 29;
             this.button1.Text = "Изменить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -193,6 +194,7 @@ namespace Korobki_project.UI
             this.Controls.Add(this.textBox1);
             this.Name = "EmployeeEditForm";
             this.Text = "EmployeeEditForm";
+            this.Load += new System.EventHandler(this.EmployeeEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

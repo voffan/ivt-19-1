@@ -250,7 +250,9 @@ namespace Korobki_project
             }
         }
 
-        private void button10_Click(object sender, EventArgs e)
+
+
+        private void button10_Click_1(object sender, EventArgs e)
         {
             int index = id();
             if (index != -1)
@@ -258,8 +260,9 @@ namespace Korobki_project
                 switch (pf)
                 {
                     case 1:
-                        EmployeeEditForm employeeEditForm = EmployeeEditForm();
-                        employeeEditForm.Show();
+
+                        EmployeeEditForm employeeEdit = new EmployeeEditForm(index);
+                        employeeEdit.Show();
                         this.Hide();
                         break;
 

@@ -30,7 +30,7 @@ namespace Korobki_project.Functions
                 c.SaveChanges();
             }
         }
-        public void Edit(int id, string name, string login, string password, string phonenumber, string adress)
+        public void Edit(int id, string name, string login, string password, int positionid, string phonenumber, string adress, int shiftid)
         {
             Employee employee;
             using (Context c = new Context())
@@ -39,8 +39,10 @@ namespace Korobki_project.Functions
                 employee.Name = name;
                 employee.Login = login;
                 employee.Password = password;
+                employee.PositionId = positionid;
                 employee.PhoneNumber = phonenumber;
                 employee.Adress = adress;
+                employee.ShiftId = shiftid;
                 c.Entry(employee).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
             }
