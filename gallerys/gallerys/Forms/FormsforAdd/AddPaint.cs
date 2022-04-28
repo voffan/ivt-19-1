@@ -42,22 +42,11 @@ namespace gallerys.Forms.FormsforAdd
         }
         private void AddPaint_Load(object sender, EventArgs e)
         {
-            if (this.Text == "Редактировать Картины")
-            {
-                PaintSer p = new PaintSer();
-                p.comboxAuthor(comboBox2);
-                p.comboxStatus(comboBox1);
-                p.comboxGenre(comboBox3);
-            }
-            else
-            {
-                PaintSer p = new PaintSer();
-                p.comboxAuthor(comboBox2);
-                p.comboxStatus(comboBox1);
-                p.comboxGenre(comboBox3);
-            }
-            PaintSer pai = new PaintSer();
-            idn = pai.ReturnId(textBox1);
+            PaintSer p = new PaintSer();
+            p.comboxAuthor(comboBox2);
+            p.comboxStatus(comboBox1);
+            p.comboxGenre(comboBox3);
+            idn = p.ReturnId(textBox1);
         }
 
         private void button2_Click(object sender, EventArgs e)

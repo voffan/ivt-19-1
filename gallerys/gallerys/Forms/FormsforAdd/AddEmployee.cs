@@ -22,18 +22,26 @@ namespace gallerys.Forms.FormsforAdd
             InitializeComponent();
             this.Text = s + " " + s1;
         }
-
+        int idn;
         private void button1_Click(object sender, EventArgs e)
         {
+            EmployeeSer employeeSer = new EmployeeSer();
             string surname = textBox1.Text;
             string name = textBox2.Text;
             string otchestvo = textBox3.Text;
             string login = textBox4.Text;
             string pass = textBox5.Text;
-            string right = comboBox1.Text;
-            EmployeeSer employeeSer = new EmployeeSer();
-            employeeSer.Add(surname + " " + name + " " + otchestvo, login, pass, right);
-            MessageBox.Show("Вы успешно добавили сотрудника");
+            var right = (Right)Enum.Parse(typeof(Right), comboBoxRight.SelectedValue.ToString());
+            if (this.Text == "Добавить Сотрудники")
+            {
+                employeeSer.Add(surname + " " + name + " " + otchestvo, login, pass, right);
+                MessageBox.Show("Вы успешно добавили сотрудника");
+            }
+            else
+            {
+                employeeSer.Edit(idn, surname + " " + name + " " + otchestvo, login, pass, right);
+                MessageBox.Show("Вы успешно отредактировали");
+            }
             this.Close();
         }
 
@@ -41,5 +49,13 @@ namespace gallerys.Forms.FormsforAdd
         {
             this.Close();
         }
+
+        private void AddEmployee_Load(object sender, EventArgs e)
+        {
+            EmployeeSer em = new EmployeeSer();
+            em.comboboxRight(comboBoxRight);
+            idn = em.ReturnId(textBox4);
+        }
+
     }
 }

@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using gallerys.Forms;
 using gallerys.Forms.FormsforAdd;
 using gallerys.components;
+using gallerys.Models;
 namespace gallerys
 {
     public partial class MainForm : Form

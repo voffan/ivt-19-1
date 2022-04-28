@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using gallerys.Models;
 
 namespace gallerys.Models
 {
-    public enum status { 
+    public enum status {
+        [Description("На выставке")]
         InExhibition,
+        [Description("На реставрации")]
         InRestoration,
+        [Description("В хранилище")]
         InStorage
     }
     public class Painting

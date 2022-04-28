@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using gallerys.Models;
-
+using System.Reflection;
 namespace gallerys.Models
 {
     public enum Right
     {
+        [Description("Системный администратор")]
         admin,
+        [Description("Директор")]
         director,
+        [Description("Менеджер")]
         manager,
+        [Description("Реставратор")]
         restorer
     }
     public class Employee
@@ -24,5 +30,9 @@ namespace gallerys.Models
         public string Passw1 { get; set; }
         public Right Right { get; set; }
         public virtual List<Journal> Journals { get; set; }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

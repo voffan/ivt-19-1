@@ -38,7 +38,7 @@ namespace gallerys.Forms.FormsforAdd
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxRight = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -134,19 +134,14 @@ namespace gallerys.Forms.FormsforAdd
             this.textBox1.Size = new System.Drawing.Size(320, 48);
             this.textBox1.TabIndex = 19;
             // 
-            // comboBox1
+            // comboBoxRight
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Директор",
-            "Менеджер",
-            "Реставратор",
-            "Администратор"});
-            this.comboBox1.Location = new System.Drawing.Point(177, 355);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(242, 45);
-            this.comboBox1.TabIndex = 29;
+            this.comboBoxRight.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxRight.FormattingEnabled = true;
+            this.comboBoxRight.Location = new System.Drawing.Point(177, 355);
+            this.comboBoxRight.Name = "comboBoxRight";
+            this.comboBoxRight.Size = new System.Drawing.Size(242, 45);
+            this.comboBoxRight.TabIndex = 29;
             // 
             // label5
             // 
@@ -195,7 +190,7 @@ namespace gallerys.Forms.FormsforAdd
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxRight);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -207,6 +202,7 @@ namespace gallerys.Forms.FormsforAdd
             this.Controls.Add(this.textBox1);
             this.Name = "AddEmployee";
             this.Text = "AddEmployee";
+            this.Load += new System.EventHandler(this.AddEmployee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,7 +219,7 @@ namespace gallerys.Forms.FormsforAdd
         public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.ComboBox comboBoxRight;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.TextBox textBox5;

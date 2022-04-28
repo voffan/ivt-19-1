@@ -21,28 +21,26 @@ namespace gallerys.components
         {
             get { return currentEmployee; }
         }
-        public void Add(string fio, string login, string password, string right)
+        public void Add(string fio, string login, string password, Right right)
         {
-            Employee empl = new Employee() { Name = fio, Login1 = login, Passw1 = password };
-            if (right == "Директор")
-            {
-                empl.Right = Right.director;
-            }
-            if (right == "Реставратор")
-            {
-                empl.Right = Right.restorer;
-            }
-            if (right == "Администратор")
-            {
-                empl.Right = Right.admin;
-            }
-            if (right == "Менеджер")
-            {
-                empl.Right = Right.manager;
-            }
+            Employee empl = new Employee() { Name = fio, Login1 = login, Passw1 = password, Right = right};
             using (gallContext db = Connection.Connect())
             {
                 db.Employees.Add(empl);
+                db.SaveChanges();
+            }
+        }
+        public void Edit(int id, string fio, string login, string password, Right right)
+        {
+            Employee empl = new Employee();
+            using (gallContext db = Connection.Connect())
+            {
+                empl = db.Employees.Find(id);
+                empl.Name = fio;
+                empl.Login1 = login;
+                empl.Passw1 = password;
+                empl.Right = right;
+                db.Entry(empl).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
             }
         }
@@ -57,6 +55,24 @@ namespace gallerys.components
                     throw new Errors.UserErrors("Пользователь с таким логином не найден");
                 }
                 currentEmployee = empl;
+            }
+        }
+        public void comboboxRight(ComboBox comboBox)
+        {
+            gallContext c = new gallContext();
+            comboBox.DataSource = Enum.GetValues(typeof(Right));
+        }
+        public int ReturnId(TextBox t)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                Employee empl = db.Employees.Where(p => p.Login1 == t.Text).FirstOrDefault();
+
+                if (empl == null)
+                {
+                    throw new Errors.UserErrors("Невохможно");
+                }
+                return empl.Id;
             }
         }
     }
