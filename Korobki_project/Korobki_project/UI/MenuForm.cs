@@ -219,5 +219,22 @@ namespace Korobki_project
                 }
             }
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            int index = id();
+            if (index != -1)
+            {
+                switch (pf)
+                {
+                    case 1:
+                        EmployeeEditForm employeeEditForm = EmployeeEditForm();
+                        employeeEditForm.Show();
+                        this.Hide();
+                        break;
+
+                }
+            }
+        }
     }
 }
