@@ -24,25 +24,22 @@ namespace gallerys.Forms.FormsforAdd
             InitializeComponent();
             this.Text = s + " " + s1;
         }
-
+        int idn;
         private void button1_Click(object sender, EventArgs e)
         {
             PaintSer p = new PaintSer();
             gallContext c = new gallContext();
-            Author author1 = c.Authors.Where(t => t.Name == comboBox2.SelectedItem.ToString()).FirstOrDefault();
             var stat = (status)Enum.Parse(typeof(status), comboBox1.SelectedValue.ToString());
-            Genre g = c.Genres.Where(t => t.Name == comboBox3.SelectedText).FirstOrDefault();
-            MessageBox.Show(author1.Id.ToString());
-            //if (this.Text == "Редактировать Картины")
-            //{
-            //    p.Edit(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, author1.Id, g.Id);
-            //}
-            //else
-            //{
-            //    p.Add(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, author1.Id, g.Id);
-            //}
+            MessageBox.Show(Convert.ToInt32(comboBox2.SelectedValue).ToString());
+            if (this.Text == "Редактировать Картины")
+            {
+                p.Edit(idn, textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, Convert.ToInt32(comboBox2.SelectedValue), Convert.ToInt32(comboBox3.SelectedValue));
+            }
+            else
+            {
+                p.Add(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, Convert.ToInt32(comboBox2.SelectedValue), Convert.ToInt32(comboBox3.SelectedValue));
+            }
         }
-
         private void AddPaint_Load(object sender, EventArgs e)
         {
             if (this.Text == "Редактировать Картины")
@@ -59,6 +56,8 @@ namespace gallerys.Forms.FormsforAdd
                 p.comboxStatus(comboBox1);
                 p.comboxGenre(comboBox3);
             }
+            PaintSer pai = new PaintSer();
+            idn = pai.ReturnId(textBox1);
         }
 
         private void button2_Click(object sender, EventArgs e)

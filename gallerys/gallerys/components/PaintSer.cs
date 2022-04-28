@@ -18,18 +18,31 @@ namespace gallerys.components
     {
         public void Add(string name, int date, int price, status stat, int author, int genre)
         {
-            Painting paint = new Painting() { Name = name, Year = date, Price = price, Status = stat, AuthorId = author, GenreId = genre };
+            Painting paint = new Painting();
             using (gallContext db = Connection.Connect())
             {
+                paint.Name = name;
+                paint.Year = date;
+                paint.Price = price;
+                paint.Status = stat;
+                paint.AuthorId = author;
+                paint.GenreId = genre;
                 db.Paintings.Add(paint);
                 db.SaveChanges();
             }
         }
-        public void Edit(string name, int date, int price, status stat, int author, int genre)
+        public void Edit(int id, string name, int date, int price, status stat, int author, int genre)
         {
-            Painting paint = new Painting() { Name = name, Year = date, Price = price, Status = stat, AuthorId = author, GenreId = genre };
+            Painting paint = new Painting();
             using (gallContext db = Connection.Connect())
             {
+                paint = db.Paintings.Find(id);
+                paint.Name = name;
+                paint.Year = date;
+                paint.Price = price;
+                paint.Status = stat;
+                paint.AuthorId = author;
+                paint.GenreId = genre;
                 db.Entry(paint).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
             }
@@ -68,6 +81,19 @@ namespace gallerys.components
             combox.ValueMember = dt.Columns[0].ColumnName;
             combox.DisplayMember = dt.Columns[1].ColumnName;
             combox.DataSource = dt;
+        }
+        public int ReturnId(TextBox t)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                Painting empl = db.Paintings.Where(p => p.Name == t.Text).FirstOrDefault();
+
+                if (empl == null)
+                {
+                    throw new Errors.UserErrors("Невохможно");
+                }
+                return empl.Id;
+            }
         }
     }
 }

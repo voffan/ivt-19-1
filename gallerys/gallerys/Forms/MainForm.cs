@@ -135,7 +135,7 @@ namespace gallerys
             }
             label1.Text = "Текущий список: " + selectedtable;
         }
-
+        public int idn;
         private void button2_Click(object sender, EventArgs e)
         {
             string s = "Редактировать";
@@ -148,16 +148,16 @@ namespace gallerys
             {
                 if (dataGridView1.CurrentRow != null)
                 {
-                    int p = dataGridView1.CurrentRow.Index;
+                    idn = dataGridView1.CurrentRow.Index;
                     if ((Connection.employeeSer.CurrentEmployee.Right == 0) || (Connection.employeeSer.CurrentEmployee.Right == Models.Right.manager))
                     {
                         if (comboBox1.Text == "Картины")
                         {
                             AddPaint add = new AddPaint(s, comboBox1.Text);
-                            add.textBox1.Text = dataGridView1.Rows[p].Cells[1].Value.ToString();
-                            add.textBox2.Text = dataGridView1.Rows[p].Cells[2].Value.ToString();
-                            add.textBox3.Text = dataGridView1.Rows[p].Cells[3].Value.ToString();
-                            add.comboBox1.SelectedItem = dataGridView1.Rows[p].Cells[4].Value.ToString();
+                            add.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                            add.textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                            add.textBox3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                            add.comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                             add.ShowDialog();
                         }
                         if (comboBox1.Text == "Жанры")
@@ -173,13 +173,13 @@ namespace gallerys
                         if (comboBox1.Text == "Сотрудники")
                         {
                             AddEmployee add = new AddEmployee(s, comboBox1.Text);
-                            string sp = dataGridView1.Rows[p].Cells[1].Value.ToString();
+                            string sp = dataGridView1.Rows[idn].Cells[1].Value.ToString();
                             string[] sp1 = sp.Split(" ");
                             add.textBox1.Text = sp1[0];
                             add.textBox2.Text = sp1[1];
                             add.textBox3.Text = sp1[2];
-                            add.textBox4.Text = dataGridView1.Rows[p].Cells[2].Value.ToString();
-                            add.textBox5.Text = dataGridView1.Rows[p].Cells[3].Value.ToString();
+                            add.textBox4.Text = dataGridView1.Rows[idn].Cells[2].Value.ToString();
+                            add.textBox5.Text = dataGridView1.Rows[idn].Cells[3].Value.ToString();
                             add.ShowDialog();
                         }
                         InitTable();
