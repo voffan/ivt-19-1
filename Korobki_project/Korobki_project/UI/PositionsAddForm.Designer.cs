@@ -70,7 +70,6 @@ namespace Korobki_project.UI
 			this.Controls.Add(this.textBox1);
 			this.Name = "PositionsAddForm";
 			this.Text = "PositionsAddForm";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PositionsAddForm_FormClosed);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

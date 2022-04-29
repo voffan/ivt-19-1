@@ -92,7 +92,6 @@ namespace Korobki_project.UI
 			this.Controls.Add(this.comboBox1);
 			this.Name = "ProductAddForm";
 			this.Text = "ProductsAddForm";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProductAddForm_FormClosed);
 			this.Load += new System.EventHandler(this.ProductsAddForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();

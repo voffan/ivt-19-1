@@ -19,7 +19,7 @@ namespace Korobki_project.Functions
                 c.SaveChanges();
             }
         }
-        public void Edit(int id, int count_box,string plandDate,int productid)
+        public void Edit(int id, int count_box, string plandDate, int productid)
         {
             Plan plan;
             using (Context c = new Context())

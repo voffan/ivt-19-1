@@ -50,11 +50,5 @@ namespace Korobki_project.UI
                 MessageBox.Show("Заполните все поля");
             }
         }
-
-        private void ProductionAddForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            MenuForm main = new MenuForm();
-            main.Show();
-        }
     }
 }

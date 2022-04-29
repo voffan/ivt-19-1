@@ -112,7 +112,6 @@ namespace Korobki_project.UI
 			this.Controls.Add(this.textBox1);
 			this.Name = "PlanFromAdd";
 			this.Text = "PlanFromAdd";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PlanFromAdd_FormClosed);
 			this.Load += new System.EventHandler(this.PlanFromAdd_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();

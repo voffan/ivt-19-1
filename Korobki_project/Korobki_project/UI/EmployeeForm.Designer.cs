@@ -59,7 +59,6 @@ namespace Korobki_project
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.Button button1;
 	}
 }
 

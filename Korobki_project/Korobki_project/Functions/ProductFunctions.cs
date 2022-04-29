@@ -19,5 +19,18 @@ namespace Korobki_project.Functions
                 c.SaveChanges();
             }
         }
+        public void Edit(int id, int typeeid, string size_box)
+        {
+            Product product;
+            using (Context c = new Context())
+            {
+                product = c.Products.Find(id);
+                product.TypeeId = typeeid;
+                product.Size_box = size_box;
+                c.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                c.SaveChanges();
+
+            }
+        }
     }
 }

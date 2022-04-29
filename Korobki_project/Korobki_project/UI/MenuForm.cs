@@ -20,7 +20,6 @@ namespace Korobki_project
     public partial class MenuForm : Form
     {
         int pf = 1;
-        Context c = new Context();
         public MenuForm()
         {
             InitializeComponent();
@@ -28,6 +27,7 @@ namespace Korobki_project
 
         private void MenuForm_Load(object sender, EventArgs e)
         {
+            Context c = new Context();
             pf = 1;
             dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").OrderBy(e => e.Name).ToList();
             dataGridView1.Columns[0].Visible = false;
@@ -86,6 +86,7 @@ namespace Korobki_project
 
         private void load_db()
 		{
+            Context c = new Context();
             switch (pf)
 			{
                 case 1:
@@ -139,41 +140,49 @@ namespace Korobki_project
                     EmployeeAddForm employeeAddForm = new EmployeeAddForm();
                     employeeAddForm.Show();
                     this.Hide();
+                    employeeAddForm.FormClosed += f;
                     break;
                 case 2:
                     PlanFromAdd planFromAdd = new PlanFromAdd();
                     planFromAdd.Show();
                     this.Hide();
+                    planFromAdd.FormClosed += f;
                     break;
                 case 3:
                     ProductionAddForm productionFormAdd = new ProductionAddForm();
                     productionFormAdd.Show();
                     this.Hide();
+                    productionFormAdd.FormClosed += f;
                     break;
                 case 4:
                     PositionsAddForm positionsAddForm = new PositionsAddForm();
                     positionsAddForm.Show();
                     this.Hide();
+                    positionsAddForm.FormClosed += f;
                     break;
                 case 5:
                     ProductAddForm productAddForm = new ProductAddForm();
                     productAddForm.Show();
                     this.Hide();
+                    productAddForm.FormClosed += f;
                     break;
                 case 6:
                     ScheduleFormAdd scheduleFormAdd = new ScheduleFormAdd();
                     scheduleFormAdd.Show();
                     this.Hide();
+                    scheduleFormAdd.FormClosed += f;
                     break;
                 case 7:
                     ShiftAddForm shiftFormAdd = new ShiftAddForm();
                     shiftFormAdd.Show();
                     this.Hide();
+                    shiftFormAdd.FormClosed += f;
                     break;
                 case 8:
                     TypeeFormAdd typeeFormAdd = new TypeeFormAdd();
                     typeeFormAdd.Show();
                     this.Hide();
+                    typeeFormAdd.FormClosed += f;
                     break;
             }
         }
@@ -260,20 +269,38 @@ namespace Korobki_project
                 switch (pf)
                 {
                     case 1:
-
                         EmployeeEditForm employeeEdit = new EmployeeEditForm(index);
                         employeeEdit.Show();
                         this.Hide();
+                        employeeEdit.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
                         break;
                     case 2:
-
                         PlanEditForm planEditForm = new PlanEditForm(index);
                         planEditForm.Show();
                         this.Hide();
+                        planEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
                         break;
-
+                    case 3:
+                        ProductionEditForm productionEditForm = new ProductionEditForm(index);
+                        productionEditForm.Show();
+                        this.Hide();
+                        productionEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
+                        break;
+                    case 4:
+                        PositionEditForm positionEditForm = new PositionEditForm(index);
+                        positionEditForm.Show();
+                        this.Hide();
+                        positionEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
+                        break;
                 }
+                load_db();
             }
         }
+
+        private void f(object s, FormClosedEventArgs ev)
+		{
+            load_db();
+            this.Show();
+		}
     }
 }

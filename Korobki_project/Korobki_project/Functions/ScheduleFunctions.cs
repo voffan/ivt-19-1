@@ -18,6 +18,21 @@ namespace Korobki_project.Functions
                 c.Remove(table);
                 c.SaveChanges();
             }
+            
+        }
+        public void Edit(int id, int shiftid, DateTime date, int plancount)
+        {
+            Schedule schedule;
+            using (Context c = new Context())
+            {
+                schedule = c.Schedules.Find(id);
+                schedule.ShiftId = shiftid;
+                schedule.Date = date;
+                schedule.PlanCount = plancount;
+                c.Entry(schedule).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                c.SaveChanges();
+
+            }
         }
     }
 }

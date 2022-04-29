@@ -19,5 +19,20 @@ namespace Korobki_project.Functions
                 c.SaveChanges();
             }
         }
+        public void Edit(int id, int teamid, int productid, int count,string comment)
+        {
+            Production production;
+            using (Context c = new Context())
+            {
+                production = c.Productions.Find(id);
+                production.TeamId = teamid;
+                production.ProductId = productid;
+                production.Count = count;
+                production.Comment = comment;
+                c.Entry(production).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                c.SaveChanges();
+
+            }
+        }
     }
 }

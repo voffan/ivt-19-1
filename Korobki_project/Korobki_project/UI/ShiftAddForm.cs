@@ -37,16 +37,5 @@ namespace Korobki_project.Classes
                 MessageBox.Show("Заполните все поля");
             }
         }
-
-        private void ShiftAddForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            MenuForm main = new MenuForm();
-            main.Show();
-        }
-
-		private void label1_Click(object sender, EventArgs e)
-		{
-
-		}
 	}
 }

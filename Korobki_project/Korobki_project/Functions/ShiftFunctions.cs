@@ -33,9 +33,17 @@ namespace Korobki_project.Functions
             
         }
 
-        public void Edit()
+        public void Edit(int id, string name)
         {
+            Shift shift;
+            using (Context c = new Context())
+            {
+                shift = c.Shifts.Find(id);
+                shift.Name = name;
+                c.Entry(shift).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                c.SaveChanges();
 
+            }
         }
     }
 }

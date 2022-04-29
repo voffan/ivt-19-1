@@ -70,7 +70,6 @@ namespace Korobki_project.UI
 			this.Controls.Add(this.label1);
 			this.Name = "TypeeFormAdd";
 			this.Text = "TypeeFormAdd";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TypeeFormAdd_FormClosed);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

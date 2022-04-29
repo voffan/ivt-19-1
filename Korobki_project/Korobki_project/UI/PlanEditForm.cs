@@ -47,8 +47,6 @@ namespace Korobki_project.UI
                 var productid = Convert.ToInt32(comboBox1.SelectedValue);
                 plan.Edit(id, count_box, datetime, productid);
                 this.Close();
-                MenuForm mf = new MenuForm();
-                mf.Show();
             }
         }
     }

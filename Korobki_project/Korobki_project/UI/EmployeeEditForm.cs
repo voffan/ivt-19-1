@@ -33,17 +33,19 @@ namespace Korobki_project.UI
                 textBox1.Text = empl.Name;
                 textBox2.Text = empl.Login;
                 textBox3.Text = empl.Password;
-                comboBox1.SelectedItem = c.Positions.Find(empl.PositionId);
                 textBox4.Text = empl.PhoneNumber;
                 textBox5.Text = empl.Adress;
-                comboBox2.SelectedItem = c.Shifts.Find(empl.ShiftId);
-                 comboBox1.DataSource = c.Positions.ToList();
+                
+                
+                comboBox1.DataSource = c.Positions.ToList();
                 comboBox1.DisplayMember = "Name";
                 comboBox1.ValueMember = "Id";
+                comboBox1.SelectedItem = c.Positions.Find(empl.PositionId);
 
                 comboBox2.DataSource = c.Shifts.ToList();
                 comboBox2.DisplayMember = "Name";
                 comboBox2.ValueMember = "Id";
+                comboBox2.SelectedItem = c.Shifts.Find(empl.ShiftId);
             } 
             
         }
@@ -62,8 +64,6 @@ namespace Korobki_project.UI
                 var shiftid = Convert.ToInt32(comboBox2.SelectedValue);
                 employee.Edit(id, name, login, password, positionid, phonenumber, adress, shiftid);
                 this.Close();
-                MenuForm menu = new MenuForm();
-                menu.Show();
             }
         }
     }

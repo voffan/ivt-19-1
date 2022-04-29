@@ -112,7 +112,6 @@ namespace Korobki_project.UI
 			this.Controls.Add(this.comboBox1);
 			this.Name = "ScheduleFormAdd";
 			this.Text = "ScheduleFormAdd";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ScheduleFormAdd_FormClosed);
 			this.Load += new System.EventHandler(this.ScheduleFormAdd_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();

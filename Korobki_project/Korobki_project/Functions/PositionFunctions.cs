@@ -19,5 +19,17 @@ namespace Korobki_project.Functions
                 c.SaveChanges();
             }
         }
+        public void Edit(int id, string name)
+        {
+            Position position;
+            using (Context c = new Context())
+            {
+                position = c.Positions.Find(id);
+                position.Name = name;
+                c.Entry(position).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                c.SaveChanges();
+
+            }
+        }
     }
 }

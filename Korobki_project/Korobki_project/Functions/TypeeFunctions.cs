@@ -31,9 +31,17 @@ namespace Korobki_project.Functions
             }
         }
 
-        public void Edit()
+        public void Edit(int id, string type_name)
         {
+            Typee typee;
+            using (Context c = new Context())
+            {
+                typee = c.Typees.Find(id);
+                typee.Type_name = type_name;
+                c.Entry(typee).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                c.SaveChanges();
 
+            }
         }
     }
 }

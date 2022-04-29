@@ -42,7 +42,6 @@ namespace Korobki_project.Classes
 			this.label1.Size = new System.Drawing.Size(66, 15);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Shift Name";
-			this.label1.Click += new System.EventHandler(this.label1_Click);
 			// 
 			// textBox1
 			// 
@@ -72,7 +71,6 @@ namespace Korobki_project.Classes
 			this.Controls.Add(this.label1);
 			this.Name = "ShiftAddForm";
 			this.Text = "ShiftAddForm";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ShiftAddForm_FormClosed);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
