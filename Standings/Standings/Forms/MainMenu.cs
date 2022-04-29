@@ -1,7 +1,7 @@
 ﻿using Standings.Database;
 using Standings.Forms;
 using Standings.Forms.Add;
-using Standings.Forms.Windows;
+using Standings.Forms.Update;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -139,17 +139,26 @@ namespace Standings
         {
             if (k == 1)
             {
-                int Id  = dataGridView1.CurrentRow.Index;
-                UpdateEmployee UE = new UpdateEmployee();
+                int Id  = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                UpdateEmployee UE = new UpdateEmployee(Id);
                
-                UE.FullName1.Text = dataGridView1.Rows[Id].Cells[3].Value.ToString();
-                UE.comboBox1.Text = dataGridView1.Rows[Id].Cells[4].Value.ToString(); 
+                UE.FullName1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                UE.comboBox1.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                UE.password1.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                
                 UE.ShowDialog();
                 InitTablEmployees();
             }
             if (k == 2)
             {
-                int Id = dataGridView1.CurrentRow.Index;
+                int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                UpdateCompetition UC = new UpdateCompetition(Id);
+
+                UC.Name1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                UC.Level1.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                UC.Date1.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                UC.Location1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                UC.ShowDialog();
                 InitTablCompetitions();
             }
             if (k == 3)

@@ -28,7 +28,7 @@ namespace Standings.Forms
                 Password1 = password1.Text,
                 Password2 = password2.Text;
 
-            Position Position = (Position)Enum.Parse(typeof(Position), comboBox1.Text);
+            Position pos = (Position)Enum.Parse(typeof(Position), comboBox1.Text);
             if (Password1 == Password2)
             {
                 if (FullName1.Text == "" || comboBox1.Text == "" || Login1.Text == "" || password1.Text == "" || password2.Text == "")
@@ -37,13 +37,9 @@ namespace Standings.Forms
                 }
                 else
                 {
-                    using (Context db = Connection.Connect())
-                    {
-                        EmployeeFunctions.Add(Login, Password1, FullName, Position);
+                        EmployeeFunctions.Add(Login, Password1, FullName, pos);
 
                         this.Close();
-
-                    }
                 }
 
             }

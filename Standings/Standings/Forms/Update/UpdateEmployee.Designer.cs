@@ -63,6 +63,7 @@
             this.password1.Name = "password1";
             this.password1.Size = new System.Drawing.Size(192, 23);
             this.password1.TabIndex = 2;
+            this.password1.UseSystemPasswordChar = true;
             // 
             // comboBox1
             // 
@@ -150,9 +151,9 @@
 
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.TextBox FullName1;
-        private System.Windows.Forms.TextBox password1;
+        public System.Windows.Forms.TextBox password1;
         public System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox password2;
+        public System.Windows.Forms.TextBox password2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

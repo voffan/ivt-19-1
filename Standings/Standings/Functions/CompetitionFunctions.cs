@@ -10,12 +10,15 @@ namespace Standings.Functions
 {
     public class CompetitionFunctions
     {
-        public void Add()
+        public static void Add(string name, string location, DateTime date, Level level)
         {
             using (Context context = new Context())
             {
                 Competition c = new Competition();
-                //... initiate fields
+                c.Name = name;
+                c.Location = location;
+                c.Date = date;
+                c.Level = level;
                 context.Competitions.Add(c);
                 context.SaveChanges();
             }
@@ -33,9 +36,21 @@ namespace Standings.Functions
             }
         }
 
-        public void Edit()
+        public static void Edit(string Name, string Location, DateTime date, Level level, int Id)
         {
-
+            using (Context context = new Context())
+            {
+                using (Context db = new Context())
+                {
+                    Competition c = db.Competitions
+                    .Where(q => q.Id == Id)
+                    .FirstOrDefault();
+                    c.Name = Name;
+                    c.Location = Location;
+                    c.Level = level;
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }

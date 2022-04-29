@@ -45,7 +45,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(64, 152);
+            this.label6.Location = new System.Drawing.Point(61, 154);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 19);
             this.label6.TabIndex = 27;
@@ -56,7 +56,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(85, 107);
+            this.label5.Location = new System.Drawing.Point(85, 110);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 19);
             this.label5.TabIndex = 26;
@@ -64,7 +64,7 @@
             // 
             // FullName1
             // 
-            this.FullName1.Location = new System.Drawing.Point(188, 103);
+            this.FullName1.Location = new System.Drawing.Point(188, 106);
             this.FullName1.Name = "FullName1";
             this.FullName1.Size = new System.Drawing.Size(192, 23);
             this.FullName1.TabIndex = 24;
@@ -72,7 +72,7 @@
             // 
             // password2
             // 
-            this.password2.Location = new System.Drawing.Point(188, 238);
+            this.password2.Location = new System.Drawing.Point(188, 236);
             this.password2.Name = "password2";
             this.password2.Size = new System.Drawing.Size(192, 23);
             this.password2.TabIndex = 22;
@@ -82,7 +82,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(39, 242);
+            this.label3.Location = new System.Drawing.Point(38, 240);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 19);
             this.label3.TabIndex = 21;
@@ -92,7 +92,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(72, 199);
+            this.label2.Location = new System.Drawing.Point(72, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 19);
             this.label2.TabIndex = 20;
@@ -110,7 +110,7 @@
             // 
             // password1
             // 
-            this.password1.Location = new System.Drawing.Point(188, 195);
+            this.password1.Location = new System.Drawing.Point(188, 193);
             this.password1.Name = "password1";
             this.password1.Size = new System.Drawing.Size(192, 23);
             this.password1.TabIndex = 18;
@@ -138,7 +138,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(188, 152);
+            this.comboBox1.Location = new System.Drawing.Point(188, 150);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(192, 23);
             this.comboBox1.TabIndex = 28;

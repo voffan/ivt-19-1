@@ -39,12 +39,20 @@ namespace Standings.Functions
                 db.SaveChanges();
             }
         }
-        public void Edit(int Id)
+        public static void Edit(string password1, string fullname, Position position, int Id)
         {
-            using (Context db = Connection.Connect())
+            using (Context context = new Context())
             {
-                //Employee c = db.Employees
-                    //.Where()
+                using (Context db = new Context())
+                {
+                    Employee c = db.Employees
+                    .Where(q => q.Id == Id)
+                    .FirstOrDefault();
+                    c.Password = password1;
+                    c.FullName = fullname;
+                    c.Position = position;
+                    db.SaveChanges();
+                }
             }
         }
     }

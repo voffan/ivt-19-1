@@ -16,14 +16,16 @@ namespace Standings.Forms
 {
     public partial class UpdateEmployee : Form
     {
-        public UpdateEmployee()
+        int id;
+        public UpdateEmployee(int obj_id)
         {
             InitializeComponent();
+            id = obj_id;
         }
 
         private void UpdateEmployee_Load(object sender, EventArgs e)
         {
-
+            comboBox1.DataSource = Enum.GetValues(typeof(Position));
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -51,7 +53,6 @@ namespace Standings.Forms
             string FullName = FullName1.Text,
                 Password1 = password1.Text,
                 Password2 = password2.Text;
-
             Position Position = (Position)Enum.Parse(typeof(Position), comboBox1.Text);
             if (Password1 == Password2)
             {
@@ -63,7 +64,7 @@ namespace Standings.Forms
                 {
                     using (Context db = Connection.Connect())
                     {
-                        //EmployeeFunctions.Edit(Password1, FullName, Position);
+                        EmployeeFunctions.Edit(Password1, FullName, Position, id);
 
                         this.Close();
 
