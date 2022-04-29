@@ -265,6 +265,12 @@ namespace Korobki_project
                         employeeEdit.Show();
                         this.Hide();
                         break;
+                    case 2:
+
+                        PlanEditForm planEditForm = new PlanEditForm(index);
+                        planEditForm.Show();
+                        this.Hide();
+                        break;
 
                 }
             }

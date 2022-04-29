@@ -19,5 +19,19 @@ namespace Korobki_project.Functions
                 c.SaveChanges();
             }
         }
+        public void Edit(int id, int count_box,string plandDate,int productid)
+        {
+            Plan plan;
+            using (Context c = new Context())
+            {
+                plan = c.Plans.Find(id);
+                plan.Count_box = count_box;
+                plan.PlanDate = plandDate;
+                plan.ProductId = productid;
+                c.Entry(plan).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                c.SaveChanges();
+
+            }
+        }
     }
 }
