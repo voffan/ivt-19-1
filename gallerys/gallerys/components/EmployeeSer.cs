@@ -62,11 +62,12 @@ namespace gallerys.components
             gallContext c = new gallContext();
             comboBox.DataSource = Enum.GetValues(typeof(Right));
         }
-        public int ReturnId(TextBox t)
+        public int ReturnId(TextBox t1, TextBox t2, TextBox t3)
         {
+            string str = t1.Text + " " + t2.Text + " " + t3.Text;
             using (gallContext db = Connection.Connect())
             {
-                Employee empl = db.Employees.Where(p => p.Login1 == t.Text).FirstOrDefault();
+                Employee empl = db.Employees.Where(p => p.Name == str).FirstOrDefault();
 
                 if (empl == null)
                 {

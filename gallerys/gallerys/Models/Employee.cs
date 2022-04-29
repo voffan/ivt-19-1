@@ -29,6 +29,11 @@ namespace gallerys.Models
         [MinLength(4)]
         public string Passw1 { get; set; }
         public Right Right { get; set; }
+        [NotMapped]
+        public string RightAccess { get
+            {
+                return DescriptionAttributes<Right>.RetrieveAttributesReverse()[Right.ToString()];
+            } }
         public virtual List<Journal> Journals { get; set; }
         public override string ToString()
         {
