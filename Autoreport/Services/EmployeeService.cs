@@ -81,11 +81,10 @@ namespace Autoreport.Services
                 }
             }
 
-            string[] passportSplited = passport.Split("-");
-            int passportSerial, passportNumber;
+            int[] passportSplited = passport.Split("-").Select(x => Int32.Parse(x)).ToArray();
 
-            Int32.TryParse(passportSplited[0], out passportSerial);
-            Int32.TryParse(passportSplited[1], out passportNumber);
+            int passportSerial = passportSplited[0],
+                passportNumber = passportSplited[1];
 
             string passwordHash = Connection.hashService.GetPasswordHash(password);
 
@@ -111,6 +110,7 @@ namespace Autoreport.Services
                 return db.Employees.ToList();
             }
         }
+
         public Employee GetById(int empl_id)
         {
             using (DataContext db = Connection.Connect())
@@ -120,6 +120,7 @@ namespace Autoreport.Services
                 return empl;
             }
         }
+
         public void Get()
         {
 
@@ -136,28 +137,41 @@ namespace Autoreport.Services
 
         public void Edit(Employee editingEntity, string lastName, string firstName, string middleName,
                         string passport, Position position, string phone,
-                        string login)
+                        string login, string password)
         {
             using (DataContext db = Connection.Connect())
             {
+                var emplWithSameLogin = db.Employees.FirstOrDefault(x => x.Login == login);
 
-                var empl = db.Employees
-                    .First(x => x.Id == editingEntity.Id);
+                if (emplWithSameLogin != null && emplWithSameLogin.Id != editingEntity.Id)
+                {
+                    throw new Errors.UserAlreadyExists("Пользователь с таким логином уже существует");
+                }
 
-                string[] passportSplited = passport.Split("-");
-                int passportSerial, passportNumber;
+                string passwordHash = null;
 
-                Int32.TryParse(passportSplited[0], out passportSerial);
-                Int32.TryParse(passportSplited[1], out passportNumber);
+                if (password.Length > 0)
+                {
+                    passwordHash = Connection.hashService.GetPasswordHash(password);
+                }
+
+                var empl = db.Employees.First(x => x.Id == editingEntity.Id);
+
+                int[] passportSplited = passport.Split("-").Select(x => Int32.Parse(x)).ToArray();
+
+                int passportSerial = passportSplited[0],
+                    passportNumber = passportSplited[1];
 
                 empl.Last_name = lastName;
                 empl.First_name = firstName;
                 empl.Middle_name = middleName;
-                empl.Passport_number =passportNumber;
-                empl.Passport_serial =passportSerial;
+                empl.Passport_number = passportNumber;
+                empl.Passport_serial = passportSerial;
                 empl.EmplPosition = position;
                 empl.Phone_number = phone;
                 empl.Login = login;
+                empl.PasswordHash = passwordHash != null ? passwordHash : empl.PasswordHash;
+
                 db.SaveChanges();
             }
         }

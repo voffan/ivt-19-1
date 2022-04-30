@@ -37,10 +37,12 @@ namespace Autoreport.UI.Edit
                 positionBox.SelectedValue.ToString());
             string phone = phoneText.Text;
             string login = loginText.Text;
+            string password = passwordText.Text;
+
             try
             {
                 Connection.employeeService.Edit(editingEntity, lastName, firstName, middleName,
-                    passport, position, phone, login);
+                    passport, position, phone, login, password);
                 Close();
             }
             catch (Exception exc)
@@ -79,6 +81,5 @@ namespace Autoreport.UI.Edit
             positionBox.DataSource = new BindingSource(DescriptionAttributes<Position>.RetrieveAttributes(), null);
             positionBox.SelectedValue = editingEntity.EmplPosition.ToString();
         }
-
     }
 }
