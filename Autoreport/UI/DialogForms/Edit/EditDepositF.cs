@@ -12,20 +12,21 @@ using Autoreport.UI.Classes;
 using Autoreport.Database;
 using Autoreport.UI;
 using Autoreport.UI.Edit.Parents;
+using Autoreport.UI.Add.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    public partial class EditDepositF : EditFormSelective
+    public partial class EditDepositF : AddFormSelective, IEditForm
     {
         public EditDepositF(Button relatedTab, Action OnCloseHandler) : base()
         {
             base.maxSelectedCount = 1;
 
             InitializeComponent();
-            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddArrowKeyEventListener(flowLayout);
 
-            saveBtn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            saveBtn.Tag = this.EnterButtonTag;
+            AddEnterKeyEventListener(this);
 
             this.Load += new EventHandler(Form_Load);
 
@@ -63,6 +64,11 @@ namespace Autoreport.UI.Edit
             Connection.depositService.Add(data, sum, position, client_id);
             CloseHandler();
             Close();
+        }
+
+        public void LoadField(int entityId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

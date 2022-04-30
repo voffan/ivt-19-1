@@ -20,10 +20,10 @@ namespace Autoreport.UI.Add
         {
             InitializeComponent();
 
-            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddArrowKeyEventListener(flowLayout);
 
-            saveBtn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            saveBtn.Tag = this.EnterButtonTag;
+            AddEnterKeyEventListener(this);
         }
 
         /// <summary>

@@ -11,21 +11,22 @@ using Autoreport.Models;
 using Autoreport.UI.Classes;
 using Autoreport.Database;
 using Autoreport.UI.Edit.Parents;
+using Autoreport.UI.Add.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    public partial class EditDiskF : EditFormSelective
+    public partial class EditDiskF : AddFormSelective, IEditForm
     {
         public EditDiskF(Button relatedTab, Action OnCloseHandler) : base()
         {
             InitializeComponent();
 
-            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddArrowKeyEventListener(flowLayout);
 
             this.Load += new EventHandler(Form_Load);
 
-            saveBtn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            saveBtn.Tag = this.EnterButtonTag;
+            AddEnterKeyEventListener(this);
 
             selectedBox.Tag = this.selectedBoxTag;
             this.relatedTab = relatedTab;
@@ -66,6 +67,11 @@ namespace Autoreport.UI.Edit
             {
                 e.Handled = true;
             }
+        }
+
+        public void LoadField(int entityId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

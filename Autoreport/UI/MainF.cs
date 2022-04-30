@@ -36,7 +36,7 @@ namespace Autoreport.UI
 
         Button currentTabButton;
         Form currentAddForm;
-        BaseEditForm currentEditForm;
+        IEditForm currentEditForm;
         Action<int> currentDeleteAction;
         Func<List<object>> currentFindFunction;
         Func<List<object>> currentGetFunction;
@@ -454,7 +454,7 @@ namespace Autoreport.UI
 
         private IEnumerable<object> Find(IEnumerable<object> processList)
         {
-            IEnumerable<Control> ctrls = GetPanelInputControls(searchControlsPanel);
+            IEnumerable<Control> ctrls = GetAllPanelDataBoxes(searchControlsPanel);
             int filledControls = ctrls.Count(x => x.Text.Length > 0);
 
             foreach (object Obj in processList)
@@ -753,7 +753,7 @@ namespace Autoreport.UI
         /// <param name="reverse">Кнопки, которые перейдут в противоположное состояние от того, что передано</param>
         private void TurnVisibleButtons(bool enabled, Panel panel, Button[] reverse = null)
         {
-            foreach (Button btn in GetAllButtons(panel).Where(x => x.Visible))
+            foreach (Button btn in GetNestedControls<Button>(panel).Where(x => x.Visible))
             {
                 btn.Enabled = enabled || (reverse != null && reverse.Contains(btn));
             }
@@ -886,7 +886,7 @@ namespace Autoreport.UI
 
         private void resetFoundBtn_Click(object sender, EventArgs e)
         {
-            foreach (Control ctrl in GetPanelInputControls(searchControlsPanel))
+            foreach (Control ctrl in GetAllPanelDataBoxes(searchControlsPanel))
             {
                 ClearField(ctrl);
             }

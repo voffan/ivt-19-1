@@ -11,20 +11,22 @@ using Autoreport.Models;
 using Autoreport.UI.Classes;
 using Autoreport.Database;
 using Autoreport.UI.Edit.Parents;
+using Autoreport.UI.Add.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    public partial class EditEmployeeF : BaseEditForm
+    public partial class EditEmployeeF : BaseAddForm, IEditForm
     {
         Employee editingEntity;
+
         public EditEmployeeF()
         {
             InitializeComponent();
 
-            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            saveBtn.Tag = this.EnterButtonTag;
 
-            saveBtn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            AddArrowKeyEventListener(flowLayout);
+            AddEnterKeyEventListener(this);
         }
 
         protected override void saveBtn_Click(object sender, EventArgs e)
@@ -51,7 +53,7 @@ namespace Autoreport.UI.Edit
             }
         }
 
-        public override void LoadField(int empl_id)
+        public void LoadField(int empl_id)
         {
             editingEntity = Connection.employeeService.GetById(empl_id);
 
@@ -67,7 +69,7 @@ namespace Autoreport.UI.Edit
             loginText.Text = editingEntity.Login;
         }
 
-        private void OrderE_Load(object sender, EventArgs e)
+        private void EditEmployeeForm_Load(object sender, EventArgs e)
         {
             if (editingEntity == null)
             {

@@ -18,10 +18,10 @@ namespace Autoreport.UI
         public Login()
         {
             InitializeComponent();
-            AddInputControl_ArrowKeyPressEventListener();
+            AddArrowKeyEventListener();
 
-            login_btn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            login_btn.Tag = this.EnterButtonTag;
+            AddEnterKeyEventListener(this);
         }
 
         private void login_btn_Click(object sender, EventArgs e)

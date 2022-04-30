@@ -1,10 +1,11 @@
 ﻿
 using System;
+using Autoreport.UI.Add.Parents;
 using Autoreport.UI.Edit.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    partial class EditFilmDirectorF : BaseEditForm
+    partial class EditFilmDirectorF : BaseAddForm
     {
         /// <summary>
         /// Required designer variable.

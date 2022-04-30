@@ -18,27 +18,12 @@ namespace Autoreport.UI.Add.Parents
         }
 
         /// <summary>
-        /// Возвращает все поля для ввода
-        /// </summary>
-        /// <returns></returns>
-        protected IEnumerable<Control> GetAllFields()
-        {
-            foreach (Panel panel in GetAllPanels(this))
-            {
-                foreach (Control inputControl in GetPanelInputControls(panel))
-                {
-                    yield return inputControl;
-                }
-            }
-        }
-
-        /// <summary>
         /// Возвращает true, если нет ни одного пустого поля для ввода
         /// </summary>
         /// <returns></returns>
         protected bool AllFieldsNotEmpty()
         {
-            foreach (Control field in GetAllFields())
+            foreach (Control field in GetAllPanelDataBoxes(this))
             {
                 if (FieldIsEmpty(field))
                     return false;
@@ -53,7 +38,7 @@ namespace Autoreport.UI.Add.Parents
         /// <returns></returns>
         protected IEnumerable<Control> GetAllBlankFields()
         {
-            foreach (Control field in GetAllFields())
+            foreach (Control field in GetAllPanelDataBoxes(this))
             {
                 if (FieldIsEmpty(field) || (field is MaskedTextBox && !((MaskedTextBox)field).MaskCompleted))
                     yield return field;
@@ -74,7 +59,7 @@ namespace Autoreport.UI.Add.Parents
         /// <param name="e"></param>
         protected void resetBtn_Click(object sender, EventArgs e)
         {
-            foreach (Control inputControl in GetAllFields())
+            foreach (Control inputControl in GetAllPanelDataBoxes(this))
             {
                 ClearField(inputControl);
             }

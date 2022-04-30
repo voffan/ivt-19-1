@@ -18,8 +18,8 @@ namespace Autoreport.UI.Add.Parents
         protected Button relatedTab;
         protected Action CloseHandler;
         protected int maxSelectedCount = 100;
-        protected readonly string selectedBoxTag = "SelectedBox";
         protected bool Loaded = false;
+        protected readonly string selectedBoxTag = "SelectedBox";
 
         public AddFormSelective()
         {
@@ -65,13 +65,13 @@ namespace Autoreport.UI.Add.Parents
 
         protected ListBox GetSelectedListBox()
         {
-            foreach (Control c in GetAllPanels(this))
+            foreach (Control panel in GetAllPanels(this))
             {
-                foreach (Control underC in c.Controls)
+                foreach (Control control in panel.Controls)
                 {
-                    if (underC.Tag != null && underC.Tag == selectedBoxTag)
+                    if (control.Tag != null && (string)control.Tag == selectedBoxTag)
                     {
-                        return (ListBox)underC;
+                        return (ListBox)control;
                     }
                 }
             }

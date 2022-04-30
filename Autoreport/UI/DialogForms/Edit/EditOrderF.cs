@@ -11,10 +11,11 @@ using Autoreport.Models;
 using Autoreport.UI.Classes;
 using Autoreport.Database;
 using Autoreport.UI.Edit.Parents;
+using Autoreport.UI.Add.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    public partial class EditOrderF : EditFormSelective
+    public partial class EditOrderF : AddFormSelective, IEditForm
     {
         Button depositRelatedTab;
         Button disksRelatedTab;
@@ -24,10 +25,10 @@ namespace Autoreport.UI.Edit
         {
             InitializeComponent();
 
-            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddArrowKeyEventListener(flowLayout);
 
-            saveBtn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            saveBtn.Tag = this.EnterButtonTag;
+            AddEnterKeyEventListener(this);
 
             this.Load += Form_Load;
 
@@ -65,7 +66,7 @@ namespace Autoreport.UI.Edit
             statusBox.SelectedValue = editingEntity.Status.ToString();
         }
 
-        public override void LoadField(int entityId)
+        public void LoadField(int entityId)
         {
             editingEntity = Connection.orderService.Get(entityId);
 

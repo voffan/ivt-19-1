@@ -1,11 +1,12 @@
 ﻿
 using System;
 using System.Windows.Forms;
+using Autoreport.UI.Add.Parents;
 using Autoreport.UI.Edit.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    partial class EditOrderF : EditFormSelective
+    partial class EditOrderF : AddFormSelective
     {
         /// <summary>
         /// Required designer variable.

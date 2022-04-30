@@ -12,7 +12,7 @@ namespace Autoreport.UI
 {
     public partial class BaseForm : Form
     {
-        protected string MainButtonTag = "MainButton"; // тэг для таких кнопок как "Сохранить"/"Войти" и т.д.
+        protected string EnterButtonTag = "EnterButton"; // тэг для таких кнопок как "Сохранить"/"Войти" и т.д.
 
         public BaseForm()
         {
@@ -20,20 +20,17 @@ namespace Autoreport.UI
         }
 
         /// <summary>
-        /// Возвращает текстовые поля, либо листбоксы, хранящиеся внутри переданной панели
+        /// Возвращает текстовые поля, либо листбоксы, хранящиеся внутри передаваемого Control
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        protected IEnumerable<Control> GetPanelInputControls(Panel p)
+        protected IEnumerable<Control> GetAllPanelDataBoxes(Control p)
         {
-            foreach (Control underC in p.Controls)
+            foreach (Control control in GetNestedControls<TextBoxBase>(p).Cast<Control>().Concat(GetNestedControls<ListBox>(p)))
             {
-                if (underC is Label || underC is Panel)
-                    continue;
-
-                if (typeof(TextBoxBase).IsAssignableFrom(underC.GetType()) || underC is ListBox) 
+                if (typeof(TextBoxBase).IsAssignableFrom(control.GetType()) || control is ListBox) 
                 {
-                    yield return underC;
+                    yield return control;
                 }
             }
         }
@@ -55,44 +52,50 @@ namespace Autoreport.UI
         }
 
         /// <summary>
-        /// Возвращает все кнопки внутри переданного Control
+        /// Возвращает все Controls типа ControlType, 
+        /// вложенные в передаваемый Control
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        protected IEnumerable<Button> GetAllButtons(Control control)
+        protected IEnumerable<ControlType> GetNestedControls<ControlType>(Control control)
         {
             if (control.Controls == null || control.Controls.Count == 0)
-                return Enumerable.Empty<Button>();
+                return Enumerable.Empty<ControlType>();
 
-            return control.Controls.OfType<Button>().Concat(control.Controls.Cast<Control>().SelectMany(x => GetAllButtons(x)));
+            return control.Controls
+                .OfType<ControlType>()
+                .Concat(control.Controls
+                    .Cast<Control>()
+                    .SelectMany(x => GetNestedControls<ControlType>(x)));
         }
 
         /// <summary>
-        /// Вызывает AddInputControl_ArrowKeyPressEventListener для всех панелей окна
+        /// Вызывает AddArrowKeyEventListener для всех панелей окна
         /// </summary>
-        protected void AddInputControl_ArrowKeyPressEventListener()
+        protected void AddArrowKeyEventListener()
         {
             foreach (Panel panel in GetAllPanels(this))
             {
-                AddInputControl_ArrowKeyPressEventListener(panel);
+                AddArrowKeyEventListener(panel);
             }
         }
 
         /// <summary>
-        /// Для всех полей для ввода внутри переданной панели добавляет слушатель нажатия на стрелки-клавиши "Вверх"/"Вниз"
+        /// Для всех полей для ввода внутри панели добавляет слушателя события нажатия
+        /// на клавиши-стрелки "Вверх"-"Вниз"
         /// </summary>
         /// <param name="panel"></param>
-        protected void AddInputControl_ArrowKeyPressEventListener(Panel panel)
+        protected void AddArrowKeyEventListener(Panel panel)
         {
-            foreach (Control inputControl in GetPanelInputControls(panel))
+            foreach (Control inputControl in GetAllPanelDataBoxes(panel))
             {
                 inputControl.KeyDown += new KeyEventHandler(ArrowKeyPress);
             }
         }
 
         /// <summary>
-        /// Позволяет перемещать фокус между инпутами при помощи стрелок
-        /// <вверх>, <вниз> на кливиатуре
+        /// Позволяет перемещать фокус между инпутами при помощи клавиш-стрелок
+        /// "Вверх", "Вниз" на кливиатуре
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -106,7 +109,7 @@ namespace Autoreport.UI
 
             foreach (Panel p in GetAllPanels(this))
             {
-                foreach (Control c in GetPanelInputControls(p))
+                foreach (Control c in GetAllPanelDataBoxes(p))
                 {
                     if (c == (Control)sender)
                     {
@@ -134,6 +137,11 @@ namespace Autoreport.UI
             }
         }
 
+        /// <summary>
+        /// Устанавливает фокус на передаваемый виджет.
+        /// Для текстовых полей устанавливает также положение курсора на начало поля.
+        /// </summary>
+        /// <param name="control"></param>
         private void ControlFocus(Control control)
         {
             control.Focus();
@@ -146,11 +154,11 @@ namespace Autoreport.UI
         }
 
         /// <summary>
-        /// Добавляет форме прослушиватель нажатия кнопки Enter
-        /// Для корректной работы у передаваемой формы параметр KeyPreview должен быть true
+        /// Добавляет форме прослушиватель нажатия кнопки, имеющей тэг "EnterButton".
+        /// Для корректной работы у передаваемой формы параметр KeyPreview должен быть равен true
         /// </summary>
         /// <param name="f"></param>
-        protected void AddFormEnterPressEvent(Form f)
+        protected void AddEnterKeyEventListener(Form f)
         {
             f.KeyDown += new KeyEventHandler(EnterKeyPress);
         }
@@ -165,20 +173,21 @@ namespace Autoreport.UI
             if (e.KeyCode != Keys.Enter)
                 return;
 
-            foreach (Button b in GetAllButtons((Control)sender))
+            foreach (Button enterBtn in GetNestedControls<Button>((Control)sender))
             {
-                if (b.Tag != null && b.Tag.ToString() == MainButtonTag)
+                if (enterBtn.Tag != null && enterBtn.Tag.ToString() == EnterButtonTag)
                 {
-                    b.PerformClick();
+                    enterBtn.PerformClick();
                     break;
                 }
             }
         }
 
         /// <summary>
-        /// Проверяет, является ли переданный Control "пустым", т.е. если это TextBox, то
-        /// смотрим, пустое ли это текстовое поле, если это SelectBox, то проверяем, содержит ли
-        /// он что-либо, если это обычный ListBox, то проверяет, выбраны ли в нем какие-то элементы
+        /// Проверяет, является ли переданный Control "пустым".
+        /// Еесли это TextBox, то смотрим, пустое ли это текстовое поле,
+        /// если это ListBox с тэгом "selectedBox", то проверяем, содержит ли он что-либо,
+        /// если это обычный ListBox, то проверяет, выбраны ли в нем какие-то элементы
         /// </summary>
         /// <param name="field">Проверяемый Control</param>
         /// <returns>true если Control пустойб иначе else</returns>
@@ -190,7 +199,7 @@ namespace Autoreport.UI
             }
             else if (field is ListBox)
             {
-                if (((ListBox)field).Name != null && ((ListBox)field).Name.StartsWith("selectedBox"))
+                if (((ListBox)field).Name != null && ((ListBox)field).Name.StartsWith("SelectedBox"))
                 {
                     return ((ListBox)field).Items.Count == 0;
                 } else

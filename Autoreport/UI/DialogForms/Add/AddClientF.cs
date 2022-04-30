@@ -19,10 +19,10 @@ namespace Autoreport.UI.Add
         public AddClientF()
         {
             InitializeComponent();
-            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddArrowKeyEventListener(flowLayout);
 
-            saveBtn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            saveBtn.Tag = this.EnterButtonTag;
+            AddEnterKeyEventListener(this);
         }
 
         protected override void saveBtn_Click(object sender, EventArgs e)

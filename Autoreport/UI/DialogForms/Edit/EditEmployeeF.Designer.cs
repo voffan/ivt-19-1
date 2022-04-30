@@ -1,8 +1,9 @@
-﻿using Autoreport.UI.Edit.Parents;
+﻿using Autoreport.UI.Add.Parents;
+using Autoreport.UI.Edit.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    partial class EditEmployeeF : BaseEditForm
+    partial class EditEmployeeF : BaseAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -531,7 +532,7 @@ namespace Autoreport.UI.Edit
             this.MinimumSize = new System.Drawing.Size(516, 200);
             this.Name = "EditEmployeeF";
             this.Text = "Редактировать сотрудника";
-            this.Load += new System.EventHandler(this.OrderE_Load);
+            this.Load += new System.EventHandler(this.EditEmployeeForm_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);

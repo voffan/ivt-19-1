@@ -12,10 +12,11 @@ using Autoreport.UI.Classes;
 using Autoreport.Database;
 using System.Globalization;
 using Autoreport.UI.Edit.Parents;
+using Autoreport.UI.Add.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    public partial class EditFilmF : EditFormSelective
+    public partial class EditFilmF : AddFormSelective, IEditForm
     {
         Film editingEntity;
 
@@ -23,10 +24,10 @@ namespace Autoreport.UI.Edit
         {
             InitializeComponent();
 
-            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddArrowKeyEventListener(flowLayout);
 
-            saveBtn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            saveBtn.Tag = this.EnterButtonTag;
+            AddEnterKeyEventListener(this);
 
             this.Load += new EventHandler(this.Form_Load);
 
@@ -104,7 +105,7 @@ namespace Autoreport.UI.Edit
             removeSelectedBtn.Enabled = selectedBox.SelectedIndex != -1;
         }
 
-        public override void LoadField(int entityId)
+        public void LoadField(int entityId)
         {
             editingEntity = Connection.filmService.Get(entityId);
 

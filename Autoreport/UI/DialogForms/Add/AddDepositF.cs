@@ -21,10 +21,10 @@ namespace Autoreport.UI.Add
             base.maxSelectedCount = 1;
 
             InitializeComponent();
-            AddInputControl_ArrowKeyPressEventListener(flowLayout);
+            AddArrowKeyEventListener(flowLayout);
 
-            saveBtn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            saveBtn.Tag = this.EnterButtonTag;
+            AddEnterKeyEventListener(this);
 
             this.Load += new EventHandler(Form_Load);
 

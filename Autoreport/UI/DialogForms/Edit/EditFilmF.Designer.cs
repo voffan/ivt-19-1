@@ -1,8 +1,9 @@
-﻿using Autoreport.UI.Edit.Parents;
+﻿using Autoreport.UI.Add.Parents;
+using Autoreport.UI.Edit.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    partial class EditFilmF : EditFormSelective
+    partial class EditFilmF : AddFormSelective
     {
         /// <summary>
         /// Required designer variable.

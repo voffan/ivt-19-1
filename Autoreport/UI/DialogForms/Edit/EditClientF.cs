@@ -11,21 +11,23 @@ using Autoreport.Models;
 using Autoreport.UI.Classes;
 using Autoreport.Database;
 using Autoreport.UI.Edit.Parents;
+using Autoreport.UI.Add.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    public partial class EditClientF : BaseEditForm
+    public partial class EditClientF : BaseAddForm, IEditForm
     {
         Client editingEntity;
+
         public EditClientF()
         {
             InitializeComponent();
-            AddInputControl_ArrowKeyPressEventListener(flowLayout);
-            saveBtn.Tag = this.MainButtonTag;
-            AddFormEnterPressEvent(this);
+            AddArrowKeyEventListener(flowLayout);
+            saveBtn.Tag = this.EnterButtonTag;
+            AddEnterKeyEventListener(this);
         }
 
-        public override void LoadField(int entityId)
+        void IEditForm.LoadField(int entityId)
         {
             editingEntity = Connection.clientService.Get(entityId);
 
