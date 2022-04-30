@@ -15,7 +15,9 @@ namespace Autoreport.Models
         [Description("Просрочен")]
         Expired = 1,
         [Description("Завершен")]
-        Completed = 2
+        Completed = 2,
+        [Description("Отменен")]
+        Cancelled = 3
     }
 
     public class Order
@@ -47,11 +49,11 @@ namespace Autoreport.Models
         [ForeignKey("OrderEmployee")]
         public int EmployeeId { get; set; }
 
-        [Required, DisplayName("Залог")]
-        public virtual Deposit OrderDeposit { get; set; }
+        [DisplayName("Залог")]
+        public virtual Deposit? OrderDeposit { get; set; }
 
         [ForeignKey("OrderDeposit")]
-        public int DepositId { get; set; }
+        public int? DepositId { get; set; }
 
         [Required, DisplayName("Диски")]
         public virtual List<Disk> Disks { get; set; }

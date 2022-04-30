@@ -125,8 +125,14 @@ namespace Autoreport.UI
                     // Для этого Enum должен обладать атрибутом TypeConverter, конвертирующим
                     // данное значение в Description, которое предназначено для этого значения.
                     // Прочие объекты, такие как числа, также успешно конвертируются
-                    data = TypeDescriptor.GetConverter(property.GetValue(entity, null))
-                        .ConvertToString(property.GetValue(entity, null));
+
+                    var v = property.GetValue(entity, null);
+
+                    if (v != null)
+                        data = TypeDescriptor.GetConverter(v)
+                            .ConvertToString(property.GetValue(entity, null));
+                    else
+                        data = "";
 
                     AddData(propDisplayName, data);
                 }

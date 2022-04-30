@@ -42,8 +42,6 @@
     <Compile Update="UI\DialogForms\Edit\EditFilmDirectorF.cs" />
     <Compile Update="UI\DialogForms\Edit\EditFilmF.cs" />
     <Compile Update="UI\DialogForms\Edit\EditOrderF.cs" />
-    <Compile Update="UI\DialogForms\Edit\Parents\EditFormSelective.cs" />
-    <Compile Update="UI\DialogForms\Edit\Parents\BaseEditForm.cs" />
     <Compile Update="UI\DialogForms\Add\AddOrderF.cs" />
     <Compile Update="UI\Resources.Designer.cs">
       <DesignTime>True</DesignTime>

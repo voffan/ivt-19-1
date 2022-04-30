@@ -30,7 +30,7 @@ namespace Autoreport.Database
             ServiceCollection serviceCollection = new ServiceCollection();
             IConfigurationRoot configuration = ConfigureServices(serviceCollection);
 
-            optionsBuilder.UseMySql(configuration["ConnectionStrings:AutoReportDB"], new MySqlServerVersion(new Version(8, 0, 26)));
+            optionsBuilder.UseMySql(configuration["ConnectionStrings:AutoReportDB"], new MySqlServerVersion(new Version(8, 0, 26))).EnableSensitiveDataLogging();
         }
 
         private static IConfigurationRoot ConfigureServices(IServiceCollection serviceCollection)
@@ -57,11 +57,11 @@ namespace Autoreport.Database
                 .Navigation(e => e.OrderDeposit)
                 .AutoInclude();
 
-            //modelBuilder
-            //    .Entity<Film>()
-            //    .HasMany(film => film.FilmDirectors)
-            //    .WithMany(director => director.Films)
-            //    .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder
+                .Entity<Order>()
+                .HasOne(o => o.OrderDeposit)
+                .WithOne()
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Autoreport.Services
 {
     public class DepositService
     {
-        public void Add(string documentData, uint moneyValue, DepositType DepositType, Client clients)
+        public void Add(string documentData, uint moneyValue, DepositType DepositType, Client client)
         {
             switch (DepositType)
             {
@@ -35,17 +35,23 @@ namespace Autoreport.Services
                     throw new ArgumentNullException("Argument `DepositType` cannot be null");
             }
 
-            Deposit deposit = new Deposit()
-            {
-                DocumentData = documentData,
-                MoneyValue = moneyValue,
-                DepositType = DepositType,
-                Owner = clients
-            };
-
             using (DataContext db = Connection.Connect())
             {
-                db.Update(deposit);             
+                Client c = db.Clients.First(x => x.Id == client.Id);
+
+                Deposit deposit = new Deposit()
+                {
+                    DocumentData = documentData,
+                    MoneyValue = moneyValue,
+                    DepositType = DepositType,
+                    Owner = c
+                };
+
+                db.Update(deposit);
+                //db.Database. = s => System.Diagnostics.Debug.WriteLine(s);
+                db.ChangeTracker.DetectChanges();
+                Console.WriteLine(db.ChangeTracker.DebugView.LongView);
+                           
                 db.Deposits.Add(deposit);
                 db.SaveChanges();
             }

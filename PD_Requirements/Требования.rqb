@@ -1677,7 +1677,7 @@ Shadow=0</a:DisplayPreferences>
 <a:Code>REQ_  69</a:Code>
 <a:CreationDate>1632806565</a:CreationDate>
 <a:Creator>DELL</a:Creator>
-<a:ModificationDate>1635840809</a:ModificationDate>
+<a:ModificationDate>1651322965</a:ModificationDate>
 <a:Modifier>Ilya</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
@@ -1749,35 +1749,22 @@ Shadow=0</a:DisplayPreferences>
 <a:Risk>0</a:Risk>
 <a:VerificationMethod/>
 </o:Requirement>
-<o:Requirement Id="o95">
-<a:ObjectID>CD256C4A-DF85-4EBB-805F-A52E56273838</a:ObjectID>
-<a:Requirement.Title>Текущая сумма штрафа</a:Requirement.Title>
-<a:Code>REQ_ 116</a:Code>
-<a:CreationDate>1635840662</a:CreationDate>
-<a:Creator>Ilya</a:Creator>
-<a:ModificationDate>1635840819</a:ModificationDate>
-<a:Modifier>Ilya</a:Modifier>
-<a:Priority>0</a:Priority>
-<a:Status>0</a:Status>
-<a:Risk>0</a:Risk>
-<a:VerificationMethod/>
-</o:Requirement>
 </c:Requirements>
 </o:Requirement>
-<o:Requirement Id="o96">
+<o:Requirement Id="o95">
 <a:ObjectID>F47082E7-E84A-4989-804C-77AB820C2641</a:ObjectID>
 <a:Requirement.Title>Залогах</a:Requirement.Title>
 <a:Code>REQ_  71</a:Code>
 <a:CreationDate>1632806587</a:CreationDate>
 <a:Creator>DELL</a:Creator>
-<a:ModificationDate>1632812062</a:ModificationDate>
-<a:Modifier>DELL</a:Modifier>
+<a:ModificationDate>1646308789</a:ModificationDate>
+<a:Modifier>Ilya</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
 <a:Risk>0</a:Risk>
 <a:VerificationMethod/>
 <c:Requirements>
-<o:Requirement Id="o97">
+<o:Requirement Id="o96">
 <a:ObjectID>9475815B-890D-44F7-B452-30B2BE8D0E03</a:ObjectID>
 <a:Requirement.Title>Тип</a:Requirement.Title>
 <a:Code>REQ_  51</a:Code>
@@ -1790,7 +1777,7 @@ Shadow=0</a:DisplayPreferences>
 <a:Risk>0</a:Risk>
 <a:VerificationMethod/>
 <c:Requirements>
-<o:Requirement Id="o98">
+<o:Requirement Id="o97">
 <a:ObjectID>2AED0C9B-52E7-4F5B-A4FE-1275B3EAA781</a:ObjectID>
 <a:Requirement.Title>Документ</a:Requirement.Title>
 <a:Code>REQ_  97</a:Code>
@@ -1803,7 +1790,7 @@ Shadow=0</a:DisplayPreferences>
 <a:Risk>0</a:Risk>
 <a:VerificationMethod/>
 <c:Requirements>
-<o:Requirement Id="o99">
+<o:Requirement Id="o98">
 <a:ObjectID>C3B8B9D0-18D6-4D9C-9234-2A5EC028465D</a:ObjectID>
 <a:Requirement.Title>Наименование</a:Requirement.Title>
 <a:Code>REQ_  99</a:Code>
@@ -1816,7 +1803,7 @@ Shadow=0</a:DisplayPreferences>
 <a:Risk>0</a:Risk>
 <a:VerificationMethod/>
 </o:Requirement>
-<o:Requirement Id="o100">
+<o:Requirement Id="o99">
 <a:ObjectID>1F739965-4354-469E-91DE-E844BFA05AFB</a:ObjectID>
 <a:Requirement.Title>Идентификационные данные документа</a:Requirement.Title>
 <a:Code>REQ_ 100</a:Code>
@@ -1831,7 +1818,7 @@ Shadow=0</a:DisplayPreferences>
 </o:Requirement>
 </c:Requirements>
 </o:Requirement>
-<o:Requirement Id="o101">
+<o:Requirement Id="o100">
 <a:ObjectID>698C30C6-67C1-48EC-83D0-37D0A7243AF3</a:ObjectID>
 <a:Requirement.Title>Денежный эквивалент</a:Requirement.Title>
 <a:Code>REQ_  98</a:Code>
@@ -1845,6 +1832,19 @@ Shadow=0</a:DisplayPreferences>
 <a:VerificationMethod/>
 </o:Requirement>
 </c:Requirements>
+</o:Requirement>
+<o:Requirement Id="o101">
+<a:ObjectID>B73965C4-7AA1-49CA-91B7-51BDBF5B6BDE</a:ObjectID>
+<a:Requirement.Title>Владелец</a:Requirement.Title>
+<a:Code>REQ_ 120</a:Code>
+<a:CreationDate>1646308783</a:CreationDate>
+<a:Creator>Ilya</a:Creator>
+<a:ModificationDate>1646308805</a:ModificationDate>
+<a:Modifier>Ilya</a:Modifier>
+<a:Priority>0</a:Priority>
+<a:Status>0</a:Status>
+<a:Risk>0</a:Risk>
+<a:VerificationMethod/>
 </o:Requirement>
 </c:Requirements>
 </o:Requirement>

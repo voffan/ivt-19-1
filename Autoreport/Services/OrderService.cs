@@ -103,26 +103,56 @@ namespace Autoreport.Services
             }
         }
 
+        public Order CloseOrder(int Id, DataContext db)
+        {
+            Order order = db.Orders
+                .First(order => order.Id == Id);
+
+            Client orderClient = db.Clients.First(x => x.Id == order.OrderClient.Id);
+            List<Disk> orderDisks = db.Disks.Where(x => order.Disks.Select(x => x.Id).Contains(x.Id)).ToList();
+
+            Connection.clientService.VaryOrder(orderClient, false);
+            Connection.clientService.VaryDebt(orderClient, false);
+
+            foreach (Disk disk in orderDisks)
+            {
+                disk.Current_count++;
+            }
+
+            db.Deposits.Remove(db.Deposits.First(x => x.Id == order.OrderDeposit.Id));
+
+            return order;
+        }
+
         public void Delete(int Id)
         {
             using (DataContext db = Connection.Connect())
             {
-                Order order = db.Orders
-                    .First(order => order.Id == Id);
-
-                Client orderClient = order.OrderClient;
-                List<Disk> orderDisks = order.Disks;
-
-                db.Entry(orderClient).State = EntityState.Modified;
-                Connection.clientService.VaryOrder(orderClient, false);
-
-                foreach (Disk disk in orderDisks)
-                {
-                    db.Entry(disk).State = EntityState.Modified;
-                    disk.Current_count++;
-                }
+                Order order = CloseOrder(Id, db);
 
                 db.Orders.Remove(order);
+                db.SaveChanges();
+            }
+        }
+
+        public void Cancel(int Id)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                Order order = CloseOrder(Id, db);
+
+                order.Status = OrderStatus.Cancelled;
+                db.SaveChanges();
+            }
+        }
+
+        public void Complete(int Id)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                Order order = CloseOrder(Id, db);
+
+                order.Status = OrderStatus.Completed;
                 db.SaveChanges();
             }
         }

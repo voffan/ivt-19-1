@@ -41,6 +41,14 @@ namespace Autoreport.UI
         Func<List<object>> currentFindFunction;
         Func<List<object>> currentGetFunction;
 
+        Dictionary<Mode, List<Button>> employeeActions = new Dictionary<Mode, List<Button>>();
+        Dictionary<Mode, List<Button>> clientActions = new Dictionary<Mode, List<Button>>();
+        Dictionary<Mode, List<Button>> diskActions = new Dictionary<Mode, List<Button>>();
+        Dictionary<Mode, List<Button>> filmActions = new Dictionary<Mode, List<Button>>();
+        Dictionary<Mode, List<Button>> orderActions = new Dictionary<Mode, List<Button>>();
+        Dictionary<Mode, List<Button>> depositActions = new Dictionary<Mode, List<Button>>();
+        Dictionary<Mode, List<Button>> filmDirectorActions = new Dictionary<Mode, List<Button>>();
+
         List<Button> permittedTabs = new List<Button>(); // вкладки, доступные пользователю
         List<Button> currentlyPermittedActions = new List<Button>(); // действия, доступные на какой-либо вкладке
         List<Button> secondaryTabs; // вкладки, отображающиеся только при определенных условиях
@@ -75,6 +83,7 @@ namespace Autoreport.UI
         {
             SetSecondaryTabs();
             SetTabAction();
+            SetTabPermittedActions();
             SetTableEventHandlers();
             SetAppearance(1200, 620, 50, 50);
             SetSelectionElementsActive(false);
@@ -134,6 +143,30 @@ namespace Autoreport.UI
             tabGetAllFunction.Add(ordersTab, () => Connection.orderService.GetAll().Cast<object>().ToList());
             tabGetAllFunction.Add(depositsTab, () => Connection.depositService.GetAll().Cast<object>().ToList());
             tabGetAllFunction.Add(filmDirectorsSecondaryTab, () => Connection.filmService.GetFilmsDirectors().Cast<object>().ToList());
+        }
+
+        private void SetTabPermittedActions()
+        {
+            employeeActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn };
+            employeeActions[Mode.Select] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn };
+
+            clientActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn, deleteBtn };
+            clientActions[Mode.Select] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn, deleteBtn };
+
+            diskActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn, doneBtn };
+            diskActions[Mode.Select] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+
+            filmActions[Mode.General] = new List<Button>() { addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+            filmActions[Mode.Select] = new List<Button>() { addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+
+            orderActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn, cancelOrderBtn, completeOrderBtn };
+            orderActions[Mode.Select] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn };
+
+            depositActions[Mode.General] = new List<Button>() { editBtn, searchBtn, reloadBtn, deleteBtn, infoBtn, doneBtn };
+            depositActions[Mode.Select] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
+
+            filmDirectorActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn };
+            filmDirectorActions[Mode.Select] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn };
         }
 
         private void SetTableEventHandlers()
@@ -247,6 +280,12 @@ namespace Autoreport.UI
             }
         }
 
+        private void TurnOrderActionsVisibility(bool visible)
+        {
+            cancelOrderBtn.Visible = visible;
+            completeOrderBtn.Visible = visible;
+        }
+
         /// <summary>
         /// Общий метод для обработки кликов по табам, который вызывает частные методы для каждой отдельной вкладки
         /// </summary>
@@ -254,6 +293,8 @@ namespace Autoreport.UI
         /// <param name="e"></param>
         private void TabClicked(object sender, EventArgs e)
         {
+            TurnOrderActionsVisibility(false);
+
             currentlyPermittedActions.Clear(); // чистим список доступных на вкладке кнопок, чтоб добавить новые данные
 
             if (currentTabButton != null) // восстанавливаем для предыдущей кнопки дефолтный цвет
@@ -266,6 +307,19 @@ namespace Autoreport.UI
 
             tabAction[currentTabButton](true); // вызываем метод, связанный с вкладкой
 
+            TurnAvailableActions();
+
+            dataGridView.Columns["Id"].DisplayIndex = 0;
+
+            foreach (DataGridViewColumn dgc in dataGridView.Columns)
+            {
+                if (dgc.Name.Contains("Id"))
+                    dgc.Visible = false;
+            }
+        }
+
+        private void TurnAvailableActions()
+        {
             // выключаем все кнопки-действия за исключением тех, что были добавлены в currentlyPermittedActions
             TurnVisibleButtons(false, controlPanel, currentlyPermittedActions.ToArray());
 
@@ -278,23 +332,16 @@ namespace Autoreport.UI
                                         .Where(b => currentlyPermittedActions.Contains(b))
                                         .ToArray();
                 TurnVisibleButtons(false, controlPanel, necessary);
-            } else if (!currentlyPermittedActions.Contains(deleteBtn))
+            }
+            else if (!currentlyPermittedActions.Contains(deleteBtn))
             {
                 deleteBtn.Enabled = false;
-            }
-
-            dataGridView.Columns["Id"].DisplayIndex = 0;
-
-            foreach (DataGridViewColumn dgc in dataGridView.Columns)
-            {
-                if (dgc.Name.Contains("Id"))
-                    dgc.Visible = false;
             }
         }
 
         private void EmployeesTab_Click(bool updateSearchPanel = true)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn });
+            currentlyPermittedActions.AddRange(employeeActions[CurrentMode]);
 
             if (updateSearchPanel)
                 UpdateSearchPanel(typeof(Employee));
@@ -313,9 +360,7 @@ namespace Autoreport.UI
 
         private void ClientsTab_Click(bool updateSearchPanel = true)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() {
-                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn, deleteBtn
-            });
+            currentlyPermittedActions.AddRange(clientActions[CurrentMode]);
 
             if (updateSearchPanel)
                 UpdateSearchPanel(typeof(Client));
@@ -335,14 +380,7 @@ namespace Autoreport.UI
 
         private void DisksTab_Click(bool updateSearchPanel = true)
         {
-            List<Button> permittedActions = null;
-
-            if (CurrentMode == Mode.General)
-                permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn, doneBtn };
-            else if (CurrentMode == Mode.Select)
-                permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
-
-            currentlyPermittedActions.AddRange(permittedActions);
+            currentlyPermittedActions.AddRange(diskActions[CurrentMode]);
 
             if (updateSearchPanel)
                 UpdateSearchPanel(typeof(Disk));
@@ -360,9 +398,7 @@ namespace Autoreport.UI
 
         private void FilmsTab_Click(bool updateSearchPanel = true)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() {
-                addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn
-            });
+            currentlyPermittedActions.AddRange(filmActions[CurrentMode]);
 
             if (updateSearchPanel)
                 UpdateSearchPanel(typeof(Film));
@@ -380,9 +416,7 @@ namespace Autoreport.UI
 
         private void OrdersTab_Click(bool updateSearchPanel = true)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() {
-                addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn
-            });
+            currentlyPermittedActions.AddRange(orderActions[CurrentMode]);
 
             if (updateSearchPanel)
                 UpdateSearchPanel(typeof(Order));
@@ -393,18 +427,13 @@ namespace Autoreport.UI
             currentDeleteAction = Connection.orderService.Delete;
             currentAddForm = new AddOrderF(depositsTab, disksTab, reloadBtn.PerformClick);
             currentEditForm = new EditOrderF(depositsTab, disksTab, reloadBtn.PerformClick);
+
+            TurnOrderActionsVisibility(true);
         }
 
         private void DepositsTab_Click(bool updateSearchPanel = true)
         {
-            List<Button> permittedActions = null;
-
-            if (CurrentMode == Mode.General)
-                permittedActions = new List<Button>() { editBtn, searchBtn, reloadBtn, deleteBtn, infoBtn, doneBtn };
-            else if (CurrentMode == Mode.Select)
-                permittedActions = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
-
-            currentlyPermittedActions.AddRange(permittedActions);
+            currentlyPermittedActions.AddRange(depositActions[CurrentMode]);
 
             if (updateSearchPanel)
                 UpdateSearchPanel(typeof(Deposit));
@@ -423,7 +452,7 @@ namespace Autoreport.UI
 
         private void FilmDirectorsSecondaryTab_Click(bool updateSearchPanel = true)
         {
-            currentlyPermittedActions.AddRange(new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, selectBtn, doneBtn });
+            currentlyPermittedActions.AddRange(filmDirectorActions[CurrentMode]);
 
             if (updateSearchPanel)
                 UpdateSearchPanel(typeof(Person), new string[] { "First_name", "Last_name", "Middle_name" });
@@ -611,8 +640,6 @@ namespace Autoreport.UI
 
             if (selectedItemsBox.Items.Cast<object>().Count(_item => _item == relatedItem) != 0)
                 return;
-
-            Console.WriteLine("adding");
 
             selectedItemsBox.Items.Add(relatedItem);
         }
@@ -849,10 +876,46 @@ namespace Autoreport.UI
 
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
+            OrderGridViewSelectionChanged();
+
             if (!currentlyPermittedActions.Contains(deleteBtn))
                 return;
 
             deleteBtn.Enabled = dataGridView.SelectedRows.Count != 0;
+        }
+
+        private void OrderGridViewSelectionChanged()
+        {
+            if (currentTabButton != ordersTab)
+                return;
+
+            currentlyPermittedActions.Clear();
+            currentlyPermittedActions.AddRange(orderActions[CurrentMode]);
+            TurnAvailableActions();
+
+            int selectedCount = dataGridView.SelectedRows.Count;
+            Order order;
+
+            cancelOrderBtn.Enabled = selectedCount != 0;
+            completeOrderBtn.Enabled = selectedCount != 0;
+
+            if (selectedCount == 0)
+                return;
+            else
+                order = (Order)dataGridView.SelectedRows[0].DataBoundItem;
+
+            if (order.Status == OrderStatus.Cancelled || order.Status == OrderStatus.Completed)
+            {
+                currentlyPermittedActions.Remove(cancelOrderBtn);
+                currentlyPermittedActions.Remove(completeOrderBtn);
+                currentlyPermittedActions.Remove(editBtn);
+
+                editBtn.Enabled = false;
+                cancelOrderBtn.Enabled = false;
+                completeOrderBtn.Enabled = false;
+
+                TurnAvailableActions();
+            }
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -897,6 +960,20 @@ namespace Autoreport.UI
         private void infoBtn_Click(object sender, EventArgs e)
         {
             (new Detailed(dataGridView.SelectedRows[0].DataBoundItem)).Show();
+        }
+
+        private void completeOrderBtn_Click(object sender, EventArgs e)
+        {
+            Order o = (Order)dataGridView.SelectedRows[0].DataBoundItem;
+            Connection.orderService.Complete(o.Id);
+            reloadBtn.PerformClick();
+        }
+
+        private void cancelOrderBtn_Click(object sender, EventArgs e)
+        {
+            Order o = (Order)dataGridView.SelectedRows[0].DataBoundItem;
+            Connection.orderService.Cancel(o.Id);
+            reloadBtn.PerformClick();
         }
     }
 }

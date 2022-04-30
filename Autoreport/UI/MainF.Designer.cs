@@ -62,6 +62,8 @@ namespace Autoreport.UI
             this.closeSearchPanelBtn = new System.Windows.Forms.Button();
             this.resetFoundBtn = new System.Windows.Forms.Button();
             this.findBtn = new System.Windows.Forms.Button();
+            this.cancelOrderBtn = new System.Windows.Forms.Button();
+            this.completeOrderBtn = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.tabsLayout.SuspendLayout();
             this.reportPanel.SuspendLayout();
@@ -383,6 +385,8 @@ namespace Autoreport.UI
             // controlPanel
             // 
             this.controlPanel.BackColor = System.Drawing.Color.Silver;
+            this.controlPanel.Controls.Add(this.completeOrderBtn);
+            this.controlPanel.Controls.Add(this.cancelOrderBtn);
             this.controlPanel.Controls.Add(this.deleteBtn);
             this.controlPanel.Controls.Add(this.infoBtn);
             this.controlPanel.Controls.Add(this.doneBtn);
@@ -549,6 +553,30 @@ namespace Autoreport.UI
             this.findBtn.UseVisualStyleBackColor = true;
             this.findBtn.Click += new System.EventHandler(this.findBtn_Click);
             // 
+            // cancelOrderBtn
+            // 
+            this.cancelOrderBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cancelOrderBtn.Enabled = false;
+            this.cancelOrderBtn.Location = new System.Drawing.Point(5, 315);
+            this.cancelOrderBtn.Name = "cancelOrderBtn";
+            this.cancelOrderBtn.Size = new System.Drawing.Size(136, 38);
+            this.cancelOrderBtn.TabIndex = 8;
+            this.cancelOrderBtn.Text = "Отменить";
+            this.cancelOrderBtn.UseVisualStyleBackColor = true;
+            this.cancelOrderBtn.Click += new System.EventHandler(this.cancelOrderBtn_Click);
+            // 
+            // completeOrderBtn
+            // 
+            this.completeOrderBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.completeOrderBtn.Enabled = false;
+            this.completeOrderBtn.Location = new System.Drawing.Point(5, 277);
+            this.completeOrderBtn.Name = "completeOrderBtn";
+            this.completeOrderBtn.Size = new System.Drawing.Size(136, 38);
+            this.completeOrderBtn.TabIndex = 9;
+            this.completeOrderBtn.Text = "Завершить";
+            this.completeOrderBtn.UseVisualStyleBackColor = true;
+            this.completeOrderBtn.Click += new System.EventHandler(this.completeOrderBtn_Click);
+            // 
             // MainF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -617,6 +645,8 @@ namespace Autoreport.UI
         private System.Windows.Forms.Button findBtn;
         private System.Windows.Forms.TableLayoutPanel searchControlsPanel;
         private System.Windows.Forms.Button closeSearchPanelBtn;
+        private System.Windows.Forms.Button completeOrderBtn;
+        private System.Windows.Forms.Button cancelOrderBtn;
     }
 }
 
