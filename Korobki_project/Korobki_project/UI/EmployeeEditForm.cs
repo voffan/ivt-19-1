@@ -52,8 +52,10 @@ namespace Korobki_project.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.TextLength != 0 && textBox2.TextLength != 0 && textBox3.TextLength != 0 && textBox4.TextLength != 0 && textBox5.TextLength != 0 && comboBox1.SelectedIndex>=0 && comboBox2.SelectedIndex >= 0)
+           
+            if (textBox1.TextLength != 0 && textBox2.TextLength != 0 && textBox3.TextLength != 0 && textBox4.TextLength != 0 && textBox5.TextLength != 0 && comboBox1.SelectedIndex>=0 && comboBox2.SelectedIndex >= 0 )
             {
+                
                 EmployeeFunctions employee = new EmployeeFunctions();
                 var name = textBox1.Text;
                 var login = textBox2.Text;

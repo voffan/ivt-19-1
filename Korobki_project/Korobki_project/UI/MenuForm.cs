@@ -292,6 +292,31 @@ namespace Korobki_project
                         this.Hide();
                         positionEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
                         break;
+                    case 5:
+                        ProductEditForm productEditForm = new ProductEditForm(index);
+                        productEditForm.Show();
+                        this.Hide();
+                        productEditForm.FormClosed += f;
+                        break;
+                    case 6:
+                        ScheduleEditForm scheduleEditForm = new ScheduleEditForm(index);
+                        scheduleEditForm.Show();
+                        this.Hide();
+                        scheduleEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
+                        break;
+                    case 7:
+                        ShiftEditForm shiftEditForm = new ShiftEditForm(index);
+                        shiftEditForm.Show();
+                        this.Hide();
+                        shiftEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
+                        break;
+                    case 8:
+                        TypeeEditForm typeeEditForm = new TypeeEditForm(index);
+                        typeeEditForm.Show();
+                        this.Hide();
+                        typeeEditForm.FormClosed += f;
+                        break;
+
                 }
                 load_db();
             }
