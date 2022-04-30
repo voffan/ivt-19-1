@@ -29,7 +29,7 @@ namespace Autoreport.Services
             }
         }
 
-        public Film Get(int Id)
+        public Film Get(int filmId)
         {
             using (DataContext db = Connection.Connect())
             {
@@ -37,8 +37,19 @@ namespace Autoreport.Services
                     .Include(x => x.FilmDirectors)
                     .Include(x => x.FilmCountry)
                     .Include(x => x.Genres)
-                    .FirstOrDefault(x => x.Id == Id);
+                    .FirstOrDefault(x => x.Id == filmId);
                 return film;
+            }
+        }
+
+        public List<Film> Get(List<int> filmsId)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                IQueryable<Film> films = db.Films
+                    .Where(f => filmsId.Any(item => item == f.Id));
+
+                return films.ToList();
             }
         }
 
@@ -76,21 +87,10 @@ namespace Autoreport.Services
             using (DataContext db = Connection.Connect())
             {
                 var result = db.Persons.AsEnumerable()
-                    .Where(pers => (pers.GetType() != typeof(Client) && pers.GetType() != typeof(Employee)))
+                    .Where(person => (person is not Client && person is not Employee))
                     .ToList();
 
                 return result;
-            }
-        }
-
-        public List<Film> GetByIds(List<int> ids)
-        {
-            using (DataContext db = Connection.Connect())
-            {
-                IQueryable<Film> films = db.Films
-                    .Where(f => ids.Any(item => item == f.Id));
-
-                return films.ToList();
             }
         }
 
@@ -98,7 +98,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Films.Remove(db.Films.Where(empl => empl.Id == Id).ToList()[0]);
+                db.Films.Remove(db.Films.First(empl => empl.Id == Id));
                 db.SaveChanges();
             }
         }

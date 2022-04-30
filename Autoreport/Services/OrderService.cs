@@ -80,12 +80,12 @@ namespace Autoreport.Services
             return order;
         }
 
-        public Order Get(int Id)
+        public Order Get(int orderId)
         {
             using (DataContext db = Connection.Connect())
             {
                 Order order = db.Orders
-                    .FirstOrDefault(x => x.Id == Id);
+                    .First(x => x.Id == orderId);
 
                 CheckExpiration(order, db);
                 return order;

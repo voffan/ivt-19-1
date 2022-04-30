@@ -21,7 +21,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                Employee empl = db.Employees.Where(p => p.Id >= 0).FirstOrDefault();
+                Employee empl = db.Employees.FirstOrDefault(p => p.Id >= 0);
 
                 if (empl == null)
                 {
@@ -50,7 +50,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                Employee empl = db.Employees.Where(p => p.Login == login).FirstOrDefault();
+                Employee empl = db.Employees.FirstOrDefault(p => p.Login == login);
 
                 if (empl == null)
                 {
@@ -75,7 +75,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                if (db.Employees.Where(empl => empl.Login == login).Count() > 0)
+                if (db.Employees.Count(empl => empl.Login == login) > 0)
                 {
                     throw new Errors.UserAlreadyExists("Пользователь с таким логином уже существует");
                 }
@@ -111,26 +111,21 @@ namespace Autoreport.Services
             }
         }
 
-        public Employee GetById(int empl_id)
+        public Employee Get(int employeeId)
         {
             using (DataContext db = Connection.Connect())
             {
                 Employee empl = db.Employees
-                    .Where(empl => empl.Id == empl_id).ToList()[0];
+                    .FirstOrDefault(empl => empl.Id == employeeId);
                 return empl;
             }
-        }
-
-        public void Get()
-        {
-
         }
 
         public void Delete(int Id)
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Employees.Remove(db.Employees.Where(empl => empl.Id == Id).ToList()[0]);
+                db.Employees.Remove(db.Employees.First(empl => empl.Id == Id));
                 db.SaveChanges();
             }
         }

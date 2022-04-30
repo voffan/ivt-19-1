@@ -62,23 +62,12 @@ namespace Autoreport.Services
             }
         }
 
-        public Client GetById(int client_id)
+        public Client Get(int clientId)
         {
             using (DataContext db = Connection.Connect())
             {
                 Client client = db.Clients
-                    .Where(cl => cl.Id == client_id).ToList()[0];
-
-                return client;
-            }
-        }
-
-        public Client Get(int Id)
-        {
-            using (DataContext db = Connection.Connect())
-            {
-                Client client = db.Clients
-                    .FirstOrDefault(x => x.Id == Id);
+                    .FirstOrDefault(x => x.Id == clientId);
                 return client;
             }
         }
@@ -87,7 +76,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Clients.Remove(db.Clients.Where(empl => empl.Id == Id).ToList()[0]);
+                db.Clients.Remove(db.Clients.First(empl => empl.Id == Id));
                 db.SaveChanges();
             }
         }
@@ -107,11 +96,6 @@ namespace Autoreport.Services
                 editingEntity.Debt_count = debtCount;
                 db.SaveChanges();
             }
-        }
-
-        public List<Client> Search(params string[] strParams)
-        {
-            return null;
         }
     }
 }

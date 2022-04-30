@@ -32,9 +32,9 @@ namespace Autoreport.Services
             }
         }
 
-        public void Get()
+        public Disk Get(int diskId)
         {
-
+            return null;
         }
 
         public List<Disk> GetAll()
@@ -48,7 +48,7 @@ namespace Autoreport.Services
             }
         }
 
-        public List<Disk> GetByIds(List<int> ids)
+        public List<Disk> Get(List<int> ids)
         {
             using (DataContext db = Connection.Connect())
             {
@@ -63,7 +63,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Disks.Remove(db.Disks.Where(empl => empl.Id == Id).ToList()[0]);
+                db.Disks.Remove(db.Disks.First(empl => empl.Id == Id));
                 db.SaveChanges();
             }
         }

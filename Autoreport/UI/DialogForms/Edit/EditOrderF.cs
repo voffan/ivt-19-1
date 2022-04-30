@@ -96,7 +96,7 @@ namespace Autoreport.UI.Edit
             OrderStatus status = (OrderStatus)Enum.Parse(typeof(OrderStatus),
                 statusBox.SelectedValue.ToString());
 
-            Deposit deposit = selectedBox_Deposit.Items.Cast<Deposit>().ToList()[0];
+            Deposit deposit = selectedBox_Deposit.Items.Cast<Deposit>().First();
             List<Disk> disks = selectedBox_Disks.Items.Cast<Disk>().ToList();
 
             try

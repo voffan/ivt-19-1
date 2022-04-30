@@ -55,7 +55,7 @@ namespace Autoreport.UI.Edit
 
         public void LoadField(int empl_id)
         {
-            editingEntity = Connection.employeeService.GetById(empl_id);
+            editingEntity = Connection.employeeService.Get(empl_id);
 
             if (editingEntity == null)
             {

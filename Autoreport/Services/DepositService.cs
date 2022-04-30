@@ -34,6 +34,7 @@ namespace Autoreport.Services
                 default:
                     throw new ArgumentNullException("Argument `DepositType` cannot be null");
             }
+
             Deposit deposit = new Deposit()
             {
                 DocumentData = documentData,
@@ -50,10 +51,6 @@ namespace Autoreport.Services
             }
         }
 
-        public void Get()
-        {
-
-        }
         public List<Deposit> GetAll()
         {
             using (DataContext db = Connection.Connect())
@@ -64,14 +61,13 @@ namespace Autoreport.Services
             }
         }
 
-        public Deposit GetById(int dep_id)
+        public Deposit Get(int depositId)
         {
             using (DataContext db = Connection.Connect())
             {
                 Deposit deposit = db.Deposits
-                    .Where(dep => dep.Id == dep_id)
                     .Include("Owner")
-                    .ToList()[0];
+                    .First(dep => dep.Id == depositId);
 
                 return deposit;
             }
@@ -81,7 +77,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Deposits.Remove(db.Deposits.Where(empl => empl.Id == Id).ToList()[0]);
+                db.Deposits.Remove(db.Deposits.First(empl => empl.Id == Id));
                 db.SaveChanges();
             }
         }
