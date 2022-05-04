@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+
 
 namespace Comp_park_app.Functions
 {
@@ -59,28 +61,47 @@ namespace Comp_park_app.Functions
         public void Delete(int index)
         {
             Computer comp;
+            
             using (Context c = new Context())
             {
+      
                 comp = c.Computers.Find(index);
-                foreach (var i in comp.HDDs)
+                
+                for (int i = 1; i <= c.HDDs.Count(); i++)
                 {
-                    i.ComputerId = null;
-                    c.Entry(i).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                }
-                foreach (var i in comp.RAMs)
-                {
-                    i.ComputerId = null;
-                    c.Entry(i).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                }
-                foreach (var i in comp.Processors)
-                {
-                    i.ComputerId = null;
-                    c.Entry(i).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    HDD hd = c.HDDs.First(r => r.Id == i);
+                    if (hd.ComputerId == comp.Id)
+                    {
+                        hd.ComputerId = null;
+                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        
+                    }
                 }
 
+                for (int i = 1; i <= c.RAMs.Count(); i++)
+                {
+                    RAM hd = c.RAMs.First(r => r.Id == i);
+                    if (hd.ComputerId == comp.Id)
+                    {
+                        hd.ComputerId = null;
+                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        
+                    }
+                }
 
-
+                for (int i = 1; i <= c.Processors.Count(); i++)
+                {
+                    Processor hd = c.Processors.First(r => r.Id == i);
+                    if (hd.ComputerId == comp.Id)
+                    {
+                        hd.ComputerId = null;
+                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        
+                    }
+                }
+                
                 c.Remove(comp);
+                //c.Entry(comp).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
                 c.SaveChanges();
             }
         }
@@ -101,28 +122,35 @@ namespace Comp_park_app.Functions
                 comp.MotherboardId = motherboardid;
                 comp.EmployeeId = employeeid;
 
-                // не работает: Object reference not set to an instance of an object. Не удаляет из жестких дисков, оперативок и процессоров айди компьютера
-                /*
-                 foreach(var i in comp.HDDs)
+                for (int i = 1; i < c.HDDs.Count(); i++)
                 {
-                        i.ComputerId = null;
-                        c.Entry(i).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                   
+                    HDD hd = c.HDDs.First(r => r.Id == i);
+                    if (hd.ComputerId == comp.Id)
+                    {
+                        hd.ComputerId = null;
+                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    }
                 }
-                foreach (var i in comp.RAMs)
+
+                for (int i = 1; i < c.RAMs.Count(); i++)
                 {
-                    i.ComputerId = null;
-                        c.Entry(i).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                   
+                    RAM hd = c.RAMs.First(r => r.Id == i);
+                    if (hd.ComputerId == comp.Id)
+                    {
+                        hd.ComputerId = null;
+                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    }
                 }
-                foreach (var i in comp.Processors)
+
+                for (int i = 1; i < c.Processors.Count(); i++)
                 {
-                   
-                        i.ComputerId = null;
-                        c.Entry(i).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                     
+                    Processor hd = c.Processors.First(r => r.Id == i);
+                    if (hd.ComputerId == comp.Id)
+                    {
+                        hd.ComputerId = null;
+                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    }
                 }
-                 */
 
 
                 foreach (var a in hdds)

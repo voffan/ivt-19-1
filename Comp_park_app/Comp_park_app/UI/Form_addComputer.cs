@@ -153,10 +153,10 @@ namespace Comp_park_app
                    
                     textBox_ItemNo.Text = comp.ItemNo;
                     comboBox_Status.SelectedItem = comp.Status;
+
+
                     
-
-
-                    for (int i = 1; i < c.HDDs.Count(); i++)
+                    for (int i = 1; i <= c.HDDs.Count(); i++)
                     {
                         HDD hd = c.HDDs.First(r => r.Id == i);
                         if (hd.ComputerId == comp.Id)
@@ -171,7 +171,7 @@ namespace Comp_park_app
                         }
                     }
 
-                    for (int i = 1; i < c.RAMs.Count(); i++)
+                    for (int i = 1; i <= c.RAMs.Count(); i++)
                     {
                         RAM hd = c.RAMs.First(r => r.Id == i);
                         if (hd.ComputerId == comp.Id)
@@ -187,7 +187,7 @@ namespace Comp_park_app
                         }
                     }
 
-                    for (int i = 1; i < c.Processors.Count(); i++)
+                    for (int i = 1; i <= c.Processors.Count(); i++)
                     {
                         Processor hd = c.Processors.First(r => r.Id == i);
                         if (hd.ComputerId == comp.Id)
