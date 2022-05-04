@@ -19,6 +19,16 @@ namespace Autoreport.Services
                     .Include(x => x.Owner)
                     .First(x => OrderDeposit.Id == x.Id);
 
+                if (orderDeposit.DepositType == DepositType.Money)
+                {
+                    double diskSum = Disks.Sum(x => x.Cost);
+
+                    if (diskSum > orderDeposit.MoneyValue)
+                    {
+                        throw new LowDeposit($"Денежный эквивалент уступает сумме цен дисков");
+                    }
+                }
+
                 Client owner = db.Clients.First(x => x.Id == orderDeposit.Owner.Id);
 
                 Order order = new Order()
@@ -33,15 +43,15 @@ namespace Autoreport.Services
                     Disks = db.Disks.Where(x => Disks.Select(x => x.Id).Contains(x.Id)).ToList()
                 };
 
-                Connection.clientService.VaryOrder(owner, true);
-
                 foreach (Disk disk in order.Disks)
                 {
                     if (disk.Current_count == 0)
-                        throw new NotEnoughDisks("Такие диски в данный момент отсутствуют");
+                        throw new NotEnoughDisks($"Диски '{disk.Article}' в данный момент отсутствуют");
                     
                     disk.Current_count--;
                 }
+
+                Connection.clientService.VaryOrder(owner, true);
 
                 db.Orders.Add(order);
                 db.SaveChanges();
@@ -92,6 +102,28 @@ namespace Autoreport.Services
             }
         }
 
+        public List<Order> Get(DateTime date)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                return db.Orders
+                    .Where(x => x.Order_date.Date == date.Date)
+                    .ToList();
+            }
+        }
+
+        public List<Order> GetExpired()
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                return db.Orders
+                    .ToArray()
+                    .Select(x => CheckExpiration(x, db))
+                    .Where(x => x.Status == OrderStatus.Expired)
+                    .ToList();
+            }
+        }
+
         public List<Order> GetAll()
         {
             using (DataContext db = Connection.Connect())
@@ -119,7 +151,8 @@ namespace Autoreport.Services
                 disk.Current_count++;
             }
 
-            db.Deposits.Remove(db.Deposits.First(x => x.Id == order.OrderDeposit.Id));
+            if (order.OrderDeposit != null)
+                db.Deposits.Remove(db.Deposits.First(x => x.Id == order.OrderDeposit.Id));
 
             return order;
         }

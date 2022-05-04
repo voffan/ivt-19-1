@@ -20,4 +20,9 @@ namespace Autoreport.Services.Errors
     {
         public DateNotExpired(string message) : base(message) { }
     }
+
+    class LowDeposit : Exception
+    {
+        public LowDeposit(string message) : base(message) { }
+    }
 }

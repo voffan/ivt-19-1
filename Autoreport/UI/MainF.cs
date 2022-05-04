@@ -41,13 +41,14 @@ namespace Autoreport.UI
         Func<List<object>> currentFindFunction;
         Func<List<object>> currentGetFunction;
 
-        Dictionary<Mode, List<Button>> employeeActions = new Dictionary<Mode, List<Button>>();
-        Dictionary<Mode, List<Button>> clientActions = new Dictionary<Mode, List<Button>>();
-        Dictionary<Mode, List<Button>> diskActions = new Dictionary<Mode, List<Button>>();
-        Dictionary<Mode, List<Button>> filmActions = new Dictionary<Mode, List<Button>>();
-        Dictionary<Mode, List<Button>> orderActions = new Dictionary<Mode, List<Button>>();
-        Dictionary<Mode, List<Button>> depositActions = new Dictionary<Mode, List<Button>>();
-        Dictionary<Mode, List<Button>> filmDirectorActions = new Dictionary<Mode, List<Button>>();
+        // словарь из списков доступных действий в зависимости от режима окна
+        Dictionary<Mode, List<Button>> employeeActions = new Dictionary<Mode, List<Button>>(),
+            clientActions = new Dictionary<Mode, List<Button>>(),
+            diskActions = new Dictionary<Mode, List<Button>>(),
+            filmActions = new Dictionary<Mode, List<Button>>(),
+            orderActions = new Dictionary<Mode, List<Button>>(),
+            depositActions = new Dictionary<Mode, List<Button>>(),
+            filmDirectorActions = new Dictionary<Mode, List<Button>>();
 
         List<Button> permittedTabs = new List<Button>(); // вкладки, доступные пользователю
         List<Button> currentlyPermittedActions = new List<Button>(); // действия, доступные на какой-либо вкладке
@@ -931,6 +932,11 @@ namespace Autoreport.UI
         private void searchBtn_Click(object sender, EventArgs e)
         {
             SetSearchPanelActive(true);
+        }
+
+        private void reportBtn_Click(object sender, EventArgs e)
+        {
+            (new ReportGenerator()).CreateReport();
         }
 
         private void closeSearchPanelBtn_Click(object sender, EventArgs e)

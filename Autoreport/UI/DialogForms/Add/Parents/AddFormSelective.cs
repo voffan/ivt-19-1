@@ -39,7 +39,7 @@ namespace Autoreport.UI.Add.Parents
             this.Hide();
         }
 
-        protected void OnSelectedHandler(ListBox.ObjectCollection items)
+        protected virtual void OnSelectedHandler(ListBox.ObjectCollection items)
         {
             ListBox listBox = GetSelectedListBox();
 
@@ -58,7 +58,6 @@ namespace Autoreport.UI.Add.Parents
                 listBox.Items.Add(item);
             }
 
-            Console.WriteLine("{0} disabling select mode", this.Name);
             OwnerMode_Turn(Mode.General, null, null);
             this.ShowDialog(owner);
         }

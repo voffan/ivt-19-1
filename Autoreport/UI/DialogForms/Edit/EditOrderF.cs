@@ -102,14 +102,13 @@ namespace Autoreport.UI.Edit
             try
             {
                 Connection.orderService.Edit(editingEntity, status, returnDate, deposit, disks);
+                CloseHandler();
+                Close();
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            CloseHandler();
-            Close();
         }
 
         protected override void RemoveSelectedBtn_Click(object sender, EventArgs e)

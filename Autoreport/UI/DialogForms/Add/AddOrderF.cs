@@ -39,7 +39,7 @@ namespace Autoreport.UI.Add
         {
             if (selectedBox_Deposit.Items.Count == 0 || selectedBox_Disks.Items.Count == 0)
             {
-                MessageBox.Show("Не выбран депозит или диски", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не выбран залог или диски", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -49,12 +49,19 @@ namespace Autoreport.UI.Add
             Deposit deposit = selectedBox_Deposit.Items.Cast<Deposit>().ToList()[0];
             List<Disk> disks = selectedBox_Disks.Items.Cast<Disk>().ToList();
 
-            Connection.orderService.Add(orderDate, returnDate, 
-                Connection.employeeService.CurrentEmployee,
-                deposit, disks);
+            try
+            {
+                Connection.orderService.Add(orderDate, returnDate,
+                    Connection.employeeService.CurrentEmployee,
+                    deposit, disks);
 
-            CloseHandler();
-            Close();
+                CloseHandler();
+                Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void OrderF_Load(object sender, EventArgs e)
@@ -71,6 +78,27 @@ namespace Autoreport.UI.Add
             {
                 costLabel.Text = "0";
             }
+        }
+
+        protected override void OnSelectedHandler(ListBox.ObjectCollection items)
+        {
+            ListBox listBox = GetSelectedListBox();
+
+            if (listBox == selectedBox_Deposit && items.Count > 0)
+            {
+                Order order = Connection.orderService
+                    .GetAll()
+                    .FirstOrDefault(x => x.DepositId == ((Deposit)items[0]).Id);
+
+                if (order != null)
+                {
+                    MessageBox.Show("Этот залог внесен для другого заказа",
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            base.OnSelectedHandler(items);
         }
 
         protected override void RemoveSelectedBtn_Click(object sender, EventArgs e)

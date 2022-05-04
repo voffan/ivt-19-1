@@ -2371,12 +2371,12 @@ Shadow=0</a:DisplayPreferences>
 <c:Requirements>
 <o:Requirement Id="o140">
 <a:ObjectID>24983B63-E015-47E0-93AB-6919F9156D83</a:ObjectID>
-<a:Requirement.Title>Отчет генерируется в файл Word</a:Requirement.Title>
+<a:Requirement.Title>Отчет генерируется в файл Excel</a:Requirement.Title>
 <a:Code>REQ_  88</a:Code>
 <a:CreationDate>1632808140</a:CreationDate>
 <a:Creator>DELL</a:Creator>
-<a:ModificationDate>1632808208</a:ModificationDate>
-<a:Modifier>DELL</a:Modifier>
+<a:ModificationDate>1651323084</a:ModificationDate>
+<a:Modifier>Ilya</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
 <a:Risk>0</a:Risk>
