@@ -206,6 +206,7 @@ namespace Autoreport.Services
                 var order = db.Orders
                     .First(x => x.Id == editingEntity.Id);
 
+                order.Cost = disks.Sum(disk => disk.Cost);
                 order.Return_date = returnDate;
                 order.OrderClient = db.Clients.FirstOrDefault(x => x.Id == deposit.Owner.Id);
                 order.OrderDeposit = db.Deposits.FirstOrDefault(x => x.Id == deposit.Id);
