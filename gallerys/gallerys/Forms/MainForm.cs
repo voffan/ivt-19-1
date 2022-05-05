@@ -24,46 +24,45 @@ namespace gallerys
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            gallContext c = new gallContext();
         }
-
-
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             InitTable();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Addbutton_Click(object sender, EventArgs e)
         {
-            string s = "Добавить";
-            //Картины Жанры Авторы Сотрудники Журнал передвижения картин Выставки
-            if ((Connection.employeeSer.CurrentEmployee.Right == 0) || (Connection.employeeSer.CurrentEmployee.Right == Models.Right.manager))
+            if (comboBox1.SelectedItem != null)
             {
-                if (comboBox1.Text == "Картины")
+                string s = "Добавить";
+                //Картины Жанры Авторы Сотрудники Журнал передвижения картин Выставки
+                if ((Connection.employeeSer.CurrentEmployee.Right == 0) || (Connection.employeeSer.CurrentEmployee.Right == Models.Right.manager))
                 {
-                    AddPaint add = new AddPaint(s, comboBox1.Text);
-                    add.ShowDialog();
+                    if (comboBox1.Text == "Картины")
+                    {
+                        AddPaint add = new AddPaint(s, comboBox1.Text);
+                        add.ShowDialog();
+                    }
+                    if (comboBox1.Text == "Жанры")
+                    {
+                        AddGenre add = new AddGenre(s, comboBox1.Text);
+                        add.ShowDialog();
+                    }
+                    if (comboBox1.Text == "Авторы")
+                    {
+                        AddAuthors add = new AddAuthors(s, comboBox1.Text);
+                        add.ShowDialog();
+                    }
+                    if (comboBox1.Text == "Сотрудники")
+                    {
+                        AddEmployee add = new AddEmployee(s, comboBox1.Text);
+                        add.ShowDialog();
+                    }
+                    InitTable();
                 }
-                if (comboBox1.Text == "Жанры")
+                else
                 {
-                    AddGenre add = new AddGenre(s, comboBox1.Text);
-                    add.ShowDialog();
+                    MessageBox.Show("Вы не можете добавлять");
                 }
-                if (comboBox1.Text == "Авторы")
-                {
-                    AddAuthors add = new AddAuthors(s, comboBox1.Text);
-                    add.ShowDialog();
-                }
-                if (comboBox1.Text == "Сотрудники")
-                {
-                    AddEmployee add = new AddEmployee(s, comboBox1.Text);
-                    add.ShowDialog();
-                }
-                InitTable();
-            }
-            else
-            {
-                MessageBox.Show("Вы не можете добавлять");
             }
         }
         private void InitTable()
@@ -76,10 +75,12 @@ namespace gallerys
                 {
                     dataGridView1.DataSource = c.Paintings.ToList();
                     dataGridView1.DataSource = c.Paintings.Include("Author").Include("Genre").ToList();
+                    dataGridView1.Columns[4].Visible = false;
                 }
                 if (selectedtable == "Сотрудники")
                 {
                     dataGridView1.DataSource = c.Employees.ToList();
+                    dataGridView1.Columns[4].Visible = false;
                 }
                 if (selectedtable == "Жанры")
                 {
@@ -106,6 +107,7 @@ namespace gallerys
                     dataGridView1.DataSource = c.Paintings.Include("Author").ToList();
                     dataGridView1.DataSource = c.Genres.Include("Genre").ToList();
                     dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[4].Visible = false;
                 }
                 if (selectedtable == "Сотрудники")
                 {
@@ -113,6 +115,7 @@ namespace gallerys
                     dataGridView1.Columns[0].Visible = false;
                     dataGridView1.Columns[2].Visible = false;
                     dataGridView1.Columns[3].Visible = false;
+                    dataGridView1.Columns[4].Visible = false;
                 }
                 if (selectedtable == "Жанры")
                 {
@@ -137,7 +140,7 @@ namespace gallerys
             label1.Text = "Текущий список: " + selectedtable;
         }
         public int idn;
-        private void button2_Click(object sender, EventArgs e)
+        private void Editbutton_Click(object sender, EventArgs e)
         {
             string s = "Редактировать";
             if (comboBox1.Text == "")
@@ -164,11 +167,14 @@ namespace gallerys
                         if (comboBox1.Text == "Жанры")
                         {
                             AddGenre add = new AddGenre(s, comboBox1.Text);
+                            add.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                             add.ShowDialog();
                         }
                         if (comboBox1.Text == "Авторы")
                         {
                             AddAuthors add = new AddAuthors(s, comboBox1.Text);
+                            add.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                            add.textBox4.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                             add.ShowDialog();
                         }
                         if (comboBox1.Text == "Сотрудники")

@@ -53,8 +53,10 @@ namespace gallerys.Forms.FormsforAdd
         private void AddEmployee_Load(object sender, EventArgs e)
         {
             EmployeeSer em = new EmployeeSer();
-            //em.comboboxRight(comboBoxRight);
-            //idn = em.ReturnId(textBox1,textBox2,textBox3);
+            if (this.Text == "Редактировать Сотрудника")
+            {
+                idn = em.ReturnId(textBox1, textBox2, textBox3);
+            }
             comboBoxRight.DataSource = new BindingSource(DescriptionAttributes<Right>.RetrieveAttributes(), null);
             comboBoxRight.DisplayMember = "Key";
             comboBoxRight.ValueMember = "Value";

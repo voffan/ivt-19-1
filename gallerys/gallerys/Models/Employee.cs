@@ -33,7 +33,8 @@ namespace gallerys.Models
         public string RightAccess { get
             {
                 return DescriptionAttributes<Right>.RetrieveAttributesReverse()[Right.ToString()];
-            } }
+            } 
+        }
         public virtual List<Journal> Journals { get; set; }
         public override string ToString()
         {

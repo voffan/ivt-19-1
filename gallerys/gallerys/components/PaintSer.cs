@@ -90,7 +90,7 @@ namespace gallerys.components
 
                 if (empl == null)
                 {
-                    throw new Errors.UserErrors("Невохможно");
+                    throw new Errors.UserErrors("Ошибка возвращения идентификатора картины");
                 }
                 return empl.Id;
             }

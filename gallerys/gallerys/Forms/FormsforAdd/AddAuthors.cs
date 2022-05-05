@@ -23,16 +23,22 @@ namespace gallerys.Forms.FormsforAdd
             InitializeComponent();
             this.Text = s + " " + s1;
         }
-
+        int idn;
         private void button1_Click(object sender, EventArgs e)
         {
             string surname = textBox1.Text;
-            string name = textBox2.Text;
-            string otch = textBox3.Text;
             string bio = textBox4.Text;
             AutorSer autorSer = new AutorSer();
-            autorSer.Add(surname, name, otch, bio);
-            MessageBox.Show("Вы успешно добавили автора");
+            if (this.Text == "Добавить Авторы")
+            {
+                autorSer.Add(surname, bio);
+                MessageBox.Show("Вы успешно добавили автора");
+            }
+            else
+            {
+                autorSer.Edit(idn, surname, bio);
+                MessageBox.Show("Вы успешно отредактировали");
+            }
             this.Close();
         }
 
@@ -41,9 +47,13 @@ namespace gallerys.Forms.FormsforAdd
             this.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void AddAuthors_Load(object sender, EventArgs e)
         {
-
+            AutorSer ars = new AutorSer();
+            if (this.Text == "Редактировать Авторы")
+            {
+                idn = ars.ReturnId(textBox1);
+            }
         }
     }
 }

@@ -30,7 +30,6 @@ namespace gallerys.Forms.FormsforAdd
             PaintSer p = new PaintSer();
             gallContext c = new gallContext();
             var stat = (status)Enum.Parse(typeof(status), comboBox1.SelectedValue.ToString());
-            MessageBox.Show(Convert.ToInt32(comboBox2.SelectedValue).ToString());
             if (this.Text == "Редактировать Картины")
             {
                 p.Edit(idn, textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, Convert.ToInt32(comboBox2.SelectedValue), Convert.ToInt32(comboBox3.SelectedValue));
@@ -39,14 +38,18 @@ namespace gallerys.Forms.FormsforAdd
             {
                 p.Add(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, Convert.ToInt32(comboBox2.SelectedValue), Convert.ToInt32(comboBox3.SelectedValue));
             }
+            this.Close();
         }
         private void AddPaint_Load(object sender, EventArgs e)
         {
             PaintSer p = new PaintSer();
             p.comboxAuthor(comboBox2);
-            p.comboxStatus(comboBox1);
+            comboBox1.DataSource = new BindingSource(DescriptionAttributes<status>.RetrieveAttributes(), null);
+            comboBox1.DisplayMember = "Key";
+            comboBox1.ValueMember = "Value";
             p.comboxGenre(comboBox3);
-            idn = p.ReturnId(textBox1);
+            if (this.Text == "Редактировать Картины")
+                idn = p.ReturnId(textBox1);
         }
 
         private void button2_Click(object sender, EventArgs e)
