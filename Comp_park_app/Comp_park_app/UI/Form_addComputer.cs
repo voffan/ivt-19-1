@@ -42,7 +42,7 @@ namespace Comp_park_app
 
         private void comboBox_Processor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBox3.Items.Add(comboBox_Processor.SelectedItem);
+            listBox_proc.Items.Add(comboBox_Processor.SelectedItem);
             comboBox_Processor.Items.Remove(comboBox_Processor.SelectedItem);
         }
 
@@ -58,8 +58,8 @@ namespace Comp_park_app
         }
         private void listBox3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            comboBox_Processor.Items.Add(listBox3.SelectedItem);
-            listBox3.Items.Remove(listBox3.SelectedItem);
+            comboBox_Processor.Items.Add(listBox_proc.SelectedItem);
+            listBox_proc.Items.Remove(listBox_proc.SelectedItem);
         }
 
         private void Form_addComputer_Load(object sender, EventArgs e)
@@ -126,8 +126,8 @@ namespace Comp_park_app
                 listBox2.DisplayMember = "Name";
                 listBox2.ValueMember = "Id";
 
-                listBox3.DisplayMember = "Name";
-                listBox3.ValueMember = "Id";
+                listBox_proc.DisplayMember = "Name";
+                listBox_proc.ValueMember = "Id";
 
                 for (int i = 0; i < comboBox1.Items.Count; i++)
                 {
@@ -157,6 +157,50 @@ namespace Comp_park_app
                     comboBox_Status.SelectedItem = comp.Status;
                     dateTimePicker1.Value = comp.Date;
 
+                    foreach (var hd in c.HDDs.ToList()) {
+                        if (hd.ComputerId == comp.Id)
+                        {
+                            listBox1.Items.Add(hd);
+                            for (int j = 0; j < comboBox_HDD.Items.Count; j++)
+                            {
+                                if (((HDD)comboBox_HDD.Items[j]).Id == hd.Id)
+                                {
+                                    comboBox_HDD.Items.RemoveAt(j);
+                                }
+                            }
+                        }
+                    }
+
+                    
+                    foreach (var rame in c.RAMs.ToList()) {
+                        if (rame.ComputerId == comp.Id) {
+                            listBox2.Items.Add(rame);
+                            for (int j = 0; j < comboBox_RAM.Items.Count; j++)
+                            {
+                                if (((RAM)comboBox_RAM.Items[j]).Id == rame.Id)
+                                {
+                                    comboBox_RAM.Items.RemoveAt(j);
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (var proc in c.RAMs.ToList())
+                    {
+                        if (proc.ComputerId == comp.Id)
+                        {
+                            listBox_proc.Items.Add(proc);
+                            for (int j = 0; j < comboBox_Processor.Items.Count; j++)
+                            {
+                                if (((Processor)comboBox_Processor.Items[j]).Id == proc.Id)
+                                {
+                                    comboBox_Processor.Items.RemoveAt(j);
+                                }
+                            }
+                        }
+                    }
+
+                    /*
                     for (int i = 1; i <= c.HDDs.Count(); i++)
                     {
                         HDD hd = c.HDDs.First(r => r.Id == i);
@@ -171,8 +215,8 @@ namespace Comp_park_app
                             }
                         }
                     }
-
-                    for (int i = 1; i <= c.RAMs.Count(); i++)
+                    
+                     for (int i = 1; i <= c.RAMs.Count(); i++)
                     {
                         RAM rame = c.RAMs.First(r => r.Id == i);
                         if (rame.ComputerId == comp.Id)
@@ -203,8 +247,8 @@ namespace Comp_park_app
                             }
                         }
                     }
+                     */
 
-                   
                     comboBox_Department.SelectedItem = c.Departments.Find(comp.DepartmentId);
 
                     comboBox_Employee.SelectedItem = c.Employees.Find(comp.EmployeeId);
@@ -219,7 +263,7 @@ namespace Comp_park_app
         {
             if (comboBox_Department.SelectedIndex >= 0 && textBox_ItemNo.Text.Length != 0 &&
                 comboBox_Status.SelectedIndex >=0 && comboBox_Employee.SelectedIndex >= 0 &&
-                listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox3.Items.Count > 0 &&
+                listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox_proc.Items.Count > 0 &&
                 comboBox_Motherboard.SelectedIndex >= 0)
             {
 
@@ -231,7 +275,7 @@ namespace Comp_park_app
                 
                 var hdds = listBox1.Items.Cast<HDD>().ToList();
                 var rams = listBox2.Items.Cast<RAM>().ToList();
-                var processors = listBox3.Items.Cast<Processor>().ToList();
+                var processors = listBox_proc.Items.Cast<Processor>().ToList();
                 var motherboardid = Convert.ToInt32(comboBox_Motherboard.SelectedValue);
                 ComputerFunctions Computer = new ComputerFunctions();
                 Computer.Add(departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors, date);
@@ -248,7 +292,7 @@ namespace Comp_park_app
         {
             if (comboBox_Department.SelectedIndex >= 0 && textBox_ItemNo.Text.Length != 0 &&
                 comboBox_Status.SelectedIndex >= 0 && comboBox_Employee.SelectedIndex >= 0 &&
-                listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox3.Items.Count > 0 &&
+                listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox_proc.Items.Count > 0 &&
                 comboBox_Motherboard.SelectedIndex >= 0)
             {
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
@@ -258,8 +302,11 @@ namespace Comp_park_app
                 DateTime date = dateTimePicker1.Value;
 
                 var hdds = listBox1.Items.Cast<HDD>().ToList();
+
                 var rams = listBox2.Items.Cast<RAM>().ToList();
-                var processors = listBox3.Items.Cast<Processor>().ToList();
+
+                List<Processor> processors = listBox_proc.Items.Cast<Processor>().ToList(); 
+
                 var motherboardid = Convert.ToInt32(comboBox_Motherboard.SelectedValue);
 
                 ComputerFunctions Computer = new ComputerFunctions();

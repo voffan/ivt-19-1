@@ -41,7 +41,7 @@ namespace Comp_park_app
             this.button_addComputer = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listBox_proc = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -167,15 +167,15 @@ namespace Comp_park_app
             this.listBox2.TabIndex = 11;
             this.listBox2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseDoubleClick);
             // 
-            // listBox3
+            // listBox_proc
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 15;
-            this.listBox3.Location = new System.Drawing.Point(72, 451);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(193, 94);
-            this.listBox3.TabIndex = 12;
-            this.listBox3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox3_MouseDoubleClick);
+            this.listBox_proc.FormattingEnabled = true;
+            this.listBox_proc.ItemHeight = 15;
+            this.listBox_proc.Location = new System.Drawing.Point(72, 451);
+            this.listBox_proc.Name = "listBox_proc";
+            this.listBox_proc.Size = new System.Drawing.Size(193, 94);
+            this.listBox_proc.TabIndex = 12;
+            this.listBox_proc.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox3_MouseDoubleClick);
             // 
             // label1
             // 
@@ -306,7 +306,7 @@ namespace Comp_park_app
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.listBox_proc);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button_addComputer);
@@ -341,7 +341,7 @@ namespace Comp_park_app
         private System.Windows.Forms.Button button_addComputer;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listBox_proc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

@@ -67,10 +67,9 @@ namespace Comp_park_app.Functions
             {
       
                 comp = c.Computers.Find(index);
-                
-                for (int i = 1; i <= c.HDDs.Count(); i++)
+
+                foreach (var hd in c.HDDs.ToList())
                 {
-                    HDD hd = c.HDDs.First(r => r.Id == i);
                     if (hd.ComputerId == comp.Id)
                     {
                         hd.ComputerId = null;
@@ -79,24 +78,22 @@ namespace Comp_park_app.Functions
                     }
                 }
 
-                for (int i = 1; i <= c.RAMs.Count(); i++)
+                foreach (var rame in c.RAMs.ToList()) 
                 {
-                    RAM hd = c.RAMs.First(r => r.Id == i);
-                    if (hd.ComputerId == comp.Id)
+                    if (rame.ComputerId == comp.Id)
                     {
-                        hd.ComputerId = null;
-                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        rame.ComputerId = null;
+                        c.Entry(rame).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                         
                     }
                 }
 
-                for (int i = 1; i <= c.Processors.Count(); i++)
+                foreach (var proc in c.RAMs.ToList())
                 {
-                    Processor hd = c.Processors.First(r => r.Id == i);
-                    if (hd.ComputerId == comp.Id)
+                    if (proc.ComputerId == comp.Id)
                     {
-                        hd.ComputerId = null;
-                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        proc.ComputerId = null;
+                        c.Entry(proc).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                         
                     }
                 }
@@ -124,33 +121,33 @@ namespace Comp_park_app.Functions
                 comp.EmployeeId = employeeid;
                 comp.Date = date;
 
-                for (int i = 1; i < c.HDDs.Count(); i++)
+                foreach (var hd in c.HDDs.ToList())
                 {
-                    HDD hd = c.HDDs.First(r => r.Id == i);
                     if (hd.ComputerId == comp.Id)
                     {
                         hd.ComputerId = null;
                         c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
                     }
                 }
 
-                for (int i = 1; i < c.RAMs.Count(); i++)
+                foreach (var rame in c.RAMs.ToList())
                 {
-                    RAM hd = c.RAMs.First(r => r.Id == i);
-                    if (hd.ComputerId == comp.Id)
+                    if (rame.ComputerId == comp.Id)
                     {
-                        hd.ComputerId = null;
-                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        rame.ComputerId = null;
+                        c.Entry(rame).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
                     }
                 }
 
-                for (int i = 1; i < c.Processors.Count(); i++)
+                foreach (var proc in c.RAMs.ToList())
                 {
-                    Processor hd = c.Processors.First(r => r.Id == i);
-                    if (hd.ComputerId == comp.Id)
+                    if (proc.ComputerId == comp.Id)
                     {
-                        hd.ComputerId = null;
-                        c.Entry(hd).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        proc.ComputerId = null;
+                        c.Entry(proc).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
                     }
                 }
 
