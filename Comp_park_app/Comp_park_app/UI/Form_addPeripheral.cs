@@ -17,6 +17,7 @@ namespace Comp_park_app
         bool Type_Add;
         int id;
         Form1 frm1;
+
         public Form_addPeripheral(bool Add, int index, Form1 fr1)
         {
             InitializeComponent();
@@ -33,7 +34,8 @@ namespace Comp_park_app
 
         private void Form_Load(object sender, EventArgs e)
         {
-            
+            dateTimePicker1.Value = DateTime.Now;
+
                 foreach (var item in Enum.GetValues(typeof(Status)))
                 {
                     comboBox_Status.Items.Add(item);
@@ -65,6 +67,7 @@ namespace Comp_park_app
                     comboBox_Status.SelectedItem = peripheral.Status;
                     comboBox_Department.SelectedItem = c.Departments.Find(peripheral.DepartmentId);
                     comboBox_Employee.SelectedItem = c.Employees.Find(peripheral.EmployeeId);
+                    dateTimePicker1.Value = peripheral.Date;
                 }
                 //For edit mode
             }
@@ -84,7 +87,8 @@ namespace Comp_park_app
                 var status = (Status)comboBox_Status.SelectedItem;
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
-                Peripheral.Add(name, itemno, status, departmentid, employeeid);
+                DateTime date = dateTimePicker1.Value;
+                Peripheral.Add(name, itemno, status, departmentid, employeeid, date);
                 frm1.Update_datagridview(5);
                 this.Close();
             }
@@ -105,7 +109,8 @@ namespace Comp_park_app
                 var status = (Status)comboBox_Status.SelectedItem;
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
-                Peripheral.Edit(id, name, itemno, status, departmentid, employeeid);
+                DateTime date = dateTimePicker1.Value;
+                Peripheral.Edit(id, name, itemno, status, departmentid, employeeid, date);
                 frm1.Update_datagridview(5);
                 this.Close();
             }

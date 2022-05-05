@@ -54,6 +54,7 @@ namespace Comp_park_app
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.button_Edit = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // comboBox_HDD
@@ -152,7 +153,7 @@ namespace Comp_park_app
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(72, 271);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 94);
+            this.listBox1.Size = new System.Drawing.Size(193, 94);
             this.listBox1.TabIndex = 10;
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
@@ -162,7 +163,7 @@ namespace Comp_park_app
             this.listBox2.ItemHeight = 15;
             this.listBox2.Location = new System.Drawing.Point(322, 271);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 94);
+            this.listBox2.Size = new System.Drawing.Size(204, 94);
             this.listBox2.TabIndex = 11;
             this.listBox2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseDoubleClick);
             // 
@@ -172,7 +173,7 @@ namespace Comp_park_app
             this.listBox3.ItemHeight = 15;
             this.listBox3.Location = new System.Drawing.Point(72, 451);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 94);
+            this.listBox3.Size = new System.Drawing.Size(193, 94);
             this.listBox3.TabIndex = 12;
             this.listBox3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox3_MouseDoubleClick);
             // 
@@ -280,11 +281,19 @@ namespace Comp_park_app
             this.button_Edit.UseVisualStyleBackColor = true;
             this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(322, 451);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(204, 23);
+            this.dateTimePicker1.TabIndex = 26;
+            // 
             // Form_addComputer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 583);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
@@ -345,5 +354,6 @@ namespace Comp_park_app
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button button_Edit;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

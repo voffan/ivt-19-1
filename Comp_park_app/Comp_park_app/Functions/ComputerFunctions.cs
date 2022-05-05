@@ -9,7 +9,7 @@ namespace Comp_park_app.Functions
     class ComputerFunctions
     {
         public void Add(int departmentid, string itemno, Status status, int motherboardid,
-            int employeeid, List<HDD> hdds, List<RAM> rams, List<Processor> processors)
+            int employeeid, List<HDD> hdds, List<RAM> rams, List<Processor> processors, DateTime date)
         {
             Computer comp = new Computer()
             {
@@ -18,6 +18,7 @@ namespace Comp_park_app.Functions
                 Status = status,
                 MotherboardId = motherboardid,
                 EmployeeId = employeeid,
+                Date = date
                 //HDDs = hdds,
                 //RAMs = rams,
                 //Processors = processors
@@ -107,7 +108,7 @@ namespace Comp_park_app.Functions
         }
 
         public void Edit(int index, int departmentid, string itemno, Status status, int motherboardid,
-            int employeeid, List<HDD> hdds, List<RAM> rams, List<Processor> processors)
+            int employeeid, List<HDD> hdds, List<RAM> rams, List<Processor> processors, DateTime date)
         {
             Computer comp;
             HDD hdd;
@@ -121,6 +122,7 @@ namespace Comp_park_app.Functions
                 comp.Status = status;
                 comp.MotherboardId = motherboardid;
                 comp.EmployeeId = employeeid;
+                comp.Date = date;
 
                 for (int i = 1; i < c.HDDs.Count(); i++)
                 {

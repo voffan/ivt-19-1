@@ -5,14 +5,15 @@ using System.Text;
 
 namespace Comp_park_app.Functions {
     class PeripheralFunctions {
-        public void Add(string name, string itemno, Status status, int departmentid, int employeeid) {
+        public void Add(string name, string itemno, Status status, int departmentid, int employeeid, DateTime date) {
             Peripheral peripheral = new Peripheral() {
                
                 Name = name,
                 ItemNo = itemno,
                 Status = status,
                 DepartmentId = departmentid,
-                EmployeeId = employeeid
+                EmployeeId = employeeid,
+                Date = date
             };
 
             using (Context c = new Context()) {
@@ -31,7 +32,7 @@ namespace Comp_park_app.Functions {
             }
         }
 
-        public void Edit(int id, string name, string itemno, Status status, int departmentid, int employeeid) {
+        public void Edit(int id, string name, string itemno, Status status, int departmentid, int employeeid, DateTime date) {
             Peripheral peripheral;
             using (Context c = new Context()) {
                 peripheral = c.Peripherals.Find(id);
@@ -40,6 +41,7 @@ namespace Comp_park_app.Functions {
                 peripheral.Status = status;
                 peripheral.DepartmentId = departmentid;
                 peripheral.EmployeeId = employeeid;
+                peripheral.Date = date;
 
                 c.Entry(peripheral).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();

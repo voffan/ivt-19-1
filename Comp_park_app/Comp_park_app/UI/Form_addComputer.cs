@@ -64,7 +64,8 @@ namespace Comp_park_app
 
         private void Form_addComputer_Load(object sender, EventArgs e)
         {
-            
+            dateTimePicker1.Value = DateTime.Now;
+
                 foreach (var item in Enum.GetValues(typeof(Status)))
                 {
                     comboBox_Status.Items.Add(item);
@@ -74,6 +75,7 @@ namespace Comp_park_app
 
                 using (Context c = new Context())
                 {
+
                     comboBox1.DataSource = c.HDDs.ToList();
                     comboBox1.DisplayMember = "Name";
                     comboBox1.ValueMember = "Id";
@@ -146,16 +148,15 @@ namespace Comp_park_app
                 HDD hdd;
                 RAM ram;
                 Processor processor;
+
                 using(Context c = new Context())
                 {
                     comp = c.Computers.Find(id);
 
-                   
                     textBox_ItemNo.Text = comp.ItemNo;
                     comboBox_Status.SelectedItem = comp.Status;
+                    dateTimePicker1.Value = comp.Date;
 
-
-                    
                     for (int i = 1; i <= c.HDDs.Count(); i++)
                     {
                         HDD hd = c.HDDs.First(r => r.Id == i);
@@ -173,13 +174,13 @@ namespace Comp_park_app
 
                     for (int i = 1; i <= c.RAMs.Count(); i++)
                     {
-                        RAM hd = c.RAMs.First(r => r.Id == i);
-                        if (hd.ComputerId == comp.Id)
+                        RAM rame = c.RAMs.First(r => r.Id == i);
+                        if (rame.ComputerId == comp.Id)
                         {
-                            listBox2.Items.Add(hd);
+                            listBox2.Items.Add(rame);
                             for (int j = 0; j < comboBox_RAM.Items.Count; j++)
                             {
-                                if (((RAM)comboBox_RAM.Items[j]).Id == hd.Id)
+                                if (((RAM)comboBox_RAM.Items[j]).Id == rame.Id)
                                 {
                                     comboBox_RAM.Items.RemoveAt(j);
                                 }
@@ -189,13 +190,13 @@ namespace Comp_park_app
 
                     for (int i = 1; i <= c.Processors.Count(); i++)
                     {
-                        Processor hd = c.Processors.First(r => r.Id == i);
-                        if (hd.ComputerId == comp.Id)
+                        Processor proc = c.Processors.First(r => r.Id == i);
+                        if (proc.ComputerId == comp.Id)
                         {
-                            listBox3.Items.Add(hd);
+                            listBox3.Items.Add(proc);
                             for (int j = 0; j < comboBox_Processor.Items.Count; j++)
                             {
-                                if (((Processor)comboBox_Processor.Items[j]).Id == hd.Id)
+                                if (((Processor)comboBox_Processor.Items[j]).Id == proc.Id)
                                 {
                                     comboBox_Processor.Items.RemoveAt(j);
                                 }
@@ -226,14 +227,14 @@ namespace Comp_park_app
                 var itemno = textBox_ItemNo.Text;
                 Status status = (Status)comboBox_Status.SelectedItem;
                 var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
-
+                DateTime date = dateTimePicker1.Value;
                 
                 var hdds = listBox1.Items.Cast<HDD>().ToList();
                 var rams = listBox2.Items.Cast<RAM>().ToList();
                 var processors = listBox3.Items.Cast<Processor>().ToList();
                 var motherboardid = Convert.ToInt32(comboBox_Motherboard.SelectedValue);
                 ComputerFunctions Computer = new ComputerFunctions();
-                Computer.Add(departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors);
+                Computer.Add(departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors, date);
                 frm1.Update_datagridview(0);
                 this.Close();
             }
@@ -254,7 +255,7 @@ namespace Comp_park_app
                 var itemno = textBox_ItemNo.Text;
                 Status status = (Status)comboBox_Status.SelectedItem;
                 var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
-
+                DateTime date = dateTimePicker1.Value;
 
                 var hdds = listBox1.Items.Cast<HDD>().ToList();
                 var rams = listBox2.Items.Cast<RAM>().ToList();
@@ -262,7 +263,7 @@ namespace Comp_park_app
                 var motherboardid = Convert.ToInt32(comboBox_Motherboard.SelectedValue);
 
                 ComputerFunctions Computer = new ComputerFunctions();
-                Computer.Edit(id, departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors);
+                Computer.Edit(id, departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors, date);
                 frm1.Update_datagridview(0);
                 this.Close();
             }

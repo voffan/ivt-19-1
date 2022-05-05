@@ -82,7 +82,7 @@ namespace Comp_park_app_form {
                     break;
                 case 5: //Peripherals
                     Context c5 = new Context();
-                    dataGridView1.DataSource = c5.Peripherals.ToList();
+                    dataGridView1.DataSource = c5.Peripherals.Include("Department").ToList();
                     dataGridView1.Columns[2].Visible = true;
                     break;
                 case 6: //Processors
