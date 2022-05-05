@@ -53,5 +53,13 @@ namespace gallerys.components
                 return author.Id;
             }
         }
+        public void Remove(int id)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                db.Authors.Remove(db.Authors.First(p => p.Id == id));
+                db.SaveChanges();
+            }
+        }
     }
 }

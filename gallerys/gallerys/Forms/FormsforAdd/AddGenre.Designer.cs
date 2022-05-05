@@ -88,6 +88,7 @@ namespace gallerys.Forms.FormsforAdd
             this.Name = "AddGenre";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление жанра";
+            this.Load += new System.EventHandler(this.AddGenre_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

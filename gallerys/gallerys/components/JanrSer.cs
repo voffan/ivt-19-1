@@ -26,5 +26,37 @@ namespace gallerys.components
                 db.SaveChanges();
             }
         }
+        public void Edit(int id, string name)
+        {
+            Genre g = new Genre();
+            using (gallContext db = Connection.Connect())
+            {
+                g = db.Genres.Find(id);
+                g.Name = name;
+                db.Entry(g).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+        public int ReturnId(TextBox t1)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                Genre empl = db.Genres.Where(p => p.Name == t1.Text).FirstOrDefault();
+
+                if (empl == null)
+                {
+                    throw new Errors.UserErrors("Ошибка возвращения идентификатора жанра");
+                }
+                return empl.Id;
+            }
+        }
+        public void Remove(int id)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                db.Genres.Remove(db.Genres.First(p => p.Id == id));
+                db.SaveChanges();
+            }
+        }
     }
 }

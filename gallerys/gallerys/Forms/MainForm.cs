@@ -208,5 +208,50 @@ namespace gallerys
             dataGridView1.Sort(dataGridView1.Columns[e.ColumnIndex], ListSortDirection.Ascending);
         }
 
+        private void Deletebutton_Click(object sender, EventArgs e)
+        {
+            if ((Connection.employeeSer.CurrentEmployee.Right == 0) || (Connection.employeeSer.CurrentEmployee.Right == Models.Right.manager))
+            {
+                gallContext c = new gallContext();
+                string selectedtable = comboBox1.SelectedItem.ToString();
+                int idn = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                if (selectedtable == "Картины")
+                {
+                    PaintSer ps = new PaintSer();
+                    ps.Remove(idn);
+                }
+                if (selectedtable == "Сотрудники")
+                {
+                    EmployeeSer es = new EmployeeSer();
+                    es.Remove(idn);
+                }
+                if (selectedtable == "Жанры")
+                {
+                    JanrSer js = new JanrSer();
+                    js.Remove(idn);
+                }
+                if (selectedtable == "Авторы")
+                {
+                    AutorSer aus = new AutorSer();
+                    aus.Remove(idn);
+                }
+                if (selectedtable == "Журнал передвижения картин")
+                {
+                    JournalSer js = new JournalSer();
+                    js.Remove(idn);
+                }
+                if (selectedtable == "Выставки")
+                {
+                    ExhiSer es = new ExhiSer();
+                    es.Remove(idn);
+                }
+                MessageBox.Show("Вы успешно удалили");
+            }
+            else
+            {
+                MessageBox.Show("У вас нет прав удалять");
+            }
+            InitTable();
+        }
     }
 }

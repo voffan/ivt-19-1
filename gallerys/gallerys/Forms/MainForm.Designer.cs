@@ -32,7 +32,7 @@ namespace gallerys
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Addbutton = new System.Windows.Forms.Button();
             this.Editbutton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Deletebutton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,14 +71,15 @@ namespace gallerys
             this.Editbutton.UseVisualStyleBackColor = true;
             this.Editbutton.Click += new System.EventHandler(this.Editbutton_Click);
             // 
-            // button3
+            // Deletebutton
             // 
-            this.button3.Location = new System.Drawing.Point(242, 66);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Deletebutton.Location = new System.Drawing.Point(242, 66);
+            this.Deletebutton.Name = "Deletebutton";
+            this.Deletebutton.Size = new System.Drawing.Size(109, 23);
+            this.Deletebutton.TabIndex = 3;
+            this.Deletebutton.Text = "Удалить";
+            this.Deletebutton.UseVisualStyleBackColor = true;
+            this.Deletebutton.Click += new System.EventHandler(this.Deletebutton_Click);
             // 
             // comboBox1
             // 
@@ -112,7 +113,7 @@ namespace gallerys
             this.ClientSize = new System.Drawing.Size(956, 658);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.Deletebutton);
             this.Controls.Add(this.Editbutton);
             this.Controls.Add(this.Addbutton);
             this.Controls.Add(this.dataGridView1);
@@ -131,7 +132,7 @@ namespace gallerys
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Addbutton;
         private System.Windows.Forms.Button Editbutton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Deletebutton;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
     }

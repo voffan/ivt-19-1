@@ -23,18 +23,34 @@ namespace gallerys.Forms.FormsforAdd
             InitializeComponent();
             this.Text = s + " " + s1;
         }
-
+        int idn;
         private void button1_Click(object sender, EventArgs e)
         {
             string genre = textBox1.Text;
             JanrSer j = new JanrSer();
-            j.Add(genre);
+            if (this.Text == "Редактировать Жанры")
+            {
+                j.Edit(idn, genre);
+            }
+            else
+            {
+                j.Add(genre);
+            }
             MessageBox.Show("Вы успешно добавили жанр");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AddGenre_Load(object sender, EventArgs e)
+        {
+            if(this.Text == "Редактировать Жанры")
+            {
+                JanrSer j = new JanrSer();
+                idn = j.ReturnId(textBox1);
+            }
         }
     }
 }

@@ -95,5 +95,13 @@ namespace gallerys.components
                 return empl.Id;
             }
         }
+        public void Remove(int id)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                db.Paintings.Remove(db.Paintings.First(p => p.Id == id));
+                db.SaveChanges();
+            }
+        }
     }
 }
