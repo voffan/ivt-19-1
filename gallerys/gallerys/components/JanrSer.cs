@@ -58,5 +58,15 @@ namespace gallerys.components
                 db.SaveChanges();
             }
         }
+        public static List<Genre> Search(string name)
+        {
+            using (gallContext c = new gallContext())
+            {
+                var search = c.Genres
+                    .Where(b => b.Name.Contains(name))
+                    .ToList();
+                return search;
+            }
+        }
     }
 }

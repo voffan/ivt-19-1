@@ -253,5 +253,33 @@ namespace gallerys
             }
             InitTable();
         }
+
+        private void Poiskbutton_Click(object sender, EventArgs e)
+        {
+            string selectedtable = comboBox1.SelectedItem.ToString();
+            using (gallContext context = new gallContext())
+            {
+                if (selectedtable == "Авторы")
+                {
+                    dataGridView1.DataSource = AutorSer.Search(textBox1.Text);
+                }
+                if (selectedtable == "Сотрудники")
+                {
+                    dataGridView1.DataSource = EmployeeSer.Search(textBox1.Text);
+                }
+                if (selectedtable == "Выставки")
+                {
+                    dataGridView1.DataSource = ExhiSer.Search(textBox1.Text);
+                }
+                if (selectedtable == "Жанры")
+                {
+                    dataGridView1.DataSource = JanrSer.Search(textBox1.Text);
+                }
+                if (selectedtable == "Картины")
+                {
+                    dataGridView1.DataSource = PaintSer.Search(textBox1.Text);
+                }
+            }
+        }
     }
 }

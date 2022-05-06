@@ -25,5 +25,15 @@ namespace gallerys.components
                 db.SaveChanges();
             }
         }
+        public static List<Painting> Search(string name)
+        {
+            using (gallContext c = new gallContext())
+            {
+                var search = c.Paintings
+                    .Where(b => b.Name.Contains(name))
+                    .ToList();
+                return search;
+            }
+        }
     }
 }

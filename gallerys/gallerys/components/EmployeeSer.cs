@@ -84,5 +84,15 @@ namespace gallerys.components
                 db.SaveChanges();
             }
         }
+        public static List<Employee> Search(string name)
+        {
+            using (gallContext c = new gallContext())
+            {
+                var search = c.Employees
+                    .Where(b => b.Name.Contains(name))
+                    .ToList();
+                return search;
+            }
+        }
     }
 }
