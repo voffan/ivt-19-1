@@ -10,19 +10,19 @@ using NPOI;
 using NPOI.XWPF.UserModel;
 using System.IO;
 using System.Windows.Forms;
+using NPOI.OpenXmlFormats.Wordprocessing;
 
 namespace Autoreport.UI.Classes
 {
     class ReportGenerator
     {
-        public void CreateReport()
+        internal void CreateTodayOrdersReport()
         {
-            XWPFDocument doc = new XWPFDocument();
             Stream sw;
-            XWPFParagraph p;
 
-            PutData(doc, GetTodaysOrdersAsText().ToArray());
-            PutData(doc, GetExpiredAsText().ToArray());
+            XWPFDocument docTodaysOrders = new XWPFDocument();
+            PutHeader(docTodaysOrders, "Совершенные за день заказы");
+            PutData(docTodaysOrders, GetTodaysOrdersAsText().ToArray());
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
@@ -34,12 +34,58 @@ namespace Autoreport.UI.Classes
             {
                 if ((sw = saveFileDialog.OpenFile()) != null)
                 {
-                    doc.Write(sw);
+                    docTodaysOrders.Write(sw);
                     sw.Close();
                 }
             }
 
-            doc.Close();
+            docTodaysOrders.Close();
+        }
+
+        internal void CreateExpiredOrdersReport()
+        {
+            Stream sw;
+
+            XWPFDocument docExpiredOrders = new XWPFDocument();
+            PutHeader(docExpiredOrders, "Клиенты, не вернувшие диски вовремя");
+            PutData(docExpiredOrders, GetExpiredAsText().ToArray());
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = "Документы (*.docx)|*.docx|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if ((sw = saveFileDialog.OpenFile()) != null)
+                {
+                    docExpiredOrders.Write(sw);
+                    sw.Close();
+                }
+            }
+
+            docExpiredOrders.Close();
+        }
+
+        public void PutHeader(XWPFDocument document, string theme)
+        {
+            XWPFParagraph paragraph = document.CreateParagraph();
+            paragraph.Alignment = ParagraphAlignment.CENTER;
+
+            XWPFRun r = paragraph.CreateRun();
+            string text = $"Отчет: {theme} от {DateTime.Now.ToString("dd.MM.yyyy")}";
+
+            r.SetText(text);
+            r.IsBold = true;
+            r.FontSize = 16;
+
+            paragraph = document.CreateParagraph();
+            paragraph.Alignment = ParagraphAlignment.RIGHT;
+
+            r = paragraph.CreateRun();
+            r.SetText($"Сотрудник: {Connection.employeeService.CurrentEmployee}");
+            r.IsItalic = true;
         }
 
         public void PutData(XWPFDocument document, string[] data)

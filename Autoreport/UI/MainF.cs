@@ -864,6 +864,7 @@ namespace Autoreport.UI
                     } else
                     {
                         DisableAllTabsExcept(lastTab);
+                        CurrentMode = Mode.Select;
                     }
 
                     DisconnectDoneButton(doneEventHandler);
@@ -934,11 +935,6 @@ namespace Autoreport.UI
             SetSearchPanelActive(true);
         }
 
-        private void reportBtn_Click(object sender, EventArgs e)
-        {
-            (new ReportGenerator()).CreateReport();
-        }
-
         private void closeSearchPanelBtn_Click(object sender, EventArgs e)
         {
             SetSearchPanelActive(false);
@@ -980,6 +976,16 @@ namespace Autoreport.UI
             Order o = (Order)dataGridView.SelectedRows[0].DataBoundItem;
             Connection.orderService.Cancel(o.Id);
             reloadBtn.PerformClick();
+        }
+
+        private void reportTodayOrdersBtn_Click(object sender, EventArgs e)
+        {
+            (new ReportGenerator()).CreateTodayOrdersReport();
+        }
+
+        private void reportExpiredBtn_Click(object sender, EventArgs e)
+        {
+            (new ReportGenerator()).CreateExpiredOrdersReport();
         }
     }
 }

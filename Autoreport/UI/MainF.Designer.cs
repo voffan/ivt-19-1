@@ -39,7 +39,7 @@ namespace Autoreport.UI
             this.depositsTab = new System.Windows.Forms.Button();
             this.filmDirectorsSecondaryTab = new System.Windows.Forms.Button();
             this.reportPanel = new System.Windows.Forms.Panel();
-            this.reportBtn = new System.Windows.Forms.Button();
+            this.reportTodayOrdersBtn = new System.Windows.Forms.Button();
             this.dataPanel = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.addBtn = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@ namespace Autoreport.UI
             this.closeSearchPanelBtn = new System.Windows.Forms.Button();
             this.resetFoundBtn = new System.Windows.Forms.Button();
             this.findBtn = new System.Windows.Forms.Button();
+            this.reportExpiredBtn = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.tabsLayout.SuspendLayout();
             this.reportPanel.SuspendLayout();
@@ -258,27 +259,28 @@ namespace Autoreport.UI
             // 
             // reportPanel
             // 
-            this.reportPanel.Controls.Add(this.reportBtn);
+            this.reportPanel.Controls.Add(this.reportExpiredBtn);
+            this.reportPanel.Controls.Add(this.reportTodayOrdersBtn);
             this.reportPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.reportPanel.Location = new System.Drawing.Point(872, 3);
+            this.reportPanel.Location = new System.Drawing.Point(626, 3);
             this.reportPanel.Name = "reportPanel";
-            this.reportPanel.Size = new System.Drawing.Size(82, 31);
+            this.reportPanel.Size = new System.Drawing.Size(328, 31);
             this.reportPanel.TabIndex = 7;
             // 
-            // reportBtn
+            // reportTodayOrdersBtn
             // 
-            this.reportBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportBtn.Image = global::Autoreport.UI.Resources.report;
-            this.reportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.reportBtn.Location = new System.Drawing.Point(0, 0);
-            this.reportBtn.Name = "reportBtn";
-            this.reportBtn.Size = new System.Drawing.Size(82, 31);
-            this.reportBtn.TabIndex = 6;
-            this.reportBtn.Text = "Отчет";
-            this.reportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.reportBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.reportBtn.UseVisualStyleBackColor = true;
-            this.reportBtn.Click += new System.EventHandler(this.reportBtn_Click);
+            this.reportTodayOrdersBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.reportTodayOrdersBtn.Image = global::Autoreport.UI.Resources.report;
+            this.reportTodayOrdersBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reportTodayOrdersBtn.Location = new System.Drawing.Point(0, 0);
+            this.reportTodayOrdersBtn.Name = "reportTodayOrdersBtn";
+            this.reportTodayOrdersBtn.Size = new System.Drawing.Size(138, 31);
+            this.reportTodayOrdersBtn.TabIndex = 6;
+            this.reportTodayOrdersBtn.Text = "Отчет по заказам";
+            this.reportTodayOrdersBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reportTodayOrdersBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.reportTodayOrdersBtn.UseVisualStyleBackColor = true;
+            this.reportTodayOrdersBtn.Click += new System.EventHandler(this.reportTodayOrdersBtn_Click);
             // 
             // dataPanel
             // 
@@ -578,6 +580,21 @@ namespace Autoreport.UI
             this.findBtn.UseVisualStyleBackColor = true;
             this.findBtn.Click += new System.EventHandler(this.findBtn_Click);
             // 
+            // reportExpiredBtn
+            // 
+            this.reportExpiredBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportExpiredBtn.Image = global::Autoreport.UI.Resources.report;
+            this.reportExpiredBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reportExpiredBtn.Location = new System.Drawing.Point(138, 0);
+            this.reportExpiredBtn.Name = "reportExpiredBtn";
+            this.reportExpiredBtn.Size = new System.Drawing.Size(190, 31);
+            this.reportExpiredBtn.TabIndex = 7;
+            this.reportExpiredBtn.Text = "Отчет по задолженностям";
+            this.reportExpiredBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reportExpiredBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.reportExpiredBtn.UseVisualStyleBackColor = true;
+            this.reportExpiredBtn.Click += new System.EventHandler(this.reportExpiredBtn_Click);
+            // 
             // MainF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -614,7 +631,7 @@ namespace Autoreport.UI
         #endregion
 
         private System.Windows.Forms.Panel menuPanel;
-        private System.Windows.Forms.Button reportBtn;
+        private System.Windows.Forms.Button reportTodayOrdersBtn;
         private System.Windows.Forms.Panel reportPanel;
         private System.Windows.Forms.Panel dataPanel;
         private System.Windows.Forms.DataGridView dataGridView;
@@ -648,6 +665,7 @@ namespace Autoreport.UI
         private System.Windows.Forms.Button closeSearchPanelBtn;
         private System.Windows.Forms.Button completeOrderBtn;
         private System.Windows.Forms.Button cancelOrderBtn;
+        private System.Windows.Forms.Button reportExpiredBtn;
     }
 }
 
