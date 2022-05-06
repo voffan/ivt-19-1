@@ -15,9 +15,7 @@ namespace Autoreport.Models
         [Description("Просрочен")]
         Expired = 1,
         [Description("Завершен")]
-        Completed = 2,
-        [Description("Отменен")]
-        Cancelled = 3
+        Completed = 2
     }
 
     public class Order

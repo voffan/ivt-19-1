@@ -160,7 +160,7 @@ namespace Autoreport.UI
             filmActions[Mode.General] = new List<Button>() { addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
             filmActions[Mode.Select] = new List<Button>() { addBtn, editBtn, deleteBtn, searchBtn, reloadBtn, infoBtn, doneBtn };
 
-            orderActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn, cancelOrderBtn, completeOrderBtn };
+            orderActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, deleteBtn, completeOrderBtn };
             orderActions[Mode.Select] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn };
 
             depositActions[Mode.General] = new List<Button>() { editBtn, searchBtn, reloadBtn, deleteBtn, infoBtn, doneBtn };
@@ -283,7 +283,6 @@ namespace Autoreport.UI
 
         private void TurnOrderActionsVisibility(bool visible)
         {
-            cancelOrderBtn.Visible = visible;
             completeOrderBtn.Visible = visible;
         }
 
@@ -768,7 +767,7 @@ namespace Autoreport.UI
                 CalculateMinSize(); // т.к. появилась новая вкладка, то надо пересчитать минимальный размер
             }
 
-            TurnVisibleButtons(false, tabsLayout, new Button[] { excepted });
+            TurnVisibleButtons(false, tabsLayout, excepted);
             excepted.PerformClick();
         }
 
@@ -779,7 +778,7 @@ namespace Autoreport.UI
         /// <param name="enabled">Состояние, в которое следует перевести кнопку</param>
         /// <param name="panel">Панель, кнопки которой будут затронуты</param>
         /// <param name="reverse">Кнопки, которые перейдут в противоположное состояние от того, что передано</param>
-        private void TurnVisibleButtons(bool enabled, Panel panel, Button[] reverse = null)
+        private void TurnVisibleButtons(bool enabled, Panel panel, params Button[] reverse)
         {
             foreach (Button btn in GetNestedControls<Button>(panel).Where(x => x.Visible))
             {
@@ -898,7 +897,6 @@ namespace Autoreport.UI
             int selectedCount = dataGridView.SelectedRows.Count;
             Order order;
 
-            cancelOrderBtn.Enabled = selectedCount != 0;
             completeOrderBtn.Enabled = selectedCount != 0;
 
             if (selectedCount == 0)
@@ -906,14 +904,12 @@ namespace Autoreport.UI
             else
                 order = (Order)dataGridView.SelectedRows[0].DataBoundItem;
 
-            if (order.Status == OrderStatus.Cancelled || order.Status == OrderStatus.Completed)
+            if (order.Status == OrderStatus.Completed)
             {
-                currentlyPermittedActions.Remove(cancelOrderBtn);
                 currentlyPermittedActions.Remove(completeOrderBtn);
                 currentlyPermittedActions.Remove(editBtn);
 
                 editBtn.Enabled = false;
-                cancelOrderBtn.Enabled = false;
                 completeOrderBtn.Enabled = false;
 
                 TurnAvailableActions();
@@ -968,13 +964,6 @@ namespace Autoreport.UI
         {
             Order o = (Order)dataGridView.SelectedRows[0].DataBoundItem;
             Connection.orderService.Complete(o.Id);
-            reloadBtn.PerformClick();
-        }
-
-        private void cancelOrderBtn_Click(object sender, EventArgs e)
-        {
-            Order o = (Order)dataGridView.SelectedRows[0].DataBoundItem;
-            Connection.orderService.Cancel(o.Id);
             reloadBtn.PerformClick();
         }
 

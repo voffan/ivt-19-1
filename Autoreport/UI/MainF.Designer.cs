@@ -39,6 +39,7 @@ namespace Autoreport.UI
             this.depositsTab = new System.Windows.Forms.Button();
             this.filmDirectorsSecondaryTab = new System.Windows.Forms.Button();
             this.reportPanel = new System.Windows.Forms.Panel();
+            this.reportExpiredBtn = new System.Windows.Forms.Button();
             this.reportTodayOrdersBtn = new System.Windows.Forms.Button();
             this.dataPanel = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -51,7 +52,6 @@ namespace Autoreport.UI
             this.deleteBtn = new System.Windows.Forms.Button();
             this.controlPanel = new System.Windows.Forms.Panel();
             this.completeOrderBtn = new System.Windows.Forms.Button();
-            this.cancelOrderBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.selectedItemsBox = new System.Windows.Forms.ListBox();
             this.selectedItemsPanel = new System.Windows.Forms.Panel();
@@ -64,7 +64,6 @@ namespace Autoreport.UI
             this.closeSearchPanelBtn = new System.Windows.Forms.Button();
             this.resetFoundBtn = new System.Windows.Forms.Button();
             this.findBtn = new System.Windows.Forms.Button();
-            this.reportExpiredBtn = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.tabsLayout.SuspendLayout();
             this.reportPanel.SuspendLayout();
@@ -267,6 +266,21 @@ namespace Autoreport.UI
             this.reportPanel.Size = new System.Drawing.Size(328, 31);
             this.reportPanel.TabIndex = 7;
             // 
+            // reportExpiredBtn
+            // 
+            this.reportExpiredBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportExpiredBtn.Image = global::Autoreport.UI.Resources.report;
+            this.reportExpiredBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reportExpiredBtn.Location = new System.Drawing.Point(138, 0);
+            this.reportExpiredBtn.Name = "reportExpiredBtn";
+            this.reportExpiredBtn.Size = new System.Drawing.Size(190, 31);
+            this.reportExpiredBtn.TabIndex = 7;
+            this.reportExpiredBtn.Text = "Отчет по задолженностям";
+            this.reportExpiredBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reportExpiredBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.reportExpiredBtn.UseVisualStyleBackColor = true;
+            this.reportExpiredBtn.Click += new System.EventHandler(this.reportExpiredBtn_Click);
+            // 
             // reportTodayOrdersBtn
             // 
             this.reportTodayOrdersBtn.Dock = System.Windows.Forms.DockStyle.Left;
@@ -389,7 +403,6 @@ namespace Autoreport.UI
             // 
             this.controlPanel.BackColor = System.Drawing.Color.Silver;
             this.controlPanel.Controls.Add(this.completeOrderBtn);
-            this.controlPanel.Controls.Add(this.cancelOrderBtn);
             this.controlPanel.Controls.Add(this.deleteBtn);
             this.controlPanel.Controls.Add(this.infoBtn);
             this.controlPanel.Controls.Add(this.doneBtn);
@@ -408,25 +421,13 @@ namespace Autoreport.UI
             // 
             this.completeOrderBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.completeOrderBtn.Enabled = false;
-            this.completeOrderBtn.Location = new System.Drawing.Point(5, 277);
+            this.completeOrderBtn.Location = new System.Drawing.Point(5, 315);
             this.completeOrderBtn.Name = "completeOrderBtn";
             this.completeOrderBtn.Size = new System.Drawing.Size(136, 38);
             this.completeOrderBtn.TabIndex = 9;
             this.completeOrderBtn.Text = "Завершить";
             this.completeOrderBtn.UseVisualStyleBackColor = true;
             this.completeOrderBtn.Click += new System.EventHandler(this.completeOrderBtn_Click);
-            // 
-            // cancelOrderBtn
-            // 
-            this.cancelOrderBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cancelOrderBtn.Enabled = false;
-            this.cancelOrderBtn.Location = new System.Drawing.Point(5, 315);
-            this.cancelOrderBtn.Name = "cancelOrderBtn";
-            this.cancelOrderBtn.Size = new System.Drawing.Size(136, 38);
-            this.cancelOrderBtn.TabIndex = 8;
-            this.cancelOrderBtn.Text = "Отменить";
-            this.cancelOrderBtn.UseVisualStyleBackColor = true;
-            this.cancelOrderBtn.Click += new System.EventHandler(this.cancelOrderBtn_Click);
             // 
             // label1
             // 
@@ -580,21 +581,6 @@ namespace Autoreport.UI
             this.findBtn.UseVisualStyleBackColor = true;
             this.findBtn.Click += new System.EventHandler(this.findBtn_Click);
             // 
-            // reportExpiredBtn
-            // 
-            this.reportExpiredBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportExpiredBtn.Image = global::Autoreport.UI.Resources.report;
-            this.reportExpiredBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.reportExpiredBtn.Location = new System.Drawing.Point(138, 0);
-            this.reportExpiredBtn.Name = "reportExpiredBtn";
-            this.reportExpiredBtn.Size = new System.Drawing.Size(190, 31);
-            this.reportExpiredBtn.TabIndex = 7;
-            this.reportExpiredBtn.Text = "Отчет по задолженностям";
-            this.reportExpiredBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.reportExpiredBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.reportExpiredBtn.UseVisualStyleBackColor = true;
-            this.reportExpiredBtn.Click += new System.EventHandler(this.reportExpiredBtn_Click);
-            // 
             // MainF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -664,7 +650,6 @@ namespace Autoreport.UI
         private System.Windows.Forms.TableLayoutPanel searchControlsPanel;
         private System.Windows.Forms.Button closeSearchPanelBtn;
         private System.Windows.Forms.Button completeOrderBtn;
-        private System.Windows.Forms.Button cancelOrderBtn;
         private System.Windows.Forms.Button reportExpiredBtn;
     }
 }

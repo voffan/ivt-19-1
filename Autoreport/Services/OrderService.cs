@@ -135,7 +135,7 @@ namespace Autoreport.Services
             }
         }
 
-        public Order CloseOrder(int Id, DataContext db)
+        public Order CloseOrder(int Id, DataContext db, bool increaseDisks = true)
         {
             Order order = db.Orders
                 .First(order => order.Id == Id);
@@ -146,10 +146,11 @@ namespace Autoreport.Services
             Connection.clientService.VaryOrder(orderClient, false);
             Connection.clientService.VaryDebt(orderClient, false);
 
-            foreach (Disk disk in orderDisks)
-            {
-                disk.Current_count++;
-            }
+            if (increaseDisks)
+                foreach (Disk disk in orderDisks)
+                {
+                    disk.Current_count++;
+                }
 
             if (order.OrderDeposit != null)
                 db.Deposits.Remove(db.Deposits.First(x => x.Id == order.OrderDeposit.Id));
@@ -164,17 +165,6 @@ namespace Autoreport.Services
                 Order order = CloseOrder(Id, db);
 
                 db.Orders.Remove(order);
-                db.SaveChanges();
-            }
-        }
-
-        public void Cancel(int Id)
-        {
-            using (DataContext db = Connection.Connect())
-            {
-                Order order = CloseOrder(Id, db);
-
-                order.Status = OrderStatus.Cancelled;
                 db.SaveChanges();
             }
         }
