@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Standings.Functions;
+using Standings.Models;
+using Standings.Database;
 
 namespace Standings.Forms.Add
 {
@@ -25,6 +28,50 @@ namespace Standings.Forms.Add
         private void password2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string Name = Name1.Text;
+
+
+
+            bool b = Invalid.Checked;
+
+
+
+            double Ves = Convert.ToDouble(this.Ves.Text);
+
+
+            Nationality Nation = (Nationality)comboBox1.SelectedItem;
+
+
+            DateTime Date = dateTimePicker1.Value;
+
+            Sex Sex = (Sex)Enum.Parse(typeof(Sex), Pol.Text);
+            StatusSport StatusSport = (StatusSport)Enum.Parse(typeof(StatusSport), Active.Text);
+            if (Name1.Text == "" || this.Ves.Text == "")
+            {
+                MessageBox.Show("Заполните ВСЕ поля!");
+            }
+            else
+            {
+                SportsmanFunctions.Add(Name, b, Ves, Date, Sex, StatusSport, Nation);
+                this.Close();
+
+            }
+        }
+
+        private void AddSportsman_Load(object sender, EventArgs e)
+        {
+            Pol.DataSource = Enum.GetValues(typeof(Sex));
+            Active.DataSource = Enum.GetValues(typeof(StatusSport));
+            using (Context c = new Context())
+            {
+                comboBox1.DataSource = c.Nationalitys.ToList();
+                comboBox1.DisplayMember = "Name";
+                comboBox1.ValueMember = "Id";
+            }
         }
     }
 }

@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.label5 = new System.Windows.Forms.Label();
-            this.password2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.password1 = new System.Windows.Forms.TextBox();
-            this.Login1 = new System.Windows.Forms.TextBox();
+            this.Ves = new System.Windows.Forms.TextBox();
+            this.Name1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.Pol = new System.Windows.Forms.ComboBox();
+            this.Invalid = new System.Windows.Forms.CheckBox();
+            this.Active = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label5
@@ -54,15 +54,6 @@
             this.label5.Size = new System.Drawing.Size(112, 19);
             this.label5.TabIndex = 37;
             this.label5.Text = "Дата рождения";
-            // 
-            // password2
-            // 
-            this.password2.Location = new System.Drawing.Point(180, 203);
-            this.password2.Name = "password2";
-            this.password2.Size = new System.Drawing.Size(192, 23);
-            this.password2.TabIndex = 35;
-            this.password2.UseSystemPasswordChar = true;
-            this.password2.TextChanged += new System.EventHandler(this.password2_TextChanged);
             // 
             // label3
             // 
@@ -95,20 +86,19 @@
             this.label1.TabIndex = 32;
             this.label1.Text = "ФИО";
             // 
-            // password1
+            // Ves
             // 
-            this.password1.Location = new System.Drawing.Point(180, 159);
-            this.password1.Name = "password1";
-            this.password1.Size = new System.Drawing.Size(192, 23);
-            this.password1.TabIndex = 31;
-            this.password1.UseSystemPasswordChar = true;
+            this.Ves.Location = new System.Drawing.Point(180, 159);
+            this.Ves.Name = "Ves";
+            this.Ves.Size = new System.Drawing.Size(192, 23);
+            this.Ves.TabIndex = 31;
             // 
-            // Login1
+            // Name1
             // 
-            this.Login1.Location = new System.Drawing.Point(180, 27);
-            this.Login1.Name = "Login1";
-            this.Login1.Size = new System.Drawing.Size(192, 23);
-            this.Login1.TabIndex = 30;
+            this.Name1.Location = new System.Drawing.Point(180, 27);
+            this.Name1.Name = "Name1";
+            this.Name1.Size = new System.Drawing.Size(192, 23);
+            this.Name1.TabIndex = 30;
             // 
             // button1
             // 
@@ -119,6 +109,7 @@
             this.button1.TabIndex = 29;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -157,53 +148,62 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(192, 23);
             this.dateTimePicker1.TabIndex = 41;
             // 
+            // Pol
+            // 
+            this.Pol.FormattingEnabled = true;
+            this.Pol.Location = new System.Drawing.Point(180, 70);
+            this.Pol.Name = "Pol";
+            this.Pol.Size = new System.Drawing.Size(192, 23);
+            this.Pol.TabIndex = 42;
+            // 
+            // Invalid
+            // 
+            this.Invalid.AutoSize = true;
+            this.Invalid.Location = new System.Drawing.Point(180, 294);
+            this.Invalid.Name = "Invalid";
+            this.Invalid.Size = new System.Drawing.Size(15, 14);
+            this.Invalid.TabIndex = 43;
+            this.Invalid.UseVisualStyleBackColor = true;
+            // 
+            // Active
+            // 
+            this.Active.FormattingEnabled = true;
+            this.Active.Location = new System.Drawing.Point(180, 246);
+            this.Active.Name = "Active";
+            this.Active.Size = new System.Drawing.Size(192, 23);
+            this.Active.TabIndex = 44;
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(180, 70);
+            this.comboBox1.Location = new System.Drawing.Point(180, 207);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(192, 23);
-            this.comboBox1.TabIndex = 42;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(180, 294);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 43;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(180, 246);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(192, 23);
-            this.comboBox2.TabIndex = 44;
+            this.comboBox1.TabIndex = 45;
             // 
             // AddSportsman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 396);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Active);
+            this.Controls.Add(this.Invalid);
+            this.Controls.Add(this.Pol);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.password2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.password1);
-            this.Controls.Add(this.Login1);
+            this.Controls.Add(this.Ves);
+            this.Controls.Add(this.Name1);
             this.Controls.Add(this.button1);
             this.Name = "AddSportsman";
             this.Text = "AddSportsman";
+            this.Load += new System.EventHandler(this.AddSportsman_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,19 +212,19 @@
         #endregion
 
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox password2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox password1;
-        private System.Windows.Forms.TextBox Login1;
+        private System.Windows.Forms.TextBox Ves;
+        private System.Windows.Forms.TextBox Name1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox Pol;
+        private System.Windows.Forms.CheckBox Invalid;
+        private System.Windows.Forms.ComboBox Active;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

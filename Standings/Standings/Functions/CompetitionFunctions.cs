@@ -46,6 +46,7 @@ namespace Standings.Functions
                     .Where(q => q.Id == Id)
                     .FirstOrDefault();
                     c.Name = Name;
+                    c.Date = date;
                     c.Location = Location;
                     c.Level = level;
                     db.SaveChanges();

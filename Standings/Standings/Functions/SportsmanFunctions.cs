@@ -10,12 +10,18 @@ namespace Standings.Functions
 {
     public class SportsmanFunctions
     {
-        public void Add()
+        public static void Add(string Name, bool b, double Ves, DateTime Date, Sex Sex, StatusSport StatusSport, Nationality Nation)
         {
             using (Context context = new Context())
             {
                 Sportsman c = new Sportsman();
-                //... initiate fields
+                c.FullNname = Name;
+                c.Birthday = Date;
+                c.Weight = (float)Ves;
+                c.Disability = b;
+                c.Sex = Sex;
+                c.StatusSport = StatusSport;
+                c.NationalityId = Nation.Id;
                 context.Sportsmans.Add(c);
                 context.SaveChanges();
             }

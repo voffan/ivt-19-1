@@ -15,8 +15,8 @@ namespace Standings.Models
     }
     public enum Sex
     {
-        Men,
-        Women
+        Мужчина,
+        Женщина
     }
     public class Sportsman
     {

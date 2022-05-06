@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
 
 namespace Standings
 {
@@ -57,7 +58,7 @@ namespace Standings
         private void InitTablSportsmans()
         {
             Context context = Connection.Connect();
-            dataGridView1.DataSource = context.Sportsmans.ToList();
+            dataGridView1.DataSource = context.Sportsmans.Include("Nationality").ToList();
         }
         private void списокСотрудниковToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
