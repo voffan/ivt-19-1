@@ -41,6 +41,8 @@ namespace Korobki_project
             this.button9 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,7 +128,7 @@ namespace Korobki_project
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(651, 362);
+            this.btnadd.Location = new System.Drawing.Point(651, 403);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(86, 28);
             this.btnadd.TabIndex = 9;
@@ -136,7 +138,7 @@ namespace Korobki_project
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(47, 363);
+            this.button9.Location = new System.Drawing.Point(47, 404);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(85, 28);
             this.button9.TabIndex = 10;
@@ -147,14 +149,14 @@ namespace Korobki_project
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(47, 56);
+            this.dataGridView1.Location = new System.Drawing.Point(47, 97);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(690, 300);
             this.dataGridView1.TabIndex = 11;
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(539, 363);
+            this.button10.Location = new System.Drawing.Point(539, 404);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(106, 28);
             this.button10.TabIndex = 12;
@@ -162,12 +164,32 @@ namespace Korobki_project
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(298, 67);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(83, 23);
+            this.button11.TabIndex = 13;
+            this.button11.Text = "Поиск";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(47, 68);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(245, 23);
+            this.textBox1.TabIndex = 14;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(782, 444);
+            this.ClientSize = new System.Drawing.Size(782, 454);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button9);
@@ -188,6 +210,7 @@ namespace Korobki_project
             this.Load += new System.EventHandler(this.MenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -205,5 +228,7 @@ namespace Korobki_project
 		private System.Windows.Forms.Button button9;
 		private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

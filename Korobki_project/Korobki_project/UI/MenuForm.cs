@@ -327,5 +327,66 @@ namespace Korobki_project
             load_db();
             this.Show();
 		}
+        private void searchname()
+        {
+            using (Context context = new Context())
+            {
+                switch (pf)
+                {
+                    case 1:
+                        dataGridView1.DataSource = EmployeeFunctions.Search(textBox1.Text);
+                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[3].Visible = false;
+                        dataGridView1.Columns[4].Visible = false;
+                        dataGridView1.Columns[8].Visible = false;
+                        break;
+                    case 2:
+                        dataGridView1.DataSource = PlanFunctions.Search(textBox1.Text);
+                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[3].Visible = false;
+                        break;
+                    case 3:
+                        dataGridView1.DataSource = ProductionFunctions.Search(textBox1.Text);
+                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[1].Visible = false;
+                        dataGridView1.Columns[3].Visible = false;
+                        break;
+                    case 4:
+                        dataGridView1.DataSource = PositionFunctions.Search(textBox1.Text);
+                        dataGridView1.Columns[0].Visible = false;
+                        break;
+                    case 5:
+                        dataGridView1.DataSource = ProductFunctions.Search(textBox1.Text);
+                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[1].Visible = false;
+                        break;
+                    case 6:
+                        dataGridView1.DataSource = ScheduleFunctions.Search(textBox1.Text);
+                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[1].Visible = false;
+                        break;
+                    case 7:
+                        dataGridView1.DataSource = ShiftFunctions.Search(textBox1.Text);
+                        dataGridView1.Columns[0].Visible = false;
+                        break;
+                    case 8:
+                        dataGridView1.DataSource = TypeeFunctions.Search(textBox1.Text);
+                        dataGridView1.Columns[0].Visible = false;
+                        break;
+                }
+            }
+        }
+        private void button11_Click(object sender, EventArgs e)
+        {
+            searchname();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                searchname();
+            }
+        }
     }
 }

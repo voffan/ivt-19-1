@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Korobki_project.Classes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
@@ -45,6 +46,17 @@ namespace Korobki_project.Functions
                 employee.ShiftId = shiftid;
                 c.Entry(employee).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
+            }
+        }
+        public static List<Employee> Search(string name)
+        {
+            using (Context c = new Context())
+            {
+                var search = c.Employees.Include("Position").Include("Shift")
+                    .Where(b => b.Name.Contains(name))
+                    .OrderBy(e => e.Name)
+                    .ToList();
+                return search;
             }
         }
     }

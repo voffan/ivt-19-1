@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Korobki_project.Classes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
@@ -32,6 +33,17 @@ namespace Korobki_project.Functions
                 c.Entry(production).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
 
+            }
+        }
+        public static List<Production> Search(string date)
+        {
+            using (Context c = new Context())
+            {
+
+                var search = c.Productions.Include("Team").Include("Product")
+                    .Where(b => b.Team.Date.ToString().Contains(date))
+                    .ToList();
+                return search;
             }
         }
     }
