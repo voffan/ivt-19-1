@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
-namespace Comp_park_app
-{
-    public class Motherboard
-    {
+namespace Comp_park_app {
+    public class Motherboard {
+        [DisplayName("Номер")]
         public int Id { get; set; }
-        [MaxLength(100)]
+
+        [DisplayName("Название"), MaxLength(100)]
         public string Name { get; set; }
-        [MaxLength(100)]
+
+        [DisplayName("Производитель"), MaxLength(100)]
         public string Manufacturer { get; set; }
     }
 }

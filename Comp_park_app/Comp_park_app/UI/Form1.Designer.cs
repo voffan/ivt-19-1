@@ -41,6 +41,7 @@ namespace Comp_park_app_form
             this.button_Delete = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button_search = new System.Windows.Forms.Button();
+            this.buttonReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@ namespace Comp_park_app_form
             this.dataGridView1.Location = new System.Drawing.Point(12, 79);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(845, 541);
+            this.dataGridView1.Size = new System.Drawing.Size(940, 502);
             this.dataGridView1.TabIndex = 0;
             // 
             // listBox1
@@ -66,10 +67,11 @@ namespace Comp_park_app_form
             "Материнские платы",
             "Периферийные устройства",
             "Процессоры",
-            "Оперативная память"});
-            this.listBox1.Location = new System.Drawing.Point(872, 97);
+            "Оперативная память",
+            "Должности"});
+            this.listBox1.Location = new System.Drawing.Point(958, 79);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(238, 164);
+            this.listBox1.Size = new System.Drawing.Size(238, 184);
             this.listBox1.TabIndex = 1;
             this.listBox1.DoubleClick += new System.EventHandler(this.button1_Click);
             // 
@@ -77,7 +79,7 @@ namespace Comp_park_app_form
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(920, 79);
+            this.label1.Location = new System.Drawing.Point(1006, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 15);
             this.label1.TabIndex = 2;
@@ -86,7 +88,7 @@ namespace Comp_park_app_form
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(872, 267);
+            this.button1.Location = new System.Drawing.Point(958, 267);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(238, 32);
             this.button1.TabIndex = 3;
@@ -98,7 +100,7 @@ namespace Comp_park_app_form
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(12, 31);
+            this.label2.Location = new System.Drawing.Point(12, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(184, 30);
             this.label2.TabIndex = 4;
@@ -107,7 +109,7 @@ namespace Comp_park_app_form
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(872, 320);
+            this.button2.Location = new System.Drawing.Point(958, 320);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(112, 32);
             this.button2.TabIndex = 5;
@@ -118,7 +120,7 @@ namespace Comp_park_app_form
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(998, 320);
+            this.button3.Location = new System.Drawing.Point(1084, 320);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(112, 32);
             this.button3.TabIndex = 6;
@@ -129,7 +131,7 @@ namespace Comp_park_app_form
             // button_Delete
             // 
             this.button_Delete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_Delete.Location = new System.Drawing.Point(872, 375);
+            this.button_Delete.Location = new System.Drawing.Point(958, 375);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(238, 32);
             this.button_Delete.TabIndex = 7;
@@ -140,7 +142,7 @@ namespace Comp_park_app_form
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(531, 31);
+            this.textBox1.Location = new System.Drawing.Point(513, 31);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(224, 29);
             this.textBox1.TabIndex = 8;
@@ -148,7 +150,7 @@ namespace Comp_park_app_form
             // button_search
             // 
             this.button_search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_search.Location = new System.Drawing.Point(761, 31);
+            this.button_search.Location = new System.Drawing.Point(743, 31);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(96, 30);
             this.button_search.TabIndex = 9;
@@ -156,11 +158,23 @@ namespace Comp_park_app_form
             this.button_search.UseVisualStyleBackColor = true;
             this.button_search.Click += new System.EventHandler(this.button4_Click);
             // 
+            // buttonReport
+            // 
+            this.buttonReport.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonReport.Location = new System.Drawing.Point(958, 432);
+            this.buttonReport.Name = "buttonReport";
+            this.buttonReport.Size = new System.Drawing.Size(238, 70);
+            this.buttonReport.TabIndex = 10;
+            this.buttonReport.Text = "Сформировать отчет";
+            this.buttonReport.UseVisualStyleBackColor = true;
+            this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1119, 668);
+            this.ClientSize = new System.Drawing.Size(1208, 668);
+            this.Controls.Add(this.buttonReport);
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button_Delete);
@@ -191,6 +205,7 @@ namespace Comp_park_app_form
         private System.Windows.Forms.Button button_Delete;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button_search;
+        private System.Windows.Forms.Button buttonReport;
     }
 }
 

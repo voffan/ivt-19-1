@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Comp_park_app.Functions {
     class EmployeeFunctions {
@@ -52,6 +53,8 @@ namespace Comp_park_app.Functions {
         public static List<Employee> Search(string name) {
             using (Context c = new Context()) {
                 var search = c.Employees
+                    .Include(x => x.Department)
+                    .Include(y => y.Position)
                     .Where(b => b.Name.Contains(name))
                     .ToList();
                 return search;

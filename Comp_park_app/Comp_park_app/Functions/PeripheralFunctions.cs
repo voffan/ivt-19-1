@@ -1,19 +1,20 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Comp_park_app.Functions {
     class PeripheralFunctions {
-        public void Add(string name, string itemno, Status status, int departmentid, int employeeid, DateTime date) {
+        public void Add(string name, string itemno, Status status, int departmentid, int employeeid, DateTime date, string reason) {
             Peripheral peripheral = new Peripheral() {
-               
                 Name = name,
                 ItemNo = itemno,
                 Status = status,
                 DepartmentId = departmentid,
                 EmployeeId = employeeid,
-                Date = date
+                Date = date,
+                Reason = reason
             };
 
             using (Context c = new Context()) {
@@ -32,7 +33,7 @@ namespace Comp_park_app.Functions {
             }
         }
 
-        public void Edit(int id, string name, string itemno, Status status, int departmentid, int employeeid, DateTime date) {
+        public void Edit(int id, string name, string itemno, Status status, int departmentid, int employeeid, DateTime date, string reason) {
             Peripheral peripheral;
             using (Context c = new Context()) {
                 peripheral = c.Peripherals.Find(id);
@@ -42,6 +43,7 @@ namespace Comp_park_app.Functions {
                 peripheral.DepartmentId = departmentid;
                 peripheral.EmployeeId = employeeid;
                 peripheral.Date = date;
+                peripheral.Reason = reason;
 
                 c.Entry(peripheral).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
@@ -51,6 +53,8 @@ namespace Comp_park_app.Functions {
         public static List<Peripheral> Search(string name) {
             using (Context c = new Context()) {
                 var search = c.Peripherals
+                    .Include(x => x.Employee)
+                    .Include(y => y.Department)
                     .Where(b => b.Name.Contains(name))
                     .ToList();
                 return search;

@@ -46,6 +46,8 @@ namespace Comp_park_app
             this.button_Edit = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox_Reason = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox_name
@@ -99,7 +101,7 @@ namespace Comp_park_app
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(49, 171);
+            this.label5.Location = new System.Drawing.Point(49, 198);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 15);
             this.label5.TabIndex = 9;
@@ -108,7 +110,7 @@ namespace Comp_park_app
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(49, 201);
+            this.label6.Location = new System.Drawing.Point(49, 228);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 15);
             this.label6.TabIndex = 10;
@@ -116,7 +118,7 @@ namespace Comp_park_app
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(74, 280);
+            this.button1.Location = new System.Drawing.Point(74, 306);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -126,7 +128,7 @@ namespace Comp_park_app
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(224, 280);
+            this.button2.Location = new System.Drawing.Point(224, 306);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -154,7 +156,7 @@ namespace Comp_park_app
             // comboBox_Department
             // 
             this.comboBox_Department.FormattingEnabled = true;
-            this.comboBox_Department.Location = new System.Drawing.Point(177, 167);
+            this.comboBox_Department.Location = new System.Drawing.Point(177, 194);
             this.comboBox_Department.Name = "comboBox_Department";
             this.comboBox_Department.Size = new System.Drawing.Size(140, 23);
             this.comboBox_Department.TabIndex = 13;
@@ -162,14 +164,14 @@ namespace Comp_park_app
             // comboBox_Employee
             // 
             this.comboBox_Employee.FormattingEnabled = true;
-            this.comboBox_Employee.Location = new System.Drawing.Point(177, 197);
+            this.comboBox_Employee.Location = new System.Drawing.Point(177, 224);
             this.comboBox_Employee.Name = "comboBox_Employee";
             this.comboBox_Employee.Size = new System.Drawing.Size(140, 23);
             this.comboBox_Employee.TabIndex = 14;
             // 
             // button_Edit
             // 
-            this.button_Edit.Location = new System.Drawing.Point(74, 280);
+            this.button_Edit.Location = new System.Drawing.Point(74, 306);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(75, 23);
             this.button_Edit.TabIndex = 15;
@@ -179,7 +181,7 @@ namespace Comp_park_app
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(177, 226);
+            this.dateTimePicker1.Location = new System.Drawing.Point(177, 253);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(140, 23);
             this.dateTimePicker1.TabIndex = 16;
@@ -187,17 +189,35 @@ namespace Comp_park_app
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(49, 232);
+            this.label8.Location = new System.Drawing.Point(49, 259);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 15);
             this.label8.TabIndex = 17;
             this.label8.Text = "Дата";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(49, 168);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 15);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Причина";
+            // 
+            // textBox_Reason
+            // 
+            this.textBox_Reason.Location = new System.Drawing.Point(177, 165);
+            this.textBox_Reason.Name = "textBox_Reason";
+            this.textBox_Reason.Size = new System.Drawing.Size(140, 23);
+            this.textBox_Reason.TabIndex = 19;
             // 
             // Form_addPeripheral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 351);
+            this.Controls.Add(this.textBox_Reason);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button_Edit);
@@ -242,5 +262,7 @@ namespace Comp_park_app
         private System.Windows.Forms.Button button_Edit;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox_Reason;
     }
 }

@@ -18,6 +18,25 @@ namespace Comp_park_app.Functions {
 
         }
 
+        public void Delete(int index) {
+            Position position;
+            using (Context c = new Context()) {
+                position = c.Positions.Find(index);
+                c.Remove(position);
+                c.SaveChanges();
+            }
+        }
+
+        public void Edit(int id, string name) {
+            Position position;
+            using (Context c = new Context()) {
+                position = c.Positions.Find(id);
+                position.Name = name;
+                c.Entry(position).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                c.SaveChanges();
+            }
+        }
+
         public static List<Position> Search(string name) {
             using (Context c = new Context()) {
                 var search = c.Positions

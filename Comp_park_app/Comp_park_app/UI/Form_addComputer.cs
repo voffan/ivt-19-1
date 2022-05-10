@@ -10,15 +10,14 @@ using System.Windows.Forms;
 using Comp_park_app.Functions;
 using Comp_park_app_form;
 
-namespace Comp_park_app
-{
-    public partial class Form_addComputer : Form
-    {
+namespace Comp_park_app {
+    public partial class Form_addComputer : Form {
         bool Type_Add;
         int id;
         Form1 frm1;
-        public Form_addComputer(bool Add, int index, Form1 fr1)
-        {
+        string reason = "";
+
+        public Form_addComputer(bool Add, int index, Form1 fr1) {
             InitializeComponent();
             button_addComputer.Visible = Add;
             button_Edit.Visible = !Add;
@@ -28,150 +27,160 @@ namespace Comp_park_app
         }
 
 
-        private void comboBox_HDD_SelectedIndexChanged(object sender, EventArgs e)//Add item from combobox to listbox
-        {
+        private void comboBox_HDD_SelectedIndexChanged(object sender, EventArgs e) { //Add item from combobox to listbox
+        
             listBox1.Items.Add(comboBox_HDD.SelectedItem);
             comboBox_HDD.Items.Remove(comboBox_HDD.SelectedItem);
         }
 
-        private void comboBox_RAM_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBox_RAM_SelectedIndexChanged(object sender, EventArgs e) {
             listBox2.Items.Add(comboBox_RAM.SelectedItem);
             comboBox_RAM.Items.Remove(comboBox_RAM.SelectedItem);
         }
 
-        private void comboBox_Processor_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBox_Processor_SelectedIndexChanged(object sender, EventArgs e) {
             listBox_proc.Items.Add(comboBox_Processor.SelectedItem);
             comboBox_Processor.Items.Remove(comboBox_Processor.SelectedItem);
         }
 
-        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e) //Add item from listbox to combobox
-        {         
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e) { //Add item from listbox to combobox
+                 
             comboBox_HDD.Items.Add(listBox1.SelectedItem);
             listBox1.Items.Remove(listBox1.SelectedItem);
         }
-        private void listBox2_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
+        private void listBox2_MouseDoubleClick(object sender, MouseEventArgs e) {
             comboBox_RAM.Items.Add(listBox2.SelectedItem);
             listBox2.Items.Remove(listBox2.SelectedItem);
         }
-        private void listBox3_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
+        private void listBox3_MouseDoubleClick(object sender, MouseEventArgs e) {
             comboBox_Processor.Items.Add(listBox_proc.SelectedItem);
             listBox_proc.Items.Remove(listBox_proc.SelectedItem);
         }
 
-        private void Form_addComputer_Load(object sender, EventArgs e)
-        {
+        private void Form_addComputer_Load(object sender, EventArgs e) {
             dateTimePicker1.Value = DateTime.Now;
 
-                foreach (var item in Enum.GetValues(typeof(Status)))
-                {
-                    comboBox_Status.Items.Add(item);
-                }
+            foreach (var item in Enum.GetValues(typeof(Status))) {
+                comboBox_Status.Items.Add(item);
+            }
 
             comboBox_Status.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                using (Context c = new Context())
-                {
+            using (Context c = new Context()) {
 
-                    comboBox1.DataSource = c.HDDs.ToList();
-                    comboBox1.DisplayMember = "Name";
-                    comboBox1.ValueMember = "Id";
+                List<HDD> hdds = new List<HDD>();
+                List<RAM> rams = new List<RAM>();
+                List<Processor> procs = new List<Processor>();
+                foreach (var i in c.HDDs) {
+                    if (i.ComputerId == null) {
+                        hdds.Add(i);
+                    }
+                }
+                foreach (var i in c.RAMs) {
+                    if (i.ComputerId == null) {
+                        rams.Add(i);
+                    }
+                }
+                foreach (var i in c.Processors) {
+                    if (i.ComputerId == null) {
+                        procs.Add(i);
+                    }
+                }
+                comboBox1.DataSource = hdds;
+                //comboBox1.DataSource = c.HDDs.ToList();
+                comboBox1.DisplayMember = "Name";
+                comboBox1.ValueMember = "Id";
 
-                    comboBox2.DataSource = c.RAMs.ToList();
-                    comboBox2.DisplayMember = "Name";
-                    comboBox2.ValueMember = "Id";
+                comboBox2.DataSource = rams;
+                //comboBox2.DataSource = c.RAMs.ToList();
+                comboBox2.DisplayMember = "Name";
+                comboBox2.ValueMember = "Id";
 
-                    comboBox3.DataSource = c.Processors.ToList();
-                    comboBox3.DisplayMember = "Name";
-                    comboBox3.ValueMember = "Id";
+                comboBox3.DataSource = procs;
+                //comboBox3.DataSource = c.Processors.ToList();
+                comboBox3.DisplayMember = "Name";
+                comboBox3.ValueMember = "Id";
 
-                    comboBox_Department.DataSource = c.Departments.ToList();
-                    comboBox_Department.DisplayMember = "Name";
-                    comboBox_Department.ValueMember = "Id";
+                comboBox_Department.DataSource = c.Departments.ToList();
+                comboBox_Department.DisplayMember = "Name";
+                comboBox_Department.ValueMember = "Id";
                 comboBox_Department.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                    comboBox_Employee.DataSource = c.Employees.ToList();
-                    comboBox_Employee.DisplayMember = "Name";
-                    comboBox_Employee.ValueMember = "Id";
+                comboBox_Employee.DataSource = c.Employees.ToList();
+                comboBox_Employee.DisplayMember = "Name";
+                comboBox_Employee.ValueMember = "Id";
                 comboBox_Employee.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                    
-                    comboBox_HDD.DisplayMember = "Name";
-                    comboBox_HDD.ValueMember = "Id";
+                comboBox_HDD.DisplayMember = "Name";
+                comboBox_HDD.ValueMember = "Id";
                 comboBox_HDD.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                    
-                    comboBox_RAM.DisplayMember = "Name";
-                    comboBox_RAM.ValueMember = "Id";
+                comboBox_RAM.DisplayMember = "Name";
+                comboBox_RAM.ValueMember = "Id";
                 comboBox_RAM.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                    
-                    comboBox_Processor.DisplayMember = "Name";
-                    comboBox_Processor.ValueMember = "Id";
+                comboBox_Processor.DisplayMember = "Name";
+                comboBox_Processor.ValueMember = "Id";
                 comboBox_Processor.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                    comboBox_Motherboard.DataSource = c.Motherboards.ToList();
-                    comboBox_Motherboard.DisplayMember = "Name";
-                    comboBox_Motherboard.ValueMember = "Id";
+                comboBox_Motherboard.DataSource = c.Motherboards.ToList();
+                comboBox_Motherboard.DisplayMember = "Name";
+                comboBox_Motherboard.ValueMember = "Id";
                 comboBox_Motherboard.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                }
+            }
 
-                listBox1.DisplayMember = "Name";
-                listBox1.ValueMember = "Id";
+            listBox1.DisplayMember = "Name";
+            listBox1.ValueMember = "Id";
 
-                listBox2.DisplayMember = "Name";
-                listBox2.ValueMember = "Id";
+            listBox2.DisplayMember = "Name";
+            listBox2.ValueMember = "Id";
 
-                listBox_proc.DisplayMember = "Name";
-                listBox_proc.ValueMember = "Id";
+            listBox_proc.DisplayMember = "Name";
+            listBox_proc.ValueMember = "Id";
 
-                for (int i = 0; i < comboBox1.Items.Count; i++)
-                {
-                    comboBox_HDD.Items.Add(((HDD)comboBox1.Items[i]));
-                }
-                for (int i = 0; i < comboBox2.Items.Count; i++)
-                {
-                    comboBox_RAM.Items.Add(((RAM)comboBox2.Items[i]));
-                }
-                for (int i = 0; i < comboBox3.Items.Count; i++)
-                {
-                    comboBox_Processor.Items.Add(((Processor)comboBox3.Items[i]));
-                }
+            for (int i = 0; i < comboBox1.Items.Count; i++) {
+                comboBox_HDD.Items.Add(((HDD)comboBox1.Items[i]));
+            }
+            for (int i = 0; i < comboBox2.Items.Count; i++) {
+                comboBox_RAM.Items.Add(((RAM)comboBox2.Items[i]));
+            }
+            for (int i = 0; i < comboBox3.Items.Count; i++) {
+                comboBox_Processor.Items.Add(((Processor)comboBox3.Items[i]));
+            }
             
-            if (!Type_Add)
-            {
+            if (!Type_Add) {
+
                 Computer comp;
                 HDD hdd;
                 RAM ram;
                 Processor processor;
 
-                using(Context c = new Context())
-                {
+                using(Context c = new Context()) {
+
                     comp = c.Computers.Find(id);
 
                     textBox_ItemNo.Text = comp.ItemNo;
                     comboBox_Status.SelectedItem = comp.Status;
                     dateTimePicker1.Value = comp.Date;
+                    textBox_Reason.Text = comp.Reason;
 
                     foreach (var hd in c.HDDs.ToList()) {
-                        if (hd.ComputerId == comp.Id)
-                        {
+
+                        if (hd.ComputerId == comp.Id) {
+
                             listBox1.Items.Add(hd);
-                            for (int j = 0; j < comboBox_HDD.Items.Count; j++)
-                            {
-                                if (((HDD)comboBox_HDD.Items[j]).Id == hd.Id)
-                                {
+
+                            for (int j = 0; j < comboBox_HDD.Items.Count; j++) {
+
+                                if (((HDD)comboBox_HDD.Items[j]).Id == hd.Id) {
+
                                     comboBox_HDD.Items.RemoveAt(j);
                                 }
                             }
                         }
                     }
 
-                    
                     foreach (var rame in c.RAMs.ToList()) {
                         if (rame.ComputerId == comp.Id) {
                             listBox2.Items.Add(rame);
@@ -185,7 +194,7 @@ namespace Comp_park_app
                         }
                     }
 
-                    foreach (var proc in c.RAMs.ToList())
+                    foreach (var proc in c.Processors.ToList())
                     {
                         if (proc.ComputerId == comp.Id)
                         {
@@ -259,63 +268,52 @@ namespace Comp_park_app
             }
         }
 
-        private void button_addComputer_Click(object sender, EventArgs e)
-        {
+        private void button_addComputer_Click(object sender, EventArgs e) {
             if (comboBox_Department.SelectedIndex >= 0 && textBox_ItemNo.Text.Length != 0 &&
                 comboBox_Status.SelectedIndex >=0 && comboBox_Employee.SelectedIndex >= 0 &&
                 listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox_proc.Items.Count > 0 &&
-                comboBox_Motherboard.SelectedIndex >= 0)
-            {
+                comboBox_Motherboard.SelectedIndex >= 0) {
 
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var itemno = textBox_ItemNo.Text;
                 Status status = (Status)comboBox_Status.SelectedItem;
                 var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
                 DateTime date = dateTimePicker1.Value;
-                
+                reason = textBox_Reason.Text;
                 var hdds = listBox1.Items.Cast<HDD>().ToList();
                 var rams = listBox2.Items.Cast<RAM>().ToList();
                 var processors = listBox_proc.Items.Cast<Processor>().ToList();
                 var motherboardid = Convert.ToInt32(comboBox_Motherboard.SelectedValue);
                 ComputerFunctions Computer = new ComputerFunctions();
-                Computer.Add(departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors, date);
+                Computer.Add(departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors, date, reason);
                 frm1.Update_datagridview(0);
                 this.Close();
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("Error");
             }
         }
 
-        private void button_Edit_Click(object sender, EventArgs e)
-        {
+        private void button_Edit_Click(object sender, EventArgs e) {
             if (comboBox_Department.SelectedIndex >= 0 && textBox_ItemNo.Text.Length != 0 &&
                 comboBox_Status.SelectedIndex >= 0 && comboBox_Employee.SelectedIndex >= 0 &&
                 listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox_proc.Items.Count > 0 &&
-                comboBox_Motherboard.SelectedIndex >= 0)
-            {
+                comboBox_Motherboard.SelectedIndex >= 0) {
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var itemno = textBox_ItemNo.Text;
                 Status status = (Status)comboBox_Status.SelectedItem;
                 var employeeid = Convert.ToInt32(comboBox_Employee.SelectedValue);
                 DateTime date = dateTimePicker1.Value;
-
+                reason = textBox_Reason.Text;
                 var hdds = listBox1.Items.Cast<HDD>().ToList();
-
                 var rams = listBox2.Items.Cast<RAM>().ToList();
-
                 List<Processor> processors = listBox_proc.Items.Cast<Processor>().ToList(); 
-
                 var motherboardid = Convert.ToInt32(comboBox_Motherboard.SelectedValue);
 
                 ComputerFunctions Computer = new ComputerFunctions();
-                Computer.Edit(id, departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors, date);
+                Computer.Edit(id, departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors, date, reason);
                 frm1.Update_datagridview(0);
                 this.Close();
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("Error");
             }
         }

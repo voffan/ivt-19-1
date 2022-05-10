@@ -4,14 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
-namespace Comp_park_app
-{
-    public class Department
-    {
+namespace Comp_park_app {
+    public class Department {
+
+        [DisplayName("Номер")]
         public int Id { get; set; }
-        [MaxLength(100)]
+
+        [DisplayName("Название"), MaxLength(100)]
         public string Name { get; set; }
+
+        [DisplayName("Номер отдела")]
         public int Number { get; set; }
+
+        public override string ToString() {
+            return Name;
+        }
     }
 }

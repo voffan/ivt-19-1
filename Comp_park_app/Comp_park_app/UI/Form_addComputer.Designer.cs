@@ -55,12 +55,14 @@ namespace Comp_park_app
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.button_Edit = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBox_Reason = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBox_HDD
             // 
             this.comboBox_HDD.FormattingEnabled = true;
-            this.comboBox_HDD.Location = new System.Drawing.Point(144, 229);
+            this.comboBox_HDD.Location = new System.Drawing.Point(144, 230);
             this.comboBox_HDD.Name = "comboBox_HDD";
             this.comboBox_HDD.Size = new System.Drawing.Size(121, 23);
             this.comboBox_HDD.TabIndex = 0;
@@ -69,7 +71,7 @@ namespace Comp_park_app
             // comboBox_RAM
             // 
             this.comboBox_RAM.FormattingEnabled = true;
-            this.comboBox_RAM.Location = new System.Drawing.Point(405, 232);
+            this.comboBox_RAM.Location = new System.Drawing.Point(405, 233);
             this.comboBox_RAM.Name = "comboBox_RAM";
             this.comboBox_RAM.Size = new System.Drawing.Size(121, 23);
             this.comboBox_RAM.TabIndex = 1;
@@ -78,7 +80,7 @@ namespace Comp_park_app
             // label_HDD
             // 
             this.label_HDD.AutoSize = true;
-            this.label_HDD.Location = new System.Drawing.Point(72, 232);
+            this.label_HDD.Location = new System.Drawing.Point(72, 233);
             this.label_HDD.Name = "label_HDD";
             this.label_HDD.Size = new System.Drawing.Size(32, 15);
             this.label_HDD.TabIndex = 2;
@@ -87,7 +89,7 @@ namespace Comp_park_app
             // label_RAM
             // 
             this.label_RAM.AutoSize = true;
-            this.label_RAM.Location = new System.Drawing.Point(322, 235);
+            this.label_RAM.Location = new System.Drawing.Point(322, 236);
             this.label_RAM.Name = "label_RAM";
             this.label_RAM.Size = new System.Drawing.Size(33, 15);
             this.label_RAM.TabIndex = 3;
@@ -96,7 +98,7 @@ namespace Comp_park_app
             // comboBox_Processor
             // 
             this.comboBox_Processor.FormattingEnabled = true;
-            this.comboBox_Processor.Location = new System.Drawing.Point(144, 409);
+            this.comboBox_Processor.Location = new System.Drawing.Point(144, 410);
             this.comboBox_Processor.Name = "comboBox_Processor";
             this.comboBox_Processor.Size = new System.Drawing.Size(121, 23);
             this.comboBox_Processor.TabIndex = 4;
@@ -105,7 +107,7 @@ namespace Comp_park_app
             // comboBox_Motherboard
             // 
             this.comboBox_Motherboard.FormattingEnabled = true;
-            this.comboBox_Motherboard.Location = new System.Drawing.Point(405, 409);
+            this.comboBox_Motherboard.Location = new System.Drawing.Point(405, 410);
             this.comboBox_Motherboard.Name = "comboBox_Motherboard";
             this.comboBox_Motherboard.Size = new System.Drawing.Size(121, 23);
             this.comboBox_Motherboard.TabIndex = 5;
@@ -113,7 +115,7 @@ namespace Comp_park_app
             // label_Processor
             // 
             this.label_Processor.AutoSize = true;
-            this.label_Processor.Location = new System.Drawing.Point(72, 412);
+            this.label_Processor.Location = new System.Drawing.Point(72, 413);
             this.label_Processor.Name = "label_Processor";
             this.label_Processor.Size = new System.Drawing.Size(58, 15);
             this.label_Processor.TabIndex = 6;
@@ -122,7 +124,7 @@ namespace Comp_park_app
             // label_Motherboard
             // 
             this.label_Motherboard.AutoSize = true;
-            this.label_Motherboard.Location = new System.Drawing.Point(322, 412);
+            this.label_Motherboard.Location = new System.Drawing.Point(322, 413);
             this.label_Motherboard.Name = "label_Motherboard";
             this.label_Motherboard.Size = new System.Drawing.Size(77, 15);
             this.label_Motherboard.TabIndex = 7;
@@ -139,7 +141,7 @@ namespace Comp_park_app
             // 
             // button_addComputer
             // 
-            this.button_addComputer.Location = new System.Drawing.Point(405, 522);
+            this.button_addComputer.Location = new System.Drawing.Point(405, 523);
             this.button_addComputer.Name = "button_addComputer";
             this.button_addComputer.Size = new System.Drawing.Size(121, 23);
             this.button_addComputer.TabIndex = 9;
@@ -151,7 +153,7 @@ namespace Comp_park_app
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(72, 271);
+            this.listBox1.Location = new System.Drawing.Point(72, 272);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(193, 94);
             this.listBox1.TabIndex = 10;
@@ -161,7 +163,7 @@ namespace Comp_park_app
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(322, 271);
+            this.listBox2.Location = new System.Drawing.Point(322, 272);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(204, 94);
             this.listBox2.TabIndex = 11;
@@ -171,7 +173,7 @@ namespace Comp_park_app
             // 
             this.listBox_proc.FormattingEnabled = true;
             this.listBox_proc.ItemHeight = 15;
-            this.listBox_proc.Location = new System.Drawing.Point(72, 451);
+            this.listBox_proc.Location = new System.Drawing.Point(72, 452);
             this.listBox_proc.Name = "listBox_proc";
             this.listBox_proc.Size = new System.Drawing.Size(193, 94);
             this.listBox_proc.TabIndex = 12;
@@ -198,7 +200,7 @@ namespace Comp_park_app
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(72, 183);
+            this.label3.Location = new System.Drawing.Point(72, 204);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 15);
             this.label3.TabIndex = 16;
@@ -222,7 +224,7 @@ namespace Comp_park_app
             // comboBox_Employee
             // 
             this.comboBox_Employee.FormattingEnabled = true;
-            this.comboBox_Employee.Location = new System.Drawing.Point(144, 180);
+            this.comboBox_Employee.Location = new System.Drawing.Point(144, 201);
             this.comboBox_Employee.Name = "comboBox_Employee";
             this.comboBox_Employee.Size = new System.Drawing.Size(121, 23);
             this.comboBox_Employee.TabIndex = 19;
@@ -273,7 +275,7 @@ namespace Comp_park_app
             // 
             // button_Edit
             // 
-            this.button_Edit.Location = new System.Drawing.Point(405, 522);
+            this.button_Edit.Location = new System.Drawing.Point(405, 523);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(121, 23);
             this.button_Edit.TabIndex = 25;
@@ -283,16 +285,34 @@ namespace Comp_park_app
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(322, 451);
+            this.dateTimePicker1.Location = new System.Drawing.Point(322, 452);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(204, 23);
             this.dateTimePicker1.TabIndex = 26;
+            // 
+            // textBox_Reason
+            // 
+            this.textBox_Reason.Location = new System.Drawing.Point(144, 172);
+            this.textBox_Reason.Name = "textBox_Reason";
+            this.textBox_Reason.Size = new System.Drawing.Size(121, 23);
+            this.textBox_Reason.TabIndex = 27;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(72, 175);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 15);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Причина";
             // 
             // Form_addComputer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 583);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox_Reason);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.comboBox3);
@@ -355,5 +375,7 @@ namespace Comp_park_app
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button button_Edit;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textBox_Reason;
+        private System.Windows.Forms.Label label6;
     }
 }
