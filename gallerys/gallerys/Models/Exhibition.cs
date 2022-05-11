@@ -8,7 +8,7 @@ namespace gallerys.Models
 {
     public class Exhibition : Place
     {
-        public int Id { get; set; }
+        public new int Id { get; set; }
 
         [MaxLength(200)]
         public string Place { get; set; }

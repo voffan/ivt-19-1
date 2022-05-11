@@ -17,22 +17,23 @@ namespace gallerys.components
 {
     public class ExhiSer
     {
-        public void Add(string name)
+        public void Add(string name, string mesto)
         {
-            Exhibition exhi = new Exhibition() { Name = name };
+            Exhibition exhi = new Exhibition() { Name = name, Place = mesto};
             using (gallContext db = Connection.Connect())
             {
                 db.Exhibitions.Add(exhi);
                 db.SaveChanges();
             }
         }
-        public void Edit(int id, string name)
+        public void Edit(int id, string name, string mesto)
         {
             Exhibition e = new Exhibition();
             using (gallContext db = Connection.Connect())
             {
                 e = db.Exhibitions.Find(id);
                 e.Name = name;
+                e.Place = mesto;
                 db.Entry(e).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
             }

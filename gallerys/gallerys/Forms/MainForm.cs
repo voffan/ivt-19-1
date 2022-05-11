@@ -57,6 +57,16 @@ namespace gallerys
                         AddEmployee add = new AddEmployee(s, comboBox1.Text);
                         add.ShowDialog();
                     }
+                    if (comboBox1.Text == "Выставки")
+                    {
+                        AddExhibition add = new AddExhibition(s, comboBox1.Text);
+                        add.ShowDialog();
+                    }
+                    if (comboBox1.Text == "Журнал передвижения картин")
+                    {
+                        AddJournal add = new AddJournal(s, comboBox1.Text);
+                        add.ShowDialog();
+                    }
                     InitTable();
                 }
                 else
@@ -130,6 +140,7 @@ namespace gallerys
                 if (selectedtable == "Журнал передвижения картин")
                 {
                     dataGridView1.DataSource = c.Journals.ToList();
+                    dataGridView1.Columns[0].Visible = false;
                 }
                 if (selectedtable == "Выставки")
                 {
@@ -187,6 +198,27 @@ namespace gallerys
                             add.textBox3.Text = sp1[2];
                             add.textBox4.Text = dataGridView1.Rows[idn].Cells[2].Value.ToString();
                             add.textBox5.Text = dataGridView1.Rows[idn].Cells[3].Value.ToString();
+                            add.ShowDialog();
+                        }
+                        if (comboBox1.Text == "Журнал передвижения картин")
+                        {
+                            AddJournal add = new AddJournal(s, comboBox1.Text);
+                            Journal j = new Journal();
+                            using (gallContext db = Connection.Connect())
+                            {
+                                j = db.Journals.Find(dataGridView1.Rows[idn].Cells[0].Value);
+                                add.dateTimePicker1.Value = j.Oper_date;
+                                add.comboBoxPaint.SelectedValue = j.PaintingId;
+                                add.comboBoxFrom.SelectedValue = j.FromId;
+                                add.comboBoxTo.SelectedValue = j.ToId;
+                            }
+                            add.ShowDialog();
+                        }
+                        if (comboBox1.Text == "Выставки")
+                        {
+                            AddExhibition add = new AddExhibition(s, comboBox1.Text);
+                            add.textBox1.Text = dataGridView1.Rows[idn].Cells[2].Value.ToString();
+                            add.textBox2.Text = dataGridView1.Rows[idn].Cells[1].Value.ToString();
                             add.ShowDialog();
                         }
                         InitTable();

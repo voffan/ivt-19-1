@@ -23,5 +23,9 @@ namespace gallerys.Models
         public int FromId { get; set; }
         [ForeignKey("FromId")]
         public Place From { get; set; }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }
