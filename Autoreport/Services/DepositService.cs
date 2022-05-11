@@ -88,9 +88,19 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit()
+        public void Edit(Deposit editingEntity,string data,uint sum,DepositType position,Client client_id)
         {
-
+            using (DataContext db = Connection.Connect())
+            {
+                var dep = db.Deposits
+                    .Where(d => d.Id == editingEntity.Id)
+                    .First();
+                dep.DocumentData = data;
+                dep.MoneyValue = Convert.ToUInt32(sum);
+                //dep.DepositType = position;
+                //dep.Owner = editingEntity.Owner;
+                db.SaveChanges();
+            }
         }
     }
 }

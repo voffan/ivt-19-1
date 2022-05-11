@@ -18,6 +18,7 @@ namespace Autoreport.UI.Edit
 {
     public partial class EditDepositF : AddFormSelective, IEditForm
     {
+        Deposit editingEntity;
         public EditDepositF(Button relatedTab, Action OnCloseHandler) : base()
         {
             base.maxSelectedCount = 1;
@@ -39,10 +40,10 @@ namespace Autoreport.UI.Edit
         {
             if (Loaded)
                 return;
-
             positionDepositBox.DisplayMember = "Key";
             positionDepositBox.ValueMember = "Value";
             positionDepositBox.DataSource = new BindingSource(DescriptionAttributes<DepositType>.RetrieveAttributes(), null);
+            positionDepositBox.SelectedValue = editingEntity.DepositType.ToString();
         }
 
         protected override void saveBtn_Click(object sender, EventArgs e)
@@ -61,14 +62,21 @@ namespace Autoreport.UI.Edit
 
             Client client_id = selectedBox.Items.Cast<Client>().ToList()[0];
 
-            Connection.depositService.Add(data, sum, position, client_id);
+            Connection.depositService.Edit(editingEntity,data, sum, position, client_id);
             CloseHandler();
             Close();
         }
 
         public void LoadField(int entityId)
         {
-            throw new NotImplementedException();
+            editingEntity = Connection.depositService.Get(entityId);
+            if (editingEntity == null)
+            {
+                MessageBox.Show("Такого диска не сущесвует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            dataText.Text = editingEntity.DocumentData;
+            sumText.Text = Convert.ToString(editingEntity.MoneyValue);
+            selectedBox.Items.Add(editingEntity.Owner);
         }
     }
 }

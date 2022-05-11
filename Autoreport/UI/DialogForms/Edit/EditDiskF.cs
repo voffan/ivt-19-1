@@ -17,6 +17,8 @@ namespace Autoreport.UI.Edit
 {
     public partial class EditDiskF : AddFormSelective, IEditForm
     {
+        Disk editingEntity;
+        Button thisrelatedTab;
         public EditDiskF(Button relatedTab, Action OnCloseHandler) : base()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace Autoreport.UI.Edit
             AddEnterKeyEventListener(this);
 
             selectedBox.Tag = this.selectedBoxTag;
-            this.relatedTab = relatedTab;
+            this.thisrelatedTab = relatedTab;
             this.CloseHandler = OnCloseHandler;
         }
 
@@ -39,14 +41,12 @@ namespace Autoreport.UI.Edit
             {
                 MessageBox.Show("Не выбран ни один диск", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
-            
+            }        
             string article = articleText.Text;
             string count = countText.Text;
             string cost = costText.Text;
             List<Film> films = selectedBox.Items.Cast<Film>().ToList();
-
-            Connection.diskService.Add(article, count, cost, films);
+            Connection.diskService.Edit(editingEntity, article, count, cost, films);
             CloseHandler();
             Close();
         }
@@ -68,10 +68,18 @@ namespace Autoreport.UI.Edit
                 e.Handled = true;
             }
         }
-
         public void LoadField(int entityId)
         {
-            throw new NotImplementedException();
+            editingEntity = Connection.diskService.Get(entityId);
+            if (editingEntity == null)
+            {
+                MessageBox.Show("Такого диска не сущесвует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            selectedBox.Items.AddRange(editingEntity.Films.ToArray());            
+            articleText.Text = editingEntity.Article;
+            countText.Text = Convert.ToString(editingEntity.General_count);
+            costText.Text = Convert.ToString(editingEntity.Cost);
+
         }
     }
 }

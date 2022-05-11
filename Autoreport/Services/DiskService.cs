@@ -32,11 +32,6 @@ namespace Autoreport.Services
             }
         }
 
-        public Disk Get(int diskId)
-        {
-            return null;
-        }
-
         public List<Disk> GetAll()
         {
             using (DataContext db = Connection.Connect())
@@ -48,13 +43,22 @@ namespace Autoreport.Services
             }
         }
 
+        public Disk Get(int ids)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                Disk disk = db.Disks
+                    .Include(x => x.Films)
+                    .FirstOrDefault(x => x.Id == ids);
+                return disk;
+            }
+        }
         public List<Disk> Get(List<int> ids)
         {
             using (DataContext db = Connection.Connect())
             {
                 IQueryable<Disk> disks = db.Disks
                     .Where(d => ids.Any(item => item == d.Id));
-
                 return disks.ToList();
             }
         }
@@ -68,9 +72,20 @@ namespace Autoreport.Services
             }
         }
 
-        public void Edit()
+        public void Edit(Disk editingEntity, string article, string count,string cost,List<Film> films)
         {
-
+            using (DataContext db = Connection.Connect())
+            {
+                var disk = db.Disks
+                    .Include(d => d.Films)
+                    .Where(d => d.Id == editingEntity.Id)
+                    .First();
+                disk.Article = article;
+                disk.General_count = Convert.ToInt32(count);
+                disk.Cost = Convert.ToInt32(cost);
+                disk.Films = db.Films.Where(x => films.Select(y => y.Id).Contains(x.Id)).ToList();
+                db.SaveChanges();
+            }
         }
     }
 }

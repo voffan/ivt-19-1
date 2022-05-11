@@ -235,6 +235,7 @@ namespace Autoreport.UI.Edit
             this.MinimumSize = new System.Drawing.Size(545, 200);
             this.Name = "EditDiskF";
             this.Text = "Редактировать диск";
+
             this.flowLayout.ResumeLayout(false);
             this.flowLayout.PerformLayout();
             this.panel2.ResumeLayout(false);
