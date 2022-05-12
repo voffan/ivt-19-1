@@ -43,6 +43,7 @@ namespace Korobki_project
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button12 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,12 +184,23 @@ namespace Korobki_project
             this.textBox1.TabIndex = 14;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(654, 67);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(83, 23);
+            this.button12.TabIndex = 15;
+            this.button12.Text = "Отчёт";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(782, 454);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
@@ -231,5 +243,6 @@ namespace Korobki_project
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TextBox textBox1;
-    }
+		private System.Windows.Forms.Button button12;
+	}
 }

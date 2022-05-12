@@ -14,6 +14,8 @@ using Korobki_project.Classes;
 using System.Data.OleDb;
 using MySql.Data.MySqlClient;
 using Korobki_project.Functions;
+using System.Diagnostics;
+using System.IO;
 
 namespace Korobki_project
 {
@@ -85,10 +87,10 @@ namespace Korobki_project
         }
 
         private void load_db()
-		{
+        {
             Context c = new Context();
             switch (pf)
-			{
+            {
                 case 1:
                     dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").OrderBy(e => e.Name).ToList();
                     dataGridView1.Columns[0].Visible = false;
@@ -130,7 +132,7 @@ namespace Korobki_project
                     dataGridView1.Columns[0].Visible = false;
                     break;
             }
-		}
+        }
 
         private void btnadd_Click(object sender, EventArgs e)
         {
@@ -217,8 +219,8 @@ namespace Korobki_project
             if (dialogResult == DialogResult.Yes)
             {
                 int index = id();
-                if(dataGridView1.CurrentRow != null)
-				{
+                if (dataGridView1.CurrentRow != null)
+                {
                     switch (pf)
                     {
                         case 1:
@@ -323,10 +325,10 @@ namespace Korobki_project
         }
 
         private void f(object s, FormClosedEventArgs ev)
-		{
+        {
             load_db();
             this.Show();
-		}
+        }
         private void searchname()
         {
             using (Context context = new Context())
@@ -387,6 +389,45 @@ namespace Korobki_project
             {
                 searchname();
             }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+            string path = "/";
+            string file = "Test.xlsx";
+            //File.Delete(path + file);
+
+            try
+            {
+                using (Excel.ExcelTools tools = new Excel.ExcelTools())
+                {
+                    if (tools.Open(filePath: Path.Combine(path, file)))
+                    {
+                        tools.Set(column: "C", row: 1, data: "Почта");
+
+                        tools.Set(column: "B", row: 3, data: "Номер");
+                        tools.Set(column: "B", row: 4, data: 1290);
+                        tools.Set(column: "B", row: 5, data: 764);
+                        tools.Set(column: "B", row: 6, data: 6526);
+
+                        tools.Set(column: "C", row: 3, data: "Наименование");
+                        tools.Set(column: "C", row: 4, data: "посылка");
+                        tools.Set(column: "C", row: 5, data: "бандероль");
+                        tools.Set(column: "C", row: 6, data: "письмо");
+
+                        tools.Set(column: "D", row: 3, data: "Дата отправки");
+                        tools.Set(column: "D", row: 4, data: DateTime.Parse("12.10.2015"));
+                        tools.Set(column: "D", row: 5, data: DateTime.Parse("04.11.2012"));
+                        tools.Set(column: "D", row: 6, data: DateTime.Parse("05.10.2012"));
+
+                        tools.Save();
+                    }
+                    tools.Clear();
+                }
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            //Process.Start(file);
         }
     }
 }
