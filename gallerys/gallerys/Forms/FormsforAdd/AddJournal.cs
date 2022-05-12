@@ -49,8 +49,9 @@ namespace gallerys.Forms.FormsforAdd
                 idn = js.ReturnId(dateTimePicker1, comboBoxPaint);
             }
             idem = Connection.employeeSer.CurrentEmployee.Id;
-            js.ReturnCombobox(comboBoxPaint, comboBoxFrom, comboBoxTo);
-
+            js.ReturnCombobox(comboBoxPaint);
+            js.ReturnCombo(comboBoxFrom);
+            js.ReturnCombo(comboBoxTo);
         }
 
         private void button2_Click(object sender, EventArgs e)

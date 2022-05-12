@@ -75,34 +75,35 @@ namespace gallerys.components
                 return empl.Id;
             }
         }
-        public void ReturnCombobox(ComboBox c1, ComboBox c2, ComboBox c3)
+        public void ReturnCombobox(ComboBox c1)
         {
             gallContext c = new gallContext();
             List<Painting> paint = c.Paintings.ToList();
-            List<Place> place = c.Places.ToList();
-            DataTable dt = new DataTable();
-            DataTable dt1 = new DataTable();
+            DataTable dt = new DataTable();      
             dt.Columns.Add("id");
             dt.Columns.Add("name");
-            dt1.Columns.Add("id");
-            dt1.Columns.Add("name");
             foreach (Painting usepurpose in paint)
-            {
-                dt.Rows.Add(usepurpose.Id, usepurpose.Name);
-            }
-            foreach (Place usepurpose in place)
             {
                 dt.Rows.Add(usepurpose.Id, usepurpose.Name);
             }
             c1.ValueMember = dt.Columns[0].ColumnName;
             c1.DisplayMember = dt.Columns[1].ColumnName;
             c1.DataSource = dt;
-            c2.ValueMember = dt1.Columns[0].ColumnName;
-            c2.DisplayMember = dt1.Columns[1].ColumnName;
-            c2.DataSource = dt1;
-            c3.ValueMember = dt1.Columns[0].ColumnName;
-            c3.DisplayMember = dt1.Columns[1].ColumnName;
-            c3.DataSource = dt1;
+        }
+        public void ReturnCombo(ComboBox c1)
+        {
+            gallContext c = new gallContext();
+            List<Place> place = c.Places.ToList();
+            DataTable dt1 = new DataTable();
+            dt1.Columns.Add("id");
+            dt1.Columns.Add("name");
+            foreach (Place usepurpose in place)
+            {
+                dt1.Rows.Add(usepurpose.Id, usepurpose.Name);
+            }
+            c1.ValueMember = dt1.Columns[0].ColumnName;
+            c1.DisplayMember = dt1.Columns[1].ColumnName;
+            c1.DataSource = dt1;
         }
     }
 }
