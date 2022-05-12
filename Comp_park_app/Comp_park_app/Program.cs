@@ -26,8 +26,8 @@ namespace Comp_park_app_form
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Context = new ApplicationContext(new Form1());
-            //Context = new ApplicationContext(new Authorization());
+            //Context = new ApplicationContext(new Form1());
+            Context = new ApplicationContext(new Authorization());
             Application.Run(Context);
 
         }
