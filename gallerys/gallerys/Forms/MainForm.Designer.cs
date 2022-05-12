@@ -148,7 +148,7 @@ namespace gallerys
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "е";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

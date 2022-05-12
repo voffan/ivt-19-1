@@ -106,7 +106,7 @@ namespace gallerys
                 }
                 if (selectedtable == "Выставки")
                 {
-                    dataGridView1.DataSource = c.Exhibitions.ToList();
+                    dataGridView1.DataSource = c.Places.ToList();
                 }
             }
             else
@@ -144,7 +144,7 @@ namespace gallerys
                 }
                 if (selectedtable == "Выставки")
                 {
-                    dataGridView1.DataSource = c.Exhibitions.ToList();
+                    dataGridView1.DataSource = c.Places.ToList();
                     dataGridView1.Columns[0].Visible = false;
                 }
             }
