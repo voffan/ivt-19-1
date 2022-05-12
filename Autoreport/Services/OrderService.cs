@@ -43,14 +43,7 @@ namespace Autoreport.Services
                     Disks = db.Disks.Where(x => Disks.Select(x => x.Id).Contains(x.Id)).ToList()
                 };
 
-                foreach (Disk disk in order.Disks)
-                {
-                    if (disk.Current_count == 0)
-                        throw new NotEnoughDisks($"Диски '{disk.Article}' в данный момент отсутствуют");
-                    
-                    disk.Current_count--;
-                }
-
+                Connection.diskService.VaryCurrentCount(order.Disks, false);
                 Connection.clientService.VaryOrder(owner, true);
 
                 db.Orders.Add(order);
@@ -193,24 +186,34 @@ namespace Autoreport.Services
                     throw new DateNotExpired("Статус заказа установлен в значение 'Просрочен', но дата еще не истекла");
                 }
 
-                var order = db.Orders
-                    .First(x => x.Id == editingEntity.Id);
+                var order = db.Orders.First(x => x.Id == editingEntity.Id);
+
+                if (deposit.DepositType == DepositType.Money)
+                {
+                    double diskSum = disks.Sum(x => x.Cost);
+
+                    if (diskSum > deposit.MoneyValue)
+                    {
+                        throw new LowDeposit($"Денежный эквивалент уступает сумме цен дисков");
+                    }
+                }
+
+                if (status == OrderStatus.Completed)
+                {
+                    Connection.clientService.VaryOrder(order.OrderClient, false);
+                    Connection.diskService.VaryCurrentCount(order.Disks, true);
+                } else
+                {
+                    // для убранных количество дисков увеличиваем, для добавленных уменьшаем
+                    Connection.diskService.VaryCurrentCount(order.Disks.Except(disks).ToList(), true);
+                    Connection.diskService.VaryCurrentCount(disks.Except(order.Disks).ToList(), false);
+                }
 
                 order.Cost = disks.Sum(disk => disk.Cost);
                 order.Return_date = returnDate;
                 order.OrderClient = db.Clients.FirstOrDefault(x => x.Id == deposit.Owner.Id);
                 order.OrderDeposit = db.Deposits.FirstOrDefault(x => x.Id == deposit.Id);
                 order.Disks = db.Disks.Where(x => disks.Select(y => y.Id).Contains(x.Id)).ToList();
-
-                if (status == OrderStatus.Completed)
-                {
-                    Connection.clientService.VaryOrder(order.OrderClient, false);
-
-                    foreach (Disk disk in order.Disks)
-                    {
-                        disk.Current_count++;
-                    }
-                }
 
                 db.SaveChanges();
             }

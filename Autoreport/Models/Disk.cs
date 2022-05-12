@@ -32,7 +32,7 @@ namespace Autoreport.Models
 
         public override string ToString()
         {
-            return $"{Article} ({Cost}р)";
+            return $"{Article} ({Cost}р) {Current_count} шт.";
         }
     }
 }

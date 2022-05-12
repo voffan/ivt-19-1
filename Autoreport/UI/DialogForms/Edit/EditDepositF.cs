@@ -72,7 +72,7 @@ namespace Autoreport.UI.Edit
             editingEntity = Connection.depositService.Get(entityId);
             if (editingEntity == null)
             {
-                MessageBox.Show("Такого диска не сущесвует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Такого залога не сущесвует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             dataText.Text = editingEntity.DocumentData;
             sumText.Text = Convert.ToString(editingEntity.MoneyValue);

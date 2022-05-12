@@ -7,6 +7,7 @@ using Autoreport.UI.Classes;
 using System.Linq;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
+using Autoreport.Services.Errors;
 
 namespace Autoreport.Services
 {
@@ -32,6 +33,38 @@ namespace Autoreport.Services
             }
         }
 
+        public void VaryCurrentCount(List<Disk> toDisks, bool increase)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                List<Disk> disks = db.Disks.Where(d => toDisks.Select(x => x.Id).Contains(d.Id)).ToList();
+
+                foreach (Disk disk in disks)
+                {
+                    if (!increase && disk.Current_count == 0)
+                        throw new NotEnoughDisks($"Диски '{disk.Article}' в данный момент отсутствуют");
+
+                    _ = (increase) ? disk.Current_count++ : disk.Current_count--;
+                }
+                disks.Select(d => increase ? d.Current_count++ : d.Current_count--);
+                db.SaveChanges();
+            }
+        }
+
+        public void VaryCurrentCount(Disk toDisk, bool increase)
+        {
+            using (DataContext db = Connection.Connect())
+            {
+                Disk disk = db.Disks.First(d => d.Id == toDisk.Id);
+
+                if (!increase && disk.Current_count == 0)
+                    throw new NotEnoughDisks($"Диски '{disk.Article}' в данный момент отсутствуют");
+
+                _ = (increase) ? disk.Current_count++ : disk.Current_count--;
+                db.SaveChanges();
+            }
+        }
+
         public List<Disk> GetAll()
         {
             using (DataContext db = Connection.Connect())
@@ -43,16 +76,17 @@ namespace Autoreport.Services
             }
         }
 
-        public Disk Get(int ids)
+        public Disk Get(int diskId)
         {
             using (DataContext db = Connection.Connect())
             {
                 Disk disk = db.Disks
                     .Include(x => x.Films)
-                    .FirstOrDefault(x => x.Id == ids);
+                    .FirstOrDefault(x => x.Id == diskId);
                 return disk;
             }
         }
+
         public List<Disk> Get(List<int> ids)
         {
             using (DataContext db = Connection.Connect())

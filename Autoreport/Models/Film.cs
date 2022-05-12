@@ -26,6 +26,7 @@ namespace Autoreport.Models
         [Required, DisplayName("Жанры")]
         public virtual List<Genre> Genres { get; set; }
 
+        [DisplayName("Диски")]
         public virtual List<Disk> Disks { get; set; }
 
         public override string ToString()

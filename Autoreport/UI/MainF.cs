@@ -853,6 +853,18 @@ namespace Autoreport.UI
                     DisableAllTabsExcept(selectTab);
                     ConnectDoneButton(doneEventHandler);
                     SetSelectionElementsActive(isSelectEnabled);
+
+                    dataGridView.ClearSelection();
+                    List<object> previewSelectedIds = previewSelected.Select(x => x.GetType().GetProperties().First(p => p.Name == "Id").GetValue(x, null)).ToList();
+                    
+                    foreach (DataGridViewRow row in dataGridView.Rows)
+                    {
+                        Type t = row.DataBoundItem.GetType();
+                        PropertyInfo pr = t.GetProperties().First(p => p.Name == "Id");
+
+                        if (previewSelectedIds.Contains(pr.GetValue(row.DataBoundItem, null)))
+                            row.Selected = true;
+                    }
                 }
                 else
                 {

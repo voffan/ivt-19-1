@@ -18,7 +18,7 @@ namespace Autoreport.UI.Edit
     public partial class EditDiskF : AddFormSelective, IEditForm
     {
         Disk editingEntity;
-        Button thisrelatedTab;
+
         public EditDiskF(Button relatedTab, Action OnCloseHandler) : base()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace Autoreport.UI.Edit
             AddEnterKeyEventListener(this);
 
             selectedBox.Tag = this.selectedBoxTag;
-            this.thisrelatedTab = relatedTab;
+            this.relatedTab = relatedTab;
             this.CloseHandler = OnCloseHandler;
         }
 

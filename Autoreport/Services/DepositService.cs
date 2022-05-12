@@ -73,7 +73,7 @@ namespace Autoreport.Services
             {
                 Deposit deposit = db.Deposits
                     .Include("Owner")
-                    .First(dep => dep.Id == depositId);
+                    .FirstOrDefault(dep => dep.Id == depositId);
 
                 return deposit;
             }
