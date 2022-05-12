@@ -50,27 +50,28 @@ namespace Korobki_project.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(21, 159);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 15);
+            this.label3.Size = new System.Drawing.Size(97, 15);
             this.label3.TabIndex = 14;
-            this.label3.Text = "Product Size";
+            this.label3.Text = "Размер коробки";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(21, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.Size = new System.Drawing.Size(132, 15);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Plan Date";
+            this.label2.Text = "Запланированная дата";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.Size = new System.Drawing.Size(96, 15);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Count box";
+            this.label1.Text = "Кол-во коробок";
             // 
             // comboBox1
             // 
@@ -111,7 +112,7 @@ namespace Korobki_project.UI
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Name = "PlanEditForm";
-            this.Text = "PlanEditForm";
+            this.Text = "Редактор планов";
             this.Load += new System.EventHandler(this.PlanEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -56,9 +56,9 @@ namespace Korobki_project.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(23, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.Size = new System.Drawing.Size(27, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Type Name";
+            this.label1.Text = "Вид";
             // 
             // TypeeEditForm
             // 
@@ -69,7 +69,7 @@ namespace Korobki_project.UI
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "TypeeEditForm";
-            this.Text = "TypeeEditForm";
+            this.Text = "Редактор видов коробок";
             this.Load += new System.EventHandler(this.TypeeEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

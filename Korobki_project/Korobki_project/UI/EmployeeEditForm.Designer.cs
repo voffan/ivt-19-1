@@ -61,63 +61,63 @@ namespace Korobki_project.UI
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(12, 313);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 15);
+            this.label7.Size = new System.Drawing.Size(43, 15);
             this.label7.TabIndex = 28;
-            this.label7.Text = "Shift";
+            this.label7.Text = "Смена";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 262);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 15);
+            this.label6.Size = new System.Drawing.Size(112, 15);
             this.label6.TabIndex = 27;
-            this.label6.Text = "Address";
+            this.label6.Text = "Адрес проживания";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 210);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 15);
+            this.label5.Size = new System.Drawing.Size(101, 15);
             this.label5.TabIndex = 26;
-            this.label5.Text = "Phone Number";
+            this.label5.Text = "Номер телефона";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 167);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 15);
+            this.label4.Size = new System.Drawing.Size(69, 15);
             this.label4.TabIndex = 25;
-            this.label4.Text = "Position";
+            this.label4.Text = "Должность";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 15);
+            this.label3.Size = new System.Drawing.Size(49, 15);
             this.label3.TabIndex = 24;
-            this.label3.Text = "Password";
+            this.label3.Text = "Пароль";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 23;
-            this.label2.Text = "Login";
+            this.label2.Text = "Логин";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 15);
+            this.label1.Size = new System.Drawing.Size(31, 15);
             this.label1.TabIndex = 22;
-            this.label1.Text = "Name";
+            this.label1.Text = "Имя";
             // 
             // comboBox2
             // 
@@ -193,7 +193,7 @@ namespace Korobki_project.UI
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "EmployeeEditForm";
-            this.Text = "EmployeeEditForm";
+            this.Text = "Редактор работников";
             this.Load += new System.EventHandler(this.EmployeeEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

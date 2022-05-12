@@ -53,5 +53,7 @@ namespace Korobki_project.UI
 				MessageBox.Show("Заполните все поля");
 			}
 		}
-	}
+
+        
+    }
 }

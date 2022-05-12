@@ -50,5 +50,10 @@ namespace Korobki_project.UI
                 MessageBox.Show("Заполните все поля");
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

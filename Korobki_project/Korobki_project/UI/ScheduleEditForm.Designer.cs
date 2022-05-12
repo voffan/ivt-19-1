@@ -53,18 +53,18 @@ namespace Korobki_project.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(21, 160);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 15);
+            this.label3.Size = new System.Drawing.Size(99, 15);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Plan Count";
+            this.label3.Text = "Кол-во по плану";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(21, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 15);
+            this.label2.Size = new System.Drawing.Size(32, 15);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Date";
+            this.label2.Text = "Дата";
             // 
             // textBox1
             // 
@@ -85,9 +85,9 @@ namespace Korobki_project.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 15);
+            this.label1.Size = new System.Drawing.Size(43, 15);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Shift";
+            this.label1.Text = "Смена";
             // 
             // comboBox1
             // 
@@ -111,7 +111,7 @@ namespace Korobki_project.UI
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Name = "ScheduleEditForm";
-            this.Text = "ScheduleEditForm";
+            this.Text = "Редактор расписаний";
             this.Load += new System.EventHandler(this.ScheduleEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

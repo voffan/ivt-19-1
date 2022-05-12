@@ -56,9 +56,9 @@ namespace Korobki_project.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(24, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.Size = new System.Drawing.Size(43, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Shift Name";
+            this.label1.Text = "Смена";
             // 
             // ShiftEditForm
             // 
@@ -69,7 +69,7 @@ namespace Korobki_project.UI
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "ShiftEditForm";
-            this.Text = "ShiftEditForm";
+            this.Text = "Редактор смен";
             this.Load += new System.EventHandler(this.ShiftEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

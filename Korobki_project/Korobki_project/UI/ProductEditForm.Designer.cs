@@ -51,18 +51,18 @@ namespace Korobki_project.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(28, 101);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 15);
+            this.label2.Size = new System.Drawing.Size(97, 15);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Size box";
+            this.label2.Text = "Размер коробки";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(28, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 15);
+            this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Type";
+            this.label1.Text = "Вид коробки";
             // 
             // textBox1
             // 
@@ -91,7 +91,7 @@ namespace Korobki_project.UI
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Name = "ProductEditForm";
-            this.Text = "ProductEditForm";
+            this.Text = "Редактор продуктов";
             this.Load += new System.EventHandler(this.ProductEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
