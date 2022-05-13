@@ -103,6 +103,7 @@ namespace gallerys
                 if (selectedtable == "Журнал передвижения картин")
                 {
                     dataGridView1.DataSource = c.Journals.ToList();
+                    dataGridView1.DataSource = c.Journals.Include("Employee").Include("Painting").ToList();
                 }
                 if (selectedtable == "Выставки")
                 {

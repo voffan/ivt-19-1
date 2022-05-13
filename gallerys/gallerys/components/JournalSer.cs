@@ -27,6 +27,11 @@ namespace gallerys.components
                 FromId = pfrom,
                 ToId = pto
             };
+            using (gallContext db = Connection.Connect())
+            {
+                db.Journals.Add(j);
+                db.SaveChanges();
+            }
 
         }
         public void Edit(int id, DateTime date, int paint, int pfrom, int pto, int emid)
