@@ -15,7 +15,7 @@ namespace gallerys.Models
         public virtual Painting Painting { get; set; }
         public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
-
+        
         public int ToId { get; set; }
         [ForeignKey("ToId")]
         public Place To { get; set; }

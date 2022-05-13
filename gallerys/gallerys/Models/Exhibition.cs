@@ -8,9 +8,11 @@ namespace gallerys.Models
 {
     public class Exhibition : Place
     {
-        public new int Id { get; set; }
-
         [MaxLength(200)]
         public string Place { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

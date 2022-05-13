@@ -103,7 +103,7 @@ namespace gallerys
                 if (selectedtable == "Журнал передвижения картин")
                 {
                     dataGridView1.DataSource = c.Journals.ToList();
-                    dataGridView1.DataSource = c.Journals.Include("Employee").Include("Painting").ToList();
+                    dataGridView1.DataSource = c.Journals.Include("Painting").Include("Employee").Include("From").Include("To").ToList();
                 }
                 if (selectedtable == "Выставки")
                 {
@@ -238,7 +238,13 @@ namespace gallerys
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            dataGridView1.Sort(dataGridView1.Columns[e.ColumnIndex], ListSortDirection.Ascending);
+            var str = sender.ToString();
+            MessageBox.Show(str);
+            //using (gallContext c = new gallContext())
+            //{
+            //    var p = c.Paintings.OrderBy(s => s.Name);
+            //    dataGridView1.DataSource = p.ToList();
+            //}
         }
 
         private void Deletebutton_Click(object sender, EventArgs e)

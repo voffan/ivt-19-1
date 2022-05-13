@@ -40,7 +40,7 @@ namespace gallerys.Models
         public virtual List<Journal> Journals { get; set; }
         public override string ToString()
         {
-            return base.ToString();
+            return Name;
         }
     }
 }
