@@ -26,7 +26,6 @@ namespace Korobki_project
         {
             InitializeComponent();
         }
-
         private void MenuForm_Load(object sender, EventArgs e)
         {
             Context c = new Context();
@@ -37,72 +36,64 @@ namespace Korobki_project
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[8].Visible = false;
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+        private void работникиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pf = 1;
             load_db();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void планыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pf = 2;
             load_db();
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void производствоToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pf = 3;
             load_db();
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void должностьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pf = 4;
             load_db();
         }
-
-        private void button5_Click(object sender, EventArgs e)
+        private void продуктToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pf = 5;
             load_db();
         }
-
-        private void button6_Click(object sender, EventArgs e)
+        private void расписаниеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pf = 6;
             load_db();
         }
-
-        private void button7_Click(object sender, EventArgs e)
+        private void сменаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pf = 7;
             load_db();
         }
-
-        private void button8_Click(object sender, EventArgs e)
+        private void видToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pf = 8;
             load_db();
         }
 
+        private void f(object s, FormClosedEventArgs ev)
+        {
+            load_db();
+            this.Show();
+        } // If form closed
+
         private void load_db()
         {
-            if (pf == 2 || pf == 3)
-            {
-                button12.Visible = true;
-                button13.Visible = true;
-            }
-            else
-			{
-                button12.Visible = false;
-                button13.Visible = false;
-            }
             Context c = new Context();
             switch (pf)
             {
                 case 1:
-                    dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").OrderBy(e => e.Name).ToList();
+                    dataGridView1.DataSource = c.Employees.Include("Position").Include("Shift").ToList();
                     dataGridView1.Columns[0].Visible = false;
                     dataGridView1.Columns[3].Visible = false;
                     dataGridView1.Columns[4].Visible = false;
@@ -114,7 +105,7 @@ namespace Korobki_project
                     dataGridView1.Columns[3].Visible = false;
                     break;
                 case 3:
-                    dataGridView1.DataSource = c.Productions.Include("Team").Include("Product").ToList();
+                    dataGridView1.DataSource = c.Productions.Include("Team").Include("Product").OrderBy(e => e.Team).ToList();
                     dataGridView1.Columns[0].Visible = false;
                     dataGridView1.Columns[1].Visible = false;
                     dataGridView1.Columns[3].Visible = false;
@@ -144,7 +135,26 @@ namespace Korobki_project
             }
         }
 
-        private void btnadd_Click(object sender, EventArgs e)
+        private int id()
+        {
+            int a, b;
+            if (dataGridView1.SelectedRows != null)
+            {
+                if (dataGridView1.CurrentRow != null)
+                {
+                    b = dataGridView1.CurrentRow.Index;
+                    a = Convert.ToInt32(dataGridView1.Rows[b].Cells[0].Value);
+                    return a;
+                }
+                else
+                {
+                    MessageBox.Show("Строка не выбрана!");
+                }
+            }
+            return -1;
+        } // Get id func dataGridView row
+
+        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             switch (pf)
             {
@@ -197,33 +207,70 @@ namespace Korobki_project
                     typeeFormAdd.FormClosed += f;
                     break;
             }
-        }
+        } // Add button
 
-        private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void редактированиеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private int id()
-        {
-            int a, b;
-            if (dataGridView1.SelectedRows != null)
+            int index = id();
+            if (index != -1)
             {
-                if (dataGridView1.CurrentRow != null)
+                switch (pf)
                 {
-                    b = dataGridView1.CurrentRow.Index;
-                    a = Convert.ToInt32(dataGridView1.Rows[b].Cells[0].Value);
-                    return a;
-                }
-                else
-                {
-                    MessageBox.Show("Строка не выбрана!");
-                }
-            }
-            return -1;
-        }
+                    case 1:
+                        EmployeeEditForm employeeEdit = new EmployeeEditForm(index);
+                        employeeEdit.Show();
+                        this.Hide();
+                        employeeEdit.FormClosed += f;
+                        break;
+                    case 2:
+                        PlanEditForm planEditForm = new PlanEditForm(index);
+                        planEditForm.Show();
+                        this.Hide();
+                        planEditForm.FormClosed += f;
+                        break;
+                    case 3:
+                        ProductionEditForm productionEditForm = new ProductionEditForm(index);
+                        productionEditForm.Show();
+                        this.Hide();
+                        productionEditForm.FormClosed += f;
+                        break;
+                    case 4:
+                        PositionEditForm positionEditForm = new PositionEditForm(index);
+                        positionEditForm.Show();
+                        this.Hide();
+                        positionEditForm.FormClosed += f;
+                        break;
+                    case 5:
+                        ProductEditForm productEditForm = new ProductEditForm(index);
+                        productEditForm.Show();
+                        this.Hide();
+                        productEditForm.FormClosed += f;
+                        break;
+                    case 6:
+                        ScheduleEditForm scheduleEditForm = new ScheduleEditForm(index);
+                        scheduleEditForm.Show();
+                        this.Hide();
+                        scheduleEditForm.FormClosed += f;
+                        break;
+                    case 7:
+                        ShiftEditForm shiftEditForm = new ShiftEditForm(index);
+                        shiftEditForm.Show();
+                        this.Hide();
+                        shiftEditForm.FormClosed += f;
+                        break;
+                    case 8:
+                        TypeeEditForm typeeEditForm = new TypeeEditForm(index);
+                        typeeEditForm.Show();
+                        this.Hide();
+                        typeeEditForm.FormClosed += f;
+                        break;
 
-        private void button9_Click(object sender, EventArgs e)
+                }
+                load_db();
+            }
+        } // Edit button
+
+        private void удалениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Действительно удалить запись в БД?", "Удаление", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -269,76 +316,8 @@ namespace Korobki_project
                     load_db();
                 }
             }
-        }
+        } // Delete button
 
-
-
-        private void button10_Click_1(object sender, EventArgs e)
-        {
-            int index = id();
-            if (index != -1)
-            {
-                switch (pf)
-                {
-                    case 1:
-                        EmployeeEditForm employeeEdit = new EmployeeEditForm(index);
-                        employeeEdit.Show();
-                        this.Hide();
-                        employeeEdit.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
-                        break;
-                    case 2:
-                        PlanEditForm planEditForm = new PlanEditForm(index);
-                        planEditForm.Show();
-                        this.Hide();
-                        planEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
-                        break;
-                    case 3:
-                        ProductionEditForm productionEditForm = new ProductionEditForm(index);
-                        productionEditForm.Show();
-                        this.Hide();
-                        productionEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
-                        break;
-                    case 4:
-                        PositionEditForm positionEditForm = new PositionEditForm(index);
-                        positionEditForm.Show();
-                        this.Hide();
-                        positionEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
-                        break;
-                    case 5:
-                        ProductEditForm productEditForm = new ProductEditForm(index);
-                        productEditForm.Show();
-                        this.Hide();
-                        productEditForm.FormClosed += f;
-                        break;
-                    case 6:
-                        ScheduleEditForm scheduleEditForm = new ScheduleEditForm(index);
-                        scheduleEditForm.Show();
-                        this.Hide();
-                        scheduleEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
-                        break;
-                    case 7:
-                        ShiftEditForm shiftEditForm = new ShiftEditForm(index);
-                        shiftEditForm.Show();
-                        this.Hide();
-                        shiftEditForm.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
-                        break;
-                    case 8:
-                        TypeeEditForm typeeEditForm = new TypeeEditForm(index);
-                        typeeEditForm.Show();
-                        this.Hide();
-                        typeeEditForm.FormClosed += f;
-                        break;
-
-                }
-                load_db();
-            }
-        }
-
-        private void f(object s, FormClosedEventArgs ev)
-        {
-            load_db();
-            this.Show();
-        }
         private void searchname()
         {
             using (Context context = new Context())
@@ -387,11 +366,17 @@ namespace Korobki_project
                         break;
                 }
             }
-        }
+        } // Search func
+
         private void button11_Click(object sender, EventArgs e)
         {
             searchname();
-        }
+        } // Search button
+		
+        private void textBox1_TextChanged(object sender, EventArgs e)
+		{
+            searchname();
+        } // Search if textchanged
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -399,68 +384,14 @@ namespace Korobki_project
             {
                 searchname();
             }
-        }
+        } // If press "Enter" do search
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            string path = "/";
-
-            try
-            {
-                using (Excel.ExcelTools tools = new Excel.ExcelTools())
-                {
-                    if (tools.Open(filePath: Path.Combine(path)))
-                    {
-                        using (Context c = new Context())
-                        {
-                            if (pf == 2)
-                            {
-                                int count = 1;
-                                tools.Set(column: "A", row: count, data: "Дата плана");
-                                tools.Set(column: "B", row: count, data: "Размер коробки");
-                                tools.Set(column: "C", row: count, data: "Количество коробок");
-                                count++;
-                                foreach (var i in c.Plans.Include(x => x.Product).OrderBy(e => e.PlanDate))
-                                {
-                                    tools.Set(column: "A", row: count, data: i.PlanDate);
-                                    tools.Set(column: "B", row: count, data: i.Product);
-                                    tools.Set(column: "C", row: count, data: i.Count_box);
-                                    count++;
-                                }
-                            }
-                            else
-							{
-                                int count = 1;
-                                tools.Set(column: "A", row: count, data: "Расписание");
-                                tools.Set(column: "B", row: count, data: "Размер Коробки");
-                                tools.Set(column: "C", row: count, data: "Число");
-                                tools.Set(column: "D", row: count, data: "Комментарий");
-                                count++;
-                                foreach (var i in c.Productions.Include(x => x.Team).Include("Product").OrderBy(e => e.Team))
-                                {
-                                    tools.Set(column: "A", row: count, data: i.Team);
-                                    tools.Set(column: "B", row: count, data: i.Product);
-                                    tools.Set(column: "C", row: count, data: i.Count);
-                                    tools.Set(column: "D", row: count, data: i.Comment);
-                                    count++;
-                                }
-                            }
-                        }
-                        tools.Save(path);
-                    }
-                    tools.Clear();
-                }
-            }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-            //Process.Start(file);
-        }
-
-		private void button13_Click(object sender, EventArgs e)
+		private void отчётToolStripMenuItem_Click(object sender, EventArgs e)
 		{
             Filter filter = new Filter();
             filter.Show();
             this.Hide();
-            filter.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
-        }
-	}
+            filter.FormClosed += f;
+        } // Report
+    }
 }
