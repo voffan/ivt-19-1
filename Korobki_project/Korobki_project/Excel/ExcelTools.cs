@@ -4,13 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 
 namespace Korobki_project.Excel
 {
 	class ExcelTools : IDisposable
 	{
-		private Application _excel;
+		private Microsoft.Office.Interop.Excel.Application _excel;
 		private Workbook _workbook;
 		private string _filePath;
 
@@ -83,9 +84,28 @@ namespace Korobki_project.Excel
 			return false;
 		}
 
-		internal void Save()
+		internal void Save(string path)
 		{
-			if (!string.IsNullOrEmpty(_filePath))
+			using (SaveFileDialog savedialog = new SaveFileDialog())
+			{
+				string file;
+				savedialog.Title = "Сохранить картинку как...";
+				savedialog.InitialDirectory = path;
+				savedialog.Filter = "Книга Excel (*xlsx) | *.xlsx";
+				if (savedialog.ShowDialog() == DialogResult.OK)
+				{
+					try
+					{
+						file = savedialog.FileName;
+						_workbook.SaveAs(savedialog.FileName);
+					}
+					catch
+					{
+						MessageBox.Show("Невозможно сохранить изображение", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+			/*if (!string.IsNullOrEmpty(_filePath))
 			{
 				_workbook.SaveAs(_filePath);
 				_filePath = null;
@@ -93,7 +113,7 @@ namespace Korobki_project.Excel
 			else
 			{
 				_workbook.Save();
-			}
+			}*/
 		}
 		public void Dispose()
 		{

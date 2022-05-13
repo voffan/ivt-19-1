@@ -88,6 +88,16 @@ namespace Korobki_project
 
         private void load_db()
         {
+            if (pf == 2 || pf == 3)
+            {
+                button12.Visible = true;
+                button13.Visible = true;
+            }
+            else
+			{
+                button12.Visible = false;
+                button13.Visible = false;
+            }
             Context c = new Context();
             switch (pf)
             {
@@ -393,35 +403,50 @@ namespace Korobki_project
 
         private void button12_Click(object sender, EventArgs e)
         {
-
             string path = "/";
-            string file = "Test.xlsx";
-            //File.Delete(path + file);
 
             try
             {
                 using (Excel.ExcelTools tools = new Excel.ExcelTools())
                 {
-                    if (tools.Open(filePath: Path.Combine(path, file)))
+                    if (tools.Open(filePath: Path.Combine(path)))
                     {
-                        tools.Set(column: "C", row: 1, data: "Почта");
-
-                        tools.Set(column: "B", row: 3, data: "Номер");
-                        tools.Set(column: "B", row: 4, data: 1290);
-                        tools.Set(column: "B", row: 5, data: 764);
-                        tools.Set(column: "B", row: 6, data: 6526);
-
-                        tools.Set(column: "C", row: 3, data: "Наименование");
-                        tools.Set(column: "C", row: 4, data: "посылка");
-                        tools.Set(column: "C", row: 5, data: "бандероль");
-                        tools.Set(column: "C", row: 6, data: "письмо");
-
-                        tools.Set(column: "D", row: 3, data: "Дата отправки");
-                        tools.Set(column: "D", row: 4, data: DateTime.Parse("12.10.2015"));
-                        tools.Set(column: "D", row: 5, data: DateTime.Parse("04.11.2012"));
-                        tools.Set(column: "D", row: 6, data: DateTime.Parse("05.10.2012"));
-
-                        tools.Save();
+                        using (Context c = new Context())
+                        {
+                            if (pf == 2)
+                            {
+                                int count = 1;
+                                tools.Set(column: "A", row: count, data: "Дата плана");
+                                tools.Set(column: "B", row: count, data: "Размер коробки");
+                                tools.Set(column: "C", row: count, data: "Количество коробок");
+                                count++;
+                                foreach (var i in c.Plans.Include(x => x.Product).OrderBy(e => e.PlanDate))
+                                {
+                                    tools.Set(column: "A", row: count, data: i.PlanDate);
+                                    tools.Set(column: "B", row: count, data: i.Product);
+                                    tools.Set(column: "C", row: count, data: i.Count_box);
+                                    count++;
+                                }
+                            }
+                            else
+							{
+                                int count = 1;
+                                tools.Set(column: "A", row: count, data: "Расписание");
+                                tools.Set(column: "B", row: count, data: "Размер Коробки");
+                                tools.Set(column: "C", row: count, data: "Число");
+                                tools.Set(column: "D", row: count, data: "Комментарий");
+                                count++;
+                                foreach (var i in c.Productions.Include(x => x.Team).Include("Product").OrderBy(e => e.Team))
+                                {
+                                    tools.Set(column: "A", row: count, data: i.Team);
+                                    tools.Set(column: "B", row: count, data: i.Product);
+                                    tools.Set(column: "C", row: count, data: i.Count);
+                                    tools.Set(column: "D", row: count, data: i.Comment);
+                                    count++;
+                                }
+                            }
+                        }
+                        tools.Save(path);
                     }
                     tools.Clear();
                 }
@@ -429,5 +454,13 @@ namespace Korobki_project
             catch (Exception ex) { Console.WriteLine(ex.Message); }
             //Process.Start(file);
         }
-    }
+
+		private void button13_Click(object sender, EventArgs e)
+		{
+            Filter filter = new Filter();
+            filter.Show();
+            this.Hide();
+            filter.FormClosed += f; // (object s, FormClosedEventArgs ev) => { this.Show(); };
+        }
+	}
 }
