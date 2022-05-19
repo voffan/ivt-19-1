@@ -29,50 +29,52 @@ namespace Korobki_project.UI
         /// </summary>
         private void InitializeComponent()
         {
-			this.label1 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(33, 54);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(27, 15);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Вид";
-			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(33, 83);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(151, 23);
-			this.textBox1.TabIndex = 1;
-			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(109, 152);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 2;
-			this.button1.Text = "Добавить";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// TypeeFormAdd
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(220, 206);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox1);
-			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Name = "TypeeFormAdd";
-			this.Text = "Добавление видов коробки";
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(38, 61);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Вид";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(38, 94);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(172, 23);
+            this.textBox1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(125, 172);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(86, 26);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Добавить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // TypeeFormAdd
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(251, 233);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Century Gothic", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "TypeeFormAdd";
+            this.Text = "Добавление видов коробки";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
