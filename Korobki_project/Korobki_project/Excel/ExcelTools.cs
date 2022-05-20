@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -52,13 +53,11 @@ namespace Korobki_project.Excel
 			{
 				Worksheet _worksheet = (Microsoft.Office.Interop.Excel.Worksheet)_excel.ActiveSheet;
 
-				if (row == 1)
+				if (row == 1 || row == 2)
 				{
 					_worksheet.Cells[row, column].Font.Bold = true;
 					_worksheet.Cells[row, column].Font.Size = 14;
 					_worksheet.Cells[row, column].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
-					_worksheet.Cells[row, column].EntireColumn.AutoFit();
-					_worksheet.Cells[row, column].EntireRow.AutoFit();
 				}
 				else
 				{
@@ -72,10 +71,9 @@ namespace Korobki_project.Excel
 						_worksheet.Cells[row, column].Font.Italic = false;
 						_worksheet.Cells[row, column].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlRight;
 					}
-					_worksheet.Cells[row, column].EntireColumn.AutoFit();
-					_worksheet.Cells[row, column].EntireRow.AutoFit();
 				}
-
+				_worksheet.Cells[row, column].EntireColumn.AutoFit();
+				_worksheet.Cells[row, column].EntireRow.AutoFit();
 				_worksheet.Cells[row, column] = data;
 
 				return true;
@@ -84,13 +82,14 @@ namespace Korobki_project.Excel
 			return false;
 		}
 
-		internal void Save(string path)
+		internal string Save(string path)
 		{
 			using (SaveFileDialog savedialog = new SaveFileDialog())
 			{
 				string file;
 				savedialog.Title = "Сохранить картинку как...";
 				savedialog.InitialDirectory = path;
+				savedialog.OverwritePrompt = false;
 				savedialog.Filter = "Книга Excel (*xlsx) | *.xlsx";
 				if (savedialog.ShowDialog() == DialogResult.OK)
 				{
@@ -98,22 +97,16 @@ namespace Korobki_project.Excel
 					{
 						file = savedialog.FileName;
 						_workbook.SaveAs(savedialog.FileName);
+						return file;
 					}
 					catch
 					{
-						MessageBox.Show("Невозможно сохранить изображение", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						MessageBox.Show("Невозможно сохранить файл", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return "error";
 					}
 				}
+				return "error";
 			}
-			/*if (!string.IsNullOrEmpty(_filePath))
-			{
-				_workbook.SaveAs(_filePath);
-				_filePath = null;
-			}
-			else
-			{
-				_workbook.Save();
-			}*/
 		}
 		public void Dispose()
 		{

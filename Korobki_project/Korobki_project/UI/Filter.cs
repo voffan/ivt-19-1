@@ -86,6 +86,7 @@ namespace Korobki_project.UI
             }
         } // Production datepicker 
 
+        string filename;
         private void report(int report_id)
 		{
             string path = "/";
@@ -99,11 +100,11 @@ namespace Korobki_project.UI
                         {
                             if (report_id == 1)
                             {
-                                int count = 1;
+                                int count = 2;
                                 tools.Set(column: "A", row: count, data: "Дата плана");
                                 tools.Set(column: "B", row: count, data: "Размер коробки");
                                 tools.Set(column: "C", row: count, data: "Количество коробок");
-                                tools.Set(column: "D", row: count, data: "От " + Plan_start.ToString("dd.MM.yyyy") +
+                                tools.Set(column: "B", row: count - 1, data: "Отчёт от " + Plan_start.ToString("dd.MM.yyyy") +
                                     " до " + Plan_end.ToString("dd.MM.yyyy"));
                                 count++;
                                 foreach (var i in c.Plans.Include(x => x.Product).OrderBy(e => e.PlanDate))
@@ -120,13 +121,13 @@ namespace Korobki_project.UI
                             } // Plan
                             else
                             {
-                                int count = 1;
+                                int count = 2;
 
                                 tools.Set(column: "A", row: count, data: "Расписание");
                                 tools.Set(column: "B", row: count, data: "Размер Коробки");
                                 tools.Set(column: "C", row: count, data: "Число");
                                 tools.Set(column: "D", row: count, data: "Комментарий");
-                                tools.Set(column: "E", row: count, data: "От " + Prod_start.ToString("dd.MM.yyyy") +
+                                tools.Set(column: "B", row: count-1, data: "Отчёт от " + Prod_start.ToString("dd.MM.yyyy") +
                                     " до " + Prod_end.ToString("dd.MM.yyyy"));
                                 count++;
                                 foreach (var i in c.Productions.Include(x => x.Team).Include("Product").OrderBy(e => e.Team.Date))
@@ -143,13 +144,23 @@ namespace Korobki_project.UI
                                 }
                             } // Production
                         }
-                        tools.Save(path);
+                        filename = tools.Save(path);
                     }
                     tools.Clear();
                 }
+                if ("" == filename) MessageBox.Show("FILENAME EMPTY");
+                if ("error" == filename) MessageBox.Show("SAVE ERROR");
+                else
+                {
+                    var proc = new System.Diagnostics.Process();
+                    proc.StartInfo.FileName = filename;
+                    proc.StartInfo.UseShellExecute = true;
+                    proc.Start();
+                } // File Start
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
-            //Process.Start(file);
+
+            filename = "";
         }
 
         private void button1_Click(object sender, EventArgs e)

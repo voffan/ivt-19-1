@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Korobki_project", "Korobki_project\Korobki_project.csproj", "{977D4878-25BF-4894-BDDD-9D2C28D3995D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Korobki_project", "Korobki_project\Korobki_project.csproj", "{977D4878-25BF-4894-BDDD-9D2C28D3995D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{BB486D7C-1F5F-405F-B4C9-45039A46C1F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{977D4878-25BF-4894-BDDD-9D2C28D3995D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{977D4878-25BF-4894-BDDD-9D2C28D3995D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{977D4878-25BF-4894-BDDD-9D2C28D3995D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB486D7C-1F5F-405F-B4C9-45039A46C1F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB486D7C-1F5F-405F-B4C9-45039A46C1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB486D7C-1F5F-405F-B4C9-45039A46C1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB486D7C-1F5F-405F-B4C9-45039A46C1F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
