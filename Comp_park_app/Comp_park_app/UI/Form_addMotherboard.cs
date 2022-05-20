@@ -10,15 +10,12 @@ using System.Windows.Forms;
 using Comp_park_app.Functions;
 using Comp_park_app_form;
 
-namespace Comp_park_app
-{
-    public partial class Form_addMotherboard : Form
-    {
+namespace Comp_park_app {
+    public partial class Form_addMotherboard : Form {
         bool Type_Add;
         int id;
         Form1 frm1;
-        public Form_addMotherboard(bool Add, int index, Form1 fr1)
-        {
+        public Form_addMotherboard(bool Add, int index, Form1 fr1) {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
@@ -27,18 +24,15 @@ namespace Comp_park_app
             frm1 = fr1;
         }
 
-        private void button2_Click(object sender, EventArgs e) //Закрытие формы
-        {
+        //Закрытие формы
+        private void button2_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void Form_Load(object sender, EventArgs e)
-        {
-            if (!Type_Add)
-            {
+        private void Form_Load(object sender, EventArgs e) {
+            if (!Type_Add) {
                 Motherboard motherboard;
-                using (Context c = new Context())
-                {
+                using (Context c = new Context()) {
                     motherboard = c.Motherboards.Find(id);
                     textBox_name.Text = motherboard.Name;
                     textBox_Manufacturer.Text = motherboard.Manufacturer;
@@ -50,33 +44,27 @@ namespace Comp_park_app
         // При нажатии кнопки создается новый экземпляр класса и вызывается метод Add, которому передается три аргумента
         // (Наименование, производитель и обьем оперативной памяти), который добавляет в список новый элемент,
         // если все поля заполнены, в противной случае вызывает окно с ошибкой
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0)
-            {
+        private void button1_Click(object sender, EventArgs e) {
+            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0) {
                 MotherboardFunctions Motherboard = new MotherboardFunctions();
                 Motherboard.Add(textBox_name.Text, textBox_Manufacturer.Text);
                 frm1.Update_datagridview(4);
                 this.Close();
             }
-            else
-            {
-                MessageBox.Show("Error");
+            else {
+                MessageBox.Show("Не все поля заполнены");
             }
         }
 
-        private void button_Edit_Click(object sender, EventArgs e)
-        {
-            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0)
-            {
+        private void button_Edit_Click(object sender, EventArgs e) {
+            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0) {
                 MotherboardFunctions Motherboard = new MotherboardFunctions();
                 Motherboard.Edit(id, textBox_name.Text, textBox_Manufacturer.Text);
                 frm1.Update_datagridview(4);
                 this.Close();
             }
-            else
-            {
-                MessageBox.Show("Error");
+            else {
+                MessageBox.Show("Не все поля заполнены");
             }
         }
     }

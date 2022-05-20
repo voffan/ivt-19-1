@@ -19,7 +19,7 @@ namespace Comp_park_app {
         [DisplayName("Производитель"), MaxLength(100)]
         public string Manufacturer { get; set; }
 
-        [DisplayName("Обьем (Гб)")]
+        [DisplayName("Обьем (Мбайт)")]
         public int Capacity { get; set; }
 
         [DisplayName("Номер компьютера")]

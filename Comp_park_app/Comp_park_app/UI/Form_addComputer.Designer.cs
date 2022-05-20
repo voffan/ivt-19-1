@@ -46,7 +46,6 @@ namespace Comp_park_app
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox_Department = new System.Windows.Forms.ComboBox();
-            this.textBox_ItemNo = new System.Windows.Forms.TextBox();
             this.comboBox_Employee = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox_Status = new System.Windows.Forms.ComboBox();
@@ -57,6 +56,7 @@ namespace Comp_park_app
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox_Reason = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.textBox_ItemNo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBox_HDD
@@ -214,13 +214,6 @@ namespace Comp_park_app
             this.comboBox_Department.Size = new System.Drawing.Size(121, 23);
             this.comboBox_Department.TabIndex = 17;
             // 
-            // textBox_ItemNo
-            // 
-            this.textBox_ItemNo.Location = new System.Drawing.Point(223, 105);
-            this.textBox_ItemNo.Name = "textBox_ItemNo";
-            this.textBox_ItemNo.Size = new System.Drawing.Size(132, 23);
-            this.textBox_ItemNo.TabIndex = 18;
-            // 
             // comboBox_Employee
             // 
             this.comboBox_Employee.FormattingEnabled = true;
@@ -306,6 +299,13 @@ namespace Comp_park_app
             this.label6.TabIndex = 28;
             this.label6.Text = "Причина";
             // 
+            // textBox_ItemNo
+            // 
+            this.textBox_ItemNo.Location = new System.Drawing.Point(223, 105);
+            this.textBox_ItemNo.Name = "textBox_ItemNo";
+            this.textBox_ItemNo.Size = new System.Drawing.Size(132, 23);
+            this.textBox_ItemNo.TabIndex = 18;
+            // 
             // Form_addComputer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -366,7 +366,6 @@ namespace Comp_park_app
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox_Department;
-        private System.Windows.Forms.TextBox textBox_ItemNo;
         private System.Windows.Forms.ComboBox comboBox_Employee;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox_Status;
@@ -377,5 +376,6 @@ namespace Comp_park_app
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textBox_Reason;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox_ItemNo;
     }
 }

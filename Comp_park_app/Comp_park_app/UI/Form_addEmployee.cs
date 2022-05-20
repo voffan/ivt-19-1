@@ -60,12 +60,19 @@ namespace Comp_park_app {
         // (Наименование, производитель и обьем оперативной памяти), который добавляет в список новый элемент,
         // если все поля заполнены, в противной случае вызывает окно с ошибкой
         private void button1_Click(object sender, EventArgs e) {
-            if (textBox_Password.Text.Length > 0) {
+            string password = "";
+            EmployeeFunctions employee = new EmployeeFunctions();
 
+            if (textBox_Name.Text.Length != 0 && comboBox_Department.SelectedIndex >= 0 && comboBox_Position.SelectedIndex >= 0 && textBox_Password.Text.Length > 0) {
+                var name = textBox_Name.Text;
+                var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
+                var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
+                password = textBox_Password.Text;
+                employee.Add(name, departmentid, positionid, password);
+                frm1.Update_datagridview(2);
+                this.Close();
             } else {
                 if (textBox_Name.Text.Length != 0 && comboBox_Department.SelectedIndex >= 0 && comboBox_Position.SelectedIndex >= 0) {
-                    string password = "";
-                    EmployeeFunctions employee = new EmployeeFunctions();
                     var name = textBox_Name.Text;
                     var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                     var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
@@ -73,7 +80,7 @@ namespace Comp_park_app {
                     frm1.Update_datagridview(2);
                     this.Close();
                 } else {
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Не все поля заполнены");
                 }
             }
         }
@@ -89,7 +96,7 @@ namespace Comp_park_app {
                 this.Close();
             }
             else {
-                MessageBox.Show("Error");
+                MessageBox.Show("Не все поля заполнены");
             }
         }
     }

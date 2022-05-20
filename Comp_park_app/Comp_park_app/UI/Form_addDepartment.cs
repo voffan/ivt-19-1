@@ -10,15 +10,12 @@ using System.Windows.Forms;
 using Comp_park_app.Functions;
 using Comp_park_app_form;
 
-namespace Comp_park_app
-{
-    public partial class Form_addDepartment : Form
-    {
+namespace Comp_park_app {
+    public partial class Form_addDepartment : Form {
         bool Type_Add;
         int id;
         Form1 frm1;
-        public Form_addDepartment(bool Add, int index, Form1 fr1)
-        {
+        public Form_addDepartment(bool Add, int index, Form1 fr1) {
             InitializeComponent();
             button1.Visible = Add;
             button_Edit.Visible = !Add;
@@ -26,21 +23,19 @@ namespace Comp_park_app
             id = index;
             frm1 = fr1;
         }
-        private void button2_Click(object sender, EventArgs e) //Закрытие формы
-        {
+
+        //Закрытие формы
+        private void button2_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void Form_Load(object sender, EventArgs e)
-        {
-            if (!Type_Add)
-            {
+        private void Form_Load(object sender, EventArgs e) {
+            if (!Type_Add) {
                 Department department;
-                using(Context c = new Context())
-                {
+                using(Context c = new Context()) {
                     department = c.Departments.Find(id);
                     textBox_name.Text = department.Name;
-                    textBox_Manufacturer.Text = Convert.ToString(department.Number);
+                    numericUpDown_number.Value = department.Number;
                 }
                 //For edit mode
             }
@@ -49,33 +44,25 @@ namespace Comp_park_app
         // При нажатии кнопки создается новый экземпляр класса и вызывается метод Add, которому передается три аргумента
         // (Наименование, производитель и обьем оперативной памяти), который добавляет в список новый элемент,
         // если все поля заполнены, в противной случае вызывает окно с ошибкой
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0)
-            {
+        private void button1_Click(object sender, EventArgs e) {
+            if (textBox_name.Text.Length != 0 && numericUpDown_number.Value > 0) {
                 DepartmentFunctions Department = new DepartmentFunctions();
-                Department.Add(textBox_name.Text, Convert.ToInt32(textBox_Manufacturer.Text));
+                Department.Add(textBox_name.Text, (int)numericUpDown_number.Value);
                 frm1.Update_datagridview(1);
                 this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Error");
+            } else {
+                MessageBox.Show("Не все поля заполнены");
             }
         }
 
-        private void button_Edit_Click(object sender, EventArgs e)
-        {
-            if (textBox_name.Text.Length != 0 && textBox_Manufacturer.Text.Length != 0)
-            {
+        private void button_Edit_Click(object sender, EventArgs e) {
+            if (textBox_name.Text.Length != 0 && numericUpDown_number.Value > 0) {
                 DepartmentFunctions Department = new DepartmentFunctions();
-                Department.Edit(id, textBox_name.Text, Convert.ToInt32(textBox_Manufacturer.Text));
+                Department.Edit(id, textBox_name.Text, (int)numericUpDown_number.Value);
                 frm1.Update_datagridview(1);
                 this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Error");
+            } else {
+                MessageBox.Show("Не все поля заполнены");
             }
         }
     }

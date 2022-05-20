@@ -269,6 +269,7 @@ namespace Comp_park_app {
         }
 
         private void button_addComputer_Click(object sender, EventArgs e) {
+
             if (comboBox_Department.SelectedIndex >= 0 && textBox_ItemNo.Text.Length != 0 &&
                 comboBox_Status.SelectedIndex >=0 && comboBox_Employee.SelectedIndex >= 0 &&
                 listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox_proc.Items.Count > 0 &&
@@ -288,12 +289,14 @@ namespace Comp_park_app {
                 Computer.Add(departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors, date, reason);
                 frm1.Update_datagridview(0);
                 this.Close();
+
             } else {
-                MessageBox.Show("Error");
+                MessageBox.Show("Не все поля заполнены");
             }
         }
 
         private void button_Edit_Click(object sender, EventArgs e) {
+
             if (comboBox_Department.SelectedIndex >= 0 && textBox_ItemNo.Text.Length != 0 &&
                 comboBox_Status.SelectedIndex >= 0 && comboBox_Employee.SelectedIndex >= 0 &&
                 listBox1.Items.Count > 0 && listBox2.Items.Count > 0 && listBox_proc.Items.Count > 0 &&
@@ -313,8 +316,9 @@ namespace Comp_park_app {
                 Computer.Edit(id, departmentid, itemno, status, motherboardid, employeeid, hdds, rams, processors, date, reason);
                 frm1.Update_datagridview(0);
                 this.Close();
+
             } else {
-                MessageBox.Show("Error");
+                MessageBox.Show("Не все поля заполнены");
             }
         }
     }

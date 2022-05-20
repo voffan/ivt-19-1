@@ -31,7 +31,6 @@ namespace Comp_park_app
         {
             this.textBox_name = new System.Windows.Forms.TextBox();
             this.textBox_Manufacturer = new System.Windows.Forms.TextBox();
-            this.textBox_capacity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,6 +38,8 @@ namespace Comp_park_app
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button_Edit = new System.Windows.Forms.Button();
+            this.numericUpDown_capacity = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_capacity)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_name
@@ -54,13 +55,6 @@ namespace Comp_park_app
             this.textBox_Manufacturer.Name = "textBox_Manufacturer";
             this.textBox_Manufacturer.Size = new System.Drawing.Size(100, 23);
             this.textBox_Manufacturer.TabIndex = 1;
-            // 
-            // textBox_capacity
-            // 
-            this.textBox_capacity.Location = new System.Drawing.Point(186, 130);
-            this.textBox_capacity.Name = "textBox_capacity";
-            this.textBox_capacity.Size = new System.Drawing.Size(100, 23);
-            this.textBox_capacity.TabIndex = 2;
             // 
             // label1
             // 
@@ -85,9 +79,9 @@ namespace Comp_park_app
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(88, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 15);
+            this.label3.Size = new System.Drawing.Size(91, 15);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Обьем";
+            this.label3.Text = "Обьем (Мбайт)";
             // 
             // label4
             // 
@@ -128,11 +122,24 @@ namespace Comp_park_app
             this.button_Edit.UseVisualStyleBackColor = true;
             this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
             // 
+            // numericUpDown_capacity
+            // 
+            this.numericUpDown_capacity.Location = new System.Drawing.Point(186, 130);
+            this.numericUpDown_capacity.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown_capacity.Name = "numericUpDown_capacity";
+            this.numericUpDown_capacity.Size = new System.Drawing.Size(100, 23);
+            this.numericUpDown_capacity.TabIndex = 12;
+            // 
             // Form_addRAM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 281);
+            this.Controls.Add(this.numericUpDown_capacity);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -140,12 +147,12 @@ namespace Comp_park_app
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox_capacity);
             this.Controls.Add(this.textBox_Manufacturer);
             this.Controls.Add(this.textBox_name);
             this.Name = "Form_addRAM";
             this.Text = "Form_RAM";
             this.Load += new System.EventHandler(this.Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_capacity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,7 +162,6 @@ namespace Comp_park_app
 
         private System.Windows.Forms.TextBox textBox_name;
         private System.Windows.Forms.TextBox textBox_Manufacturer;
-        private System.Windows.Forms.TextBox textBox_capacity;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -163,5 +169,6 @@ namespace Comp_park_app
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button_Edit;
+        private System.Windows.Forms.NumericUpDown numericUpDown_capacity;
     }
 }

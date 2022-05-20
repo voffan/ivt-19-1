@@ -41,6 +41,7 @@ namespace Comp_park_app
             this.button_Edit = new System.Windows.Forms.Button();
             this.textBox_Password = new System.Windows.Forms.TextBox();
             this.label_Password = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_Name
@@ -55,27 +56,27 @@ namespace Comp_park_app
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(71, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 15);
+            this.label1.Size = new System.Drawing.Size(39, 15);
             this.label1.TabIndex = 5;
-            this.label1.Text = "ФИО";
+            this.label1.Text = "ФИО*";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(71, 134);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 15);
+            this.label2.Size = new System.Drawing.Size(45, 15);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Отдел";
+            this.label2.Text = "Отдел*";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(71, 163);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 15);
+            this.label3.Size = new System.Drawing.Size(74, 15);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Должность";
+            this.label3.Text = "Должность*";
             // 
             // label4
             // 
@@ -88,7 +89,7 @@ namespace Comp_park_app
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(71, 213);
+            this.button1.Location = new System.Drawing.Point(71, 227);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -98,7 +99,7 @@ namespace Comp_park_app
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(197, 213);
+            this.button2.Location = new System.Drawing.Point(197, 227);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -124,7 +125,7 @@ namespace Comp_park_app
             // 
             // button_Edit
             // 
-            this.button_Edit.Location = new System.Drawing.Point(71, 213);
+            this.button_Edit.Location = new System.Drawing.Point(70, 227);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(75, 23);
             this.button_Edit.TabIndex = 13;
@@ -148,11 +149,21 @@ namespace Comp_park_app
             this.label_Password.TabIndex = 15;
             this.label_Password.Text = "Пароль";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(70, 195);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(211, 15);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "* - поля обязательные к заполнению";
+            // 
             // Form_addEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 289);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label_Password);
             this.Controls.Add(this.textBox_Password);
             this.Controls.Add(this.button_Edit);
@@ -187,5 +198,6 @@ namespace Comp_park_app
         private System.Windows.Forms.Button button_Edit;
         private System.Windows.Forms.TextBox textBox_Password;
         private System.Windows.Forms.Label label_Password;
+        private System.Windows.Forms.Label label5;
     }
 }

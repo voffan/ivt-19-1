@@ -19,10 +19,16 @@ namespace Comp_park_app.UI {
         }
 
         private void button_Edit_Click(object sender, EventArgs e) {
-            DepartmentFunctions Department = new DepartmentFunctions();
-            Department.Add(textBox_name.Text, Convert.ToInt32(textBox_Manufacturer.Text));
-            regEmp.EmpUpdate();
-            this.Close();
+            if (textBox_name.Text.Length != 0 && numericUpDown_number.Value > 0)
+            {
+                DepartmentFunctions Department = new DepartmentFunctions();
+                Department.Add(textBox_name.Text, (int)numericUpDown_number.Value);
+                regEmp.EmpUpdate();
+                this.Close();
+            } else {
+                MessageBox.Show("Не все поля заполнены");
+            }
+                
         }
     }
 }

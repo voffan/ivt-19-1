@@ -18,12 +18,16 @@ namespace Comp_park_app.UI {
             regEmp = frm;
         }
 
-        private void button_Edit_Click(object sender, EventArgs e)
-        {
-            PositionFunctions position = new PositionFunctions();
-            position.Add(textBox_name.Text);
-            regEmp.EmpUpdate();
-            this.Close();
+        private void button_Edit_Click(object sender, EventArgs e) {
+            if (textBox_name.Text.Length != 0)
+            {
+                PositionFunctions position = new PositionFunctions();
+                position.Add(textBox_name.Text);
+                regEmp.EmpUpdate();
+                this.Close();
+            }else {
+                MessageBox.Show("Не все поля заполнены");
+            }
         }
     }
 }

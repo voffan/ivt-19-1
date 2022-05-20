@@ -35,8 +35,9 @@ namespace Comp_park_app.UI
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox_Manufacturer = new System.Windows.Forms.TextBox();
             this.textBox_name = new System.Windows.Forms.TextBox();
+            this.numericUpDown_number = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_number)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Edit
@@ -94,13 +95,6 @@ namespace Comp_park_app.UI
             this.label1.TabIndex = 14;
             this.label1.Text = "Название";
             // 
-            // textBox_Manufacturer
-            // 
-            this.textBox_Manufacturer.Location = new System.Drawing.Point(172, 117);
-            this.textBox_Manufacturer.Name = "textBox_Manufacturer";
-            this.textBox_Manufacturer.Size = new System.Drawing.Size(100, 23);
-            this.textBox_Manufacturer.TabIndex = 13;
-            // 
             // textBox_name
             // 
             this.textBox_name.Location = new System.Drawing.Point(172, 88);
@@ -108,21 +102,34 @@ namespace Comp_park_app.UI
             this.textBox_name.Size = new System.Drawing.Size(100, 23);
             this.textBox_name.TabIndex = 12;
             // 
+            // numericUpDown_number
+            // 
+            this.numericUpDown_number.Location = new System.Drawing.Point(172, 117);
+            this.numericUpDown_number.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown_number.Name = "numericUpDown_number";
+            this.numericUpDown_number.Size = new System.Drawing.Size(100, 23);
+            this.numericUpDown_number.TabIndex = 20;
+            // 
             // Form_addRegisDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(349, 287);
+            this.Controls.Add(this.numericUpDown_number);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox_Manufacturer);
             this.Controls.Add(this.textBox_name);
             this.Name = "Form_addRegisDepartment";
             this.Text = "Form_addRegisDepartment";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_number)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,7 +143,7 @@ namespace Comp_park_app.UI
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox_Manufacturer;
         private System.Windows.Forms.TextBox textBox_name;
+        private System.Windows.Forms.NumericUpDown numericUpDown_number;
     }
 }

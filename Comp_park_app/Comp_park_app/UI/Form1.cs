@@ -221,7 +221,7 @@ namespace Comp_park_app_form {
             if (dataGridView1.CurrentRow != null) {
                 int index = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Id"].Value);
 
-                // Появление формы Form_addComputer
+                // Появление формы удаления компьютера
                 if (listBox1.SelectedIndex == 0) {
                     DeleteCheck del = new DeleteCheck();
                     if (del.ShowDialog() == DialogResult.OK) {
@@ -231,7 +231,7 @@ namespace Comp_park_app_form {
                     }
                 }
 
-                // Появление формы Form_addDepartment
+                // Появление формы удаления департамента
                 if (listBox1.SelectedIndex == 1) {
                     DeleteCheck del = new DeleteCheck();
                     if (del.ShowDialog() == DialogResult.OK) {
@@ -241,7 +241,7 @@ namespace Comp_park_app_form {
                     }
                 }
 
-                // Появление формы Form_addEmployee
+                // Появление формы удаления сотрудника
                 if (listBox1.SelectedIndex == 2) {
                     DeleteCheck del = new DeleteCheck();
                     if (del.ShowDialog() == DialogResult.OK) {
@@ -251,7 +251,7 @@ namespace Comp_park_app_form {
                     }
                 }
 
-                // Появление формы Form_addHDD
+                // Появление формы удаления жесткого диска
                 if (listBox1.SelectedIndex == 3) {
                     DeleteCheck del = new DeleteCheck();
                     if (del.ShowDialog() == DialogResult.OK) {
@@ -261,7 +261,7 @@ namespace Comp_park_app_form {
                     }
                 }
 
-                // Появление формы Form_addMotherboard
+                // Появление формы удаления материнской платы
                 if (listBox1.SelectedIndex == 4) {
                     DeleteCheck del = new DeleteCheck();
                     if (del.ShowDialog() == DialogResult.OK) {
@@ -271,7 +271,7 @@ namespace Comp_park_app_form {
                     }
                 }
 
-                // Появление формы Form_addPeripheral
+                // Появление формы удаления периферийной техники
                 if (listBox1.SelectedIndex == 5) {
                     DeleteCheck del = new DeleteCheck();
                     if (del.ShowDialog() == DialogResult.OK) {
@@ -281,7 +281,7 @@ namespace Comp_park_app_form {
                     }
                 }
 
-                // Появление формы Form_addProcessor
+                // Появление формы удаления процессора
                 if (listBox1.SelectedIndex == 6) {
                     DeleteCheck del = new DeleteCheck();
                     if (del.ShowDialog() == DialogResult.OK) {
@@ -291,7 +291,7 @@ namespace Comp_park_app_form {
                     }
                 }
 
-                // Появление формы Form_addRAM
+                // Появление формы удаления оперативной памяти
                 if (listBox1.SelectedIndex == 7) {
                     DeleteCheck del = new DeleteCheck();
                     if (del.ShowDialog() == DialogResult.OK) {
@@ -301,7 +301,7 @@ namespace Comp_park_app_form {
                     }
                 }
 
-                // Появление формы Form_addRAM
+                // Появление формы удаления должности
                 if (listBox1.SelectedIndex == 8) {
                     DeleteCheck del = new DeleteCheck();
                     if (del.ShowDialog() == DialogResult.OK) {
@@ -362,17 +362,8 @@ namespace Comp_park_app_form {
         // Поиск в списках
         private void button4_Click(object sender, EventArgs e) {
             using (Context context = new Context()) {
-                /*
-                if (listBox1.SelectedIndex == 0) {
-                    // Query for all blogs with names starting with B
-                    var search = context.Computers
-                    .Where(b => b.Name.Contains(textBox1.Text))
-                    .ToList();
-                    dataGridView1.DataSource = search;
-                }
-                */
 
-                //Поиск в списке департаментов по названию
+                //Поиск в списке компьютеров по названию
                 if (listBox1.SelectedIndex == 0) {
                     dataGridView1.DataSource = ComputerFunctions.Search(textBox1.Text);
                 }
@@ -419,7 +410,7 @@ namespace Comp_park_app_form {
             }
         }
 
-        //Формирование отчета
+        //Появление формы отчетов
         private void buttonReport_Click(object sender, EventArgs e) {
             Form_reports report = new Form_reports();
             report.ShowDialog();

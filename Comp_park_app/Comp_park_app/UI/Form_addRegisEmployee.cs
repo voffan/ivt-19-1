@@ -27,7 +27,7 @@ namespace Comp_park_app.UI {
                 this.Close();
             }
             else {
-                MessageBox.Show("Error");
+                MessageBox.Show("Не все поля заполнены");
             }
         }
 

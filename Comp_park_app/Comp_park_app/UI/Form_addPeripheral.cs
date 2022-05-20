@@ -86,7 +86,7 @@ namespace Comp_park_app {
                 frm1.Update_datagridview(5);
                 this.Close();
             } else {
-                MessageBox.Show("Error");
+                MessageBox.Show("Не все поля заполнены");
             }
         }
 
@@ -105,7 +105,7 @@ namespace Comp_park_app {
                 frm1.Update_datagridview(5);
                 this.Close();
             } else {
-                MessageBox.Show("Error");
+                MessageBox.Show("Не все поля заполнены");
             }
         }
     }

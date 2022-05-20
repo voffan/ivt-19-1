@@ -30,13 +30,14 @@ namespace Comp_park_app
         private void InitializeComponent()
         {
             this.textBox_name = new System.Windows.Forms.TextBox();
-            this.textBox_Manufacturer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button_Edit = new System.Windows.Forms.Button();
+            this.numericUpDown_number = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_number)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_name
@@ -45,13 +46,6 @@ namespace Comp_park_app
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(100, 23);
             this.textBox_name.TabIndex = 0;
-            // 
-            // textBox_Manufacturer
-            // 
-            this.textBox_Manufacturer.Location = new System.Drawing.Point(177, 105);
-            this.textBox_Manufacturer.Name = "textBox_Manufacturer";
-            this.textBox_Manufacturer.Size = new System.Drawing.Size(100, 23);
-            this.textBox_Manufacturer.TabIndex = 1;
             // 
             // label1
             // 
@@ -110,22 +104,35 @@ namespace Comp_park_app
             this.button_Edit.UseVisualStyleBackColor = true;
             this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
             // 
+            // numericUpDown_number
+            // 
+            this.numericUpDown_number.Location = new System.Drawing.Point(177, 105);
+            this.numericUpDown_number.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_number.Name = "numericUpDown_number";
+            this.numericUpDown_number.Size = new System.Drawing.Size(100, 23);
+            this.numericUpDown_number.TabIndex = 12;
+            // 
             // Form_addDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 281);
+            this.Controls.Add(this.numericUpDown_number);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox_Manufacturer);
             this.Controls.Add(this.textBox_name);
             this.Name = "Form_addDepartment";
             this.Text = "Form_Department";
             this.Load += new System.EventHandler(this.Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_number)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,7 +141,6 @@ namespace Comp_park_app
         #endregion
 
         private System.Windows.Forms.TextBox textBox_name;
-        private System.Windows.Forms.TextBox textBox_Manufacturer;
         
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -143,5 +149,6 @@ namespace Comp_park_app
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button_Edit;
+        private System.Windows.Forms.NumericUpDown numericUpDown_number;
     }
 }
