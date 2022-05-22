@@ -19,12 +19,6 @@ namespace gallerys.components
 {
     public class sortbystring
     {
-//        Картины
-//   Жанры
-//Авторы
-//Сотрудники
-//Журнал передвижения картин
-//Выставки
         public void sorting(string table, string colname, DataGridView dg)
         {
             if (table == "Картины")

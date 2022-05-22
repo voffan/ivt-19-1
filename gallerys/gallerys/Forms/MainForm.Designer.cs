@@ -29,7 +29,6 @@ namespace gallerys
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Addbutton = new System.Windows.Forms.Button();
             this.Editbutton = new System.Windows.Forms.Button();
@@ -39,9 +38,7 @@ namespace gallerys
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Poiskbutton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -161,7 +158,6 @@ namespace gallerys
             this.Text = "е";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,7 +174,6 @@ namespace gallerys
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button Poiskbutton;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 

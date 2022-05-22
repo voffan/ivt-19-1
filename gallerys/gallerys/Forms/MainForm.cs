@@ -85,7 +85,6 @@ namespace gallerys
                 {
                     dataGridView1.DataSource = c.Paintings.ToList();
                     dataGridView1.DataSource = c.Paintings.Include("Author").Include("Genre").ToList();
-                    bindingSource1.DataSource = dataGridView1.DataSource;
                     dataGridView1.Columns[4].Visible = false;
                 }
                 if (selectedtable == "Сотрудники")
