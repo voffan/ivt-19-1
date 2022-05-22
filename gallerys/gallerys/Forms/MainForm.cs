@@ -85,6 +85,7 @@ namespace gallerys
                 {
                     dataGridView1.DataSource = c.Paintings.ToList();
                     dataGridView1.DataSource = c.Paintings.Include("Author").Include("Genre").ToList();
+                    bindingSource1.DataSource = dataGridView1.DataSource;
                     dataGridView1.Columns[4].Visible = false;
                 }
                 if (selectedtable == "Сотрудники")
@@ -116,7 +117,7 @@ namespace gallerys
                 {
                     dataGridView1.DataSource = c.Paintings.ToList();
                     dataGridView1.DataSource = c.Paintings.Include("Author").ToList();
-                    dataGridView1.DataSource = c.Genres.Include("Genre").ToList();
+                    dataGridView1.DataSource = c.Paintings.Include("Genre").ToList();
                     dataGridView1.Columns[0].Visible = false;
                     dataGridView1.Columns[4].Visible = false;
                 }
@@ -238,13 +239,8 @@ namespace gallerys
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var str = sender.ToString();
-            MessageBox.Show(str);
-            //using (gallContext c = new gallContext())
-            //{
-            //    var p = c.Paintings.OrderBy(s => s.Name);
-            //    dataGridView1.DataSource = p.ToList();
-            //}
+            sortbystring sr = new sortbystring();
+            sr.sorting(comboBox1.SelectedItem.ToString(), dataGridView1.Columns[e.ColumnIndex].Name, dataGridView1);
         }
 
         private void Deletebutton_Click(object sender, EventArgs e)
@@ -319,6 +315,11 @@ namespace gallerys
                     dataGridView1.DataSource = PaintSer.Search(textBox1.Text);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
