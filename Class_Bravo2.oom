@@ -980,7 +980,7 @@ IndxFKName=%REFR%_FK
 IndxThreshold=
 ColnFKName=%.3:PARENT%_%COLUMN%
 ColnFKNameUse=No</a:ModelOptionsText>
-<a:RepositoryFilename>O:\Documents\Программная инженерия\ivt-19-1\Class_Bravo2.oom</a:RepositoryFilename>
+<a:RepositoryFilename>C:\Users\amand\prog_in\ivt-19-1\Class_Bravo2.oom</a:RepositoryFilename>
 <c:ObjectLanguage>
 <o:Shortcut Id="o3">
 <a:ObjectID>D3E8C438-518B-4559-AEC0-0D6235238D38</a:ObjectID>
@@ -1555,9 +1555,9 @@ Shadow=0</a:DisplayPreferences>
 <c:Symbols>
 <o:AssociationSymbol Id="o5">
 <a:CreationDate>1634033236</a:CreationDate>
-<a:ModificationDate>1634635118</a:ModificationDate>
-<a:Rect>((-15378,707), (899,2806))</a:Rect>
-<a:ListOfPoints>((-14978,1756),(499,1756))</a:ListOfPoints>
+<a:ModificationDate>1653462851</a:ModificationDate>
+<a:Rect>((-13353,6592), (-4426,8691))</a:Rect>
+<a:ListOfPoints>((-12953,7643),(-4826,7643))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1577,9 +1577,9 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o9">
 <a:CreationDate>1634033330</a:CreationDate>
-<a:ModificationDate>1634635047</a:ModificationDate>
-<a:Rect>((-23393,3498), (-17470,20690))</a:Rect>
-<a:ListOfPoints>((-19269,20290),(-19269,3898))</a:ListOfPoints>
+<a:ModificationDate>1653462831</a:ModificationDate>
+<a:Rect>((-21444,9798), (-15370,21065))</a:Rect>
+<a:ListOfPoints>((-17244,20665),(-17244,10198))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1599,9 +1599,9 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o12">
 <a:CreationDate>1634033333</a:CreationDate>
-<a:ModificationDate>1634635047</a:ModificationDate>
-<a:Rect>((-19302,1400), (1129,24851))</a:Rect>
-<a:ListOfPoints>((-671,24451),(-671,12900),(-15178,12900),(-15178,1800))</a:ListOfPoints>
+<a:ModificationDate>1653462858</a:ModificationDate>
+<a:Rect>((-17353,7700), (-672,22901))</a:Rect>
+<a:ListOfPoints>((-2546,22501),(-2546,12900),(-13153,12900),(-13153,8100))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1621,9 +1621,9 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o15">
 <a:CreationDate>1634570524</a:CreationDate>
-<a:ModificationDate>1634634642</a:ModificationDate>
-<a:Rect>((-41898,22925), (-16812,32415))</a:Rect>
-<a:ListOfPoints>((-17212,23325),(-17212,31365),(-41498,31365))</a:ListOfPoints>
+<a:ModificationDate>1653462869</a:ModificationDate>
+<a:Rect>((-35148,22925), (-16812,31349))</a:Rect>
+<a:ListOfPoints>((-17212,23325),(-17212,30315),(-34748,30315))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1643,9 +1643,9 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o18">
 <a:CreationDate>1634571455</a:CreationDate>
-<a:ModificationDate>1634634790</a:ModificationDate>
-<a:Rect>((-43020,23998), (-16883,26097))</a:Rect>
-<a:ListOfPoints>((-17283,25047),(-42620,25047))</a:ListOfPoints>
+<a:ModificationDate>1653462897</a:ModificationDate>
+<a:Rect>((-36045,22683), (-17183,24782))</a:Rect>
+<a:ListOfPoints>((-17583,23733),(-35645,23733))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1665,16 +1665,16 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o21">
 <a:CreationDate>1634571480</a:CreationDate>
-<a:ModificationDate>1634634794</a:ModificationDate>
-<a:Rect>((-43135,14663), (-16812,23725))</a:Rect>
-<a:ListOfPoints>((-17212,23325),(-30083,23325),(-30083,15712),(-42735,15712))</a:ListOfPoints>
+<a:ModificationDate>1653462878</a:ModificationDate>
+<a:Rect>((-35335,13753), (-17112,21583))</a:Rect>
+<a:ListOfPoints>((-17512,21183),(-25433,21183),(-25433,14812),(-34935,14812))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>CENTER 0 Arial Unicode MS,8,N
 SOURCE 0 Arial Unicode MS,8,N</a:FontList>
-<a:AutomaticRoutingState>3</a:AutomaticRoutingState>
+<a:AutomaticRoutingState>4</a:AutomaticRoutingState>
 <c:SourceSymbol>
 <o:ClassSymbol Ref="o10"/>
 </c:SourceSymbol>
@@ -1687,9 +1687,9 @@ SOURCE 0 Arial Unicode MS,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o24">
 <a:CreationDate>1634571526</a:CreationDate>
-<a:ModificationDate>1634634986</a:ModificationDate>
-<a:Rect>((-42871,5976), (-19813,21380))</a:Rect>
-<a:ListOfPoints>((-21762,20980),(-21762,7025),(-42471,7025))</a:ListOfPoints>
+<a:ModificationDate>1653462864</a:ModificationDate>
+<a:Rect>((-35221,7006), (-19738,21380))</a:Rect>
+<a:ListOfPoints>((-21762,20980),(-21762,8075),(-34821,8075))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1732,9 +1732,9 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o7">
 <a:CreationDate>1634031426</a:CreationDate>
-<a:ModificationDate>1634635103</a:ModificationDate>
+<a:ModificationDate>1653462851</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-400,-374), (7376,4724))</a:Rect>
+<a:Rect>((-5725,5101), (2051,10199))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1755,9 +1755,9 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o13">
 <a:CreationDate>1634031427</a:CreationDate>
-<a:ModificationDate>1634634924</a:ModificationDate>
+<a:ModificationDate>1653462858</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-7015,21376), (4237,28574))</a:Rect>
+<a:Rect>((-8890,19426), (2362,26624))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1778,9 +1778,9 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o6">
 <a:CreationDate>1634031427</a:CreationDate>
-<a:ModificationDate>1634635047</a:ModificationDate>
+<a:ModificationDate>1653462821</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-22876,-825), (-14098,4273))</a:Rect>
+<a:Rect>((-20851,5475), (-12073,10573))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1801,9 +1801,9 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o19">
 <a:CreationDate>1634031428</a:CreationDate>
-<a:ModificationDate>1634634924</a:ModificationDate>
+<a:ModificationDate>1653462867</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-47060,21202), (-37430,27350))</a:Rect>
+<a:Rect>((-39860,19927), (-30230,26075))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1824,9 +1824,9 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o25">
 <a:CreationDate>1634031428</a:CreationDate>
-<a:ModificationDate>1634634924</a:ModificationDate>
+<a:ModificationDate>1653462864</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-47436,3351), (-37806,9499))</a:Rect>
+<a:Rect>((-39786,4401), (-30156,10549))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1847,9 +1847,9 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o16">
 <a:CreationDate>1634031429</a:CreationDate>
-<a:ModificationDate>1634634924</a:ModificationDate>
+<a:ModificationDate>1653462869</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-46313,28816), (-36683,33914))</a:Rect>
+<a:Rect>((-39563,27766), (-29933,32864))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1870,9 +1870,9 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o22">
 <a:CreationDate>1634031429</a:CreationDate>
-<a:ModificationDate>1634634924</a:ModificationDate>
+<a:ModificationDate>1653462865</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-47550,12638), (-37920,18786))</a:Rect>
+<a:Rect>((-39750,11738), (-30120,17886))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1893,9 +1893,9 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o35">
 <a:CreationDate>1634031560</a:CreationDate>
-<a:ModificationDate>1634634924</a:ModificationDate>
+<a:ModificationDate>1653462855</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((9221,22765), (17615,30111))</a:Rect>
+<a:Rect>((4496,15490), (12890,22836))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1916,9 +1916,9 @@ LABL 0 Arial Unicode MS,8,N</a:FontList>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o37">
 <a:CreationDate>1634635778</a:CreationDate>
-<a:ModificationDate>1634635824</a:ModificationDate>
+<a:ModificationDate>1653462854</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((9061,16480), (16141,20528))</a:Rect>
+<a:Rect>((5011,6955), (12091,11003))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:FillColor>16770222</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
