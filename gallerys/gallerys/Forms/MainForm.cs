@@ -14,6 +14,7 @@ using gallerys.Forms;
 using gallerys.Forms.FormsforAdd;
 using gallerys.components;
 using gallerys.Models;
+using Microsoft.Office.Interop.Excel;
 namespace gallerys
 {
     public partial class MainForm : Form
@@ -318,7 +319,23 @@ namespace gallerys
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string path = "";
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "xls files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+            sfd.OverwritePrompt = true;
+            sfd.CheckPathExists = true;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                path = sfd.FileName;
+            }
+            else
+            {
+                path = "Невозможно открыть файл";
+            }
+            MessageBox.Show(path);
+            report rep = new report(path);
+            rep.rep("asd");
+            rep.clos(path);
         }
     }
 }

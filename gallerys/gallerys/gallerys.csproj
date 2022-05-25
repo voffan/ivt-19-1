@@ -12,6 +12,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1000" />
     <PackageReference Include="MySql.Data" Version="8.0.27" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.8" />
   </ItemGroup>
