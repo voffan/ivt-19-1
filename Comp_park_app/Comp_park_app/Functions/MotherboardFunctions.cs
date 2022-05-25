@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Comp_park_app.Functions {
-    class MotherboardFunctions {
+    public class MotherboardFunctions {
         public void Add(string name, string manufacturer) {
             Motherboard motherboard = new Motherboard() {
                 Name = name,

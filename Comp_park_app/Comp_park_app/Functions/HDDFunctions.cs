@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Comp_park_app.Functions {
-    class HDDFunctions {
+    public class HDDFunctions {
         public void Add(string name, string manufacturer, int capacity) {
             HDD hdd = new HDD() {
                 Name = name,

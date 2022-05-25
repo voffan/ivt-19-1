@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace Comp_park_app.Functions {
-    class DepartmentFunctions {
+    public class DepartmentFunctions {
         public void Add(string name, int number) {
             Department department = new Department() {
                 Name = name,

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace Comp_park_app.Functions {
-    class EmployeeFunctions {
+    public class EmployeeFunctions {
         public void Add(string name, int departmentid, int positionid, string password) {
             string psw = "";
 
