@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autoreport", "Autoreport.csproj", "{C59CEE72-7203-4A2C-AA8E-CA71C9F54148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClientService", "..\TestClientService\TestClientService.csproj", "{7EF0F577-57C6-4BE0-BE01-5C0EFCF7A5A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestClientService", "..\TestClientService\TestClientService.csproj", "{7EF0F577-57C6-4BE0-BE01-5C0EFCF7A5A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOrderService", "..\..\Documents\ivt191\TestOrderService\TestOrderService.csproj", "{5EAF6B8A-CDD7-4A1D-AE8B-A819ED67E346}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7EF0F577-57C6-4BE0-BE01-5C0EFCF7A5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EF0F577-57C6-4BE0-BE01-5C0EFCF7A5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EF0F577-57C6-4BE0-BE01-5C0EFCF7A5A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EAF6B8A-CDD7-4A1D-AE8B-A819ED67E346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EAF6B8A-CDD7-4A1D-AE8B-A819ED67E346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EAF6B8A-CDD7-4A1D-AE8B-A819ED67E346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EAF6B8A-CDD7-4A1D-AE8B-A819ED67E346}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
