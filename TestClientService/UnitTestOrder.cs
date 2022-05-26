@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestClientService
+namespace TestOrderService
 {
     [TestClass]
     public class UnitTestOrder
