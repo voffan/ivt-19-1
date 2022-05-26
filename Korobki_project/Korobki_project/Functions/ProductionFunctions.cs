@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
-    class ProductionFunctions
+    public class ProductionFunctions
     {
         public void Delete(int index)
         {

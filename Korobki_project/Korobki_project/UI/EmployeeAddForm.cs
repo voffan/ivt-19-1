@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Korobki_project.Functions;
 
 
 namespace Korobki_project.UI
@@ -34,9 +35,9 @@ namespace Korobki_project.UI
 		{
 			if (textBox1.TextLength != 0 && textBox2.TextLength != 0 && textBox3.TextLength != 0 && textBox4.TextLength != 0 && textBox5.TextLength != 0)
 			{
-				string c1 = comboBox1.SelectedValue.ToString();
-				string c2 = comboBox2.SelectedValue.ToString();
-				//int id = 4;
+				int c1 = Convert.ToInt32(comboBox1.SelectedValue);
+				int c2 = Convert.ToInt32(comboBox2.SelectedValue);
+				/*
 				string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
 				string sql = "INSERT employees(Name, Login, Password, PositionId, PhoneNumber, Adress, ShiftId) " +
 					"VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', " + c1 + ",  '" + textBox4.Text + "', '" + textBox5.Text + "', " + c2 + ");";
@@ -46,7 +47,12 @@ namespace Korobki_project.UI
 				MySqlCommand command = new MySqlCommand(sql, conn);
 				command.ExecuteNonQuery();
 				conn.Close();
+				*/
+				EmployeeFunctions employee = new EmployeeFunctions();
+				employee.Add(textBox1.Text, textBox2.Text, textBox3.Text, c1, textBox4.Text, textBox5.Text, c2);
 				MessageBox.Show("Добавлено");
+				
+
 			}
 			else
 			{

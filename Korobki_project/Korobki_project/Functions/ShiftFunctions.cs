@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
-    class ShiftFunctions
+   public class ShiftFunctions
     {
         public void Add()
         {

@@ -8,14 +8,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
-    class EmployeeFunctions
+    public class EmployeeFunctions
     {
-        public void Add()
+        public void Add(string name, string login, string password, int positionId, string phoneNumber, string adress, int shiftId)
         {
+            Employee employee = new Employee()
+            {
+                Name = name,
+                Login = login,
+                Password = password,
+                PositionId = positionId,
+                PhoneNumber = phoneNumber,
+                Adress = adress,
+                ShiftId = shiftId,
+            };
             using (Context c = new Context())
             {
-                Classes.Employee employee = new Classes.Employee();
-                //... initiate field
                 c.Employees.Add(employee);
                 c.SaveChanges();
             }
