@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
-    class ProductionFunctions
+    public class ProductionFunctions
     {
         public void Add(int teamid, int productid,int count,string comment)
         {

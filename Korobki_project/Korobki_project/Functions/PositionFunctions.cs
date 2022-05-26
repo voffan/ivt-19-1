@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
-	class PositionFunctions
+	public class PositionFunctions
 	{
         public void Add(string name)
         {

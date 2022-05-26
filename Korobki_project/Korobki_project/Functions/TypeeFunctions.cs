@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
-    class TypeeFunctions
+   public class TypeeFunctions
     {
         public void Add()
         {

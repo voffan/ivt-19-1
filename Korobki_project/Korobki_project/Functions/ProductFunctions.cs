@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
-    class ProductFunctions
+   public class ProductFunctions
     {
         public void Add(int typeeid,string size_box)
         {

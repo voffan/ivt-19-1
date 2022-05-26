@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Korobki_project.Functions
 {
-    class ScheduleFunctions
+   public  class ScheduleFunctions
     {
         public void Add(string name)
         {
