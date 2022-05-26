@@ -37,6 +37,7 @@ namespace gallerys.Forms.FormsforAdd
                 j.Add(genre);
             }
             MessageBox.Show("Вы успешно добавили жанр");
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

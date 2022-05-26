@@ -121,7 +121,7 @@ namespace gallerys
                     dataGridView1.Columns[0].Visible = false;
                     dataGridView1.Columns[4].Visible = false;
                 }
-                if (selectedtable == "Сотрудники")
+                if (selectedtable == "Сотрудники" && !(Connection.employeeSer.CurrentEmployee.Right == Models.Right.restorer))
                 {
                     dataGridView1.DataSource = c.Employees.ToList();
                     dataGridView1.Columns[0].Visible = false;
@@ -129,26 +129,31 @@ namespace gallerys
                     dataGridView1.Columns[3].Visible = false;
                     dataGridView1.Columns[4].Visible = false;
                 }
-                if (selectedtable == "Жанры")
+                //else MessageBox.Show("Вам закрыт доступ");
+                if (selectedtable == "Жанры" && !(Connection.employeeSer.CurrentEmployee.Right == Models.Right.director) && !(Connection.employeeSer.CurrentEmployee.Right == Models.Right.restorer))
                 {
                     dataGridView1.DataSource = c.Genres.ToList();
                     dataGridView1.Columns[0].Visible = false;
                 }
-                if (selectedtable == "Авторы")
+                //else MessageBox.Show("Вам закрыт доступ");
+                if (selectedtable == "Авторы" && !(Connection.employeeSer.CurrentEmployee.Right == Models.Right.director))
                 {
                     dataGridView1.DataSource = c.Authors.ToList();
                     dataGridView1.Columns[0].Visible = false;
                 }
-                if (selectedtable == "Журнал передвижения картин")
+                //else MessageBox.Show("Вам закрыт доступ");
+                if (selectedtable == "Журнал передвижения картин" && !(Connection.employeeSer.CurrentEmployee.Right == Models.Right.director) && !(Connection.employeeSer.CurrentEmployee.Right == Models.Right.restorer))
                 {
                     dataGridView1.DataSource = c.Journals.ToList();
                     dataGridView1.Columns[0].Visible = false;
                 }
-                if (selectedtable == "Выставки")
+                //else MessageBox.Show("Вам закрыт доступ");
+                if (selectedtable == "Выставки" && !(Connection.employeeSer.CurrentEmployee.Right == Models.Right.director) && !(Connection.employeeSer.CurrentEmployee.Right == Models.Right.restorer))
                 {
                     dataGridView1.DataSource = c.Exhibitions.ToList();
                     dataGridView1.Columns[0].Visible = false;
                 }
+                else MessageBox.Show("Вам закрыт доступ");
             }
             label1.Text = "Текущий список: " + selectedtable;
         }
@@ -250,37 +255,62 @@ namespace gallerys
                 gallContext c = new gallContext();
                 string selectedtable = comboBox1.SelectedItem.ToString();
                 int idn = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                DialogResult res = MessageBox.Show("Вы точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo);
                 if (selectedtable == "Картины")
                 {
-                    PaintSer ps = new PaintSer();
-                    ps.Remove(idn);
+                    //DialogResult res = MessageBox.Show("Вы точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        PaintSer ps = new PaintSer();
+                        ps.Remove(idn);
+                    }
                 }
                 if (selectedtable == "Сотрудники")
                 {
-                    EmployeeSer es = new EmployeeSer();
-                    es.Remove(idn);
+                    //DialogResult res = MessageBox.Show("Вы точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        EmployeeSer es = new EmployeeSer();
+                        es.Remove(idn);
+                    }
                 }
                 if (selectedtable == "Жанры")
                 {
-                    JanrSer js = new JanrSer();
-                    js.Remove(idn);
+                    //DialogResult res = MessageBox.Show("Вы точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        JanrSer js = new JanrSer();
+                        js.Remove(idn);
+                    }
                 }
                 if (selectedtable == "Авторы")
                 {
-                    AutorSer aus = new AutorSer();
-                    aus.Remove(idn);
+                    //DialogResult res = MessageBox.Show("Вы точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        AutorSer aus = new AutorSer();
+                        aus.Remove(idn);
+                    }
                 }
                 if (selectedtable == "Журнал передвижения картин")
                 {
-                    JournalSer js = new JournalSer();
-                    js.Remove(idn);
+                    if (res == DialogResult.Yes)
+                    {
+                        JournalSer js = new JournalSer();
+                        js.Remove(idn);
+                    }
                 }
                 if (selectedtable == "Выставки")
                 {
-                    ExhiSer es = new ExhiSer();
-                    es.Remove(idn);
+                    //DialogResult res = MessageBox.Show("Вы точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        ExhiSer es = new ExhiSer();
+                        es.Remove(idn);
+                    }
                 }
-                MessageBox.Show("Вы успешно удалили");
+                if (res == DialogResult.Yes)
+                    MessageBox.Show("Вы успешно удалили");
             }
             else
             {
@@ -291,50 +321,83 @@ namespace gallerys
 
         private void Poiskbutton_Click(object sender, EventArgs e)
         {
-            string selectedtable = comboBox1.SelectedItem.ToString();
-            using (gallContext context = new gallContext())
+            if (comboBox1.SelectedItem == null)
             {
-                if (selectedtable == "Авторы")
+                MessageBox.Show("Выберите таблицу");
+            }
+            else
+            {
+                string selectedtable = comboBox1.SelectedItem.ToString();
+                using (gallContext context = new gallContext())
                 {
-                    dataGridView1.DataSource = AutorSer.Search(textBox1.Text);
-                }
-                if (selectedtable == "Сотрудники")
-                {
-                    dataGridView1.DataSource = EmployeeSer.Search(textBox1.Text);
-                }
-                if (selectedtable == "Выставки")
-                {
-                    dataGridView1.DataSource = ExhiSer.Search(textBox1.Text);
-                }
-                if (selectedtable == "Жанры")
-                {
-                    dataGridView1.DataSource = JanrSer.Search(textBox1.Text);
-                }
-                if (selectedtable == "Картины")
-                {
-                    dataGridView1.DataSource = PaintSer.Search(textBox1.Text);
+                    if (selectedtable == "Картины")
+                    {
+                        dataGridView1.DataSource = PaintSer.Search(textBox1.Text);
+                    }
+                    if (Connection.employeeSer.CurrentEmployee.Right == Models.Right.manager || Connection.employeeSer.CurrentEmployee.Right == Models.Right.admin)
+                    {
+                        if (selectedtable == "Авторы")
+                        {
+                            dataGridView1.DataSource = AutorSer.Search(textBox1.Text);
+                        }
+                        //else MessageBox.Show("Вам закрыт доступ");
+                        if (selectedtable == "Сотрудники")
+                        {
+                            dataGridView1.DataSource = EmployeeSer.Search(textBox1.Text);
+                        }
+                        //else MessageBox.Show("Вам закрыт доступ");
+                        if (selectedtable == "Выставки")
+                        {
+                            dataGridView1.DataSource = ExhiSer.Search(textBox1.Text);
+                        }
+                        //else MessageBox.Show("Вам закрыт доступ");
+                        if (selectedtable == "Жанры")
+                        {
+                            dataGridView1.DataSource = JanrSer.Search(textBox1.Text);
+                        }
+                    }
+                    else if (Connection.employeeSer.CurrentEmployee.Right == Models.Right.restorer || Connection.employeeSer.CurrentEmployee.Right == Models.Right.director)
+                    {
+                        if (selectedtable == "Авторы" && Connection.employeeSer.CurrentEmployee.Right != Models.Right.director)
+                        {
+                            dataGridView1.DataSource = AutorSer.Search(textBox1.Text);
+                        }
+                        if (selectedtable == "Сотрудники" && Connection.employeeSer.CurrentEmployee.Right != Models.Right.restorer)
+                        {
+                            dataGridView1.DataSource = EmployeeSer.Search(textBox1.Text);
+                        }
+                        else MessageBox.Show("Вам закрыт доступ");
+                    }
                 }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string path = "";
-            report rep = new report();
-            path = rep.openfile();
-            rep.restoration(path);
-            rep.clos(path);
-            MessageBox.Show("Файл успешно создан");
+            if (Connection.employeeSer.CurrentEmployee.Right == Models.Right.manager)
+            {
+                string path = "";
+                report rep = new report();
+                path = rep.openfile();
+                rep.restoration(path);
+                rep.clos(path);
+                MessageBox.Show("Файл успешно создан");
+            }
+            else MessageBox.Show("У вас нет прав");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string path = "";
-            report rep = new report();
-            path = rep.openfile();
-            rep.exhibrep(path);
-            rep.clos(path);
-            MessageBox.Show("Файл успешно создан");
+            if (Connection.employeeSer.CurrentEmployee.Right == Models.Right.manager)
+            {
+                string path = "";
+                report rep = new report();
+                path = rep.openfile();
+                rep.exhibrep(path);
+                rep.clos(path);
+                MessageBox.Show("Файл успешно создан");
+            }
+            else MessageBox.Show("У вас нет прав");
         }
     }
 }
