@@ -5,6 +5,7 @@ using Autoreport.Models;
 using Autoreport.Database;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Autoreport.Services
 {
@@ -79,6 +80,8 @@ namespace Autoreport.Services
                 {
                     throw new Errors.UserAlreadyExists("Пользователь с таким логином уже существует");
                 }
+
+                CheckPassword(password);
             }
 
             int[] passportSplited = passport.Split("-").Select(x => Int32.Parse(x)).ToArray();
@@ -100,6 +103,17 @@ namespace Autoreport.Services
             {
                 db.Employees.Add(empl);
                 db.SaveChanges();
+            }
+        }
+
+        public void CheckPassword(string password)
+        {
+            if (password.Length < 6)
+                throw new Errors.ShortPassword("Слишком короткий пароль");
+
+            if (!(password.Any(Char.IsLetter) && password.Any(Char.IsDigit) && password.Any(Char.IsUpper)))
+            {
+                throw new Errors.IncorrectPassword("Пароль должен состоять из заглавных и строчных латинский букв и цифр");
             }
         }
 
@@ -147,6 +161,7 @@ namespace Autoreport.Services
 
                 if (password.Length > 0)
                 {
+                    CheckPassword(password);
                     passwordHash = Connection.hashService.GetPasswordHash(password);
                 }
 

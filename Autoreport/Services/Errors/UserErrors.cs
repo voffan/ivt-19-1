@@ -16,6 +16,11 @@ namespace Autoreport.Services.Errors
         public IncorrectPassword(string message) : base(message) { }
     }
 
+    class ShortPassword : Exception
+    {
+        public ShortPassword(string message) : base(message) { }
+    }
+
     class UserAlreadyExists: Exception
     {
         public UserAlreadyExists(string message) : base(message) { }

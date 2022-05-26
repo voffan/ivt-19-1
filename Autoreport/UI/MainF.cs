@@ -148,7 +148,7 @@ namespace Autoreport.UI
 
         private void SetTabPermittedActions()
         {
-            employeeActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn };
+            employeeActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, deleteBtn };
             employeeActions[Mode.Select] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn };
 
             clientActions[Mode.General] = new List<Button>() { addBtn, editBtn, searchBtn, reloadBtn, infoBtn, doneBtn, deleteBtn };
@@ -346,6 +346,7 @@ namespace Autoreport.UI
             if (updateSearchPanel)
                 UpdateSearchPanel(typeof(Employee));
 
+            currentDeleteAction = Connection.employeeService.Delete;
             currentAddForm = new AddEmployeeF();
             currentEditForm = new EditEmployeeF();
             dataGridView.DataSource = currentGetFunction().Cast<Employee>().ToList();
@@ -591,7 +592,9 @@ namespace Autoreport.UI
             int selectedItemId = Int32.Parse(dataGridView.SelectedRows[0].Cells["Id"].Value.ToString());
             currentEditForm.LoadField(selectedItemId);
             currentEditForm.ShowDialog(this);
-            currentTabButton.PerformClick();
+
+            if (CurrentMode == Mode.General)
+                currentTabButton.PerformClick();
         }
 
         private void DataGridItemSelectd(object sender, EventArgs e)

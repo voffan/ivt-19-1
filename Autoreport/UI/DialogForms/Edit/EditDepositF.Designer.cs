@@ -3,7 +3,7 @@ using Autoreport.UI.Edit.Parents;
 
 namespace Autoreport.UI.Edit
 {
-    partial class EditDepositF : AddFormSelective
+    partial class EditDepositF : BaseAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,8 +38,6 @@ namespace Autoreport.UI.Edit
             this.sumText = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.positionDepositBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.selectedBox = new System.Windows.Forms.ListBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.flowLayout.SuspendLayout();
@@ -55,11 +53,9 @@ namespace Autoreport.UI.Edit
             this.flowLayout.Controls.Add(this.sumText);
             this.flowLayout.Controls.Add(this.label13);
             this.flowLayout.Controls.Add(this.positionDepositBox);
-            this.flowLayout.Controls.Add(this.label2);
-            this.flowLayout.Controls.Add(this.selectedBox);
             this.flowLayout.Location = new System.Drawing.Point(12, 12);
             this.flowLayout.Name = "flowLayout";
-            this.flowLayout.Size = new System.Drawing.Size(476, 145);
+            this.flowLayout.Size = new System.Drawing.Size(476, 114);
             this.flowLayout.TabIndex = 11;
             // 
             // label1
@@ -129,33 +125,9 @@ namespace Autoreport.UI.Edit
             this.positionDepositBox.Size = new System.Drawing.Size(232, 25);
             this.positionDepositBox.TabIndex = 18;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(3, 96);
-            this.label2.Margin = new System.Windows.Forms.Padding(3);
-            this.label2.MinimumSize = new System.Drawing.Size(232, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(232, 25);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Владелец";
-            // 
-            // selectedBox
-            // 
-            this.selectedBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.selectedBox.FormattingEnabled = true;
-            this.selectedBox.IntegralHeight = false;
-            this.selectedBox.ItemHeight = 17;
-            this.selectedBox.Location = new System.Drawing.Point(241, 96);
-            this.selectedBox.Name = "selectedBox";
-            this.selectedBox.Size = new System.Drawing.Size(232, 25);
-            this.selectedBox.TabIndex = 21;
-            this.selectedBox.Click += new System.EventHandler(this.Select_Click);
-            // 
             // resetBtn
             // 
-            this.resetBtn.Location = new System.Drawing.Point(12, 163);
+            this.resetBtn.Location = new System.Drawing.Point(12, 132);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(200, 30);
             this.resetBtn.TabIndex = 13;
@@ -165,7 +137,7 @@ namespace Autoreport.UI.Edit
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(288, 163);
+            this.saveBtn.Location = new System.Drawing.Point(288, 132);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(200, 30);
             this.saveBtn.TabIndex = 14;
@@ -177,13 +149,13 @@ namespace Autoreport.UI.Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 204);
+            this.ClientSize = new System.Drawing.Size(500, 174);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.flowLayout);
             this.KeyPreview = true;
-            this.MaximumSize = new System.Drawing.Size(516, 243);
-            this.MinimumSize = new System.Drawing.Size(516, 243);
+            this.MaximumSize = new System.Drawing.Size(516, 212);
+            this.MinimumSize = new System.Drawing.Size(516, 212);
             this.Name = "EditDepositF";
             this.Text = "Редактировать депозит";
             this.Load += new System.EventHandler(this.AddDepositForm_Load);
@@ -204,8 +176,6 @@ namespace Autoreport.UI.Edit
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.TextBox dataText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox selectedBox;
         private System.Windows.Forms.NumericUpDown sumText;
     }
 }
