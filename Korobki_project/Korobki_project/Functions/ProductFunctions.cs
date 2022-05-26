@@ -10,6 +10,20 @@ namespace Korobki_project.Functions
 {
     class ProductFunctions
     {
+        public void Add(int typeeid,string size_box)
+        {
+            Product product = new Product()
+            {
+                TypeeId = typeeid,
+                Size_box=size_box,
+            };
+            using (Context c = new Context())
+            {
+
+                c.Products.Add(product);
+                c.SaveChanges();
+            }
+        }
         public void Delete(int index)
         {
             Product table;

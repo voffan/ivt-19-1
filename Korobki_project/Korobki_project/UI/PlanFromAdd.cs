@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Korobki_project.Functions;
 
 namespace Korobki_project.UI
 {
@@ -29,8 +30,10 @@ namespace Korobki_project.UI
         {
             if (textBox1.Text.Length!=0)
             {
-                string c1 = comboBox1.SelectedValue.ToString();
+                int c1 = Convert.ToInt32(comboBox1.SelectedValue);
                 int count = Convert.ToInt32(textBox1.Text);
+                string date = dateTimePicker1.Value.Date.ToString("dd.MM.yyyy");
+                /*
                 string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
                 string sql = "INSERT plans(Count_box, PlanDate,ProductId)" + "VALUES(" + count + ", '" + dateTimePicker1.Value.Date.ToString("dd.MM.yyyy") + "'," + c1 + ")";
                 MySqlConnection conn = new MySqlConnection(connStr);
@@ -38,6 +41,9 @@ namespace Korobki_project.UI
                 MySqlCommand command = new MySqlCommand(sql, conn);
                 command.ExecuteNonQuery();
                 conn.Close();
+                */
+                PlanFunctions planFunctions = new PlanFunctions();
+                planFunctions.Add(count, date, c1);
                 MessageBox.Show("Добавлено");
             }
             else

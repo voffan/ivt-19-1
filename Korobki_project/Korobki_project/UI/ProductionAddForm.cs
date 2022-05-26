@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Korobki_project.Functions;
 
 namespace Korobki_project.UI
 {
@@ -33,8 +34,10 @@ namespace Korobki_project.UI
         {
             if (textBox1.TextLength != 0 && textBox2.TextLength != 0)
             {
-                string c1 = comboBox1.SelectedValue.ToString();
-                string c2 = comboBox2.SelectedValue.ToString();
+                int c1 = Convert.ToInt32(comboBox1.SelectedValue);
+                int c2 = Convert.ToInt32(comboBox2.SelectedValue);
+                int count = Convert.ToInt32(textBox1.Text);
+                /*
 				string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
 				string sql = "INSERT productions(TeamId, ProductId, Count, Comment) " +
 					"VALUES(" + c1 + ", " + c2 + ", '" + textBox1.Text + "',  '" + textBox2.Text + "');";
@@ -43,6 +46,9 @@ namespace Korobki_project.UI
 				MySqlCommand command = new MySqlCommand(sql, conn);
 				command.ExecuteNonQuery();
 				conn.Close();
+                */
+                ProductionFunctions productionFunctions = new ProductionFunctions();
+                productionFunctions.Add(c1, c2, count, textBox2.Text);
 				MessageBox.Show("Добавлено");
 			}
             else

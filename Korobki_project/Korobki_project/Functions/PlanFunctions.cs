@@ -10,6 +10,21 @@ namespace Korobki_project.Functions
 {
     class PlanFunctions
     {
+        public void Add(int count_box,string plandate,int productid)
+        {
+            Plan plan = new Plan()
+            {
+                Count_box = count_box,
+                PlanDate = plandate,
+                ProductId = productid,
+            };
+            using (Context c = new Context())
+            {
+               
+                c.Plans.Add(plan);
+                c.SaveChanges();
+            }
+        }
         public void Delete(int index)
         {
             Plan table;

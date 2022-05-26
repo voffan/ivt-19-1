@@ -10,6 +10,22 @@ namespace Korobki_project.Functions
 {
     class ProductionFunctions
     {
+        public void Add(int teamid, int productid,int count,string comment)
+        {
+            Production production = new Production()
+            {
+                TeamId=teamid,
+                ProductId=productid,
+                Count=count,
+                Comment=comment,
+            };
+            using (Context c = new Context())
+            {
+
+                c.Productions.Add(production);
+                c.SaveChanges();
+            }
+        }
         public void Delete(int index)
         {
             Production table;

@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Korobki_project;
+using Korobki_project.Functions;
 
 namespace TestProject1
 {
@@ -9,7 +10,7 @@ namespace TestProject1
 		[TestMethod]
 		public void TestMethod1()
 		{
-			// Arturchik lox
+			
 		}
 	}
 }

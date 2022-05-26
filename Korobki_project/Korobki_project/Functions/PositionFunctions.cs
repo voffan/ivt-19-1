@@ -10,6 +10,19 @@ namespace Korobki_project.Functions
 {
 	class PositionFunctions
 	{
+        public void Add(string name)
+        {
+            Position position = new Position()
+            {
+               Name=name,
+            };
+            using (Context c = new Context())
+            {
+
+                c.Positions.Add(position);
+                c.SaveChanges();
+            }
+        }
         public void Delete(int index)
         {
             Position table;
