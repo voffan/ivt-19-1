@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Comp_park_app.Functions {
-    class PeripheralFunctions {
+    public class PeripheralFunctions {
         public void Add(string name, string itemno, Status status, int departmentid, int employeeid, DateTime date, string reason) {
             Peripheral peripheral = new Peripheral() {
                 Name = name,

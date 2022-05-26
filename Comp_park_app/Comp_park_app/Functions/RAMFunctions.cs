@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Comp_park_app.Functions {
-    class RAMFunctions {
+    public class RAMFunctions {
         public void Add(string name, string manufacturer, int capacity) {
             RAM ram = new RAM() {
                 Name = name, Manufacturer = manufacturer, Capacity = capacity

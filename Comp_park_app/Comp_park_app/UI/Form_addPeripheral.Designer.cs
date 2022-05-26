@@ -52,16 +52,16 @@ namespace Comp_park_app
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(177, 75);
+            this.textBox_name.Location = new System.Drawing.Point(165, 68);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(140, 23);
+            this.textBox_name.Size = new System.Drawing.Size(175, 23);
             this.textBox_name.TabIndex = 1;
             // 
             // textBox_itemno
             // 
-            this.textBox_itemno.Location = new System.Drawing.Point(177, 105);
+            this.textBox_itemno.Location = new System.Drawing.Point(165, 98);
             this.textBox_itemno.Name = "textBox_itemno";
-            this.textBox_itemno.Size = new System.Drawing.Size(140, 23);
+            this.textBox_itemno.Size = new System.Drawing.Size(175, 23);
             this.textBox_itemno.TabIndex = 2;
             // 
             // label1
@@ -74,7 +74,7 @@ namespace Comp_park_app
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 79);
+            this.label2.Location = new System.Drawing.Point(37, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 15);
             this.label2.TabIndex = 6;
@@ -83,7 +83,7 @@ namespace Comp_park_app
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 108);
+            this.label3.Location = new System.Drawing.Point(37, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 15);
             this.label3.TabIndex = 7;
@@ -101,7 +101,7 @@ namespace Comp_park_app
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(49, 198);
+            this.label5.Location = new System.Drawing.Point(37, 191);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 15);
             this.label5.TabIndex = 9;
@@ -110,7 +110,7 @@ namespace Comp_park_app
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(49, 228);
+            this.label6.Location = new System.Drawing.Point(37, 221);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 15);
             this.label6.TabIndex = 10;
@@ -139,7 +139,7 @@ namespace Comp_park_app
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(49, 140);
+            this.label7.Location = new System.Drawing.Point(37, 133);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 15);
             this.label7.TabIndex = 11;
@@ -148,25 +148,25 @@ namespace Comp_park_app
             // comboBox_Status
             // 
             this.comboBox_Status.FormattingEnabled = true;
-            this.comboBox_Status.Location = new System.Drawing.Point(177, 136);
+            this.comboBox_Status.Location = new System.Drawing.Point(165, 129);
             this.comboBox_Status.Name = "comboBox_Status";
-            this.comboBox_Status.Size = new System.Drawing.Size(140, 23);
+            this.comboBox_Status.Size = new System.Drawing.Size(175, 23);
             this.comboBox_Status.TabIndex = 12;
             // 
             // comboBox_Department
             // 
             this.comboBox_Department.FormattingEnabled = true;
-            this.comboBox_Department.Location = new System.Drawing.Point(177, 194);
+            this.comboBox_Department.Location = new System.Drawing.Point(165, 187);
             this.comboBox_Department.Name = "comboBox_Department";
-            this.comboBox_Department.Size = new System.Drawing.Size(140, 23);
+            this.comboBox_Department.Size = new System.Drawing.Size(175, 23);
             this.comboBox_Department.TabIndex = 13;
             // 
             // comboBox_Employee
             // 
             this.comboBox_Employee.FormattingEnabled = true;
-            this.comboBox_Employee.Location = new System.Drawing.Point(177, 224);
+            this.comboBox_Employee.Location = new System.Drawing.Point(165, 217);
             this.comboBox_Employee.Name = "comboBox_Employee";
-            this.comboBox_Employee.Size = new System.Drawing.Size(140, 23);
+            this.comboBox_Employee.Size = new System.Drawing.Size(175, 23);
             this.comboBox_Employee.TabIndex = 14;
             // 
             // button_Edit
@@ -181,15 +181,15 @@ namespace Comp_park_app
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(177, 253);
+            this.dateTimePicker1.Location = new System.Drawing.Point(165, 246);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(140, 23);
+            this.dateTimePicker1.Size = new System.Drawing.Size(175, 23);
             this.dateTimePicker1.TabIndex = 16;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(49, 259);
+            this.label8.Location = new System.Drawing.Point(37, 252);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 15);
             this.label8.TabIndex = 17;
@@ -198,7 +198,7 @@ namespace Comp_park_app
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(49, 168);
+            this.label9.Location = new System.Drawing.Point(37, 161);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 15);
             this.label9.TabIndex = 18;
@@ -206,9 +206,9 @@ namespace Comp_park_app
             // 
             // textBox_Reason
             // 
-            this.textBox_Reason.Location = new System.Drawing.Point(177, 165);
+            this.textBox_Reason.Location = new System.Drawing.Point(165, 158);
             this.textBox_Reason.Name = "textBox_Reason";
-            this.textBox_Reason.Size = new System.Drawing.Size(140, 23);
+            this.textBox_Reason.Size = new System.Drawing.Size(175, 23);
             this.textBox_Reason.TabIndex = 19;
             // 
             // Form_addPeripheral

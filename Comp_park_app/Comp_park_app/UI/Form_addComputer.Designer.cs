@@ -287,7 +287,7 @@ namespace Comp_park_app
             // 
             this.textBox_Reason.Location = new System.Drawing.Point(144, 172);
             this.textBox_Reason.Name = "textBox_Reason";
-            this.textBox_Reason.Size = new System.Drawing.Size(121, 23);
+            this.textBox_Reason.Size = new System.Drawing.Size(211, 23);
             this.textBox_Reason.TabIndex = 27;
             // 
             // label6

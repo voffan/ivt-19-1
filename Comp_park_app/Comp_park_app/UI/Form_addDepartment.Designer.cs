@@ -42,15 +42,15 @@ namespace Comp_park_app
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(177, 76);
+            this.textBox_name.Location = new System.Drawing.Point(150, 80);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(100, 23);
+            this.textBox_name.Size = new System.Drawing.Size(148, 23);
             this.textBox_name.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 79);
+            this.label1.Location = new System.Drawing.Point(52, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 5;
@@ -59,7 +59,7 @@ namespace Comp_park_app
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(79, 108);
+            this.label2.Location = new System.Drawing.Point(52, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 15);
             this.label2.TabIndex = 6;
@@ -106,14 +106,14 @@ namespace Comp_park_app
             // 
             // numericUpDown_number
             // 
-            this.numericUpDown_number.Location = new System.Drawing.Point(177, 105);
+            this.numericUpDown_number.Location = new System.Drawing.Point(150, 109);
             this.numericUpDown_number.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.numericUpDown_number.Name = "numericUpDown_number";
-            this.numericUpDown_number.Size = new System.Drawing.Size(100, 23);
+            this.numericUpDown_number.Size = new System.Drawing.Size(148, 23);
             this.numericUpDown_number.TabIndex = 12;
             // 
             // Form_addDepartment

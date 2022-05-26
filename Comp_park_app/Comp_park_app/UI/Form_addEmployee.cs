@@ -64,21 +64,29 @@ namespace Comp_park_app {
             EmployeeFunctions employee = new EmployeeFunctions();
 
             if (textBox_Name.Text.Length != 0 && comboBox_Department.SelectedIndex >= 0 && comboBox_Position.SelectedIndex >= 0 && textBox_Password.Text.Length > 0) {
-                var name = textBox_Name.Text;
-                var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
-                var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
-                password = textBox_Password.Text;
-                employee.Add(name, departmentid, positionid, password);
-                frm1.Update_datagridview(2);
-                this.Close();
-            } else {
-                if (textBox_Name.Text.Length != 0 && comboBox_Department.SelectedIndex >= 0 && comboBox_Position.SelectedIndex >= 0) {
+                if (EmployeeFunctions.CheckForDuplicates(textBox_Name.Text)) {
                     var name = textBox_Name.Text;
                     var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                     var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
+                    password = textBox_Password.Text;
                     employee.Add(name, departmentid, positionid, password);
                     frm1.Update_datagridview(2);
                     this.Close();
+                } else { 
+                    MessageBox.Show("Пользователь с таким ФИО уже существует");
+                }
+            } else {
+                if (textBox_Name.Text.Length != 0 && comboBox_Department.SelectedIndex >= 0 && comboBox_Position.SelectedIndex >= 0) {
+                    if (EmployeeFunctions.CheckForDuplicates(textBox_Name.Text)) {
+                        var name = textBox_Name.Text;
+                        var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
+                        var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
+                        employee.Add(name, departmentid, positionid, password);
+                        frm1.Update_datagridview(2);
+                        this.Close();
+                    } else {
+                    MessageBox.Show("Пользователь с таким ФИО уже существует");
+                }
                 } else {
                     MessageBox.Show("Не все поля заполнены");
                 }

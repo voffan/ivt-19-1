@@ -78,6 +78,17 @@ namespace Comp_park_app.Functions {
             }
         }
 
-       
+        public static bool CheckForDuplicates(string log) {
+            using (Context c = new Context()) {
+                var search = c.Employees
+                    .Where(b => b.Name == log)
+                    .FirstOrDefault();
+                if (search == null) {
+                    return true;
+                } else { 
+                    return false;
+                }
+            }
+        }
     }
 }

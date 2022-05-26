@@ -80,7 +80,7 @@ namespace Comp_park_app.UI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 120);
+            this.label2.Location = new System.Drawing.Point(47, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 15);
             this.label2.TabIndex = 15;
@@ -89,7 +89,7 @@ namespace Comp_park_app.UI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 91);
+            this.label1.Location = new System.Drawing.Point(47, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 14;
@@ -97,21 +97,21 @@ namespace Comp_park_app.UI
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(172, 88);
+            this.textBox_name.Location = new System.Drawing.Point(145, 89);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(100, 23);
+            this.textBox_name.Size = new System.Drawing.Size(149, 23);
             this.textBox_name.TabIndex = 12;
             // 
             // numericUpDown_number
             // 
-            this.numericUpDown_number.Location = new System.Drawing.Point(172, 117);
+            this.numericUpDown_number.Location = new System.Drawing.Point(145, 118);
             this.numericUpDown_number.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.numericUpDown_number.Name = "numericUpDown_number";
-            this.numericUpDown_number.Size = new System.Drawing.Size(100, 23);
+            this.numericUpDown_number.Size = new System.Drawing.Size(149, 23);
             this.numericUpDown_number.TabIndex = 20;
             // 
             // Form_addRegisDepartment

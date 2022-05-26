@@ -77,7 +77,7 @@ namespace Comp_park_app.UI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 102);
+            this.label1.Location = new System.Drawing.Point(50, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 22;
@@ -85,9 +85,9 @@ namespace Comp_park_app.UI
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(166, 99);
+            this.textBox_name.Location = new System.Drawing.Point(121, 99);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(100, 23);
+            this.textBox_name.Size = new System.Drawing.Size(166, 23);
             this.textBox_name.TabIndex = 20;
             // 
             // Form_addRegisPosition

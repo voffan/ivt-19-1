@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Comp_park_app.Functions {
-    class ProcessorFunctions {
+    public class ProcessorFunctions {
         public void Add(string name, string manufacturer, string frequency) {
             Processor processor = new Processor() {
                 Name = name,

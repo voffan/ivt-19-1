@@ -44,22 +44,22 @@ namespace Comp_park_app
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(172, 81);
+            this.textBox_name.Location = new System.Drawing.Point(143, 73);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(100, 23);
+            this.textBox_name.Size = new System.Drawing.Size(160, 23);
             this.textBox_name.TabIndex = 0;
             // 
             // textBox_Manufacturer
             // 
-            this.textBox_Manufacturer.Location = new System.Drawing.Point(172, 110);
+            this.textBox_Manufacturer.Location = new System.Drawing.Point(143, 102);
             this.textBox_Manufacturer.Name = "textBox_Manufacturer";
-            this.textBox_Manufacturer.Size = new System.Drawing.Size(100, 23);
+            this.textBox_Manufacturer.Size = new System.Drawing.Size(160, 23);
             this.textBox_Manufacturer.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 84);
+            this.label1.Location = new System.Drawing.Point(45, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 5;
@@ -68,7 +68,7 @@ namespace Comp_park_app
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 113);
+            this.label2.Location = new System.Drawing.Point(45, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 15);
             this.label2.TabIndex = 6;
@@ -77,7 +77,7 @@ namespace Comp_park_app
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 142);
+            this.label3.Location = new System.Drawing.Point(45, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 15);
             this.label3.TabIndex = 7;
@@ -124,14 +124,14 @@ namespace Comp_park_app
             // 
             // numericUpDown_capacity
             // 
-            this.numericUpDown_capacity.Location = new System.Drawing.Point(172, 139);
+            this.numericUpDown_capacity.Location = new System.Drawing.Point(143, 131);
             this.numericUpDown_capacity.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.numericUpDown_capacity.Name = "numericUpDown_capacity";
-            this.numericUpDown_capacity.Size = new System.Drawing.Size(100, 23);
+            this.numericUpDown_capacity.Size = new System.Drawing.Size(160, 23);
             this.numericUpDown_capacity.TabIndex = 12;
             // 
             // Form_addHDD

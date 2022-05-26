@@ -41,22 +41,22 @@ namespace Comp_park_app.UI
             // 
             // textBox_Login
             // 
-            this.textBox_Login.Location = new System.Drawing.Point(137, 93);
+            this.textBox_Login.Location = new System.Drawing.Point(114, 90);
             this.textBox_Login.Name = "textBox_Login";
-            this.textBox_Login.Size = new System.Drawing.Size(100, 23);
+            this.textBox_Login.Size = new System.Drawing.Size(147, 23);
             this.textBox_Login.TabIndex = 0;
             // 
             // textBox_Password
             // 
-            this.textBox_Password.Location = new System.Drawing.Point(137, 150);
+            this.textBox_Password.Location = new System.Drawing.Point(114, 131);
             this.textBox_Password.Name = "textBox_Password";
-            this.textBox_Password.Size = new System.Drawing.Size(100, 23);
+            this.textBox_Password.Size = new System.Drawing.Size(147, 23);
             this.textBox_Password.TabIndex = 1;
             // 
             // label_login
             // 
             this.label_login.AutoSize = true;
-            this.label_login.Location = new System.Drawing.Point(65, 96);
+            this.label_login.Location = new System.Drawing.Point(42, 93);
             this.label_login.Name = "label_login";
             this.label_login.Size = new System.Drawing.Size(41, 15);
             this.label_login.TabIndex = 2;
@@ -65,7 +65,7 @@ namespace Comp_park_app.UI
             // label_password
             // 
             this.label_password.AutoSize = true;
-            this.label_password.Location = new System.Drawing.Point(65, 153);
+            this.label_password.Location = new System.Drawing.Point(42, 134);
             this.label_password.Name = "label_password";
             this.label_password.Size = new System.Drawing.Size(49, 15);
             this.label_password.TabIndex = 3;

@@ -109,9 +109,9 @@ namespace Comp_park_app_form
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(958, 320);
+            this.button2.Location = new System.Drawing.Point(958, 326);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 32);
+            this.button2.Size = new System.Drawing.Size(238, 32);
             this.button2.TabIndex = 5;
             this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = true;
@@ -120,9 +120,9 @@ namespace Comp_park_app_form
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(1084, 320);
+            this.button3.Location = new System.Drawing.Point(958, 364);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 32);
+            this.button3.Size = new System.Drawing.Size(238, 32);
             this.button3.TabIndex = 6;
             this.button3.Text = "Изменить";
             this.button3.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@ namespace Comp_park_app_form
             // button_Delete
             // 
             this.button_Delete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_Delete.Location = new System.Drawing.Point(958, 375);
+            this.button_Delete.Location = new System.Drawing.Point(958, 402);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(238, 32);
             this.button_Delete.TabIndex = 7;
@@ -142,7 +142,7 @@ namespace Comp_park_app_form
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(513, 31);
+            this.textBox1.Location = new System.Drawing.Point(587, 31);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(224, 29);
             this.textBox1.TabIndex = 8;
@@ -150,7 +150,7 @@ namespace Comp_park_app_form
             // button_search
             // 
             this.button_search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_search.Location = new System.Drawing.Point(743, 31);
+            this.button_search.Location = new System.Drawing.Point(817, 31);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(96, 30);
             this.button_search.TabIndex = 9;
@@ -161,7 +161,7 @@ namespace Comp_park_app_form
             // buttonReport
             // 
             this.buttonReport.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonReport.Location = new System.Drawing.Point(958, 432);
+            this.buttonReport.Location = new System.Drawing.Point(958, 465);
             this.buttonReport.Name = "buttonReport";
             this.buttonReport.Size = new System.Drawing.Size(238, 70);
             this.buttonReport.TabIndex = 10;

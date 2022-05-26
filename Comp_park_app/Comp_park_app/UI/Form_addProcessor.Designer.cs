@@ -43,29 +43,29 @@ namespace Comp_park_app
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(185, 73);
+            this.textBox_name.Location = new System.Drawing.Point(149, 69);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(100, 23);
+            this.textBox_name.Size = new System.Drawing.Size(149, 23);
             this.textBox_name.TabIndex = 0;
             // 
             // textBox_Manufacturer
             // 
-            this.textBox_Manufacturer.Location = new System.Drawing.Point(185, 102);
+            this.textBox_Manufacturer.Location = new System.Drawing.Point(149, 98);
             this.textBox_Manufacturer.Name = "textBox_Manufacturer";
-            this.textBox_Manufacturer.Size = new System.Drawing.Size(100, 23);
+            this.textBox_Manufacturer.Size = new System.Drawing.Size(149, 23);
             this.textBox_Manufacturer.TabIndex = 1;
             // 
             // textBox_frequency
             // 
-            this.textBox_frequency.Location = new System.Drawing.Point(185, 131);
+            this.textBox_frequency.Location = new System.Drawing.Point(149, 127);
             this.textBox_frequency.Name = "textBox_frequency";
-            this.textBox_frequency.Size = new System.Drawing.Size(100, 23);
+            this.textBox_frequency.Size = new System.Drawing.Size(149, 23);
             this.textBox_frequency.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(87, 76);
+            this.label1.Location = new System.Drawing.Point(51, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 5;
@@ -74,7 +74,7 @@ namespace Comp_park_app
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(87, 105);
+            this.label2.Location = new System.Drawing.Point(51, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 15);
             this.label2.TabIndex = 6;
@@ -83,7 +83,7 @@ namespace Comp_park_app
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(87, 134);
+            this.label3.Location = new System.Drawing.Point(51, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 15);
             this.label3.TabIndex = 7;
@@ -100,7 +100,7 @@ namespace Comp_park_app
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(87, 220);
+            this.button1.Location = new System.Drawing.Point(73, 207);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -110,7 +110,7 @@ namespace Comp_park_app
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(210, 220);
+            this.button2.Location = new System.Drawing.Point(203, 207);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -120,7 +120,7 @@ namespace Comp_park_app
             // 
             // button_Edit
             // 
-            this.button_Edit.Location = new System.Drawing.Point(87, 220);
+            this.button_Edit.Location = new System.Drawing.Point(73, 207);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(75, 23);
             this.button_Edit.TabIndex = 11;

@@ -18,13 +18,17 @@ namespace Comp_park_app.UI {
 
         private void button_Edit_Click(object sender, EventArgs e) {
             if (textBox_Name.Text.Length != 0 && comboBox_Department.Text.Length >= 0 && comboBox_Position.Text.Length >= 0 && textBox_Password.Text.Length >= 0) {
-                EmployeeFunctions employee = new EmployeeFunctions();
-                var name = textBox_Name.Text;
-                var password = textBox_Password.Text;
-                var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
-                var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
-                employee.Add(name, departmentid, positionid, password);
-                this.Close();
+                if (EmployeeFunctions.CheckForDuplicates(textBox_Name.Text)) {
+                    EmployeeFunctions employee = new EmployeeFunctions();
+                    var name = textBox_Name.Text;
+                    var password = textBox_Password.Text;
+                    var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
+                    var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
+                    employee.Add(name, departmentid, positionid, password);
+                    this.Close();
+                } else { 
+                    MessageBox.Show("Пользователь с таким ФИО уже существует");
+                }
             }
             else {
                 MessageBox.Show("Не все поля заполнены");

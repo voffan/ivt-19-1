@@ -46,15 +46,15 @@ namespace Comp_park_app
             // 
             // textBox_Name
             // 
-            this.textBox_Name.Location = new System.Drawing.Point(172, 70);
+            this.textBox_Name.Location = new System.Drawing.Point(131, 63);
             this.textBox_Name.Name = "textBox_Name";
-            this.textBox_Name.Size = new System.Drawing.Size(100, 23);
+            this.textBox_Name.Size = new System.Drawing.Size(173, 23);
             this.textBox_Name.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 73);
+            this.label1.Location = new System.Drawing.Point(49, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 15);
             this.label1.TabIndex = 5;
@@ -63,7 +63,7 @@ namespace Comp_park_app
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(71, 134);
+            this.label2.Location = new System.Drawing.Point(49, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 15);
             this.label2.TabIndex = 6;
@@ -72,7 +72,7 @@ namespace Comp_park_app
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(71, 163);
+            this.label3.Location = new System.Drawing.Point(49, 156);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 15);
             this.label3.TabIndex = 7;
@@ -110,17 +110,17 @@ namespace Comp_park_app
             // comboBox_Department
             // 
             this.comboBox_Department.FormattingEnabled = true;
-            this.comboBox_Department.Location = new System.Drawing.Point(172, 131);
+            this.comboBox_Department.Location = new System.Drawing.Point(131, 124);
             this.comboBox_Department.Name = "comboBox_Department";
-            this.comboBox_Department.Size = new System.Drawing.Size(100, 23);
+            this.comboBox_Department.Size = new System.Drawing.Size(173, 23);
             this.comboBox_Department.TabIndex = 11;
             // 
             // comboBox_Position
             // 
             this.comboBox_Position.FormattingEnabled = true;
-            this.comboBox_Position.Location = new System.Drawing.Point(172, 160);
+            this.comboBox_Position.Location = new System.Drawing.Point(131, 153);
             this.comboBox_Position.Name = "comboBox_Position";
-            this.comboBox_Position.Size = new System.Drawing.Size(100, 23);
+            this.comboBox_Position.Size = new System.Drawing.Size(173, 23);
             this.comboBox_Position.TabIndex = 12;
             // 
             // button_Edit
@@ -135,15 +135,15 @@ namespace Comp_park_app
             // 
             // textBox_Password
             // 
-            this.textBox_Password.Location = new System.Drawing.Point(172, 99);
+            this.textBox_Password.Location = new System.Drawing.Point(131, 92);
             this.textBox_Password.Name = "textBox_Password";
-            this.textBox_Password.Size = new System.Drawing.Size(100, 23);
+            this.textBox_Password.Size = new System.Drawing.Size(173, 23);
             this.textBox_Password.TabIndex = 14;
             // 
             // label_Password
             // 
             this.label_Password.AutoSize = true;
-            this.label_Password.Location = new System.Drawing.Point(73, 102);
+            this.label_Password.Location = new System.Drawing.Point(51, 95);
             this.label_Password.Name = "label_Password";
             this.label_Password.Size = new System.Drawing.Size(49, 15);
             this.label_Password.TabIndex = 15;

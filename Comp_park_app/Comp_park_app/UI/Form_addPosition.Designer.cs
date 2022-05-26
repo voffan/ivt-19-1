@@ -87,9 +87,9 @@ namespace Comp_park_app.UI
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(168, 101);
+            this.textBox_name.Location = new System.Drawing.Point(155, 101);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(100, 23);
+            this.textBox_name.Size = new System.Drawing.Size(137, 23);
             this.textBox_name.TabIndex = 28;
             // 
             // buttonEdit
