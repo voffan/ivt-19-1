@@ -11,7 +11,7 @@ namespace Autoreport.Services
 {
     public class OrderService
     {
-        public void Add(DateTime OrderDate, DateTime ReturnDate, Employee OrderEmployee, Deposit OrderDeposit, List<Disk> Disks)
+        public int Add(DateTime OrderDate, DateTime ReturnDate, Employee OrderEmployee, Deposit OrderDeposit, List<Disk> Disks)
         {
             using (DataContext db = Connection.Connect())
             {
@@ -48,6 +48,8 @@ namespace Autoreport.Services
 
                 db.Orders.Add(order);
                 db.SaveChanges();
+
+                return order.Id;
             }
         }
 
