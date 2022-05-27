@@ -33,12 +33,18 @@ namespace gallerys.Forms.FormsforAdd
             if (this.Text == "Редактировать Картины")
             {
                 p.Edit(idn, textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, Convert.ToInt32(comboBox2.SelectedValue), Convert.ToInt32(comboBox3.SelectedValue));
+                this.Close();
             }
             else
             {
-                p.Add(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, Convert.ToInt32(comboBox2.SelectedValue), Convert.ToInt32(comboBox3.SelectedValue));
+                if (p.proverka(textBox1.Text))
+                {
+                    p.Add(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), stat, Convert.ToInt32(comboBox2.SelectedValue), Convert.ToInt32(comboBox3.SelectedValue));
+                    this.Close();
+                }
+                else MessageBox.Show("Такая картина уже существует", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.Close();
+            
         }
         private void AddPaint_Load(object sender, EventArgs e)
         {

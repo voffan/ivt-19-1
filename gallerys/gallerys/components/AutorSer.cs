@@ -17,6 +17,19 @@ namespace gallerys.components
 {
     public class AutorSer
     {
+        public bool proverka(string name)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                Author author = db.Authors.Where(p => p.Name == name).FirstOrDefault();
+
+                if (author == null)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
         public void Add(string name, string bio)
         {
             Author author = new Author() { Name = name, Bio = bio };

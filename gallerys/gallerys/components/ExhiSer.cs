@@ -17,6 +17,19 @@ namespace gallerys.components
 {
     public class ExhiSer
     {
+        public bool proverka(string name)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                Exhibition ex = db.Exhibitions.Where(p => p.Name == name).FirstOrDefault();
+
+                if (ex == null)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
         public void Add(string name, string mesto)
         {
             Exhibition exhi = new Exhibition() { Name = name, Place = mesto};

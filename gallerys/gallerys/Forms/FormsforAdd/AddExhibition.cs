@@ -27,10 +27,15 @@ namespace gallerys.Forms.FormsforAdd
         private void button1_Click(object sender, EventArgs e)
         {
             ExhiSer es = new ExhiSer();
+            
             if (this.Text == "Добавить Выставки")
             {
-                es.Add(textBox1.Text, textBox2.Text);
-                MessageBox.Show("Вы успешно добавили");
+                if (es.proverka(textBox1.Text))
+                {
+                    es.Add(textBox1.Text, textBox2.Text);
+                    MessageBox.Show("Вы успешно добавили");
+                }
+                else MessageBox.Show("Такая выставка уже существует", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

@@ -17,6 +17,19 @@ namespace gallerys.components
 {
     public class JanrSer
     {
+        public bool proverka(string name)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                Genre g = db.Genres.Where(p => p.Name == name).FirstOrDefault();
+
+                if (g == null)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
         public void Add(string name)
         {
             Genre genre = new Genre() { Name = name };

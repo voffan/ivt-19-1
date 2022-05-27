@@ -29,17 +29,26 @@ namespace gallerys.Forms.FormsforAdd
             string surname = textBox1.Text;
             string bio = textBox4.Text;
             AutorSer autorSer = new AutorSer();
+
             if (this.Text == "Добавить Авторы")
             {
-                autorSer.Add(surname, bio);
-                MessageBox.Show("Вы успешно добавили автора");
+                if (autorSer.proverka(surname))
+                {
+                    autorSer.Add(surname, bio);
+                    MessageBox.Show("Вы успешно добавили автора");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Такой автор уже существует", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
                 autorSer.Edit(idn, surname, bio);
                 MessageBox.Show("Вы успешно отредактировали");
-            }
-            this.Close();
+                this.Close();
+            }     
         }
 
         private void button2_Click(object sender, EventArgs e)

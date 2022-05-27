@@ -31,13 +31,19 @@ namespace gallerys.Forms.FormsforAdd
             if (this.Text == "Редактировать Жанры")
             {
                 j.Edit(idn, genre);
+                MessageBox.Show("Вы успешно отредактировали");
+                this.Close();
             }
             else
             {
-                j.Add(genre);
+                if (j.proverka(genre))
+                {
+                    j.Add(genre);
+                    MessageBox.Show("Вы успешно добавили");
+                    this.Close();
+                }
+                else MessageBox.Show("Такой жанр уже существует", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show("Вы успешно добавили жанр");
-            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

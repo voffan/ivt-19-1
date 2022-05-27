@@ -32,17 +32,24 @@ namespace gallerys.Forms.FormsforAdd
             string login = textBox4.Text;
             string pass = textBox5.Text;
             var right = (Right)Enum.Parse(typeof(Right), comboBoxRight.SelectedValue.ToString());
+
             if (this.Text == "Добавить Сотрудники")
             {
-                employeeSer.Add(surname + " " + name + " " + otchestvo, login, pass, right);
-                MessageBox.Show("Вы успешно добавили сотрудника");
+                if (employeeSer.proverka(surname + " " + name + " " + otchestvo, login))
+                {
+                    employeeSer.Add(surname + " " + name + " " + otchestvo, login, pass, right);
+                    MessageBox.Show("Вы успешно добавили сотрудника");
+                    this.Close();
+                }
+                else MessageBox.Show("Такой сотрудник уже существует", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 employeeSer.Edit(idn, surname + " " + name + " " + otchestvo, login, pass, right);
                 MessageBox.Show("Вы успешно отредактировали");
+                this.Close();
             }
-            this.Close();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

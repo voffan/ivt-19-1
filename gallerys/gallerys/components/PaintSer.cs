@@ -16,6 +16,19 @@ namespace gallerys.components
 {
     public class PaintSer
     {
+        public bool proverka(string name)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                Painting p = db.Paintings.Where(p => p.Name == name).FirstOrDefault();
+
+                if (p == null)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
         public void Add(string name, int date, int price, status stat, int author, int genre)
         {
             Painting paint = new Painting();

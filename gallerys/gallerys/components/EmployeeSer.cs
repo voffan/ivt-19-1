@@ -21,6 +21,19 @@ namespace gallerys.components
         {
             get { return currentEmployee; }
         }
+        public bool proverka(string fio, string login)
+        {
+            using (gallContext db = Connection.Connect())
+            {
+                Employee em = db.Employees.Where(p => p.Name == fio || p.Login1 == login).FirstOrDefault();
+
+                if (em == null)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
         public void Add(string fio, string login, string password, Right right)
         {
             Employee empl = new Employee() { Name = fio, Login1 = login, Passw1 = password, Right = right};
