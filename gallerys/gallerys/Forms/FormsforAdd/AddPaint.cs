@@ -55,7 +55,16 @@ namespace gallerys.Forms.FormsforAdd
             comboBox1.ValueMember = "Value";
             p.comboxGenre(comboBox3);
             if (this.Text == "Редактировать Картины")
+            {
                 idn = p.ReturnId(textBox1);
+                using (gallContext c = new gallContext())
+                {
+                    Painting pa = c.Paintings.Where(b => b.Id == idn).FirstOrDefault();
+                    comboBox1.SelectedValue = pa.Status;
+                    comboBox2.SelectedValue = pa.AuthorId;
+                    comboBox3.SelectedValue = pa.GenreId;
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

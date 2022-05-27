@@ -179,7 +179,8 @@ namespace gallerys
                             add.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                             add.textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                             add.textBox3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                            add.comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                            //add.comboBox1.SelectedValue = dataGridView1.CurrentRow.Cells[4].Value;
+                            //add.comboBox2.SelectedValue = dataGridView1.CurrentRow.Cells[5].Value;
                             add.ShowDialog();
                         }
                         if (comboBox1.Text == "Жанры")
