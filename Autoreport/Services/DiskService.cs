@@ -13,7 +13,7 @@ namespace Autoreport.Services
 {
     public class DiskService
     {
-        public void Add(string article, string _count, string _cost, List<Film> films)
+        public Disk Add(string article, string _count, string _cost, List<Film> films)
         {
             int count = Int32.Parse(_count);
             int cost = Int32.Parse(_cost);
@@ -30,6 +30,8 @@ namespace Autoreport.Services
 
                 db.Disks.Add(disk);
                 db.SaveChanges();
+
+                return disk;
             }
         }
 
@@ -101,7 +103,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Disks.Remove(db.Disks.First(empl => empl.Id == Id));
+                db.Disks.Remove(db.Disks.First(x => x.Id == Id));
                 db.SaveChanges();
             }
         }

@@ -10,7 +10,7 @@ namespace Autoreport.Services
 {
     public class FilmService
     {
-        public void Add(string filmName, int filmYear, Country country, List<Person> director, List<Genre> genres)
+        public Film Add(string filmName, int filmYear, Country country, List<Person> director, List<Genre> genres)
         {
             Film film = new Film()
             {
@@ -27,6 +27,8 @@ namespace Autoreport.Services
                 db.Films.Add(film);
                 db.SaveChanges();
             }
+
+            return film;
         }
 
         public Film Get(int filmId)
@@ -98,7 +100,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Films.Remove(db.Films.First(empl => empl.Id == Id));
+                db.Films.Remove(db.Films.First(x => x.Id == Id));
                 db.SaveChanges();
             }
         }
@@ -123,7 +125,7 @@ namespace Autoreport.Services
             }
         }
 
-        internal void AddDirector(string lastName, string firstName, string middleName)
+        internal Person AddDirector(string lastName, string firstName, string middleName)
         {
             Person FilmDirector = new Person()
             {
@@ -137,6 +139,8 @@ namespace Autoreport.Services
                 db.Persons.Add(FilmDirector);
                 db.SaveChanges();
             }
+
+            return FilmDirector;
         }
     }
 }

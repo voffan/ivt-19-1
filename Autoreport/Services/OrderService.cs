@@ -11,10 +11,15 @@ namespace Autoreport.Services
 {
     public class OrderService
     {
-        public int Add(DateTime OrderDate, DateTime ReturnDate, Employee OrderEmployee, Deposit OrderDeposit, List<Disk> Disks)
+        public Order Add(DateTime OrderDate, DateTime ReturnDate, Employee OrderEmployee, Deposit OrderDeposit, List<Disk> Disks)
         {
             using (DataContext db = Connection.Connect())
             {
+                if (ReturnDate < OrderDate)
+                {
+                    throw new IncorrectReturnDate("Дата возврата не должна быть раньше даты заказа");
+                }
+
                 Deposit orderDeposit = db.Deposits
                     .Include(x => x.Owner)
                     .First(x => OrderDeposit.Id == x.Id);
@@ -49,7 +54,7 @@ namespace Autoreport.Services
                 db.Orders.Add(order);
                 db.SaveChanges();
 
-                return order.Id;
+                return order;
             }
         }
 
@@ -135,11 +140,14 @@ namespace Autoreport.Services
             Order order = db.Orders
                 .First(order => order.Id == Id);
 
-            Client orderClient = db.Clients.First(x => x.Id == order.OrderClient.Id);
+            Client orderClient = db.Clients.FirstOrDefault(x => x.Id == order.OrderClient.Id);
             List<Disk> orderDisks = db.Disks.Where(x => order.Disks.Select(x => x.Id).Contains(x.Id)).ToList();
 
-            Connection.clientService.VaryOrder(orderClient, false);
-            Connection.clientService.VaryDebt(orderClient, false);
+            if (orderClient != null)
+            {
+                Connection.clientService.VaryOrder(orderClient, false);
+                Connection.clientService.VaryDebt(orderClient, false);
+            }
 
             if (increaseDisks)
                 foreach (Disk disk in orderDisks)

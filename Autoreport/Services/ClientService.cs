@@ -10,7 +10,7 @@ namespace Autoreport.Services
 {
     public class ClientService
     {
-        public void Add(string lastName, string firstName, string middleName,
+        public Client Add(string lastName, string firstName, string middleName,
                          string phone1, string phone2
                         )
         {
@@ -28,6 +28,8 @@ namespace Autoreport.Services
                 db.Clients.Add(client);
                 db.SaveChanges();
             }
+
+            return client;
         }
 
         public void VaryDebt(Client toClient, bool increase)
@@ -76,7 +78,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Clients.Remove(db.Clients.First(empl => empl.Id == Id));
+                db.Clients.Remove(db.Clients.First(x => x.Id == Id));
                 db.SaveChanges();
             }
         }

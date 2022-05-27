@@ -4,62 +4,99 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace TestOrderService
 {
     [TestClass]
     public class UnitTestOrder
     {
-        int newOrderId;
+        private static Employee currentEmployee;
+        private static Client currentClient;
+        private static List<Film> currentFilms;
+        private static List<Disk> currentDisks;
+        private static Deposit currentDeposit;
+        private static Order currentOrder;
+
+        [TestInitialize]
+        public void TestInit()
+        {
+            if (currentEmployee == null)
+            {
+                Connection.employeeService.Login("admin", "admin");
+                currentEmployee = Connection.employeeService.CurrentEmployee;
+            }
+
+            currentClient = Connection.clientService.Add("testClient", "testClient", 
+                "", "89111111111", "");
+
+            Film f = Connection.filmService.Add("testFilm", 2000,
+                Connection.filmService.GetCountries().First(),
+                Connection.filmService.GetFilmsDirectors().Take(1).ToList(),
+                Connection.filmService.GetGenres().Take(1).ToList());
+            currentFilms = new List<Film> { f };
+
+            Disk d = Connection.diskService.Add("testArticle", "10", "150", currentFilms);
+            currentDisks = new List<Disk> { d };
+
+            currentDeposit = Connection.depositService.Add("", 150, DepositType.Money, currentClient);
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            Connection.depositService.Delete(currentDeposit.Id);
+            Connection.clientService.Delete(currentClient.Id);
+            Connection.filmService.Delete(currentFilms[0].Id);
+            Connection.diskService.Delete(currentDisks[0].Id);
+
+            if (currentOrder != null)
+                Connection.orderService.Delete(currentOrder.Id);
+        }
 
         [TestMethod]
         public void TestAddOrder()
         {
-            Connection.employeeService.Login("admin", "admin");
-            Employee empl = Connection.employeeService.CurrentEmployee;
+            currentOrder = Connection.orderService.Add(DateTime.Now, DateTime.Now.AddDays(1),
+                currentEmployee, currentDeposit, currentDisks);
 
-            Connection.clientService.Add("testClient", "testClient", "", "89111111111", "");
-            Client client = Connection.clientService.GetAll()
-                .FirstOrDefault(x => x.Last_name == "testClient" && 
-                    x.First_name == "testClient" && 
-                    x.Phone_number1 == "89111111111");
-
-            Connection.filmService.Add("testFilm", 2000,
-                Connection.filmService.GetCountries().First(),
-                Connection.filmService.GetFilmsDirectors().Take(1).ToList(),
-                Connection.filmService.GetGenres().Take(1).ToList());
-            Film film = Connection.filmService.GetAll()
-                .FirstOrDefault(x => x.Name == "testFilm" && x.Year == 2000);
-
-            Connection.diskService.Add("testArticle", "10", "150", new List<Film> { film });
-            Disk disk = Connection.diskService.GetAll()
-                .FirstOrDefault(x => x.Article == "testArticle" && x.General_count == 10 && x.Cost == 150);
-
-            Connection.depositService.Add("", 150, DepositType.Money, client);
-            Deposit deposit = Connection.depositService.GetAll()
-                .FirstOrDefault(x => x.MoneyValue == 150 &&
-                    x.DepositType == DepositType.Money &&
-                    x.Owner.Id == client.Id);
-
-            using (DataContext db = Connection.Connect())
-            {
-                newOrderId = Connection.orderService.Add(DateTime.Now, DateTime.Now.AddDays(1),
-                    empl, deposit, new List<Disk> { disk });
-            }
-
-            Order newOrder = Connection.orderService.GetAll()
-                .FirstOrDefault(x => x.Id == newOrderId);
-
-            Assert.IsNotNull(newOrder);
+            Assert.IsNotNull(currentOrder);
         }
 
         [TestMethod]
         public void TestGetOrder()
         {
-            using (DataContext db = Connection.Connect())
-            {
-                Connection.orderService.GetAll().
-            }
+            currentOrder = Connection.orderService.Add(DateTime.Now, DateTime.Now.AddDays(1),
+                currentEmployee, currentDeposit, currentDisks);
+
+            Assert.IsNotNull(Connection.orderService.Get(currentOrder.Id));
+        }
+
+        [TestMethod]
+        public void TestGetExpired()
+        {
+            currentOrder = Connection.orderService.Add(DateTime.Now, DateTime.Now.AddMilliseconds(100),
+                currentEmployee, currentDeposit, currentDisks);
+
+            Thread.Sleep(200);
+
+            Assert.IsNotNull(Connection.orderService
+                .GetExpired()
+                .FirstOrDefault(x => x.Id == currentOrder.Id));
+        }
+
+        [TestMethod]
+        public void TestEdit()
+        {
+            currentOrder = Connection.orderService.Add(DateTime.Now, DateTime.Now.AddDays(1),
+                currentEmployee, currentDeposit, currentDisks);
+
+            Connection.orderService.Edit(currentOrder, OrderStatus.Completed, currentOrder.Return_date,
+                currentOrder.OrderDeposit, currentOrder.Disks);
+
+            currentOrder = Connection.orderService.Get(currentOrder.Id);
+
+            Assert.AreEqual(OrderStatus.Completed, currentOrder.Status);
         }
     }
 }

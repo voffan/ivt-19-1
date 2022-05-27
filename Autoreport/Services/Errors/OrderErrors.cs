@@ -25,4 +25,9 @@ namespace Autoreport.Services.Errors
     {
         public LowDeposit(string message) : base(message) { }
     }
+
+    class IncorrectReturnDate : Exception
+    {
+        public IncorrectReturnDate(string message) : base(message) { }
+    }
 }

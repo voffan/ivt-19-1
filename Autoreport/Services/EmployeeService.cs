@@ -70,7 +70,7 @@ namespace Autoreport.Services
             }
         }
 
-        public void Add(string lastName, string firstName, string middleName, 
+        public Employee Add(string lastName, string firstName, string middleName, 
                         string passport, Position position, string phone,
                         string login, string password)
         {
@@ -104,6 +104,8 @@ namespace Autoreport.Services
                 db.Employees.Add(empl);
                 db.SaveChanges();
             }
+
+            return empl;
         }
 
         public void CheckPassword(string password)
@@ -139,7 +141,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Employees.Remove(db.Employees.First(empl => empl.Id == Id));
+                db.Employees.Remove(db.Employees.First(x => x.Id == Id));
                 db.SaveChanges();
             }
         }

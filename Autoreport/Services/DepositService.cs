@@ -13,7 +13,7 @@ namespace Autoreport.Services
 {
     public class DepositService
     {
-        public void Add(string documentData, uint moneyValue, DepositType DepositType, Client client)
+        public Deposit Add(string documentData, uint moneyValue, DepositType DepositType, Client client)
         {
             switch (DepositType)
             {
@@ -48,12 +48,13 @@ namespace Autoreport.Services
                 };
 
                 db.Update(deposit);
-                //db.Database. = s => System.Diagnostics.Debug.WriteLine(s);
                 db.ChangeTracker.DetectChanges();
                 Console.WriteLine(db.ChangeTracker.DebugView.LongView);
                            
                 db.Deposits.Add(deposit);
                 db.SaveChanges();
+
+                return deposit;
             }
         }
 
@@ -83,7 +84,7 @@ namespace Autoreport.Services
         {
             using (DataContext db = Connection.Connect())
             {
-                db.Deposits.Remove(db.Deposits.First(empl => empl.Id == Id));
+                db.Deposits.Remove(db.Deposits.First(x => x.Id == Id));
                 db.SaveChanges();
             }
         }
