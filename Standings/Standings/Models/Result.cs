@@ -10,6 +10,10 @@ namespace Standings.Models
 {
     public class Result
     {
+        public Result()
+        {
+            Competitions = new List<Competition>();
+        }
         public int Id { get; set; }
         [MaxLength(100)]
         public string Record { get; set; }

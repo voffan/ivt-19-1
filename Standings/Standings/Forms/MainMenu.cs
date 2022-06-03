@@ -60,6 +60,12 @@ namespace Standings
             Context context = Connection.Connect();
             dataGridView1.DataSource = context.Sportsmans.Include("Nationality").ToList();
         }
+        private void InitTablResult()
+        {
+            Context context = Connection.Connect();
+            dataGridView1.DataSource = context.Results.Include("Sportsman").Include("SportKind").Include("Category").ToList();
+            
+        }
         private void списокСотрудниковToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             k = 1;
@@ -82,9 +88,15 @@ namespace Standings
             }
             if (k == 3)
             {
-                AddSportsman AC = new AddSportsman();
-                AC.ShowDialog();
+                AddSportsman AS = new AddSportsman();
+                AS.ShowDialog();
                 InitTablSportsmans();
+            }
+            if (k == 4)
+            {
+                AddResult AR = new AddResult();
+                AR.ShowDialog();
+                InitTablResult();
             }
 
         }
@@ -133,7 +145,16 @@ namespace Standings
                 }
                 InitTablSportsmans();
             }
+            if (k == 4)
+            {
+                currentDeleteAction = Connection.resultFunctions.Delete;
 
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    currentDeleteAction((int)row.Cells["Id"].Value);
+                }
+                InitTablResult();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -164,10 +185,41 @@ namespace Standings
             }
             if (k == 3)
             {
-                int Id = dataGridView1.CurrentRow.Index;
+                int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                UpdateSportsman US = new UpdateSportsman(Id);
+
+                US.Name1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+
+                US.Invalid.Checked = Convert.ToBoolean(dataGridView1.CurrentRow.Cells[4].Value);
+
+                US.comboBox1.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                US.Ves.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                US.Pol.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
+                US.Active.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                US.ShowDialog();
                 InitTablSportsmans();
             }
+            if (k == 4)
+            {
+                int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                UpdateResult UR = new UpdateResult(Id);
 
+
+                UR.comboBox1.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                UR.comboBox3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                UR.Record1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                UR.comboBox2.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                
+                UR.ShowDialog();
+                InitTablResult();
+            }
+
+        }
+
+        private void списокРезультатовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            k = 4;
+            InitTablResult();
         }
     }
 }

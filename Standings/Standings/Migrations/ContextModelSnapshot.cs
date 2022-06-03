@@ -222,7 +222,7 @@ namespace Standings.Migrations
                     b.Property<bool>("Disability")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("FullNname")
+                    b.Property<string>("FullName")
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 

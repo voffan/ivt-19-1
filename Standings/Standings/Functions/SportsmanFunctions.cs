@@ -15,7 +15,7 @@ namespace Standings.Functions
             using (Context context = new Context())
             {
                 Sportsman c = new Sportsman();
-                c.FullNname = Name;
+                c.FullName = Name;
                 c.Birthday = Date;
                 c.Weight = (float)Ves;
                 c.Disability = b;
@@ -39,9 +39,24 @@ namespace Standings.Functions
             }
         }
 
-        public void Edit()
+        public static void Edit(string Name, bool b, double Ves, Sex Sex, StatusSport StatusSport, Nationality Nation, int Id)
         {
-
+            using (Context context = new Context())
+            {
+                using (Context db = new Context())
+                {
+                    Sportsman c = db.Sportsmans
+                    .Where(q => q.Id == Id)
+                    .FirstOrDefault();
+                    c.FullName = Name;
+                    c.Weight = (float)Ves;
+                    c.Disability = b;
+                    c.Sex = Sex;
+                    c.StatusSport = StatusSport;
+                    c.NationalityId = Nation.Id;
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }

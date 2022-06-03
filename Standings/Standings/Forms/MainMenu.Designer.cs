@@ -43,6 +43,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 27);
             this.dataGridView1.Name = "dataGridView1";
@@ -120,6 +121,7 @@
             this.списокРезультатовToolStripMenuItem.Name = "списокРезультатовToolStripMenuItem";
             this.списокРезультатовToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
             this.списокРезультатовToolStripMenuItem.Text = "Список результатов";
+            this.списокРезультатовToolStripMenuItem.Click += new System.EventHandler(this.списокРезультатовToolStripMenuItem_Click);
             // 
             // MainMenu
             // 

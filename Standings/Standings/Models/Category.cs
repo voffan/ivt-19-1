@@ -15,5 +15,9 @@ namespace Standings.Models
         public string Name { get; set; }
         public int SportKindId { get; set; }
         public virtual SportKind SportKind { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

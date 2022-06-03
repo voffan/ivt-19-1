@@ -73,5 +73,70 @@ namespace Standings.Forms.Add
                 comboBox1.ValueMember = "Id";
             }
         }
+
+        private void Active_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Invalid_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Ves_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Name1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

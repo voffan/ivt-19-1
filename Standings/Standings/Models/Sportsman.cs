@@ -22,7 +22,7 @@ namespace Standings.Models
     {
         public int Id { get; set; }
         [MaxLength(200)]
-        public string FullNname { get; set; }
+        public string FullName { get; set; }
         public DateTime Birthday { get; set; }
 
         [Range(0, 300)]
@@ -34,5 +34,9 @@ namespace Standings.Models
 
         public StatusSport StatusSport { get; set; }
         public Sex Sex { get; set; }
+        public override string ToString()
+        {
+            return FullName;
+        }
     }
 }

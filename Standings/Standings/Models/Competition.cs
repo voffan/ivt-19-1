@@ -29,5 +29,9 @@ namespace Standings.Models
         public Level Level { get; set; }
         public virtual List<Judge> Judges { get; set; }
         public virtual List<Result> Results { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

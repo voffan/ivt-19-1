@@ -54,6 +54,7 @@
             this.label5.Size = new System.Drawing.Size(112, 19);
             this.label5.TabIndex = 37;
             this.label5.Text = "Дата рождения";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label3
             // 
@@ -75,6 +76,7 @@
             this.label2.Size = new System.Drawing.Size(36, 19);
             this.label2.TabIndex = 33;
             this.label2.Text = "Пол";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -85,6 +87,7 @@
             this.label1.Size = new System.Drawing.Size(45, 19);
             this.label1.TabIndex = 32;
             this.label1.Text = "ФИО";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Ves
             // 
@@ -92,6 +95,7 @@
             this.Ves.Name = "Ves";
             this.Ves.Size = new System.Drawing.Size(192, 23);
             this.Ves.TabIndex = 31;
+            this.Ves.TextChanged += new System.EventHandler(this.Ves_TextChanged);
             // 
             // Name1
             // 
@@ -99,6 +103,7 @@
             this.Name1.Name = "Name1";
             this.Name1.Size = new System.Drawing.Size(192, 23);
             this.Name1.TabIndex = 30;
+            this.Name1.TextChanged += new System.EventHandler(this.Name1_TextChanged);
             // 
             // button1
             // 
@@ -120,6 +125,7 @@
             this.label4.Size = new System.Drawing.Size(33, 19);
             this.label4.TabIndex = 38;
             this.label4.Text = "Вес";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label6
             // 
@@ -130,6 +136,7 @@
             this.label6.Size = new System.Drawing.Size(107, 19);
             this.label6.TabIndex = 39;
             this.label6.Text = "Инвалидность";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -140,6 +147,7 @@
             this.label7.Size = new System.Drawing.Size(89, 19);
             this.label7.TabIndex = 40;
             this.label7.Text = "Активность";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // dateTimePicker1
             // 
@@ -147,6 +155,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(192, 23);
             this.dateTimePicker1.TabIndex = 41;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // Pol
             // 
@@ -155,6 +164,7 @@
             this.Pol.Name = "Pol";
             this.Pol.Size = new System.Drawing.Size(192, 23);
             this.Pol.TabIndex = 42;
+            this.Pol.SelectedIndexChanged += new System.EventHandler(this.Pol_SelectedIndexChanged);
             // 
             // Invalid
             // 
@@ -164,6 +174,7 @@
             this.Invalid.Size = new System.Drawing.Size(15, 14);
             this.Invalid.TabIndex = 43;
             this.Invalid.UseVisualStyleBackColor = true;
+            this.Invalid.CheckedChanged += new System.EventHandler(this.Invalid_CheckedChanged);
             // 
             // Active
             // 
@@ -172,6 +183,7 @@
             this.Active.Name = "Active";
             this.Active.Size = new System.Drawing.Size(192, 23);
             this.Active.TabIndex = 44;
+            this.Active.SelectedIndexChanged += new System.EventHandler(this.Active_SelectedIndexChanged);
             // 
             // comboBox1
             // 
@@ -180,6 +192,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(192, 23);
             this.comboBox1.TabIndex = 45;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // AddSportsman
             // 
