@@ -19,7 +19,6 @@ namespace TestProject1
 		{
 			PlanFunctions plan = new PlanFunctions();
 			plan.Add(count_box, plandate, productid);
-			PlanFunctions.Search(plandate);
 			using (Context c = new Context())
 			{
 				var search = c.Plans
@@ -36,11 +35,7 @@ namespace TestProject1
 		public void TestPlanEdit()
 		{
 			PlanFunctions plan = new PlanFunctions();
-			count_box = 30;
-			plandate = "11.05.2022";
-			productid = 2;
 			plan.Add(count_box, plandate, productid);
-
 			using (Context c = new Context())
 			{
 				var search = c.Plans
@@ -55,12 +50,12 @@ namespace TestProject1
 
 				plan.Edit(search.Id, count_box, plandate, productid);
 
-				search = c.Plans
+				var searchEdit = c.Plans
 					 .Where(C => C.Count_box.Equals(count_box))
 					 .Where(PL => PL.PlanDate.Contains(plandate))
 					 .Where(PI => PI.ProductId.Equals(productid))
 					 .FirstOrDefault();
-				Assert.IsNotNull(search);
+				Assert.IsNotNull(searchEdit);
 				plan.Delete(search.Id);
 			}
 		}
@@ -69,7 +64,6 @@ namespace TestProject1
 		{
 			PlanFunctions plan = new PlanFunctions();
 			plan.Add(count_box, plandate, productid);
-			PlanFunctions.Search(plandate);
 			using (Context c = new Context())
 			{
 				var search = c.Plans
@@ -80,13 +74,13 @@ namespace TestProject1
 
 				plan.Delete(search.Id);
 
-				search = c.Plans
+				var searchDel = c.Plans
 					 .Where(C => C.Count_box.Equals(count_box))
 					 .Where(PL => PL.PlanDate.Contains(plandate))
 					 .Where(PI => PI.ProductId.Equals(productid))
 					 .FirstOrDefault();
 
-				Assert.IsNull(search);
+				Assert.IsNull(searchDel);
 			}
 		}
 		[TestMethod]
