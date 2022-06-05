@@ -1,12 +1,16 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+ï»¿using Comp_park_app;
 using Comp_park_app.Functions;
-using Comp_park_app;
-using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace TestProject1 {
     [TestClass]
-    public class UnitTest1 {
+    public class UnitTest_deleteFunctions {
+
         [TestMethod]
         public void TestMethodMotherboard1() {
             MotherboardFunctions motherboard = new MotherboardFunctions();
@@ -15,10 +19,16 @@ namespace TestProject1 {
                 var search = c.Motherboards
                      .Where(b => b.Name == "name" && b.Manufacturer == "manuf")
                      .FirstOrDefault();
-                Assert.IsNotNull(search);
+
                 if (search != null) {
                     motherboard.Delete(search.Id);
                 }
+
+                search = c.Motherboards
+                     .Where(b => b.Name == "name" && b.Manufacturer == "manuf")
+                     .FirstOrDefault();
+
+                Assert.IsNull(search);
             }
 
         }
@@ -31,10 +41,16 @@ namespace TestProject1 {
                 var search = c.HDDs
                      .Where(b => b.Name =="name" && b.Manufacturer == "manuf" && b.Capacity == 1)
                      .FirstOrDefault();
-                Assert.IsNotNull(search);
+
                 if (search != null) {
                     hdd.Delete(search.Id);
                 }
+
+                search = c.HDDs
+                     .Where(b => b.Name == "name" && b.Manufacturer == "manuf" && b.Capacity == 1)
+                     .FirstOrDefault();
+
+                Assert.IsNull(search);
             }
         }
 
@@ -46,25 +62,37 @@ namespace TestProject1 {
                 var search = c.Departments
                      .Where(b => b.Name == "name" && b.Number == 10) 
                      .FirstOrDefault();
-                Assert.IsNotNull(search);
+
                 if (search != null) {
                     department.Delete(search.Id);
                 }
+
+                search = c.Departments
+                     .Where(b => b.Name == "name" && b.Number == 10)
+                     .FirstOrDefault();
+
+                Assert.IsNull(search);  
             }
         }
 
         [TestMethod]
         public void TestMethodEmployee1() {
             EmployeeFunctions employee = new EmployeeFunctions();
-            employee.Add("name", 1, 1, "");
+            employee.Add("name", 1, 2, "");
             using (Context c = new Context()) {
                 var search = c.Employees
                      .Where(b => b.Name == "name")
                      .FirstOrDefault();
-                Assert.IsNotNull(search);
+
                 if (search != null) {
                     employee.Delete(search.Id);
                 }
+
+                search = c.Employees
+                     .Where(b => b.Name == "name")
+                     .FirstOrDefault();
+
+                Assert.IsNull(search);
             }
         }
 
@@ -76,40 +104,57 @@ namespace TestProject1 {
                 var search = c.Positions
                      .Where(b => b.Name == "Admin")
                      .FirstOrDefault();
-                Assert.IsNotNull(search);
                 if (search != null) {
                     position.Delete(search.Id);
                 }
+
+                search = c.Positions
+                     .Where(b => b.Name == "Admin")
+                     .FirstOrDefault();
+
+                Assert.IsNull(search);  
             }
         }
 
         [TestMethod]
         public void TestMethodProcessor1() {
             ProcessorFunctions processor = new ProcessorFunctions();
-            processor.Add("Ïðîöåññîð21", "Ïðîèçâîäèòåëü45", "×àñòîòà6752");
+            processor.Add("ÐŸÑ€Ð¾Ñ†ÐµÑÑÐ¾Ñ€21", "ÐŸÑ€Ð¾Ð¸Ð·Ð²Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒ45", "Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð°6752");
             using (Context c = new Context()) {
                 var search = c.Processors
-                     .Where(b => b.Name == "Ïðîöåññîð21" && b.Manufacturer == "Ïðîèçâîäèòåëü45" && b.Frequency == "×àñòîòà6752")
+                     .Where(b => b.Name == "ÐŸÑ€Ð¾Ñ†ÐµÑÑÐ¾Ñ€21" && b.Manufacturer == "ÐŸÑ€Ð¾Ð¸Ð·Ð²Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒ45" && b.Frequency == "Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð°6752")
                      .FirstOrDefault();
-                Assert.IsNotNull(search);
+
                 if (search != null) {
                     processor.Delete(search.Id);
                 }
+
+                search = c.Processors
+                     .Where(b => b.Name == "ÐŸÑ€Ð¾Ñ†ÐµÑÑÐ¾Ñ€21" && b.Manufacturer == "ÐŸÑ€Ð¾Ð¸Ð·Ð²Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒ45" && b.Frequency == "Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð°6752")
+                     .FirstOrDefault();
+
+                Assert.IsNull(search);
             }
         }
 
         [TestMethod]
         public void TestMethodRAM1() {
             RAMFunctions ram = new RAMFunctions();
-            ram.Add("Îïåðàòèâíàÿ ïàìÿòü 6753", "Ïðîèçâîäèòåëü6731", 234);
+            ram.Add("ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¸Ð²Ð½Ð°Ñ Ð¿Ð°Ð¼ÑÑ‚ÑŒ 6753", "ÐŸÑ€Ð¾Ð¸Ð·Ð²Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒ6731", 234);
             using (Context c = new Context()) {
                 var search = c.RAMs
-                     .Where(b => b.Name == "Îïåðàòèâíàÿ ïàìÿòü 6753" && b.Manufacturer == "Ïðîèçâîäèòåëü6731" && b.Capacity == 234)
+                     .Where(b => b.Name == "ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¸Ð²Ð½Ð°Ñ Ð¿Ð°Ð¼ÑÑ‚ÑŒ 6753" && b.Manufacturer == "ÐŸÑ€Ð¾Ð¸Ð·Ð²Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒ6731" && b.Capacity == 234)
                      .FirstOrDefault();
-                Assert.IsNotNull(search);
+
                 if (search != null) {
                     ram.Delete(search.Id);
                 }
+
+                search = c.RAMs
+                     .Where(b => b.Name == "ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¸Ð²Ð½Ð°Ñ Ð¿Ð°Ð¼ÑÑ‚ÑŒ 6753" && b.Manufacturer == "ÐŸÑ€Ð¾Ð¸Ð·Ð²Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒ6731" && b.Capacity == 234)
+                     .FirstOrDefault();
+
+                Assert.IsNull(search); 
             }
         }
 
@@ -117,15 +162,21 @@ namespace TestProject1 {
         public void TestMethodPeripheral1() {
             DateTime date = new DateTime(2022, 5, 6);
             PeripheralFunctions peripheral = new PeripheralFunctions();
-            peripheral.Add("Ïðèíòåð46", "Å87", Status.Working, 1, 5, date, "");
+            peripheral.Add("ÐŸÑ€Ð¸Ð½Ñ‚ÐµÑ€46", "Ð•87", Status.Working, 1, 9, date, "");
             using (Context c = new Context()) {
                 var search = c.Peripherals
-                     .Where(b => b.Name == "Ïðèíòåð46" && b.ItemNo == "Å87" && b.Status == Status.Working && b.DepartmentId == 1 && b.EmployeeId == 5 && new DateTime(2022, 5, 6) == b.Date)
+                     .Where(b => b.Name == "ÐŸÑ€Ð¸Ð½Ñ‚ÐµÑ€46" && b.ItemNo == "Ð•87" && b.Status == Status.Working && b.DepartmentId == 1 && b.EmployeeId == 5 && new DateTime(2022, 5, 6) == b.Date)
                      .FirstOrDefault();
-                Assert.IsNotNull(search);
+
                 if (search != null) {
                     peripheral.Delete(search.Id);
                 }
+
+                search = c.Peripherals
+                     .Where(b => b.Name == "ÐŸÑ€Ð¸Ð½Ñ‚ÐµÑ€46" && b.ItemNo == "Ð•87" && b.Status == Status.Working && b.DepartmentId == 1 && b.EmployeeId == 5 && new DateTime(2022, 5, 6) == b.Date)
+                     .FirstOrDefault();
+
+                Assert.IsNull(search);
             }
         }
     }

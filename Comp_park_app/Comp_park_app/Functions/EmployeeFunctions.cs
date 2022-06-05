@@ -38,13 +38,14 @@ namespace Comp_park_app.Functions {
             }
         }
 
-        public void Edit(int id, string name, int departmentid, int positionid) {
+        public void Edit(int id, string name, int departmentid, int positionid, string password) {
             Employee employee;
             using (Context c = new Context()) {
                 employee = c.Employees.Find(id);
                 employee.Name = name;
                 employee.DepartmentId = departmentid;
                 employee.PositionId = positionid;
+                employee.Password = password;
                 c.Entry(employee).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 c.SaveChanges();
             }

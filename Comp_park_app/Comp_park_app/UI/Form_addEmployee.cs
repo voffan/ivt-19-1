@@ -99,7 +99,9 @@ namespace Comp_park_app {
                 var name = textBox_Name.Text;
                 var departmentid = Convert.ToInt32(comboBox_Department.SelectedValue);
                 var positionid = Convert.ToInt32(comboBox_Position.SelectedValue);
-                employee.Edit(id, name, departmentid, positionid);
+                string pass = textBox_Password.Text;
+                var password = EmployeeFunctions.HashPassword(pass);
+                employee.Edit(id, name, departmentid, positionid, password);
                 frm1.Update_datagridview(2);
                 this.Close();
             }

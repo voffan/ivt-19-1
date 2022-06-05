@@ -20,7 +20,7 @@ namespace Comp_park_app.UI {
         DateTime nowTime = new DateTime();
                 
         private void button_reportsRepaired_Click(object sender, EventArgs e) {
-            Report(Status.InRepair, "Компьютеры на ремонте", "Периферийная техника на ремонте");
+            Report(Status.InRepair, "Компьютеры на ремонте в этом месяце", "Периферийная техника на ремонте в этом месяце");
         }
 
         private void button_reportsWorking_Click(object sender, EventArgs e) {
@@ -59,7 +59,14 @@ namespace Comp_park_app.UI {
                 using (Context c = new Context()) {
                     //Computers
                     foreach (var i in c.Computers.Include(x => x.Department).Include(z => z.Employee)) {
-                        if (i.Status == status && nowTime.Month == i.Date.Month) {
+                        if (status == Status.InRepair && nowTime.Month == i.Date.Month) {
+                            worksheet1.Cells[countRepair + 3, 1] = i.ItemNo;
+                            worksheet1.Cells[countRepair + 3, 2] = i.Department;
+                            worksheet1.Cells[countRepair + 3, 3] = i.Employee;
+                            worksheet1.Cells[countRepair + 3, 4] = i.Reason;
+                            countRepair++;
+                        }
+                        if (status == Status.Removed || status == Status.Working) {
                             worksheet1.Cells[countRepair + 3, 1] = i.ItemNo;
                             worksheet1.Cells[countRepair + 3, 2] = i.Department;
                             worksheet1.Cells[countRepair + 3, 3] = i.Employee;
@@ -67,11 +74,10 @@ namespace Comp_park_app.UI {
                             countRepair++;
                         }
                     }
-
-                    countRepair = 0; 
+                    countRepair = 0;
                     //Peripheral
                     foreach (var i in c.Peripherals.Include(x => x.Employee).Include(y => y.Department)) {
-                        if (i.Status == status && nowTime.Month == i.Date.Month) {
+                        if (status == Status.InRepair && nowTime.Month == i.Date.Month) {
                             worksheet2.Cells[countRepair + 3, 1] = i.ItemNo;
                             worksheet2.Cells[countRepair + 3, 2] = i.Name;
                             worksheet2.Cells[countRepair + 3, 3] = i.Department;
@@ -79,7 +85,14 @@ namespace Comp_park_app.UI {
                             worksheet2.Cells[countRepair + 3, 5] = i.Reason;
                             countRepair++;
                         }
-
+                        if (status == Status.Working || status == Status.Removed) {
+                            worksheet2.Cells[countRepair + 3, 1] = i.ItemNo;
+                            worksheet2.Cells[countRepair + 3, 2] = i.Name;
+                            worksheet2.Cells[countRepair + 3, 3] = i.Department;
+                            worksheet2.Cells[countRepair + 3, 4] = i.Employee;
+                            worksheet2.Cells[countRepair + 3, 5] = i.Reason;
+                            countRepair++;
+                        }
                     }
                 }
 
