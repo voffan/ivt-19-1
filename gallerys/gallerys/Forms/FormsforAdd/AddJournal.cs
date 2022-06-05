@@ -44,14 +44,21 @@ namespace gallerys.Forms.FormsforAdd
         private void AddJournal_Load(object sender, EventArgs e)
         {
             JournalSer js = new JournalSer();
-            if (this.Text == "Редактировать Журнал передвижения картин")
-            {
-                idn = js.ReturnId(dateTimePicker1, comboBoxPaint);
-            }
-            idem = Connection.employeeSer.CurrentEmployee.Id;
             js.ReturnCombobox(comboBoxPaint);
             js.ReturnCombo(comboBoxFrom);
             js.ReturnCombo(comboBoxTo);
+            if (this.Text == "Редактировать Журнал передвижения картин")
+            {
+                idn = js.ReturnId(dateTimePicker1);
+                using (gallContext c = new gallContext())
+                {
+                    Journal pa = c.Journals.Where(b => b.Id == idn).FirstOrDefault();
+                    comboBoxPaint.SelectedValue = pa.PaintingId;
+                    comboBoxFrom.SelectedValue = pa.FromId;
+                    comboBoxTo.SelectedValue = pa.ToId;
+                }
+            }
+            idem = Connection.employeeSer.CurrentEmployee.Id; 
         }
 
         private void button2_Click(object sender, EventArgs e)

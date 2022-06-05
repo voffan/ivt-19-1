@@ -216,9 +216,9 @@ namespace gallerys
                             {
                                 j = db.Journals.Find(dataGridView1.Rows[idn].Cells[0].Value);
                                 add.dateTimePicker1.Value = j.Oper_date;
-                                add.comboBoxPaint.SelectedValue = j.PaintingId;
-                                add.comboBoxFrom.SelectedValue = j.FromId;
-                                add.comboBoxTo.SelectedValue = j.ToId;
+                                //add.comboBoxPaint.SelectedValue = j.PaintingId;
+                                //add.comboBoxFrom.SelectedValue = j.FromId;
+                                //add.comboBoxTo.SelectedValue = j.ToId;
                             }
                             add.ShowDialog();
                         }

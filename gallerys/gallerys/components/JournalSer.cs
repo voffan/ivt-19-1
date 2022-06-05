@@ -67,15 +67,15 @@ namespace gallerys.components
                 return search;
             }
         }
-        public int ReturnId(DateTimePicker d, ComboBox box)
+        public int ReturnId(DateTimePicker d)
         {
             using (gallContext db = Connection.Connect())
             {
-                Journal empl = db.Journals.Where(p => p.Oper_date == d.Value && p.PaintingId == Convert.ToInt32(box.SelectedValue)).FirstOrDefault();
+                Journal empl = db.Journals.Where(p => p.Oper_date == d.Value).FirstOrDefault();
 
                 if (empl == null)
                 {
-                    throw new Errors.UserErrors("Ошибка возвращения идентификатора жанра");
+                    throw new Errors.UserErrors("Ошибка возвращения идентификатора журнала");
                 }
                 return empl.Id;
             }
