@@ -10,16 +10,19 @@ namespace Korobki_project.Functions
 {
    public  class ScheduleFunctions
     {
-        public void Add(string name)
+        public void Add(int shiftid,DateTime date,int plancount)
         {
-            Position position = new Position()
+            Schedule schedule = new Schedule()
             {
-                Name = name,
+                ShiftId = shiftid,
+                Date = date,
+                PlanCount = plancount
+
             };
             using (Context c = new Context())
             {
 
-                c.Positions.Add(position);
+                c.Schedules.Add(schedule);
                 c.SaveChanges();
             }
         }

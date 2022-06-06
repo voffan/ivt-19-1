@@ -10,12 +10,15 @@ namespace Korobki_project.Functions
 {
    public class ShiftFunctions
     {
-        public void Add()
+        public void Add(string name)
         {
+            Shift shift = new Shift()
+            {
+                Name = name,
+            };
             using (Context c = new Context())
             {
-                Shift shift = new Shift();
-                //... initiate field
+
                 c.Shifts.Add(shift);
                 c.SaveChanges();
             }

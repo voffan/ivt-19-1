@@ -10,13 +10,16 @@ namespace Korobki_project.Functions
 {
    public class TypeeFunctions
     {
-        public void Add()
+        public void Add(string type_name)
         {
+            Typee typee = new Typee()
+            {
+                Type_name = type_name,
+            };
             using (Context c = new Context())
             {
-                Typee Typee = new Typee();
-                //... initiate field
-                c.Typees.Add(Typee);
+
+                c.Typees.Add(typee);
                 c.SaveChanges();
             }
         }

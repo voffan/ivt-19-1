@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Korobki_project.Functions;
 
 namespace Korobki_project.UI
 {
@@ -22,13 +23,15 @@ namespace Korobki_project.UI
         {
             if (textBox1.Text.Length != 0)
             {
-                string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
+                /*string connStr = "server=localhost; port=3306; username=root; password=root; database=korobkibd;";
                 string sql = "INSERT typees(type_name)" + "VALUES('" + textBox1.Text + "')";
                 MySqlConnection conn = new MySqlConnection(connStr);
                 conn.Open();
                 MySqlCommand command = new MySqlCommand(sql, conn);
                 command.ExecuteNonQuery();
-                conn.Close();
+                conn.Close();*/
+                TypeeFunctions typee = new TypeeFunctions();
+                typee.Add(textBox1.Text);
                 MessageBox.Show("Добавлено");
             }
             else
